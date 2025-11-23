@@ -53,7 +53,7 @@ jobs:
 
       - name: Prepare site structure
         run: |
-          mkdir -p _site
+          mkdir -p _site/book
           cp index.html _site/
           cp -r book/_build/html/* _site/book/
 
