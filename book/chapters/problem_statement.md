@@ -2,6 +2,8 @@
 
 ## Overview
 
+Landslides after atmospheric rivers, liquefaction after storms, catastrophic runoff after fires—the next generation of geodisaster risk emerges from interacting climate and solid-Earth processes. But our models cannot yet keep pace with these nonlinear cascades. We need a leap: a platform that merges multimodal Earth observations with real-time AI reasoning, reduced-order physics models, and self-updating digital twins. This project builds that platform.
+
 Natural hazards pose significant risks to communities, infrastructure, and ecosystems worldwide. The GAIA HazLab platform addresses the critical need for advanced, data-driven approaches to hazard assessment and mitigation.
 
 ## Key Challenges
