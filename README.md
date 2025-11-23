@@ -2,7 +2,7 @@
 
 [![Deploy GitHub Pages](https://github.com/gaia-hazlab/gaia-hazlab.github.io/workflows/Deploy%20GitHub%20Pages/badge.svg)](https://github.com/gaia-hazlab/gaia-hazlab.github.io/actions)
 
-This repository contains the source code for the GAIA HazLab (Geospatial AI for Hazard Laboratory) website, hosted on GitHub Pages.
+This repository contains the source code for the GAIA HazLab (Geophysical AI-driven Integration and Assimilation for Hazard Laboratory) website, hosted on GitHub Pages.
 
 ## Overview
 

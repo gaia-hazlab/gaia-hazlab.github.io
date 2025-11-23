@@ -245,7 +245,7 @@ If you use GAIA HazLab in your research, please cite:
 
 ```bibtex
 @software{gaia_hazlab_2024,
-  title = {GAIA HazLab: Geospatial AI for Hazard Laboratory},
+  title = {GAIA HazLab: Geophysical AI-driven Integration and Assimilation for Hazard Laboratory},
   author = {GAIA HazLab Team},
   year = {2024},
   url = {https://gaia-hazlab.github.io},
