@@ -9,6 +9,9 @@ This repository contains the source code for the GAIA HazLab (Geophysical AI-dri
 GAIA HazLab is a comprehensive platform for hazard assessment using machine learning and geospatial analytics. The website consists of:
 
 - **Splashpage**: A modern landing page at the root (`index.html`)
+  - Features funders section with logos from eScience Institute, College of the Environment, and UW Innovation Fund
+  - Links to team page and documentation
+- **People Page**: Team members with circular portraits (`people.html`)
 - **Jupyter Book**: Comprehensive documentation organized into five main chapters:
   1. **Problem Statement**: Research challenges and objectives
   2. **DataHub**: Data repository and management tools
@@ -57,6 +60,9 @@ jupyter-book build book
 ```
 .
 ├── index.html              # Landing page
+├── people.html             # Team members page
+├── images/                 # Images directory
+│   └── team/              # Team member portraits
 ├── book/                   # Jupyter Book source
 │   ├── _config.yml        # Book configuration
 │   ├── _toc.yml           # Table of contents
@@ -73,6 +79,19 @@ jupyter-book build book
 │       └── deploy.yml     # GitHub Actions deployment
 └── environment.yml        # Conda environment specification
 ```
+
+## Adding Team Members
+
+To add team members to the people page:
+
+1. Add portrait photos to `images/team/` directory
+   - Format: JPG or PNG
+   - Size: At least 300x300px (square)
+   - Naming: `firstname-lastname.jpg`
+
+2. Edit `people.html` and add team member entries in the appropriate section (PI, Graduate Students, Undergrads)
+
+3. Update with name, role, description, and contact links
 
 ## Building and Deployment
 

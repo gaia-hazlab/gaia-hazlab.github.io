@@ -148,6 +148,79 @@
             margin-bottom: 1rem;
         }
 
+        .funders {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .funders h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        .funder-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .funder-logo {
+            flex: 0 1 200px;
+        }
+
+        .funder-logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 120px;
+            object-fit: contain;
+        }
+
+        .team-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .team-member-preview {
+            text-align: center;
+        }
+
+        .team-member-preview img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member-preview img:hover {
+            transform: scale(1.05);
+        }
+
+        .team-member-preview h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+
+        .team-member-preview .role {
+            font-size: 0.85rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
         .footer {
             background: #333;
             color: white;
@@ -180,6 +253,7 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#resources">Resources</a></li>
+                    <li><a href="#people">People</a></li>
                     <li><a href="book/index.html">Documentation</a></li>
                 </ul>
             </nav>
@@ -188,7 +262,7 @@
 
     <section class="hero">
         <h1>GAIA HazLab</h1>
-        <p>Geophysical AI-driven Integration and Assimilation for Hazard Laboratory - Advancing hazard assessment through machine learning and geospatial analytics</p>
+        <p>Geophysical AI-driven Integration and Assimilation for Hazard Laboratory - Advancing hazard assessment through geophysical data, models, and AI</p>
         <a href="book/index.html" class="btn">Explore Documentation</a>
     </section>
 
@@ -230,6 +304,65 @@
                 <a href="book/chapters/resources.html">Access Resources →</a>
             </div>
         </div>
+    </section>
+
+    <section class="funders">
+        <h2>Supported By</h2>
+        <div class="funder-logos">
+            <div class="funder-logo">
+                <a href="https://escience.washington.edu/" target="_blank">
+                    <img src="https://escience.washington.edu/wp-content/uploads/2015/10/eScience_Logo_HR.png" alt="UW eScience Institute">
+                </a>
+            </div>
+            <div class="funder-logo">
+                <a href="https://environment.uw.edu/" target="_blank">
+                    <img src="https://environment.uw.edu/wp-content/uploads/2021/10/CoEnv-logo-purple-gray-1.svg" alt="UW College of the Environment">
+                </a>
+            </div>
+            <div class="funder-logo">
+                <a href="https://www.washington.edu/about/facts/innovation/" target="_blank">
+                    <img src="https://s3.us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/98/2021/01/07214903/Innovation-Fund-Logo-Color-H.png" alt="UW Fund for Innovation in Research, Scholarship and the Arts">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="people">
+        <h2>Team</h2>
+        <div class="team-preview">
+            <div class="team-member-preview">
+                <a href="people.html">
+                    <img src="images/team/marine-denolle.jpg" alt="Marine Denolle" onerror="this.src='https://via.placeholder.com/120/667eea/ffffff?text=MD'">
+                </a>
+                <h3>Marine Denolle</h3>
+                <div class="role">Principal Investigator</div>
+            </div>
+            <!-- Add more team members here -->
+            <div class="team-member-preview">
+                <a href="people.html">
+                    <img src="images/team/placeholder.jpg" alt="Team Member" onerror="this.src='https://via.placeholder.com/120/667eea/ffffff?text=TM'">
+                </a>
+                <h3>Team Member</h3>
+                <div class="role">Graduate Student</div>
+            </div>
+            <div class="team-member-preview">
+                <a href="people.html">
+                    <img src="images/team/placeholder.jpg" alt="Team Member" onerror="this.src='https://via.placeholder.com/120/667eea/ffffff?text=TM'">
+                </a>
+                <h3>Team Member</h3>
+                <div class="role">Graduate Student</div>
+            </div>
+            <div class="team-member-preview">
+                <a href="people.html">
+                    <img src="images/team/placeholder.jpg" alt="Team Member" onerror="this.src='https://via.placeholder.com/120/667eea/ffffff?text=TM'">
+                </a>
+                <h3>Team Member</h3>
+                <div class="role">Undergraduate Researcher</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem;">
+            <a href="people.html" class="btn">View Full Team →</a>
+        </p>
     </section>
 
     <footer class="footer">
