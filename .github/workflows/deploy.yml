@@ -34,10 +34,22 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install "jupyter-book<2" sphinx-design
+          jupyter-book --version
+          pip list | grep -E "jupyter-book|sphinx"
 
       - name: Build Jupyter Book
         run: |
-          jupyter-book build book
+          jupyter-book build book --verbose
+          
+      - name: Clean up build artifacts
+        run: |
+          find book/_build/html -name '.gitkeep' -delete
+          find book/_build/html -name '.DS_Store' -delete
+
+      - name: List build directory
+        run: |
+          ls -la book/_build/ || echo "Build directory not created"
+          ls -la book/_build/html/ || echo "HTML directory not created"
 
       - name: Copy index.html to _build
         run: |
