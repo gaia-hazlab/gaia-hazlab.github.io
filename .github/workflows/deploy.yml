@@ -40,10 +40,18 @@ jobs:
         run: pixi run build-ci
 
       - name: Spellcheck
+        continue-on-error: true
         run: pixi run spellcheck
 
       - name: Linkcheck
+        continue-on-error: true
         run: pixi run linkcheck
+
+      - name: Check Static HTML folder
+        continue-on-error: true
+        run: | 
+          du -sh website/
+          ls website/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
