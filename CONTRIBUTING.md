@@ -21,7 +21,7 @@ If you find a bug or have a suggestion for improvement:
 3. Edit the relevant markdown files in `book/chapters/`
 4. Test your changes locally:
    ```bash
-   jupyter-book build book
+   pixi serve
    ```
 5. Submit a pull request
 
@@ -67,34 +67,20 @@ See the [ModelHub chapter](book/chapters/modelhub.md) for information on contrib
 
 ### Prerequisites
 
-- Python 3.8+
-- Git
+We recommend using the [GitHub CLI](https://cli.github.com) and [pixi](https://pixi.sh/dev/installation/) for a local development environment
 
 ### Local Setup
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/gaia-hazlab/gaia-hazlab.github.io.git
-   cd gaia-hazlab.github.io
-   ```
+```bash
+gh repo clone gaia-hazlab/gaia-hazlab.github.io
+cd gaia-hazlab.github.io
+```
 
-2. Create environment:
-   ```bash
-   conda env create -f environment.yml
-   conda activate gaia-hazlab
-   ```
-
-3. Build the Jupyter Book:
-   ```bash
-   jupyter-book build book
-   ```
-
-4. View locally:
-   ```bash
-   # Start a local server
-   python -m http.server 8000
-   # Visit http://localhost:8000
-   ```
+1. Build the Jupyter Book & preview locally
+```bash
+pixi run serve
+```
 
 ## Questions?
 

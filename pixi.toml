@@ -1,0 +1,22 @@
+[workspace]
+authors = ["Scott Henderson <3924836+scottyhq@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "gaia-hazlab"
+platforms = ["osx-arm64", "linux-64"]
+version = "0.1.0"
+
+[activation.env]
+BASE_URL = "/book"
+
+[tasks]
+build-book='jupyter book build --html'
+serve-book='jupyter book start'
+linkcheck='jupyter book build --check-links'
+build-all='jupyter book build --html ; mv _build/html website/book'
+serve-all='python -m http.server --directory website/ 3000'
+spellcheck='codespell --skip  _build,website/book,references.bib,pixi.lock'
+
+[dependencies]
+python = ">=3.11"
+jupyter-book = ">=2"
+codespell = "*"
