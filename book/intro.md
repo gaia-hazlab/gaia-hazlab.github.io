@@ -1,47 +1,44 @@
-# Welcome to GAIA HazLab!
+# Project Overview
+
+**Geophysical AI-driven Integration and Assimilation (GAIA) for climate-compounded geohazard Laboratory**
 
 ![GAIA HazLab](img/banner.png)
 
-## Geophysical AI-driven Integration and Assimilation for climate-compounded geohazard Laboratory
-
 GAIA HazLab is a comprehensive platform dedicated to advancing hazard assessment through the integration of machine learning, geospatial analytics, and data-driven approaches. Our mission is to provide researchers, practitioners, and stakeholders with the tools and resources necessary to understand, predict, and mitigate natural hazards.
 
-## Platform Overview
+Each project page can be found in the navigation menu on the left-hand side of this website, see below for short descriptions:
 
-This documentation is organized into five main sections:
+::::{grid} 1 1 2 3
+:gutter: 3
 
-### 🎯 [Problem Statement](chapters/problem_statement)
-Understand the challenges and objectives in hazard assessment. We define the key research questions and goals that drive our platform development.
+:::{grid-item-card} 🎯 Problem Statement
+:link: chapters/problem-statement
 
-### 📊 [DataHub](chapters/datahub)
-Access our centralized repository of hazard-related geospatial data. The DataHub provides datasets, data management tools, and documentation for working with hazard data.
+Understand the challenges and objectives in hazard assessment. Define key research questions and goals.
+:::
 
-### 🤖 [ModelHub](chapters/modelhub)
-Explore our collection of machine learning models and algorithms designed for hazard prediction and analysis. Find pre-trained models, training pipelines, and model evaluation tools.
+:::{grid-item-card} 📊 DataHub
+:link: chapters/datahub
 
-### 📈 [HazEvalHub](chapters/hazevalhub)
-Utilize our frameworks and tools for evaluating hazard assessments. The HazEvalHub provides validation methodologies, metrics, and benchmarking capabilities.
+Access our centralized repository of hazard-related geospatial data, datasets, and management tools.
+:::
 
-### 📚 [Resources](chapters/resources)
-Access additional resources including tutorials, references, publications, and community contributions.
+:::{grid-item-card} 🤖 ModelHub
+:link: chapters/modelhub
 
-## Getting Started
+Explore machine learning models and algorithms for hazard prediction and analysis.
+:::
 
-```{admonition} Quick Links
-:class: seealso
-* [GitHub Organization]({{ github_org_url }})
-* [Website]({{ website_url }})
-* [Documentation Repository]({{ github_org_url }}/{{ book_repo }})
-```
+:::{grid-item-card} 📈 HazEvalHub
+:link: chapters/hazevalhub
 
-## About
+Utilize frameworks and tools for evaluating hazard assessments with validation methodologies.
+:::
 
-GAIA HazLab is developed and maintained by researchers at the University of Washington. Our goal is to make hazard assessment more accessible, accurate, and actionable through the power of AI and geospatial technologies.
+:::{grid-item-card} 📚 Resources
+:link: chapters/resources
 
-## Contributing
+Access tutorials, references, publications, and community contributions.
+:::
 
-We welcome contributions from the community! Please see our GitHub repository for guidelines on how to contribute to the platform.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file in the repository for details.
+::::

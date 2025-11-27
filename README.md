@@ -23,47 +23,30 @@ GAIA HazLab is a comprehensive platform for hazard assessment using machine lear
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- Conda (recommended) or pip
+We recommend using [pixi](https://pixi.sh/dev/installation/) for a local development environment
 
 ### Setup
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/gaia-hazlab/gaia-hazlab.github.io.git
+gh repo clone gaia-hazlab/gaia-hazlab.github.io
 cd gaia-hazlab.github.io
 ```
 
-2. Create and activate the environment:
+1. Build the Jupyter Book & preview locally
 ```bash
-conda env create -f environment.yml
-conda activate gaia-hazlab
-```
-
-Or using pip:
-```bash
-pip install jupyter-book sphinx-design
-```
-
-3. Build the Jupyter Book:
-```bash
-jupyter-book build book
-```
-
-4. View the site locally:
-```bash
-# Open book/_build/html/index.html in your browser
+pixi run serve
 ```
 
 ## Structure
 
 ```
 .
-├── index.html              # Landing page
-├── people.html             # Team members page
-├── images/                 # Images directory
+├── index.html             # Landing page
+├── people.html            # Team members page
+├── images/                # Images directory
 │   └── team/              # Team member portraits
-├── book/                   # Jupyter Book source
+├── book/                  # Jupyter Book source
 │   ├── _config.yml        # Book configuration
 │   ├── _toc.yml           # Table of contents
 │   ├── intro.md           # Introduction page
@@ -77,7 +60,7 @@ jupyter-book build book
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml     # GitHub Actions deployment
-└── environment.yml        # Conda environment specification
+└── pixi.toml              # Conda environment specification
 ```
 
 ## Adding Team Members
@@ -93,19 +76,10 @@ To add team members to the people page:
 
 3. Update with name, role, description, and contact links
 
-## Building and Deployment
+## Deployment
 
 The website is automatically built and deployed to GitHub Pages using GitHub Actions when changes are pushed to the `main` branch.
 
-### Manual Build
-
-To build the Jupyter Book manually:
-
-```bash
-jupyter-book build book
-```
-
-The built HTML files will be in `book/_build/html/`.
 
 ## Contributing
 

@@ -16,7 +16,7 @@ function createTeamPreviewCard(member) {
     return `
         <div class="team-member-preview">
             <a href="${link}" ${member.website ? 'target="_blank"' : ''}>
-                <img src="images/team/${member.photo}" alt="${member.name}">
+                <img src="${member.photo}" alt="${member.name}">
             </a>
             <h3>${member.name}</h3>
             <div class="role">${member.role}</div>
@@ -57,7 +57,7 @@ function createTeamMemberCard(member) {
 
     return `
         <div class="team-member">
-            <img src="images/team/${member.photo}" alt="${member.name}">
+            <img src="${member.photo}" alt="${member.name}">
             <h3>${member.name}</h3>
             <div class="expertise">${expertiseText}</div>
             <p>${description}</p>

@@ -1,7 +1,7 @@
 # Jupyter Book build files
-book/_build/
 _build/
 .jupyter_cache/
+website/book
 
 # Python
 __pycache__/
@@ -52,3 +52,9 @@ venv.bak/
 
 # Lock files (keep for reproducibility)
 # conda-*.lock
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# MyST build outputs
+_build
