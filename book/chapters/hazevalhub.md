@@ -6,7 +6,7 @@ The HazEvalHub provides comprehensive frameworks and tools for evaluating hazard
 
 We are developing two avenues for evaluation of the model performance
 - **Extreme event monitoring**: classification, regression, segmentation (e.g., detection of landslides, floods, earthquakes)
-- **Surrogate Models** trained on physics-based simulations, a framework based on the AI Institute for Dynamical System Common Task Framework (collab with Nathan Kutz and Kaggle) with fair evaluation and hidden data set.
+- **Surrogate of Physical Models** trained on physics-based simulations, a framework based on the AI Institute for Dynamical System Common Task Framework (collab with Nathan Kutz and Kaggle) with fair evaluation and hidden data set.
 - **Leaderboard**: a set of hazard-relevant evaluation metrics when using geospatial and terrestrial networks in collaboration with AI2.
 
 ## Evaluation Framework (TBD)
@@ -20,7 +20,7 @@ We are developing two avenues for evaluation of the model performance
 5. **Operational Testing**: Real-world performance evaluation
 
 ## Evaluation Metrics
-
+<!-- 
 ### Classification Metrics
 
 For hazard presence/absence classification:
@@ -61,7 +61,7 @@ metrics = SpatialMetrics(reference_map, predicted_map)
 print(f"IoU: {metrics.iou()}")
 print(f"Dice: {metrics.dice_coefficient()}")
 print(f"Spatial Correlation: {metrics.spatial_correlation()}")
-```
+``` -->
 
 ## Validation Protocols
 
@@ -70,7 +70,7 @@ print(f"Spatial Correlation: {metrics.spatial_correlation()}")
 #### Temporal Cross-Validation
 
 For time-dependent hazard data:
-
+<!-- 
 ```python
 from gaia_hazlab.evaluation import TemporalCV
 
@@ -78,20 +78,20 @@ cv = TemporalCV(n_splits=5)
 for train_idx, test_idx in cv.split(data, time_variable='date'):
     # Train and evaluate model
     pass
-```
+``` -->
 
 #### Spatial Cross-Validation
 
-For spatially-correlated data:
+For spatially-correlated data.
 
-```python
+<!-- ```python
 from gaia_hazlab.evaluation import SpatialCV
 
 cv = SpatialCV(n_splits=5, buffer_distance=1000)
 for train_idx, test_idx in cv.split(data, coordinates=coords):
     # Train and evaluate model
     pass
-```
+``` -->
 
 ### Hold-out Testing
 
@@ -103,14 +103,10 @@ for train_idx, test_idx in cv.split(data, coordinates=coords):
 
 ### Baseline Models
 
-We provide standard baselines for comparison:
-
-- **Statistical Baselines**: Historical averages, persistence models
-- **Simple ML Baselines**: Linear models, decision trees
-- **Domain Baselines**: Established operational models
+We will provide standard baselines for comparison (e.g., statistical baselines, classic ML models).
 
 ### Performance Comparison
-
+<!-- 
 ```python
 from gaia_hazlab.evaluation import BenchmarkSuite
 
@@ -122,11 +118,11 @@ benchmark.add_baseline('historical_avg', avg_model)
 
 results = benchmark.evaluate(test_data)
 benchmark.plot_comparison()
-```
+``` -->
 
 ## Uncertainty Quantification
 
-### Prediction Intervals
+<!-- ### Prediction Intervals
 
 Quantify prediction uncertainty:
 
@@ -135,11 +131,11 @@ from gaia_hazlab.evaluation import UncertaintyQuantifier
 
 uq = UncertaintyQuantifier(model)
 predictions, lower_bound, upper_bound = uq.predict_with_intervals(X_test)
-```
+``` -->
 
 ### Probabilistic Evaluation
 
-Assess calibration of probabilistic predictions:
+<!-- Assess calibration of probabilistic predictions:
 
 ```python
 from gaia_hazlab.evaluation import CalibrationAnalysis
@@ -147,11 +143,11 @@ from gaia_hazlab.evaluation import CalibrationAnalysis
 calibration = CalibrationAnalysis(y_true, y_prob)
 calibration.plot_reliability_diagram()
 print(f"Brier Score: {calibration.brier_score()}")
-```
+``` -->
 
 ## Case Studies
 
-### Example: Flood Model Evaluation
+<!-- ### Example: Flood Model Evaluation
 
 ```python
 from gaia_hazlab.evaluation import FloodModelEvaluator
@@ -191,7 +187,7 @@ Standard reports include:
 - Visualization of predictions vs. observations
 - Error analysis and diagnostic plots
 - Uncertainty assessment
-- Recommendations for improvement
+- Recommendations for improvement -->
 
 ## Quality Assurance
 
@@ -210,7 +206,7 @@ Before deployment, models must pass:
 ## Operational Evaluation
 
 ### Real-time Monitoring
-
+<!-- 
 Monitor deployed model performance:
 
 ```python
@@ -219,7 +215,7 @@ from gaia_hazlab.evaluation import PerformanceMonitor
 monitor = PerformanceMonitor(model)
 monitor.track_predictions(live_data)
 monitor.alert_if_drift(threshold=0.1)
-```
+``` -->
 
 ### Feedback Integration
 
