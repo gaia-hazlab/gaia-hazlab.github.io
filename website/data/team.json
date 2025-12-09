@@ -2,7 +2,7 @@
   "team_members": [
     {
       "name": "Marine Denolle",
-      "photo": "marine-denolle.jpg",
+      "photo": "/images/team/marine-denolle.jpg",
       "role": "Lead PI",
       "title": "Associate Professor",
       "affiliation": "Earth and Space Sciences, University of Washington",
@@ -17,7 +17,7 @@
     },
     {
       "name": "Michael Hemmett",
-      "photo": "michael-hemmett.jpg",
+      "photo": "/images/team/michael-hemmett.jpg",
       "role": "Graduate Student",
       "title": "PhD Student",
       "affiliation": "Earth and Space Sciences, University of Washington",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Yiyu Ni",
-      "photo": "yiyu-ni.jpg",
+      "photo": "/images/team/yiyu-ni.jpg",
       "role": "Graduate Student",
       "title": "PhD Student",
       "affiliation": "Earth and Space Sciences, University of Washington",
@@ -43,7 +43,7 @@
     },
     {
       "name": "Akash Kharita",
-      "photo": "akash-kharita.jpg",
+      "photo": "/images/team/akash-kharita.jpg",
       "role": "Graduate Student",
       "title": "PhD Student",
       "affiliation": "Earth and Space Sciences, University of Washington",
@@ -56,7 +56,7 @@
     },
     {
       "name": "Manuela Köpfli",
-      "photo": "manuela-kopfli.jpg",
+      "photo": "/images/team/manuela-kopfli.jpg",
       "role": "Graduate Student",
       "title": "PhD Student",
       "affiliation": "Earth and Space Sciences, University of Washington",
@@ -69,7 +69,7 @@
     },
     {
       "name": "Scott Henderson",
-      "photo": "scott-henderson.jpg",
+      "photo": "https://avatars.githubusercontent.com/u/3924836?v=4",
       "role": "Co-PI",
       "title": "Research Scientist",
       "affiliation": "eScience Institute, University of Washington",
@@ -77,14 +77,14 @@
       "ai_expertise": "Cloud Computing, Data Science",
       "hazard_focus": "Earthquakes, Volcanoes",
       "email": "scottyh@uw.edu",
-      "github": "",
-      "website": "",
+      "github": "https://github.com/scottyhq",
+      "website": "https://scottyhq.github.io",
       "scholar": "",
       "orcid": ""
     },
     {
       "name": "Nicoleta Cristea",
-      "photo": "nicoleta-cristea.jpg",
+      "photo": "https://github.com/NCristea.png",
       "role": "Co-PI",
       "title": "Research Scientist",
       "affiliation": "eScience Institute, University of Washington",
@@ -92,7 +92,7 @@
       "ai_expertise": "Data Analytics, Machine Learning",
       "hazard_focus": "Floods, Droughts",
       "email": "ncristea@uw.edu",
-      "github": "",
+      "github": "https://github.com/NCristea",
       "website": "",
       "scholar": "",
       "orcid": ""

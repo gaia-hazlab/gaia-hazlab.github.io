@@ -9,6 +9,11 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  # `BASE_URL` determines the website is served from, including CSS & JS assets
+  # You may need to change this to `BASE_URL: ''`
+  BASE_URL: /book
+
 permissions:
   contents: read
   pages: write
@@ -23,49 +28,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@v0.9.3
         with:
-          python-version: '3.11'
+          cache: true
+          frozen: true
 
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install "jupyter-book<2" sphinx-design
-          jupyter-book --version
-          pip list | grep -E "jupyter-book|sphinx"
+      - name: Build website
+        run: pixi run build-ci
 
-      - name: Build Jupyter Book
-        run: |
-          jupyter-book build book --verbose
-          
-      - name: Clean up build artifacts
-        run: |
-          find book/_build/html -name '.gitkeep' -delete
-          find book/_build/html -name '.DS_Store' -delete
+      - name: Spellcheck
+        continue-on-error: true
+        run: pixi run spellcheck
 
-      - name: List build directory
-        run: |
-          ls -la book/_build/ || echo "Build directory not created"
-          ls -la book/_build/html/ || echo "HTML directory not created"
+      - name: Linkcheck
+        continue-on-error: true
+        run: pixi run linkcheck
 
-      - name: Prepare site structure
-        run: |
-          mkdir -p _site/book
-          cp index.html _site/
-          cp people.html _site/
-          cp -r images _site/ 2>/dev/null || echo "No images directory"
-          cp -r js _site/ 2>/dev/null || echo "No js directory"
-          cp -r data _site/ 2>/dev/null || echo "No data directory"
-          cp -r book/img _site/book/ 2>/dev/null || echo "No book/img directory"
-          cp -r book/_build/html/* _site/book/
+      - name: Check Static HTML folder
+        continue-on-error: true
+        run: | 
+          du -sh website/
+          ls website/
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: '_site'
+          path: 'website'
 
   deploy:
     if: github.ref == 'refs/heads/main'
