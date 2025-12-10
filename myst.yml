@@ -15,6 +15,7 @@ project:
     - file: book/chapters/datahub.md
     - file: book/chapters/modelhub.md
     - file: book/chapters/hazevalhub.md
+    - file: book/chapters/research-software.md
     - file: book/chapters/resources.md
 
   parts:

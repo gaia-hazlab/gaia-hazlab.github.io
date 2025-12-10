@@ -99,7 +99,7 @@
     },
        {
       "name": "Abdullah Al Mehedi",
-      "photo": "abdullah-al-mehedi.jpg",
+      "photo": "/images/team/abdullah-al-mehedi.jpg",
       "role": "Postdoctoral Researcher",
       "title": "Postdoctoral Researcher",
       "affiliation": "Civil and Environmental Engineering, University of Washington",
@@ -114,7 +114,7 @@
     },
        {
       "name": "Erkan Istanbulluoglu",
-      "photo": "Erkan.jpg",
+      "photo": "/images/team/Erkan.jpg",
       "role": "Professor",
       "title": "Professor",
       "affiliation": "Civil and Environmental Engineering, University of Washington",
