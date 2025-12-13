@@ -126,6 +126,19 @@
       "github": "https://github.com/erkanistan",
       "scholar": "https://scholar.google.com/citations?user=kjJ2GSoAAAAJ&hl=en",
       "orcid": "https://orcid.org/0000-0002-9673-4986"
+    },
+    {
+      "name": "Berkan Mertan",
+      "photo": "Berkan.jpg",
+      "role": "Undergraduate Student",
+      "title": "Undergraduate Student",
+      "affiliation": "Computer Science and Engineering, University of Washington",
+      "geo_expertise": "Landslides",
+      "ai_expertise": "Data-driven coding, ML, computational hydrology, Landlab, computer vision, neuroscience (neuro x ai)",
+      "hazard_focus": "Landslides, Debris flow",
+      "email": "berkanm@uw.edu",
+      "website": "linkedin.com/berkan-m ",
+      "github": "https://github.com/berkm125"
     }
   ]
 }

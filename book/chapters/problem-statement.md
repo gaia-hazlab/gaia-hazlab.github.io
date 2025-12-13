@@ -6,7 +6,14 @@ Landslides after atmospheric rivers, liquefaction after storms, catastrophic run
 
 Natural hazards pose significant risks to communities, infrastructure, and ecosystems worldwide. The GAIA HazLab platform addresses the critical need for advanced, data-driven approaches to hazard assessment and mitigation.
 
+
+**3 Use Case Events - Validations**
+- 2025 Western Washington Floods (Nicoleta Cristea)
+- 2018 Anchorage Liquefaction (Morgan, Yiyu, )
+- 2020+ Postfire Debris Flows (Abdullah, Erkan).
+
 ## Key Challenges
+
 
 ### 1. Data Integration and Accessibility
 
