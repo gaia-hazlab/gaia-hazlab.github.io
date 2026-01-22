@@ -30,7 +30,7 @@ We support multiple data formats to ensure compatibility:
 
 ### Programmatic Access
 
-We are working on a severless data aggregation platform that will provide harmonized data as a service with lean data processing.
+We are working on a serverless data aggregation platform that will provide harmonized data as a service with lean data processing.
 
 ### Web Interface
 
