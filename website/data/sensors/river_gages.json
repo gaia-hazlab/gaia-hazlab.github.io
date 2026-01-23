@@ -1,0 +1,44 @@
+{
+  "gages": [
+    {
+      "id": "12113000",
+      "name": "Green River near Auburn, WA",
+      "lat": 47.2964,
+      "lon": -122.2161,
+      "elevation": 18.3,
+      "drainage_area_km2": 475.6,
+      "status": "active",
+      "agency": "USGS"
+    },
+    {
+      "id": "12108500",
+      "name": "Cedar River near Landsburg, WA",
+      "lat": 47.3517,
+      "lon": -121.9506,
+      "elevation": 167.0,
+      "drainage_area_km2": 121.4,
+      "status": "active",
+      "agency": "USGS"
+    },
+    {
+      "id": "12167000",
+      "name": "Skykomish River near Gold Bar, WA",
+      "lat": 47.8489,
+      "lon": -121.6928,
+      "elevation": 85.3,
+      "drainage_area_km2": 1478.0,
+      "status": "active",
+      "agency": "USGS"
+    },
+    {
+      "id": "12520500",
+      "name": "Stehekin River at Stehekin, WA",
+      "lat": 48.3242,
+      "lon": -120.6961,
+      "elevation": 346.0,
+      "drainage_area_km2": 865.0,
+      "status": "active",
+      "agency": "USGS"
+    }
+  ]
+}

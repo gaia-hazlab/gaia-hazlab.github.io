@@ -1,0 +1,48 @@
+{
+  "stations": [
+    {
+      "id": "UW.RATT",
+      "name": "Rattlesnake Mountain",
+      "network": "UW",
+      "lat": 47.1330,
+      "lon": -121.7654,
+      "elevation": 950.0,
+      "start_date": "1980-01-01",
+      "status": "active",
+      "sensor_type": "broadband"
+    },
+    {
+      "id": "UW.SEP",
+      "name": "Seattle Pacific University",
+      "network": "UW",
+      "lat": 47.6520,
+      "lon": -122.3417,
+      "elevation": 45.0,
+      "start_date": "1995-06-15",
+      "status": "active",
+      "sensor_type": "strong motion"
+    },
+    {
+      "id": "UW.MCW",
+      "name": "McLaughlin Canyon",
+      "network": "UW",
+      "lat": 46.2089,
+      "lon": -122.1936,
+      "elevation": 1170.0,
+      "start_date": "1996-08-01",
+      "status": "active",
+      "sensor_type": "broadband"
+    },
+    {
+      "id": "CC.VALT",
+      "name": "Vancouver Island",
+      "network": "CC",
+      "lat": 49.7617,
+      "lon": -125.1350,
+      "elevation": 270.0,
+      "start_date": "2005-09-20",
+      "status": "active",
+      "sensor_type": "broadband"
+    }
+  ]
+}

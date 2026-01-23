@@ -1,0 +1,67 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "seattle_fault",
+        "name": "Seattle Fault Zone",
+        "type": "thrust",
+        "slip_rate_mm_yr": 0.5,
+        "last_event": "900 CE",
+        "magnitude": 7.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-122.6, 47.55],
+          [-122.4, 47.57],
+          [-122.2, 47.59],
+          [-122.0, 47.61]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "southern_whidbey_island_fault",
+        "name": "Southern Whidbey Island Fault",
+        "type": "strike-slip",
+        "slip_rate_mm_yr": 1.2,
+        "last_event": "unknown",
+        "magnitude": 7.2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-122.8, 48.0],
+          [-122.6, 47.9],
+          [-122.4, 47.8],
+          [-122.2, 47.75]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cascadia_subduction_zone",
+        "name": "Cascadia Subduction Zone",
+        "type": "megathrust",
+        "slip_rate_mm_yr": 40.0,
+        "last_event": "1700",
+        "magnitude": 9.0
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-125.0, 49.0],
+          [-125.2, 48.5],
+          [-125.4, 48.0],
+          [-125.6, 47.5],
+          [-125.8, 47.0],
+          [-126.0, 46.5]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+name: Update Sensor Data
+
+on:
+  schedule:
+    # Run at 00:00 UTC on the 1st of every month
+    - cron: '0 0 1 * *'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests pandas geopandas shapely
+      
+      - name: Update seismic station data
+        run: |
+          # TODO: Add script to fetch seismic data from IRIS/FDSN
+          echo "Fetching seismic station data..."
+          # Example: python scripts/fetch_seismic_data.py
+      
+      - name: Update river gage data
+        run: |
+          # TODO: Add script to fetch river gage data from USGS NWIS
+          echo "Fetching river gage data..."
+          # Example: python scripts/fetch_river_data.py
+      
+      - name: Update meteorological station data
+        run: |
+          # TODO: Add script to fetch met station data from NOAA
+          echo "Fetching meteorological station data..."
+          # Example: python scripts/fetch_met_data.py
+      
+      - name: Update hazard layers
+        run: |
+          # TODO: Add script to fetch/update hazard layers
+          echo "Updating hazard layers..."
+          # Example: python scripts/fetch_hazard_layers.py
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add website/data/sensors/*.json
+          git add website/data/layers/*.geojson
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: automated monthly sensor data update"
+            git push
+          fi
+      
+      - name: Trigger site rebuild
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main'
+            })

@@ -34,7 +34,7 @@ We are working on a severless data aggregation platform that will provide harmon
 
 ### Web Interface
 
-We will create a web-interface to visualize sensors availabilty, dataset availabilty, and event catalogs.
+The [Sensor Dashboard](sensor-dashboard.md) provides an interactive web interface to visualize sensor availability, dataset availability, and event catalogs. Explore real-time locations of seismic stations, river gages, meteorological stations, and hazard layers across Washington State.
 
 ## Data Standards
 
@@ -76,7 +76,7 @@ We welcome data contributions from the community. To contribute:
 When using data from the DataHub, please cite:
 
 ```
-GAIA HazLab Team. (2024). [Dataset Name]. GAIA HazLab DataHub. 
+GAIA HazLab Team. (2025). [Dataset Name]. GAIA HazLab DataHub. 
 https://gaia-hazlab.github.io
 ```
 

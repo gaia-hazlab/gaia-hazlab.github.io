@@ -1,0 +1,44 @@
+{
+  "stations": [
+    {
+      "id": "KSEA",
+      "name": "Seattle-Tacoma International Airport",
+      "lat": 47.4502,
+      "lon": -122.3088,
+      "elevation": 122.0,
+      "status": "active",
+      "variables": ["temperature", "precipitation", "wind", "pressure"],
+      "agency": "NOAA"
+    },
+    {
+      "id": "KBFI",
+      "name": "Boeing Field",
+      "lat": 47.5300,
+      "lon": -122.3017,
+      "elevation": 6.0,
+      "status": "active",
+      "variables": ["temperature", "precipitation", "wind"],
+      "agency": "NOAA"
+    },
+    {
+      "id": "SNOQUALMIE",
+      "name": "Snoqualmie Pass",
+      "lat": 47.4242,
+      "lon": -121.4131,
+      "elevation": 914.0,
+      "status": "active",
+      "variables": ["temperature", "precipitation", "snow_depth"],
+      "agency": "SNOTEL"
+    },
+    {
+      "id": "PARADISE",
+      "name": "Paradise Ranger Station",
+      "lat": 46.7867,
+      "lon": -121.7361,
+      "elevation": 1654.0,
+      "status": "active",
+      "variables": ["temperature", "precipitation", "snow_depth", "wind"],
+      "agency": "NPS"
+    }
+  ]
+}

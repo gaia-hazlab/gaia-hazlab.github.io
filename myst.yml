@@ -14,6 +14,7 @@ project:
     - title: Technology
       children:
         - file: book/chapters/datahub.md
+        - file: book/chapters/sensor-dashboard.md
         - file: book/chapters/modelhub.md
         - file: book/chapters/hazevalhub.md
         - file: book/chapters/research-software.md
