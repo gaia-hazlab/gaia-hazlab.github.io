@@ -13,7 +13,7 @@ The ModelHub is a comprehensive collection of machine learning models and algori
 - **Storm Detector**, detecting thunderstorm from seismic and weather data using deep learning ([Akash Kharita](../website/people.html), Alexandra Anderson-Frey, [Marine Denolle](https://denolle-lab.github.io))
 
 - **Earthquake Wavefields**: deep learning models for data-driven full wavefield and peak ground motions reconstruction (nowcasting) and forecasting (lead [Yiyu Ni](https://niyiyu.github.io/))
-- **Ground Failure Modeling**: Surrogate model to predict liquefaction and ground failure potential index (lead Morgan Sanger), and its coupling to wavefields ([Yiyu Ni](https://niyiyu.github.io/) & Morgan Sanger)
+- **Ground Failure Modeling**: Surrogate model to predict liquefaction and ground failure potential index (lead [Morgan Sanger](https://sangermd.github.io/website/)), and its coupling to wavefields ([Yiyu Ni](https://niyiyu.github.io/) & [Morgan Sanger](https://sangermd.github.io/website/))
 - **Large Earthquake Detection**: deep learning model to detect earthquakes are strong ground motions in seisbench ecosystem.
 
 #### Flood Hazard Models

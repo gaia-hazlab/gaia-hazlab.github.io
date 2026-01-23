@@ -13,7 +13,7 @@ Extreme weather events are modulated by atmosphere and oceanographic coupling, w
 
 **Use Case Events - Validations**
 - 2025 Western Washington Landslides and Floods ([Nicoleta Cristea](../website/people.html), Shuyi Chen, Richard Zhang, Brendan Jerns, [Berkan Mertan](https://github.com/berkm125), Akash Kharita, [Marine Denolle](https://denolle-lab.github.io), Brad Lipovsky, Nate Stevens, Alex Hutko)
-- 2001 Nisqually Earthquake (Morgan Sanger, [Yiyu Ni](https://niyiyu.github.io/), Manuela Köpfli, Brett, [Marine Denolle](https://denolle-lab.github.io))
+- 2001 Nisqually Earthquake ([Morgan Sanger](https://sangermd.github.io/website/), [Yiyu Ni](https://niyiyu.github.io/), Manuela Köpfli, [Brett Maurer](https://bwmaurer.com/), [Marine Denolle](https://denolle-lab.github.io))
 - 2025 Postfire Debris Flow at Stehekin ([Abdullah Al Mehedi](https://almehedi06.wixsite.com/abdullah-al-mehedi), [Erkan Istanbulluoglu](https://www.ce.washington.edu/facultyfinder/erkan-istanbulluoglu), [Marine Denolle](https://denolle-lab.github.io)).
 - 2021 Skagit River Floods ([Nicoleta Cristea](../website/people.html), +team)
 
