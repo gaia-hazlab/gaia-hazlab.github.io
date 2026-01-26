@@ -2,96 +2,43 @@
 
 ## Overview
 
-The DataHub is a centralized repository for hazard-related geospatial data. It provides researchers and practitioners with access to curated datasets, data management tools, and documentation for working with hazard data.
+We are currently focused on streamlining access to data streams from different agencies for our research projects in Washington State. In particular, we're after precipitation, streamflow, and seismic data.
 
-## Available Datasets
+## Datasets
 
-### Hazard Types
+### In Situ Sensors
 
-Our DataHub includes data for various hazard types:
+:::{iframe} http://[::]:3000/remote-data.html
+:width: 100%
+Station Catalog
+:::
 
-- **Seismic Hazards**: Earthquake catalogs, ground motion data, fault lines
-- **Hydrological Hazards**: Flood maps, precipitation data, streamflow records
-- **Meteorological Hazards**: Storm tracks, wind patterns, temperature extremes
-- **Geomorphological Hazards**: Landslide inventories, slope stability data
-- **Multi-hazard**: Combined datasets for integrated hazard assessment
+While the above map provides a nice overview, you can use use geojson.io to explore the inventory with more functionality (change basemaps, draw polygons of interest, etc)! https://geojson.io/#id=gist:scottyhq/9eaceb340de48082f6eed2620182a507
 
-## Data Formats
+Or work with our combined GeoJSON inventory in Python:
 
-We support multiple data formats to ensure compatibility:
-
-- **Vector Data**: GeoJSON, Shapefile, GeoPackage
-- **Raster Data**: GeoTIFF, NetCDF, HDF5
-- **Tabular Data**: CSV, Parquet
-- **Point Clouds**: LAS, LAZ
-- **Time Series**: NetCDF, Zarr, mseed, HDF5
-
-## Data Access
-
-### Programmatic Access
-
-We are working on a serverless data aggregation platform that will provide harmonized data as a service with lean data processing.
-
-### Web Interface
-
-We will create a web-interface to visualize sensors availabilty, dataset availabilty, and event catalogs.
-
-## Data Standards
-
-All datasets in the DataHub follow these standards:
-
-1. **Metadata**: Complete ISO 19115-compliant metadata
-2. **Coordinate Systems**: Documented CRS with reprojection support
-3. **Quality Control**: Data validation and quality assurance checks
-4. **Versioning**: Dataset versioning for reproducibility
-5. **Documentation**: Comprehensive data dictionaries and usage guides
-
-## Data Management Tools
-
-### Upload and Processing
-
-- Automated data validation
-- Format conversion utilities
-- Spatial indexing for efficient queries
-- Data transformation pipelines
-
-### Quality Assurance
-
-- Automated quality checks
-- Anomaly detection
-- Missing data identification
-- Consistency validation
-
-## Contributing Data
-
-We welcome data contributions from the community. To contribute:
-
-1. Review our [data contribution guidelines]({{ github_org_url }}/{{ book_repo }}/blob/main/CONTRIBUTING.md)
-2. Prepare your data according to our standards
-3. Submit a data contribution request
-4. Work with our team for review and integration
-
-## Data Citation
-
-When using data from the DataHub, please cite:
-
-```
-GAIA HazLab Team. (2024). [Dataset Name]. GAIA HazLab DataHub. 
-https://gaia-hazlab.github.io
+```python
+import geopandas as gpd
+inventory = 'https://gist.githubusercontent.com/scottyhq/9eaceb340de48082f6eed2620182a507/raw/766ec6267e7b5168823ac9671f1e379e47182dab/combined-stations-wa-styled.geojson'
+gf = gpd.read_file(inventory)
 ```
 
-## Future Developments
+### Remote sensing data
 
-We are continuously expanding the DataHub with:
+* https://nisar-docs.asf.alaska.edu/availability-overview/
+* ...
 
-- Real-time data streams from sensor networks
-- Integration with national and international data repositories
-- Enhanced data discovery and visualization tools
-- Machine learning-ready datasets for model training
 
-## Support
+### Modeling data
 
-For questions or issues with DataHub:
-- Check our [FAQ](../resources.md#faq)
-- Visit our [GitHub Issues]({{ github_org_url }}/{{ book_repo }}/issues)
-- Contact the team via email
+* https://agdatacommons.nal.usda.gov/articles/dataset/Data_from_Soil_Landscapes_of_the_United_States_100-meter_SOLUS100_soil_property_maps_project_repository/25033856
+* ...
+
+
+## Programmatic access
+
+Currently we're gathering input from groups on various approaches to data acccess here https://github.com/gaia-hazlab/gaia-hazlab.github.io
+
+### Roadmap
+
+We to create a simple Python client to stage relevant datasets for our research groups which will wrap existing API tools. The client may also facilitate reprojecting datasets to common grids and reference frames for easy analysis and ingestion into ML workflows.
