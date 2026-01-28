@@ -6,39 +6,38 @@ We are currently focused on streamlining access to data streams from different a
 
 ## Datasets
 
-### In Situ Sensors
-
-:::{iframe} http://[::]:3000/remote-data.html
+:::{iframe} https://gaia-hazlab.github.io/catalog/
 :width: 100%
-Station Catalog
+GAIA CRESST Catalog
 :::
 
-While the above map provides a nice overview, you can use use geojson.io to explore the inventory with more functionality (change basemaps, draw polygons of interest, etc)! https://geojson.io/#id=gist:scottyhq/9eaceb340de48082f6eed2620182a507
+The above map renders data streams various teams are working with on this project. It is intended purely for visualizing the distribution of in-situ stations in the context of GIS layers and remote sensing observations and is created with code here https://github.com/gaia-hazlab/catalog.
 
-Or work with our combined GeoJSON inventory in Python:
+## Analysis
+
+Clicking on stations in the map above will provide links to data provider landing pages from which it is possible to access data via web interfaces. For example, these stations near Stehekin, Washington: https://ds.iris.edu/mda/UW/DREAM or https://explore.synopticdata.com/STRW1/metadata
+
+### Programmatic access
+
+Currently we're gathering input from groups on various approaches to data acccess here https://github.com/gaia-hazlab/gaia-hazlab.github.io. Most station data is public and provided via APIs, so a little bit of Python code will get you time series to analyze for a time period of interest:
+
+This requires an API key from Synoptic (free for academic use) https://synopticdata.com/open-access-program/
 
 ```python
-import geopandas as gpd
-inventory = 'https://gist.githubusercontent.com/scottyhq/9eaceb340de48082f6eed2620182a507/raw/766ec6267e7b5168823ac9671f1e379e47182dab/combined-stations-wa-styled.geojson'
-gf = gpd.read_file(inventory)
+import pandas as pd
+import requests
+import os
+
+dict(token = TOKEN,
+     stid = "STRW1",
+     start = "202512010000",
+     end = "202512310000")
+
+data = requests.get(url, params=params).json()
+df = pd.DataFrame(data['STATION'][0]['OBSERVATIONS'])
 ```
 
-### Remote sensing data
 
-* https://nisar-docs.asf.alaska.edu/availability-overview/
-* ...
+## Roadmap
 
-
-### Modeling data
-
-* https://agdatacommons.nal.usda.gov/articles/dataset/Data_from_Soil_Landscapes_of_the_United_States_100-meter_SOLUS100_soil_property_maps_project_repository/25033856
-* ...
-
-
-## Programmatic access
-
-Currently we're gathering input from groups on various approaches to data acccess here https://github.com/gaia-hazlab/gaia-hazlab.github.io
-
-### Roadmap
-
-We to create a simple Python client to stage relevant datasets for our research groups which will wrap existing API tools. The client may also facilitate reprojecting datasets to common grids and reference frames for easy analysis and ingestion into ML workflows.
+We plan to create a simple Python client to stage relevant datasets for our research groups which wraps existing API tools. The client may also facilitate reprojecting datasets to common grids and reference frames for easy analysis and ingestion into ML workflows.
