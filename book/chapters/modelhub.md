@@ -10,7 +10,7 @@ The ModelHub is a comprehensive collection of machine learning models and algori
 
 - **Weather Forecasting**, coupling ACE2 with Amtmospheric River Index (Richard Zhuang and Brandon Kerns), and Clima-X (Aditya Grover). Examples of AR tracking and forecast [here](https://orca.atmos.washington.edu/~bkerns/realtime/ar/)
 - **Heatwave Forecasting** (Greg Hakim)
-- **Storm Detector**, detecting thunderstorm from seismic and weather data using deep learning ([Akash Kharita](../website/people.html), Alexandra Anderson-Frey, [Marine Denolle](https://denolle-lab.github.io))
+- **Storm Detector**, detecting thunderstorm from seismic and weather data using deep learning ([Akash Kharita](https://gaia-hazlab.github.io/people), Alexandra Anderson-Frey, [Marine Denolle](https://denolle-lab.github.io))
 
 - **Earthquake Wavefields**: deep learning models for data-driven full wavefield and peak ground motions reconstruction (nowcasting) and forecasting (lead [Yiyu Ni](https://niyiyu.github.io/))
 - **Ground Failure Modeling**: Surrogate model to predict liquefaction and ground failure potential index (lead [Morgan Sanger](https://sangermd.github.io/website/)), and its coupling to wavefields ([Yiyu Ni](https://niyiyu.github.io/) & [Morgan Sanger](https://sangermd.github.io/website/))
@@ -21,13 +21,13 @@ The ModelHub is a comprehensive collection of machine learning models and algori
 - **Flash Flood Detection**
 
 #### Landslide Susceptibility Models (TBD)
-- **Data-Driven Reduced Order Modeling** of Landlab modeling for landscape evolution/erosion and debris flow modeling. 
+- **Data-Driven Reduced Order Modeling** of Landlab modeling for landscape evolution/erosion and debris flow modeling.
 - **Susceptibility Mapping**: Random forests and gradient boosting for landslide susceptibility
 - **Triggering Models**: Models linking precipitation and seismic triggers to landslide occurrence
 - **Run-out Prediction**: Neural networks for estimating landslide travel distance
-- **Landslides Detection** using high temporal resolution of multi-sensor geophysical networks (seismic, infrasound, tilt, DAS) and high spatial resolution remote sensing imagery (sentinel+SAR) with [Akash Kharita](../website/people.html), Scott Henderson, and collab with AI2.
+- **Landslides Detection** using high temporal resolution of multi-sensor geophysical networks (seismic, infrasound, tilt, DAS) and high spatial resolution remote sensing imagery (sentinel+SAR) with [Akash Kharita](https://gaia-hazlab.github.io/people), Scott Henderson, and collab with AI2.
 
-- **Hydromechanical Model** data-driven approach to turn multi-sensor raw data (non co-located seismic, geodetic, meteorological sensors) into real time hydromechanical properties ([Manuela Köpfli](../website/people.html))
+- **Hydromechanical Model** data-driven approach to turn multi-sensor raw data (non co-located seismic, geodetic, meteorological sensors) into real time hydromechanical properties ([Manuela Köpfli](https://gaia-hazlab.github.io/people))
 <!-- - **Cascading Hazard Models**: Frameworks for modeling hazard interactions -->
 <!-- - **Compound Event Models**: Statistical and ML approaches for compound hazards -->
 <!-- - **Risk Assessment Models**: Integrated models for multi-hazard risk assessment -->
@@ -35,7 +35,7 @@ The ModelHub is a comprehensive collection of machine learning models and algori
 ## Model Architecture
 
 This is the draft of a common framework.
-### Deep Learning Models 
+### Deep Learning Models
 
 ```python
 # Example: Using a pre-trained flood detection model
@@ -85,11 +85,11 @@ class CustomHazardModel(BaseHazardModel):
     def __init__(self, config):
         super().__init__(config)
         # Custom initialization
-        
+
     def train(self, data):
         # Custom training logic
         pass
-        
+
     def predict(self, inputs):
         # Custom prediction logic
         pass
@@ -169,15 +169,9 @@ To contribute a model to the ModelHub:
 When using models from the ModelHub, please cite:
 
 ```
-GAIA HazLab Team. (2024). [Model Name]. GAIA HazLab ModelHub. 
+GAIA HazLab Team. (2024). [Model Name]. GAIA HazLab ModelHub.
 https://gaia-hazlab.github.io
 ```
-
-## Resources
-
-- [Model Training Tutorials](../resources.md#tutorials)
-- [API Documentation]({{ github_org_url }}/{{ book_repo }}/wiki)
-- [Example Notebooks]({{ github_org_url }}/examples)
 
 ## Future Developments
 

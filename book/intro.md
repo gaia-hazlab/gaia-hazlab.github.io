@@ -31,8 +31,7 @@ title: GAIA HazLab
 ## Project Organization
 
 - [Project Organization](chapters/project-organization): How we work, collaborate, and organize research.
-- [People](../website/people.html): Meet the team.
-- [Resources](chapters/resources): Tutorials, references, and publications.
+- [People](https://gaia-hazlab.github.io/people): Meet the team.
 
 ---
 
@@ -61,5 +60,4 @@ title: GAIA HazLab
 - [Calendar of Events](#calendar-of-events)
 - [Visual Highlights](#visual-highlights)
 - [Project Organization](chapters/project-organization)
-- [People](../website/people.html)
-- [Resources](chapters/resources)
+- [People](https://gaia-hazlab.github.io/people)

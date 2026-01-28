@@ -43,13 +43,15 @@ jobs:
         continue-on-error: true
         run: pixi run spellcheck
 
-      - name: Linkcheck
-        continue-on-error: true
-        run: pixi run linkcheck
+      # Disabling b/c slow on github actions, can still run locally occaisionally!
+      # - name: Linkcheck
+      #   continue-on-error: true
+      #   timeout-minutes: 2
+      #   run: pixi run linkcheck
 
       - name: Check Static HTML folder
         continue-on-error: true
-        run: | 
+        run: |
           du -sh website/
           ls website/
 

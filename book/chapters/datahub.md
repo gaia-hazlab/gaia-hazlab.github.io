@@ -2,96 +2,42 @@
 
 ## Overview
 
-The DataHub is a centralized repository for hazard-related geospatial data. It provides researchers and practitioners with access to curated datasets, data management tools, and documentation for working with hazard data.
+We are currently focused on streamlining access to data streams from different agencies for our research projects in Washington State. In particular, we're after precipitation, streamflow, and seismic data.
 
-## Available Datasets
+## Datasets
 
-### Hazard Types
+:::{iframe} https://gaia-hazlab.github.io/catalog/
+:width: 100%
+GAIA CRESST Catalog
+:::
 
-Our DataHub includes data for various hazard types:
+The above map renders data streams various teams are working with on this project. It is intended purely for visualizing the distribution of in-situ stations in the context of GIS layers and remote sensing observations and is created with code here https://github.com/gaia-hazlab/catalog.
 
-- **Seismic Hazards**: Earthquake catalogs, ground motion data, fault lines
-- **Hydrological Hazards**: Flood maps, precipitation data, streamflow records
-- **Meteorological Hazards**: Storm tracks, wind patterns, temperature extremes
-- **Geomorphological Hazards**: Landslide inventories, slope stability data
-- **Multi-hazard**: Combined datasets for integrated hazard assessment
+## Analysis
 
-## Data Formats
+Clicking on stations in the map above will provide links to data provider landing pages from which it is possible to access data via web interfaces. For example, these stations near Stehekin, Washington: https://ds.iris.edu/mda/UW/DREAM or https://explore.synopticdata.com/STRW1/metadata
 
-We support multiple data formats to ensure compatibility:
+### Programmatic access
 
-- **Vector Data**: GeoJSON, Shapefile, GeoPackage
-- **Raster Data**: GeoTIFF, NetCDF, HDF5
-- **Tabular Data**: CSV, Parquet
-- **Point Clouds**: LAS, LAZ
-- **Time Series**: NetCDF, Zarr, mseed, HDF5
+Currently we're gathering input from groups on various approaches to data access here https://github.com/gaia-hazlab/gaia-hazlab.github.io. Most station data is public and provided via APIs, so a little bit of Python code will get you time series to analyze for a time period of interest:
 
-## Data Access
+This requires an API key from Synoptic (free for academic use) https://synopticdata.com/open-access-program/
 
-### Programmatic Access
+```python
+import pandas as pd
+import requests
+import os
 
-We are working on a serverless data aggregation platform that will provide harmonized data as a service with lean data processing.
+dict(token = TOKEN,
+     stid = "STRW1",
+     start = "202512010000",
+     end = "202512310000")
 
-### Web Interface
-
-We will create a web-interface to visualize sensors availabilty, dataset availabilty, and event catalogs.
-
-## Data Standards
-
-All datasets in the DataHub follow these standards:
-
-1. **Metadata**: Complete ISO 19115-compliant metadata
-2. **Coordinate Systems**: Documented CRS with reprojection support
-3. **Quality Control**: Data validation and quality assurance checks
-4. **Versioning**: Dataset versioning for reproducibility
-5. **Documentation**: Comprehensive data dictionaries and usage guides
-
-## Data Management Tools
-
-### Upload and Processing
-
-- Automated data validation
-- Format conversion utilities
-- Spatial indexing for efficient queries
-- Data transformation pipelines
-
-### Quality Assurance
-
-- Automated quality checks
-- Anomaly detection
-- Missing data identification
-- Consistency validation
-
-## Contributing Data
-
-We welcome data contributions from the community. To contribute:
-
-1. Review our [data contribution guidelines]({{ github_org_url }}/{{ book_repo }}/blob/main/CONTRIBUTING.md)
-2. Prepare your data according to our standards
-3. Submit a data contribution request
-4. Work with our team for review and integration
-
-## Data Citation
-
-When using data from the DataHub, please cite:
-
-```
-GAIA HazLab Team. (2024). [Dataset Name]. GAIA HazLab DataHub. 
-https://gaia-hazlab.github.io
+data = requests.get(url, params=params).json()
+df = pd.DataFrame(data['STATION'][0]['OBSERVATIONS'])
 ```
 
-## Future Developments
 
-We are continuously expanding the DataHub with:
+## Roadmap
 
-- Real-time data streams from sensor networks
-- Integration with national and international data repositories
-- Enhanced data discovery and visualization tools
-- Machine learning-ready datasets for model training
-
-## Support
-
-For questions or issues with DataHub:
-- Check our [FAQ](../resources.md#faq)
-- Visit our [GitHub Issues]({{ github_org_url }}/{{ book_repo }}/issues)
-- Contact the team via email
+We plan to create a simple Python client to stage relevant datasets for our research groups which wraps existing API tools. The client may also facilitate reprojecting datasets to common grids and reference frames for easy analysis and ingestion into ML workflows.

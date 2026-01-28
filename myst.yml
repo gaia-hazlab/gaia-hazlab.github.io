@@ -26,11 +26,10 @@ project:
         - file: book/chapters/wa-2025-stehekin.md
         - file: book/chapters/wa-2025-river-floods-sediment-transport.md
         - file: book/chapters/convective-thunderstorms.md
-    - file: book/chapters/resources.md
 
   parts:
     banner: |
-      📢 **Announcement:** This is a new website, code examples are non-functional placeholders! 
+      📢 **Announcement:** This is a new website, code examples are non-functional placeholders!
 site:
   template: book-theme
   options:
