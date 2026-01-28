@@ -19,7 +19,7 @@ Clicking on stations in the map above will provide links to data provider landin
 
 ### Programmatic access
 
-Currently we're gathering input from groups on various approaches to data acccess here https://github.com/gaia-hazlab/gaia-hazlab.github.io. Most station data is public and provided via APIs, so a little bit of Python code will get you time series to analyze for a time period of interest:
+Currently we're gathering input from groups on various approaches to data access here https://github.com/gaia-hazlab/gaia-hazlab.github.io. Most station data is public and provided via APIs, so a little bit of Python code will get you time series to analyze for a time period of interest:
 
 This requires an API key from Synoptic (free for academic use) https://synopticdata.com/open-access-program/
 

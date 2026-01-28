@@ -13,7 +13,7 @@ Challenge from Skagit: 3 dams, 1 unregulated, most of the hazards is way upstrea
 
 Data to be collected:
 * Weather data for rain
-* River Gage from USGS
+* River Gauge from USGS
 * Seismic noise, PSD> 5 Hz?
 * Drone imagery of flood extent
 * Soil structural models.

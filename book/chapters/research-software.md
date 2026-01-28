@@ -13,9 +13,9 @@ Our goal is to develop a **Research Software Agent** that integrates these tools
 Essential packages for reading, writing, and processing geophysical and environmental data.
 
 ### ObsPy
-**Description**: The seismological observatory in Python  
-**Use Cases**: Reading seismic waveforms (mseed, SAC), earthquake catalogs, station metadata  
-**Website**: [https://obspy.org/](https://obspy.org/)  
+**Description**: The seismological observatory in Python
+**Use Cases**: Reading seismic waveforms (mseed, SAC), earthquake catalogs, station metadata
+**Website**: [https://obspy.org/](https://obspy.org/)
 **Key Features**:
 - Support for 20+ seismic data formats
 - Signal processing (filtering, spectral analysis)
@@ -23,9 +23,9 @@ Essential packages for reading, writing, and processing geophysical and environm
 - Integration with seismological data centers (IRIS, GEOFON)
 
 ### EarthScope SDK
-**Description**: Python SDK for accessing EarthScope (formerly IRIS) seismic data services  
-**Use Cases**: Downloading waveforms, station metadata, earthquake catalogs  
-**Website**: [https://earthscope.org/](https://earthscope.org/)  
+**Description**: Python SDK for accessing EarthScope (formerly IRIS) seismic data services
+**Use Cases**: Downloading waveforms, station metadata, earthquake catalogs
+**Website**: [https://earthscope.org/](https://earthscope.org/)
 **Key Features**:
 - Access to global seismic networks
 - Time-series data retrieval
@@ -33,9 +33,9 @@ Essential packages for reading, writing, and processing geophysical and environm
 - Integration with ObsPy
 
 ### xarray
-**Description**: N-dimensional labeled arrays and datasets in Python  
-**Use Cases**: Climate data, weather forecasts, multi-dimensional gridded data  
-**Website**: [https://xarray.dev/](https://xarray.dev/)  
+**Description**: N-dimensional labeled arrays and datasets in Python
+**Use Cases**: Climate data, weather forecasts, multi-dimensional gridded data
+**Website**: [https://xarray.dev/](https://xarray.dev/)
 **Key Features**:
 - NetCDF/HDF5/Zarr file support
 - Label-based indexing and alignment
@@ -43,9 +43,9 @@ Essential packages for reading, writing, and processing geophysical and environm
 - Climate and weather data standards (CF conventions)
 
 ### Rasterio
-**Description**: Geospatial raster I/O for Python  
-**Use Cases**: Reading satellite imagery, DEMs, landslide susceptibility maps  
-**Website**: [https://rasterio.readthedocs.io/](https://rasterio.readthedocs.io/)  
+**Description**: Geospatial raster I/O for Python
+**Use Cases**: Reading satellite imagery, DEMs, landslide susceptibility maps
+**Website**: [https://rasterio.readthedocs.io/](https://rasterio.readthedocs.io/)
 **Key Features**:
 - GeoTIFF, NetCDF, HDF support
 - CRS transformations
@@ -53,9 +53,9 @@ Essential packages for reading, writing, and processing geophysical and environm
 - Cloud-optimized GeoTIFF support
 
 ### GeoPandas
-**Description**: Geographic data manipulation in Python  
-**Use Cases**: Vector data (fault lines, flood zones, landslide inventories)  
-**Website**: [https://geopandas.org/](https://geopandas.org/)  
+**Description**: Geographic data manipulation in Python
+**Use Cases**: Vector data (fault lines, flood zones, landslide inventories)
+**Website**: [https://geopandas.org/](https://geopandas.org/)
 **Key Features**:
 - GeoJSON, Shapefile, GeoPackage support
 - Spatial operations (buffer, intersection, union)
@@ -63,9 +63,9 @@ Essential packages for reading, writing, and processing geophysical and environm
 - Coordinate reference system transformations
 
 ### Pandas
-**Description**: Data analysis and manipulation library  
-**Use Cases**: Tabular data, time series, catalogs, stream gage data  
-**Website**: [https://pandas.pydata.org/](https://pandas.pydata.org/)  
+**Description**: Data analysis and manipulation library
+**Use Cases**: Tabular data, time series, catalogs, stream gauge data
+**Website**: [https://pandas.pydata.org/](https://pandas.pydata.org/)
 **Key Features**:
 - CSV, Parquet, Excel support
 - Time series analysis
@@ -79,9 +79,9 @@ Essential packages for reading, writing, and processing geophysical and environm
 Frameworks for building, training, and deploying machine learning models.
 
 ### PyTorch
-**Description**: Deep learning framework  
-**Use Cases**: Neural networks for earthquake detection, AR forecasting, landslide classification  
-**Website**: [https://pytorch.org/](https://pytorch.org/)  
+**Description**: Deep learning framework
+**Use Cases**: Neural networks for earthquake detection, AR forecasting, landslide classification
+**Website**: [https://pytorch.org/](https://pytorch.org/)
 **Key Features**:
 - Dynamic computational graphs
 - GPU acceleration
@@ -89,9 +89,9 @@ Frameworks for building, training, and deploying machine learning models.
 - TorchScript for deployment
 
 ### PyTorch Lightning
-**Description**: High-level PyTorch interface for research  
-**Use Cases**: Standardized training loops, multi-GPU training  
-**Website**: [https://lightning.ai/](https://lightning.ai/)  
+**Description**: High-level PyTorch interface for research
+**Use Cases**: Standardized training loops, multi-GPU training
+**Website**: [https://lightning.ai/](https://lightning.ai/)
 **Key Features**:
 - Simplified training code
 - Automatic distributed training
@@ -99,9 +99,9 @@ Frameworks for building, training, and deploying machine learning models.
 - Research-focused architecture
 
 ### Hugging Face Transformers
-**Description**: State-of-the-art transformer models  
-**Use Cases**: Foundation models for spatiotemporal forecasting (ACE2)  
-**Website**: [https://huggingface.co/transformers/](https://huggingface.co/transformers/)  
+**Description**: State-of-the-art transformer models
+**Use Cases**: Foundation models for spatiotemporal forecasting (ACE2)
+**Website**: [https://huggingface.co/transformers/](https://huggingface.co/transformers/)
 **Key Features**:
 - Pre-trained models (BERT, GPT, ViT)
 - Model hub for sharing
@@ -111,9 +111,9 @@ Frameworks for building, training, and deploying machine learning models.
 **Collaboration**: GAIA HazLab uses ACE2 for atmospheric river forecasting and extreme weather prediction
 
 ### scikit-learn
-**Description**: Machine learning library for Python  
-**Use Cases**: Random forests, SVMs, clustering for landslide susceptibility  
-**Website**: [https://scikit-learn.org/](https://scikit-learn.org/)  
+**Description**: Machine learning library for Python
+**Use Cases**: Random forests, SVMs, clustering for landslide susceptibility
+**Website**: [https://scikit-learn.org/](https://scikit-learn.org/)
 **Key Features**:
 - Classical ML algorithms
 - Model selection and evaluation
@@ -127,9 +127,9 @@ Frameworks for building, training, and deploying machine learning models.
 Tools for creating publication-quality figures, interactive plots, and geospatial visualizations.
 
 ### PyGMT
-**Description**: Python interface to the Generic Mapping Tools  
-**Use Cases**: Publication-quality maps, cross-sections, 3D visualizations  
-**Website**: [https://www.pygmt.org/](https://www.pygmt.org/)  
+**Description**: Python interface to the Generic Mapping Tools
+**Use Cases**: Publication-quality maps, cross-sections, 3D visualizations
+**Website**: [https://www.pygmt.org/](https://www.pygmt.org/)
 **Key Features**:
 - Cartographic projections
 - Topography and bathymetry
@@ -137,9 +137,9 @@ Tools for creating publication-quality figures, interactive plots, and geospatia
 - Publication-ready outputs
 
 ### Plotly
-**Description**: Interactive graphing library  
-**Use Cases**: Interactive dashboards, time series exploration, 3D visualizations  
-**Website**: [https://plotly.com/python/](https://plotly.com/python/)  
+**Description**: Interactive graphing library
+**Use Cases**: Interactive dashboards, time series exploration, 3D visualizations
+**Website**: [https://plotly.com/python/](https://plotly.com/python/)
 **Key Features**:
 - Interactive plots (zoom, pan, hover)
 - 3D scatter and surface plots
@@ -147,9 +147,9 @@ Tools for creating publication-quality figures, interactive plots, and geospatia
 - Export to HTML
 
 ### Matplotlib
-**Description**: Comprehensive plotting library  
-**Use Cases**: Static plots, subplots, waveform displays  
-**Website**: [https://matplotlib.org/](https://matplotlib.org/)  
+**Description**: Comprehensive plotting library
+**Use Cases**: Static plots, subplots, waveform displays
+**Website**: [https://matplotlib.org/](https://matplotlib.org/)
 **Key Features**:
 - Publication-quality figures
 - Extensive customization
@@ -157,9 +157,9 @@ Tools for creating publication-quality figures, interactive plots, and geospatia
 - Multiple output formats (PNG, PDF, SVG)
 
 ### Seaborn
-**Description**: Statistical data visualization  
-**Use Cases**: Distributions, correlations, statistical relationships  
-**Website**: [https://seaborn.pydata.org/](https://seaborn.pydata.org/)  
+**Description**: Statistical data visualization
+**Use Cases**: Distributions, correlations, statistical relationships
+**Website**: [https://seaborn.pydata.org/](https://seaborn.pydata.org/)
 **Key Features**:
 - High-level interface to matplotlib
 - Built-in themes and color palettes
@@ -167,9 +167,9 @@ Tools for creating publication-quality figures, interactive plots, and geospatia
 - Integration with Pandas
 
 ### Holoviews & Panel
-**Description**: Interactive data visualization and dashboards  
-**Use Cases**: Exploratory data analysis, interactive parameter tuning  
-**Website**: [https://holoviews.org/](https://holoviews.org/), [https://panel.holoviz.org/](https://panel.holoviz.org/)  
+**Description**: Interactive data visualization and dashboards
+**Use Cases**: Exploratory data analysis, interactive parameter tuning
+**Website**: [https://holoviews.org/](https://holoviews.org/), [https://panel.holoviz.org/](https://panel.holoviz.org/)
 **Key Features**:
 - Declarative plotting
 - Interactive widgets
@@ -183,9 +183,9 @@ Tools for creating publication-quality figures, interactive plots, and geospatia
 Domain-specific packages developed by the research community for specialized workflows.
 
 ### NoisePy
-**Description**: Python package for seismic ambient noise cross-correlation  
-**Use Cases**: Ambient noise tomography, seismic velocity monitoring  
-**Website**: [https://github.com/noisepy/NoisePy](https://github.com/noisepy/NoisePy)  
+**Description**: Python package for seismic ambient noise cross-correlation
+**Use Cases**: Ambient noise tomography, seismic velocity monitoring
+**Website**: [https://github.com/noisepy/NoisePy](https://github.com/noisepy/NoisePy)
 **Key Features**:
 - Parallel processing with MPI
 - Cloud-optimized workflows (AWS, Azure)
@@ -195,9 +195,9 @@ Domain-specific packages developed by the research community for specialized wor
 **Developed by**: Denolle Lab ([Marine Denolle](https://denolle-lab.github.io), [Yiyu Ni](https://niyiyu.github.io/), et al.)
 
 ### SeisBench
-**Description**: Benchmark suite for seismological machine learning  
-**Use Cases**: Earthquake detection, phase picking, magnitude estimation  
-**Website**: [https://github.com/seisbench/seisbench](https://github.com/seisbench/seisbench)  
+**Description**: Benchmark suite for seismological machine learning
+**Use Cases**: Earthquake detection, phase picking, magnitude estimation
+**Website**: [https://github.com/seisbench/seisbench](https://github.com/seisbench/seisbench)
 **Key Features**:
 - Pre-trained models (PhaseNet, EQTransformer, GPD)
 - Standardized datasets
@@ -207,9 +207,9 @@ Domain-specific packages developed by the research community for specialized wor
 **Used in**: Strong earthquake detection models (GAIA HazLab)
 
 ### PySINDy
-**Description**: Sparse Identification of Nonlinear Dynamics  
-**Use Cases**: Data-driven modeling, reduced-order models, surrogate modeling  
-**Website**: [https://github.com/dynamicslab/pysindy](https://github.com/dynamicslab/pysindy)  
+**Description**: Sparse Identification of Nonlinear Dynamics
+**Use Cases**: Data-driven modeling, reduced-order models, surrogate modeling
+**Website**: [https://github.com/dynamicslab/pysindy](https://github.com/dynamicslab/pysindy)
 **Key Features**:
 - Discover governing equations from data
 - Physics-informed machine learning
@@ -219,9 +219,9 @@ Domain-specific packages developed by the research community for specialized wor
 **Used in**: Reduced-order modeling for landslide dynamics, debris flow
 
 ### PySHRED
-**Description**: Python package for Shallow Recurrent Decoder (SHRED) models  
-**Use Cases**: Spatiotemporal forecasting, sensor placement optimization  
-**Website**: [https://github.com/shervinsahba/pyshred](https://github.com/shervinsahba/pyshred)  
+**Description**: Python package for Shallow Recurrent Decoder (SHRED) models
+**Use Cases**: Spatiotemporal forecasting, sensor placement optimization
+**Website**: [https://github.com/shervinsahba/pyshred](https://github.com/shervinsahba/pyshred)
 **Key Features**:
 - Reconstruct spatiotemporal fields from sensors
 - Sensor placement optimization
@@ -231,9 +231,9 @@ Domain-specific packages developed by the research community for specialized wor
 **Used in**: Multi-sensor fusion for hydromechanical modeling
 
 ### Landlab
-**Description**: Python toolkit for numerical modeling of Earth surface dynamics  
-**Use Cases**: Landscape evolution, debris flow, erosion modeling, landslide dynamics  
-**Website**: [https://landlab.github.io/](https://landlab.github.io/)  
+**Description**: Python toolkit for numerical modeling of Earth surface dynamics
+**Use Cases**: Landscape evolution, debris flow, erosion modeling, landslide dynamics
+**Website**: [https://landlab.github.io/](https://landlab.github.io/)
 **Key Features**:
 - Component-based modeling framework
 - Grid-based and unstructured grids
@@ -244,9 +244,9 @@ Domain-specific packages developed by the research community for specialized wor
 **Used in**: Data-driven reduced-order modeling for landscape evolution, debris flow modeling, and landslide susceptibility analysis
 
 ### ESMValTool
-**Description**: Earth System Model Evaluation Tool  
-**Use Cases**: Climate model evaluation, multi-model analysis  
-**Website**: [https://www.esmvaltool.org/](https://www.esmvaltool.org/)  
+**Description**: Earth System Model Evaluation Tool
+**Use Cases**: Climate model evaluation, multi-model analysis
+**Website**: [https://www.esmvaltool.org/](https://www.esmvaltool.org/)
 **Key Features**:
 - CMIP data preprocessing
 - Diagnostic metrics
@@ -254,9 +254,9 @@ Domain-specific packages developed by the research community for specialized wor
 - Reproducible workflows
 
 ### rslearn (AI2)
-**Description**: Remote sensing machine learning library from Allen Institute for AI  
-**Use Cases**: SAR processing, change detection, multi-temporal analysis, landslide detection  
-**Website**: [https://github.com/allenai/rslearn](https://github.com/allenai/rslearn)  
+**Description**: Remote sensing machine learning library from Allen Institute for AI
+**Use Cases**: SAR processing, change detection, multi-temporal analysis, landslide detection
+**Website**: [https://github.com/allenai/rslearn](https://github.com/allenai/rslearn)
 **Key Features**:
 - Pre-processing pipelines for Sentinel-1/2 SAR imagery
 - Foundation models for Earth observation
@@ -274,28 +274,28 @@ Domain-specific packages developed by the research community for specialized wor
 Supporting tools for research software development, version control, and deployment.
 
 ### Jupyter & JupyterLab
-**Description**: Interactive computing environment  
-**Use Cases**: Exploratory analysis, tutorials, reproducible research  
+**Description**: Interactive computing environment
+**Use Cases**: Exploratory analysis, tutorials, reproducible research
 **Website**: [https://jupyter.org/](https://jupyter.org/)
 
 ### Conda & Mamba
-**Description**: Package and environment management  
-**Use Cases**: Creating reproducible environments, dependency management  
+**Description**: Package and environment management
+**Use Cases**: Creating reproducible environments, dependency management
 **Website**: [https://conda.io/](https://conda.io/), [https://mamba.readthedocs.io/](https://mamba.readthedocs.io/)
 
 ### Docker & Singularity
-**Description**: Containerization platforms  
-**Use Cases**: Reproducible computing environments, HPC deployment  
+**Description**: Containerization platforms
+**Use Cases**: Reproducible computing environments, HPC deployment
 **Website**: [https://docker.com/](https://docker.com/), [https://sylabs.io/singularity/](https://sylabs.io/singularity/)
 
 ### Dask
-**Description**: Parallel computing library  
-**Use Cases**: Large dataset processing, distributed computing  
+**Description**: Parallel computing library
+**Use Cases**: Large dataset processing, distributed computing
 **Website**: [https://dask.org/](https://dask.org/)
 
 ### MLflow
-**Description**: Machine learning lifecycle management  
-**Use Cases**: Experiment tracking, model registry, deployment  
+**Description**: Machine learning lifecycle management
+**Use Cases**: Experiment tracking, model registry, deployment
 **Website**: [https://mlflow.org/](https://mlflow.org/)
 
 ---
