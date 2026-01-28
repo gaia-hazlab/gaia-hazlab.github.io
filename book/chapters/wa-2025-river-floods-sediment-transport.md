@@ -1,6 +1,6 @@
 # Mountain to sea: sediment transport
 
-**Team**: [Marine Denolle](https://denolle-lab.github.io), Akash Kharita, Nate Stevens, Alex Hutko, Brad Lipovsky, Shuyi Chen, Abby Swann, Patrick Johnon, Hadrien Sablon, Brendan Jerns, Richard Zhang, Kate Huntingon, David Montgomery, [Nicoleta Cristea](../website/people.html).
+**Team**: [Marine Denolle](https://denolle-lab.github.io), Akash Kharita, Nate Stevens, Alex Hutko, Brad Lipovsky, Shuyi Chen, Abby Swann, Patrick Johnon, Hadrien Sablon, Brendan Jerns, Richard Zhang, Kate Huntingon, David Montgomery, [Nicoleta Cristea](https://gaia-hazlab.github.io/people).
 
 **Meeting Time**: Thursdays 1:30pm.
 

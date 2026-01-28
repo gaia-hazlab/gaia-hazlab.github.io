@@ -265,7 +265,7 @@ Domain-specific packages developed by the research community for specialized wor
 - Integration with cloud platforms (AWS, GCS)
 - Fine-tuning capabilities for downstream tasks
 
-**Collaboration**: GAIA HazLab is collaborating with AI2 on landslide detection using rslearn to fine-tune foundation models on SAR imagery and multi-sensor networks ([Akash Kharita](../website/people.html), Scott Henderson)
+**Collaboration**: GAIA HazLab is collaborating with AI2 on landslide detection using rslearn to fine-tune foundation models on SAR imagery and multi-sensor networks ([Akash Kharita](https://gaia-hazlab.github.io/people), Scott Henderson)
 
 ---
 

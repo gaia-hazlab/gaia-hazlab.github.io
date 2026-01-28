@@ -20,7 +20,7 @@ We are developing two avenues for evaluation of the model performance
 5. **Operational Testing**: Real-world performance evaluation
 
 ## Evaluation Metrics
-<!-- 
+<!--
 ### Classification Metrics
 
 For hazard presence/absence classification:
@@ -70,7 +70,7 @@ print(f"Spatial Correlation: {metrics.spatial_correlation()}")
 #### Temporal Cross-Validation
 
 For time-dependent hazard data:
-<!-- 
+<!--
 ```python
 from gaia_hazlab.evaluation import TemporalCV
 
@@ -106,7 +106,7 @@ for train_idx, test_idx in cv.split(data, coordinates=coords):
 We will provide standard baselines for comparison (e.g., statistical baselines, classic ML models).
 
 ### Performance Comparison
-<!-- 
+<!--
 ```python
 from gaia_hazlab.evaluation import BenchmarkSuite
 
@@ -206,7 +206,7 @@ Before deployment, models must pass:
 ## Operational Evaluation
 
 ### Real-time Monitoring
-<!-- 
+<!--
 Monitor deployed model performance:
 
 ```python
@@ -243,9 +243,8 @@ Help improve our evaluation framework:
 
 ## Resources
 
-- [Evaluation Tutorials](../resources.md#evaluation-tutorials)
 - [Metrics API Reference]({{ github_org_url }}/{{ book_repo }}/wiki/metrics-api)
-- [Validation Datasets](../datahub.md#validation-datasets)
+- Validation Datasets
 
 ## Future Developments
 
