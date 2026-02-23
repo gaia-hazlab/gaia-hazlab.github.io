@@ -11,11 +11,13 @@ Natural hazards pose significant risks to communities, infrastructure, and ecosy
 We treat the critical zone, the shallow subsurface from weathered rock to the surface, as the dynamic skin of the Earth that regulate water infiltrating down to the water table, or water evaporating from soils or transpiration and modulating lower atmosphere thermo and convective dynamics. Understanding the hydromechanical and hydrological structure and dynamics of soils is central to the severity of geohazards and land-atmosphere coupling. We investigate and test hypothesis around the contributors to the severity of these geohazards (e.g., extreme meterological events vs soil conditions etc).
 Extreme weather events are modulated by atmosphere and oceanographic coupling, which defines the cascades of events from ocean -> atmosphere -> geohazards.
 
+We investigate the core processes behind [soil memory](./soil-memory.md)
+
 **Use Case Events - Validations**
-- 2025 Western Washington Landslides and Floods ([Nicoleta Cristea](../website/people.html), Shuyi Chen, Richard Zhang, Brendan Jerns, [Berkan Mertan](https://github.com/berkm125), Akash Kharita, [Marine Denolle](https://denolle-lab.github.io), Brad Lipovsky, Nate Stevens, Alex Hutko)
-- 2001 Nisqually Earthquake (Morgan Sanger, [Yiyu Ni](https://niyiyu.github.io/), Manuela Köpfli, Brett, [Marine Denolle](https://denolle-lab.github.io))
-- 2025 Postfire Debris Flow at Stehekin ([Abdullah Al Mehedi](https://almehedi06.wixsite.com/abdullah-al-mehedi), [Erkan Istanbulluoglu](https://www.ce.washington.edu/facultyfinder/erkan-istanbulluoglu), [Marine Denolle](https://denolle-lab.github.io)).
-- 2021 Skagit River Floods ([Nicoleta Cristea](../website/people.html), +team)
+- [Nisqually Earthquake (2001–2031)](./wa-2001-2031-nisqually-earthquake.md)
+- [Mountain-to-Sea Geohazards](./wa-2025-river-floods-sediment-transport.md)
+- [Post-Fire Debris Flows (2025 Stehekin)](./wa-2025-stehekin.md)
+- [Convective-Thunderstorm Detection with Geophysical Sensors](./convective-thunderstorms.md)
 
 ## Technological Development
 
