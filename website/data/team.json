@@ -154,5 +154,20 @@
       "scholar": "https://scholar.google.com/citations?user=morgandsanger&user=G3tb03AAAAAJ",
       "orcid": "https://orcid.org/0000-0002-1280-1898"
     }
+    {
+      "name": "Derek Yao",
+      "photo": "/images/team/yao_derek.jpg",
+      "role": "Undergraduate Student",
+      "title": "Undergraduate Student",
+      "affiliation": "Computer Science and Art, University of Washington",
+      "geo_expertise": "Earthquake Detection",
+      "ai_expertise": "Machine Learning, Cloud Systems, Agentic Evals",
+      "hazard_focus": "earthquakes",
+      "email": "yaoderek@uw.edu",
+      "website": "",
+      "github": "https://github.com/yaoderek",
+      "scholar": "",
+      "orcid": ""
+    }
   ]
 }
