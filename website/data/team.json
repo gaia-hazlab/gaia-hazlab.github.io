@@ -168,6 +168,21 @@
       "github": "https://github.com/yaoderek",
       "scholar": "",
       "orcid": ""
+    },
+    {
+      "name": "Brandon Kerns",
+      "photo": "https://avatars.githubusercontent.com/u/18037033?v=4",
+      "role": "Research Scientist",
+      "title": "Research Scientist",
+      "affiliation": "Computer Science and Art, University of Washington",
+      "geo_expertise": "Atmospheric Science",
+      "ai_expertise": "Machine Learning, Cloud Systems",
+      "hazard_focus": "precipitation, floods",
+      "email": "bkerns@uw.edu",
+      "website": "",
+      "github": "https://github.com/brandonwkerns",
+      "scholar": "",
+      "orcid": "https://orcid.org/0000-0001-5691-7895"
     }
   ]
 }
