@@ -2,9 +2,11 @@
 
 ## Overview
 
-We are currently focused on streamlining access to data streams from different agencies for our research projects in Washington State. In particular, we're after precipitation, streamflow, and seismic data.
+We are currently focused on streamlining access to data streams from different agencies for our research projects in Washington State. In particular, we're after precipitation, streamflow, and seismic data. We are working on two products: a dashboard for visualization, and a command-line platform for python-native data query.
 
 ## Datasets
+
+The dashboard below shows several static layers, sensor and event metadata that encourages researchers across disciplines to consider the diverse data sets and sensors colocated to the region of interest. All sensors measures the physical properties of the environment from different perspectives.
 
 :::{iframe} https://gaia-hazlab.github.io/catalog/
 :width: 100%
