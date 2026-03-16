@@ -2,9 +2,7 @@
 
 ## Problem Statement
 
-Landslides after atmospheric rivers, liquefaction after storms, catastrophic runoff after fires—the next generation of geodisaster risk emerges from interacting climate and solid-Earth processes. But our models cannot yet keep pace with these nonlinear cascades. We are building a platform that merges multimodal Earth observations in real-time , reduced-order physics models, and hazard assessment and forecast in a digtal twin framework.
-
-Natural hazards pose significant risks to communities, infrastructure, and ecosystems worldwide. The GAIA HazLab platform addresses the critical need for advanced, data-driven approaches to hazard assessment and mitigation.
+We are evaluating the cascading effects of ocean–atmosphere–soil coupling and how the severity of geodisasters is shaped by soil hydromechanical history and land management. See the full **[Problem Statement](problem-statement)** for our research goals, approach, use cases, and backbone technologies.
 
 ## Earth System Science Nexus
 

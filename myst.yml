@@ -10,6 +10,7 @@ project:
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
     - file: book/intro.md
+    - file: book/chapters/problem-statement.md
     - file: book/chapters/project-organization.md
     - title: Technology
       children:
