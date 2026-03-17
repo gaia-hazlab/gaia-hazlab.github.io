@@ -183,6 +183,21 @@
       "github": "https://github.com/brandonwkerns",
       "scholar": "",
       "orcid": "https://orcid.org/0000-0001-5691-7895"
+    },
+    {
+      "name": "Alex Rose",
+      "photo": "https://avatars.githubusercontent.com/u/182810818?v=4",
+      "role": "Research Aide",
+      "title": "Research Aide",
+      "affiliation": "Earth and Space Sciences, University of Washington",
+      "geo_expertise": "Earthquake Science",
+      "ai_expertise": "Machine Learning",
+      "hazard_focus": "Earthquakes",
+      "email": "arose17@uw.edu",
+      "website": "",
+      "github": "https://github.com/arose1234",
+      "scholar": "",
+      "orcid": ""
     }
   ]
 }
