@@ -1,0 +1,90 @@
+/* ===========================================================================
+   GAIA HazLab — custom theme for the MyST book (book-theme)
+   Matches the landing page: Inter body, Montserrat headings, UW Husky Purple.
+   Referenced from myst.yml via:  site.options.style: gaia-book.css
+   =========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --gaia-purple: #4b2e83;     /* UW Husky Purple */
+  --gaia-purple-deep: #341f63;
+  --gaia-peri: #6d5bd0;       /* periwinkle accent */
+  --gaia-peri-light: #c3b8f0;
+  --gaia-ink: #2a1a4f;
+  --gaia-lav: #f5f3fb;
+}
+
+/* ---- Typography -------------------------------------------------------- */
+html, body, .prose, p, li, td, th, figcaption, .text-sm {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4, h5,
+.prose h1, .prose h2, .prose h3, .prose h4,
+article h1, article h2, article h3, article h4 {
+  font-family: 'Montserrat', sans-serif !important;
+  letter-spacing: -0.015em;
+  color: var(--gaia-ink);
+}
+
+/* ---- Links & accents -------------------------------------------------- */
+.prose a,
+article a,
+main a:not(.button):not([role="button"]) {
+  color: var(--gaia-peri);
+  text-decoration-color: rgba(109, 91, 208, 0.4);
+}
+.prose a:hover,
+article a:hover {
+  color: var(--gaia-purple);
+}
+
+/* selection + horizontal rules + blockquote border */
+::selection { background: var(--gaia-peri-light); color: var(--gaia-ink); }
+.prose blockquote { border-inline-start-color: var(--gaia-peri) !important; }
+
+/* ---- Slick header / top navigation ------------------------------------ */
+/* MyST book-theme renders the top bar as a <header>. Give it the brand gradient. */
+header,
+.article-header,
+nav[aria-label="Site navigation"] {
+  background: linear-gradient(135deg, var(--gaia-purple) 0%, var(--gaia-purple-deep) 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+header a, header button, header span, header svg {
+  color: #ffffff !important;
+}
+header a:hover { color: var(--gaia-peri-light) !important; }
+
+/* ---- Left sidebar / Table of contents --------------------------------- */
+/* current page + hover states in purple */
+a[aria-current="page"],
+.toc a[aria-current="page"],
+nav a.active {
+  color: var(--gaia-purple) !important;
+  font-weight: 600;
+  border-inline-start-color: var(--gaia-purple) !important;
+}
+nav a:hover { color: var(--gaia-peri) !important; }
+
+/* ---- Buttons / admonition accents ------------------------------------- */
+.button, button.button, a.button {
+  background: var(--gaia-purple);
+  color: #fff;
+}
+.button:hover { background: var(--gaia-purple-deep); }
+
+/* sphinx-design / MyST cards: lift + purple edge on hover */
+.card, .sd-card {
+  border-radius: 14px;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.card:hover, .sd-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(75, 46, 131, 0.14);
+  border-color: var(--gaia-peri) !important;
+}
+
+/* inline code + code blocks: subtle lavender tint */
+:not(pre) > code { color: var(--gaia-purple-deep); }

@@ -35,6 +35,8 @@ project:
 site:
   template: book-theme
   options:
+    # Custom CSS to match the landing page (Inter/Montserrat, UW purple, slick header)
+    style: ./gaia-book.css
     # Set authors per-page rather than on *all* pages
     # https://github.com/jupyter-book/mystmd/issues/1664
     hide_authors: true

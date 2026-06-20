@@ -2,292 +2,228 @@
 <html lang="en">
 
 <head>
-    <title>People - GAIA HazLab</title>
-    
+    <title>People — GAIA HazLab</title>
+
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GAIA HazLab Team">
+    <meta name="description" content="GAIA HazLab team — geoscientists, engineers, and AI builders advancing predictive understanding of climate-compounded geohazards.">
     <meta name="author" content="GAIA HazLab">
-    <link rel="icon" type="image/png" href="book/img/gaia-hazalab-logo.png">
-    
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700,800|Roboto:300,400,700&display=swap" rel="stylesheet">
-    
+    <link rel="icon" type="image/png" href="book/img/img/gaia-hazalab-logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --ink: #2a1a4f;
+            --purple: #4b2e83;
+            --purple-deep: #341f63;
+            --peri: #6d5bd0;
+            --peri-light: #c3b8f0;
+            --stone: #6f6890;
+            --lav: #f5f3fb;
+            --lav-2: #ece8f7;
+            --paper: #ffffff;
+            --line: rgba(42, 26, 79, 0.10);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', system-ui, sans-serif; line-height: 1.65;
+            color: var(--ink); background: var(--lav); -webkit-font-smoothing: antialiased;
         }
+        h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
+        a { color: inherit; }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        /* ---------- NAV ---------- */
+        .nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(42, 26, 79, 0.92);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
+        .nav-inner { max-width: 1180px; margin: 0 auto; padding: 0.85rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none;
+            font-weight: 800; font-size: 1.15rem; letter-spacing: 0.3px; }
+        .logo .mark { width: 30px; height: 30px; }
+        .logo .glow { color: var(--peri-light); }
+        .nav-links { display: flex; gap: 1.6rem; list-style: none; align-items: center; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.92rem;
+            font-weight: 500; transition: color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--peri-light); }
+        .nav-cta { background: var(--peri); color: #fff !important; padding: 0.5rem 1rem;
+            border-radius: 8px; font-weight: 600; }
+        .nav-cta:hover { background: #fff; color: var(--purple) !important; }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
+        /* ---------- PAGE HEADER ---------- */
         .page-header {
-            margin-top: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
+            margin-top: 58px;
+            background: linear-gradient(135deg, #4b2e83 0%, #341f63 100%);
+            color: #fff; padding: 5rem 1.5rem 4rem; text-align: center; position: relative;
+            overflow: hidden;
         }
+        .page-header::after {
+            content: ""; position: absolute; inset: 0; opacity: 0.16; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(195,184,240,0.7) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(195,184,240,0.7) 1px, transparent 1px);
+            background-size: 54px 54px;
+            mask-image: radial-gradient(circle at 70% 20%, black, transparent 72%);
+            -webkit-mask-image: radial-gradient(circle at 70% 20%, black, transparent 72%);
+        }
+        .page-header .kicker { color: var(--peri-light); font-weight: 600; font-size: 0.8rem;
+            letter-spacing: 2.5px; text-transform: uppercase; position: relative; z-index: 1; }
+        .page-header h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0.6rem 0 0.8rem;
+            letter-spacing: -0.5px; position: relative; z-index: 1; }
+        .page-header p { font-size: 1.1rem; color: rgba(255,255,255,0.88); font-weight: 300;
+            max-width: 60ch; margin: 0 auto; position: relative; z-index: 1; }
 
-        .page-header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
+        /* ---------- TEAM ---------- */
+        .section { max-width: 1180px; margin: 0 auto; padding: 4.5rem 1.5rem; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); color: var(--ink); letter-spacing: -0.5px; }
+        .section-title p { color: var(--stone); margin-top: 0.5rem; }
 
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #667eea;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 2rem;
-        }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.6rem; }
 
         .team-member {
-            text-align: center;
+            background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+            padding: 2rem 1.4rem; text-align: center;
+            transition: transform .25s, box-shadow .25s, border-color .25s;
         }
-
+        .team-member:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(75,46,131,0.13);
+            border-color: rgba(109,91,208,0.5); }
         .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 1.1rem;
+            border: 3px solid #fff; box-shadow: 0 6px 18px rgba(42,26,79,0.16);
+            transition: transform .25s, box-shadow .25s;
         }
-
-        .team-member img:hover {
-            transform: scale(1.05);
-        }
-
-        .team-member h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .team-member .role {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 0.75rem;
-        }
-
-        .team-member .expertise {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-member p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .team-member .links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
+        .team-member:hover img { transform: scale(1.05); box-shadow: 0 10px 24px rgba(109,91,208,0.35); }
+        .team-member h3 { font-size: 1.18rem; margin-bottom: 0.3rem; color: var(--ink); }
+        .team-member .role { font-size: 0.95rem; font-weight: 600; color: var(--peri); margin-bottom: 0.7rem; }
+        .team-member .expertise { font-size: 0.9rem; font-weight: 600; color: var(--purple-deep); margin-bottom: 0.4rem; }
+        .team-member p { font-size: 0.88rem; color: var(--stone); margin-bottom: 1.1rem; }
+        .team-member .links { display: flex; justify-content: center; gap: 0.9rem; align-items: center; }
         .team-member .links a {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            color: var(--peri); text-decoration: none; font-size: 1.15rem; line-height: 1;
+            display: inline-flex; align-items: center; transition: color .2s, transform .2s;
         }
+        .team-member .links a:hover { color: var(--purple); transform: translateY(-2px); }
 
-        .team-member .links a:hover {
-            color: #764ba2;
+        /* ---------- JOIN ---------- */
+        .join {
+            margin-top: 3.5rem;
+            background: linear-gradient(135deg, #4b2e83 0%, #341f63 100%); color: #fff;
+            padding: 3rem 2.4rem; border-radius: 20px;
         }
+        .join h2 { font-size: 1.7rem; margin-bottom: 0.8rem; }
+        .join h2 .accent { color: var(--peri-light); }
+        .join p { color: rgba(255,255,255,0.88); font-weight: 300; max-width: 75ch; }
+        .join ul { margin: 1.2rem 0 0 1.2rem; color: rgba(255,255,255,0.88); font-weight: 300; }
+        .join li { margin-bottom: 0.6rem; }
+        .join li::marker { color: var(--peri-light); }
+        .join .cta { margin-top: 1.8rem; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.6rem;
+            border-radius: 10px; font-weight: 600; font-size: 0.96rem; text-decoration: none;
+            background: #fff; color: var(--purple); transition: transform .2s, box-shadow .2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(109,91,208,0.4); }
 
-        .join-section {
-            background: #f8f9fa;
-            padding: 3rem 2rem;
-            border-radius: 10px;
-            margin-top: 3rem;
-        }
+        /* ---------- FOOTER ---------- */
+        .footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 1.5rem 2rem;
+            text-align: center; }
+        .footer a { color: var(--peri-light); text-decoration: none; }
+        .footer .top { margin-bottom: 0.6rem; }
+        .footer-bottom { margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.82rem; color: rgba(255,255,255,0.5); }
 
-        .join-section h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .page-header {
-                padding: 3rem 1rem;
-            }
-
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .team-member img {
-                width: 120px;
-                height: 120px;
-            }
-
-            .join-section {
-                padding: 2rem 1rem;
-            }
-
-            .join-section ul {
-                padding-left: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .page-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .section h2 {
-                font-size: 1.5rem;
-            }
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .team-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.2rem; }
+            .team-member { padding: 1.4rem 1rem; }
+            .team-member img { width: 104px; height: 104px; }
+            .join { padding: 2rem 1.3rem; }
         }
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">GAIA HazLab</a>
+    <!-- NAV -->
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <svg class="mark" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="#fff" stroke-width="1.6"/>
+                    <path d="M2 18c4-3 7 2 11 0s7-4 11-1" stroke="#c3b8f0" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M3 22c4-2 7 1 10 0s8-2 11 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                    <circle cx="16" cy="16" r="2.4" fill="#c3b8f0"/>
+                </svg>
+                GAIA<span class="glow">·</span>HazLab
+            </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#resources">Resources</a></li>
-                    <li><a href="people.html">People</a></li>
-                    <li><a href="book/index.html">Documentation</a></li>
+                    <li><a href="index.html#science">Science</a></li>
+                    <li><a href="index.html#platform">Technology</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="people.html" class="active">People</a></li>
+                    <li><a href="book/index.html" class="nav-cta">Docs</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- PAGE HEADER -->
     <section class="page-header">
-        <h1>Our Team</h1>
-        <p>Meet the researchers and contributors behind GAIA HazLab</p>
+        <div class="kicker">The team</div>
+        <h1>People of GAIA HazLab</h1>
+        <p>Geoscientists, engineers, and AI builders working across seismology, hydrology, geotechnics, and machine learning.</p>
     </section>
 
+    <!-- TEAM -->
     <section class="section">
-        <h2>Team Members</h2>
+        <div class="section-title">
+            <h2>Team members</h2>
+            <p>Principal investigators, postdocs, students, and staff driving the project.</p>
+        </div>
         <div class="team-grid" id="team-grid">
-            <!-- Team members will be loaded dynamically from data/team.yml -->
+            <!-- Loaded dynamically from data/team.json by js/team-loader.js -->
         </div>
 
-        <div class="join-section">
-            <h2>Join Our Team</h2>
-            <p>We are always looking for talented and enthusiastic individuals to join our team!</p>
-            
-            <p style="margin-top: 2rem;">Please reach out if:</p>
+        <!-- JOIN -->
+        <div class="join">
+            <h2>Join <span class="accent">our team</span></h2>
+            <p>We are always looking for talented, curious people who want to work at the intersection of geoscience, physics, and AI.</p>
+            <p style="margin-top: 1.2rem;">Please reach out if:</p>
             <ul>
-                <li>You have analysis-ready datasets about extreme natural climate or environmental hazards</li>
-                <li>You have physics-based methods to predict the dynamics, or consequences, of these hazards that would benefit from computational speed-up using physics-aware AI surrogate models</li>
-                <li>You have a cool research idea at the intersection with interesting literature and data to analyze</li>
+                <li>You have analysis-ready datasets on extreme climate or environmental hazards.</li>
+                <li>You have physics-based methods to predict the dynamics or consequences of these hazards that would benefit from computational speed-up using physics-aware AI surrogate models.</li>
+                <li>You have a compelling research idea at this intersection, with interesting literature and data to explore.</li>
             </ul>
+            <div class="cta">
+                <a href="mailto:mdenolle@uw.edu" class="btn">
+                    Get in touch
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; 2025 GAIA HazLab. Licensed under the MIT License.</p>
-        <p>University of Washington</p>
+        <div class="top">
+            <a href="index.html">Home</a> · <a href="dashboard.html">Dashboard</a> ·
+            <a href="book/index.html">Documentation</a> ·
+            <a href="https://github.com/gaia-hazlab" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="footer-bottom">
+            © 2026 GAIA HazLab · University of Washington · Licensed under the MIT License.
+        </div>
     </footer>
 
     <script src="js/team-loader.js"></script>

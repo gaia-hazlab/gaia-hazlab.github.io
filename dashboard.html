@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dashboard — GAIA HazLab</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GAIA HazLab live dashboard — an interactive map of colocated seismic, hydrological, meteorological, and remote-sensing observations across Washington State.">
+    <link rel="icon" type="image/png" href="book/img/img/gaia-hazalab-logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #2a1a4f; --purple: #4b2e83; --purple-deep: #341f63; --plum: #21163f;
+            --peri: #6d5bd0; --peri-light: #c3b8f0; --stone: #6f6890;
+            --paper: #ffffff; --line: rgba(255,255,255,0.10);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif; color: #fff; background: var(--ink);
+            display: flex; flex-direction: column; -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
+        a { color: inherit; }
+
+        /* NAV */
+        .nav { background: rgba(42,26,79,0.96); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08); flex: 0 0 auto; z-index: 10; }
+        .nav-inner { max-width: 1400px; margin: 0 auto; padding: 0.8rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none;
+            font-weight: 800; font-size: 1.1rem; }
+        .logo .mark { width: 28px; height: 28px; }
+        .logo .glow { color: var(--peri-light); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem;
+            font-weight: 500; transition: color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--peri-light); }
+        .nav-cta { background: var(--peri); color: #fff !important; padding: 0.45rem 0.95rem;
+            border-radius: 8px; font-weight: 600; }
+        .nav-cta:hover { background: #fff; color: var(--purple) !important; }
+
+        /* DASHBOARD LAYOUT */
+        .dash-wrap { flex: 1 1 auto; display: flex; min-height: 0; }
+        .map-col { flex: 1 1 auto; position: relative; min-width: 0; background: var(--plum); }
+        .map-col iframe { width: 100%; height: 100%; border: 0; display: block; }
+        .map-loading { position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,0.65);
+            background: radial-gradient(600px 300px at 50% 30%, rgba(109,91,208,0.20), transparent 60%); }
+        .map-loading .ring { width: 42px; height: 42px; border: 3px solid rgba(255,255,255,0.15);
+            border-top-color: var(--peri-light); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* SIDEBAR */
+        .side { flex: 0 0 340px; background: linear-gradient(180deg, #4b2e83 0%, #341f63 100%);
+            border-left: 1px solid var(--line); overflow-y: auto; padding: 1.6rem 1.5rem 2.5rem; }
+        .side .kicker { color: var(--peri-light); font-size: 0.74rem; letter-spacing: 2px;
+            text-transform: uppercase; font-weight: 600; }
+        .side h1 { font-size: 1.45rem; margin: 0.4rem 0 0.7rem; line-height: 1.15; }
+        .side .intro { color: rgba(255,255,255,0.82); font-size: 0.92rem; font-weight: 300;
+            margin-bottom: 1.6rem; }
+        .side h2 { font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: rgba(255,255,255,0.6); margin: 1.6rem 0 0.8rem; font-family: 'Inter'; font-weight: 600; }
+
+        .legend { display: flex; flex-direction: column; gap: 0.65rem; }
+        .legend .row { display: flex; align-items: center; gap: 0.7rem; font-size: 0.9rem;
+            color: rgba(255,255,255,0.88); }
+        .legend .swatch { width: 26px; height: 26px; border-radius: 8px; flex: 0 0 auto;
+            display: flex; align-items: center; justify-content: center; }
+        .legend .swatch svg { width: 16px; height: 16px; stroke: #fff; }
+        .sw-seismic { background: rgba(109,91,208,0.30); border: 1px solid rgba(109,91,208,0.65); }
+        .sw-hydro { background: rgba(95,160,255,0.24); border: 1px solid rgba(95,160,255,0.55); }
+        .sw-met { background: rgba(183,165,122,0.26); border: 1px solid rgba(183,165,122,0.6); }
+        .sw-remote { background: rgba(95,163,127,0.24); border: 1px solid rgba(95,163,127,0.55); }
+
+        .tip { background: rgba(255,255,255,0.07); border: 1px solid var(--line); border-radius: 12px;
+            padding: 0.9rem 1rem; font-size: 0.86rem; color: rgba(255,255,255,0.82); margin-top: 0.6rem; }
+        .tip strong { color: var(--peri-light); }
+
+        .links a { display: flex; align-items: center; justify-content: space-between;
+            padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.06); border: 1px solid var(--line);
+            border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.9); font-size: 0.88rem;
+            margin-bottom: 0.55rem; transition: background .2s, border-color .2s; }
+        .links a:hover { background: rgba(195,184,240,0.14); border-color: rgba(195,184,240,0.5); }
+        .links a span.arr { color: var(--peri-light); }
+
+        .side .btn-full { display: block; text-align: center; background: #fff; color: var(--purple);
+            padding: 0.7rem; border-radius: 10px; font-weight: 600; text-decoration: none; margin-top: 1.4rem;
+            font-size: 0.9rem; transition: background .2s, color .2s; }
+        .side .btn-full:hover { background: var(--peri-light); color: var(--ink); }
+
+        @media (max-width: 900px) {
+            .dash-wrap { flex-direction: column; }
+            .map-col { flex: 1 1 60vh; min-height: 60vh; }
+            .side { flex: 0 0 auto; border-left: 0; border-top: 1px solid var(--line); }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAV -->
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <svg class="mark" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="#fff" stroke-width="1.6"/>
+                    <path d="M2 18c4-3 7 2 11 0s7-4 11-1" stroke="#c3b8f0" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="2.4" fill="#c3b8f0"/>
+                </svg>
+                GAIA<span class="glow">·</span>HazLab
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#science">Science</a></li>
+                    <li><a href="index.html#platform">Technology</a></li>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="book/index.html" class="nav-cta">Docs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- DASHBOARD -->
+    <div class="dash-wrap">
+        <div class="map-col">
+            <div class="map-loading" id="loading">
+                <div class="ring"></div>
+                <div>Loading the GAIA CRESST catalog…</div>
+            </div>
+            <iframe src="https://gaia-hazlab.github.io/catalog/"
+                    title="GAIA CRESST Catalog"
+                    loading="lazy"
+                    onload="document.getElementById('loading').style.display='none'"
+                    allowfullscreen></iframe>
+        </div>
+
+        <aside class="side">
+            <div class="kicker">Live dashboard</div>
+            <h1>The GAIA sensing map</h1>
+            <p class="intro">
+                Every colocated sensor and event across our Washington State regions of interest,
+                on one interactive map. Static GIS layers, station metadata, and remote-sensing
+                observations sit side by side — so researchers across disciplines can see what's
+                measuring their region, from different physical perspectives.
+            </p>
+
+            <h2>Observation layers</h2>
+            <div class="legend">
+                <div class="row">
+                    <span class="swatch sw-seismic">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-6 4 12 3-9 2 3h6"/></svg>
+                    </span> Seismic &amp; DAS stations
+                </div>
+                <div class="row">
+                    <span class="swatch sw-hydro">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 11-12 0c0-4 6-11 6-11z"/></svg>
+                    </span> Hydrological gauges
+                </div>
+                <div class="row">
+                    <span class="swatch sw-met">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+                    </span> Meteorological stations
+                </div>
+                <div class="row">
+                    <span class="swatch sw-remote">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 019-9M3 16a4 4 0 014-4"/><circle cx="5" cy="18" r="1.4"/><path d="M14 4l6 6-9 9-6-6z"/></svg>
+                    </span> Remote-sensing layers
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>Tip:</strong> click any station on the map to jump to its data-provider
+                landing page, where you can access the underlying time series.
+            </div>
+
+            <h2>Data providers</h2>
+            <div class="links">
+                <a href="https://ds.iris.edu/mda/UW/DREAM" target="_blank" rel="noopener">IRIS / EarthScope — UW DREAM <span class="arr">↗</span></a>
+                <a href="https://explore.synopticdata.com/STRW1/metadata" target="_blank" rel="noopener">Synoptic — STRW1 (Stehekin) <span class="arr">↗</span></a>
+                <a href="https://synopticdata.com/open-access-program/" target="_blank" rel="noopener">Synoptic Open Access (API key) <span class="arr">↗</span></a>
+                <a href="https://github.com/gaia-hazlab/catalog" target="_blank" rel="noopener">Catalog source code <span class="arr">↗</span></a>
+            </div>
+
+            <a href="book/datahub/" class="btn-full">Read the DataHub docs →</a>
+        </aside>
+    </div>
+</body>
+
+</html>
