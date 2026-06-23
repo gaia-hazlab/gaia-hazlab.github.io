@@ -50,4 +50,4 @@ For the concrete architecture (the `s3://cresst` object store, the static STAC c
 
 Per-hazard inventories catalog every dataset a digital twin uses — raw external products, deterministically derived layers, and model outputs — with sources/APIs, access sensitivity, spatial/temporal resolution, limitations, and the models behind each derived product:
 
-- [Landslide Data Inventory](datahub-landslide-inventory) — shallow & deep-seated landslide DT (used by the [Landslides](hazard-landslides) hazard page).
+- [Data Inventory](datahub-inventory) — shallow & deep-seated landslide DT (used by the [Landslides](hazard-landslides) hazard page).

@@ -35,8 +35,7 @@ project:
       children:
         - file: book/chapters/datahub.md
         - file: book/chapters/datahub-integration-guide.md
-        - file: book/chapters/datahub-landslide-inventory.md
-        - file: book/chapters/datahub-liquefaction-inventory.md
+        - file: book/chapters/datahub-inventory.md
         - file: book/chapters/modelhub.md
         - file: book/chapters/modelhub-landslide.md
         - file: book/chapters/modelhub-liquefaction.md

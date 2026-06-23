@@ -60,7 +60,7 @@ hydrology closure and parameter set, not a different model.
 
 The full, traceable catalog — every raw product, every deterministically derived layer, and
 every model output, with sources/APIs, access sensitivity, spatial/temporal resolution, and
-limitations — lives in the **[Landslide Data Inventory](datahub-landslide-inventory)** under the
+limitations — lives in the **[Data Inventory](datahub-inventory)** under the
 [DataHub](datahub). In brief, the core (non-post-fire) model ingests:
 
 - **Terrain** — a DEM (USGS 3DEP / OpenTopography) → `topographic__elevation`, `slope`,
@@ -77,7 +77,7 @@ limitations — lives in the **[Landslide Data Inventory](datahub-landslide-inve
 
 No **burn severity** — that layer is specific to
 [post-fire debris flows](hazard-postfire-debris-flows). See the
-[inventory](datahub-landslide-inventory) for sources, sensitivity, resolution, and the models
+[inventory](datahub-inventory) for sources, sensitivity, resolution, and the models
 behind each derived product.
 
 ## Models
