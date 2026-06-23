@@ -149,3 +149,55 @@ Inferred from current ModelHub/ESS attributions — confirm and adjust:
 - **Convective storms / heatwaves:** Alexandra Anderson-Frey, Greg Hakim
 - **Floods:** _to assign_
 - **Evaluation & metrics:** _to assign_ (with Nathan Kutz / Kaggle / AI2)
+
+## 7. Liquefaction track roadmap (Pillar 2b)
+
+The liquefaction track builds a **ground liquefaction model (GLM) digital twin** on the
+Sanger/Maurer geospatial line of work, documented across three pages mirroring the landslide
+split: the science overview in
+[Pillar 2 §3](book/chapters/pillar-2-nowcasting-susceptibility.md), the model on
+[modelhub-liquefaction](book/chapters/modelhub-liquefaction.md), and the data on
+[datahub-liquefaction-inventory](book/chapters/datahub-liquefaction-inventory.md). Lead:
+**Morgan Sanger, Brett Maurer** (with Yiyu Ni for the wavefield coupling).
+
+### 7.1 The three products to deliver
+1. **Conditional (national):** $P(\text{liq}\mid IM)$ from the national GLM surrogate
+   (`sanger2025jgge`). Needs high-resolution geospatial $V_{s30}$, water table, geology.
+2. **Unconditional (return period):** integrate the conditional model over the USGS NSHM hazard
+   curve for total liquefaction hazard at a return period. Needs NSHM disaggregation
+   (`gaia-nhsm-deagg`).
+3. **Event-based (scenario):** rupture → ShakeMap → GLM map (the real-time nowcast), e.g.
+   Cascadia / Nisqually.
+
+### 7.2 Data inventory needs (DataHub)
+- High-resolution **static** layers: $V_{s30}$ / $V_s$ profiles (`sanger2025vs`), surficial
+  geology, water-table depth — all spatially resolved (the resolution argument: even static
+  layers must be fine-scale).
+- **Dynamic** layers: water table from groundwater modeling (sea-level rise + seasonal), and
+  the seismic-derived $V_s(t)$ / $\kappa_0(t)$.
+- Ground motion: ShakeMap (event) and NSHM hazard curves (probabilistic).
+- Apply the **cross-hazard icon tagging** (Pillar 2 §3.6) to the whole DataHub inventory.
+
+### 7.3 Modeling needs (ModelHub)
+- The mechanics-informed GLM surrogate (conditional engine).
+- The unconditional integration over NSHM.
+- Groundwater-level model for the dynamic water table.
+- Earth2Studio integration for the dynamic forcing and scenario ensembles.
+
+### 7.4 Open research question — time-varying attenuation
+Whether and how to feed a **time-varying $\kappa_0(t)$ / $V_s(t)$** site term (which the GAIA
+seismic networks can estimate, and which varies seasonally — `haendel2025`, `ktenidou2015`)
+back into the NSHM-based unconditional hazard. Currently the NSHM uses a fixed reference-rock
+site term.
+
+### 7.5 Repositories
+Real: [`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure),
+[`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg). Proposed placeholders for
+Morgan to confirm/create: `gaia-model-liquefaction`, `gaia-vs-conus`.
+
+### 7.6 Phasing
+- **L0 (now):** documentation scaffold + verified references (this branch).
+- **L1:** unconditional national susceptibility from the GLM surrogate + NSHM.
+- **L2:** couple groundwater modeling for dynamic / seasonal / sea-level-rise water table.
+- **L3:** event-based nowcast (ShakeMap → GLM) for a Cascadia/Nisqually scenario.
+- **L4:** time-varying attenuation research (§7.4); Earth2Studio scenario ensembles.

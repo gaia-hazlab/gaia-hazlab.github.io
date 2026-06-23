@@ -19,7 +19,8 @@ build on. Two hazard tracks are in scope:
 
 - **(a) Landslides** — advanced; modeled with Landlab — full equations, pipeline, and limits on
   the [Landslide Model](modelhub-landslide) page (§2).
-- **(b) Liquefaction & ground failure** — scoped, next pass (§3).
+- **(b) Liquefaction & ground failure** — in development; overview in §3, full model on the
+  [Liquefaction Model](modelhub-liquefaction) page (§3).
 
 ## 2. Landslides
 
@@ -130,6 +131,12 @@ RAW INPUTS ──► DERIVED / INTERMEDIATE FIELDS ──► PREDICTION ──�
 | **Probability of failure $P_f$** | **PREDICTION** | `LandslideProbability` | — | The nowcast product |
 | Landslide masks / inventories | **LABEL** | Sentinel SAR/InSAR & optical [@mondini2021; @handwerger2022]; post-event DEM/lidar differencing [@bernard2021] | Varies | Used only to **score** $P_f$ (§2.6) — not a model input |
 
+Several of these layers (DEM, soil saturation, water table, precipitation) are **shared with
+other hazards**. The full layer-by-layer catalog is the
+[Landslide Data Inventory](datahub-landslide-inventory); the
+[Liquefaction Data Inventory](datahub-liquefaction-inventory) carries hazard-purpose icons
+(⛰️ 🔥 🏚️ 🌊) marking which layer serves which hazard.
+
 ### 2.5 The prediction pipeline
 
 Landslide probability is produced by
@@ -184,25 +191,46 @@ The current names obscure what the repos do and should be clarified (tracked in 
   preparation** → suggest **`gaia-dataprep-landslide`**.
 - This makes the **data-prep (Pillar 1) → model (Pillar 2)** split explicit in the repo names.
 
-## 3. Liquefaction & ground failure *(next pass)*
+## 3. Liquefaction & ground failure
 
 :::{note}
-**Scoped, scheduled for a later pass this week.** Led by the Sanger/Maurer line of work.
+**In development (liquefaction track), led by the Sanger/Maurer line of work.** The full model
+treatment is on the [Liquefaction Model](modelhub-liquefaction) page; the layer-by-layer data on
+the [Liquefaction Data Inventory](datahub-liquefaction-inventory) page.
 :::
 
-We will model earthquake-triggered liquefaction and ground failure
-([hazard page](hazard-liquefaction-ground-failure)) building on geospatial surrogate models
-for liquefaction hazard and impact [@sanger2025jgge; @sanger2026geoai; @sanger2026geocongress]
-and parametric $V_s$ profiles [@sanger2025vs]. Two concrete next steps:
+Earthquake shaking can turn saturated, loose granular soils into a fluid-like state —
+liquefaction — driving settlement, lateral spreading, and ground failure
+([hazard page](hazard-liquefaction-ground-failure)). Unlike landslides, the trigger is
+**seismic**, not meteorological; but the *susceptibility* is set by the same Pillar-1 state —
+saturation and water-table depth — coupled to the soil's stiffness. GAIA builds a **ground
+liquefaction model (GLM) digital twin** on the geospatial-modeling line of [@zhu2015; @zhu2017]
+as advanced by Sanger, Geyin & Maurer [@sanger2025jgge; @sanger2026geoai; @sanger2025vs].
 
-1. **Unconditional liquefaction susceptibility** — the geospatial baseline independent of a
-   specific earthquake.
-2. **Couple groundwater-level modeling** (see [Groundwater & Soil Moisture](groundwater-soil-moisture))
-   to assess how **long-term sea-level rise and seasonal water-table variations** modulate
-   liquefaction — drawing directly on the Pillar-1 water-table product.
+**Where hydrology and rigidity enter.** Liquefaction is governed by the cyclic stress ratio
+(demand) versus the cyclic resistance ratio (capacity),
+$\mathrm{FS}_{liq}=\mathrm{CRR}/\mathrm{CSR}$ [@seedidriss1971; @idrissboulanger2006]. The
+**water table** sets effective stress $\sigma'_{v0}$ (in both demand and capacity) and gates
+which soil is saturated enough to liquefy; **shear-wave velocity** $V_s$ raises capacity (CRR)
+and modulates demand through site amplification [@andrusstokoe2000]. Both are Pillar-1 state
+variables — the direct line by which the soil reanalysis, and **sea-level rise / seasonal
+water-table change**, modulate liquefaction.
 
-This will require adding the corresponding geotechnical and groundwater layers to the
-[DataHub](datahub) inventory and a liquefaction modeling component in [ModelHub](modelhub).
+**Three framings.** The GLM digital twin serves three questions — **conditional**
+($P(\text{liq}\mid IM)$, the national surrogate), **unconditional** (integrated over the NSHM
+hazard curve for a return period), and **event-based** (a ShakeMap field for a specific rupture,
+e.g. Cascadia or [Nisqually](wa-2001-2031-nisqually-earthquake)). A distinctive open question is
+whether a **time-varying attenuation / site term** ($\kappa_0(t)$, $V_s(t)$) — which the GAIA
+seismic networks can estimate and which varies seasonally [@haendel2025] — can be fed back into
+the fixed-site-term NSHM.
+
+Even the **static** layers ($V_{s30}$, geology, water table) must be **high-resolution**:
+liquefaction is controlled by meter-scale contrasts, so coarse inputs smear hazard. On top of
+them GAIA adds the **dynamic** hydrological and mechanical effects. The full equations, the
+solved-vs-assumed breakdown, the framings in detail, attenuation, Earth2Studio integration, and
+evaluation are on the **[Liquefaction Model](modelhub-liquefaction)** page; the layer-by-layer
+data inventory (with cross-hazard icons) is on the
+**[Liquefaction Data Inventory](datahub-liquefaction-inventory)** page.
 
 ## 4. Evaluation & metrics
 
@@ -212,9 +240,11 @@ time.
 
 ## 5. Open questions & roadmap
 
-- Split the landslide hazard pages into the three process-specific subpages (§2.1).
 - Quantify how prior uncertainty in static soil layers propagates to $P_f$ (sensitivity study).
 - Close the Pillar 1 → Pillar 2 data loop by migrating `landlab-debrisflow` onto DataHub.
-- Stand up the liquefaction track (§3).
+- Liquefaction: integrate a **time-varying** site term ($\kappa_0(t)$, $V_s(t)$) into the NSHM
+  hazard input for the unconditional product (see [Liquefaction Model §5](modelhub-liquefaction)).
+- Liquefaction: stand up the proposed repositories and the groundwater coupling for
+  sea-level-rise/seasonal effects (see [Liquefaction Model §9](modelhub-liquefaction)).
 
 ## References
