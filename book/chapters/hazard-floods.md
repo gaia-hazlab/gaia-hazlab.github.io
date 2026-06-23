@@ -33,7 +33,7 @@ timing and magnitude, threshold-exceedance detection, lead time.)*
 
 ## Connection to use cases
 
-Relevant to the [2025 river floods & sediment transport](wa-2025-river-floods-sediment-transport).
+Relevant to the [2025 river floods & sediment transport](https://gaia-hazlab.github.io/seis-hydro-2-sed/).
 
 ## Open questions & roadmap
 

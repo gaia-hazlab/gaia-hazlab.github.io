@@ -45,7 +45,8 @@ project:
       children:
         - file: book/chapters/wa-2001-2031-nisqually-earthquake.md
         - file: book/chapters/wa-2025-stehekin.md
-        - file: book/chapters/wa-2025-river-floods-sediment-transport.md
+        - url: https://gaia-hazlab.github.io/seis-hydro-2-sed/
+          title: WA-2025 River Floods & Sediment Transport
         - file: book/chapters/convective-thunderstorms.md
     - file: book/chapters/project-organization.md
 

@@ -35,7 +35,7 @@ We ground our research in real-world coupled natural disasters that validate our
 :gutter: 3
 
 :::{grid-item-card} 2025 Western Washington Floods & Landslides
-:link: wa-2025-river-floods-sediment-transport
+:link: https://gaia-hazlab.github.io/seis-hydro-2-sed/
 Atmospheric river–driven flooding and landslides across western Washington, linking precipitation extremes, soil saturation history, and sediment transport from mountain to sea.
 :::
 
