@@ -2,7 +2,7 @@
 
 :::{note}
 **Actively developed (landslide track).** Pillar 2 of the
-[Digital Twin Framework](digital-twin-overview). It consumes the real-time state from
+[Digital Twin Framework](digital-twin-overview). It draws on the real-time state from
 [Pillar 1 — Soil Reanalysis Product](pillar-1-soil-reanalysis) and turns it into hazard
 likelihood *now*. The **landslide** track below is the most mature; the **liquefaction**
 track (§3) is scoped but scheduled for a later pass. References have Crossref/arXiv-verified
@@ -151,7 +151,7 @@ terrain (DEM, flow accumulation)
 As currently configured for the Stehekin/Pioneer events, this is the **post-fire debris-flow**
 workflow — hence the burn-severity layer and fire-reduced cohesion. The core **shallow** and
 **deep-seated** landslide susceptibility runs the *same* stability engine and hydrology
-**without** the burn-severity input. It **consumes the data prepared in Pillar 1**
+**without** the burn-severity input. It **uses the data prepared in Pillar 1**
 ([`fire-debrisflow-ml`](https://github.com/gaia-hazlab/fire-debrisflow-ml) and the SOLUS/PRISM
 staging). Today it still reads hardcoded local paths for those inputs; aligning it with the
 [DataHub Integration Guide](datahub-integration-guide) is the integration task that connects
@@ -199,7 +199,7 @@ and parametric $V_s$ profiles [@sanger2025vs]. Two concrete next steps:
    specific earthquake.
 2. **Couple groundwater-level modeling** (see [Groundwater & Soil Moisture](groundwater-soil-moisture))
    to assess how **long-term sea-level rise and seasonal water-table variations** modulate
-   liquefaction — a direct consumer of the Pillar-1 water-table product.
+   liquefaction — drawing directly on the Pillar-1 water-table product.
 
 This will require adding the corresponding geotechnical and groundwater layers to the
 [DataHub](datahub) inventory and a liquefaction modeling component in [ModelHub](modelhub).

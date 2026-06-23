@@ -90,11 +90,43 @@ interoperability, and evaluation — is on the
 [`gaia-hazlab/landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow); see also
 [Pillar 2 §2.5](pillar-2-nowcasting-susceptibility).
 
+(landslide-detection)=
+## Detection & monitoring
+
+Susceptibility is the *forecast* side; GAIA also **detects landslides as they happen**. Rapid
+mass movements — debris flows, rockfalls, icefalls, lahars — radiate seismic and infrasound
+energy, so a continuously running detector can catalog events in near-real time, independent of
+the revisit gaps that limit optical/SAR mapping.
+
+In the Mt. Rainier region this is done with **QuakeXNet**, a deep-learning detector run on
+continuous waveforms from seismic stations within ~50 km of the volcano: per-station detections
+are aggregated to network-level events, located with **ENVELOC**, and validated against the PNSN
+and ESEC catalogs — yielding a 15-year (2010–2025) catalog of ≈128,500 located events
+(≈115,000 surface events plus explosions) [@kharita2025quakexnet]. The trained model is
+distributed through the SeisBench ecosystem; multi-sensor extensions (infrasound, tilt, DAS) and
+other PNW sites are in progress (see [ModelHub](modelhub)). The catalog is currently **under
+review, with ongoing refinement of the event-classification model**, so event counts and class
+labels will continue to evolve.
+
+These detections close the loop with the model in two ways: they provide **validation labels**
+for the modeled probability of failure $P_f$ — event presence, time, and location (see
+[model §8](modelhub-landslide) and [HazEvalHub](hazevalhub)) — and they are a **real-time
+monitoring** stream alongside the nowcast.
+
+Explore the located catalog on the interactive map (full project:
+[pnw_seismic_event_detection](https://akashkharita.github.io/pnw_seismic_event_detection/)):
+
+:::{iframe} https://akashkharita.github.io/pnw_seismic_event_detection/data/enveloc_dashboard.html
+:width: 100%
+QuakeXNet · Mt. Rainier ENVELOC-located surface-event catalog — Akash Kharita (dashboard
+currently renders the ENVELOC-located subset; the full catalog spans 2010–2025)
+:::
+
 ## Evaluation & metrics
 
 *(Link to [HazEvalHub](hazevalhub): probabilistic calibration (Brier, reliability) of $P_f$,
-spatial agreement (IoU) against detection masks, and — for deep-seated — displacement-rate
-skill and early-warning lead time.)*
+spatial agreement (IoU) against detection masks and the seismic [detection](#landslide-detection)
+catalog, and — for deep-seated — displacement-rate skill and early-warning lead time.)*
 
 ## Connection to use cases
 

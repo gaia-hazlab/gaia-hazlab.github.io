@@ -24,7 +24,7 @@ provider ──► STAC catalog (GitHub, static JSON) ──► COG/Zarr assets 
 | Layer | Implementation today | Repos |
 |---|---|---|
 | **Object store** | `s3://cresst` (us-west-2): anonymous read, authenticated write via `obstore` (`AWS_PROFILE=cresst-user`), layout `s3://cresst/{user}/`, formats **Zarr / COG / Parquet**. SOLUS lives in public GCS `solus100pub`. | documented in [`gaia-data-downloaders`](https://github.com/gaia-hazlab/gaia-data-downloaders) `agents_docs/aws_s3_integration.md` |
-| **STAC catalogs** | Per-dataset **static** STAC (`stac_version 1.1.0`), built with `rio-stac`/`pystac`, consumed with `odc.stac.load(...)`. | [`solus-stac`](https://github.com/gaia-hazlab/solus-stac), [`prism-stac`](https://github.com/gaia-hazlab/prism-stac), [`landlab-stac`](https://github.com/gaia-hazlab/landlab-stac), [`precip-stac`](https://github.com/gaia-hazlab/precip-stac) (WIP) |
+| **STAC catalogs** | Per-dataset **static** STAC (`stac_version 1.1.0`), built with `rio-stac`/`pystac`, read with `odc.stac.load(...)`. | [`solus-stac`](https://github.com/gaia-hazlab/solus-stac), [`prism-stac`](https://github.com/gaia-hazlab/prism-stac), [`landlab-stac`](https://github.com/gaia-hazlab/landlab-stac), [`precip-stac`](https://github.com/gaia-hazlab/precip-stac) (WIP) |
 | **Staging** | [`gaia-cli`](https://github.com/gaia-hazlab/gaia-cli): `gaia stage prism\|hrrr\|synoptic\|all -i AOI -s START -e END -o ZARR`; harmonizes to an `xarray.DataTree` (`stations/…`, `rasters/…`) with standardized variable names/units/CRS; writes Zarr. | `gaia-cli` |
 | **Discovery** | [`catalog`](https://github.com/gaia-hazlab/catalog) Leaflet web map (published at [gaia-hazlab.github.io/catalog](https://gaia-hazlab.github.io/catalog)). | `catalog` |
 
@@ -62,7 +62,7 @@ DataHub-aligned module.
    a sanitized `config/base.example.yaml` as the committed template (the
    `base.example.yaml` pattern already used in `fire-debrisflow-ml`). No data, no
    `~/Downloads`, no `/mnt/c` in git.
-2. **Consume STAC instead of hardcoded URLs.** Replace the per-property SOLUS GCS URLs with a
+2. **Read STAC instead of hardcoded URLs.** Replace the per-property SOLUS GCS URLs with a
    `solus-stac` read:
    ```python
    import pystac, odc.stac
@@ -98,7 +98,7 @@ shallow/deep landslide susceptibility omits it.
 **Liquefaction & ground failure** ([`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure),
 [hazard page](hazard-liquefaction-ground-failure)): currently only seismic waveforms are
 wired; it still needs water-table depth ($d_{wt}$), saturation ($S_w$), $V_{s}$ profiles, and
-geotech indices — i.e. the Soil Reanalysis Product outputs. This is a concrete first consumer.
+geotech indices — i.e. the Soil Reanalysis Product outputs. This is a concrete first application.
 
 Mapping the **SOLUS100** (static, 100 m) and **POLARIS** (30 m, used by
 [`landslide-digital-twin`](https://github.com/gaia-hazlab/landslide-digital-twin)) vocabularies
@@ -114,11 +114,11 @@ seismic-derived states — is the unifying task of [Pillar 1](pillar-1-soil-rean
 | [`prism-stac`](https://github.com/gaia-hazlab/prism-stac) | working | Keep as the precipitation reference; ensure `tmean`/`ppt` both COG |
 | [`precip-stac`](https://github.com/gaia-hazlab/precip-stac) | WIP, no STAC JSON yet | Finish the `multiband → per-day COG → STAC` build; publish assets to `cresst` |
 | [`landlab-stac`](https://github.com/gaia-hazlab/landlab-stac) | 1 event, plain GeoTIFF | Tag assets as **COG**; add provenance; generalize beyond `eagle-creek` |
-| [`fire-debrisflow-ml`](https://github.com/gaia-hazlab/fire-debrisflow-ml) | ad-hoc, hardcoded paths | Apply §3; **consider renaming** to reflect its role (e.g. `gaia-dataprep-landslide`); consume `solus-stac`; publish outputs as STAC |
+| [`fire-debrisflow-ml`](https://github.com/gaia-hazlab/fire-debrisflow-ml) | ad-hoc, hardcoded paths | Apply §3; **consider renaming** to reflect its role (e.g. `gaia-dataprep-landslide`); read `solus-stac`; publish outputs as STAC |
 | [`landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow) | hardcoded `/mnt/c` paths | Apply §3; de-personalize `config/mmp_landslide.yaml`; source inputs from STAC |
 | [`landslide-digital-twin`](https://github.com/gaia-hazlab/landslide-digital-twin) | cloud-native, STAC disabled | **Enable STAC** (`io.stac.enabled: true`); align POLARIS layers with the soil vocabulary |
-| [`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure) | seismic only | Wire the soil-state inputs (§4) as its first consumer of the reanalysis |
-| [`catalog`](https://github.com/gaia-hazlab/catalog) | reads raw COGs, ignores STAC | Make it **consume the STAC catalogs** (its own "merged inventory (maybe STAC)" TODO) |
+| [`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure) | seismic only | Wire the soil-state inputs (§4) as its first application of the reanalysis |
+| [`catalog`](https://github.com/gaia-hazlab/catalog) | reads raw COGs, ignores STAC | Make it **read the STAC catalogs** (its own "merged inventory (maybe STAC)" TODO) |
 | [`gaia-data-downloaders`](https://github.com/gaia-hazlab/gaia-data-downloaders) | broad downloads, no STAC | Fold the useful sources (CONUS404 `SMOIS`/`TSLB`) into gaia-cli stages |
 | [`awesome-gaia`](https://github.com/gaia-hazlab/awesome-gaia) | empty placeholder | Populate as the **curated index** of these repos, grouped by DataHub / ModelHub / hazard |
 

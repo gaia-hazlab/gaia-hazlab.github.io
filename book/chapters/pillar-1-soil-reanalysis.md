@@ -39,9 +39,9 @@ into water-table depth and saturation — is developed in
 ## 2. State variables
 
 The product estimates, in space and time, the variables that downstream hazard and
-resource models consume:
+resource models use:
 
-| Variable | Symbol | Consumed by |
+| Variable | Symbol | Used by |
 |---|---|---|
 | Vadose-zone saturation / soil moisture | $S_w(x,z,t)$ | landslide triggering, flood runoff, liquefaction |
 | Water-table depth / hydraulic head | $d_{wt}(x,t)$, $h(x,t)$ | deep-seated landslides, groundwater resources |
@@ -168,7 +168,7 @@ convention with three layers:
   writes a Zarr `DataTree`; the [`catalog`](datahub) web map is the human-facing index.
 
 **The gap Pillar 1 closes.** Today gaia-cli and the STAC catalogs mostly cover
-precipitation/meteorology, while the *soil layers the hazard models actually consume are still
+precipitation/meteorology, while the *soil layers the hazard models actually use are still
 produced by ad-hoc pipelines and only retroactively cataloged, or not at all.* The same
 SOLUS100 layers appear twice — as hardcoded GCS URLs inside
 [`fire-debrisflow-ml`](https://github.com/gaia-hazlab/fire-debrisflow-ml) /

@@ -3,13 +3,13 @@
 :::{note}
 **The model-side companion to the landslide digital twin.** This page is the ModelHub home for
 the **shallow + deep-seated** landslide susceptibility model: the equations it solves, the
-raw-and-derived data it consumes, what is *solved* versus *assumed* inside
+raw-and-derived data it uses, what is *solved* versus *assumed* inside
 [Landlab](https://landlab.csdms.io), how it couples to the other GAIA projects (soil
 hydromechanical memory, liquefaction, the weather/forecast leg), the spatial-domain
 constraints (watershed / single-drainage closed systems), where Landlab limits a digital twin,
 how to make it interoperable with **Earth2Studio**, and how predictions are evaluated.
 
-It builds on the science in [Pillar 2 §2](pillar-2-nowcasting-susceptibility), consumes the
+It builds on the science in [Pillar 2 §2](pillar-2-nowcasting-susceptibility), draws on the
 state from [Pillar 1](pillar-1-soil-reanalysis), and reads the data cataloged in the
 [Landslide Data Inventory](datahub-landslide-inventory). **Post-fire debris flows** are a
 specialized case on their [own page](hazard-postfire-debris-flows) — the core shallow/deep
@@ -164,7 +164,7 @@ does *not* solve is full 3-D variably-saturated (Richards) flow (§6.2).
 
 ## 4. Coupling map — where the other GAIA projects plug in
 
-The landslide model is one consumer of a shared soil state. Three couplings matter, and each
+The landslide model is one of several models that draw on a shared soil state. Three couplings matter, and each
 attaches at a specific field in the chain above.
 
 **(a) The weather / forecast angle.** Precipitation $P$ (and $T_{min}/T_{max}$) is the proximate
@@ -341,7 +341,7 @@ while intermediate hydrology is judged against SMAP/SWE.
   framing and three-process taxonomy.
 - [Pillar 1 — Soil Reanalysis Product](pillar-1-soil-reanalysis) ·
   [Soil Hydromechanical Memory](soil-memory) — the soil state and $dv/v$ inversion this model
-  consumes.
+  uses.
 - [Landslides](hazard-landslides) · [Post-fire debris flows](hazard-postfire-debris-flows) ·
   [Liquefaction & Ground Failure](hazard-liquefaction-ground-failure) — the hazard pages.
 - [Landslide Data Inventory](datahub-landslide-inventory) — every input/output with sources,

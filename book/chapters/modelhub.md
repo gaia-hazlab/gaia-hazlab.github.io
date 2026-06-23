@@ -27,7 +27,7 @@ The physics-based **shallow + deep-seated landslide model** (Landlab `LandslideP
 - **Susceptibility Mapping**: Random forests and gradient boosting for landslide susceptibility
 - **Triggering Models**: Models linking precipitation and seismic triggers to landslide occurrence
 - **Run-out Prediction**: Neural networks for estimating landslide travel distance
-- **Landslides Detection** using high temporal resolution of multi-sensor geophysical networks (seismic, infrasound, tilt, DAS) and high spatial resolution remote sensing imagery (sentinel+SAR) with [Akash Kharita](https://gaia-hazlab.github.io/people), Scott Henderson, and collab with AI2.
+- **Landslides Detection** using high temporal resolution of multi-sensor geophysical networks (seismic, infrasound, tilt, DAS) and high spatial resolution remote sensing imagery (sentinel+SAR) with [Akash Kharita](https://gaia-hazlab.github.io/people), Scott Henderson, and collab with AI2. The **QuakeXNet** detector + ENVELOC location produce a 15-year Mt. Rainier surface-event [catalog and interactive map](https://akashkharita.github.io/pnw_seismic_event_detection/) — see [Landslides → Detection](hazard-landslides).
 
 - **Hydromechanical Model** data-driven approach to turn multi-sensor raw data (non co-located seismic, geodetic, meteorological sensors) into real time hydromechanical properties ([Manuela Köpfli](https://gaia-hazlab.github.io/people))
 <!-- - **Cascading Hazard Models**: Frameworks for modeling hazard interactions -->
