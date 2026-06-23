@@ -5,7 +5,7 @@
 [Digital Twin Framework](digital-twin-overview). It consumes the real-time state from
 [Pillar 1 — Soil Reanalysis Product](pillar-1-soil-reanalysis) and turns it into hazard
 likelihood *now*. The **landslide** track below is the most mature; the **liquefaction**
-track (§4) is scoped but scheduled for a later pass. References have Crossref/arXiv-verified
+track (§3) is scoped but scheduled for a later pass. References have Crossref/arXiv-verified
 DOIs.
 :::
 
@@ -17,8 +17,8 @@ of each hazard at the present time. "Susceptibility" here is a *probability of f
 binary map — the quantity that downstream warning and the [forecast](pillar-3-forecasting-susceptibility)
 build on. Two hazard tracks are in scope:
 
-- **(a) Landslides** — advanced; modeled with [Landlab](modelhub) (§2–§3).
-- **(b) Liquefaction & ground failure** — scoped, next pass (§4).
+- **(a) Landslides** — advanced; modeled with [Landlab](modelhub) (§2).
+- **(b) Liquefaction & ground failure** — scoped, next pass (§3).
 
 ## 2. Landslides
 
@@ -46,7 +46,7 @@ ecohydrology, slope stability) that each read and write named fields (`topograph
 `soil__saturated_hydraulic_conductivity`, …) on one common raster grid. This lets us **chain a
 full hillslope hydrology-to-stability pipeline** instead of stitching together disconnected
 models — the intermediate fields (e.g. soil moisture) are explicit, inspectable, and
-*validatable* (§3.3).
+*validatable* (§2.6).
 
 The landslide engine is Landlab's **`LandslideProbability` component** [@strauch2018], a
 probabilistic infinite-slope model driven by a topographically-controlled wetness index.
@@ -98,7 +98,7 @@ different objects with different uncertainty and different roles:
 
 ```
 RAW INPUTS ──► DERIVED / INTERMEDIATE FIELDS ──► PREDICTION ──► checked against ──► LABELS
-(measured)     (computed by the model)            (P_failure)                       (independent truth)
+(measured)     (computed by the model)            (P_f)                             (independent truth)
 ```
 
 - **Raw inputs** are measured/observed and ingested via [DataHub](datahub) (Pillar 1).
@@ -123,7 +123,7 @@ RAW INPUTS ──► DERIVED / INTERMEDIATE FIELDS ──► PREDICTION ──�
 | Recharge $R$, transmissivity $T$ | **derived, dynamic** | routed recharge | Low–medium | Direct inputs to $w$; large parameter uncertainty → propagated by Monte Carlo |
 | Relative wetness $w$ | **derived, dynamic** | wetness index (§2.3) | — | The hydrologic state variable entering $FS$ |
 | **Probability of failure $P_f$** | **PREDICTION** | `LandslideProbability` | — | The nowcast product |
-| Landslide masks / inventories | **LABEL** | Sentinel SAR/InSAR & optical [@mondini2021; @handwerger2022]; post-event DEM/lidar differencing [@bernard2021] | Varies | Used only to **score** $P_f$ (§3.3) — not a model input |
+| Landslide masks / inventories | **LABEL** | Sentinel SAR/InSAR & optical [@mondini2021; @handwerger2022]; post-event DEM/lidar differencing [@bernard2021] | Varies | Used only to **score** $P_f$ (§2.6) — not a model input |
 
 ### 2.5 The prediction pipeline
 
@@ -138,7 +138,7 @@ terrain (DEM, flow accumulation)
    → daily_forcing (PRISM ppt, tmin, tmax)
    → snow (rain/snow partition, SWE, melt)
    → ecohydrology (PET, soil moisture)
-   → landslides (routed recharge → LandslideProbability → P_failure)
+   → landslides (routed recharge → LandslideProbability → P_f)
    → exports (GeoTIFF / ASC)
 ```
 
