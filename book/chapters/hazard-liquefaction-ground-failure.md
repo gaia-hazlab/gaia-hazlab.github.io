@@ -2,7 +2,10 @@
 
 :::{note}
 **Draft / scaffold.** Hazard target of the [Digital Twin Framework](digital-twin-overview).
-Follows the standard hazard-page template.
+The full modeling track — the geospatial liquefaction model (GLM) digital twin, fundamental
+equations, the conditional/unconditional/event-based framings, attenuation, and the data
+inventory — is developed in
+[Pillar 2 §3](pillar-2-nowcasting-susceptibility).
 :::
 
 ## Scientific framing

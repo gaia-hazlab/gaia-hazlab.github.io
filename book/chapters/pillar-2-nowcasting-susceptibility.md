@@ -130,6 +130,10 @@ RAW INPUTS ──► DERIVED / INTERMEDIATE FIELDS ──► PREDICTION ──�
 | **Probability of failure $P_f$** | **PREDICTION** | `LandslideProbability` | — | The nowcast product |
 | Landslide masks / inventories | **LABEL** | Sentinel SAR/InSAR & optical [@mondini2021; @handwerger2022]; post-event DEM/lidar differencing [@bernard2021] | Varies | Used only to **score** $P_f$ (§2.6) — not a model input |
 
+Several of these layers (DEM, soil saturation, water table, precipitation) are **shared with
+other hazards**. The consolidated, icon-tagged cross-hazard inventory — marking which layer
+serves landslides, post-fire debris flows, liquefaction, or floods — is in §3.6.
+
 ### 2.5 The prediction pipeline
 
 Landslide probability is produced by
@@ -184,25 +188,156 @@ The current names obscure what the repos do and should be clarified (tracked in 
   preparation** → suggest **`gaia-dataprep-landslide`**.
 - This makes the **data-prep (Pillar 1) → model (Pillar 2)** split explicit in the repo names.
 
-## 3. Liquefaction & ground failure *(next pass)*
+## 3. Liquefaction & ground failure
 
 :::{note}
-**Scoped, scheduled for a later pass this week.** Led by the Sanger/Maurer line of work.
+**In development (liquefaction track), led by the Sanger/Maurer line of work.** Repository
+pointers in §3.8 are **placeholders** for the team (Morgan) to confirm.
 :::
 
-We will model earthquake-triggered liquefaction and ground failure
-([hazard page](hazard-liquefaction-ground-failure)) building on geospatial surrogate models
-for liquefaction hazard and impact [@sanger2025jgge; @sanger2026geoai; @sanger2026geocongress]
-and parametric $V_s$ profiles [@sanger2025vs]. Two concrete next steps:
+Earthquake shaking can turn saturated, loose granular soils into a fluid-like state —
+liquefaction — driving settlement, lateral spreading, and ground failure
+([hazard page](hazard-liquefaction-ground-failure)). Unlike landslides, the trigger is
+**seismic**, not meteorological; but the *susceptibility* is set by the same Pillar-1 state —
+saturation and water-table depth — coupled to the soil's stiffness. GAIA builds a **ground
+liquefaction model (GLM) digital twin** on the geospatial-modeling line of [@zhu2015; @zhu2017]
+as advanced by Sanger, Geyin & Maurer
+[@sanger2025jgge; @sanger2026geoai; @sanger2026geocongress; @sanger2025vs].
 
-1. **Unconditional liquefaction susceptibility** — the geospatial baseline independent of a
-   specific earthquake.
-2. **Couple groundwater-level modeling** (see [Groundwater & Soil Moisture](groundwater-soil-moisture))
-   to assess how **long-term sea-level rise and seasonal water-table variations** modulate
-   liquefaction — drawing directly on the Pillar-1 water-table product.
+### 3.1 The geospatial liquefaction model (GLM)
 
-This will require adding the corresponding geotechnical and groundwater layers to the
-[DataHub](datahub) inventory and a liquefaction modeling component in [ModelHub](modelhub).
+Classical liquefaction assessment is site-specific (borehole CPT/SPT). **Geospatial** models
+trade per-site geotechnical data for spatially continuous proxies — predicting the probability
+and areal extent of liquefaction from PGV/PGA, $V_{s30}$, modeled water-table depth,
+precipitation, and distance to water [@zhu2017; @rashidian2020], with manifestation severity
+captured by fragility functions [@geyin2020fragility; @geyin2020field]. GAIA's GLM uses the
+mechanics-informed ML surrogates of [@sanger2025jgge], which emulate physics-based triggering
+at national scale and in near-real time, demonstrated for the PNW in [@sanger2026geoai].
+
+### 3.2 Fundamental equations — where hydrology and rigidity enter
+
+The simplified procedure [@seedidriss1971; @idrissboulanger2006] compares seismic **demand**
+to soil **capacity**. Demand is the cyclic stress ratio,
+
+$$ \mathrm{CSR} = 0.65\,\frac{a_{max}}{g}\,\frac{\sigma_{v0}}{\sigma'_{v0}}\,r_d, $$
+
+capacity is the cyclic resistance ratio $\mathrm{CRR}$, and triggering is expected when
+
+$$ \mathrm{FS}_{liq} = \frac{\mathrm{CRR}}{\mathrm{CSR}} \le 1. $$
+
+Surface severity is summarized by manifestation indices — LPI [@iwasaki1978] and LSN
+[@vanballegooy2014]. Two **Pillar-1 state variables** enter the physics directly:
+
+- **Hydrology (water table).** Pore pressure sets the effective stress
+  $\sigma'_{v0}=\sigma_{v0}-u$, which appears in *both* demand (the $\sigma_{v0}/\sigma'_{v0}$
+  ratio in CSR) and capacity (overburden correction of $V_{s1}$). Only **saturated** soil below
+  the water table can liquefy — saturation is a binary gate. A shallower water table raises
+  demand and exposes more liquefiable column. This is the direct consumer of the Pillar-1
+  **water-table product** and the [groundwater modeling](groundwater-soil-moisture).
+- **Rigidity (shear-wave velocity).** $V_s$ is the small-strain stiffness proxy
+  ($G_{max}=\rho V_s^2$). It enters **capacity** — CRR rises with overburden-corrected $V_{s1}$
+  [@andrusstokoe2000] — *and* **demand**, because $V_{s30}$ controls site amplification of
+  $a_{max}$. Stiffer ground resists triggering, but soft sites amplify shaking. GAIA's $V_s$
+  comes from the parametric CONUS profiles of [@sanger2025vs] and, dynamically, from the
+  seismic monitoring of [soil-memory](soil-memory).
+
+### 3.3 Three hazard framings: conditional, unconditional, event-based
+
+A GLM digital twin must serve three distinct questions, each with different data and modeling
+needs:
+
+| Framing | Question | Ground-motion input | Output | Data / model need |
+|---|---|---|---|---|
+| **Conditional (national)** | $P(\text{liq}\mid IM)$ — given shaking | a specified intensity measure (PGA/PGV) | probability / extent given that IM | the national GLM surrogate [@sanger2025jgge]; geospatial $V_{s30}$, water table |
+| **Unconditional (return period)** | total liquefaction hazard in $T$ years | integrated over the **NSHM** hazard curve | return-period liquefaction hazard | $\lambda_{liq}=\int P(\text{liq}\mid IM)\,\lvert d\lambda(IM)\rvert$; NSHM curves [@petersen2024] via [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) |
+| **Event-based (scenario)** | liquefaction footprint of *this* quake | a ShakeMap IM field | deterministic spatial map | rupture → ShakeMap → GLM; the nowcasting mode |
+
+The **unconditional** product is the "total risk for a return period" baseline; the
+**event-based** product is the real-time nowcast for a specific rupture (e.g. a Cascadia or
+[Nisqually](wa-2001-2031-nisqually-earthquake) scenario).
+
+### 3.4 Attenuation, $\kappa_0$, and the NSHM (an open question)
+
+High-frequency ground motion — and therefore $a_{max}$ — is controlled by **attenuation**,
+parameterized by the site spectral-decay term $\kappa_0$ [@andersonhough1984]. The GAIA
+seismic networks can help answer two questions the team has flagged:
+
+- **Where is $\kappa_0$ measured?** From the high-frequency slope of recorded acceleration
+  spectra ($A(f)\propto e^{-\pi\kappa f}$); the zero-distance intercept is the site $\kappa_0$.
+  GAIA's dense seismic/DAS data make this estimable per site.
+- **Can $\kappa_0$ vary in time?** It is dominated by attenuation in the shallow,
+  moisture-sensitive subsurface, so it is **not** strictly static — seasonal variation has been
+  observed [@haendel2025; @ktenidou2015]. This is a natural coupling to the Pillar-1 soil
+  reanalysis (the same near-surface saturation GAIA monitors via $dv/v$). **Open integration
+  question:** the [NSHM](https://www.usgs.gov/programs/earthquake-hazards) embeds a *fixed*
+  reference-rock $\kappa_0$ and $V_{s30}$ site term [@petersen2024]; how to feed a
+  **time-varying** site term back into the hazard input for the unconditional product is
+  unresolved and a GAIA research target.
+
+### 3.5 Why high-resolution GLMs — even for static layers
+
+A national GLM cannot be coarse. Liquefaction is controlled by **meter-scale** contrasts in
+saturation, $V_s$, and geology, so even the **static but spatially-resolved** layers
+($V_{s30}$, geology, water-table depth) must be high-resolution — otherwise the inputs average
+away the very heterogeneity that localizes ground failure, systematically smearing hazard and
+biasing loss estimates. This is the same resolution argument made for the
+[soil reanalysis](pillar-1-soil-reanalysis). On top of the static layers, GAIA adds **dynamic,
+time-varying** hydrological (water table from sea-level rise and seasonal recharge) and
+mechanical ($V_s$, $\kappa_0$) effects — the novel contribution beyond a static national map.
+
+### 3.6 Data inventory (cross-checked against landslides)
+
+Every layer is tagged with the hazard purpose it serves, so the [DataHub](datahub) inventory is
+shared and de-duplicated across hazards.
+
+**Legend:** ⛰️ landslides (shallow/deep) · 🔥 post-fire debris flows · 🏚️ liquefaction &
+ground failure · 🌊 floods
+
+| Layer | Role | Source | Serves |
+|---|---|---|---|
+| DEM / terrain (slope, CTI) | static | USGS 3DEP | ⛰️ 🔥 🏚️ 🌊 |
+| $V_{s30}$ / $V_s$ profiles | static → dynamic | [@sanger2025vs]; seismic ([soil-memory](soil-memory)) | 🏚️ ⛰️ |
+| Water-table depth $d_{wt}$ | **dynamic** | [Pillar 1](pillar-1-soil-reanalysis); [groundwater modeling](groundwater-soil-moisture) | 🏚️ ⛰️ 🌊 |
+| Soil saturation $S_w$ | **dynamic** | [Pillar 1](pillar-1-soil-reanalysis) | ⛰️ 🔥 🏚️ 🌊 |
+| Surficial geology / soil type | static | SOLUS / POLARIS, state surveys | 🏚️ ⛰️ |
+| Precipitation | dynamic | PRISM / HRRR (gaia-cli) | ⛰️ 🔥 🌊 |
+| Ground motion (PGA/PGV) | event / probabilistic | ShakeMap; NSHM [@petersen2024] | 🏚️ |
+| $\kappa_0$ / attenuation | static → dynamic | seismic spectra [@andersonhough1984] | 🏚️ |
+| Burn severity (dNBR) | static (per event) | MTBS / BAER | 🔥 |
+
+The **water-table** and **saturation** rows are exactly the layers shared with the landslide
+data taxonomy (§2.4) — the soil reanalysis serves both hazards, which is why the inventory and
+icons are unified rather than per-hazard.
+
+### 3.7 Integration with Earth2Studio
+
+The **dynamic** half of the GLM twin needs forecast forcing, routed through
+[NVIDIA Earth2Studio](https://github.com/gaia-hazlab/earth2studio-test) — the same AI
+weather/climate stack the
+[landslide digital twin](https://github.com/gaia-hazlab/landslide-digital-twin) and
+[Pillar 3 forecasting](pillar-3-forecasting-susceptibility) use:
+
+- **Climate/weather → groundwater → water table.** Earth2Studio forecasts (precipitation, plus
+  sea-level-rise and seasonal scenarios) drive the groundwater model that sets $d_{wt}$ — the
+  dynamic liquefaction control.
+- **GLM surrogate as an Earth2Studio model.** The fast mechanics-informed surrogate
+  [@sanger2025jgge] can be wrapped as a pipeline component for large scenario / return-period
+  ensembles.
+- **Time-varying site terms.** Seismic-derived $V_s(t)$ / $\kappa_0(t)$ feed the ground-motion
+  side, closing the dynamic loop (§3.4).
+
+### 3.8 Repositories *(placeholders — for Morgan to confirm)*
+
+- [`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure) — the
+  liquefaction / ground-failure modeling repo (hydrology + seismology + geotech).
+- [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) — USGS NSHM disaggregation
+  client feeding the unconditional integration.
+- `gaia-model-liquefaction` *(proposed)* — the GLM surrogate digital twin (conditional /
+  unconditional / event-based runners).
+- `gaia-vs-conus` *(proposed)* — the parametric $V_s$-profile product [@sanger2025vs].
+
+*Proposed repositories do not exist yet — the names are placeholders for the team to
+create/confirm.*
 
 ## 4. Evaluation & metrics
 
@@ -212,9 +347,11 @@ time.
 
 ## 5. Open questions & roadmap
 
-- Split the landslide hazard pages into the three process-specific subpages (§2.1).
 - Quantify how prior uncertainty in static soil layers propagates to $P_f$ (sensitivity study).
 - Close the Pillar 1 → Pillar 2 data loop by migrating `landlab-debrisflow` onto DataHub.
-- Stand up the liquefaction track (§3).
+- Liquefaction: integrate a **time-varying** site term ($\kappa_0(t)$, $V_s(t)$) into the NSHM
+  hazard input for the unconditional product (§3.4).
+- Liquefaction: stand up the proposed repositories (§3.8) and the groundwater coupling for
+  sea-level-rise/seasonal effects.
 
 ## References
