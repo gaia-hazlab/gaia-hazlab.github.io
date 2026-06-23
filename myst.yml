@@ -27,9 +27,8 @@ project:
         - file: book/chapters/ocean-atmosphere-coupling.md
     - title: Hazards
       children:
-        - file: book/chapters/hazard-shallow-landslides.md
-        - file: book/chapters/hazard-deep-seated-landslides.md
-        - file: book/chapters/hazard-debris-flows.md
+        - file: book/chapters/hazard-landslides.md
+        - file: book/chapters/hazard-postfire-debris-flows.md
         - file: book/chapters/hazard-liquefaction-ground-failure.md
         - file: book/chapters/hazard-floods.md
     - title: Technology

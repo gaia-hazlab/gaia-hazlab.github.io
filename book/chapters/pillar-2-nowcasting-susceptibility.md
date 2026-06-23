@@ -27,14 +27,18 @@ build on. Two hazard tracks are in scope:
 Following the Varnes classification update [@hungr2014], we treat three distinct failure
 processes that share data but **not** governing physics — each will become its own subpage:
 
-| Type | Failure surface | Dominant control | Hazard page |
-|---|---|---|---|
-| **Shallow landslides** | ~0.5–3 m (soil mantle) | storm infiltration → pore pressure → loss of suction | [shallow landslides](hazard-shallow-landslides) |
-| **Deep-seated landslides** | meters–tens of m | groundwater / hydraulic head on seasonal–multiyear scales | [deep-seated landslides](hazard-deep-seated-landslides) |
-| **Debris flows** | mobilized channel/colluvium | intense rainfall + sediment supply (often post-fire) | [debris flows](hazard-debris-flows) |
+| Type | Failure surface | Dominant control | Burn severity input? | Hazard page |
+|---|---|---|---|---|
+| **Shallow landslides** | ~0.5–3 m (soil mantle) | storm infiltration → pore pressure → loss of suction | **No** | [landslides](hazard-landslides) |
+| **Deep-seated landslides** | meters–tens of m | groundwater / hydraulic head on seasonal–multiyear scales | **No** | [landslides](hazard-landslides) |
+| **Post-fire debris flows** | mobilized channel/colluvium | high-intensity rainfall on **recently burned**, fire-altered terrain | **Yes** | [post-fire debris flows](hazard-postfire-debris-flows) |
 
-The current modeling effort targets **shallow-landslide probability**; the same Landlab
-framework extends to the others by swapping the hydrology and stability closures.
+The core GAIA digital-twin landslide products — **shallow** and **deep-seated** susceptibility —
+are rainfall- and groundwater-driven and **do not take burn severity as an input**. Post-fire
+debris flows are a **special, wildfire-conditioned case** of landsliding: only that track adds
+a burn-severity layer and fire-reduced cohesion. The current modeling effort targets
+**shallow-landslide probability**; the same Landlab framework extends to the others by swapping
+the hydrology and stability closures (and, for post-fire debris flows, adding the fire terms).
 
 ### 2.2 Modeling with Landlab
 
@@ -114,7 +118,7 @@ RAW INPUTS ──► DERIVED / INTERMEDIATE FIELDS ──► PREDICTION ──�
 |---|---|---|---|---|
 | `topographic__elevation` (DEM) | **raw, static** | USGS 10 m 3DEP | High | Smooths <10 m gullies; sets slope $\theta$ and contributing area $a/b$ — **dominant geometric control** |
 | Soil texture, depth, $K_{sat}$, cohesion, $\phi$ | **raw, static** | SOLUS100 / POLARIS (see Pillar 1) | Medium–low | Static, smoothed at 30–100 m; sets $\tilde C$, $T$, $D$ — **strong, and the most uncertain priors** |
-| Burn severity (dNBR) | **raw, static** (per event) | MTBS/BAER | Medium | Event-specific; lowers cohesion/raises runoff — key for post-fire debris flows |
+| Burn severity (dNBR) | **raw, static** (per event) — *post-fire debris flows only* | MTBS/BAER | Medium | **Not used for shallow/deep landslide susceptibility.** For the post-fire case only: lowers cohesion / raises runoff |
 | Land cover / vegetation | **raw, static** | NLCD | Medium | Sets root cohesion $C_r$ and ET; moderate influence |
 | Precipitation, $T_{min}$/$T_{max}$ | **raw, dynamic** | PRISM (staged by gaia-cli) | Medium | 800 m–4 km; the proximate **trigger** — drives recharge $R$ |
 | Contributing area $a/b$ | **derived, static** | flow routing on the DEM | High (given DEM) | Inherits DEM error; controls $w$ |
@@ -127,14 +131,15 @@ RAW INPUTS ──► DERIVED / INTERMEDIATE FIELDS ──► PREDICTION ──�
 
 ### 2.5 The prediction pipeline
 
-Shallow-landslide probability is produced by
+Landslide probability is produced by
 [`gaia-hazlab/landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow) (the
 "MMP" multi-model-probability workflow), which chains the Landlab components exactly along the
 taxonomy above:
 
 ```
 terrain (DEM, flow accumulation)
-   → static_inputs (soil, vegetation, burn severity, transmissivity, cohesion)
+   → static_inputs (soil, vegetation, transmissivity, cohesion
+                    [+ burn severity — post-fire debris flows only])
    → daily_forcing (PRISM ppt, tmin, tmax)
    → snow (rain/snow partition, SWE, melt)
    → ecohydrology (PET, soil moisture)
@@ -142,10 +147,14 @@ terrain (DEM, flow accumulation)
    → exports (GeoTIFF / ASC)
 ```
 
-It **consumes the data prepared in Pillar 1** ([`fire-debrisflow-ml`](https://github.com/gaia-hazlab/fire-debrisflow-ml)
-and the SOLUS/PRISM staging). Today it still reads hardcoded local paths for those inputs;
-aligning it with the [DataHub Integration Guide](datahub-integration-guide) is the integration
-task that connects Pillars 1 and 2.
+As currently configured for the Stehekin/Pioneer events, this is the **post-fire debris-flow**
+workflow — hence the burn-severity layer and fire-reduced cohesion. The core **shallow** and
+**deep-seated** landslide susceptibility runs the *same* stability engine and hydrology
+**without** the burn-severity input. It **consumes the data prepared in Pillar 1**
+([`fire-debrisflow-ml`](https://github.com/gaia-hazlab/fire-debrisflow-ml) and the SOLUS/PRISM
+staging). Today it still reads hardcoded local paths for those inputs; aligning it with the
+[DataHub Integration Guide](datahub-integration-guide) is the integration task that connects
+Pillars 1 and 2.
 
 ### 2.6 Calibration and validation
 

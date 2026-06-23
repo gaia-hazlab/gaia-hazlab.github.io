@@ -91,8 +91,9 @@ from the code:
 `topographic__elevation`, `soil__thickness`, `soil__density`,
 `soil__internal_friction_angle`, `soil__saturated_hydraulic_conductivity`, `porosity`,
 `field__capacity`, `wilting__point`, `soil__{min,mode,max}_total_cohesion`,
-`vegetation__plant_functional_type`, `burn__severity` + daily PRISM forcing (`ppt`, `tmin`,
-`tmax`).
+`vegetation__plant_functional_type` + daily PRISM forcing (`ppt`, `tmin`, `tmax`). The
+**`burn__severity`** layer is required **only for the post-fire debris-flow** variant; the core
+shallow/deep landslide susceptibility omits it.
 
 **Liquefaction & ground failure** ([`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure),
 [hazard page](hazard-liquefaction-ground-failure)): currently only seismic waveforms are
