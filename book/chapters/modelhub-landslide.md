@@ -11,7 +11,7 @@ how to make it interoperable with **Earth2Studio**, and how predictions are eval
 
 It builds on the science in [Pillar 2 §2](pillar-2-nowcasting-susceptibility), draws on the
 state from [Pillar 1](pillar-1-soil-reanalysis), and reads the data cataloged in the
-[Landslide Data Inventory](datahub-landslide-inventory). **Post-fire debris flows** are a
+[Data Inventory](datahub-inventory). **Post-fire debris flows** are a
 specialized case on their [own page](hazard-postfire-debris-flows) — the core shallow/deep
 model below takes **no burn-severity input**.
 :::
@@ -344,7 +344,7 @@ while intermediate hydrology is judged against SMAP/SWE.
   uses.
 - [Landslides](hazard-landslides) · [Post-fire debris flows](hazard-postfire-debris-flows) ·
   [Liquefaction & Ground Failure](hazard-liquefaction-ground-failure) — the hazard pages.
-- [Landslide Data Inventory](datahub-landslide-inventory) — every input/output with sources,
+- [Data Inventory](datahub-inventory) — every input/output with sources,
   resolution, and the **data-prep pipeline** that feeds this model.
 - [HazEvalHub](hazevalhub) — metric definitions.
 - Repos: [`landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow) ·
