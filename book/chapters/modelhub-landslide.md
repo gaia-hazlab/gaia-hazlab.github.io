@@ -135,7 +135,7 @@ calibration parameter.
 | | **Shallow** | **Deep-seated** |
 |---|---|---|
 | Soil-column depth $D$ | thin (soil mantle, 0.5–3 m) | thick (to the deep rupture surface) |
-| Wetness $w$ from | steady-state topographic index (§2.2) | water-table depth / head $h(x,t)$ from [Pillar 1](pillar-1-soil-reanalysis) |
+| Wetness $w$ from | steady-state topographic index (§2.2) | water-table / head $h(x,t)$ — imported from [Pillar 1](pillar-1-soil-reanalysis) or solved on-grid (§6.1) |
 | Dominant uncertain params | recharge $R$, transmissivity $T$, root+soil cohesion | head $h$, deep strength, transmissivity at depth |
 | Timescale of forcing | hours–days (event) | seasonal–multiyear (memory-rich) |
 | Burn-severity input | **No** | **No** |
@@ -157,9 +157,10 @@ is parameterized.
 | recharge routing | upslope-averaged recharge | recharge can be advected by topographic routing (`routed_recharge = discharge/area`) | `groundwater__recharge_mean/std` |
 | `LandslideProbability` | infinite-slope $FS$ + Monte Carlo $P_f$ (§2.3–2.4) | planar slope-parallel failure; steady-state wetness; parameters independent across draws | `landslide__probability_of_failure`, `soil__mean_relative_wetness` |
 
-The deep-seated variant replaces the topographic-wetness assumption with an **externally
-supplied head field** — i.e. it *assumes* the groundwater state from Pillar 1 rather than solving
-it, because Landlab does not solve transient 3-D groundwater (§6).
+For the deep-seated variant the topographic-wetness assumption is replaced by a **water-table /
+head field** $h(x,t)$ — either imported from [Pillar 1](pillar-1-soil-reanalysis) or **solved
+on-grid** with Landlab's transient `GroundwaterDupuitPercolator` component (§6.1). What Landlab
+does *not* solve is full 3-D variably-saturated (Richards) flow (§6.2).
 
 ## 4. Coupling map — where the other GAIA projects plug in
 
@@ -222,34 +223,50 @@ The practical consequences for Landlab:
   with artificial edges. This is also the unit at which the hybrid coarse-screening / targeted
   high-res strategy is organized.
 
-## 6. Where Landlab limits a digital twin
+## 6. Where Landlab limits a digital twin — and what is actually removable
 
-Landlab is an excellent **reference physics engine**, but several properties constrain its direct
-use as an operational, forecast-time digital twin — and motivate the surrogate and Earth2Studio
-paths:
+Several "limits" people attribute to Landlab are really properties of the **current closure
+choice** (the steady-state topographic wetness inside `LandslideProbability`, §2.2), not of
+Landlab itself. They are worth separating, because most are removable by adding components — and
+only a few are genuine.
 
-- **Steady-state wetness.** The topographic-wetness closure (§2.2) assumes recharge and the
-  saturation field are in instantaneous equilibrium. That is reasonable for shallow event-scale
-  triggering but **misrepresents transient and seasonal head**, which is exactly what deep-seated
-  failures depend on — hence the need to import $h(x,t)$ from Pillar 1 rather than solve it.
-- **No 3-D / transient groundwater.** Landlab routes surface and shallow subsurface water on a 2-D
-  grid; it does not solve the 3-D Richards/Darcy problem [@richards1931]. Deep, lateral, and
-  perched-water-table dynamics must come from an external model (Pillar 1, or ParFlow-class
-  models).
-- **Infinite-slope geometry only.** No 3-D failure surface, no slope–slope interaction, and **no
-  runout** — mobilization and travel distance are a separate model.
-- **One grid, one resolution, CPU/NumPy.** A run is tied to a single `RasterModelGrid`; cost
-  scales with node count, so PNW-wide daily high-resolution is impractical. The components are not
-  GPU-native and **not differentiable**, so Landlab cannot sit inside a gradient-based or
-  torch-tensor forecast loop without a surrogate.
-- **Not cloud-native by itself.** No native Zarr/COG/STAC I/O or provenance; it must be wrapped
-  (the `landlab-debrisflow` → DataHub alignment task).
+### 6.1 Removable — add a component or wrap the I/O
+
+- **Steady-state wetness → transient.** The instantaneous recharge↔wetness equilibrium is the
+  TOPMODEL-style closure in `LandslideProbability` (§2.2), not a Landlab constraint. Drive the
+  chain with **daily / sub-daily rainfall** and step the hydrology, and the forcing is already
+  transient; the wetness becomes quasi-transient with one stability solve per timestep.
+- **Transient groundwater & a real water table.** Landlab ships the
+  **`GroundwaterDupuitPercolator`** component, which solves transient Dupuit–Forchheimer flow for
+  an unconfined aquifer with a free water table, coupled recharge, and seepage. Coupling it lets
+  us **solve** the deep-seated water table $h(x,t)$ on-grid instead of only importing it — turning
+  "no transient groundwater" from a limitation into a modeling choice. [Pillar 1](pillar-1-soil-reanalysis)
+  then becomes an **assimilation / calibration target** for that water table rather than its sole
+  source.
+- **Cloud-native.** This is pure engineering, not a limitation: wrap the run for COG / Zarr / STAC
+  I/O on `s3://cresst` (the `landlab-debrisflow` → DataHub alignment task). No physics obstacle.
+
+### 6.2 Genuine residual limits — design around these
+
+- **Dupuit ≠ full 3-D Richards.** The groundwater component is **depth-integrated** (hydrostatic,
+  mostly-lateral flow) — a large step up from steady-state, but not full 3-D variably-saturated
+  flow [@richards1931]. Strongly layered, perched, or deep fractured-rock systems may still need
+  an external 3-D model (ParFlow-class) or the Pillar 1 product.
+- **Infinite-slope / triggering only.** `LandslideProbability` predicts *initiation*: planar
+  slope-parallel failure, no 3-D failure surface, and **no runout** — mobilization and travel
+  distance are separate physics (a dedicated runout component or model).
+- **Differentiability & throughput.** Native components are NumPy / CPU and **not autodiff-able**,
+  so Landlab cannot sit *inside* a gradient-based or torch-tensor forecast graph; cost scales with
+  node count, so PNW-wide daily high-resolution stays expensive. This — not the hydrology caveats
+  above — is the real motivation for a differentiable **surrogate** (§7).
 - **Uncertainty only where parameterized.** Monte Carlo covers the chosen uncertain parameters;
   structural error (closure choice, DEM, soil priors) is not propagated automatically.
 
-The design response is the **hybrid**: keep Landlab as the trusted reference and label generator;
-add a differentiable ML surrogate for regional screening and ensembles; and expose both through a
-provider interface that Earth2Studio can call.
+**Net:** with a daily-rainfall + transient-groundwater closure and a cloud-native wrapper, the
+operative limits shrink to (i) Dupuit vs full 3-D, (ii) triggering-only / no runout, and
+(iii) differentiability/throughput. The design response is the **hybrid**: keep Landlab as the
+trusted reference and label generator; add a differentiable ML surrogate for regional screening,
+ensembles, and the Earth2Studio loop (§7); and expose both through a provider interface.
 
 ## 7. Interoperability with Earth2Studio — invoking a future land digital twin
 
