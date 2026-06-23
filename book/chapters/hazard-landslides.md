@@ -131,7 +131,7 @@ catalog, and — for deep-seated — displacement-rate skill and early-warning l
 ## Connection to use cases
 
 Shallow failures feature in the
-[2025 Western Washington floods & landslides](wa-2025-river-floods-sediment-transport).
+[2025 Western Washington floods & landslides](https://gaia-hazlab.github.io/seis-hydro-2-sed/).
 
 ## Open questions & roadmap
 

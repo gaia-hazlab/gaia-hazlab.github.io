@@ -19,7 +19,7 @@ title: GAIA HazLab
 	- [Research Software](chapters/research-software): Tools for reproducible, scalable workflows.
 - **Use Cases:**
 	- [WA-2001-2031 Nisqually Earthquake](chapters/wa-2001-2031-nisqually-earthquake)
-	- [WA-2025 River Floods & Sediment Transport](chapters/wa-2025-river-floods-sediment-transport)
+	- [WA-2025 River Floods & Sediment Transport](https://gaia-hazlab.github.io/seis-hydro-2-sed/)
 	- [WA-2025 Stehekin Post-fire Debris Flow](chapters/wa-2025-stehekin)
 	- [Convective Thunderstorms](chapters/convective-thunderstorms)
 - **System-Science Nexus:**
