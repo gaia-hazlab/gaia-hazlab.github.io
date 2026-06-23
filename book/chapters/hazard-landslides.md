@@ -1,0 +1,87 @@
+# Landslides
+
+:::{note}
+**Draft / scaffold.** Hazard target of the [Digital Twin Framework](digital-twin-overview).
+This page covers the two **rainfall- and groundwater-driven** landslide types — **shallow**
+and **deep-seated** — which share Landlab machinery and differ mainly in depth, triggering, and
+hydrology. The wildfire-conditioned [post-fire debris flow](hazard-postfire-debris-flows) is a
+special case on its own page. Modeling detail is in
+[Pillar 2 — Nowcasting Hazard Susceptibility](pillar-2-nowcasting-susceptibility).
+:::
+
+Landsliding spans a continuum of failure depths and timescales [@hungr2014]. The GAIA digital
+twin predicts a **probability of failure** $P_f$ for two end-members that bracket the core
+hazard; neither takes burn severity as an input.
+
+## 1. Process & triggering mechanisms
+
+| | **Shallow landslides** | **Deep-seated landslides** |
+|---|---|---|
+| Trigger | Storm **infiltration** raising transient pore pressure | **Groundwater recharge** raising the water table / hydraulic head |
+| Mechanism | Loss of suction and effective stress in the soil mantle [@iverson2000; @lu2008] | Sustained elevated head reduces effective stress on a deep surface |
+| Timescale | Hours–days (event-driven) | Seasonal–multiyear (memory-rich) |
+| Key state variable | Vadose-zone saturation $S_w$ | Water-table depth $d_{wt}$ / head $h$ |
+| Antecedent control | Soil-moisture history [@guzzetti2008] | Long-memory groundwater ([soil-memory](soil-memory)) |
+
+Both inherit their state from [Pillar 1 — Soil Reanalysis Product](pillar-1-soil-reanalysis):
+shallow failures respond to the **saturation** field, deep failures to the **water-table**
+field.
+
+## 2. Characteristics
+
+| | **Shallow** | **Deep-seated** |
+|---|---|---|
+| Failure depth | ~0.5–3 m (soil mantle) | meters–tens of meters |
+| Failure surface | soil–bedrock interface | deep rupture in rock/regolith |
+| Typical motion | rapid, often mobilizing to flows | slow creep, episodic acceleration |
+| Observables | rainfall I–D thresholds, soil moisture, seismic/geotech | surface displacement (InSAR/GNSS), piezometric head, seismicity |
+| Validation label | rainfall-triggered inventories; optical/SAR detection | displacement time series (InSAR/GNSS) |
+
+## 3. Implementation in Landlab
+
+Both use the **same** Landlab engine — the infinite-slope factor of safety solved
+probabilistically by the `LandslideProbability` component (Monte Carlo over uncertain
+parameters → $P_f = \Pr(FS<1)$; full equations in
+[Pillar 2 §2.3](pillar-2-nowcasting-susceptibility)) [@strauch2018]. They differ in the
+**hydrology closure** that sets the relative wetness entering the factor of safety:
+
+| | **Shallow** | **Deep-seated** |
+|---|---|---|
+| Wetness driver | steady-state topographic wetness from recharge & transmissivity [@beven1979; @montgomery1994] | water-table / hydraulic-head field from the soil reanalysis |
+| Soil column depth $D$ | thin (soil mantle) | thick (to the deep surface) |
+| Dominant uncertain parameters | recharge $R$, transmissivity $T$, root + soil cohesion | head $h$, deep strength, transmissivity at depth |
+| Burn severity input | **No** | **No** |
+| Validation labels | optical/SAR landslide masks [@mondini2021; @handwerger2022] | InSAR/GNSS displacement [@mondini2021] |
+
+This shared-engine design is exactly why the two live on one page: the difference is a swapped
+hydrology closure and parameter set, not a different model.
+
+## Data — what we ingest
+
+*(Link to [DataHub](datahub) and [Pillar 1](pillar-1-soil-reanalysis): DEM/terrain, static
+soil properties, precipitation, and the reanalysis saturation / water-table fields. No burn
+severity — that layer is specific to [post-fire debris flows](hazard-postfire-debris-flows).)*
+
+## Models
+
+*(Link to [ModelHub](modelhub) and the pipeline in
+[`gaia-hazlab/landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow); see
+[Pillar 2 §2.5](pillar-2-nowcasting-susceptibility).)*
+
+## Evaluation & metrics
+
+*(Link to [HazEvalHub](hazevalhub): probabilistic calibration (Brier, reliability) of $P_f$,
+spatial agreement (IoU) against detection masks, and — for deep-seated — displacement-rate
+skill and early-warning lead time.)*
+
+## Connection to use cases
+
+Shallow failures feature in the
+[2025 Western Washington floods & landslides](wa-2025-river-floods-sediment-transport).
+
+## Open questions & roadmap
+
+- Quantify how prior uncertainty in static soil layers propagates to $P_f$ for each type.
+- A unified hydrology closure spanning the shallow (vadose) and deep (water-table) regimes.
+
+## References

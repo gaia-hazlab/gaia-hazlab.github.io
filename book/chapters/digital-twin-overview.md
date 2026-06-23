@@ -49,7 +49,7 @@ infrastructure:
 - **[HazEvalHub](hazevalhub)** defines the metrics and leaderboards that make each pillar's
   output trustworthy and actionable.
 
-The pillars predict the **[Hazards](hazard-shallow-landslides)** targets and rest on the
+The pillars predict the **[Hazards](hazard-landslides)** targets and rest on the
 **[Earth System Science](soil-memory)** that governs water and stress in the critical zone.
 
 ## Shared state-variable notation

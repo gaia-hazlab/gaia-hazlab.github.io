@@ -49,7 +49,7 @@ resource models consume:
 | Elastic moduli / stiffness | $G(x,z,t)$ | ground-motion site response, $dv/v$ forward model |
 | Static soil & lithologic properties | texture, $K_{sat}$, depth-to-bedrock, $\phi$ | priors for all of the above |
 
-These feed the [Hazards](hazard-shallow-landslides) pages and the resource-management work in
+These feed the [Hazards](hazard-landslides) pages and the resource-management work in
 [Groundwater & Soil Moisture](groundwater-soil-moisture). Landscape-evolution and
 debris-flow surrogates built on Landlab [@hobley2017; @barnhart2020], and the
 ground-failure / liquefaction models in [ModelHub](modelhub), each require a specific subset
