@@ -152,9 +152,13 @@ Inferred from current ModelHub/ESS attributions — confirm and adjust:
 
 ## 7. Liquefaction track roadmap (Pillar 2b)
 
-The liquefaction track ([Pillar 2 §3](book/chapters/pillar-2-nowcasting-susceptibility.md))
-builds a **ground liquefaction model (GLM) digital twin** on the Sanger/Maurer geospatial line
-of work. Lead: **Morgan Sanger, Brett Maurer** (with Yiyu Ni for the wavefield coupling).
+The liquefaction track builds a **ground liquefaction model (GLM) digital twin** on the
+Sanger/Maurer geospatial line of work, documented across three pages mirroring the landslide
+split: the science overview in
+[Pillar 2 §3](book/chapters/pillar-2-nowcasting-susceptibility.md), the model on
+[modelhub-liquefaction](book/chapters/modelhub-liquefaction.md), and the data on
+[datahub-liquefaction-inventory](book/chapters/datahub-liquefaction-inventory.md). Lead:
+**Morgan Sanger, Brett Maurer** (with Yiyu Ni for the wavefield coupling).
 
 ### 7.1 The three products to deliver
 1. **Conditional (national):** $P(\text{liq}\mid IM)$ from the national GLM surrogate
