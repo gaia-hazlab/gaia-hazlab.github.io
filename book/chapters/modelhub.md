@@ -20,7 +20,9 @@ The ModelHub is a comprehensive collection of machine learning models and algori
 - **Flood Forecasting**: Flood forecasting using stream gauge data, SWE, and meteorological products.
 - **Flash Flood Detection**
 
-#### Landslide Susceptibility Models (TBD)
+#### Landslide Susceptibility Models
+The physics-based **shallow + deep-seated landslide model** (Landlab `LandslideProbability`) — equations, data→model pipeline, watershed/single-drainage constraints, Landlab limits for digital twins, Earth2Studio interoperability, and evaluation metrics — is documented on its own page: **[Landslide Model — Landlab Implementation](modelhub-landslide)**. Planned ML/data-driven additions:
+
 - **Data-Driven Reduced Order Modeling** of Landlab modeling for landscape evolution/erosion and debris flow modeling.
 - **Susceptibility Mapping**: Random forests and gradient boosting for landslide susceptibility
 - **Triggering Models**: Models linking precipitation and seismic triggers to landslide occurrence

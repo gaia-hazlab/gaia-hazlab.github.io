@@ -82,9 +82,13 @@ behind each derived product.
 
 ## Models
 
-*(Link to [ModelHub](modelhub) and the pipeline in
-[`gaia-hazlab/landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow); see
-[Pillar 2 §2.5](pillar-2-nowcasting-susceptibility).)*
+The full model documentation — physics equations, the data→Landlab pipeline, what is solved vs
+assumed, watershed/single-drainage constraints, Landlab limits for digital twins, Earth2Studio
+interoperability, and evaluation — is on the
+**[Landslide Model — Landlab Implementation](modelhub-landslide)** page in the
+[ModelHub](modelhub). The implementation lives in
+[`gaia-hazlab/landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow); see also
+[Pillar 2 §2.5](pillar-2-nowcasting-susceptibility).
 
 ## Evaluation & metrics
 

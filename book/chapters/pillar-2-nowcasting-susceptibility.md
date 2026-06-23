@@ -17,7 +17,8 @@ of each hazard at the present time. "Susceptibility" here is a *probability of f
 binary map — the quantity that downstream warning and the [forecast](pillar-3-forecasting-susceptibility)
 build on. Two hazard tracks are in scope:
 
-- **(a) Landslides** — advanced; modeled with [Landlab](modelhub) (§2).
+- **(a) Landslides** — advanced; modeled with Landlab — full equations, pipeline, and limits on
+  the [Landslide Model](modelhub-landslide) page (§2).
 - **(b) Liquefaction & ground failure** — scoped, next pass (§3).
 
 ## 2. Landslides
