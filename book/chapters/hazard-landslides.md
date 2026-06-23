@@ -58,9 +58,27 @@ hydrology closure and parameter set, not a different model.
 
 ## Data — what we ingest
 
-*(Link to [DataHub](datahub) and [Pillar 1](pillar-1-soil-reanalysis): DEM/terrain, static
-soil properties, precipitation, and the reanalysis saturation / water-table fields. No burn
-severity — that layer is specific to [post-fire debris flows](hazard-postfire-debris-flows).)*
+The full, traceable catalog — every raw product, every deterministically derived layer, and
+every model output, with sources/APIs, access sensitivity, spatial/temporal resolution, and
+limitations — lives in the **[Landslide Data Inventory](datahub-landslide-inventory)** under the
+[DataHub](datahub). In brief, the core (non-post-fire) model ingests:
+
+- **Terrain** — a DEM (USGS 3DEP / OpenTopography) → `topographic__elevation`, `slope`,
+  contributing area.
+- **Static soil properties** — SOLUS100 (100 m) or POLARIS (30 m) → thickness, density,
+  friction angle, cohesion bounds, $K_{sat}$/transmissivity, porosity, field capacity, wilting
+  point.
+- **Vegetation** — NLCD landcover → `vegetation__plant_functional_type` (LAI, root cohesion).
+- **Forcing** — observed PRISM precipitation/temperature (hindcast/daily) and Earth2Studio
+  AI-weather precipitation (forecast).
+- **Reanalysis state** — the saturation (shallow) and water-table (deep) fields from
+  [Pillar 1](pillar-1-soil-reanalysis).
+- **Calibration targets** — SMAP soil moisture, ERA5 SWE, and mapped landslide inventories.
+
+No **burn severity** — that layer is specific to
+[post-fire debris flows](hazard-postfire-debris-flows). See the
+[inventory](datahub-landslide-inventory) for sources, sensitivity, resolution, and the models
+behind each derived product.
 
 ## Models
 
