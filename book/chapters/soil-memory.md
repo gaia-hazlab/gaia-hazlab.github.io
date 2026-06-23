@@ -399,8 +399,8 @@ Use this prior to:
 ---
 
 ### References (papers driving the framework)
-- Shi et al. (2025): saturation/density/effective pressure and dynamic capillarity in near-surface velocity response.
-- Clements & Denolle (2023): poroelastic + nonlinear elasticity mapping from \(dv/v\) to hydraulic head / pore pressure.
-- Sun et al. (2025): physics-guided + data-driven correction factors for component models and stress-transmission biases.
+- Saturation/density/effective pressure and dynamic capillarity in near-surface velocity response [@shi2025].
+- Poroelastic + nonlinear elasticity mapping from $dv/v$ to hydraulic head / pore pressure [@clements2023]; see also tracking groundwater levels from the ambient field [@clements2018].
+- Physics-guided + data-driven correction factors for component models and stress-transmission biases [@sun2025].
 
 ---

@@ -7,27 +7,46 @@ project:
   # keywords: []
   # authors: []
   github: https://github.com/gaia-hazlab/gaia-hazlab.github.io
+  bibliography:
+    - book/references.bib
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
     - file: book/intro.md
     - file: book/chapters/problem-statement.md
-    - file: book/chapters/project-organization.md
+    - title: Digital Twin Framework
+      children:
+        - file: book/chapters/digital-twin-overview.md
+        - file: book/chapters/pillar-1-soil-reanalysis.md
+        - file: book/chapters/pillar-2-nowcasting-susceptibility.md
+        - file: book/chapters/pillar-3-forecasting-susceptibility.md
+    - title: Earth System Science
+      children:
+        - file: book/chapters/soil-memory.md
+        - file: book/chapters/soil-reanalysis-science.md
+        - file: book/chapters/groundwater-soil-moisture.md
+        - file: book/chapters/ocean-atmosphere-coupling.md
+    - title: Hazards
+      children:
+        - file: book/chapters/hazard-shallow-landslides.md
+        - file: book/chapters/hazard-deep-seated-landslides.md
+        - file: book/chapters/hazard-debris-flows.md
+        - file: book/chapters/hazard-liquefaction-ground-failure.md
+        - file: book/chapters/hazard-floods.md
     - title: Technology
       children:
         - file: book/chapters/datahub.md
+        - file: book/chapters/datahub-integration-guide.md
         - file: book/chapters/modelhub.md
         - file: book/chapters/hazevalhub.md
         - file: book/chapters/gaia-translator.md
         - file: book/chapters/research-software.md
-    - title: Earth System Science
-      children:
-        - file: book/chapters/soil-memory.md
     - title: Use Cases
       children:
         - file: book/chapters/wa-2001-2031-nisqually-earthquake.md
         - file: book/chapters/wa-2025-stehekin.md
         - file: book/chapters/wa-2025-river-floods-sediment-transport.md
         - file: book/chapters/convective-thunderstorms.md
+    - file: book/chapters/project-organization.md
 
   parts:
     banner: |

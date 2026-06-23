@@ -43,3 +43,5 @@ df = pd.DataFrame(data['STATION'][0]['OBSERVATIONS'])
 ## Roadmap
 
 We plan to create a simple Python client to stage relevant datasets for our research groups which wraps existing API tools. The client may also facilitate reprojecting datasets to common grids and reference frames for easy analysis and ingestion into ML workflows.
+
+For the concrete architecture (the `s3://cresst` object store, the static STAC catalogs, and `gaia-cli`) and a repo-by-repo migration path that aligns our data-prep repositories with the DataHub, see the [DataHub Integration Guide](datahub-integration-guide). It is driven by the data requirements of the [Soil Reanalysis Product](pillar-1-soil-reanalysis).
