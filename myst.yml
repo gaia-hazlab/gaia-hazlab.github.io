@@ -41,9 +41,10 @@ project:
         - file: book/chapters/modelhub-landslide.md
         - file: book/chapters/modelhub-liquefaction.md
     - file: book/chapters/hazevalhub.md
-    - title: Tools
+    - file: book/chapters/gaia-agent.md
       children:
         - file: book/chapters/gaia-translator.md
+        - file: book/chapters/gaia-agentic.md
         - file: book/chapters/research-software.md
     - title: Use Cases
       children:
