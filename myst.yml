@@ -32,15 +32,17 @@ project:
         - file: book/chapters/hazard-postfire-debris-flows.md
         - file: book/chapters/hazard-liquefaction-ground-failure.md
         - file: book/chapters/hazard-floods.md
-    - title: Technology
+    - file: book/chapters/datahub.md
       children:
-        - file: book/chapters/datahub.md
         - file: book/chapters/datahub-integration-guide.md
         - file: book/chapters/datahub-inventory.md
-        - file: book/chapters/modelhub.md
+    - file: book/chapters/modelhub.md
+      children:
         - file: book/chapters/modelhub-landslide.md
         - file: book/chapters/modelhub-liquefaction.md
-        - file: book/chapters/hazevalhub.md
+    - file: book/chapters/hazevalhub.md
+    - title: Tools
+      children:
         - file: book/chapters/gaia-translator.md
         - file: book/chapters/research-software.md
     - title: Use Cases
