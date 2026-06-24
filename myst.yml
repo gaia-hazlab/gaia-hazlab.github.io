@@ -21,8 +21,9 @@ project:
         - file: book/chapters/pillar-3-forecasting-susceptibility.md
     - title: Earth System Science
       children:
-        - file: book/chapters/soil-memory.md
         - file: book/chapters/soil-reanalysis-science.md
+          children:
+            - file: book/chapters/soil-memory.md
         - file: book/chapters/groundwater-soil-moisture.md
         - file: book/chapters/ocean-atmosphere-coupling.md
     - title: Hazards

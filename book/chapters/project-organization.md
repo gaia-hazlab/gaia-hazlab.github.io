@@ -1,34 +1,45 @@
 # Project Organization
 
-## Problem Statement
+## Support
 
-We are evaluating the cascading effects of ocean–atmosphere–soil coupling and how the severity of geodisasters is shaped by soil hydromechanical history and land management. See the full **[Problem Statement](problem-statement)** for our research goals, approach, use cases, and backbone technologies.
+This pilot digital twin is supported by the **FFST** as a **UW CRESST** grant. An **NSF CSSI**
+project has just been recommended for funding, and most of the support comes from **academic
+units**.
 
 ## Earth System Science Nexus
 
-We treat the critical zone, the shallow subsurface from weathered rock to the surface, as the dynamic skin of the Earth that regulate water infiltrating down to the water table, or water evaporating from soils or transpiration and modulating lower atmosphere thermo and convective dynamics. Understanding the hydromechanical and hydrological structure and dynamics of soils is central to the severity of geohazards and land-atmosphere coupling. We investigate and test hypothesis around the contributors to the severity of these geohazards (e.g., extreme meterological events vs soil conditions etc).
-Extreme weather events are modulated by atmosphere and oceanographic coupling, which defines the cascades of events from ocean -> atmosphere -> geohazards.
+We treat the critical zone — the shallow subsurface from weathered rock to the surface — as the
+dynamic skin of the Earth that regulates water infiltrating down to the water table, evaporating
+from soils, or transpiring and modulating lower-atmosphere thermodynamic and convective
+dynamics. Understanding the hydromechanical and hydrological structure and dynamics of soils is
+central to the severity of geohazards and to land–atmosphere coupling. We investigate and test
+hypotheses around the contributors to hazard severity (e.g., extreme meteorological events vs.
+soil conditions). Extreme weather events are themselves modulated by atmosphere–ocean coupling,
+which sets the cascade ocean → atmosphere → geohazards.
 
-**Use Case Events - Validations**
-- 2025 Western Washington Landslides and Floods ([Nicoleta Cristea](https://gaia-hazlab.github.io/people), Shuyi Chen, Richard Zhang, Brendan Jerns, [Berkan Mertan](https://github.com/berkm125), Akash Kharita, [Marine Denolle](https://denolle-lab.github.io), Brad Lipovsky, Nate Stevens, Alex Hutko)
-- 2001 Nisqually Earthquake ([Morgan Sanger](https://sangermd.github.io/website/), [Yiyu Ni](https://niyiyu.github.io/), Manuela Köpfli, [Brett Maurer](https://bwmaurer.com/), [Marine Denolle](https://denolle-lab.github.io))
-- 2025 Postfire Debris Flow at Stehekin ([Abdullah Al Mehedi](https://almehedi06.wixsite.com/abdullah-al-mehedi), [Erkan Istanbulluoglu](https://www.ce.washington.edu/facultyfinder/erkan-istanbulluoglu), [Marine Denolle](https://denolle-lab.github.io)).
-- 2021 Skagit River Floods ([Nicoleta Cristea](https://gaia-hazlab.github.io/people), +team)
+## Use Case Events — Validations
+
+- 2025 Western Washington Landslides and Floods
+- 2001 Nisqually Earthquake
+- 2025 Post-fire Debris Flow at Stehekin
+- 2021 Skagit River Floods
 
 ## Technological Development
 
-### 1. Data Hub
-- Hazard data is often scattered across multiple sources and formats
-- Lack of standardized data formats makes integration difficult
+### 1. DataHub
+- Hazard data is scattered across multiple sources and formats
+- Lack of standardized formats makes integration difficult
 - Limited access to high-quality, up-to-date hazard datasets
 
-### 2. Model Hub
+### 2. ModelHub
 - Traditional hazard models may not capture complex spatial and temporal patterns
-- Need for machine learning approaches that can handle multi-scale hazard processes
-- Difficulty in validating models across different hazard types and geographic regions
+- Need for machine-learning approaches that handle multi-scale hazard processes
+- Difficulty validating models across hazard types and geographic regions
 
-### 3. Eval Hub
-- Develop a series of task and evaluation metrics for model evaluation
+### 3. HazEvalHub
+- Develop a series of tasks and evaluation metrics for model evaluation
 
 ### 4. Research Software Agent
-Developing a RSE agent to support multi-disciplinary science, in collaboration with eScience Instiute (Vani Mandava, lead at Scientific Software Engineering Center) and supported by the Paros Center.
+- Developing a research-software-engineering agent to support multi-disciplinary science, in
+  collaboration with the eScience Institute (Scientific Software Engineering Center) and
+  supported by the Paros Center.

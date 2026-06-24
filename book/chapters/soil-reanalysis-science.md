@@ -1,9 +1,10 @@
-# Soil Reanalysis Science
+# Soil Reanalysis
 
 :::{note}
 **Draft / scaffold.** Earth System Science underpinning
-[Pillar 1 — Soil Reanalysis Product](pillar-1-soil-reanalysis). Companion to
-[Soil Hydromechanical Memory](soil-memory).
+[Pillar 1 — Soil Reanalysis Product](pillar-1-soil-reanalysis). The
+[Soil Hydromechanical Memory](soil-memory) subsection develops the seismic ($dv/v$) route to
+the soil's mechanical state.
 :::
 
 ## Scientific framing
