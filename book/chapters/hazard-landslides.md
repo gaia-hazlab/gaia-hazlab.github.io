@@ -39,22 +39,17 @@ field.
 
 ## 3. Implementation in Landlab
 
-Both use the **same** Landlab engine — the infinite-slope factor of safety solved
-probabilistically by the `LandslideProbability` component (Monte Carlo over uncertain
-parameters → $P_f = \Pr(FS<1)$; full equations in
-[Pillar 2 §2.3](pillar-2-nowcasting-susceptibility)) [@strauch2018]. They differ in the
-**hydrology closure** that sets the relative wetness entering the factor of safety:
+The current implemented Landlab workflow uses the probabilistic infinite-slope `LandslideProbability` component to compute **shallow landslide susceptibility** from recharge-driven relative wetness and uncertain material properties [@strauch2018]. A **deep-seated** variant can be framed within the same stability concept, but should be treated here as a **planned extension** with a different hydrologic closure.
 
-| | **Shallow** | **Deep-seated** |
+| | **Shallow** | **Deep-seated (planned)** |
 |---|---|---|
-| Wetness driver | steady-state topographic wetness from recharge & transmissivity [@beven1979; @montgomery1994] | water-table / hydraulic-head field from the soil reanalysis |
-| Soil column depth $D$ | thin (soil mantle) | thick (to the deep surface) |
-| Dominant uncertain parameters | recharge $R$, transmissivity $T$, root + soil cohesion | head $h$, deep strength, transmissivity at depth |
-| Burn severity input | **No** | **No** |
-| Validation labels | optical/SAR landslide masks [@mondini2021; @handwerger2022] | InSAR/GNSS displacement [@mondini2021] |
+| Wetness driver | recharge-driven relative wetness from topographic routing and transmissivity [@beven1979; @montgomery1994] | water-table / hydraulic-head field from soil reanalysis or a groundwater model |
+| Soil column depth $D$ | thin (soil mantle) | thick (to the deep rupture surface) |
+| Dominant uncertain parameters | recharge $R$, transmissivity $T$, soil/root strength | head $h$, deep strength, transmissivity at depth |
+| Burn severity input | **No** in the core shallow model | **No** |
+| Validation labels | mapped shallow-landslide observations | displacement / deep-instability observations |
 
-This shared-engine design is exactly why the two live on one page: the difference is a swapped
-hydrology closure and parameter set, not a different model.
+This shared framing is useful conceptually, but the current working GAIA notebook and packaged workflow are the **shallow, recharge-driven** implementation.
 
 ## Data — what we ingest
 
@@ -68,7 +63,7 @@ limitations — lives in the **[Data Inventory](datahub-inventory)** under the
 - **Static soil properties** — SOLUS100 (100 m) or POLARIS (30 m) → thickness, density,
   friction angle, cohesion bounds, $K_{sat}$/transmissivity, porosity, field capacity, wilting
   point.
-- **Vegetation** — NLCD landcover → `vegetation__plant_functional_type` (LAI, root cohesion).
+- **Vegetation** — plant functional type / landcover used to assign vegetation parameters such as LAI.
 - **Forcing** — observed PRISM precipitation/temperature (hindcast/daily) and Earth2Studio
   AI-weather precipitation (forecast).
 - **Reanalysis state** — the saturation (shallow) and water-table (deep) fields from
