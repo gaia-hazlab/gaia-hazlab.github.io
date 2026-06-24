@@ -11,7 +11,7 @@ are evaluated.
 
 It builds on the science in [Pillar 2 §3](pillar-2-nowcasting-susceptibility), draws on the
 state from [Pillar 1](pillar-1-soil-reanalysis), and reads the data cataloged in the
-[Liquefaction Data Inventory](datahub-liquefaction-inventory). Led by the **Sanger/Maurer**
+[Data Inventory](datahub-inventory). Led by the **Sanger/Maurer**
 line of work [@sanger2025jgge; @sanger2026geoai]. Repository pointers in §9 are **placeholders**
 for the team (Morgan) to confirm.
 :::
@@ -182,7 +182,7 @@ create/confirm.*
   [Groundwater & Soil Moisture](groundwater-soil-moisture) — the soil state and water-table this
   model consumes.
 - [Liquefaction & Ground Failure](hazard-liquefaction-ground-failure) — the hazard page.
-- [Liquefaction Data Inventory](datahub-liquefaction-inventory) — every input/output with sources,
+- [Data Inventory](datahub-inventory) — every input/output with sources,
   resolution, and the data-prep pipeline.
 - [Landslide Model](modelhub-landslide) — the sibling model this one mirrors.
 - [HazEvalHub](hazevalhub) — metric definitions.

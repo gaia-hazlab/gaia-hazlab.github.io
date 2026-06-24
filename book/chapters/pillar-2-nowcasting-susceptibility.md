@@ -132,9 +132,8 @@ RAW INPUTS ──► DERIVED / INTERMEDIATE FIELDS ──► PREDICTION ──�
 | Landslide masks / inventories | **LABEL** | Sentinel SAR/InSAR & optical [@mondini2021; @handwerger2022]; post-event DEM/lidar differencing [@bernard2021] | Varies | Used only to **score** $P_f$ (§2.6) — not a model input |
 
 Several of these layers (DEM, soil saturation, water table, precipitation) are **shared with
-other hazards**. The full layer-by-layer catalog is the
-[Landslide Data Inventory](datahub-landslide-inventory); the
-[Liquefaction Data Inventory](datahub-liquefaction-inventory) carries hazard-purpose icons
+other hazards**. The full layer-by-layer catalog is the single, cross-hazard
+[Data Inventory](datahub-inventory), which carries hazard-purpose icons
 (⛰️ 🔥 🏚️ 🌊) marking which layer serves which hazard.
 
 ### 2.5 The prediction pipeline
@@ -196,7 +195,7 @@ The current names obscure what the repos do and should be clarified (tracked in 
 :::{note}
 **In development (liquefaction track), led by the Sanger/Maurer line of work.** The full model
 treatment is on the [Liquefaction Model](modelhub-liquefaction) page; the layer-by-layer data on
-the [Liquefaction Data Inventory](datahub-liquefaction-inventory) page.
+the [Data Inventory](datahub-inventory) page.
 :::
 
 Earthquake shaking can turn saturated, loose granular soils into a fluid-like state —
@@ -230,7 +229,7 @@ them GAIA adds the **dynamic** hydrological and mechanical effects. The full equ
 solved-vs-assumed breakdown, the framings in detail, attenuation, Earth2Studio integration, and
 evaluation are on the **[Liquefaction Model](modelhub-liquefaction)** page; the layer-by-layer
 data inventory (with cross-hazard icons) is on the
-**[Liquefaction Data Inventory](datahub-liquefaction-inventory)** page.
+**[Data Inventory](datahub-inventory)** page.
 
 ## 4. Evaluation & metrics
 

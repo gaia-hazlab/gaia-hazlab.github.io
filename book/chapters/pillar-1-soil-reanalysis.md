@@ -4,7 +4,7 @@
 **Actively developed.** Pillar 1 of the [Digital Twin Framework](digital-twin-overview).
 The hydromechanical inversion methods are detailed in
 [Soil Hydromechanical Memory](soil-memory); the land-surface physics in
-[Soil Reanalysis Science](soil-reanalysis-science). References on this page have
+[Soil Reanalysis](soil-reanalysis-science). References on this page have
 Crossref-verified DOIs.
 :::
 

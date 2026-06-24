@@ -5,7 +5,7 @@
 The full modeling track is developed across three pages: the science overview in
 [Pillar 2 §3](pillar-2-nowcasting-susceptibility), the geospatial liquefaction model (GLM) on
 the [Liquefaction Model](modelhub-liquefaction) page, and the layer-by-layer
-[Liquefaction Data Inventory](datahub-liquefaction-inventory).
+[Data Inventory](datahub-inventory).
 :::
 
 ## Scientific framing
