@@ -44,7 +44,7 @@ models and of calibration.
 
 | Layer / product | Serves | Source · archive (API / website) | Access / sensitivity | Native spatial res · CRS | Cadence | Units | Key limitations |
 |---|---|---|---|---|---|---|---|
-| **DEM** → `topographic__elevation`, slope, contributing area | ⛰️ 🔥 🏚️ 🌊 | USGS 3DEP via OpenTopography ([opentopography.org](https://opentopography.org/), [USGS 3DEP](https://www.usgs.gov/3d-elevation-program)) | Public / open; OpenTopography API needs a **free key** | ~10 m (1/3 arc-sec); lidar 1 m where available | Static (re-flown irregularly) | m | Vertical accuracy & vintage vary; voids; `.asc` stacks **do not embed CRS** |
+| **DEM** → `topographic__elevation`, slope, drainage_area, topographic__specific_contributing_area | ⛰️ 🔥 🏚️ 🌊 | USGS 3DEP via OpenTopography ([opentopography.org](https://opentopography.org/), [USGS 3DEP](https://www.usgs.gov/3d-elevation-program)) | Public / open; OpenTopography API needs a **free key** | ~10 m (1/3 arc-sec); lidar 1 m where available | Static (re-flown irregularly) | m | Vertical accuracy & vintage vary; voids; `.asc` stacks **do not embed CRS** |
 | **Soil texture & properties** → `clay/sand/silt__total`, `pH`, `dry__bulk_density`, CEC, soil depth | ⛰️ 🔥 🏚️ | USDA SOLUS100 (100 m); public GCS `solus100pub`; STAC [`solus-stac`](https://github.com/gaia-hazlab/solus-stac) | Public / open | 100 m · EPSG:5070; depths 0,5,15,30,60,100,150 cm | Static (ML estimate) | %, pH, g cm⁻³, cmol(+)/kg, cm | ML-predicted with **uncertainty bands (l/h)**; CONUS-only; vocabulary differs from POLARIS |
 | **Soil hydraulic / strength priors** (alt.) | ⛰️ 🏚️ | POLARIS 30 m ([hydrology.cee.duke.edu/POLARIS](http://hydrology.cee.duke.edu/POLARIS/)); used by [`landslide-digital-twin`](https://github.com/gaia-hazlab/landslide-digital-twin) | Public / open | 30 m; same depth scheme; p5/p50/p95 | Static (statistical) | varies | Downscaled SSURGO; **different vocabulary, depths, stats & units from SOLUS** — conversion table required |
 | **Shear-wave velocity** → $V_{s30}$, $V_s(z)$ | 🏚️ ⛰️ | parametric CONUS $V_s$ [@sanger2025vs]; USGS National Crustal Model; slope/geology proxy $V_{s30}$ | Public / open | parametric; proxy ~250–1000 m | Static (→ dynamic via seismic) | m s⁻¹ | Proxy $V_{s30}$ has large scatter; **rigidity is high-influence** for liquefaction |
@@ -95,7 +95,7 @@ Computed from the raw stack and documented rules — reproducible, not observed.
 |---|---|---|---|---|
 | `soil_moisture__saturation_fraction`, `…root_zone_leakage`, `surface__runoff/ET` | ⛰️ 🔥 🌊 | `SoilMoisture` + PET | `[time, n_cells]` | hydrologic state; recharge source; **SMAP comparison** |
 | `soil__mean_relative_wetness`, `…probability_of_saturation` | ⛰️ 🔥 | `LandslideProbability` | 0–1 | wetness / saturation-risk diagnostics |
-| **`landslide__probability_of_failure`** | ⛰️ 🔥 | `LandslideProbability` | 0–1, `[n]`/`[time,y,x]`/`[init,lead,y,x]` | $\Pr(FS\le1)$ — **primary landslide target** |
+| **`landslide__probability_of_failure`** | ⛰️ 🔥 | `LandslideProbability` | 0–1, `[n]` or rasterized `[y,x]` | $\Pr(FS\le1)$ — primary current landslide target; time/forecast cubes are future extension paths |
 | **$P(\text{liq})$ + areal extent** | 🏚️ | GLM surrogate [@sanger2025jgge] | 0–1, `[y,x]` | probability / extent of liquefaction — **primary liquefaction target** |
 | **LPI / LSN** | 🏚️ | manifestation model [@iwasaki1978; @vanballegooy2014] | index | surface severity / damage |
 | Return-period liquefaction hazard | 🏚️ | unconditional integration over NSHM | rate / 50-yr prob. | $\lambda_{liq}$ planning baseline |
@@ -105,12 +105,12 @@ Computed from the raw stack and documented rules — reproducible, not observed.
 ### 4.1 Landslide (Landlab) ⛰️ 🔥
 
 ```
-A. domain     AOI → watershed / HUC polygon; target CRS + resolution; single outlet
+A. domain     AOI → watershed / HUC polygon; target CRS + resolution; hydrologically coherent domain; watershed outlet preferred
 B. acquire    DEM · SOLUS100|POLARIS soil · NLCD landcover (+ MTBS burn severity — post-fire only)
 C. harmonize  reproject + resample to ONE grid contract; nodata; manifest
 D. derive     slope, specific contributing area (FlowAccumulator on the CLOSED watershed);
-              pedotransfer → φ, cohesion; Ksat → transmissivity; landcover → PFT → LAI
-E. force      PRISM (hindcast) | Earth2Studio tp/APCP (forecast) → mm/day → snow → balance → recharge
+              import or harmonize φ and cohesion rasters; Ksat → transmissivity; landcover → PFT → LAI; Ksat → transmissivity; landcover → PFT → LAI
+E. PRISM (hindcast/current workflow) | Earth2Studio tp/APCP (future forecast path) → mm/day → snow → balance → recharge
 F. soil state deep-seated: import water-table h(x,t) + S_w from Pillar 1; init S0 from SMAP
 G. validate   input contract: shape · CRS · transform · nodata · units · required fields
 H. publish    COG / Zarr on s3://cresst + STAC items with source·measurement·res·uncertainty
