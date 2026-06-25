@@ -1,0 +1,57 @@
+name: Update knowledge graph
+
+# Regenerates book/graph/gaia-knowledge-graph.html from book/graph/graph-data.yml.
+# graph-data.yml is the single source of truth; this job keeps the rendered HTML in sync.
+
+on:
+  schedule:
+    # ~biweekly: 1st and 15th of each month at 06:00 UTC
+    - cron: "0 6 1,15 * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    # NOTE: the generated HTML is intentionally NOT listed here, so the bot's
+    # regeneration commit does not re-trigger this workflow.
+    paths:
+      - "book/graph/graph-data.yml"
+      - "book/graph/build_graph.py"
+      - ".github/workflows/update-knowledge-graph.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: knowledge-graph
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Regenerate graph (validates; fails on a bad edit)
+        run: python book/graph/build_graph.py --summary >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain book/graph/gaia-knowledge-graph.html)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add book/graph/gaia-knowledge-graph.html
+            git commit -m "chore(graph): regenerate knowledge graph from graph-data.yml"
+            git push
+          else
+            echo "Knowledge graph already up to date."
+          fi
+        # If `main` is a protected branch that forbids direct pushes, replace the
+        # commit/push above with peter-evans/create-pull-request to open a PR instead.
