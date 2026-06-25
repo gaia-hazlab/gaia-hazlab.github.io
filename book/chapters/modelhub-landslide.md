@@ -69,11 +69,10 @@ $T_{\text{snow}}$ and $T_{\text{rain}}$, and snowmelt $M$ from a degree-day mode
 ($M = \text{melt\_factor}\cdot\max(T-T_{\text{base}},0)$, bookkept as
 $SWE_t = SWE_{t-1}+P_{\text{snow}}-M$).
 
-The **recharge** that forces slope stability is the deep leakage, summarized over the antecedent
-window $\{t-k_N,\dots,t_0\}$ (the soil-memory window of [Pillar 1](soil-memory)):
+The **recharge** that forces the current shallow stability run is the deep leakage below the root zone, summarized over the modeled event window. In the present workflow this is typically the **event-window maximum recharge** field, with optional recharge routing before the landslide solve:
 
 $$
-R = \big\langle L_z(S) \big\rangle_{\text{window}} \quad(\text{mean or max}).
+R = \max_t L_z(S,t) \quad \text{(current shallow workflow; routing optional)}
 $$
 
 Drainage onset and stress thresholds are set by the field-capacity and wilting saturations
@@ -104,15 +103,15 @@ framing of §5.
 On a planar failure surface at slope $\theta$, the factor of safety is the ratio of resisting to
 driving stress, in the dimensionless form of the Landlab component [@strauch2018]:
 
+In the current Landlab implementation, slope is passed as a gradient and the factor of safety is computed in component form as
+
 $$
-FS = \frac{\tilde C}{\sin\theta\cos\theta}
-   + \left(1 - w\,\frac{\rho_w}{\rho_s}\right)\frac{\tan\phi}{\tan\theta},
+FS = \frac{\tilde C}{\sin(\arctan \theta)}
++ \frac{\cos(\arctan \theta)}{\sin(\arctan \theta)}
+\tan \phi \, (1 - 0.5\,w),
 $$
 
-where $\tilde C = (C_r + C_s)/(\rho_s g D)$ is combined root + soil cohesion normalized by the
-saturated soil weight, $D$ the soil (column) depth, $\phi$ the internal friction angle,
-$\rho_s,\rho_w$ soil and water densities, and $w$ the relative wetness from §2.2. Failure is
-expected when $FS<1$. Increasing wetness $w$ lowers effective stress and drives $FS$ down — the
+where $\tilde C = C / (\rho_s g D)$ is dimensionless cohesion, $\phi$ is the internal friction angle, and $w$ is relative wetness clipped to $[0,1]$. Failure is expected when $FS < 1$. Increasing wetness $w$ lowers effective stress and drives $FS$ down — the
 hydromechanical coupling that links water to strength [@lu2010].
 
 ### 2.4 From factor of safety to probability of failure
@@ -152,7 +151,7 @@ is parameterized.
 | Component | What it *solves* | What it *assumes* | Key fields out |
 |---|---|---|---|
 | `FlowAccumulator` (+ `FlowDirector`) | flow routing, drainage area, specific contributing area | a routing rule (single- vs multiple-flow direction); hydrologically complete domain with defined outlet (§5) | `drainage_area`, `surface_water__discharge` |
-| snow (degree-day) | rain/snow partition, SWE, melt | linear temperature partition; degree-day melt; no energy-balance snowpack | `swe`, `water_input` |
+| snow (degree-day) | rain/snow partition, SWE, melt | linear temperature partition; degree-day melt; no energy-balance snowpack | liquid water input, SWE time series |
 | `SoilMoisture` + PET | root-zone water balance (§2.1) | single bucket per PFT; `ksat_factor` infiltration scaling; PET from prescribed vegetation parameters | `soil_moisture__saturation_fraction`, `…root_zone_leakage` (→ recharge) |
 | recharge routing | upslope-averaged recharge | recharge can be advected by topographic routing (`routed_recharge = discharge/area`) | `groundwater__recharge_mean/std` |
 | `LandslideProbability` | infinite-slope $FS$ + Monte Carlo $P_f$ (§2.3–2.4) | planar slope-parallel failure; steady-state wetness; parameters independent across draws | `landslide__probability_of_failure`, `soil__mean_relative_wetness` |
@@ -194,11 +193,11 @@ two tracks merge.
 
 ## 5. Spatial domain — drainage, watersheds, and closed systems
 
-**Yes — the hydrology must be solved on a hydrologically closed unit with a single outlet.** The
-relative wetness $w$ (§2.2) depends on the **specific contributing area** $a/b$, which is the
-integral of all upslope flow reaching a node. That integral is only well-defined if every
-interior node's drainage path stays inside the modeled domain until it leaves through a known
-outlet.
+For the routed shallow-wetness workflow, hydrologically coherent domains are strongly preferred.
+The relative wetness closure depends on upslope contributing area, so routing quality degrades
+when the domain cuts important flow paths. In the current code, boundaries are defined from nodata
+plus a low-elevation fixed-value rule; watershed-clipped domains with validated outlets are the
+cleaner long-term setup.
 
 The practical consequences for Landlab:
 
