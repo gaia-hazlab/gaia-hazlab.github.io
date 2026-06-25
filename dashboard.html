@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.css" />
 
     <style>
         :root {
@@ -61,10 +62,13 @@
 
         .leaflet-popup-content-wrapper { border-radius: 10px; }
         .leaflet-popup-content { font-family: 'Inter', sans-serif; font-size: 0.85rem; margin: 0.7rem 0.9rem; }
-        .pop-title { font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
-        .pop-meta { color: #6f6890; font-size: 0.78rem; }
-        .pop-link { display: inline-block; margin-top: 0.45rem; color: var(--purple); font-weight: 600; text-decoration: none; }
-        .pop-link:hover { text-decoration: underline; }
+        .pop-title { font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; font-size: 0.92rem; }
+        .pop-table-wrap { max-height: 230px; overflow-y: auto; }
+        table.pop-table { border-collapse: collapse; width: 100%; font-size: 0.76rem; }
+        table.pop-table th, table.pop-table td { text-align: left; vertical-align: top; padding: 3px 0; border-bottom: 1px solid #eee; }
+        table.pop-table th { color: #6f6890; font-weight: 600; white-space: nowrap; padding-right: 12px; text-transform: none; }
+        table.pop-table td { color: #2a1a4f; word-break: break-word; }
+        table.pop-table a { color: #4b2e83; font-weight: 600; }
 
         /* SIDEBAR */
         .side { flex: 0 0 360px; background: linear-gradient(180deg, #4b2e83 0%, #341f63 100%);
@@ -212,6 +216,7 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"></script>
     <script>
     const CAT = "https://raw.githubusercontent.com/gaia-hazlab/catalog/refs/heads/main";
     const TITILER = "https://titiler.xyz/cog/tiles/WebMercatorQuad/{z}/{x}/{y}";
@@ -293,20 +298,29 @@
     };
     let activeBase = bases.light.addTo(map);
 
+    // Measure tool — distances/areas between stations (like the catalog)
+    L.control.measure({ position: "topleft", primaryLengthUnit: "kilometers", secondaryLengthUnit: "miles",
+        primaryAreaUnit: "sqkilometers", activeColor: "#6d5bd0", completedColor: "#4b2e83" }).addTo(map);
+
     // ---- Lazy layer factory ----
     const built = {};   // id → Leaflet layer (built on first toggle)
 
+    const SKIP = new Set(["marker-color","marker-size","marker-symbol"]);
+    const isUrl = v => typeof v === "string" && /^https?:\/\//.test(v);
+    const esc = v => String(v).replace(/[&<>]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;" }[c]));
+    // Full metadata table popup (matches the catalog's behaviour)
     function popupHtml(p) {
-      const name = p.station ? `${p.network||""}.${p.station}` : (p.name || p.stid || p.FIRENAME || p.NEAREST_PLACE || "Feature");
-      const bits = [];
-      if (p.elevation != null) bits.push(`${Math.round(p.elevation)} m`);
-      if (p.YEAR) bits.push(`fire ${p.YEAR}`);
-      if (p.magnitude != null) bits.push(`M ${p.magnitude}`);
-      if (p.DAMAGE_DESC) bits.push(p.DAMAGE_DESC);
-      if (p.areasqkm) bits.push(`${Math.round(p.areasqkm)} km²`);
-      const link = p.station_info ? `<a class="pop-link" href="${p.station_info}" target="_blank" rel="noopener">Data provider ↗</a>`
-                 : p.event_link ? `<a class="pop-link" href="${p.event_link}" target="_blank" rel="noopener">Event details ↗</a>` : "";
-      return `<div class="pop-title">${name}</div>${bits.length?`<div class="pop-meta">${bits.join(" · ")}</div>`:""}${link}`;
+      const name = p.station ? `${p.network||""}.${p.station}`
+                 : (p.name || p.stid || p.FIRENAME || p.NEAREST_PLACE || p.REPORTED_LANDSLIDE_ID || "Feature");
+      let rows = "";
+      Object.keys(p).forEach(k => {
+        if (SKIP.has(k)) return;
+        const v = p[k];
+        if (v == null || v === "") return;
+        const cell = isUrl(v) ? `<a href="${esc(v)}" target="_blank" rel="noopener">${k==="station_info"?"data provider":k==="event_link"?"event details":"link"} ↗</a>` : esc(v);
+        rows += `<tr><th>${esc(k)}</th><td>${cell}</td></tr>`;
+      });
+      return `<div class="pop-title">${esc(name)}</div><div class="pop-table-wrap"><table class="pop-table">${rows}</table></div>`;
     }
 
     function buildLayer(it) {
@@ -325,7 +339,7 @@
           return L.circleMarker(ll, { radius:4, color: it.color, weight:1, fillColor: it.color, fillOpacity:0.7 });
         },
         style: it.style ? () => it.style : undefined,
-        onEachFeature: (f, lyr) => lyr.bindPopup(popupHtml(f.properties || {})),
+        onEachFeature: (f, lyr) => lyr.bindPopup(popupHtml(f.properties || {}), { maxWidth: 340, minWidth: 220 }),
       });
       fetch(it.url).then(r => r.json()).then(d => { group.addData(d); const n=(d.features||[]).length;
         const el=document.querySelector(`[data-id="${it.id}"] small`); if(el) el.textContent=`${n.toLocaleString()} features`; })
