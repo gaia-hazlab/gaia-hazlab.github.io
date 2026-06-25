@@ -306,8 +306,17 @@
     const built = {};   // id → Leaflet layer (built on first toggle)
 
     const SKIP = new Set(["marker-color","marker-size","marker-symbol"]);
-    const isUrl = v => typeof v === "string" && /^https?:\/\//.test(v);
     const esc = v => String(v).replace(/[&<>]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;" }[c]));
+    // Pull a URL out of a plain URL string OR an HTML anchor string (the catalog stores
+    // station_info / event_link as `<a href="…">…</a>`), so it renders as one clean link.
+    const extractUrl = v => {
+      if (typeof v !== "string") return null;
+      const t = v.trim();
+      if (/^https?:\/\//i.test(t)) return t;
+      const m = t.match(/href=["']([^"']+)["']/i);
+      return m ? m[1] : null;
+    };
+    const LINK_LABEL = { station_info: "data provider", event_link: "event details" };
     // Full metadata table popup (matches the catalog's behaviour)
     function popupHtml(p) {
       const name = p.station ? `${p.network||""}.${p.station}`
@@ -317,7 +326,10 @@
         if (SKIP.has(k)) return;
         const v = p[k];
         if (v == null || v === "") return;
-        const cell = isUrl(v) ? `<a href="${esc(v)}" target="_blank" rel="noopener">${k==="station_info"?"data provider":k==="event_link"?"event details":"link"} ↗</a>` : esc(v);
+        const url = extractUrl(v);
+        const cell = url
+          ? `<a href="${esc(url)}" target="_blank" rel="noopener">${LINK_LABEL[k] || "link"} ↗</a>`
+          : esc(String(v).replace(/<[^>]*>/g, ""));   // strip any stray tags from non-URL values
         rows += `<tr><th>${esc(k)}</th><td>${cell}</td></tr>`;
       });
       return `<div class="pop-title">${esc(name)}</div><div class="pop-table-wrap"><table class="pop-table">${rows}</table></div>`;
