@@ -8,10 +8,10 @@ version = "0.1.0"
 [tasks]
 build-book='jupyter book build --html'
 serve-book='jupyter book start'
-build-all='BASE_URL=/book jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/'
+build-all='BASE_URL=/book jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/'
 serve-all='python -m http.server --directory website/ 3000'
 # In GitHub Actions, BASE_URL is set for deployment to github pages
-build-ci='jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/'
+build-ci='jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/'
 linkcheck='jupyter book build --check-links'
 clean='rm -rf _build website/book'
 

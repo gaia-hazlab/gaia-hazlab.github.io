@@ -1,4 +1,0 @@
-- nodes: 51, edges: 90
-- graph nodes not found in any chapter (review): radar (NEXRAD radar)
-- gaia-hazlab repos in docs not represented as a node id (info only): awesome-gaia, catalog, catalog., da-seis-groundfailure, fire-debrisflow-ml, gaia-cli, gaia-data-downloaders, gaia-hazlab.github.io., gaia-translate-qa, landlab-debrisflow, landlab-stac, landslide-digital-twin, precip-stac, prism-stac, solus-stac
-Regenerated gaia-knowledge-graph.html (51 nodes, 90 edges) — last updated 2026-06-24.
