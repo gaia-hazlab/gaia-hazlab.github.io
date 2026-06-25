@@ -7,12 +7,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GAIA HazLab live dashboard — an interactive map of colocated seismic, hydrological, meteorological, and remote-sensing observations across Washington State.">
+    <meta name="description" content="GAIA HazLab live dashboard — an interactive map of colocated seismic, geodetic, meteorological, hydrological, and remote-sensing observations across Washington State.">
     <link rel="icon" type="image/png" href="book/img/img/gaia-hazalab-logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.css" />
 
     <style>
         :root {
@@ -22,10 +26,8 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; }
-        body {
-            font-family: 'Inter', system-ui, sans-serif; color: #fff; background: var(--ink);
-            display: flex; flex-direction: column; -webkit-font-smoothing: antialiased;
-        }
+        body { font-family: 'Inter', system-ui, sans-serif; color: #fff; background: var(--ink);
+            display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
         h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
         a { color: inherit; }
 
@@ -46,52 +48,94 @@
             border-radius: 8px; font-weight: 600; }
         .nav-cta:hover { background: #fff; color: var(--purple) !important; }
 
-        /* DASHBOARD LAYOUT */
+        /* LAYOUT */
         .dash-wrap { flex: 1 1 auto; display: flex; min-height: 0; }
         .map-col { flex: 1 1 auto; position: relative; min-width: 0; background: var(--plum); }
-        .map-col iframe { width: 100%; height: 100%; border: 0; display: block; }
-        .map-loading { position: absolute; inset: 0; display: flex; flex-direction: column;
+        #map { position: absolute; inset: 0; width: 100%; height: 100%; background: #e9e6f2; }
+        .map-loading { position: absolute; inset: 0; z-index: 500; display: flex; flex-direction: column;
             align-items: center; justify-content: center; gap: 1rem; color: rgba(255,255,255,0.65);
-            background: radial-gradient(600px 300px at 50% 30%, rgba(109,91,208,0.20), transparent 60%); }
+            background: radial-gradient(600px 300px at 50% 30%, rgba(109,91,208,0.20), transparent 60%), var(--plum); }
+        .map-loading.hidden { display: none; }
         .map-loading .ring { width: 42px; height: 42px; border: 3px solid rgba(255,255,255,0.15);
             border-top-color: var(--peri-light); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
+        .leaflet-popup-content-wrapper { border-radius: 10px; }
+        .leaflet-popup-content { font-family: 'Inter', sans-serif; font-size: 0.85rem; margin: 0.7rem 0.9rem; }
+        .pop-title { font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; font-size: 0.92rem; }
+        .pop-table-wrap { max-height: 230px; overflow-y: auto; }
+        table.pop-table { border-collapse: collapse; width: 100%; font-size: 0.76rem; }
+        table.pop-table th, table.pop-table td { text-align: left; vertical-align: top; padding: 3px 0; border-bottom: 1px solid #eee; }
+        table.pop-table th { color: #6f6890; font-weight: 600; white-space: nowrap; padding-right: 12px; text-transform: none; }
+        table.pop-table td { color: #2a1a4f; word-break: break-word; }
+        table.pop-table a { color: #4b2e83; font-weight: 600; }
+
         /* SIDEBAR */
-        .side { flex: 0 0 340px; background: linear-gradient(180deg, #4b2e83 0%, #341f63 100%);
-            border-left: 1px solid var(--line); overflow-y: auto; padding: 1.6rem 1.5rem 2.5rem; }
+        .side { flex: 0 0 360px; background: linear-gradient(180deg, #4b2e83 0%, #341f63 100%);
+            border-left: 1px solid var(--line); overflow-y: auto; padding: 1.5rem 1.4rem 2.5rem; }
         .side .kicker { color: var(--peri-light); font-size: 0.74rem; letter-spacing: 2px;
             text-transform: uppercase; font-weight: 600; }
-        .side h1 { font-size: 1.45rem; margin: 0.4rem 0 0.7rem; line-height: 1.15; }
-        .side .intro { color: rgba(255,255,255,0.82); font-size: 0.92rem; font-weight: 300;
-            margin-bottom: 1.6rem; }
-        .side h2 { font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase;
-            color: rgba(255,255,255,0.6); margin: 1.6rem 0 0.8rem; font-family: 'Inter'; font-weight: 600; }
+        .side h1 { font-size: 1.4rem; margin: 0.4rem 0 0.6rem; line-height: 1.15; }
+        .side .intro { color: rgba(255,255,255,0.82); font-size: 0.9rem; font-weight: 300; margin-bottom: 1.2rem; }
+        .side h2 { font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase;
+            color: rgba(255,255,255,0.6); margin: 1.4rem 0 0.7rem; font-family: 'Inter'; font-weight: 600; }
 
-        .legend { display: flex; flex-direction: column; gap: 0.65rem; }
-        .legend .row { display: flex; align-items: center; gap: 0.7rem; font-size: 0.9rem;
-            color: rgba(255,255,255,0.88); }
-        .legend .swatch { width: 26px; height: 26px; border-radius: 8px; flex: 0 0 auto;
-            display: flex; align-items: center; justify-content: center; }
-        .legend .swatch svg { width: 16px; height: 16px; stroke: #fff; }
-        .sw-seismic { background: rgba(109,91,208,0.30); border: 1px solid rgba(109,91,208,0.65); }
-        .sw-hydro { background: rgba(95,160,255,0.24); border: 1px solid rgba(95,160,255,0.55); }
-        .sw-met { background: rgba(183,165,122,0.26); border: 1px solid rgba(183,165,122,0.6); }
-        .sw-remote { background: rgba(95,163,127,0.24); border: 1px solid rgba(95,163,127,0.55); }
+        /* Accordion groups */
+        .group { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 0.6rem;
+            background: rgba(255,255,255,0.04); overflow: hidden; }
+        .group > .ghead { display: flex; align-items: center; gap: 0.6rem; width: 100%; cursor: pointer;
+            background: transparent; border: 0; color: #fff; padding: 0.75rem 0.85rem; font-size: 0.92rem;
+            font-weight: 600; font-family: 'Inter'; text-align: left; }
+        .group > .ghead .gicon { width: 26px; height: 26px; border-radius: 7px; flex: 0 0 auto; display: flex;
+            align-items: center; justify-content: center; background: rgba(195,184,240,0.16); }
+        .group > .ghead .gicon svg { width: 15px; height: 15px; stroke: var(--peri-light); }
+        .group > .ghead .gtitle { flex: 1 1 auto; }
+        .group > .ghead .chev { transition: transform .2s; color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+        .group.open > .ghead .chev { transform: rotate(90deg); }
+        .group .gbody { display: none; padding: 0.2rem 0.6rem 0.7rem; }
+        .group.open .gbody { display: block; }
+        .subhead { font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase;
+            color: rgba(255,255,255,0.42); margin: 0.6rem 0.3rem 0.35rem; font-weight: 600; }
+
+        .item { display: flex; align-items: center; gap: 0.6rem; width: 100%; cursor: pointer;
+            background: transparent; border: 0; border-radius: 9px; padding: 0.4rem 0.45rem; color: rgba(255,255,255,0.9);
+            font-size: 0.85rem; text-align: left; font-family: 'Inter'; transition: background .15s; }
+        .item:hover { background: rgba(195,184,240,0.10); }
+        .item .dot { width: 12px; height: 12px; border-radius: 50%; flex: 0 0 auto; border: 1px solid rgba(255,255,255,0.3); }
+        .item.ras .dot { border-radius: 3px; }
+        .item .ilabel { flex: 1 1 auto; line-height: 1.15; }
+        .item .ilabel small { display: block; color: rgba(255,255,255,0.4); font-size: 0.7rem; }
+        .item .raw { color: var(--peri-light); font-size: 0.7rem; text-decoration: none; opacity: 0.8; white-space: nowrap; }
+        .item .raw:hover { text-decoration: underline; opacity: 1; }
+        .item .chk { width: 16px; height: 16px; flex: 0 0 auto; border-radius: 4px; border: 1.5px solid rgba(255,255,255,0.32);
+            position: relative; transition: all .15s; }
+        .item.on .chk { background: var(--peri-light); border-color: var(--peri-light); }
+        .item.on .chk::after { content: ""; position: absolute; left: 4.5px; top: 1px; width: 4px; height: 8px;
+            border: solid var(--ink); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+        .item.disabled { opacity: 0.4; cursor: default; }
+        .item.disabled:hover { background: transparent; }
+
+        .basemaps { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .basemaps button { flex: 1 1 30%; background: rgba(255,255,255,0.05); border: 1px solid var(--line);
+            color: rgba(255,255,255,0.8); border-radius: 8px; padding: 0.4rem 0.4rem; font-size: 0.74rem;
+            cursor: pointer; font-family: 'Inter'; transition: all .15s; }
+        .basemaps button:hover { background: rgba(195,184,240,0.12); }
+        .basemaps button.on { background: var(--peri-light); color: var(--ink); border-color: var(--peri-light); font-weight: 600; }
 
         .tip { background: rgba(255,255,255,0.07); border: 1px solid var(--line); border-radius: 12px;
-            padding: 0.9rem 1rem; font-size: 0.86rem; color: rgba(255,255,255,0.82); margin-top: 0.6rem; }
+            padding: 0.85rem 1rem; font-size: 0.84rem; color: rgba(255,255,255,0.82); margin-top: 1rem; }
         .tip strong { color: var(--peri-light); }
+        .proto { margin-top: 0.7rem; font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+        .proto a { color: var(--peri-light); }
 
         .links a { display: flex; align-items: center; justify-content: space-between;
-            padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.06); border: 1px solid var(--line);
-            border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.9); font-size: 0.88rem;
-            margin-bottom: 0.55rem; transition: background .2s, border-color .2s; }
+            padding: 0.65rem 0.85rem; background: rgba(255,255,255,0.06); border: 1px solid var(--line);
+            border-radius: 10px; text-decoration: none; color: rgba(255,255,255,0.9); font-size: 0.85rem;
+            margin-bottom: 0.5rem; transition: background .2s, border-color .2s; }
         .links a:hover { background: rgba(195,184,240,0.14); border-color: rgba(195,184,240,0.5); }
         .links a span.arr { color: var(--peri-light); }
-
         .side .btn-full { display: block; text-align: center; background: #fff; color: var(--purple);
-            padding: 0.7rem; border-radius: 10px; font-weight: 600; text-decoration: none; margin-top: 1.4rem;
+            padding: 0.7rem; border-radius: 10px; font-weight: 600; text-decoration: none; margin-top: 1.2rem;
             font-size: 0.9rem; transition: background .2s, color .2s; }
         .side .btn-full:hover { background: var(--peri-light); color: var(--ink); }
 
@@ -105,7 +149,6 @@
 </head>
 
 <body>
-    <!-- NAV -->
     <header class="nav">
         <div class="nav-inner">
             <a href="index.html" class="logo">
@@ -129,70 +172,250 @@
         </div>
     </header>
 
-    <!-- DASHBOARD -->
     <div class="dash-wrap">
         <div class="map-col">
-            <div class="map-loading" id="loading">
-                <div class="ring"></div>
-                <div>Loading the GAIA CRESST catalog…</div>
-            </div>
-            <iframe src="https://gaia-hazlab.github.io/catalog/"
-                    title="GAIA CRESST Catalog"
-                    loading="lazy"
-                    onload="document.getElementById('loading').style.display='none'"
-                    allowfullscreen></iframe>
+            <div id="map"></div>
+            <div class="map-loading" id="loading"><div class="ring"></div><div>Loading the GAIA CRESST catalog…</div></div>
         </div>
 
         <aside class="side">
             <div class="kicker">Live dashboard</div>
             <h1>The GAIA sensing map</h1>
-            <p class="intro">
-                Every colocated sensor and event across our Washington State regions of interest,
-                on one interactive map. Static GIS layers, station metadata, and remote-sensing
-                observations sit side by side — so researchers across disciplines can see what's
-                measuring their region, from different physical perspectives.
-            </p>
+            <p class="intro">Every colocated sensor, image, and event across our Washington State regions
+                of interest. Expand a group and toggle layers — the menu lives right here in the sidebar.</p>
 
-            <h2>Observation layers</h2>
-            <div class="legend">
-                <div class="row">
-                    <span class="swatch sw-seismic">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-6 4 12 3-9 2 3h6"/></svg>
-                    </span> Seismic &amp; DAS stations
-                </div>
-                <div class="row">
-                    <span class="swatch sw-hydro">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 11-12 0c0-4 6-11 6-11z"/></svg>
-                    </span> Hydrological gauges
-                </div>
-                <div class="row">
-                    <span class="swatch sw-met">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
-                    </span> Meteorological stations
-                </div>
-                <div class="row">
-                    <span class="swatch sw-remote">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 019-9M3 16a4 4 0 014-4"/><circle cx="5" cy="18" r="1.4"/><path d="M14 4l6 6-9 9-6-6z"/></svg>
-                    </span> Remote-sensing layers
-                </div>
+            <h2>Layers</h2>
+            <div id="menu"></div>
+
+            <h2>Basemap</h2>
+            <div class="basemaps" id="basemaps">
+                <button data-base="light" class="on">CartoDB</button>
+                <button data-base="imagery">Imagery</button>
+                <button data-base="topo">Topo</button>
+                <button data-base="relief">Relief</button>
+                <button data-base="gray">Gray</button>
             </div>
 
-            <div class="tip">
-                <strong>Tip:</strong> click any station on the map to jump to its data-provider
-                landing page, where you can access the underlying time series.
-            </div>
+            <div class="tip"><strong>Tip:</strong> click any station or event on the map to jump to its
+                data-provider landing page. Imagery layers link to the <strong>raw image</strong> on the right.</div>
+            <p class="proto">Prototype — inline Leaflet map driven by this sidebar, with every layer from the
+                <a href="https://github.com/gaia-hazlab/catalog" target="_blank" rel="noopener">catalog</a> (plus geodetic, coming soon).</p>
 
             <h2>Data providers</h2>
             <div class="links">
                 <a href="https://ds.iris.edu/mda/UW/DREAM" target="_blank" rel="noopener">IRIS / EarthScope — UW DREAM <span class="arr">↗</span></a>
-                <a href="https://explore.synopticdata.com/STRW1/metadata" target="_blank" rel="noopener">Synoptic — STRW1 (Stehekin) <span class="arr">↗</span></a>
-                <a href="https://synopticdata.com/open-access-program/" target="_blank" rel="noopener">Synoptic Open Access (API key) <span class="arr">↗</span></a>
+                <a href="https://synopticdata.com/open-access-program/" target="_blank" rel="noopener">Synoptic Open Access <span class="arr">↗</span></a>
+                <a href="https://nwcc-apps.sc.egov.usda.gov/imap/" target="_blank" rel="noopener">USDA NRCS — SNOTEL <span class="arr">↗</span></a>
+                <a href="https://www.dnr.wa.gov/" target="_blank" rel="noopener">WA DNR — wildfires & landslides <span class="arr">↗</span></a>
                 <a href="https://github.com/gaia-hazlab/catalog" target="_blank" rel="noopener">Catalog source code <span class="arr">↗</span></a>
             </div>
 
             <a href="book/datahub/" class="btn-full">Read the DataHub docs →</a>
         </aside>
     </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"></script>
+    <script>
+    const CAT = "https://raw.githubusercontent.com/gaia-hazlab/catalog/refs/heads/main";
+    const TITILER = "https://titiler.xyz/cog/tiles/WebMercatorQuad/{z}/{x}/{y}";
+    const cog = (url, params) => `${TITILER}?url=${encodeURIComponent(url)}${params ? "&" + params : ""}`;
+
+    // ---- Layer registry: groups → subnetworks → items (everything from the catalog, plus more) ----
+    const MENU = [
+      { id: "ground", title: "Ground-based sensors", icon:
+        '<path d="M3 20h18M6 20V8m6 12V4m6 16v-7"/>', subs: [
+        { title: "Seismic", items: [
+          { id:"seismometers", label:"Seismometers", color:"#FF00BB", on:true, type:"points", url:CAT+"/seismic-stations.geojson" },
+          { id:"infrasound", label:"Infrasound", color:"#1A982F", on:true, type:"points", url:CAT+"/infrasound-stations.geojson" },
+        ]},
+        { title: "Geodetic", items: [
+          { id:"gnss", label:"GNSS / GPS", sub:"layer coming soon", disabled:true },
+        ]},
+        { title: "Meteorology", items: [
+          { id:"precip", label:"Precipitation", color:"#1B04E9", on:true, type:"points", url:CAT+"/precip-stations.geojson" },
+          { id:"snotel", label:"SNOTEL (snow)", color:"#04E9E9", on:true, type:"points", url:CAT+"/snotel_stations.geojson" },
+        ]},
+        { title: "Hydrology", items: [
+          { id:"streamflow", label:"Streamflow gauges", color:"#E9AC04", on:true, type:"points", url:CAT+"/streamflow-stations.geojson" },
+        ]},
+      ]},
+      { id: "imagery", title: "Spatial imagery", icon:
+        '<path d="M3 6h18v12H3zM3 14l5-4 4 3 4-4 5 4"/><circle cx="8" cy="9" r="1.3"/>', subs: [
+        { title: "Atmospheric", items: [
+          { id:"stageiv", label:"Stage IV Precip (Dec 2025)", ras:true, type:"cog",
+            url:cog("https://gaia-hazlab-map-data.s3.us-west-2.amazonaws.com/rainfall_4km.tif","rescale=0,700&nodata=nan&colormap_name=viridis"),
+            opacity:0.7, raw:"https://gaia-hazlab-map-data.s3.us-west-2.amazonaws.com/rainfall_4km.tif", attr:"NOAA Stage IV" },
+          { id:"erm", label:"Max ERM (Dec 2025)", ras:true, type:"cog",
+            url:cog("https://gaia-hazlab-map-data.s3.us-west-2.amazonaws.com/max_erm_4km.tif","rescale=0,3&nodata=nan&colormap_name=plasma"),
+            opacity:0.7, raw:"https://gaia-hazlab-map-data.s3.us-west-2.amazonaws.com/max_erm_4km.tif", attr:"UW Atmos. Sci." },
+        ]},
+        { title: "Geological", items: [
+          { id:"solus", label:"SOLUS100 soil depth", ras:true, type:"cog",
+            url:cog("https://storage.googleapis.com/solus100pub/anylithicdpt_cm_p.tif","rescale=0,200&colormap_name=gist_earth"),
+            opacity:0.72, maxNativeZoom:11, raw:"https://storage.googleapis.com/solus100pub/anylithicdpt_cm_p.tif", attr:"USDA SOLUS100" },
+          { id:"vs30", label:"USGS Vs30 mosaic", ras:true, type:"xyz",
+            url:"https://earthquake.usgs.gov/arcgis/rest/services/eq/vs30_mosaic/MapServer/tile/{z}/{y}/{x}",
+            opacity:0.7, raw:"https://earthquake.usgs.gov/arcgis/rest/services/eq/vs30_mosaic/MapServer", attr:"USGS Vs30" },
+          { id:"aster", label:"ASTER GDEM color index", ras:true, type:"wms",
+            base:"https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi", wms:{ layers:"ASTER_GDEM_Color_Index" },
+            raw:"https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi?SERVICE=WMS&REQUEST=GetCapabilities", attr:"NASA GIBS" },
+          { id:"opera", label:"OPERA disturbance 2025", ras:true, type:"wms",
+            base:"https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi", wms:{ layers:"OPERA_L3_DIST-ANN-HLS_Color_Index", TIME:"2025-01-01" },
+            raw:"https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi?SERVICE=WMS&REQUEST=GetCapabilities", attr:"NASA GIBS / OPERA" },
+        ]},
+      ]},
+      { id: "gis", title: "Hazards & GIS", icon:
+        '<path d="M9 20l-5-2V4l5 2 6-2 5 2v14l-5-2-6 2zM9 6v14M15 4v14"/>', subs: [
+        { title: "Events & boundaries", items: [
+          { id:"eq", label:"2025 earthquake catalog", color:"#d6604d", type:"events", url:CAT+"/pnw_eq_catalog_2025.geojson" },
+          { id:"wildfire", label:"WA DNR wildfires (≥2023)", color:"#e2562a", type:"arcgis",
+            url:"https://gis.dnr.wa.gov/site3/rest/services/Public_Wildfire/WADNR_PUBLIC_WD_WildFire_Data/MapServer/0/query?where="+encodeURIComponent("YEAR >= 2023 AND ACRES > 247")+"&outFields=*&f=geojson&maxAllowableOffset=0.001",
+            style:{ color:"#e2562a", weight:2, fill:false }, tip:"FIRENAME" },
+          { id:"landslides", label:"WA DNR landslides WY2025", color:"#c98a2b", type:"arcgis",
+            url:"https://services.arcgis.com/4x406oNViizbGo13/arcgis/rest/services/Recently_Reported_Landslides_in_Washington_State/FeatureServer/0/query?where="+encodeURIComponent("WATER_YEAR = '2025-2026'")+"&outFields=*&f=geojson",
+            point:true, tip:"DAMAGE_DESC" },
+          { id:"huc8", label:"Watershed sub-basins (HUC8)", color:"#5fa0ff", type:"arcgis",
+            url:"https://hydro.nationalmap.gov/arcgis/rest/services/wbd/FeatureServer/4/query?where=1%3D1&geometry=-124%2C45%2C-116%2C49&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=name%2Chuc8%2Careasqkm&outSR=4326&f=geojson&maxAllowableOffset=0.01",
+            style:{ color:"#5fa0ff", weight:1.5, fillOpacity:0.08 }, tip:"name" },
+          { id:"roads", label:"Google roads & labels", ras:true, type:"xyz",
+            url:"https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}", attr:"Google" },
+        ]},
+      ]},
+    ];
+
+    // ---- Map + basemaps ----
+    const map = L.map("map", { zoomControl: true, minZoom: 6 }).setView([47.4, -120.5], 7);
+    map.setMaxBounds([[44.5, -126.5],[50.5, -114.5]]);
+    const bases = {
+      light: L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+        { subdomains:"abcd", maxZoom:19, attribution:"© OpenStreetMap, © CARTO" }),
+      imagery: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom:19, attribution:"Esri" }),
+      topo: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", { maxZoom:19, attribution:"Esri" }),
+      relief: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", { maxZoom:13, attribution:"Esri" }),
+      gray: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom:16, attribution:"Esri" }),
+    };
+    let activeBase = bases.light.addTo(map);
+
+    // Measure tool — distances/areas between stations (like the catalog)
+    L.control.measure({ position: "topleft", primaryLengthUnit: "kilometers", secondaryLengthUnit: "miles",
+        primaryAreaUnit: "sqkilometers", activeColor: "#6d5bd0", completedColor: "#4b2e83" }).addTo(map);
+
+    // ---- Lazy layer factory ----
+    const built = {};   // id → Leaflet layer (built on first toggle)
+
+    const SKIP = new Set(["marker-color","marker-size","marker-symbol"]);
+    const esc = v => String(v).replace(/[&<>]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;" }[c]));
+    // Pull a URL out of a plain URL string OR an HTML anchor string (the catalog stores
+    // station_info / event_link as `<a href="…">…</a>`), so it renders as one clean link.
+    const extractUrl = v => {
+      if (typeof v !== "string") return null;
+      const t = v.trim();
+      if (/^https?:\/\//i.test(t)) return t;
+      const m = t.match(/href=["']([^"']+)["']/i);
+      return m ? m[1] : null;
+    };
+    const LINK_LABEL = { station_info: "data provider", event_link: "event details" };
+    // Full metadata table popup (matches the catalog's behaviour)
+    function popupHtml(p) {
+      const name = p.station ? `${p.network||""}.${p.station}`
+                 : (p.name || p.stid || p.FIRENAME || p.NEAREST_PLACE || p.REPORTED_LANDSLIDE_ID || "Feature");
+      let rows = "";
+      Object.keys(p).forEach(k => {
+        if (SKIP.has(k)) return;
+        const v = p[k];
+        if (v == null || v === "") return;
+        const url = extractUrl(v);
+        const cell = url
+          ? `<a href="${esc(url)}" target="_blank" rel="noopener">${LINK_LABEL[k] || "link"} ↗</a>`
+          : esc(String(v).replace(/<[^>]*>/g, ""));   // strip any stray tags from non-URL values
+        rows += `<tr><th>${esc(k)}</th><td>${cell}</td></tr>`;
+      });
+      return `<div class="pop-title">${esc(name)}</div><div class="pop-table-wrap"><table class="pop-table">${rows}</table></div>`;
+    }
+
+    function buildLayer(it) {
+      if (it.type === "cog" || it.type === "xyz")
+        return L.tileLayer(it.url, { opacity: it.opacity ?? 1, maxNativeZoom: it.maxNativeZoom ?? 18, maxZoom: 19, attribution: it.attr || "" });
+      if (it.type === "wms")
+        return L.tileLayer.wms(it.base, Object.assign({ format:"image/png", transparent:true, opacity: it.opacity ?? 0.8, attribution: it.attr || "" }, it.wms));
+      // vector types fetch GeoJSON on first use
+      const group = L.geoJSON(null, {
+        pointToLayer: (f, ll) => {
+          if (it.type === "events") {
+            const m = (f.properties.magnitude ?? 1);
+            return L.circleMarker(ll, { radius: Math.max(3, Math.min(18, m*3)), color:"#333", weight:0.5, fillColor: it.color, fillOpacity:0.8 });
+          }
+          if (it.point) return L.circleMarker(ll, { radius:5, color:"#222", weight:0.6, fillColor: it.color, fillOpacity:0.85 });
+          return L.circleMarker(ll, { radius:4, color: it.color, weight:1, fillColor: it.color, fillOpacity:0.7 });
+        },
+        style: it.style ? () => it.style : undefined,
+        onEachFeature: (f, lyr) => lyr.bindPopup(popupHtml(f.properties || {}), { maxWidth: 340, minWidth: 220 }),
+      });
+      fetch(it.url).then(r => r.json()).then(d => { group.addData(d); const n=(d.features||[]).length;
+        const el=document.querySelector(`[data-id="${it.id}"] small`); if(el) el.textContent=`${n.toLocaleString()} features`; })
+        .catch(() => { const el=document.querySelector(`[data-id="${it.id}"] small`); if(el) el.textContent="failed to load"; });
+      return group;
+    }
+
+    function toggle(it, on) {
+      if (it.disabled) return;
+      if (!built[it.id]) built[it.id] = buildLayer(it);
+      if (on) built[it.id].addTo(map); else map.removeLayer(built[it.id]);
+    }
+
+    // ---- Render the sidebar menu from the registry ----
+    const menuEl = document.getElementById("menu");
+    MENU.forEach((g, gi) => {
+      const group = document.createElement("div");
+      group.className = "group" + (gi === 0 ? " open" : "");
+      let html = `<button class="ghead"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${g.icon}</svg></span><span class="gtitle">${g.title}</span><span class="chev">▶</span></button><div class="gbody">`;
+      g.subs.forEach(s => {
+        html += `<div class="subhead">${s.title}</div>`;
+        s.items.forEach(it => {
+          const raw = it.raw ? `<a class="raw" href="${it.raw}" target="_blank" rel="noopener" title="raw image / source">raw ↗</a>` : "";
+          const sub = it.sub ? `<small>${it.sub}</small>` : `<small></small>`;
+          const dot = `<span class="dot" style="background:${it.color || 'rgba(195,184,240,0.5)'}"></span>`;
+          html += `<button class="item${it.ras?' ras':''}${it.on?' on':''}${it.disabled?' disabled':''}" data-id="${it.id}">
+            ${dot}<span class="ilabel">${it.label}${sub}</span>${raw}<span class="chk"></span></button>`;
+        });
+      });
+      html += `</div>`;
+      group.innerHTML = html;
+      menuEl.appendChild(group);
+    });
+
+    // index items by id for handlers
+    const ITEMS = {};
+    MENU.forEach(g => g.subs.forEach(s => s.items.forEach(it => ITEMS[it.id] = it)));
+
+    // Accordion + item toggles
+    menuEl.addEventListener("click", e => {
+      const head = e.target.closest(".ghead");
+      if (head) { head.parentElement.classList.toggle("open"); return; }
+      const row = e.target.closest(".item");
+      if (!row || e.target.closest(".raw")) return;          // let raw-link clicks pass through
+      const it = ITEMS[row.dataset.id];
+      if (!it || it.disabled) return;
+      const on = row.classList.toggle("on");
+      toggle(it, on);
+    });
+
+    // Honor default-on items
+    Object.values(ITEMS).forEach(it => { if (it.on) toggle(it, true); });
+
+    // Basemap switch
+    document.getElementById("basemaps").addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      document.querySelectorAll("#basemaps button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on"); map.removeLayer(activeBase); activeBase = bases[b.dataset.base].addTo(map);
+      activeBase.bringToBack();
+    });
+
+    bases.light.on("load", () => document.getElementById("loading").classList.add("hidden"));
+    setTimeout(() => document.getElementById("loading").classList.add("hidden"), 2500);
+    </script>
 </body>
 
 </html>
