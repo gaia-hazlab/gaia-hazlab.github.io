@@ -160,23 +160,27 @@ before mixing them into a model.
 
 The digital twins exist to produce a **fixed, named set of outputs** — the *canonical output
 vocabulary* below. Everything else in this section is an intermediate or diagnostic that feeds one
-of them. Two outputs carry caveats flagged inline: a name **collision** and an input/output
-**dual role**.
+of them. The **canonical name is the Landlab `field__name`** (first column); the PascalCase label
+is a display alias. Two outputs still carry an input/output **dual-role** caveat (the earlier name
+collision is resolved by the convention note below).
 
-| Canonical output | Field name / symbol | Producing model | Units · dims | Notes |
+| Canonical field name (`subject__quantity`) | Display label · symbol | Producing model | Units · dims | Notes |
 |---|---|---|---|---|
-| **LandslideProbability** | `landslide__probability_of_failure` ($P_f$) | Landlab `LandslideProbability` component | 0–1 · `[n]` or `[y,x]` | ⚠️ **name collision** — `LandslideProbability` is also the *component* name; keep the output field as `landslide__probability_of_failure` |
-| **LiquefactionPotentialIndex** | LPI (with LSN) | manifestation model [@iwasaki1978; @vanballegooy2014] | index | surface-failure severity |
-| **GroundFailure** | $P(\text{liq})$ + areal extent | GLM surrogate [@sanger2025jgge] | 0–1 / extent · `[y,x]` | probability & extent of liquefaction manifestation |
-| **SoilMoisture** | `soil_moisture__saturation_fraction` | `SoilMoisture` + PET | m³ m⁻³ / fraction · `[time,n]` | also the SMAP calibration comparison |
-| **GroundWaterLevel** | water-table depth $d_{wt}$ | Pillar 1 reanalysis / groundwater | m · `[time,…]` | ⚠️ **dual role** — an *output* of the reanalysis but an *input* to the hazard models |
-| **SoilRigidity** | $V_s$, $V_{s1}$; shear modulus $\mu$ | $V_s$ profiles → derived; seismic | m s⁻¹ or Pa | ⚠️ **dual role** — static $V_s$ is an *input*, but time-varying $V_s(t)$ / $\kappa_0(t)$ is a reanalysis *output* (§7) |
+| `landslide__probability_of_failure` | LandslideProbability · $P_f$ | Landlab `LandslideProbability` component | 0–1 · `[n]` or `[y,x]` | $\Pr(FS\le1)$ — the field the component writes (distinct from the component name) |
+| `liquefaction__potential_index` † (+ `liquefaction__severity_number` † LSN) | LiquefactionPotentialIndex · LPI/LSN | manifestation model [@iwasaki1978; @vanballegooy2014] | index | surface-failure severity |
+| `liquefaction__probability` † (+ `liquefaction__areal_extent` †) | GroundFailure · $P(\text{liq})$ | GLM surrogate [@sanger2025jgge] | 0–1 / extent · `[y,x]` | probability & extent of liquefaction manifestation |
+| `soil_moisture__saturation_fraction` | SoilMoisture | `SoilMoisture` + PET | m³ m⁻³ / fraction · `[time,n]` | also the SMAP calibration comparison |
+| `water_table__depth` † | GroundWaterLevel · $d_{wt}$ | Pillar 1 reanalysis / groundwater | m · `[time,…]` | ⚠️ **dual role** — an *output* of the reanalysis but an *input* to the hazard models |
+| `soil__shear_wave_velocity` † (+ `soil__shear_modulus` † $\mu$) | SoilRigidity · $V_s$, $V_{s1}$ | $V_s$ profiles → derived; seismic | m s⁻¹ or Pa | ⚠️ **dual role** — static $V_s$ is an *input*, but time-varying $V_s(t)$ / $\kappa_0(t)$ is a reanalysis *output* (§7) |
 
-**Naming convention (open).** The PascalCase names are the product-facing vocabulary; model code
-still emits Landlab `field__name` fields. Pick one mapping and record it here — in particular
-resolve the `LandslideProbability` component-vs-output collision. Until then both names appear and
-this table is the crosswalk. Uncertainty for each output is documented on its
-[model page](modelhub) (Monte-Carlo $P_f$, GLM surrogate intervals, etc.).
+**Naming convention (decided).** The **`field__name` vocabulary is canonical** — every output
+ships under a Landlab-style `subject__quantity` name in code, STAC, and Zarr; PascalCase names are
+**display aliases only** (docs, dashboards, product copy), never keys. This resolves the earlier
+collision: the model *component* keeps the class name `LandslideProbability`, while the *output
+field* it writes is `landslide__probability_of_failure` — a component and its field are never the
+same token. Names marked **†** are **proposed** (not yet emitted in code) and should be ratified
+before first use; the unmarked fields already exist. Uncertainty for each output is documented on
+its [model page](modelhub) (Monte-Carlo $P_f$, GLM surrogate intervals, etc.).
 
 Detailed producing-model breakdown (intermediates and diagnostics included):
 
