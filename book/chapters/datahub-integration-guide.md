@@ -43,12 +43,13 @@ properties so it travels with the data:
 |---|---|---|
 | **Source** | `providers`, custom namespace (e.g. `prism:`) | USDA SOLUS100; PRISM Climate Group |
 | **Measurement / sensor** | asset `description`, `eo`/instrument fields | "L-band radiometer brightness temperature"; "100 m ML soil estimate" |
-| **Resolution** | `proj:shape`, `proj:transform`, `gsd` | 100 m; 0.1° (~9 km) |
+| **Resolution** — native support **and** posting | `proj:shape`, `proj:transform`, `gsd` (posting) + a native-support note where it differs | posting 100 m (native ≈ SSURGO map-unit scale); posting 9 km (native ~36 km radiometer) |
 | **Uncertainty** | per-asset stats / extra fields (low/high estimate, p5/p95) | SOLUS `l`/`h` estimate bands; POLARIS p5/p95 |
 
 This is the rule that prevents the **footprint-leakage** problem described in
-[Pillar 1 §3.3](pillar-1-soil-reanalysis): a downscaled 9 km pixel must keep its 9 km support
-recorded, so downstream models can weight it honestly.
+[Pillar 1 §3.3](pillar-1-soil-reanalysis): a product **posted** at 9 km must keep its true (coarser)
+**native support** recorded — distinct from the grid it is delivered on — so downstream models can
+weight it honestly.
 
 ## 3. Migration recipe for an ad-hoc data-prep repo
 
