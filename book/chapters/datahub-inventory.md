@@ -3,7 +3,7 @@
 :::{note}
 **The single, cross-hazard data inventory for the GAIA digital twins.** This page catalogs
 every dataset that flows through any hazard model — from **raw external products**, through
-**deterministically derived layers**, to **model outputs** — with sources, access/sensitivity,
+**deterministically derived layers**, to **model outputs** — with sources, origin,
 spatial/temporal resolution, and limitations. Each layer is tagged with the **hazard(s) it
 serves**, so the inventory is shared and de-duplicated rather than rebuilt per hazard.
 
@@ -21,17 +21,32 @@ debris flows · 🏚️ liquefaction & ground failure · 🌊 floods.
 Data are grouped by **provenance tier**, because that determines how they should be trusted,
 stored, and calibrated:
 
-1. **Raw / observed inputs** — imported from an external archive; treated as observations or
-   prepared inputs, *not* model outputs. Calibration holds these fixed.
-2. **Derived variables** — computed deterministically from raw inputs and documented rules.
-   Not observed, but fully reproducible given the input stack and config.
+1. **Raw / observed inputs** — imported from an external archive and treated as a fixed input,
+   *not* a GAIA model output. Calibration holds these fixed. Note that "raw to us" ≠ "a direct
+   observation": some ingested products (SOLUS, POLARIS, proxy $V_{s30}$) are themselves
+   **statistically / ML-derived externally** (marked 📈 in §1) and carry prediction uncertainty
+   that must be propagated, not silently dropped.
+2. **Derived variables** — computed from raw inputs, either **deterministically** (a documented
+   equation or rule) or **statistically** (a fitted / ML relationship that carries its own
+   uncertainty). Not observed, but reproducible given the input stack, rules, and config.
 3. **Modelled variables & outputs** — produced by the model components during a run. These
    carry model assumptions and uncertainty.
 
-**Access / sensitivity** flags keys, licenses, or withheld locations; **Native resolution** and
-**Cadence** record the support a value actually has (so a downscaled 9 km pixel is never
-mistaken for a 10 m one — the [footprint-leakage](pillar-1-soil-reanalysis) problem);
-**Limitations** captures the caveat a downstream modeler needs before using the layer.
+Every value the inventory serves is therefore one of three things, and each entry says which: a
+**direct observation**, a **deterministic derivation** (rule/equation recorded), or a
+**statistical / ML estimate** (method + uncertainty recorded). Orthogonally, a handful of numeric
+parameters are **🎛️ calibration levers** — free knobs tuned to targets (§6), *neither* observed
+*nor* fixed by a physical rule. Being a calibration number is legitimate; it just has to be
+**visible** and never mistaken for data. These are marked 🎛️ wherever they appear below.
+
+**Origin** classifies the archive by *source class* — **Federal** agency, **State**, **Academic**,
+**Private** sector, **Intl**, or GAIA-**Modeled** — the axis that matters for trust and archival
+policy (not merely public-vs-private). **Native support** records the true footprint a value
+represents, while **Posting resolution** records the grid it is *delivered* on; keeping the two
+apart is what stops a downscaled 9 km pixel from being mistaken for a native 10 m one (the
+[footprint-leakage](pillar-1-soil-reanalysis) problem). **Temporal resolution** is how often the
+value updates. **Limitations** captures the caveat a downstream modeler needs before using the
+layer — **including access keys, licenses, and withheld locations** (summarized in §7).
 
 The **primary targets** the pipelines exist to produce are
 `landslide__probability_of_failure` ($P_f$ ⛰️ 🔥) and the **probability / extent of
@@ -42,30 +57,35 @@ liquefaction** $P(\text{liq})$ with its manifestation severity (LPI / LSN 🏚�
 Fetched from external archives and prepared onto the working grid — the fixed foundation of the
 models and of calibration.
 
-| Layer / product | Serves | Source · archive (API / website) | Access / sensitivity | Native spatial res · CRS | Cadence | Units | Key limitations |
-|---|---|---|---|---|---|---|---|
-| **DEM** → `topographic__elevation`, slope, drainage_area, topographic__specific_contributing_area | ⛰️ 🔥 🏚️ 🌊 | USGS 3DEP via OpenTopography ([opentopography.org](https://opentopography.org/), [USGS 3DEP](https://www.usgs.gov/3d-elevation-program)) | Public / open; OpenTopography API needs a **free key** | ~10 m (1/3 arc-sec); lidar 1 m where available | Static (re-flown irregularly) | m | Vertical accuracy & vintage vary; voids; `.asc` stacks **do not embed CRS** |
-| **Soil texture & properties** → `clay/sand/silt__total`, `pH`, `dry__bulk_density`, CEC, soil depth | ⛰️ 🔥 🏚️ | USDA SOLUS100 (100 m); public GCS `solus100pub`; STAC [`solus-stac`](https://github.com/gaia-hazlab/solus-stac) | Public / open | 100 m · EPSG:5070; depths 0,5,15,30,60,100,150 cm | Static (ML estimate) | %, pH, g cm⁻³, cmol(+)/kg, cm | ML-predicted with **uncertainty bands (l/h)**; CONUS-only; vocabulary differs from POLARIS |
-| **Soil hydraulic / strength priors** (alt.) | ⛰️ 🏚️ | POLARIS 30 m ([hydrology.cee.duke.edu/POLARIS](http://hydrology.cee.duke.edu/POLARIS/)); used by [`landslide-digital-twin`](https://github.com/gaia-hazlab/landslide-digital-twin) | Public / open | 30 m; same depth scheme; p5/p50/p95 | Static (statistical) | varies | Downscaled SSURGO; **different vocabulary, depths, stats & units from SOLUS** — conversion table required |
-| **Shear-wave velocity** → $V_{s30}$, $V_s(z)$ | 🏚️ ⛰️ | parametric CONUS $V_s$ [@sanger2025vs]; USGS National Crustal Model; slope/geology proxy $V_{s30}$ | Public / open | parametric; proxy ~250–1000 m | Static (→ dynamic via seismic) | m s⁻¹ | Proxy $V_{s30}$ has large scatter; **rigidity is high-influence** for liquefaction |
-| **Surficial geology / soil type** | 🏚️ ⛰️ | state geologic surveys; USGS | Public / open | 1:24k–1:100k | Static | categorical | Map-scale generalization; susceptibility class boundaries uncertain |
-| **Landcover** → `vegetation__plant_functional_type` | ⛰️ 🔥 | USGS/MRLC NLCD ([mrlc.gov](https://www.mrlc.gov/)) | Public / open | 30 m | ~2–3 yr epochs | categorical | Class generalization; epoch lag; needs class→PFT lookup |
-| **Burn severity** → `burn__severity` | 🔥 | MTBS dNBR/RdNBR ([mtbs.gov](https://www.mtbs.gov/)) | Public / open | 30 m | Per-fire / annual since 1984 | severity index | Only large fires mapped; dNBR depends on image timing; **post-fire only** |
-| **Observed precipitation & temperature** → daily forcing | ⛰️ 🔥 🌊 🏚️ | PRISM Climate Group ([prism.oregonstate.edu](https://prism.oregonstate.edu/)); STAC [`prism-stac`](https://github.com/gaia-hazlab/prism-stac); staged via [`gaia-cli`](https://github.com/gaia-hazlab/gaia-cli) | 4 km free; **800 m AN81 license-restricted** | 4 km (800 m licensed) | Daily | mm day⁻¹; °C | Coarse for steep terrain; gauge-sparse interpolation error |
-| **Forecast precipitation** → `tp` / `APCP_surface` | ⛰️ 🔥 🌊 🏚️ | NVIDIA Earth2Studio ([github.com/NVIDIA/earth2studio](https://github.com/NVIDIA/earth2studio)) | Software open; **weight licenses vary** | 0.25° global; StormCast 3 km | Forecast: init / lead | m or kg m⁻² (accum.) | Precip is the **least-skillful** field; accumulation conventions differ; needs downscaling |
-| **Water-table depth** → $d_{wt}$ | 🏚️ ⛰️ 🌊 | [Pillar 1 Soil Reanalysis](pillar-1-soil-reanalysis); [groundwater modeling](groundwater-soil-moisture); modeled WTD (Zhu GLM) | Mixed | tens of m target; coarse priors | **Dynamic** (seasonal, sea-level) | m | Saturation is a **binary gate** for liquefaction; coarse priors smear hazard |
-| **Soil-moisture target** (calibration) | ⛰️ 🏚️ | NASA SMAP L4 `SPL4SMGP` via NSIDC ([nsidc.org/data/spl4smgp](https://nsidc.org/data/spl4smgp)) | **NASA Earthdata login** | ~9 km | 3-hourly | m³ m⁻³ | Coarse footprint; model-assimilated; senses only ~top 5 cm |
-| **Snow-water-equivalent target** (calibration) | ⛰️ 🌊 | ECMWF ERA5 / ERA5-Land via CDS ([cds.climate.copernicus.eu](https://cds.climate.copernicus.eu/)) | **CDS account + license** | ERA5 ~31 km; ERA5-Land ~9 km | Hourly | m w.e. | Reanalysis SWE biased in complex terrain |
-| **In-situ met stations** | ⛰️ 🔥 🌊 🏚️ | Synoptic Data ([synopticdata.com](https://synopticdata.com/)) | **API token** (free academic) | Point | Sub-hourly | varies | Heterogeneous networks; uneven density; gaps |
-| **Ground motion (event)** → PGA, PGV, MMI | 🏚️ ⛰️ | USGS ShakeMap ([earthquake.usgs.gov/data/shakemap](https://earthquake.usgs.gov/data/shakemap/)) | Public / open | event grid | Per-event | g, cm s⁻¹ | ShakeMap & GMM epistemic uncertainty; the **demand** input (future seismic trigger for ⛰️) |
-| **Seismic hazard (probabilistic)** → hazard curves $\lambda(IM)$ | 🏚️ | USGS NSHM [@petersen2024] via [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) | Public / open | site / gridded | Static (model epoch) | rate vs IM | **Fixed** reference-rock site term (§7); model-epoch dependence |
-| **Attenuation** → $\kappa_0$ | 🏚️ | high-frequency spectral decay [@andersonhough1984]; GAIA seismic / DAS | Public / network | per site/station | Static (→ dynamic) | s | Band/method-dependent; seasonal variability [@haendel2025]; **not yet wired** |
-| **Geotechnical case histories** (calibration) | 🏚️ | CPT/SPT liquefaction databases [@vanballegooy2014] | Public / curated | point | Event-based | varies | Geographic bias; the surrogate's training/validation base |
-| **Hazard inventories / maps** → validation labels | ⛰️ 🏚️ | USGS / WA DNR landslide inventories ([usgs.gov](https://www.usgs.gov/programs/landslide-hazards), [dnr.wa.gov](https://www.dnr.wa.gov/)); post-EQ liquefaction reconnaissance (e.g. 2001 [Nisqually](wa-2001-2031-nisqually-earthquake)) | Public; **some locations withheld** | vector | Event / historical | presence / severity | Completeness & recency bias; used only to **score**, never as input |
+| Layer / product | Serves | Source · archive (API / website) | Origin | Native support | Posting resolution · CRS | Temporal resolution | Units | Key limitations |
+|---|---|---|---|---|---|---|---|---|
+| **DEM** → `topographic__elevation`, slope, drainage_area, topographic__specific_contributing_area | ⛰️ 🔥 🏚️ 🌊 | USGS 3DEP via OpenTopography ([opentopography.org](https://opentopography.org/), [USGS 3DEP](https://www.usgs.gov/3d-elevation-program)) | **Federal** (USGS 3DEP) | 1 m lidar where flown, else ~10 m | ~10 m (1/3 arc-sec); CRS varies | Static (re-flown irregularly) | m | Vertical accuracy & vintage vary; voids; `.asc` stacks **do not embed CRS**; OpenTopography API needs a **free key** |
+| **Soil texture & properties** → `clay/sand/silt__total`, `pH`, `dry__bulk_density`, CEC, soil depth | ⛰️ 🔥 🏚️ | USDA SOLUS100 (100 m); public GCS `solus100pub`; STAC [`solus-stac`](https://github.com/gaia-hazlab/solus-stac) | **Federal** (USDA) · ML-derived 📈 | ML estimate; effective support coarser than grid (SSURGO-scale training) | 100 m · EPSG:5070; depths 0,5,15,30,60,100,150 cm | Static (ML estimate) | %, pH, g cm⁻³, cmol(+)/kg, cm | ML-predicted with **uncertainty bands (l/h)**; CONUS-only; vocabulary differs from POLARIS |
+| **Soil hydraulic / strength priors** (alt.) | ⛰️ 🏚️ | POLARIS 30 m ([hydrology.cee.duke.edu/POLARIS](http://hydrology.cee.duke.edu/POLARIS/)); used by [`landslide-digital-twin`](https://github.com/gaia-hazlab/landslide-digital-twin) | **Academic** (Duke) · ML-derived 📈 | Downscaled from SSURGO (coarser than grid) | 30 m; same depth scheme; p5/p50/p95 | Static (statistical) | varies | Downscaled SSURGO; **different vocabulary, depths, stats & units from SOLUS** — conversion table required |
+| **Shear-wave velocity** → $V_{s30}$, $V_s(z)$ | 🏚️ ⛰️ | parametric CONUS $V_s$ [@sanger2025vs]; USGS National Crustal Model; slope/geology proxy $V_{s30}$ | **Federal / Academic** (USGS NCM; Sanger 2025) · statistical 📈 | Proxy ~250–1000 m; parametric at site | Parametric / gridded proxy | Static (→ dynamic via seismic) | m s⁻¹ | Proxy $V_{s30}$ has large scatter; **rigidity is high-influence** for liquefaction |
+| **Surficial geology / soil type** | 🏚️ ⛰️ | state geologic surveys; USGS | **Federal / State** (USGS; state surveys) | Map scale 1:24k–1:100k | Vector (1:24k–1:100k) | Static | categorical | Map-scale generalization; susceptibility class boundaries uncertain |
+| **Landcover** → `vegetation__plant_functional_type` | ⛰️ 🔥 | USGS/MRLC NLCD ([mrlc.gov](https://www.mrlc.gov/)) | **Federal** (USGS/MRLC) | 30 m | 30 m | ~2–3 yr epochs | categorical | Class generalization; epoch lag; needs class→PFT lookup |
+| **Burn severity** → `burn__severity` | 🔥 | MTBS dNBR/RdNBR ([mtbs.gov](https://www.mtbs.gov/)) | **Federal** (USGS/USFS MTBS) | 30 m | 30 m | Per-fire / annual since 1984 | severity index | Only large fires mapped; dNBR depends on image timing; **post-fire only** |
+| **Observed precipitation & temperature** → daily forcing | ⛰️ 🔥 🌊 🏚️ | PRISM Climate Group ([prism.oregonstate.edu](https://prism.oregonstate.edu/)); STAC [`prism-stac`](https://github.com/gaia-hazlab/prism-stac); staged via [`gaia-cli`](https://github.com/gaia-hazlab/gaia-cli) | **Academic** (PRISM / Oregon State) | Gauge-interpolated; effective coarser in complex terrain | 4 km (800 m licensed) | Daily | mm day⁻¹; °C | Coarse for steep terrain; gauge-sparse interpolation error; **800 m AN81 license-restricted** (4 km free) |
+| **Forecast precipitation** → `tp` / `APCP_surface` | ⛰️ 🔥 🌊 🏚️ | NVIDIA Earth2Studio ([github.com/NVIDIA/earth2studio](https://github.com/NVIDIA/earth2studio)) | **Private** (NVIDIA) | Model grid 0.25° global; StormCast 3 km | 0.25° / 3 km | Forecast: init / lead | m or kg m⁻² (accum.) | Precip is the **least-skillful** field; accumulation conventions differ; needs downscaling; **model weight licenses vary** |
+| **Water-table depth** → $d_{wt}$ | 🏚️ ⛰️ 🌊 | [Pillar 1 Soil Reanalysis](pillar-1-soil-reanalysis); [groundwater modeling](groundwater-soil-moisture); modeled WTD (Zhu GLM) | **Modeled** (GAIA) | Coarse priors | Tens of m target | **Dynamic** (seasonal, sea-level) | m | Saturation is a **binary gate** for liquefaction; coarse priors smear hazard |
+| **Soil-moisture target** (calibration) | ⛰️ 🏚️ | NASA SMAP L4 `SPL4SMGP` via NSIDC ([nsidc.org/data/spl4smgp](https://nsidc.org/data/spl4smgp)) | **Federal** (NASA) | L-band radiometer ~36 km, model-assimilated; senses ~top 5 cm | ~9 km · EASE-2 | 3-hourly | m³ m⁻³ | Coarse footprint; model-assimilated; senses only ~top 5 cm; **NASA Earthdata login** required |
+| **Snow-water-equivalent target** (calibration) | ⛰️ 🌊 | ECMWF ERA5 / ERA5-Land via CDS ([cds.climate.copernicus.eu](https://cds.climate.copernicus.eu/)) | **Intl** (ECMWF Copernicus) | Reanalysis ~31 km (ERA5) / ~9 km (ERA5-Land) | ERA5 ~31 km; ERA5-Land ~9 km | Hourly | m w.e. | Reanalysis SWE biased in complex terrain; **CDS account + license** required |
+| **In-situ met stations** | ⛰️ 🔥 🌊 🏚️ | Synoptic Data ([synopticdata.com](https://synopticdata.com/)) | **Private** (Synoptic Data) | Point | Point | Sub-hourly | varies | Heterogeneous networks; uneven density; gaps; **API token** (free academic) |
+| **Ground motion (event)** → PGA, PGV, MMI | 🏚️ ⛰️ | USGS ShakeMap ([earthquake.usgs.gov/data/shakemap](https://earthquake.usgs.gov/data/shakemap/)) | **Federal** (USGS) | Event grid | Event grid | Per-event | g, cm s⁻¹ | ShakeMap & GMM epistemic uncertainty; the **demand** input (future seismic trigger for ⛰️) |
+| **Seismic hazard (probabilistic)** → hazard curves $\lambda(IM)$ | 🏚️ | USGS NSHM [@petersen2024] via [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) | **Federal** (USGS) | Site / gridded | Site / gridded | Static (model epoch) | rate vs IM | **Fixed** reference-rock site term (§7); model-epoch dependence |
+| **Attenuation** → $\kappa_0$ | 🏚️ | high-frequency spectral decay [@andersonhough1984]; GAIA seismic / DAS | **Academic / GAIA network** | Per site/station | Per site/station | Static (→ dynamic) | s | Band/method-dependent; seasonal variability [@haendel2025]; **not yet wired** |
+| **Geotechnical case histories** (calibration) | 🏚️ | CPT/SPT liquefaction databases [@vanballegooy2014] | **Academic / curated** | Point | Point | Event-based | varies | Geographic bias; the surrogate's training/validation base |
+| **Hazard inventories / maps** → validation labels | ⛰️ 🏚️ | USGS / WA DNR landslide inventories ([usgs.gov](https://www.usgs.gov/programs/landslide-hazards), [dnr.wa.gov](https://www.dnr.wa.gov/)); post-EQ liquefaction reconnaissance (e.g. 2001 [Nisqually](wa-2001-2031-nisqually-earthquake)) | **Federal / State** (USGS; WA DNR) | Vector | Vector | Event / historical | presence / severity | Completeness & recency bias; used only to **score**, never as input; **some locations withheld** |
 
-## 2. Derived variables (deterministic transformations)
+## 2. Derived variables (deterministic & statistical transformations)
 
-Computed from the raw stack and documented rules — reproducible, not observed.
+Computed from the raw stack — **not observed**, but reproducible given the inputs, rules, and
+config. Each derivation is one of two kinds: **deterministic** (a documented equation or rule;
+§2.1–2.2) or **statistical / ML** (a fitted relationship that carries its own uncertainty; §2.3).
+Free constants tuned to targets rather than measured or physically fixed are flagged **🎛️**
+(the calibration levers of §6). All rows in §2.1–2.2 are deterministic unless a 🎛️ marks a
+calibration constant embedded in the rule.
 
 ### 2.1 Hydrology & terrain ⛰️ 🔥 🌊
 
@@ -74,11 +94,11 @@ Computed from the raw stack and documented rules — reproducible, not observed.
 | `drainage_area` | DEM + boundaries + Landlab `FlowAccumulator` | m² | flow routing | upslope area & routing diagnostic |
 | `topographic__slope` | DEM | gradient | steepest slope → required field | required by `LandslideProbability`; **gradient vs degrees must be explicit** |
 | `topographic__specific_contributing_area` | `drainage_area`, `grid.dx` | m | $a = A_d/\Delta x$ | hydrologic term in relative wetness |
-| `soil__transmissivity` | $K_{sat}$, soil thickness | m² day⁻¹ | $T=K_{sat}\cdot 2.5\cdot h_s$, floor 0.01 | **2.5 anisotropy factor is a calibration lever** |
-| `vegetation__live_leaf_area_index`, `cover_fraction` | PFT lookup; LAI | – | grass 1.5 / shrub 2.0 / tree 4.0; cover = LAI/4 | controls PET & vegetation response |
+| `soil__transmissivity` | $K_{sat}$, soil thickness | m² day⁻¹ | $T=K_{sat}\cdot$ **🎛️**$2.5\cdot h_s$, floor 0.01 (plus **🎛️**`ksat_factor` on $K_{sat}$) | **🎛️ 2.5 anisotropy factor & `ksat_factor` are calibration levers** |
+| `vegetation__live_leaf_area_index`, `cover_fraction` | PFT lookup; LAI | – | **🎛️**grass 1.5 / shrub 2.0 / tree 4.0; cover = LAI/4 | controls PET & vegetation response; **🎛️ PFT→LAI lookup constants** |
 | `*_saturation` (initial, field-capacity, wilting) | SMAP $\theta_0$ / soil props, porosity | – | $S=\theta/n$ (clipped) | initial state & drainage/stress thresholds — **shift the whole event response** |
-| `snow_fraction`, `rain_depth`, `snow_depth`, `swe`, `water_input` | precip, Tmin/Tmax, melt | mm, `[time,n]` | linear rain–snow partition; degree-day melt; $SWE_t=SWE_{t-1}+\text{snow}-\text{melt}$ | splits storm water; snow storage (calibrate vs ERA5 SWE) |
-| `mean/max_recharge`, `routed_recharge_max`, `groundwater__recharge_mean/std` | daily recharge + routing | mm day⁻¹ | temporal stat; `discharge/area`; `std=0.1×mean` | direct input to `LandslideProbability` recharge sampling |
+| `snow_fraction`, `rain_depth`, `snow_depth`, `swe`, `water_input` | precip, Tmin/Tmax, melt | mm, `[time,n]` | linear rain–snow partition; **🎛️**degree-day melt factor; $SWE_t=SWE_{t-1}+\text{snow}-\text{melt}$ | splits storm water; snow storage (**🎛️** melt factor calibrated vs ERA5 SWE) |
+| `mean/max_recharge`, `routed_recharge_max`, `groundwater__recharge_mean/std` | daily recharge + routing | mm day⁻¹ | temporal stat; `discharge/area`; **🎛️**`std=0.1×mean` | direct input to `LandslideProbability` recharge sampling |
 
 ### 2.2 Liquefaction 🏚️
 
@@ -89,7 +109,80 @@ Computed from the raw stack and documented rules — reproducible, not observed.
 | Cyclic stress ratio $\mathrm{CSR}$, MSF, $K_\sigma$ | $a_{max}$, stresses, $r_d$, $M$ | – | see [Liquefaction Model §2](modelhub-liquefaction) | seismic **demand**, normalized to a reference |
 | CTI / distance-to-water | DEM; hydrography | – | GIS derivations | geospatial GLM saturation proxies [@zhu2015] |
 
+### 2.3 Statistical / ML-derived layers 📈
+
+These are **not deterministic rules** — they are fitted / machine-learned relationships, so they
+carry prediction uncertainty that must travel with the value. Several are ingested as §1 "inputs"
+even though they are model *estimates*, not observations (§2.4 traces one back to raw).
+
+| Layer / product | Method | Fitted from | Uncertainty it carries |
+|---|---|---|---|
+| **SOLUS100** soil properties | random-forest digital soil mapping [@nauman2024solus] | hybrid legacy training sets (gNATSGO/SSURGO map-unit means, component-level disaggregation points, NCSS/KSSL lab pedons) regressed on **gridded covariates** — DEM terrain derivatives (slope, curvature, MRVBF, SAGA wetness index, topographic-position index) and PRISM climate normals + bioclimatic indices | low/high 95% prediction-interval bands (`l`/`h`) |
+| **POLARIS** soil properties | statistical downscaling of SSURGO [@chaney2019] | SSURGO polygons + environmental covariates | p5 / p50 / p95 quantiles |
+| **Proxy $V_{s30}$** | slope– and geology–$V_{s30}$ regression; parametric CONUS $V_s$ [@sanger2025vs] | measured $V_{s30}$ vs topographic slope / surface geology | large residual scatter — report σ |
+
+The **geospatial liquefaction surrogate** (§3, §5) and the **modeled water table** (Zhu GLM, §1)
+are likewise statistical; their uncertainty is documented on the model pages.
+
+### 2.4 Worked example — tracing SOLUS back to raw
+
+SOLUS is the template for *every* ingested statistical product: state what it was fitted from,
+what its native support really is, and what uncertainty it carries, so a downstream modeler can
+trace any value back to observations.
+
+- **What it is.** [SOLUS100](https://www.nrcs.usda.gov/resources/data-and-reports/soil-landscapes-of-the-united-states-solus)
+  (USDA-NRCS): ML-predicted maps of ~20 soil properties at 100 m (1 ha) over CONUS, at the
+  GlobalSoilMap depths (0, 5, 15, 30, 60, 100, 150 cm), with low/high 95% prediction intervals
+  [@nauman2024solus].
+- **Raw it descends from (the observations).** Laboratory pedon measurements (NCSS/KSSL), plus
+  gNATSGO/SSURGO map-unit weighted averages and component-level "disaggregation" training points —
+  a *hybrid* training set. These point/polygon observations are related to the landscape through
+  **gridded environmental covariates**: DEM terrain derivatives (slope, curvature, MRVBF, SAGA
+  wetness index, topographic-position index) and PRISM 30-year climate normals (precipitation,
+  temperature, vapor-pressure deficit) plus bioclimatic indices (full stack in the paper's
+  supplement).
+- **The transform (why it is statistical, not deterministic).** A **random-forest** model maps
+  those covariates → soil property. There is **no closed-form rule**; the 100 m value is a
+  *prediction*, and the low/high 95% prediction-interval (`l`/`h`) bands are its uncertainty.
+  Propagate them — do not treat the median as truth.
+- **Native support vs posting.** Posted at **100 m**, but the *effective support* is coarser and
+  spatially variable — set by training-point density and covariate scale (SSURGO map-unit scale),
+  not by the 100 m grid. This is the §1 "Native support ≠ Posting resolution" distinction made
+  concrete.
+- **Calibration flag.** Where a SOLUS property is later *tuned* to a target (e.g. `ksat_factor` on
+  the derived $K_{sat}$), that tuned value is a **🎛️ calibration lever**, not a SOLUS output —
+  keep the two separate.
+
+Apply the same five-line trace to **POLARIS**, **proxy $V_{s30}$**, and **surficial geology**
+before mixing them into a model.
+
 ## 3. Modelled variables & outputs
+
+The digital twins exist to produce a **fixed, named set of outputs** — the *canonical output
+vocabulary* below. Everything else in this section is an intermediate or diagnostic that feeds one
+of them. The **canonical name is the Landlab `field__name`** (first column); the PascalCase label
+is a display alias. Two outputs still carry an input/output **dual-role** caveat (the earlier name
+collision is resolved by the convention note below).
+
+| Canonical field name (`subject__quantity`) | Display label · symbol | Producing model | Units · dims | Notes |
+|---|---|---|---|---|
+| `landslide__probability_of_failure` | LandslideProbability · $P_f$ | Landlab `LandslideProbability` component | 0–1 · `[n]` or `[y,x]` | $\Pr(FS\le1)$ — the field the component writes (distinct from the component name) |
+| `liquefaction__potential_index` † (+ `liquefaction__severity_number` † LSN) | LiquefactionPotentialIndex · LPI/LSN | manifestation model [@iwasaki1978; @vanballegooy2014] | index | surface-failure severity |
+| `liquefaction__probability` † (+ `liquefaction__areal_extent` †) | GroundFailure · $P(\text{liq})$ | GLM surrogate [@sanger2025jgge] | 0–1 / extent · `[y,x]` | probability & extent of liquefaction manifestation |
+| `soil_moisture__saturation_fraction` | SoilMoisture | `SoilMoisture` + PET | m³ m⁻³ / fraction · `[time,n]` | also the SMAP calibration comparison |
+| `water_table__depth` † | GroundWaterLevel · $d_{wt}$ | Pillar 1 reanalysis / groundwater | m · `[time,…]` | ⚠️ **dual role** — an *output* of the reanalysis but an *input* to the hazard models |
+| `soil__shear_wave_velocity` † (+ `soil__shear_modulus` † $\mu$) | SoilRigidity · $V_s$, $V_{s1}$ | $V_s$ profiles → derived; seismic | m s⁻¹ or Pa | ⚠️ **dual role** — static $V_s$ is an *input*, but time-varying $V_s(t)$ / $\kappa_0(t)$ is a reanalysis *output* (§7) |
+
+**Naming convention (decided).** The **`field__name` vocabulary is canonical** — every output
+ships under a Landlab-style `subject__quantity` name in code, STAC, and Zarr; PascalCase names are
+**display aliases only** (docs, dashboards, product copy), never keys. This resolves the earlier
+collision: the model *component* keeps the class name `LandslideProbability`, while the *output
+field* it writes is `landslide__probability_of_failure` — a component and its field are never the
+same token. Names marked **†** are **proposed** (not yet emitted in code) and should be ratified
+before first use; the unmarked fields already exist. Uncertainty for each output is documented on
+its [model page](modelhub) (Monte-Carlo $P_f$, GLM surrogate intervals, etc.).
+
+Detailed producing-model breakdown (intermediates and diagnostics included):
 
 | Output | Serves | Producing model | Units / dims | Meaning |
 |---|---|---|---|---|
@@ -188,7 +281,8 @@ parameter.
 - **Cost & tiling.** High-resolution everywhere in the PNW daily is expensive; use watersheds for
   routing, tiles only for storage; surrogates for acceleration.
 - **Access sensitivities.** OpenTopography (key), PRISM 800 m (license), SMAP (Earthdata), ERA5
-  (CDS), Synoptic (token), and some hazard-inventory locations (withheld) — see §1.
+  (CDS), Synoptic (token), and some hazard-inventory locations (withheld) — recorded per-layer in
+  the **Limitations** column of §1 (there is no separate access column).
 
 ## Related
 
