@@ -117,7 +117,7 @@ even though they are model *estimates*, not observations (§2.4 traces one back 
 
 | Layer / product | Method | Fitted from | Uncertainty it carries |
 |---|---|---|---|
-| **SOLUS100** soil properties | ML digital soil mapping [@nauman2024solus] | hybrid legacy training sets — gNATSGO/SSURGO map-unit weighted averages, component-level disaggregation points, and NCSS/KSSL laboratory pedons — over environmental covariates (terrain, climate, remote sensing) | low/high 95% prediction-interval bands (`l`/`h`) |
+| **SOLUS100** soil properties | random-forest digital soil mapping [@nauman2024solus] | hybrid legacy training sets (gNATSGO/SSURGO map-unit means, component-level disaggregation points, NCSS/KSSL lab pedons) regressed on **gridded covariates** — DEM terrain derivatives (slope, curvature, MRVBF, SAGA wetness index, topographic-position index) and PRISM climate normals + bioclimatic indices | low/high 95% prediction-interval bands (`l`/`h`) |
 | **POLARIS** soil properties | statistical downscaling of SSURGO [@chaney2019] | SSURGO polygons + environmental covariates | p5 / p50 / p95 quantiles |
 | **Proxy $V_{s30}$** | slope– and geology–$V_{s30}$ regression; parametric CONUS $V_s$ [@sanger2025vs] | measured $V_{s30}$ vs topographic slope / surface geology | large residual scatter — report σ |
 
@@ -136,11 +136,15 @@ trace any value back to observations.
   [@nauman2024solus].
 - **Raw it descends from (the observations).** Laboratory pedon measurements (NCSS/KSSL), plus
   gNATSGO/SSURGO map-unit weighted averages and component-level "disaggregation" training points —
-  a *hybrid* training set — related to the landscape through environmental covariates (terrain
-  derivatives from a DEM, climate, remote sensing).
-- **The transform (why it is statistical, not deterministic).** A machine-learning model maps
-  covariates → soil property. There is **no closed-form rule**; the 100 m value is a *prediction*,
-  and the `l`/`h` bands are its uncertainty. Propagate them — do not treat the median as truth.
+  a *hybrid* training set. These point/polygon observations are related to the landscape through
+  **gridded environmental covariates**: DEM terrain derivatives (slope, curvature, MRVBF, SAGA
+  wetness index, topographic-position index) and PRISM 30-year climate normals (precipitation,
+  temperature, vapor-pressure deficit) plus bioclimatic indices (full stack in the paper's
+  supplement).
+- **The transform (why it is statistical, not deterministic).** A **random-forest** model maps
+  those covariates → soil property. There is **no closed-form rule**; the 100 m value is a
+  *prediction*, and the low/high 95% prediction-interval (`l`/`h`) bands are its uncertainty.
+  Propagate them — do not treat the median as truth.
 - **Native support vs posting.** Posted at **100 m**, but the *effective support* is coarser and
   spatially variable — set by training-point density and covariate scale (SSURGO map-unit scale),
   not by the 100 m grid. This is the §1 "Native support ≠ Posting resolution" distinction made
