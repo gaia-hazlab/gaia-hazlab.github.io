@@ -1,0 +1,28 @@
+name: "Bug"
+description: "Something is broken in a repo, workflow, dataset, model, or the website."
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [datahub, modelhub, hazevalhub, agent, container, website, metrics, ci-workflow, other]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Expected vs actual. Include the repo/workflow and a link if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Commands, container digest, or environment (pixi/version) if relevant.
+  - type: input
+    id: version
+    attributes:
+      label: Version / container digest

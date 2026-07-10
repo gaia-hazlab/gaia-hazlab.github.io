@@ -1,0 +1,35 @@
+name: Weekly Slack Nudge
+
+# Posts the weekly-status reminder to Slack #weekly-status.
+# GATED OFF: runs only when ENABLE_AUTOMATION == 'true' and Slack secrets are set.
+# See project_coordination/05-automation-runbook.md section 3.
+
+on:
+  schedule:
+    - cron: "0 16 * * 1"   # Mondays 16:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  nudge:
+    if: vars.ENABLE_AUTOMATION == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post reminder to Slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_STATUS_CHANNEL: ${{ secrets.SLACK_STATUS_CHANNEL }}
+        run: |
+          if [ -z "$SLACK_BOT_TOKEN" ] || [ -z "$SLACK_STATUS_CHANNEL" ]; then
+            echo "Slack secrets not set — skipping (this is expected until configured)."
+            exit 0
+          fi
+          TEXT=":wave: *Weekly status time!* Please post your update in this channel using the template: https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/project_coordination/templates/weekly-status.md (funded members: at least monthly). Board: https://github.com/orgs/gaia-hazlab/projects"
+          PAYLOAD=$(jq -n --arg ch "$SLACK_STATUS_CHANNEL" --arg text "$TEXT" '{channel:$ch, text:$text}')
+          curl -sS -X POST https://slack.com/api/chat.postMessage \
+            -H "Authorization: Bearer ${SLACK_BOT_TOKEN}" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD" \
+            | grep -q '"ok":true' && echo "Posted." || { echo "Slack post failed"; exit 1; }

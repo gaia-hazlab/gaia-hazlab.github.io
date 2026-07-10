@@ -1,0 +1,32 @@
+name: "Documentation / Book page"
+description: "New or updated book page, tutorial, or coordination doc."
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [book-page, tutorial, coordination-doc, readme, api-docs]
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: Target file
+      placeholder: "e.g. book/chapters/geodesy-gnss.md"
+  - type: textarea
+    id: what
+    attributes:
+      label: What to write/change
+    validations:
+      required: true
+  - type: checkboxes
+    id: myst
+    attributes:
+      label: Publication checklist (book pages)
+      options:
+        - label: Registered in myst.yml
+        - label: Draft admonition until content is real
+        - label: Citations resolve from references.bib (no fabricated DOIs)
+        - label: Builds green locally (pixi run build-ci)

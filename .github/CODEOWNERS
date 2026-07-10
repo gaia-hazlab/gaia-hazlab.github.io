@@ -1,0 +1,23 @@
+# GAIA review routing — mirrors the Gmail keyword routing in project_coordination/01.
+# Replace the @gaia-hazlab/* team placeholders with real GitHub teams during kickoff.
+# Order matters: last matching pattern wins.
+
+# Default: project lead / coordinator
+*                                   @gaia-hazlab/leads
+
+# Coordination & automation
+/project_coordination/              @gaia-hazlab/leads
+/.github/                           @gaia-hazlab/ci-infra
+/scripts/metrics/                   @gaia-hazlab/metrics
+
+# Website / book
+/myst.yml                           @gaia-hazlab/website
+/book/                              @gaia-hazlab/website
+/index.html                         @gaia-hazlab/website
+/dashboard.html                     @gaia-hazlab/metrics
+
+# Modality & region expansions
+/book/chapters/geodesy-*.md         @gaia-hazlab/geodesy
+/book/chapters/sar-*.md             @gaia-hazlab/sar-insar
+/book/chapters/insar-*.md           @gaia-hazlab/sar-insar
+/book/chapters/region-alaska.md     @gaia-hazlab/alaska

@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-07-10T00:00:00Z",
+  "project_year": 1,
+  "delivery": {
+    "D1_ci_templates": { "value": 0, "target": 3, "source": "github" }
+  },
+  "usage": {
+    "M3_unique_institutions": { "value": 0, "target": 20, "source": "github+slack" }
+  },
+  "composite": { "score": null, "under_engaged": [] },
+  "note": "Kickoff seed. Replaced automatically once the Metrics Observatory Action runs (gated by vars.ENABLE_AUTOMATION). See project_coordination/04-metrics-observatory.md."
+}
