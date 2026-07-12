@@ -105,12 +105,27 @@ misses without extra logic.
 
 ## 6. Dashboard
 
-- [`../dashboard.html`](../dashboard.html) is the public surface; it fetches
-  `data/metrics/latest.json` and renders D/M panels + trend sparklines from
-  `history/`. Static, no backend — GitHub Pages friendly.
-- Design charts per the **dataviz** conventions (accessible, consistent light/dark).
-- Show **target vs actual** and the **composite + under-engaged domains** prominently —
-  that's the feedback loop that drives outreach.
+The dashboard has **two surfaces on one page** ([`../dashboard.html`](../dashboard.html)),
+switchable by tab. Both are static and GitHub-Pages friendly (no backend).
+
+- **Impact tab (metrics):** fetches `data/metrics/latest.json` and renders D/M panels +
+  trend sparklines from `history/`. Show **target vs actual** and the **composite +
+  under-engaged domains** prominently — that's the feedback loop that drives outreach.
+- **Data Catalog tab (inventory):** fetches `data/catalog/summary.json` +
+  `catalog.geojson` and renders a map (SAR tracks, seismic/infrasound stations, GNSS
+  sites by use) with count tiles. Full design in
+  [06-data-catalog.md §5](06-data-catalog.md).
+- Design all charts/maps per the **dataviz** conventions (accessible categorical
+  palette, consistent light/dark).
+
+## 6b. Data Catalog collectors (separate from impact metrics)
+
+The observational inventory (SAR/seismic/infrasound/GNSS) has its own collectors and its
+own scheduled Action, kept separate from the impact-metrics collectors so a slow FDSN/ASF
+query never delays the weekly impact run. Collectors live in
+[`../scripts/catalog/`](../scripts/catalog/) and are specified in
+[06-data-catalog.md §4](06-data-catalog.md); they emit `data/catalog/*.csv`,
+`catalog.geojson`, and `summary.json` for the dashboard's Data Catalog tab.
 
 ## 7. Annual DOI archive
 

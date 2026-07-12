@@ -11,8 +11,9 @@ susceptibility in real time — and *prove adoption* with automated metrics. Thr
 expansions define the CSSI relative to the seed grant:
 
 1. **More geography** — add **Alaska** as a first-class region alongside Cascadia/WA.
-2. **More modalities** — add **geodesy** and **SAR/InSAR** processing to the existing
-   seismic + hydrology + weather stack.
+2. **More modalities** — add **geodesy (GNSS: strain, reflectometry, TEC/PWV)**,
+   **SAR/InSAR** (ASF partnership), and **infrasound** to the existing seismic +
+   hydrology + weather stack. All indexed in the [Data Catalog](06-data-catalog.md).
 3. **More agents & evals** — grow from one RSE agent to a **registry of research
    agents** with a rigorous **evaluation harness** (HazEvalHub Common-Task Framework).
 
@@ -47,6 +48,11 @@ expansions define the CSSI relative to the seed grant:
 - [ ] Draft the **website IA change** as a tracked PR against `myst.yml` ([02](02-website-evolution.md)).
 - [ ] Stand up **Metrics Observatory v0**: GitHub + Zenodo collectors; publish a stub
       dashboard panel ([04](04-metrics-observatory.md)).
+- [ ] Seed the **Data Catalog** ([06](06-data-catalog.md)): define Alaska AOIs; run
+      `collect_fdsn.py` for seismic + infrasound stations; stub the dashboard catalog tab.
+- [ ] Confirm the **in-house postdoc** appointment and assign geodesy/SAR/eval ownership
+      ([01 §2.1](01-project-coordination.md)); decide Google setup per [01 §5.1](01-project-coordination.md)
+      (Gmail + one Sheet, no new Workspace).
 - [ ] Define **HazEvalHub CTF v0**: one task, one hidden test set, one baseline
       ([03 §3](03-ai-tools-and-evals.md)).
 - [ ] Ratify conventions: repo layout, container standard, licensing (MIT/BSD-3),

@@ -72,7 +72,7 @@ Project Organization
 | " | InSAR deformation products | `book/chapters/insar-deformation-products.md` | SAR RC lead |
 | Regions | Overview | `book/chapters/regions-overview.md` | Website lead |
 | " | Alaska | `book/chapters/region-alaska.md` | Alaska lead |
-| DataHub | Geodesy & SAR inventory | `book/chapters/datahub-geodesy-sar-inventory.md` | DataHub lead |
+| DataHub | Geodesy & SAR inventory (the [Data Catalog](06-data-catalog.md)) | `book/chapters/datahub-geodesy-sar-inventory.md` | DataHub lead |
 | ModelHub | InSAR/geodesy surrogates | `book/chapters/modelhub-insar.md` | ModelHub lead |
 | Use Cases | Alaska use case (stub) | `book/chapters/ak-<event>.md` | Alaska lead |
 
@@ -120,13 +120,18 @@ Extend existing hubs (children lists):
 Land this as **one tracked PR** (`docs/website-ia-cssi-expansion`) with all stubs, so
 reviewers see the whole IA at once and the build stays green.
 
+> **Data inventory** for these modalities (ASF SAR tracks, FDSN seismic/infrasound, GNSS
+> multi-use sites) is specified separately in [06-data-catalog.md](06-data-catalog.md),
+> which also drives the dashboard's Data Catalog tab.
+
 ## 4. SAR/InSAR processing integration (technical)
 
 SAR is the heaviest new modality (large data, real processing pipelines). Plan:
 
 - **Software discovery hub (D1):** register **ISCE3**, and where relevant `MintPy`,
   `hyp3-sdk`/**ASF HyP3**, `dolphin`, `RAiDER`, `snaphu`, `RioXarray` in the GAIA org
-  with metadata tags. ASF is a named partner — use HyP3 for on-demand processing.
+  with metadata tags. ASF is a named partner — use HyP3 for on-demand processing, and
+  index SAR by **track** in the catalog ([06 §2.1](06-data-catalog.md)).
 - **Container (D2):** a composable InSAR Dockerfile (ISCE3 + MintPy stack) modeled on
   `seisscoped/container`; opens with the Y2 registry.
 - **AI-ready data (D3):** InSAR time-series and deformation as **Zarr/TileDB**

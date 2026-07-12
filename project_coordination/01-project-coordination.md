@@ -40,6 +40,28 @@ SharedDrive**, not in git. Reference people by role in all public docs.
 `R`=Responsible, `A`=Accountable, `C`=Consulted, `I`=Informed. Every open milestone
 must name an accountable role.
 
+### 2.1 Hiring & staffing
+
+Track hiring as coordination work, not an afterthought — new modalities (geodesy, SAR)
+and the agent/eval push need people early.
+
+| Role to fill | Home institution | Focus | Status |
+|---|---|---|---|
+| **Postdoc — geodesy/SAR + agents** | UW (Lead PI) | Alaska InSAR/GNSS + eval harness | **likely filled in-house** (confirm start date, reassign req if so) |
+| RSE / CI engineer | eScience / Paros | Templates, containers, agents | plan Y1 |
+| Data/catalog engineer (part-time or student) | UW | FDSN/ASF/GNSS collectors + dashboard | plan Y1 |
+| Per-institution students/postdocs | co-PI sites | Thrust science | per subaward |
+
+Process (lightweight):
+- One **GitHub issue per open position** (label `hiring`, private if the repo/board
+  needs it) with the accountable co-PI as assignee; track stage on the board.
+- The **in-house postdoc**: confirm appointment start + which req it fills so the budget
+  line and the geodesy/SAR/eval milestones ([03](03-ai-tools-and-evals.md),
+  [06](06-data-catalog.md)) get an owner immediately.
+- Candidate/personnel details (names, offers, salaries) stay on the **SharedDrive/Sheet**,
+  never in git — the public issue tracks *stage only*.
+- New hires run the [onboarding checklist](templates/onboarding-checklist.md) day one.
+
 ## 3. Meeting cadence (monthly cycle)
 
 Recorded with AI companion → notes cleaned, summarized (accomplishments, decisions,
@@ -68,15 +90,40 @@ Markdown to a **private** notes repo (`gaia-hazlab/notes`, private).
 
 ## 5. Google Workspace setup
 
-- **`gaia.ci@gmail.com`** — contact list + Calendar owner. Gmail filters route by
-  subject keyword: `tool|container|software` → CI leads; `hydrology|seismology|geodesy|SAR|hazards`
-  → RC leads; else → Lead PI. Canned auto-reply links the coordination repo + book.
+**Decision (kickoff):** use a **project-owned consumer Gmail** + **one shared Google
+Sheet** now — **no new paid Workspace, no full Shared Drive yet.** Rationale and the
+multi-institution sharing model in §5.1 below.
+
+- **`gaia.ci@gmail.com`** (project-owned, consumer/free) — contact list + Calendar owner.
+  Gmail filters route by subject keyword: `tool|container|software` → CI leads;
+  `hydrology|seismology|geodesy|SAR|hazards` → RC leads; else → Lead PI. Canned auto-reply
+  links the coordination repo + book. Owning this in a **neutral project account** (not a
+  person) is the key to multi-institution continuity.
 - **Google Calendar** — members add talks/posters/tutorials with the standard entry
   (title, time/location, talk|poster, link). The website events page mirrors it.
-- **UW SharedDrive** — working docs, final presentations (PDF), name↔role map,
-  budget. Final talks also get a **FigShare DOI** tagged `GAIA`.
+- **One Google Sheet** (owned by `gaia.ci@`, shared by link) — the human-curated tabular
+  surface: presentation tracker, contact list, and **data-catalog wishlists** (stations
+  people want added). If a tab feeds the dashboard, an Action syncs it to CSV in the repo;
+  the **repo remains canonical** (see [06-data-catalog.md](06-data-catalog.md)).
 - **Google Form** — presentations/participation/feedback/workshop signups; the
   quarterly survey Action posts its link.
+- **Final presentations** get a **FigShare DOI** tagged `GAIA` (not a Drive folder).
+
+### 5.1 Multi-institution sharing model (recommendation)
+
+Consumer Gmail has **no true "Shared Drive"** (a paid-Workspace feature) — only
+single-owner *My Drive* folders (15 GB). And **UW/most-university Shared Drives restrict
+external sharing**, which blocks non-UW co-PIs. So don't centralize on either. Instead:
+
+| Content | Home | Why |
+|---|---|---|
+| Canonical, versioned, machine-read (data catalog, configs, plans, notes) | **GitHub** | Zero cross-institution friction; system of record |
+| Human-curated tables edited by hand | **one Google Sheet** (`gaia.ci@`) | The spreadsheet the PI asked for; sync to repo CSV when it feeds the dashboard |
+| Big data (SAR, cubes, models) | **Zenodo / cloud (R2) / ASF-HyP3** | Never Drive |
+
+**Revisit a paid Workspace (nonprofit/edu tier) or a co-PI's institutional Shared Drive
+with external sharing enabled only when** you hit real thresholds: >15 GB of shared docs,
+a need for admin controls/retention, or recurring external-sharing friction. Not before.
 
 ## 6. Onboarding
 
