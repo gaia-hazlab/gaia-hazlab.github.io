@@ -82,7 +82,10 @@ def collect(aoi_path: Path, generated_utc: str) -> list[dict]:
                 "net": net, "sta": sta, "lat": row[4], "lon": row[5], "elev": row[6],
                 "channels": set(), "sensor_types": set(),
                 "t_start": row[15], "t_end": row[16] if len(row) > 16 else "",
-                "restricted": False, "aoi": box["id"], "source_url": FDSN_STATION,
+                # The level=channel text format has no restriction column, so we cannot
+                # determine open/restricted here. Leave "unknown" rather than assert False;
+                # enrich via fdsnws-station StationXML (restrictedStatus) when needed.
+                "restricted": "unknown", "aoi": box["id"], "source_url": FDSN_STATION,
                 "last_seen_utc": generated_utc,
             })
             rec["channels"].add(chan)

@@ -70,9 +70,11 @@ still trigger a manual test run via **Run workflow** (`workflow_dispatch`).
 ## 5. Metrics Observatory → `metrics-observatory.yml`
 
 - **Cron:** Sundays 06:00 UTC (`0 6 * * 0`).
-- **Does:** runs `scripts/metrics/collect_*.py`, writes `data/metrics/latest.json` +
-  `history/YYYY-Www.json`, commits the change (dashboard redeploys via Pages). Mirrors
-  the existing knowledge-graph workflow's commit-if-changed pattern.
+- **Does:** runs `scripts/metrics/collect.py` (single-file scaffold today; splits into
+  `collect_*.py` per source later — see [04 §4](04-metrics-observatory.md)), writes
+  `data/metrics/latest.json` **and** the weekly snapshot
+  `data/metrics/history/<ISO-year>-W<week>.json`, then commits the change (dashboard
+  redeploys via Pages). Mirrors the knowledge-graph workflow's commit-if-changed pattern.
 - **Needs:** `GITHUB_TOKEN` (always); `ZENODO_TOKEN`, `HF_TOKEN`, `GOOGLE_SA_JSON`
   as collectors are added.
 - **Start small:** GitHub-only collector first; the job no-ops cleanly if optional

@@ -18,6 +18,7 @@ import argparse
 import json
 import os
 import sys
+from datetime import datetime
 from pathlib import Path
 
 try:
@@ -50,12 +51,13 @@ def _gh_headers() -> dict:
 
 
 def collect_github() -> dict:
-    """D1 (CI-template repos passing tests) and M3 (unique institutions) from GitHub.
+    """D1 (CI-template repos passing tests) from GitHub.
 
-    Placeholder logic until the org and template-repo naming convention are final:
-    counts `gaia-template-*` repos whose default-branch CI is passing.
+    Counts `gaia-template-*` repos whose default-branch CI is passing (real). M3
+    (unique institutions) is left as an explicit stub (None) until the
+    contributor/registration data source is wired — see build_payload().
     """
-    out = {"D1_ci_templates": 0, "M3_unique_institutions": 0, "source": "github"}
+    out = {"D1_ci_templates": 0, "M3_unique_institutions": None, "source": "github"}
     if requests is None:
         return out
     try:
@@ -118,11 +120,14 @@ def build_payload(generated_utc: str, project_year: int) -> dict:
             "source": "github",
         },
     }
+    # M3 is not yet collected: pass None through (serializes as null) and label the
+    # source "pending" so the dashboard renders it as "not measured", never a real 0.
+    m3 = gh.get("M3_unique_institutions")
     usage = {
         "M3_unique_institutions": {
-            "value": gh.get("M3_unique_institutions", 0),
+            "value": m3,
             "target": TARGETS_Y1["M3_unique_institutions"],
-            "source": "github+slack",
+            "source": "github+slack" if m3 is not None else "pending (not implemented)",
         },
     }
     # Merge optional sources when their tokens exist.
@@ -148,10 +153,26 @@ def main() -> int:
     args = ap.parse_args()
 
     payload = build_payload(args.utc, args.year)
+    body = json.dumps(payload, indent=2) + "\n"
+
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(payload, indent=2) + "\n")
+    out.write_text(body)
     print(f"Wrote {out}")
+
+    # Versioned weekly snapshot for trend lines (contract in doc 04 sec 1). The week id is
+    # derived from --utc (deterministic — no Date.now), so a re-run for the same week
+    # overwrites its own snapshot rather than creating duplicates.
+    try:
+        iso = datetime.strptime(args.utc, "%Y-%m-%dT%H:%M:%SZ").isocalendar()
+        week_id = f"{iso[0]}-W{iso[1]:02d}"
+    except ValueError:
+        week_id = "unknown"
+    hist = out.parent / "history" / f"{week_id}.json"
+    hist.parent.mkdir(parents=True, exist_ok=True)
+    hist.write_text(body)
+    print(f"Wrote {hist}")
+
     print(f"  D1 CI-template repos passing: {payload['delivery']['D1_ci_templates']['value']}")
     return 0
 

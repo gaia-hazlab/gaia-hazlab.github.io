@@ -26,10 +26,20 @@ def _read(path: Path) -> list[dict]:
         return list(csv.DictReader(f))
 
 
-def build(catalog_dir: Path, generated_utc: str) -> tuple[dict, dict]:
+def _aoi_count(aoi_path: Path) -> int:
+    if not aoi_path.exists():
+        return 0
+    try:
+        return len(json.loads(aoi_path.read_text()).get("features", []))
+    except (ValueError, KeyError):
+        return 0
+
+
+def build(catalog_dir: Path, generated_utc: str, aoi_path: Path) -> tuple[dict, dict]:
     seismic = _read(catalog_dir / "seismic_stations.csv")
     sar = _read(catalog_dir / "sar_tracks.csv")
     gnss = _read(catalog_dir / "gnss_sites.csv")
+    n_aois = _aoi_count(aoi_path)
 
     features = []
     for s in seismic:
@@ -64,6 +74,7 @@ def build(catalog_dir: Path, generated_utc: str) -> tuple[dict, dict]:
         "sar": {"tracks": len(sar),
                 "asc": sum(1 for r in sar if r.get("flight_direction", "").upper().startswith("ASC")),
                 "desc": sum(1 for r in sar if r.get("flight_direction", "").upper().startswith("DESC")),
+                "aois": n_aois,
                 "acquisitions": sum(int(r.get("n_acquisitions", 0) or 0) for r in sar)},
         "seismic": {"stations": len(seismic),
                     "with_infrasound": sum(1 for r in seismic if str(r.get("has_infrasound", "")).lower() in ("true", "1")),
@@ -79,12 +90,13 @@ def build(catalog_dir: Path, generated_utc: str) -> tuple[dict, dict]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dir", default="data/catalog")
+    ap.add_argument("--aois", default="scripts/catalog/aois.geojson")
     ap.add_argument("--utc", default=os.environ.get("CATALOG_UTC", "1970-01-01T00:00:00Z"))
     args = ap.parse_args()
 
     d = Path(args.dir)
     d.mkdir(parents=True, exist_ok=True)
-    geojson, summary = build(d, args.utc)
+    geojson, summary = build(d, args.utc, Path(args.aois))
     (d / "catalog.geojson").write_text(json.dumps(geojson) + "\n")
     (d / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(f"Catalog: {summary['seismic']['stations']} seismic, "

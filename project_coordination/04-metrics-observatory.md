@@ -63,9 +63,15 @@ Four tiers: **M1** delivery (= the D-table, supply), **M2** reuse/productivity,
 per study*; the agent registry + CTF raise *agent modes*. The Observatory is how we show
 that the expansion worked.
 
-## 4. Collectors (one module per source)
+## 4. Collectors (target: one module per source)
 
-| Module | Reads | Emits | Auth |
+> **Current scaffold:** a single file, [`../scripts/metrics/collect.py`](../scripts/metrics/collect.py),
+> implements the GitHub-only path (real D1; M3 an explicit `null` stub) and writes both
+> `latest.json` and the weekly `history/` snapshot. The per-source modules below are the
+> **target decomposition** — split `collect.py` into them as each source is wired. They do
+> not all exist yet; don't go looking for `collect_zenodo.py` until D3 work starts.
+
+| Module (target) | Reads | Emits | Auth |
 |---|---|---|---|
 | `collect_github.py` | Org repos, Actions status, PRs, forks, contributors, unique institutions (email domains) | D1, M2(sw), M3 | `GITHUB_TOKEN` |
 | `collect_zenodo.py` | GAIA community records, downloads, `IsDerivedFrom` graph | D3, M2 | `ZENODO_TOKEN` |
