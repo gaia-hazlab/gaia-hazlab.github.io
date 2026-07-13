@@ -9,6 +9,45 @@ We are developing two avenues for evaluation of the model performance
 - **Surrogate of Physical Models** trained on physics-based simulations, a framework based on the AI Institute for Dynamical System Common Task Framework (collab with Nathan Kutz and Kaggle) with fair evaluation and hidden data set.
 - **Leaderboard**: a set of hazard-relevant evaluation metrics when using geospatial and terrestrial networks in collaboration with AI2.
 
+## 🔴 Live prototype — FrugalMind EvalHub
+
+> **[▶ Open the live eval board](https://mdenolle.github.io/frugalmind)** ·
+> source: [`mdenolle/frugalmind`](https://github.com/mdenolle/frugalmind)
+
+**FrugalMind EvalHub is the first working prototype of HazEvalHub.** It is a live
+evaluation board for scientific AI agents in geoscience, and it establishes the design
+the full HazEvalHub generalizes to hazard tasks.
+
+Every submission is scored on three questions:
+
+| Question | What it measures |
+|---|---|
+| **Is it right?** | Accuracy against ground truth |
+| **What did it cost?** | Token/dollar cost — cost is a *first-class* axis, not an afterthought |
+| **Is it reproducible?** | Deterministic scoring from declarative JSON specs, so results can't be gamed |
+
+**The board.** A cost-versus-performance scatter: each model appears twice — *without*
+domain skills (hollow marker) and *with* them (filled) — joined by a line showing the
+**skill lift**. Systems in the upper-left (high performance, low cost) win. Hover for
+model version, weights, and exact metrics; export to CSV/PNG.
+
+**Tasks.** Document-based (literature review, retrieval-augmented QA, multimodal
+interpretation), software-agent (writing a detector, executing a pipeline, producing
+data), and research-workflow (orchestration and trajectory scoring). Concrete benchmarks
+include *dv/v* parameter choice, STA/LTA code generation, and ObsPy function usage.
+Validation splits are public; **test splits are hidden** to prevent memorization.
+
+**An early result.** Free *local* 7B models (`qwen2.5:7b`, `llama3.1:8b`) reach perfect
+scores on configuration tasks once given domain skills — but fail at numerical code
+generation, where only cloud models succeed (~0.56 base, rising to 0.76 with skills).
+Domain skills lift small, cheap models to frontier parity on some task classes and not
+others; knowing *which* is the point of the board.
+
+**Where it goes next.** Adopt its JSON scoring spec as the shared `gaia-eval` scorecard
+schema, carry the cost/frugality axis into the hazard metrics below, and extend the task
+taxonomy from agent tasks to the full pillar × hazard grid — keeping the agent tasks as
+the "research-workflow" track.
+
 ## Evaluation Framework (TBD)
 
 ### Components

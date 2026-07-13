@@ -58,6 +58,48 @@ The flagged "next" priority (DOCS_ROADMAP §4.2). Build **hazard-relevant, actio
 metrics, not generic ML scores. Developed with **AI2, Nathan Kutz / AI Institute for
 Dynamical Systems, Kaggle-style** hosting.
 
+### 3.0 First prototype — FrugalMind EvalHub (live)
+
+**<https://mdenolle.github.io/frugalmind>** — repo
+[`mdenolle/frugalmind`](https://github.com/mdenolle/frugalmind). This is the **working v0
+of HazEvalHub**: a live eval board for scientific AI agents in geoscience. It already
+demonstrates the pattern the CTF generalizes, so it is the thing to point at, extend, and
+migrate — not to rebuild.
+
+What it establishes (and HazEvalHub inherits):
+
+- **Three questions per submission** — *Is it right?* (accuracy vs ground truth), *What
+  did it cost?* (tokens/$), *Is it reproducible?* (deterministic scoring). **Cost is a
+  first-class axis** — an evaluation dimension the CTF metric tables (§3.2) do not yet
+  carry, and should.
+- **Cost-vs-performance leaderboard** — each model plotted twice, without domain skills
+  (hollow) and with them (filled), joined by a line showing **skill lift**. Upper-left
+  (high skill, low cost) wins. Hover for model version/weights/metrics; export CSV/PNG.
+- **Declarative JSON scoring specs, not scoring code** — reproducible and hard to game.
+  This is the `gaia-eval` scorecard contract (§4) in embryo.
+- **Public validation splits + hidden test splits** — the anti-memorization design §3.1
+  calls for, already running.
+- **Task taxonomy** — document-based (lit review, RAG QA, multimodal), software-agent
+  (write a detector, run a pipeline, produce data), research-workflow (orchestration,
+  trajectory scoring). Concrete benchmarks: *dv/v* parameter choice, STA/LTA code
+  generation, ObsPy function usage.
+- **A real result worth publishing:** free local 7B models (`qwen2.5:7b`, `llama3.1:8b`)
+  hit perfect scores on *configuration* tasks once given domain skills, but fail at
+  *numerical code generation*, where only cloud models succeed (~0.56 base → 0.76 with
+  skills). That "skills lift small models onto frontier parity for some task classes"
+  finding is the frugality thesis, and it maps directly to M4 (transformation of research
+  practice).
+
+**Migration path into HazEvalHub:**
+
+| Step | Action |
+|---|---|
+| Now | Link the live board from the [HazEvalHub chapter](../book/chapters/hazevalhub.md) + book ToC; cite it as the EvalHub prototype. |
+| Y1 | Move the repo under the **`gaia-hazlab`** org (or mirror it); adopt its JSON scoring spec as the `gaia-eval` scorecard schema (§4). |
+| Y1 | Add the **cost axis** (tokens/$ per submission) to the CTF metric families in §3.2 — it is currently missing. |
+| Y1–Y2 | Extend the task taxonomy from *agent* tasks to the **pillar × hazard** grid (§3.1); keep the agent tasks as the "research-workflow" track. |
+| Y2 | Feed the board's scorecards into the Metrics Observatory (M2/M4) and DOI-archive the splits (D3) + model cards (D4). |
+
 ### 3.1 Design
 
 - **Tasks** map to the three pillars: *state* (Pillar 1), *nowcast* (Pillar 2),
@@ -77,11 +119,16 @@ Dynamical Systems, Kaggle-style** hosting.
 | Nowcast (P2) | POD / FAR / CSI; IoU/Dice for mapped failures; Brier + reliability; lead-time-to-alert |
 | Forecast (P3) | Skill vs persistence/climatology; ROC / PR at decision thresholds; cost–loss value; lead time vs skill |
 | Actionability | Decision thresholds; false-alarm cost; warning lead time |
+| **Frugality** (from §3.0) | **Tokens / $ per submission; skill-per-dollar; skill lift from domain skills (with − without)** — the FrugalMind cost axis, applied to every task |
 
 ### 3.3 CTF phasing
 
-- **v0 (Y1):** one task (e.g. landslide nowcast POD/FAR/CSI), one hidden test set, one
-  baseline, leaderboard stub on Pages.
+- **v0 (now, live):** **[FrugalMind EvalHub](https://mdenolle.github.io/frugalmind)** —
+  agent tasks (dv/v config, STA/LTA codegen, ObsPy usage), hidden splits, cost-vs-skill
+  board. Already running; see §3.0.
+- **v0.5 (Y1):** add the first *hazard* task (landslide nowcast POD/FAR/CSI) with one
+  hidden test set + one baseline, on the same board — proving the board generalizes from
+  agent tasks to pillar tasks.
 - **v1 (Y2):** add liquefaction + a state task; containerized submissions; auto-scoring
   Action.
 - **v2 (Y3):** full pillar × hazard grid; SAR/geodesy tasks (InSAR deformation → creep);

@@ -41,6 +41,9 @@ project:
         - file: book/chapters/modelhub-landslide.md
         - file: book/chapters/modelhub-liquefaction.md
     - file: book/chapters/hazevalhub.md
+      children:
+        - url: https://mdenolle.github.io/frugalmind
+          title: "FrugalMind EvalHub (live prototype)"
     - file: book/chapters/gaia-agent.md
       children:
         - file: book/chapters/gaia-translator.md
