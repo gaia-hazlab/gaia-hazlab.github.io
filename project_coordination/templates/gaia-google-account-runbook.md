@@ -96,7 +96,7 @@ holds only the human-curated, non-machine-read surfaces:
 | Folder / file in gaia.hazlab Drive | Purpose | Notes |
 |---|---|---|
 | **`GAIA Roster` (Google Sheet)** | Contact list + roles + mailing-list opt-in; doubles as M3 "unique institutions" source | Link-shared; synced to repo CSV by an Action when it feeds the dashboard |
-| **`GAIA Onboarding Intake` (Form + responses Sheet)** | New-member intake (§ onboarding-intake-form.md) | Responses Sheet is the raw feed for the people page |
+| **`GAIA Onboarding Intake` (Form + responses Sheet)** | New-member intake — [live form](https://forms.gle/YjuafiodKyyveTMi9) (§ onboarding-intake-form.md) | Responses Sheet is the raw feed for the people page |
 | **`Meeting Notes` (Docs, by month)** | Human-readable notes; AI-summarized copy goes to the private `notes` repo | Working copies only |
 | **`Slides & Posters` (working copies)** | Drafts before they get a Zenodo/FigShare DOI | Final versions get a **DOI**, not a Drive link |
 | **`Templates`** | Google-native copies of the letterhead, slide master, report template | Mirrors of the git templates |

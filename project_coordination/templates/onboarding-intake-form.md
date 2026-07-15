@@ -1,5 +1,11 @@
 # GAIA Onboarding Intake Form — Spec & Build Guide
 
+> **Live form:** <https://forms.gle/YjuafiodKyyveTMi9>
+> (edit ID `1FAIpQLSc5toj9PvmerIT_repfdDzE0zBna8MhYBftdW0KPnUODNt2WQ`, owned by
+> `gaia.hazlab@`). Share this short link in the onboarding checklist, welcome email, and
+> Slack. The spec below is the source of truth — keep the live form's question wording in
+> sync with it so the People-page importer keeps mapping correctly.
+>
 > The single Google Form (owned by `gaia.hazlab@`, shared with `mdenolle@uw.edu`) that new
 > members fill once. Its responses Sheet is the **raw feed for the people page**
 > (`data/team.json`) and the roster. Design goal: **collect exactly the fields the website

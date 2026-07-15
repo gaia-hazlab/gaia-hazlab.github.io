@@ -4,8 +4,9 @@
 > Calendar + calls subset. Partners use
 > [partner-onboarding.md](partner-onboarding.md).
 >
-> **Start here:** new members fill the **intake Form**
-> ([onboarding-intake-form.md](onboarding-intake-form.md)) once — it captures everything
+> **Start here:** new members fill the **intake Form** →
+> <https://forms.gle/YjuafiodKyyveTMi9> (spec:
+> [onboarding-intake-form.md](onboarding-intake-form.md)) once — it captures everything
 > below and auto-populates the roster + People page. This checklist is the coordinator's
 > confirmation that each access step actually happened.
 
