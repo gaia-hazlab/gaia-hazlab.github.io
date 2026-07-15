@@ -37,14 +37,21 @@ expansions define the CSSI relative to the seed grant:
 - [ ] Create the **GAIA Project** board, labels, milestones, issue templates (runbook §2).
 - [ ] Slack: thematic channels (`#rc1`…, `#ci1`…, `#weekly-status`, `#metrics`,
       `#alaska`, `#geodesy`, `#sar-insar`); wire the weekly-status nudge.
-- [ ] Google: shared Calendar, `gaia.ci@gmail.com` contact + Gmail routing filters,
-      UW SharedDrive folders, reporting Google Form.
+- [ ] Google: stand up **`gaia.hazlab@gmail.com`** per
+      [templates/gaia-google-account-runbook.md](templates/gaia-google-account-runbook.md)
+      — shared Calendar, mail forwarding + filters, Drive layout. Create the **Roster
+      Sheet** ([templates/participant-roster.md](templates/participant-roster.md)), the
+      **intake Form** ([templates/onboarding-intake-form.md](templates/onboarding-intake-form.md)),
+      and the voluntary **mailing lists** ([templates/mailing-list-setup.md](templates/mailing-list-setup.md)).
 - [ ] Assign **RACI roles** ([01 §2](01-project-coordination.md)); publish the
       role↔person map to the private SharedDrive (not to git).
 
 ### Days 15–45 — Fill the skeleton
 - [ ] Onboard all funded members + unsupported collaborators + partners
-      (templates/onboarding-checklist.md, templates/partner-onboarding.md).
+      (templates/onboarding-checklist.md, templates/partner-onboarding.md); collect via the
+      **intake Form** → responses feed the People page
+      ([templates/onboarding-intake-form.md](templates/onboarding-intake-form.md),
+      [templates/profile-template.yaml](templates/profile-template.yaml)).
 - [ ] Draft the **website IA change** as a tracked PR against `myst.yml` ([02](02-website-evolution.md)).
 - [ ] Stand up **Metrics Observatory v0**: GitHub + Zenodo collectors; publish a stub
       dashboard panel ([04](04-metrics-observatory.md)).
@@ -62,6 +69,8 @@ expansions define the CSSI relative to the seed grant:
 - [ ] First **monthly project-wide update** with AI-summarized notes archived to the
       private notes repo.
 - [ ] First **quarterly survey** fired by Action; results feed M3/M4.
+- [ ] First **quarterly newsletter** to the Announce list, metrics auto-pasted from
+      `latest.json` ([templates/quarterly-newsletter.md](templates/quarterly-newsletter.md)).
 - [ ] Alaska + geodesy + SAR stub pages merged and building green.
 - [ ] 3 CI-template repos passing tests (D1 Y1 target = 3).
 - [ ] Metrics Observatory reporting all D1–D5 rows automatically.
