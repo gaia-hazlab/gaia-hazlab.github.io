@@ -21,6 +21,7 @@
 | [04-metrics-observatory.md](04-metrics-observatory.md) | Delivery (D1–D5) and usage (M1–M4) metrics, data sources, automation. | Metrics lead |
 | [05-automation-runbook.md](05-automation-runbook.md) | Concrete GitHub Actions, bots, crons, and required secrets. Maps to `.github/`. | CI infra lead |
 | [06-data-catalog.md](06-data-catalog.md) | Alaska observational inventory: ASF SAR tracks, FDSN seismic/infrasound, GNSS (strain/reflectometry/TEC-PWV); feeds the dashboard. | DataHub + catalog lead |
+| [07-programs-and-partners.md](07-programs-and-partners.md) | Program constellation: CSSI+CRESST core, SCOPED/GeoSMART/CAIG lineage, EarthScope/ASF/PNSN/AEC partners. | Lead PI |
 | [templates/](templates/) | Reusable Markdown: weekly status, monthly report, meeting notes, NSF entry, onboarding. | All |
 
 ## Protection & publication policy

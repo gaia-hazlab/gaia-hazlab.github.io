@@ -10,7 +10,7 @@ Yet our current models struggle to keep pace with these nonlinear cascades. Atmo
 
 ## Our Approach
 
-We take a **data-driven and physics-grounded** approach to **monitor**, **characterize**, and **predict** the susceptibility of climate-compounded geodisasters — both in real time and under future weather and climate scenarios.
+We take a **data-driven and physics-grounded** approach to **monitor**, **characterize**, and **predict** the susceptibility of weather-compounded geodisasters — both in real time and under future weather and climate scenarios.
 
 We leverage:
 

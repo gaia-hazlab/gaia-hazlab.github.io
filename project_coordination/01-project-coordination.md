@@ -132,11 +132,16 @@ a need for admin controls/retention, or recurring external-sharing friction. Not
 - **Unsupported collaborators:** Slack + relevant channels; invited to monthly call and
   task-specific calls; may give virtual talks.
 - **Partners:** [templates/partner-onboarding.md](templates/partner-onboarding.md).
-  Technical/CI partners (OMAI, HydroFrame, AI2, ROM, ASF, EarthScope, AEC, CIG) get a
-  dedicated channel + quarterly CI/agent summary + annual architecture sync. Community
-  partners (ClasSH, SCEC, CRESCENT, ASF, EarthScope) get the mailing list + co-develop
-  training. Cross-CSSI (QuakeWorx, Landlab+ASPECT, HydroGen, VICTOR) coordinate at CSSI
-  PI meetings on interoperable CI.
+  **Facility & network partners** (EarthScope, ASF, **PNSN**, **AEC**) plus technical/CI
+  partners (OMAI, HydroFrame, AI2, ROM, CIG) get a dedicated channel + quarterly CI/data
+  summary + annual architecture sync. Community partners (ClasSH, SCEC, CRESCENT, ASF,
+  EarthScope) get the mailing list + co-develop training. Cross-CSSI (QuakeWorx,
+  Landlab+ASPECT, HydroGen, VICTOR) coordinate at CSSI PI meetings on interoperable CI.
+- **Program constellation** — GAIA actively coordinates the **CSSI + CRESST core** (both
+  Denolle-led); **SCOPED** (Carl Tape, co-PI), **GeoSMART** (Nicoleta Cristea), and
+  **CAIG** (Erkan) are lineage/affiliated, engaged but not governed. Full tiering,
+  including the facility/network partners above, in
+  [07-programs-and-partners.md](07-programs-and-partners.md).
 
 ## 7. Reporting
 

@@ -1,0 +1,90 @@
+# Programs & Partners
+
+> GAIA sits inside a constellation of projects, seed grants, and facility partnerships.
+> This doc draws the boundary: **what the GAIA operating system actively coordinates**
+> (CSSI + CRESST), versus **lineage/affiliated programs** we contextualize but don't run,
+> versus **facility & network partners** we integrate with. Keeps the
+> [coordination plan](01-project-coordination.md) honest about scope.
+>
+> Placeholders marked `‹confirm›` are facts I won't invent — fill or cut. Mirrors the
+> welcome-deck lineage slide ([welcome-deck/README.md §4](welcome-deck/README.md)).
+
+## 1. The tiers at a glance
+
+| Tier | Program / entity | Lead | GAIA coordination |
+|---|---|---|---|
+| **Core** | **GAIA-CSSI** (NSF CSSI) | **Marine Denolle (UW)** | Full operating system — this repo |
+| **Core** | **CRESST** (UW seed / FFST) | **Marine Denolle (UW)** | Full operating system — shares boards, cadence, metrics |
+| Lineage | **SCOPED** | **Carl Tape** (UAF; **new co-PI**) | Proven model we inherit; loosely coupled |
+| Lineage | **GeoSMART** | **Nicoleta Cristea** (UW) | ML training / hackweeks lineage |
+| Lineage | **CAIG** ‹confirm full name› | **Erkan ‹confirm surname›** | Affiliated; align where useful |
+| Partner (facility) | **EarthScope Consortium** | — | Data + station metadata (FDSN); RC1 co-lead role |
+| Partner (facility) | **Alaska Satellite Facility (ASF)** (UAF) | — | SAR / InSAR (HyP3); Alaska expansion |
+| Partner (network) | **PNSN** (Pacific NW Seismic Network) | — | Seismic + infrasound data; PNW use cases |
+| Partner (network) | **AEC** (Alaska Earthquake Center) | — | Alaska seismic data; regional expertise |
+
+## 2. Core — what GAIA actively coordinates
+
+**GAIA-CSSI** and **CRESST** are both led by Marine Denolle and share **one** operating
+system: the same GitHub org/boards, Slack, meeting cadence, templates, and
+[Metrics Observatory](04-metrics-observatory.md). Treat them as a single coordinated
+program with two funding lines — CSSI is the multi-institution expansion; CRESST is the
+UW seed that de-risked it. Everything in docs [00](00-kickoff-plan.md)–[06](06-data-catalog.md)
+applies to this core.
+
+## 3. Lineage & affiliated programs — context, not command
+
+We **contextualize** these (welcome deck, website lineage) and **borrow their playbooks**,
+but we do not run their coordination:
+
+- **SCOPED** — the direct methodological ancestor (550+ participants, high repeat
+  engagement; the community-metrics dashboard GAIA's Observatory extends). **Carl Tape
+  joins GAIA-CSSI as a co-PI**, so SCOPED is the closest of the lineage programs — the
+  bridge for Alaska seismology and the SCOPED container/hackweek model.
+- **GeoSMART** (Nicoleta Cristea) — ML-in-geoscience training + hackweeks; the education /
+  broadening-participation lineage. Coordinate on shared training materials and hackweek
+  logistics when calendars align.
+- **CAIG** ‹confirm full name & scope› (Erkan ‹confirm surname›) — affiliated program;
+  align on interoperable CI where it helps, no shared governance.
+- **GeoSciCloud** ‹confirm relevance› — historical cloud-infrastructure lineage.
+
+**Coordination touch:** lineage leads are welcome in the GAIA Slack and the monthly
+project-wide update, invited to give talks, and listed on the website lineage — but they
+are **not** on the funded-member reporting cadence ([01 §7](01-project-coordination.md)).
+
+## 4. Partners — facilities & networks we integrate with
+
+Formal, active technical partnerships (distinct from lineage):
+
+- **EarthScope Consortium** — FDSN station metadata + seismic/GNSS data; co-leads the
+  RC1 "repurpose seismic stations as soil sensors" thrust. Feeds the
+  [Data Catalog](06-data-catalog.md) (`collect_fdsn.py`, GNSS).
+- **Alaska Satellite Facility (ASF)** (under UAF) — SAR/InSAR via HyP3; the backbone of
+  the Alaska + SAR expansion ([02](02-website-evolution.md), [06 §2.1](06-data-catalog.md)).
+- **PNSN** — regional seismic + infrasound for Pacific-NW use cases (Nisqually, Stehekin).
+- **AEC (Alaska Earthquake Center)** — Alaska regional seismic data + local expertise;
+  natural partner for AEC/AK/AV network coverage in the catalog.
+
+**Coordination touch:** each partner gets a dedicated Slack channel, a **quarterly CI/data
+summary**, and an **annual architecture sync** ([01 §6](01-project-coordination.md)); data
+standards are agreed in the [Data Catalog](06-data-catalog.md). Onboard via
+[templates/partner-onboarding.md](templates/partner-onboarding.md).
+
+## 5. Why the boundary matters
+
+- **Scope control** — the funded reporting cadence and metrics apply to the **core**
+  (CSSI + CRESST). Lineage/partners are engaged, not governed, so we don't over-promise
+  coordination we can't staff ([01](01-project-coordination.md) is a lightweight,
+  low-cost plan by design).
+- **Attribution** — lineage programs get credited on the website + welcome deck; partners
+  get co-authorship/acknowledgment per contribution. Keeps NSF broadening-participation
+  and facility-integration stories accurate.
+- **Metrics (M3)** — partners and lineage count toward *breadth/institutions* in the
+  [Observatory](04-metrics-observatory.md), but only the core drives *delivery* (D1–D5).
+
+## 6. Open items
+
+- [ ] Confirm **CAIG** full name/scope and **Erkan**'s surname.
+- [ ] Confirm SCOPED co-PI role scope for Carl Tape (Alaska seismology bridge).
+- [ ] Confirm whether GeoSciCloud belongs on the lineage list or is cut.
+- [ ] Get the correct partner-logo assets ([welcome-deck §3](welcome-deck/README.md)).
