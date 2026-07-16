@@ -29,6 +29,15 @@ except ImportError:  # keep the script importable without deps for --help
 GITHUB_ORG = "gaia-hazlab"
 API = "https://api.github.com"
 
+# FrugalMind EvalHub — the live HazEvalHub prototype (public GitHub Pages data).
+# Only the dv/v processing suite ("CodaMeter") is treated as a real GAIA eval right now;
+# every other suite on the board is a toy example until it is promoted here.
+FRUGALMIND_BASE = "https://mdenolle.github.io/frugalmind"
+FRUGALMIND_BOARD = FRUGALMIND_BASE
+CODAMETER_SUITE = "dvv_processing"          # dv/v from coda waves = "CodaMeter"
+CODAMETER_LABEL = "CodaMeter (dv/v processing)"
+REAL_EVAL_SUITES = {CODAMETER_SUITE}
+
 # Year 1 targets from doc 04 (Delivery Table 1 / Usage Table 2). Update per project year.
 TARGETS_Y1 = {
     "D1_ci_templates": 3,
@@ -95,6 +104,77 @@ def collect_github() -> dict:
     return out
 
 
+def _get_json(url: str) -> dict | list | None:
+    if requests is None:
+        return None
+    try:
+        r = requests.get(url, timeout=30)
+        if r.status_code == 200:
+            return r.json()
+        print(f"[warn] frugalmind {url}: HTTP {r.status_code}", file=sys.stderr)
+    except Exception as e:
+        print(f"[warn] frugalmind {url}: {e}", file=sys.stderr)
+    return None
+
+
+def collect_frugalmind() -> dict:
+    """CodaMeter (dv/v) eval scorecard from the live FrugalMind board.
+
+    Pulls the public Pages data, keeps ONLY the dvv_processing suite as the real GAIA
+    eval, and records the frugality story (best score, the cheapest model reaching it,
+    the biggest skill lift). Other suites are listed as excluded/toy, not scored.
+    Degrades to {} (board omitted) if the board is unreachable.
+    """
+    board = _get_json(f"{FRUGALMIND_BASE}/data/leaderboard.json")
+    lift = _get_json(f"{FRUGALMIND_BASE}/data/skill_lift.json")
+    if not isinstance(board, dict):
+        return {}
+
+    rows = [r for r in board.get("leaderboard", []) if r.get("suite") == CODAMETER_SUITE]
+    all_suites = sorted({r.get("suite") for r in board.get("leaderboard", []) if r.get("suite")})
+    toy_suites = [s for s in all_suites if s not in REAL_EVAL_SUITES]
+    if not rows:
+        return {"eval_note": f"no {CODAMETER_SUITE} rows on board", "toy_suites_excluded": toy_suites}
+
+    def _best(candidates):
+        # highest score, then cheapest, then stable by model_id
+        return min(candidates, key=lambda r: (-(r.get("score") or 0),
+                                              r.get("cost_usd") or 0.0,
+                                              r.get("model_id", "")))
+
+    best = _best(rows)
+    top = best.get("score")
+    at_top = [r for r in rows if (r.get("score") or 0) >= (top or 0) - 1e-9]
+    cheapest_at_top = min(at_top, key=lambda r: (r.get("cost_usd") or 0.0, r.get("model_id", "")))
+
+    lift_rows = []
+    if isinstance(lift, dict):
+        lift_rows = [r for r in lift.get("rows", []) if r.get("suite") == CODAMETER_SUITE]
+    max_lift = max(lift_rows, key=lambda r: r.get("lift") or 0) if lift_rows else None
+
+    def _slim(r):
+        return {k: r.get(k) for k in ("model_id", "score", "quality_percent", "cost_usd", "openness")}
+
+    scorecard = {
+        "source": "frugalmind",
+        "board_url": FRUGALMIND_BOARD,
+        "suite": CODAMETER_SUITE,
+        "suite_label": CODAMETER_LABEL,
+        "board_generated_at": board.get("generated_at"),
+        "n_models": len({r.get("model_id") for r in rows}),
+        "best": _slim(best),
+        "cheapest_at_top_score": _slim(cheapest_at_top),
+        "max_skill_lift": (
+            {k: max_lift.get(k) for k in ("model_id", "score_none", "score_full", "lift")}
+            if max_lift else None
+        ),
+        "toy_suites_excluded": toy_suites,
+        "note": "Only the CodaMeter (dv/v) suite is a real GAIA eval; other FrugalMind "
+                "suites are toy examples for now.",
+    }
+    return {"eval": scorecard}
+
+
 def collect_zenodo() -> dict:
     """D3 datasets + M2 derived agents (IsDerivedFrom). Stub until ZENODO_TOKEN is set."""
     if not os.environ.get("ZENODO_TOKEN"):
@@ -134,14 +214,21 @@ def build_payload(generated_utc: str, project_year: int) -> dict:
     for extra in (collect_zenodo(), collect_huggingface()):
         # placeholder: real collectors will populate delivery/usage keys
         _ = extra
-    return {
+
+    payload = {
         "generated_utc": generated_utc,
         "project_year": project_year,
         "delivery": delivery,
         "usage": usage,
         "composite": {"score": None, "under_engaged": []},
-        "note": "Kickoff scaffold — GitHub-only. See project_coordination/04-metrics-observatory.md.",
+        "note": "Kickoff scaffold — GitHub + FrugalMind CodaMeter. "
+                "See project_coordination/04-metrics-observatory.md.",
     }
+    # HazEvalHub scorecard (M4): the CodaMeter (dv/v) suite from the live FrugalMind board.
+    fm = collect_frugalmind()
+    if fm.get("eval"):
+        payload["eval"] = fm["eval"]
+    return payload
 
 
 def main() -> int:
@@ -174,6 +261,10 @@ def main() -> int:
     print(f"Wrote {hist}")
 
     print(f"  D1 CI-template repos passing: {payload['delivery']['D1_ci_templates']['value']}")
+    ev = payload.get("eval")
+    if ev:
+        b = ev["best"]
+        print(f"  CodaMeter (dv/v) best: {b['model_id']} score={b['score']} cost=${b['cost_usd']}")
     return 0
 
 

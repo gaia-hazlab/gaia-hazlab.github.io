@@ -102,9 +102,29 @@ collectors in kickoff; add Google/Zenodo/HF as tokens land.
     "M3_unique_institutions": {"value": 14,   "target": 20,  "source": "github+slack"},
     "M4_modalities_median":   {"value": 2,    "target": ">2", "source": "provenance"}
   },
-  "composite": {"score": 0.42, "under_engaged": ["geodesy", "floods"]}
+  "composite": {"score": 0.42, "under_engaged": ["geodesy", "floods"]},
+  "eval": {
+    "source": "frugalmind", "board_url": "https://mdenolle.github.io/frugalmind",
+    "suite": "dvv_processing", "suite_label": "CodaMeter (dv/v processing)",
+    "best": {"model_id": "llama3.1:8b", "score": 1.0, "cost_usd": 0.0},
+    "cheapest_at_top_score": {"model_id": "llama3.1:8b", "cost_usd": 0.0},
+    "max_skill_lift": {"model_id": "claude-haiku-4-5", "score_none": 0.19, "score_full": 1.0, "lift": 0.81},
+    "toy_suites_excluded": ["synthetic_stalta"]
+  }
 }
 ```
+
+### 5.1 The `eval` block — HazEvalHub scorecard (M4)
+
+Pulled by `collect_frugalmind()` from the live [FrugalMind board](https://mdenolle.github.io/frugalmind)
+(public Pages JSON, no auth). **Only the `dvv_processing` suite — "CodaMeter" (dv/v from
+coda waves) — is treated as a real GAIA eval right now;** every other suite on the board
+(e.g. `synthetic_stalta`) is a toy example and is listed under `toy_suites_excluded`, not
+scored. As suites are promoted, add them to `REAL_EVAL_SUITES` in
+[`../scripts/metrics/collect.py`](../scripts/metrics/collect.py). This is the concrete
+first slice of the FrugalMind→HazEvalHub migration in
+[03 §3.0](03-ai-tools-and-evals.md); it carries the **frugality/cost axis** into the
+Observatory (best score, cheapest model reaching it, largest skill lift).
 
 `target` carries the year's goal so the dashboard can render progress bars and flag
 misses without extra logic.
