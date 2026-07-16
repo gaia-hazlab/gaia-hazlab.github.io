@@ -37,10 +37,15 @@ applies to this core.
 We **contextualize** these (welcome deck, website lineage) and **borrow their playbooks**,
 but we do not run their coordination:
 
-- **SCOPED** — the direct methodological ancestor (550+ participants, high repeat
-  engagement; the community-metrics dashboard GAIA's Observatory extends). **Carl Tape
-  joins GAIA-CSSI as a co-PI**, so SCOPED is the closest of the lineage programs — the
-  bridge for Alaska seismology and the SCOPED container/hackweek model.
+- **SCOPED** — the direct methodological ancestor. It **bridged big data and big
+  compute** — massive simulations on **HPC** (e.g. SPECFEM wavefields) and massive data
+  mining on the **cloud** — but stopped **short of data assimilation**: it connected the
+  two ends without fusing data into models in a decision-relevant loop. **That
+  assimilation layer is precisely GAIA's advance** (the assimilative digital twin). GAIA
+  also inherits SCOPED's container/hackweek model and its community-metrics dashboard
+  (which the [Metrics Observatory](04-metrics-observatory.md) extends). **Carl Tape joins
+  GAIA-CSSI as a co-PI**, making SCOPED the closest lineage program and the bridge for
+  Alaska seismology.
 - **GeoSMART** (Nicoleta Cristea) — ML-in-geoscience training + hackweeks; the education /
   broadening-participation lineage. Coordinate on shared training materials and hackweek
   logistics when calendars align.
@@ -93,7 +98,8 @@ standards are agreed in the [Data Catalog](06-data-catalog.md). Onboard via
 
 - [x] ~~Confirm CAIG full name and Erkan's surname~~ — **CAIG / FAIM-WG**, Erkan
       Istanbulluoglu (UW).
-- [ ] Confirm SCOPED co-PI role scope for Carl Tape (Alaska seismology bridge).
+- [x] ~~Confirm SCOPED co-PI role scope for Carl Tape~~ — Alaska seismology bridge; SCOPED
+      = big-data↔big-compute lineage, GAIA adds the assimilation layer.
 - [x] ~~Confirm whether GeoSciCloud belongs on the lineage list~~ — **yes**: NSF EarthCube,
       UNAVCO/IRIS → EarthScope, David Mencin; cloud-CI ancestry (overlaps the EarthScope partner).
 - [ ] Get the correct partner-logo assets ([welcome-deck §3](welcome-deck/README.md)).
