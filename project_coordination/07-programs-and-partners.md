@@ -49,7 +49,11 @@ but we do not run their coordination:
   (FAIM-WG)."* Wildfire-geohazard AI modeling; natural science overlap (post-fire debris
   flows, soil/hydrology) — align on shared methods and data where it helps, no shared
   governance.
-- **GeoSciCloud** ‹confirm relevance› — historical cloud-infrastructure lineage.
+- **GeoSciCloud** (David Mencin, UNAVCO/IRIS → now **EarthScope**) — NSF **EarthCube**
+  project evaluating facility-scale geoscience data + services in commercial (AWS) and
+  private (XSEDE Jetstream) clouds. Direct **cloud-CI ancestry** for GAIA's laptop→cloud→HPC
+  federation, and it runs through the same people as the **EarthScope partnership** (§4) —
+  the lineage and the partner overlap here.
 
 **Coordination touch:** lineage leads are welcome in the GAIA Slack and the monthly
 project-wide update, invited to give talks, and listed on the website lineage — but they
@@ -90,5 +94,6 @@ standards are agreed in the [Data Catalog](06-data-catalog.md). Onboard via
 - [x] ~~Confirm CAIG full name and Erkan's surname~~ — **CAIG / FAIM-WG**, Erkan
       Istanbulluoglu (UW).
 - [ ] Confirm SCOPED co-PI role scope for Carl Tape (Alaska seismology bridge).
-- [ ] Confirm whether GeoSciCloud belongs on the lineage list or is cut.
+- [x] ~~Confirm whether GeoSciCloud belongs on the lineage list~~ — **yes**: NSF EarthCube,
+      UNAVCO/IRIS → EarthScope, David Mencin; cloud-CI ancestry (overlaps the EarthScope partner).
 - [ ] Get the correct partner-logo assets ([welcome-deck §3](welcome-deck/README.md)).
