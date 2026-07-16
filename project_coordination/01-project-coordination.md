@@ -45,22 +45,28 @@ must name an accountable role.
 Track hiring as coordination work, not an afterthought — new modalities (geodesy, SAR)
 and the agent/eval push need people early.
 
+Hiring is **distributed** — each institution owns and runs its own requisitions; GAIA
+coordinates timing and onboarding, it does not manage partner reqs.
+
 | Role to fill | Home institution | Focus | Status |
 |---|---|---|---|
-| **Postdoc — geodesy/SAR + agents** | UW (Lead PI) | Alaska InSAR/GNSS + eval harness | **likely filled in-house** (confirm start date, reassign req if so) |
+| **Postdoc — dv/v + hydrology** | UW (Lead PI) | RC1 soil hydromechanical memory (dv/v → soil state) + eval harness | **likely filled in-house** (confirm start date + req) |
+| Own postdoc / student | **UAF** (Tape) | Alaska seismology; SAR/InSAR bridge | UAF runs its own hire |
+| Own hire | **EarthScope** | Station-as-sensor / FDSN data integration | EarthScope runs its own hire |
 | RSE / CI engineer | eScience / Paros | Templates, containers, agents | plan Y1 |
 | Data/catalog engineer (part-time or student) | UW | FDSN/ASF/GNSS collectors + dashboard | plan Y1 |
-| Per-institution students/postdocs | co-PI sites | Thrust science | per subaward |
 
 Process (lightweight):
-- One **GitHub issue per open position** (label `hiring`, private if the repo/board
-  needs it) with the accountable co-PI as assignee; track stage on the board.
-- The **in-house postdoc**: confirm appointment start + which req it fills so the budget
-  line and the geodesy/SAR/eval milestones ([03](03-ai-tools-and-evals.md),
+- One **GitHub issue per open position** (label `hiring`) with the accountable
+  institution lead as assignee; track stage on the board. **Partner-owned reqs (UAF,
+  EarthScope)** are tracked at *coordination* granularity only — a single tracking issue
+  per institution, not their internal pipeline.
+- The **UW in-house postdoc**: confirm appointment start + which req it fills so the budget
+  line and the seismo-hydrology/eval milestones ([03](03-ai-tools-and-evals.md),
   [06](06-data-catalog.md)) get an owner immediately.
 - Candidate/personnel details (names, offers, salaries) stay on the **SharedDrive/Sheet**,
   never in git — the public issue tracks *stage only*.
-- New hires run the [onboarding checklist](templates/onboarding-checklist.md) day one.
+- New hires (any institution) run the [onboarding checklist](templates/onboarding-checklist.md) day one.
 
 ## 3. Meeting cadence (monthly cycle)
 

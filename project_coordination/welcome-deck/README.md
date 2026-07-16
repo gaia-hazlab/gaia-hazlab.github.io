@@ -1,10 +1,23 @@
 # GAIA Welcome Deck — Source & Brand Spec
 
-> Source-of-truth for the kickoff **welcome slide deck**. Brand matches
-> **gaia-hazlab.github.io exactly** (tokens lifted from `people.html`), in the same family
-> as the FrugalMind EvalHub sibling site (<https://mdenolle.github.io/frugalmind/>:
-> "evidence over hype," clean data-forward layout). Build target: a `.pptx` via the pptx
-> skill, or a reveal.js/HTML deck. This folder also holds `logos/` and the built deck.
+> **Scope: the NSF CSSI kickoff.** This is the CSSI project's welcome/onboarding deck —
+> it grounds the team in GAIA's original **science + CI mission** and the CSSI expansions
+> (Alaska, geodesy/SAR, agents+evals). It is *not* a lab-wide or multi-program deck; the
+> sibling programs appear only as **lineage** ([§4](#4-narrative-arc-15-slides), and
+> [07-programs-and-partners.md](../07-programs-and-partners.md)).
+>
+> **Delivery: project-owned Google Slides.** The live deck lives in Google Slides under
+> `gaia.ci@` (consistent with the Workspace decision,
+> [01 §5](../01-project-coordination.md)) — editable by the team, presentable at the
+> kickoff, exportable to PDF for the Announce list + website. **This folder is the
+> source-of-truth spec** (brand tokens, logo manifest, narrative arc) that the Slides
+> template is built from — not a repo-built binary deck. (A `.pptx`/reveal.js build from
+> this spec stays an option if we ever want it version-controlled.)
+>
+> Brand matches **gaia-hazlab.github.io exactly** (tokens lifted from `people.html`), in
+> the same family as the FrugalMind EvalHub sibling site
+> (<https://mdenolle.github.io/frugalmind/>: "evidence over hype," clean data-forward
+> layout).
 >
 > ⚠ **Placeholders marked `‹confirm›`** are program-history items I won't invent — Marine
 > fills or removes them (see §4 lineage).
@@ -81,7 +94,9 @@ Content below is drawn from `CSSI_GAIA_2025.pdf` (submitted 2025-12-01) unless m
 
 - [ ] Confirm §4 lineage placeholders (STC-CIMG/WEDGE, GAIA-CRESST, LLMoxie, data-mining).
 - [ ] Approve logo list; fetch missing logos → `welcome-deck/logos/`.
-- [ ] Build master slide (gradient title layout + light content layout + card grid) in brand tokens.
-- [ ] Generate `.pptx` via the pptx skill from this outline.
+- [ ] Build the **Google Slides template** under `gaia.ci@`: two master layouts (gradient
+      title/section + light content) and a card-grid layout, in the brand tokens above.
+- [ ] Populate the §4 narrative arc into the Slides template.
 - [ ] Pull the Fig 1 / Fig 2 assets from the proposal for slides 2 and 7.
-- [ ] Export a PDF for the Announce list + website.
+- [ ] Export a PDF for the Announce list + website; link the Slides URL from the kickoff issue.
+- [ ] _(Optional)_ Generate a version-controlled `.pptx`/reveal.js build from this spec.

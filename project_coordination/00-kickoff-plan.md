@@ -57,9 +57,10 @@ expansions define the CSSI relative to the seed grant:
       dashboard panel ([04](04-metrics-observatory.md)).
 - [ ] Seed the **Data Catalog** ([06](06-data-catalog.md)): define Alaska AOIs; run
       `collect_fdsn.py` for seismic + infrasound stations; stub the dashboard catalog tab.
-- [ ] Confirm the **in-house postdoc** appointment and assign geodesy/SAR/eval ownership
-      ([01 §2.1](01-project-coordination.md)); decide Google setup per [01 §5.1](01-project-coordination.md)
-      (Gmail + one Sheet, no new Workspace).
+- [ ] Confirm the **UW in-house postdoc** (dv/v + hydrology, RC1) appointment and assign
+      eval ownership; note **UAF + EarthScope run their own hires**
+      ([01 §2.1](01-project-coordination.md)). Decide Google setup per
+      [01 §5.1](01-project-coordination.md) (Gmail + one Sheet, no new Workspace).
 - [ ] Define **HazEvalHub CTF v0**: one task, one hidden test set, one baseline
       ([03 §3](03-ai-tools-and-evals.md)).
 - [ ] Ratify conventions: repo layout, container standard, licensing (MIT/BSD-3),

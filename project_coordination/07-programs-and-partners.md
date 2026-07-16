@@ -17,7 +17,7 @@
 | **Core** | **CRESST** (UW seed / FFST) | **Marine Denolle (UW)** | Full operating system — shares boards, cadence, metrics |
 | Lineage | **SCOPED** | **Carl Tape** (UAF; **new co-PI**) | Proven model we inherit; loosely coupled |
 | Lineage | **GeoSMART** | **Nicoleta Cristea** (UW) | ML training / hackweeks lineage |
-| Lineage | **CAIG** ‹confirm full name› | **Erkan ‹confirm surname›** | Affiliated; align where useful |
+| Lineage | **CAIG / FAIM-WG** (wildfire geohazards) | **Erkan Istanbulluoglu** (UW) | Affiliated; align where useful |
 | Partner (facility) | **EarthScope Consortium** | — | Data + station metadata (FDSN); RC1 co-lead role |
 | Partner (facility) | **Alaska Satellite Facility (ASF)** (UAF) | — | SAR / InSAR (HyP3); Alaska expansion |
 | Partner (network) | **PNSN** (Pacific NW Seismic Network) | — | Seismic + infrasound data; PNW use cases |
@@ -44,8 +44,11 @@ but we do not run their coordination:
 - **GeoSMART** (Nicoleta Cristea) — ML-in-geoscience training + hackweeks; the education /
   broadening-participation lineage. Coordinate on shared training materials and hackweek
   logistics when calendars align.
-- **CAIG** ‹confirm full name & scope› (Erkan ‹confirm surname›) — affiliated program;
-  align on interoperable CI where it helps, no shared governance.
+- **CAIG / FAIM-WG** (Erkan Istanbulluoglu, UW) — *"Collaborative Research: CAIG:
+  Framework for Artificial Intelligence-Enhanced Modeling of Wildfire Geohazards
+  (FAIM-WG)."* Wildfire-geohazard AI modeling; natural science overlap (post-fire debris
+  flows, soil/hydrology) — align on shared methods and data where it helps, no shared
+  governance.
 - **GeoSciCloud** ‹confirm relevance› — historical cloud-infrastructure lineage.
 
 **Coordination touch:** lineage leads are welcome in the GAIA Slack and the monthly
@@ -84,7 +87,8 @@ standards are agreed in the [Data Catalog](06-data-catalog.md). Onboard via
 
 ## 6. Open items
 
-- [ ] Confirm **CAIG** full name/scope and **Erkan**'s surname.
+- [x] ~~Confirm CAIG full name and Erkan's surname~~ — **CAIG / FAIM-WG**, Erkan
+      Istanbulluoglu (UW).
 - [ ] Confirm SCOPED co-PI role scope for Carl Tape (Alaska seismology bridge).
 - [ ] Confirm whether GeoSciCloud belongs on the lineage list or is cut.
 - [ ] Get the correct partner-logo assets ([welcome-deck §3](welcome-deck/README.md)).
