@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Weekly status & discussion
+    url: https://github.com/gaia-hazlab/gaia-hazlab.github.io/discussions
+    about: Post async updates and brainstorming in GitHub Discussions (mirrored from Slack #weekly-status).
+  - name: Coordination plan
+    url: https://github.com/gaia-hazlab/gaia-hazlab.github.io/tree/main/project_coordination
+    about: How we run GAIA — roles, cadence, automation, onboarding.

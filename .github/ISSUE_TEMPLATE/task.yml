@@ -1,0 +1,39 @@
+name: "Task"
+description: "An actionable coordination or CI task with a clear owner."
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: dropdown
+    id: thrust
+    attributes:
+      label: Thrust
+      options: [rc1, rc2, ci1, ci2, datahub, modelhub, hazevalhub, agent, website, metrics, alaska, geodesy, sar-insar]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs to happen
+      description: One clear outcome. Link the milestone/board card.
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Accountable role
+      placeholder: "e.g. CI infra lead"
+    validations:
+      required: true
+  - type: input
+    id: due
+    attributes:
+      label: Target date
+      placeholder: "YYYY-MM-DD"
+  - type: checkboxes
+    id: fair
+    attributes:
+      label: FAIR check (if this ships a product)
+      options:
+        - label: Persistent ID (DOI/SWHID) planned
+        - label: Provenance YAML + RO-Crate planned
+        - label: Permissive license (MIT/BSD-3)

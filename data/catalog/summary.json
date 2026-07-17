@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-07-12T00:00:00Z",
+  "sar": {
+    "tracks": 0,
+    "asc": 0,
+    "desc": 0,
+    "aois": 3,
+    "acquisitions": 0
+  },
+  "seismic": {
+    "stations": 0,
+    "with_infrasound": 0,
+    "networks": []
+  },
+  "gnss": {
+    "sites": 0,
+    "strain": 0,
+    "reflectometry": 0,
+    "tec_pwv": 0
+  }
+}

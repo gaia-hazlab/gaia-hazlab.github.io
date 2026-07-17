@@ -1,0 +1,29 @@
+# GAIA HazLab — member profile
+# Fill one file per person (or let the intake form auto-generate this).
+# Fields match a data/team.json entry so it drops straight into the People page.
+# Only `photo` and the optional links may be left blank.
+
+name:          # "Jane Rivera"
+photo:         # leave blank to default to https://github.com/<github>.png
+role:          # Lead PI | Co-PI | Senior Personnel | Postdoc | PhD Student | MS Student |
+               # Undergraduate Student | Research Scientist | RSE/Engineer | Collaborator
+title:         # human-readable title, e.g. "PhD Student", "Research Assistant Professor"
+affiliation:   # "Department, Institution" e.g. "Earth and Space Sciences, University of Washington"
+geo_expertise: # "Seismology; Geomorphology"
+ai_expertise:  # "Physics-informed ML; Cloud/HPC; Agents"
+hazard_focus:  # "earthquakes, landslides, floods"
+email:         # institutional email
+website:       # optional
+github:        # https://github.com/<username>  (also used for the default portrait)
+scholar:       # optional Google Scholar URL
+orcid:         # optional https://orcid.org/....
+
+# --- CSSI coordination fields (NOT published to team.json; roster/analytics only) ---
+cssi:
+  seniority:      # Faculty | Research Scientist | Postdoc | PhD | Masters | Undergrad | Partner
+  funding_status: # Funded | Unfunded collaborator | Partner
+  pillars: []     # e.g. [HazEvalHub, Geodesy, Alaska]  (confirm names vs. proposal)
+  ci_expertise: []# e.g. [SAR/InSAR, Cloud/HPC, ML/AI & agents]
+  slack_email:    # if different from email
+  mailing_list:   # true | false  (voluntary opt-in)
+  list_on_website: # true | false

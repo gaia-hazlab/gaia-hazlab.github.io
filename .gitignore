@@ -58,3 +58,12 @@ venv.bak/
 
 # MyST build outputs
 _build
+
+# Protected coordination source docs (raw NSF/budget/personnel material).
+# The *derived*, sanitized coordination plan under project_coordination/ IS tracked
+# and public; the raw source binaries here are kept out of git by default.
+# To publish a specific source doc, add an explicit exception (e.g. `!project_docs/PUBLIC.pdf`).
+project_docs/*.pdf
+project_docs/*.docx
+project_docs/*.xlsx
+project_docs/*.pptx

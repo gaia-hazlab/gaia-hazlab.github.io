@@ -1,0 +1,51 @@
+name: Quarterly Survey
+
+# Posts the community survey link to Slack and opens a tracking issue.
+# GATED OFF: runs only when ENABLE_AUTOMATION == 'true'.
+# Feeds M3 (institutions, disciplines) and M4 (skill gain). See runbook section 4.
+
+on:
+  schedule:
+    - cron: "0 15 1 1,4,7,10 *"   # 1st of Jan/Apr/Jul/Oct, 15:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  survey:
+    if: vars.ENABLE_AUTOMATION == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open tracking issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SURVEY_FORM_URL: ${{ secrets.SURVEY_FORM_URL }}
+        run: |
+          # Ensure the label exists (kickoff may not have created it yet), then create the
+          # issue. If labelled creation still fails for any reason, retry without the label
+          # so the workflow degrades gracefully like the Slack step.
+          gh label create metrics --repo "${{ github.repository }}" --color BFD4F2 \
+            --description "Metrics Observatory / surveys" 2>/dev/null || true
+          TITLE="Quarterly community survey — $(date -u +%Y-Q)$(( ($(date -u +%-m)-1)/3 + 1 ))"
+          BODY="Quarterly survey is live: ${SURVEY_FORM_URL:-<set SURVEY_FORM_URL secret>}. Results feed M3/M4 in the Metrics Observatory. Close when the collection window ends."
+          gh issue create --repo "${{ github.repository }}" --title "$TITLE" --label metrics --body "$BODY" \
+            || gh issue create --repo "${{ github.repository }}" --title "$TITLE" --body "$BODY"
+
+      - name: Post to Slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_STATUS_CHANNEL: ${{ secrets.SLACK_STATUS_CHANNEL }}
+          SURVEY_FORM_URL: ${{ secrets.SURVEY_FORM_URL }}
+        run: |
+          if [ -z "$SLACK_BOT_TOKEN" ] || [ -z "$SLACK_STATUS_CHANNEL" ] || [ -z "$SURVEY_FORM_URL" ]; then
+            echo "Slack/survey secrets not set — issue opened, Slack skipped (expected until configured)."
+            exit 0
+          fi
+          PAYLOAD=$(jq -n --arg ch "$SLACK_STATUS_CHANNEL" --arg url "$SURVEY_FORM_URL" \
+            '{channel:$ch, text:(":clipboard: *Quarterly GAIA survey* is open — 3 minutes, helps our NSF reporting: " + $url)}')
+          curl -sS -X POST https://slack.com/api/chat.postMessage \
+            -H "Authorization: Bearer ${SLACK_BOT_TOKEN}" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD" | grep -q '"ok":true' && echo "Posted." || { echo "Slack post failed"; exit 1; }

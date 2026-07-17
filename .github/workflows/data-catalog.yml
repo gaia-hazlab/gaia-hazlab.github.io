@@ -1,0 +1,55 @@
+name: Data Catalog Refresh
+
+# Refreshes the Alaska observational catalog (FDSN seismic/infrasound, ASF SAR tracks,
+# GNSS sites) into data/catalog/ for the dashboard's Data Catalog tab.
+# GATED OFF: runs only when ENABLE_AUTOMATION == 'true'. Public metadata; no tokens
+# required for the FDSN collector. See project_coordination/06-data-catalog.md.
+
+on:
+  schedule:
+    - cron: "0 7 * * 0"   # Sundays 07:00 UTC (after the metrics run)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-catalog
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: vars.ENABLE_AUTOMATION == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Collect + build catalog
+        run: |
+          export CATALOG_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          python scripts/catalog/collect_fdsn.py --out data/catalog/seismic_stations.csv || echo "fdsn collector degraded"
+          python scripts/catalog/collect_asf.py  --out data/catalog/sar_tracks.csv       || echo "asf stub"
+          python scripts/catalog/collect_gnss.py --out data/catalog/gnss_sites.csv       || echo "gnss stub"
+          python scripts/catalog/build_catalog.py --dir data/catalog >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain data/catalog/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/catalog/
+            git commit -m "chore(catalog): refresh Alaska data catalog"
+            git push
+          else
+            echo "Catalog already up to date."
+          fi
+        # If main is protected, swap for peter-evans/create-pull-request.
