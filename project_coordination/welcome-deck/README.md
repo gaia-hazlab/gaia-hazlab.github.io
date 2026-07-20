@@ -55,8 +55,9 @@ or white-knockout-on-purple for consistency; equal optical height; align on a ba
 
 | Logo | Row | In repo? | Source to fetch (official) |
 |---|---|---|---|
-| **NSF** | Funder | ✗ | nsf.gov brand assets (use official NSF logo) |
+| **NSF** — award **OAC-2608509** (GAIA-CSSI) | Funder | ✗ | nsf.gov brand assets (use official NSF logo) |
 | **FFST** (Fund for Future Science/Tech seed) | Funder | ✅ `images/sponsors/FFST-Hero.png` | in repo |
+| **Jerome & Linda Paros Geohazard Center** | Funder | ✗ | UW Paros Center ‹confirm URL + logo› |
 | **University of Washington** | Funder/Inst | ✗ | UW brand (Block W / signature) |
 | **UW eScience Institute** | Funder | ✗ | escience.washington.edu |
 | **UW College of the Environment** | Funder | ✅ `images/sponsors/coenv-logo.png` | in repo (kept for continuity) |
@@ -65,6 +66,11 @@ or white-knockout-on-purple for consistency; equal optical height; align on a ba
 | **Alaska Satellite Facility (ASF)** | Institution | ✗ | asf.alaska.edu ‹confirm as partner logo› |
 | **Concord Consortium** | Institution | ✗ | concord.org ‹confirm role — education/broadening partner› |
 | **GAIA HazLab mark** | brand | ✅ `book/img/gaia-hazalab-logo.png` | in repo |
+
+**Funding acknowledgment** (title-slide footer + closing slide, verbatim): *"This material
+is based upon work supported by the U.S. National Science Foundation under Grant No.
+**OAC-2608509** (GAIA-CSSI), the **Fund for Future Science and Technology (FFST)**, and the
+**Jerome and Linda Paros Geohazard Center**."*
 
 > Fetching external logos = downloading files, which I'll do only on your OK (I'll list
 > exact URLs first). Drop any you already have into `welcome-deck/logos/` and I'll wire them.

@@ -15,6 +15,7 @@ project:
     - file: book/chapters/problem-statement.md
     - title: Science
       children:
+        - file: book/chapters/digital-twins-literature-review.md
         - title: Digital Twin Framework
           children:
             - file: book/chapters/digital-twin-overview.md
