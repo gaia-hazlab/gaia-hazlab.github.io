@@ -37,7 +37,7 @@ failures, calibration.)*
 
 ## Connection to use cases
 
-Central to the [2001–2031 Nisqually earthquake](wa-2001-2031-nisqually-earthquake) use case.
+Central to the 2001–2031 Nisqually earthquake use case.
 
 ## Open questions & roadmap
 

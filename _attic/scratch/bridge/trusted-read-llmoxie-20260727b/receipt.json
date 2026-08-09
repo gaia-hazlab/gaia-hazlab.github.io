@@ -1,0 +1,29 @@
+{
+  "bridgeVersion": "3.6",
+  "kind": "google-docs-trusted-read-receipt",
+  "status": "complete",
+  "target": {
+    "documentId": "1_0biYxew7Ii6RVLBJf3tFLoAHj1lbkT6HEjW6JbKQXI",
+    "title": "OpenEarthAI_IDSS_Cat2_ProjectDescription_v4",
+    "revisionId": "AIroW36Xnv_iFJciJ-w45wXOsuguFmJZMKs46zDA23BAtn4Gwj_K2psv9m9F8EcLgGiFgNQVZE0G0HUdU5MiA4qAMhzxhIirxg2Spdc6vnI",
+    "documentUrl": "https://docs.google.com/document/d/1_0biYxew7Ii6RVLBJf3tFLoAHj1lbkT6HEjW6JbKQXI",
+    "selectedTabId": null
+  },
+  "dropdownMetadata": {
+    "status": "unavailable",
+    "resolvedTool": null,
+    "authoritative": false,
+    "count": 0
+  },
+  "controlAwareness": {
+    "hasProtectedControls": false,
+    "authoritativeDropdownCount": 0,
+    "opaqueControlCount": 0,
+    "affectedParagraphCount": 0,
+    "nativeElementCounts": {},
+    "preservationRequired": false,
+    "recommendedBehavior": "No protected controls were detected in the scanned scope."
+  },
+  "warnings": [],
+  "error": null
+}

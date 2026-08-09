@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Funding &amp; Acknowledgments — GAIA HazLab</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Funding and acknowledgments for GAIA HazLab — NSF CSSI, FFST/CRESST seed, CAIG/FAIM-WG, and the Jerome & Linda Paros Geohazard Center.">
+    <meta name="author" content="GAIA HazLab">
+    <link rel="icon" type="image/png" href="book/img/img/gaia-hazalab-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #2a1a4f; --purple: #4b2e83; --purple-deep: #341f63; --peri: #6d5bd0;
+            --peri-light: #c3b8f0; --stone: #6f6890; --lav: #f5f3fb; --lav-2: #ece8f7;
+            --paper: #ffffff; --line: rgba(42, 26, 79, 0.10);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.65; color: var(--ink);
+            background: var(--lav); -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
+        a { color: inherit; }
+
+        .nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(42, 26, 79, 0.92);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .nav-inner { max-width: 1180px; margin: 0 auto; padding: 0.85rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none;
+            font-weight: 800; font-size: 1.15rem; letter-spacing: 0.3px; }
+        .logo .mark { width: 30px; height: 30px; }
+        .logo .glow { color: var(--peri-light); }
+        .nav-links { display: flex; gap: 1.6rem; list-style: none; align-items: center; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.92rem;
+            font-weight: 500; transition: color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--peri-light); }
+        .nav-cta { background: var(--peri); color: #fff !important; padding: 0.5rem 1rem;
+            border-radius: 8px; font-weight: 600; }
+        .nav-cta:hover { background: #fff; color: var(--purple) !important; }
+
+        .page-header { margin-top: 58px; background: linear-gradient(135deg, #4b2e83 0%, #341f63 100%);
+            color: #fff; padding: 5rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden; }
+        .page-header::after { content: ""; position: absolute; inset: 0; opacity: 0.16; pointer-events: none;
+            background-image: linear-gradient(rgba(195,184,240,0.7) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(195,184,240,0.7) 1px, transparent 1px);
+            background-size: 54px 54px;
+            mask-image: radial-gradient(circle at 70% 20%, black, transparent 72%);
+            -webkit-mask-image: radial-gradient(circle at 70% 20%, black, transparent 72%); }
+        .page-header .kicker { color: var(--peri-light); font-weight: 600; font-size: 0.8rem;
+            letter-spacing: 2.5px; text-transform: uppercase; position: relative; z-index: 1; }
+        .page-header h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0.6rem 0 0.8rem;
+            letter-spacing: -0.5px; position: relative; z-index: 1; }
+        .page-header p { font-size: 1.1rem; color: rgba(255,255,255,0.88); font-weight: 300;
+            max-width: 62ch; margin: 0 auto; position: relative; z-index: 1; }
+
+        .section { max-width: 1000px; margin: 0 auto; padding: 4rem 1.5rem 2rem; }
+
+        .fund-card { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: center;
+            background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+            padding: 2rem 2.2rem; margin-bottom: 1.6rem;
+            transition: transform .25s, box-shadow .25s, border-color .25s; }
+        .fund-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(75,46,131,0.13);
+            border-color: rgba(109,91,208,0.45); }
+        .fund-logo { display: flex; align-items: center; justify-content: center; min-height: 90px; }
+        .fund-logo img { max-width: 100%; max-height: 96px; object-fit: contain; }
+        .fund-logo .badge { font-family: 'Montserrat'; font-weight: 800; font-size: 1.25rem; color: var(--purple);
+            text-align: center; line-height: 1.25; }
+        .fund-body h3 { font-size: 1.28rem; color: var(--ink); margin-bottom: 0.15rem; }
+        .fund-body .tag { font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--peri); margin-bottom: 0.7rem; }
+        .fund-body p { font-size: 0.95rem; color: var(--stone); }
+        .fund-body a.link { color: var(--peri); font-weight: 600; text-decoration: none;
+            border-bottom: 1px solid transparent; transition: border-color .2s; }
+        .fund-body a.link:hover { border-color: var(--peri); }
+
+        .ack { max-width: 1000px; margin: 1rem auto 0; padding: 0 1.5rem 4.5rem; }
+        .ack-box { background: var(--lav-2); border-radius: 16px; padding: 1.8rem 2rem;
+            font-size: 0.9rem; color: var(--ink); line-height: 1.7; }
+        .ack-box h4 { font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--peri); margin-bottom: 0.6rem; }
+        .ack-box .muted { color: var(--stone); font-size: 0.82rem; }
+
+        .footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 1.5rem 2rem; text-align: center; }
+        .footer a { color: var(--peri-light); text-decoration: none; }
+        .footer .top { margin-bottom: 0.6rem; }
+        .footer-bottom { margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .fund-card { grid-template-columns: 1fr; text-align: center; gap: 1.1rem; }
+            .fund-logo { min-height: 0; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <svg class="mark" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="#fff" stroke-width="1.6"/>
+                    <path d="M2 18c4-3 7 2 11 0s7-4 11-1" stroke="#c3b8f0" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M3 22c4-2 7 1 10 0s8-2 11 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+                    <circle cx="16" cy="16" r="2.4" fill="#c3b8f0"/>
+                </svg>
+                GAIA<span class="glow">·</span>HazLab
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#science">Science</a></li>
+                    <li><a href="index.html#platform">Technology</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="funding.html" class="active">Funding</a></li>
+                    <li><a href="book/index.html" class="nav-cta">Docs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="kicker">Funding &amp; acknowledgments</div>
+        <h1>Who makes GAIA possible</h1>
+        <p>GAIA HazLab is built on complementary investments — from the seed that launched the idea, to the federal award now driving it, to the philanthropy and programs that anchor its flagship applications.</p>
+    </section>
+
+    <section class="section">
+
+        <!-- NSF CSSI -->
+        <div class="fund-card">
+            <div class="fund-logo">
+                <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2608509" target="_blank" rel="noopener">
+                    <img src="images/sponsors/nsf_logo.png" alt="U.S. National Science Foundation">
+                </a>
+            </div>
+            <div class="fund-body">
+                <h3>U.S. National Science Foundation — CSSI</h3>
+                <div class="tag">Core award · geophysical data assimilation</div>
+                <p>The core of GAIA is supported by NSF's <strong>Cyberinfrastructure for Sustained Scientific Innovation (CSSI)</strong> program under collaborative awards <strong>OAC&#8209;2608509, 2608510, and 2608511</strong>, <em>“Frameworks: Geophysical AI-driven Integration &amp; Assimilation (GAIA).”</em> It develops open, agentic cyberinfrastructure for real-time, physics-aware geophysical data assimilation and multi-hazard prediction across Cascadia and Alaska.
+                <a class="link" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2608509" target="_blank" rel="noopener">View the award →</a></p>
+            </div>
+        </div>
+
+        <!-- FFST / CRESST seed -->
+        <div class="fund-card">
+            <div class="fund-logo">
+                <a href="https://www.ff-st.org/" target="_blank" rel="noopener">
+                    <img src="images/sponsors/FFST-Hero.png" alt="Fund for Future Science and Technology">
+                </a>
+            </div>
+            <div class="fund-body">
+                <h3>Fund for Future Science &amp; Technology · UW CRESST</h3>
+                <div class="tag">Seed phase · where GAIA began</div>
+                <p>GAIA started as a seed effort supported by the <strong>Fund for Future Science and Technology (FFST)</strong> through <strong>UW CRESST</strong>, which funded the early prototypes, community building, and proof-of-concept that matured into the CSSI project.
+                <!-- CONFIRM: attach the FFST/CRESST seed proposal PDF and update this href (see message) -->
+                <a class="link" href="#" title="Link the FFST/CRESST seed proposal">Read the seed proposal →</a></p>
+            </div>
+        </div>
+
+        <!-- CAIG / FAIM-WG -->
+        <div class="fund-card">
+            <div class="fund-logo">
+                <!-- CONFIRM: exact program name + logo for CAIG / FAIM-WG -->
+                <div class="badge">CAIG<br>FAIM&#8209;WG</div>
+            </div>
+            <div class="fund-body">
+                <h3>CAIG / FAIM-WG — Post-fire debris flows</h3>
+                <div class="tag">Wildfire geohazards · PI Erkan Istanbulluoglu</div>
+                <p>Wildfire-driven geohazards in GAIA are advanced through <strong>CAIG / FAIM-WG</strong>, led by PI <strong>Erkan Istanbulluoglu</strong>. This effort studies <strong>post-fire debris flows</strong> and connects land-surface and geomorphic modeling of fire-altered landscapes to GAIA's multi-hazard framework.</p>
+            </div>
+        </div>
+
+        <!-- Paros Center -->
+        <div class="fund-card">
+            <div class="fund-logo">
+                <img src="images/sponsors/paros-geohazard-center.svg" alt="Jerome and Linda Paros Geohazard Center">
+            </div>
+            <div class="fund-body">
+                <h3>Jerome &amp; Linda Paros Geohazard Center</h3>
+                <div class="tag">Flagship · Mount Rainier</div>
+                <p>The <strong>Jerome and Linda Paros Geohazard Center</strong> supports GAIA's <strong>Mount Rainier flagship</strong> — integrating dense geophysical and geodetic observation with real-time hazard modeling at one of the Pacific Northwest's highest-risk volcanoes.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="ack">
+        <div class="ack-box">
+            <h4>Standard acknowledgment</h4>
+            This material is based upon work supported by the U.S. National Science Foundation under Grant No.
+            <strong>OAC&#8209;2608509</strong> (GAIA&#8209;CSSI), the <strong>Fund for Future Science and Technology (FFST)</strong>,
+            and the <strong>Jerome and Linda Paros Geohazard Center</strong>.
+            <p class="muted" style="margin-top:0.7rem;">Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="top">
+            <a href="index.html">Home</a> · <a href="dashboard.html">Dashboard</a> ·
+            <a href="people.html">People</a> · <a href="funding.html">Funding</a> ·
+            <a href="book/index.html">Documentation</a> ·
+            <a href="https://github.com/gaia-hazlab" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="footer-bottom">
+            © 2026 GAIA HazLab · University of Washington · Licensed under the MIT License.
+        </div>
+    </footer>
+</body>
+
+</html>

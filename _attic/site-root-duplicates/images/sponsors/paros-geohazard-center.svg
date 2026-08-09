@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 150" role="img" aria-label="Jerome and Linda Paros Geohazard Center">
+  <title>Jerome and Linda Paros Geohazard Center</title>
+  <!-- Emblem: seismic arcs over a peak, in a UW-purple badge -->
+  <g>
+    <circle cx="72" cy="75" r="58" fill="#4b2e83"/>
+    <!-- seismic arcs -->
+    <path d="M45 47 A32 32 0 0 1 99 47" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity="0.5"/>
+    <path d="M53 39 A22 22 0 0 1 91 39" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity="0.82"/>
+    <!-- peak -->
+    <path d="M44 101 L72 52 L100 101 Z" fill="#ffffff"/>
+    <!-- ridge notch -->
+    <path d="M63 68 L72 52 L81 68 L74 72 L72 68 L70 72 Z" fill="#4b2e83"/>
+  </g>
+  <!-- Wordmark -->
+  <g font-family="Montserrat, Helvetica, Arial, sans-serif">
+    <text x="152" y="50" font-size="14.5" letter-spacing="2.4" fill="#6f6890" font-weight="600">JEROME &amp; LINDA PAROS</text>
+    <text x="151" y="88" font-size="33" letter-spacing="0.4" fill="#2a1a4f" font-weight="800">GEOHAZARD</text>
+    <text x="152" y="118" font-size="19.5" letter-spacing="7.5" fill="#4b2e83" font-weight="600">CENTER</text>
+  </g>
+</svg>

@@ -18,20 +18,20 @@ title: GAIA HazLab
 	- [HazEvalHub](chapters/hazevalhub): Evaluation and validation frameworks.
 	- [Research Software](chapters/research-software): Tools for reproducible, scalable workflows.
 - **Use Cases:**
-	- [WA-2001-2031 Nisqually Earthquake](chapters/wa-2001-2031-nisqually-earthquake)
+	- WA-2001-2031 Nisqually Earthquake *(in preparation)*
 	- [WA-2025 River Floods & Sediment Transport](https://gaia-hazlab.github.io/seis-hydro-2-sed/)
-	- [WA-2025 Stehekin Post-fire Debris Flow](chapters/wa-2025-stehekin)
-	- [Convective Thunderstorms](chapters/convective-thunderstorms)
+	- WA-2025 Stehekin Post-fire Debris Flow *(in preparation)*
+	- Convective Thunderstorms *(in preparation)*
 - **System-Science Nexus:**
 	- [Soil Memory](chapters/soil-memory): Linking atmosphere to solid Earth.
-	- Ocean–Atmosphere coupling (coming soon).
+	- [Ocean–Atmosphere Coupling](chapters/ocean-atmosphere-coupling): MJO, atmospheric rivers, and extreme precipitation forcing.
 
 ---
 
-## Project Organization
+## How We Work
 
-- [Project Organization](chapters/project-organization): How we work, collaborate, and organize research.
-- [People](https://gaia-hazlab.github.io/people): Meet the team.
+- [How We Work](governance/how-we-work): Governance, decisions of record, and the metrics we publish.
+- [People](https://gaia-hazlab.github.io/people.html): Meet the team.
 
 ---
 
@@ -59,5 +59,5 @@ title: GAIA HazLab
 - [System-Science Nexus](#what-we-do)
 - [Calendar of Events](#calendar-of-events)
 - [Visual Highlights](#visual-highlights)
-- [Project Organization](chapters/project-organization)
-- [People](https://gaia-hazlab.github.io/people)
+- [How We Work](governance/how-we-work)
+- [People](https://gaia-hazlab.github.io/people.html)

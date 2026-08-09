@@ -74,7 +74,7 @@ models and of calibration.
 | **Seismic hazard (probabilistic)** → hazard curves $\lambda(IM)$ | 🏚️ | USGS NSHM [@petersen2024] via [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) | Site / gridded | Site / gridded | Static (model epoch) | rate vs IM | **Fixed** reference-rock site term (§7); model-epoch dependence |
 | **Attenuation** → $\kappa_0$ | 🏚️ | high-frequency spectral decay [@andersonhough1984]; GAIA seismic / DAS | Per site/station | Per site/station | Static (→ dynamic) | s | Band/method-dependent; seasonal variability [@haendel2025]; **not yet wired** |
 | **Geotechnical case histories** (calibration) | 🏚️ | CPT/SPT liquefaction databases [@vanballegooy2014] | Point | Point | Event-based | varies | Geographic bias; the surrogate's training/validation base |
-| **Hazard inventories / maps** → validation labels | ⛰️ 🏚️ | USGS / WA DNR landslide inventories ([usgs.gov](https://www.usgs.gov/programs/landslide-hazards), [dnr.wa.gov](https://www.dnr.wa.gov/)); post-EQ liquefaction reconnaissance (e.g. 2001 [Nisqually](wa-2001-2031-nisqually-earthquake)) | Vector | Vector | Event / historical | presence / severity | Completeness & recency bias; used only to **score**, never as input; **some locations withheld** |
+| **Hazard inventories / maps** → validation labels | ⛰️ 🏚️ | USGS / WA DNR landslide inventories ([usgs.gov](https://www.usgs.gov/programs/landslide-hazards), [dnr.wa.gov](https://www.dnr.wa.gov/)); post-EQ liquefaction reconnaissance (e.g. 2001 Nisqually) | Vector | Vector | Event / historical | presence / severity | Completeness & recency bias; used only to **score**, never as input; **some locations withheld** |
 
 ## 2. Derived variables (deterministic & statistical transformations)
 

@@ -320,7 +320,7 @@ We welcome contributions of:
 - Integration guides
 - Best practices documentation
 
-See our [Contributing Guide](../../CONTRIBUTING.md) for details.
+See our [Contributing Guide](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/CONTRIBUTING.md) for details.
 
 ---
 

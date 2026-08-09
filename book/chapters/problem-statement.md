@@ -40,17 +40,14 @@ Atmospheric river–driven flooding and landslides across western Washington, li
 :::
 
 :::{grid-item-card} 2001–2031 Nisqually Earthquake
-:link: wa-2001-2031-nisqually-earthquake
 Investigating earthquake-induced ground failure (liquefaction, landslides) and how antecedent soil moisture and hydromechanical state modulate seismic hazard severity.
 :::
 
 :::{grid-item-card} 2025 Stehekin Post-fire Debris Flow
-:link: wa-2025-stehekin
 Post-wildfire debris flow hazard in the Stehekin watershed, where fire-altered soil properties interact with storm precipitation to trigger catastrophic mass movements.
 :::
 
 :::{grid-item-card} Convective Thunderstorms
-:link: convective-thunderstorms
 Severe convective storms and their coupling to land surface conditions, exploring how soil moisture and surface energy fluxes feed back into storm initiation and intensity.
 :::
 

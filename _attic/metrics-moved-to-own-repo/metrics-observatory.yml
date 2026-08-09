@@ -1,0 +1,55 @@
+name: Metrics Observatory
+
+# Collects GAIA delivery (D1-D5) and usage (M1-M4) metrics into data/metrics/latest.json.
+# GATED OFF: the job only runs when repo variable ENABLE_AUTOMATION == 'true'.
+# See project_coordination/04-metrics-observatory.md and 05-automation-runbook.md.
+
+on:
+  schedule:
+    - cron: "0 6 * * 0"   # Sundays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics-observatory
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    if: vars.ENABLE_AUTOMATION == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Collect metrics (GitHub-only until other tokens are added)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          export METRICS_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          python scripts/metrics/collect.py --out data/metrics/latest.json >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain data/metrics/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/metrics/
+            git commit -m "chore(metrics): weekly Metrics Observatory update"
+            git push
+          else
+            echo "Metrics already up to date."
+          fi
+        # If main is protected against direct pushes, swap for peter-evans/create-pull-request.

@@ -91,7 +91,7 @@ and data/model need:
 
 The **unconditional** product is the "total risk for a return period" baseline; the
 **event-based** product is the real-time nowcast for a specific rupture (e.g. a Cascadia or
-[Nisqually](wa-2001-2031-nisqually-earthquake) scenario). All three call the *same* conditional
+Nisqually scenario). All three call the *same* conditional
 surrogate — they differ only in how the ground motion is supplied and integrated.
 
 ## 5. Attenuation, $\kappa_0$, and the NSHM
@@ -157,7 +157,7 @@ of the prediction; full metric definitions live in [HazEvalHub](hazevalhub).
 - **Calibration** — against the geotechnical case-history record (CPT/SPT triggering, manifestation
   fragility [@geyin2020fragility; @maurer2015]) and the $V_s$ / water-table inputs.
 - **Validation** — against **observed liquefaction maps** from past earthquakes (the
-  [Nisqually](wa-2001-2031-nisqually-earthquake) 2001 event is the regional target): probabilistic
+  Nisqually 2001 event is the regional target): probabilistic
   skill (Brier, reliability), spatial agreement (IoU) of mapped manifestation, and — for the
   unconditional product — consistency with return-period expectations.
 

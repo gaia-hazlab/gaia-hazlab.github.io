@@ -58,7 +58,7 @@ This expert-grounded evaluation complements the automated benchmarking described
 
 ## Use case: Nisqually 2001 liquefaction digital twin
 
-The Translator's first applied use case is the [Nisqually 2001 liquefaction digital twin](./wa-2001-2031-nisqually-earthquake.md). Building a useful digital twin requires fluent communication across seismology (ground motion, source physics), geotechnical engineering (CSR / CRR triggering, site response), hydrology (pore-pressure history, water-table position), and near-surface geophysics (Vs profiles, basin amplification). The Translator's seismology + geotechnical engineering + hydrology corpora are designed to make the integration tractable.
+The Translator's first applied use case is the Nisqually 2001 liquefaction digital twin. Building a useful digital twin requires fluent communication across seismology (ground motion, source physics), geotechnical engineering (CSR / CRR triggering, site response), hydrology (pore-pressure history, water-table position), and near-surface geophysics (Vs profiles, basin amplification). The Translator's seismology + geotechnical engineering + hydrology corpora are designed to make the integration tractable.
 
 ## Cross-cutting in the AI agenda
 

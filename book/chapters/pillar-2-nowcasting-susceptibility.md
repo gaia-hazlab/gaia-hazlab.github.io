@@ -218,7 +218,7 @@ water-table change**, modulate liquefaction.
 **Three framings.** The GLM digital twin serves three questions — **conditional**
 ($P(\text{liq}\mid IM)$, the national surrogate), **unconditional** (integrated over the NSHM
 hazard curve for a return period), and **event-based** (a ShakeMap field for a specific rupture,
-e.g. Cascadia or [Nisqually](wa-2001-2031-nisqually-earthquake)). A distinctive open question is
+e.g. Cascadia or Nisqually). A distinctive open question is
 whether a **time-varying attenuation / site term** ($\kappa_0(t)$, $V_s(t)$) — which the GAIA
 seismic networks can estimate and which varies seasonally [@haendel2025] — can be fed back into
 the fixed-site-term NSHM.

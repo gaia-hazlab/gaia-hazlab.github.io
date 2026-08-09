@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Presentations — GAIA HazLab</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Talks and presentation materials from GAIA HazLab.">
+    <meta name="author" content="GAIA HazLab">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #2a1a4f; --purple: #4b2e83; --purple-deep: #341f63;
+            --peri: #6d5bd0; --peri-light: #c3b8f0; --stone: #6f6890;
+            --lav: #f5f3fb; --paper: #fff; --line: rgba(42,26,79,.12);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--lav); color: var(--ink); font-family: Inter, system-ui, sans-serif; line-height: 1.6; }
+        h1, h2, h3, .logo { font-family: Montserrat, sans-serif; }
+        .nav { position: fixed; inset: 0 0 auto; z-index: 1000; background: rgba(42,26,79,.94); border-bottom: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(12px); }
+        .nav-inner { max-width: 1180px; margin: auto; padding: .85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: .6rem; color: #fff; text-decoration: none; font-weight: 800; font-size: 1.15rem; }
+        .logo .mark { width: 30px; height: 30px; }
+        .logo .glow { color: var(--peri-light); }
+        .nav-links { display: flex; gap: 1.45rem; list-style: none; align-items: center; }
+        .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .9rem; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: var(--peri-light); }
+        .nav-cta { background: var(--peri); color: #fff !important; padding: .5rem 1rem; border-radius: 8px; font-weight: 600; }
+        .page-header { margin-top: 58px; padding: 5rem 1.5rem 4rem; text-align: center; color: #fff; background: linear-gradient(135deg,var(--purple),var(--purple-deep)); }
+        .kicker { color: var(--peri-light); font-size: .8rem; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase; }
+        .page-header h1 { margin: .55rem 0 .75rem; font-size: clamp(2.2rem,5vw,3.4rem); }
+        .page-header p { max-width: 66ch; margin: auto; color: rgba(255,255,255,.86); font-size: 1.08rem; font-weight: 300; }
+        main { max-width: 1180px; margin: auto; padding: 4rem 1.5rem 5rem; }
+        .deck { margin-bottom: 4rem; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); box-shadow: 0 18px 45px rgba(42,26,79,.09); }
+        .deck-head { padding: 1.7rem 1.8rem 1.5rem; display: grid; grid-template-columns: 220px 1fr; gap: 1.6rem; align-items: center; }
+        .deck-head img { width: 100%; border-radius: 9px; border: 1px solid var(--line); }
+        .deck h2 { font-size: clamp(1.45rem,3vw,2rem); line-height: 1.2; }
+        .meta { margin: .35rem 0 .75rem; color: var(--peri); font-weight: 650; }
+        .summary { color: var(--stone); max-width: 66ch; }
+        .actions { margin-top: 1.15rem; display: flex; flex-wrap: wrap; gap: .7rem; }
+        .btn { display: inline-flex; align-items: center; padding: .68rem 1.05rem; border-radius: 9px; text-decoration: none; font-weight: 650; background: var(--purple); color: #fff; }
+        .btn.secondary { color: var(--purple); background: var(--lav); border: 1px solid var(--line); }
+        .embed { aspect-ratio: 16/9; background: #151127; border-top: 1px solid var(--line); }
+        .embed iframe { display: block; width: 100%; height: 100%; border: 0; }
+        .slide-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.2rem; }
+        .slide-card { padding: 1rem; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+        .slide-card img { display: block; width: 100%; border-radius: 9px; }
+        .slide-card h3 { margin-top: .85rem; font-size: 1rem; }
+        .section-head { margin: 0 0 1.5rem; }
+        .section-head h2 { margin-top: .3rem; font-size: clamp(1.6rem,3vw,2.2rem); }
+        .footer { padding: 2.5rem 1.5rem; text-align: center; background: var(--ink); color: rgba(255,255,255,.7); }
+        .footer a { color: var(--peri-light); text-decoration: none; }
+        .footer-bottom { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.1); font-size: .82rem; color: rgba(255,255,255,.5); }
+        @media (max-width: 760px) {
+            .nav-links { display: none; }
+            .deck-head { grid-template-columns: 1fr; }
+            .deck-head img { max-width: 320px; }
+            .slide-pair { grid-template-columns: 1fr; }
+            .embed { aspect-ratio: 4/3; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <circle cx="16" cy="16" r="14" stroke="#fff" stroke-width="1.6"/>
+                    <path d="M2 18c4-3 7 2 11 0s7-4 11-1" stroke="#c3b8f0" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="2.4" fill="#c3b8f0"/>
+                </svg>
+                GAIA<span class="glow">·</span>HazLab
+            </a>
+            <nav aria-label="Primary navigation">
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#science">Science</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="presentations.html" class="active">Presentations</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="book/index.html" class="nav-cta">Docs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="kicker">Talks and briefings</div>
+        <h1>Presentations</h1>
+        <p>Browse GAIA HazLab talks in the browser, then download the accessible PDF or editable PowerPoint.</p>
+    </section>
+
+    <main>
+        <article class="deck">
+            <div class="deck-head">
+                <img src="presentations/gaia-master-deck-cover.png" alt="Cover of the Priced by Physics presentation">
+                <div>
+                    <h2>Priced by Physics</h2>
+                    <div class="meta">GAIA Hazard Lab · July 2026 · 34 slides</div>
+                    <p class="summary">High-resolution hazard science as a financial instrument—from catastrophe insurance to groundwater markets.</p>
+                    <div class="actions">
+                        <a class="btn" href="presentations/gaia-master-deck.pdf" target="_blank" rel="noopener">Open full screen</a>
+                        <a class="btn secondary" href="presentations/gaia-master-deck.pdf" download>Download PDF</a>
+                        <a class="btn secondary" href="presentations/gaia-master-deck.pptx" download>Download PowerPoint</a>
+                    </div>
+                </div>
+            </div>
+            <div class="embed">
+                <iframe src="presentations/gaia-master-deck.pdf#view=FitH" title="Priced by Physics slide deck" loading="lazy">
+                    <p><a href="presentations/gaia-master-deck.pdf">Open the presentation as a PDF.</a></p>
+                </iframe>
+            </div>
+        </article>
+
+        <section aria-labelledby="twin-slides">
+            <div class="section-head">
+                <div class="kicker">Digital twin methods</div>
+                <h2 id="twin-slides">Data assimilation, simplified</h2>
+            </div>
+            <div class="slide-pair">
+                <a class="slide-card" href="presentations/wcm2026-da-simple-slide.png">
+                    <img src="presentations/wcm2026-da-simple-slide.png" alt="Slide explaining data assimilation as predict, compare, correct">
+                    <h3>Now: predict, compare, correct</h3>
+                </a>
+                <a class="slide-card" href="presentations/wcm2026-da-probabilistic-cycle-slide.png">
+                    <img src="presentations/wcm2026-da-probabilistic-cycle-slide.png" alt="Slide showing the future probabilistic nowcast and forecast cycle">
+                    <h3>Next: propagate uncertainty and forecast</h3>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div><a href="index.html">Home</a> · <a href="dashboard.html">Dashboard</a> · <a href="book/index.html">Documentation</a> · <a href="https://github.com/gaia-hazlab" target="_blank" rel="noopener">GitHub</a></div>
+        <div class="footer-bottom">© 2026 GAIA HazLab · University of Washington · Licensed under the MIT License.</div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "bridgeVersion": "3.6",
+  "kind": "google-docs-trusted-read",
+  "status": "complete",
+  "outputDir": "/Users/marinedenolle/GitHub/gaia-hazlab.github.io/.codex-doc-review/trusted-read-01",
+  "target": {
+    "documentId": "1_0biYxew7Ii6RVLBJf3tFLoAHj1lbkT6HEjW6JbKQXI",
+    "title": "OpenEarthAI_IDSS_Cat2_ProjectDescription_v4",
+    "revisionId": "AIroW342psuroOiQuHPY8z9AzlHjiF_cD2hbDd0VHLarwoNyureH_1-y32SCFghHX_tov05LL1fFI8D1IO0ahsUiP8Umeik6KSkMKljXyJo",
+    "documentUrl": "https://docs.google.com/document/d/1_0biYxew7Ii6RVLBJf3tFLoAHj1lbkT6HEjW6JbKQXI",
+    "selectedTabId": "t.0"
+  },
+  "dropdownMetadata": {
+    "status": "unavailable",
+    "resolvedTool": null,
+    "authoritative": false,
+    "count": 0
+  },
+  "controlAwareness": {
+    "hasProtectedControls": false,
+    "authoritativeDropdownCount": 0,
+    "opaqueControlCount": 0,
+    "affectedParagraphCount": 0,
+    "nativeElementCounts": {},
+    "preservationRequired": false,
+    "recommendedBehavior": "No protected controls were detected in the scanned scope."
+  },
+  "warnings": [],
+  "files": {
+    "document_result": {
+      "path": "/Users/marinedenolle/GitHub/gaia-hazlab.github.io/.codex-doc-review/trusted-read-01/document-result.json",
+      "bytes": 866756,
+      "sha256": "df70ac2ba65c2f17020ab501aa29bbffa0a850485df6bf6e56c84a3ee9e6fe7b"
+    },
+    "control_inventory": {
+      "path": "/Users/marinedenolle/GitHub/gaia-hazlab.github.io/.codex-doc-review/trusted-read-01/control-inventory.json",
+      "bytes": 1049,
+      "sha256": "1d3ed6a7792a1e5be57189ad4d70380fe05bbf70083bca859d50b0a719fb3ea1"
+    },
+    "document_outline": {
+      "path": "/Users/marinedenolle/GitHub/gaia-hazlab.github.io/.codex-doc-review/trusted-read-01/document-outline.json",
+      "bytes": 223028,
+      "sha256": "83c9362ad1c534672b8fd37d3482b949686e68b17572d2223a65b00d556b3efe"
+    },
+    "document_text": {
+      "path": "/Users/marinedenolle/GitHub/gaia-hazlab.github.io/.codex-doc-review/trusted-read-01/document-text.md",
+      "bytes": 74181,
+      "sha256": "61f5a4d151d9cb6341cc099b5fa9fb22047aba666092313db202c2d868b5c03a"
+    },
+    "receipt": {
+      "path": "/Users/marinedenolle/GitHub/gaia-hazlab.github.io/.codex-doc-review/trusted-read-01/receipt.json",
+      "bytes": 980,
+      "sha256": "6d179bc81c8b7cbd572b8a522daa578512feb74d56db3bbdb52816446357e59e"
+    }
+  },
+  "error": null
+}

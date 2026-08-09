@@ -58,14 +58,22 @@ project:
       children:
         - url: https://gaia-hazlab.github.io/dashboard.html
           title: "Dashboard & Digital Twin (live)"
+        - url: https://gaia-hazlab.github.io/presentations.html
+          title: "Presentations"
+        - url: https://gaia-hazlab.github.io/funding.html
+          title: "Funding & Acknowledgments"
+        - url: https://gaia-hazlab.github.io/metrics-observatory/
+          title: "Metrics Observatory (live)"
         - title: Use Cases
           children:
-            - file: book/chapters/wa-2001-2031-nisqually-earthquake.md
-            - file: book/chapters/wa-2025-stehekin.md
             - url: https://gaia-hazlab.github.io/seis-hydro-2-sed/
               title: WA-2025 River Floods & Sediment Transport
-            - file: book/chapters/convective-thunderstorms.md
-    - file: book/chapters/project-organization.md
+    - title: How we work
+      children:
+        - file: book/governance/how-we-work.md
+        - file: book/governance/organization.md
+        - file: book/governance/decisions.md
+        - file: book/governance/faq.md
 
   parts:
     banner: |

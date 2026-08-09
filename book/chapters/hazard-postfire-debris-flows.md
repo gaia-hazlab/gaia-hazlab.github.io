@@ -45,7 +45,7 @@ lead time.)*
 
 ## Connection to use cases
 
-The driving use case is the [2025 Stehekin post-fire debris flow](wa-2025-stehekin); the
+The driving use case is the 2025 Stehekin post-fire debris flow; the
 modeling pipeline lives in
 [`gaia-hazlab/landlab-debrisflow`](https://github.com/gaia-hazlab/landlab-debrisflow).
 
