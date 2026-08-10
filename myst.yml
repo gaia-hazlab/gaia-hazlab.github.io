@@ -73,6 +73,7 @@ project:
         - file: book/governance/how-we-work.md
         - file: book/governance/organization.md
         - file: book/governance/decisions.md
+        - file: book/governance/licensing.md
         - file: book/governance/faq.md
 
   parts:

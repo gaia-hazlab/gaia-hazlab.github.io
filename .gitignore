@@ -67,3 +67,12 @@ project_docs/*.pdf
 project_docs/*.docx
 project_docs/*.xlsx
 project_docs/*.pptx
+
+# --- cleanup 2026-08-09 ---
+.claude/
+.DS_Store
+# Presentations: commit PDFs + covers only; PPTX lives on Drive / FigShare (DOI)
+website/presentations/*.pptx
+
+# Staging area for files Claude could not delete via the device bridge — safe to remove
+_to_delete/

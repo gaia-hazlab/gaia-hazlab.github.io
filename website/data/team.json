@@ -40,7 +40,8 @@
       "hazard_focus": "Earthquake Detection",
       "email": "yiyuni@uw.edu",
       "github": "https://github.com/niyiyu/",
-      "website": "https://niyiyu.github.io/"
+      "website": "https://niyiyu.github.io/",
+      "orcid": "https://orcid.org/0000-0001-5181-9700"
     },
     {
       "name": "Akash Kharita",
@@ -54,7 +55,8 @@
       "email": "ak287@uw.edu",
       "github": "https://github.com/Akashkharita",
       "website": "",
-      "scholar": "https://scholar.google.com/citations?user=bsH-DwwAAAAJ&hl=en"
+      "scholar": "https://scholar.google.com/citations?user=bsH-DwwAAAAJ&hl=en",
+      "orcid": "https://orcid.org/0000-0003-0612-7734"
     },
     {
       "name": "Manuela Köpfli",
@@ -66,8 +68,9 @@
       "ai_expertise": "Risk Assessment",
       "hazard_focus": "Seismic Hazards",
       "email": "mkopfli@uw.edu",
-      "github": "",
-      "website": ""
+      "github": "https://github.com/koepflma",
+      "website": "",
+      "orcid": "https://orcid.org/0000-0002-4678-730X"
     },
     {
       "name": "Scott Henderson",
@@ -317,9 +320,9 @@
       "hazard_focus": "",
       "email": "vsiyer@uw.edu",
       "website": "",
-      "github": "",
+      "github": "https://github.com/viyer",
       "scholar": "",
-      "orcid": ""
+      "orcid": "https://orcid.org/0000-0002-3025-7953"
     },
     {
       "name": "Vani Mandava",
@@ -332,9 +335,9 @@
       "hazard_focus": "",
       "email": "vani1@uw.edu",
       "website": "",
-      "github": "",
+      "github": "https://github.com/vanitech",
       "scholar": "",
-      "orcid": ""
+      "orcid": "https://orcid.org/0000-0003-3592-9453"
     },
     {
       "name": "David Mencin",
@@ -347,9 +350,9 @@
       "hazard_focus": "",
       "email": "david.mencin@earthscope.org",
       "website": "",
-      "github": "",
+      "github": "https://github.com/david-mencin",
       "scholar": "",
-      "orcid": ""
+      "orcid": "https://orcid.org/0000-0001-9984-6724"
     }
   ]
 }
