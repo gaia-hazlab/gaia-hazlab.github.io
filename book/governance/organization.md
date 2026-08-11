@@ -94,9 +94,11 @@ who knew the software. This scales, and it puts maintenance where the knowledge 
 material from years ago still runs because versions were fixed. The container was the
 delivery mechanism; the pinning was the guarantee.
 
-**One tension SCOPED documented but did not settle.** HPC favours small images; teaching
-benefits from notebooks and test data travelling with the image. We should decide this at the
-outset — two tags per tool rather than one compromise image that serves neither well.
+**Image size and teaching materials pull in different directions.** HPC favours small
+images; teaching benefits from notebooks and test data travelling with the image. SCOPED
+documented this trade-off but left it to each project. The lesson we take is to settle it at
+the outset — two tags per tool, a lean image and a teaching image, rather than one
+compromise image that serves neither well.
 
 What SCOPED lacked, and what the index is meant to supply, was a way for a newcomer to tell
 established work from experiment. A repository list is not a recommendation; a curated index

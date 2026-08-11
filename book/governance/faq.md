@@ -39,8 +39,8 @@ subawards.
 
 **Do I cite the software as well?**
 Yes. If a GAIA tool or dataset materially shaped your result, cite its DOI. Every repository
-ships a `CITATION.cff`. This is not a courtesy — infrastructure work is chronically invisible
-in the citation record, and a project of this kind should not reproduce that.
+ships a `CITATION.cff`. Citing software matters because infrastructure work is often
+under-represented in the citation record, and citing it is how that record stays accurate.
 
 **Should I offer co-authorship?**
 If someone's software or data changed your result rather than merely supporting it, offer.

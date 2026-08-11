@@ -4,11 +4,11 @@ short_title: How we work
 description: Governance, measurement and openness for the GAIA collaboration. Public by design.
 ---
 
-Most research projects keep their governance internal. We publish ours, for three reasons.
-It makes our openness claim checkable rather than rhetorical. It is reusable — any project
-running distributed cyberinfrastructure faces these same questions, and we would rather
-hand over an answer than have everyone reinvent one. And a project willing to publish the
-numbers it is missing has more credibility than one that publishes only its wins.
+Most research projects keep their governance internal. We publish ours for three reasons.
+It lets others check our openness rather than take it on trust. It is reusable — any project
+running distributed cyberinfrastructure faces the same questions, and a worked answer is
+more useful than everyone reinventing one. And publishing the targets we have not met, next
+to those we have, keeps the record honest.
 
 :::{note} Status
 Version 0.1, drafted August 2026. Sections marked *proposed* are open for comment and are
@@ -40,8 +40,8 @@ Science and Technology, and the Jerome and Linda Paros Geohazard Center."*
 
 ## 1. What we are accountable for
 
-We told NSF what GAIA would produce and how adoption would be measured. Those numbers are
-not aspirational language in a funded proposal; they are the scoreboard, and they are public.
+We told NSF what GAIA would produce and how adoption would be measured. These numbers are
+commitments from the funded proposal, not aspirations, and we report against them publicly.
 
 **Delivery — what we ship** (cumulative unless noted)
 
@@ -76,29 +76,28 @@ value is published with its source.
 Not for compliance. If the only purpose were the annual report we would collect these
 numbers once a year, in April, under duress, and they would tell us nothing we could act on.
 
-We measure weekly because the numbers are a steering instrument. Adoption metrics in
-particular are the only honest signal that infrastructure is working: software that nobody
-installs, datasets nobody downloads, and evaluation harnesses nobody submits to are
-indistinguishable from software that does not exist. Counting them monthly rather than
+We measure weekly because the numbers help us steer. Adoption metrics matter most here:
+software nobody installs, datasets nobody downloads, and evaluation harnesses nobody submits
+to are not serving the community, however complete they look. Counting monthly rather than
 annually is the difference between correcting course in Y2 and discovering the problem in
 the final report.
 
 Three rules keep the measurement honest.
 
 **A metric that cannot be collected reads `n/a`, never zero.** A missing source and a real
-zero mean completely different things, and conflating them is how dashboards start lying.
+zero mean different things, and conflating them makes a dashboard misleading.
 
-**Figures below target stay visible.** The dashboard shows what we are behind on, publicly,
-in the same table as what we have met. This is the part most projects quietly omit, and it
-is the part that makes the rest believable.
+**Figures below target stay visible.** The dashboard shows what we are behind on, in the
+same table as what we have met. Reporting shortfalls alongside successes is what keeps the
+rest of the dashboard trustworthy.
 
 **We count few things.** Every metric above is one we committed to. We do not add
 flattering ones.
 
 ## 3. What happens when a target is missed
 
-A metric with no response attached is decoration. Ours escalate on a fixed ladder, so being
-behind triggers something specific rather than a vague sense of unease.
+A metric with no response attached changes nothing. Ours escalate on a fixed ladder, so
+being behind triggers a specific step rather than a vague sense of unease.
 
 | When | What happens |
 |---|---|
@@ -172,9 +171,9 @@ looks like a retreat from openness. Public recording suppresses the half-formed 
 don't understand this," and the negative result — which are exactly the conversations a
 research project runs on. People stop thinking aloud and start performing, and the real
 discussion migrates to private messages where nothing is preserved at all. That is a bad
-trade for a modest signal. Openness belongs in artifacts and in curated video, not in
-surveillance of the working day. Publishing a dashboard with a missed target on it is a
-stronger claim than any raw recording, and it costs nothing but nerve.
+trade for a modest gain in openness. Openness belongs in the artifacts and in curated video,
+not in recording the working day. A dashboard that shows a missed target is a clearer sign
+of openness than a raw recording would be.
 
 ## 6. What we do with all of it
 
@@ -188,10 +187,9 @@ weekly whether or not anyone is watching.
 
 And once a year we intend to publish an account of running the project this way —
 DOI-archived, describing what the coordination agents did, where they failed, and what the
-measurement actually changed about our decisions. Nobody in geoscience cyberinfrastructure
-has written that paper, the data is a by-product of what we already collect, and it is the
-most direct evidence we can offer for the claim that agentic project management is more than
-a slogan.
+measurement actually changed about our decisions. Such an account is uncommon in geoscience
+cyberinfrastructure, the data is a by-product of what we already collect, and it is the most
+direct evidence we can offer that agentic project management does what we claim.
 
 ## 7. Agents, and the rule that makes the claim checkable
 
@@ -220,4 +218,4 @@ Related pages: [the organisation and how work joins it](./organization.md) ·
 [decisions of record](./decisions.md) · [FAQ](./faq.md).
 
 *Want to reuse this for your own project? Please do — open an issue and tell us what needed
-changing. We would rather it be copied than admired.*
+changing.*

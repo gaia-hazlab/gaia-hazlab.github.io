@@ -12,8 +12,8 @@ description: How GAIA chooses a licence and applies it. Code is MIT, documents a
 yet match what is described here.
 :::
 
-Everything GAIA publishes is meant to be reusable. That is not a slogan: it is a condition
-of the awards and the whole argument for building shared infrastructure. A repository that
+Everything GAIA publishes is meant to be reusable — a condition of the awards, and the
+reason for building shared infrastructure rather than one-off scripts. A repository that
 cannot legally be reused fails that test no matter how open it looks. These are the project
 guidelines for making that reuse legal by default.
 
