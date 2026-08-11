@@ -276,7 +276,7 @@ decision value.
 ## 8. Positioning the GAIA model
 
 GAIA is best understood today as a **critical-zone digital shadow and hazard
-decision-support framework under development**. Its distinctive scientific object is not a
+decision-support framework under development**. Its scientific object is not a
 geometric copy of the Earth, but a continuously updated estimate of the coupled
 hydrological and mechanical state of soil and shallow subsurface materials. That state
 connects atmospheric and hydrologic forcing to landslides, post-fire debris flows, floods,

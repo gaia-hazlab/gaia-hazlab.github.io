@@ -35,7 +35,7 @@ one working day.
 |---|---|---|---|
 | [001](#gaia-d-001) | Funding acknowledgment text and mechanics | proposed | — |
 | [002](#gaia-d-002) | System of record: Slack ephemeral, GitHub durable | proposed | — |
-| [003](#gaia-d-003) | Meeting cadence and the sunset rule | proposed | — |
+| [003](#gaia-d-003) | Meeting schedule and the sunset rule | proposed | — |
 | [004](#gaia-d-004) | Project Google identity | proposed | — |
 
 Pending, not yet numbered — co-authorship policy and the openness/recording policy go to
@@ -120,7 +120,7 @@ digested channel topic.
 ---
 
 (gaia-d-003)=
-## GAIA-D-003 — Meeting cadence
+## GAIA-D-003 — Meeting schedule
 
 **Date:** — · **Decided at:** kickoff call, 2026-08-__ · **Status:** proposed
 

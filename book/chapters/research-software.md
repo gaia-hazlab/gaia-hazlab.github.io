@@ -2,9 +2,9 @@
 
 ## Overview
 
-GAIA HazLab leverages a comprehensive ecosystem of research software packages spanning data I/O, AI/ML frameworks, visualization tools, and domain-specific research packages. This page catalogs the key software tools we use and develop to build reproducible, scalable workflows for multi-hazard assessment.
+This page catalogs the software GAIA HazLab runs on — data I/O, AI/ML frameworks, visualization, and the domain packages the group builds and maintains itself. It is a working inventory, not a recommendation list: everything here is in use somewhere in a multi-hazard workflow.
 
-Our goal is to develop a **Research Software Agent** that integrates these tools into cohesive workflows, enabling rapid prototyping, experimentation, and deployment of AI-driven hazard models.
+We are building a **Research Software Agent** on top of it, so that chaining these tools into a reproducible workflow stops being a week of glue code.
 
 ---
 
@@ -99,7 +99,7 @@ Frameworks for building, training, and deploying machine learning models.
 - Research-focused architecture
 
 ### Hugging Face Transformers
-**Description**: State-of-the-art transformer models
+**Description**: Pre-trained transformer models and fine-tuning utilities
 **Use Cases**: Foundation models for spatiotemporal forecasting (ACE2)
 **Website**: [https://huggingface.co/transformers/](https://huggingface.co/transformers/)
 **Key Features**:
@@ -147,7 +147,7 @@ Tools for creating publication-quality figures, interactive plots, and geospatia
 - Export to HTML
 
 ### Matplotlib
-**Description**: Comprehensive plotting library
+**Description**: General-purpose plotting library
 **Use Cases**: Static plots, subplots, waveform displays
 **Website**: [https://matplotlib.org/](https://matplotlib.org/)
 **Key Features**:
@@ -239,7 +239,7 @@ Domain-specific packages developed by the research community for specialized wor
 - Grid-based and unstructured grids
 - Process coupling (hydrology, erosion, landslides)
 - Extensive component library
-- Comprehensive documentation
+- Thorough documentation
 
 **Used in**: Data-driven reduced-order modeling for landscape evolution, debris flow modeling, and landslide susceptibility analysis
 
@@ -302,13 +302,13 @@ Supporting tools for research software development, version control, and deploym
 
 ## Research Software Agent Vision
 
-Our vision is to develop an integrated **Research Software Agent** that:
+The **Research Software Agent** we are building should:
 
-1. **Automates Workflows**: Chain together data loading, preprocessing, model training, and visualization
-2. **Enables Reproducibility**: Track dependencies, versions, and compute environments
-3. **Facilitates Discovery**: Search and recommend appropriate tools for specific tasks
-4. **Provides Templates**: Offer ready-to-use templates for common workflows
-5. **Integrates AI**: Use LLMs to generate code, debug issues, and optimize pipelines
+1. **Chain workflows**: data loading → preprocessing → model training → visualization, without hand-written glue
+2. **Keep runs reproducible**: track dependencies, versions, and compute environments
+3. **Find the right tool**: search the inventory above and recommend what fits the task
+4. **Start from templates**: ready-to-run scaffolds for the workflows we repeat
+5. **Write and debug code**: use LLMs to draft pipeline code and diagnose failures
 
 ---
 
@@ -340,10 +340,10 @@ See our [Contributing Guide](https://github.com/gaia-hazlab/gaia-hazlab.github.i
 
 ## Future Development
 
-We are actively working on:
-- **Integration guides** for common workflow patterns
+In progress:
+- **Integration guides** for the workflow patterns we repeat
 - **Benchmark datasets** for evaluating new tools
-- **Performance comparisons** across different packages
-- **Cloud-native implementations** for scalable processing
-- **Tutorial notebooks** demonstrating best practices
+- **Performance comparisons** across packages that overlap
+- **Cloud-native implementations** for large-volume processing
+- **Tutorial notebooks** for the common workflows
 

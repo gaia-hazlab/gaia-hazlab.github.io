@@ -248,7 +248,7 @@ Use this prior to:
 - $V_s(x,z,t)$ or $dv/v(x,z,t)$ at high spatial sampling (meters to tens of meters) and high cadence.
 
 **Advantages**
-- Water table tracking can leverage depth dependence: saturated zone is directly sampled.
+- Water table tracking can exploit depth dependence: the saturated zone is sampled directly.
 - Vadose saturation inversion can be done per depth in top 1 m.
 - Spatial continuity allows strong regularization in $x$, improving stability.
 

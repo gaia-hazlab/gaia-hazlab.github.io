@@ -18,8 +18,8 @@ water at the **space and time scales relevant to hazards and resource management
 meters and sub-daily, resolving the hillslope and the vadose-to-water-table column, not the
 9–25 km surface layer that global products deliver.
 
-The defining idea is to build a **holistic, multi-perspective state of the soil's
-hydromechanics**, because two coupled subsystems jointly govern hazard susceptibility:
+The defining idea is to estimate the soil's **hydromechanical state as a whole**, because two
+coupled subsystems jointly govern hazard susceptibility:
 
 1. **Water partitioning** — how water infiltrates as soil moisture, drains to the
    groundwater table, and returns to the atmosphere through evaporation and capillary rise.

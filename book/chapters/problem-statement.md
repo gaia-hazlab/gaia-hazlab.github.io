@@ -2,9 +2,9 @@
 
 ## The Challenge
 
-Landslides triggered by atmospheric rivers, liquefaction amplified by saturated soils, catastrophic runoff after wildfires, severe convective storms intensified by land–atmosphere feedbacks — the most devastating geodisasters arise from **cascading interactions across the ocean, atmosphere, and solid Earth**. The severity of these hazards — landslides, flash floods, earthquake liquefaction, and convective storms — is profoundly shaped by the **soil hydromechanical history** and by **land management practices** that alter the critical zone over time.
+Landslides triggered by atmospheric rivers, liquefaction amplified by saturated soils, catastrophic runoff after wildfires, severe convective storms intensified by land–atmosphere feedbacks: the worst geodisasters arise from **cascading interactions across the ocean, atmosphere, and solid Earth**. How bad each one gets is set largely by the **soil hydromechanical history** and by the **land management practices** that reshape the critical zone over years and decades.
 
-Yet our current models struggle to keep pace with these nonlinear cascades. Atmosphere, hydrology, and geomechanics are typically studied and modeled in isolation, leaving critical couplings unresolved. As climate change intensifies extreme weather and shifts precipitation patterns, the gap between what we can predict and what communities need to prepare for continues to grow.
+Our models do not resolve those cascades. Atmosphere, hydrology, and geomechanics are studied and modeled separately, and the couplings between them fall in the gaps. Climate change is intensifying extreme weather and shifting precipitation patterns faster than that fragmented picture can track.
 
 ---
 
@@ -12,14 +12,14 @@ Yet our current models struggle to keep pace with these nonlinear cascades. Atmo
 
 We take a **data-driven and physics-grounded** approach to **monitor**, **characterize**, and **predict** the susceptibility of weather-compounded geodisasters — both in real time and under future weather and climate scenarios.
 
-We leverage:
+We build on:
 
 - **AI and machine learning** for pattern discovery, surrogate modeling, and hazard prediction
 - **New sensing technologies** such as Distributed Acoustic Sensing (DAS) for high-resolution subsurface imaging
 - **Existing ground-based sensor networks** (seismic, hydrological, meteorological) and **satellite remote sensing** for continuous, multi-scale observation
 - **Physical models** grounded in geomechanics, hydrology, and atmospheric science
 
-These capabilities serve three interlinked research goals:
+These feed three research goals:
 
 1. **Discovery of missing physics** — Identify the governing processes and couplings (e.g., soil memory effects, ocean–atmosphere teleconnections) that current hazard models neglect.
 2. **Real-time hazard prediction** — Monitor and predict the susceptibility to landslides, floods, liquefaction, and severe storms as conditions evolve.
@@ -29,7 +29,7 @@ These capabilities serve three interlinked research goals:
 
 ## Use Cases
 
-We ground our research in real-world coupled natural disasters that validate our methods and drive technological development:
+We work on four coupled disasters, chosen because each one breaks a different part of the method and forces the infrastructure to catch up:
 
 ::::{grid} 2
 :gutter: 3
@@ -55,9 +55,9 @@ Severe convective storms and their coupling to land surface conditions, explorin
 
 ---
 
-## Backbone Technologies
+## Platform
 
-We develop integrated, cloud-native infrastructure to support the full research lifecycle — from data ingestion through hazard evaluation:
+We build the cloud-native infrastructure that carries a project from data ingestion through hazard evaluation:
 
 - **[DataHub](datahub)** — Multimodal, cloud-native data management for geospatial hazard data spanning seismic, hydrological, meteorological, and remote sensing sources.
 - **[ModelHub](modelhub)** — A registry of deep learning and physics-based models for weather forecasting, ground failure prediction, landslide susceptibility, flood hazard, and more.
@@ -68,9 +68,9 @@ We develop integrated, cloud-native infrastructure to support the full research 
 
 ## Earth System Science Nexus
 
-At the heart of our framework is the **critical zone** — the thin, dynamic layer from bedrock to canopy where rock, soil, water, air, and life interact. The hydromechanical state of the soil governs how water infiltrates to recharge groundwater, evaporates to feed atmospheric moisture, or runs off to drive erosion and flooding. Understanding and monitoring this state — its **memory** of past wetting, drying, and disturbance — is essential for predicting hazard severity under current and future conditions.
+Our subject is the **critical zone**: the thin layer from bedrock to canopy where rock, soil, water, air, and life interact. The hydromechanical state of the soil decides how water partitions — infiltrating to recharge groundwater, evaporating back to the atmosphere, or running off to drive erosion and flooding. That state carries a **memory** of past wetting, drying, and disturbance, and without tracking it you cannot say how severe the next event will be.
 
-We investigate two key nexus domains:
+We work on two nexus domains:
 
 - **[Soil Hydromechanical Memory](soil-memory)** — How antecedent soil conditions control the partitioning of water between infiltration, runoff, and evapotranspiration, and how this modulates geohazard susceptibility.
 - **Ocean–Atmosphere Coupling** — How oceanic forcing (e.g., sea surface temperature anomalies, atmospheric rivers) shapes extreme precipitation patterns and cascading terrestrial hazards. *(Coming soon.)*

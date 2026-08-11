@@ -2,7 +2,7 @@
 
 ## Overview
 
-The ModelHub is a comprehensive collection of machine learning models and algorithms designed for hazard monitoring, prediction, and analysis. We aim to provide pre-trained models, training pipelines, and tools for developing custom hazard assessment models.
+The ModelHub is where we register the machine learning and physics-based models that monitor and predict hazards. It holds pre-trained weights, the training pipelines that produced them, and the tooling to build new hazard models on top.
 
 ## Models
 
@@ -103,7 +103,7 @@ class CustomHazardModel(BaseHazardModel):
 
 All models in the ModelHub are benchmarked against:
 - Baseline models (traditional statistical approaches)
-- State-of-the-art published methods
+- The best published method for the task
 - Domain-specific metrics and standards
 
 ### Performance Metrics
@@ -124,7 +124,7 @@ We evaluate models using:
 
 ### Model Cards
 
-Each model includes a comprehensive model card with:
+Each model ships with a model card covering:
 - Model description and intended use
 - Training data and preprocessing steps
 - Performance metrics and limitations

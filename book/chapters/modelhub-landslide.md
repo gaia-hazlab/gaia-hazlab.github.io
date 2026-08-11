@@ -94,7 +94,7 @@ obtained from flow routing on the DEM (§5) — and slope $\theta$. This is the 
 family [@montgomery1994; @pack1998]; the unsaturated extension through suction stress is
 [@lu2008; @iverson2000].
 
-The crucial point for the digital twin: $w$ depends on the **routed** contributing area $a/b$,
+The point that matters for the digital twin: $w$ depends on the **routed** contributing area $a/b$,
 which only has meaning over a hydrologically complete domain — this is what forces the watershed
 framing of §5.
 

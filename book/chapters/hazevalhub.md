@@ -2,9 +2,10 @@
 
 ## Overview
 
-The HazEvalHub provides comprehensive frameworks and tools for evaluating hazard assessments and validating model performance. It ensures that hazard predictions are reliable, accurate, and actionable.
+The HazEvalHub is where hazard models get scored. It holds the metrics, the validation
+protocols, and the held-out data that decide whether a prediction is good enough to act on.
 
-We are developing two avenues for evaluation of the model performance
+We are developing two tracks for evaluating model performance:
 - **Extreme event monitoring**: classification, regression, segmentation (e.g., detection of landslides, floods, earthquakes)
 - **Surrogate of Physical Models** trained on physics-based simulations, a framework based on the AI Institute for Dynamical System Common Task Framework (collab with Nathan Kutz and Kaggle) with fair evaluation and hidden data set.
 - **Leaderboard**: a set of hazard-relevant evaluation metrics when using geospatial and terrestrial networks in collaboration with AI2.

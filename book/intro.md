@@ -4,7 +4,7 @@ title: GAIA HazLab
 
 <div style="width: 100%; background: linear-gradient(135deg, #4b2e83 0%, #341f63 100%); color: white; padding: 56px 28px; margin: -20px -20px 40px -20px; border-radius: 8px;">
   <h1 style="font-size: 3em; margin: 0 0 16px;">GAIA HazLab</h1>
-  <p style="font-size: 1.25em; max-width: 900px; margin: 0;"><strong>A platform for system-science hazard assessment: integrating AI, data, and models to understand, predict, and mitigate weather-compounded geohazards.</strong></p>
+  <p style="font-size: 1.25em; max-width: 900px; margin: 0;"><strong>A system-science platform for weather-compounded geohazards — bringing AI, data, and physical models together to predict what the atmosphere does to the ground.</strong></p>
 </div>
 
 ---

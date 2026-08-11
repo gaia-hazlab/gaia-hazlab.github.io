@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Gaia Translator** is a research chatbot designed to bridge disciplinary divides across the geosciences. It helps researchers (a) interpret papers outside their primary discipline, (b) discover how their work integrates with adjacent fields, and (c) propose joint-observation strategies — with every answer grounded in cited scientific evidence.
+The **Gaia Translator** is a research chatbot for reading across the geosciences. It helps researchers (a) interpret papers outside their own discipline, (b) find where their work connects to adjacent fields, and (c) propose joint-observation strategies, with every answer grounded in cited evidence.
 
 The translator targets nine geoscience disciplines that the GAIA HazLab agenda routinely needs to integrate: hydrology, seismology, geotechnical engineering, geomorphology, atmospheric sciences, ecology, agricultural sciences, near-surface geophysics, and the cross-cutting concepts that bridge them. Its design treats cross-discipline integration as a *first-class object*: the deep bridges between fields (effective stress, diffusion, ambient-field exploitation, data assimilation) are themselves part of the knowledge base, not emergent properties the model is left to infer.
 
