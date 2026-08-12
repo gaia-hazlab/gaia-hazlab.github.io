@@ -22,6 +22,9 @@
 | [05-automation-runbook.md](05-automation-runbook.md) | Concrete GitHub Actions, bots, crons, and required secrets. Maps to `.github/`. | CI infra lead |
 | [06-data-catalog.md](06-data-catalog.md) | Alaska observational inventory: ASF SAR tracks, FDSN seismic/infrasound, GNSS (strain/reflectometry/TEC-PWV); feeds the dashboard. | DataHub + catalog lead |
 | [07-programs-and-partners.md](07-programs-and-partners.md) | Program constellation: CSSI+CRESST core, SCOPED/GeoSMART/CAIG lineage, EarthScope/ASF/PNSN/AEC partners. | Lead PI |
+| [08-site-remediation-plan.md](08-site-remediation-plan.md) | What to fix on the existing site/book, ordered by evidence from the persona review rounds in [`review-logs/`](../review-logs/). | Website lead |
+| [09-hazevalhub-ctf-plan.md](09-hazevalhub-ctf-plan.md) | Benchmark-integrity rules and the two seed tasks that get HazEvalHub from nothing to a citable v0.5. | CI / eval leads |
+| [kickoff-agenda.md](kickoff-agenda.md) | Live queue of items needing a human decision, feeding the kickoff call. Anything marked "in progress" on the site lands here. | Coordinator |
 | [templates/](templates/) | Reusable Markdown: weekly status, monthly report, meeting notes, NSF entry, onboarding. | All |
 
 ## Protection & publication policy
