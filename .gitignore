@@ -69,9 +69,14 @@ project_docs/*.xlsx
 project_docs/*.pptx
 
 # --- cleanup 2026-08-09 ---
-# Local Claude Code state stays private — except the skills we share openly.
+# Local Claude Code state stays private — except the work we share openly:
+#   skills/               — the writing/review skills
+#   gaia-review-personas/ — the ten review personas (CC BY 4.0, see its README)
+#   agents/               — subagent definitions generated from gaia-review-personas/build.py
 .claude/*
 !.claude/skills/
+!.claude/gaia-review-personas/
+!.claude/agents/
 .DS_Store
 # Presentations: commit PDFs + covers only; PPTX lives on Drive / FigShare (DOI)
 website/presentations/*.pptx

@@ -1,0 +1,35 @@
+SPDX-License-Identifier: CC-BY-4.0
+
+Copyright (c) 2026 GAIA HazLab and contributors
+
+The contents of this directory — the review personas, the shared rubric, method
+and synthesis guides, the worked examples, and the generator that produces them
+— are licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0).
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the license, and
+indicate if changes were made.
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+SCOPE
+
+This license applies to this directory only. The repository that contains it
+(gaia-hazlab/gaia-hazlab.github.io) is MIT licensed; see the LICENSE file at the
+repository root. These are documents rather than software, which is why they
+carry a documentation license instead.
+
+The generated subagent definitions in ../agents/ are produced from build.py in
+this directory and are covered by this license as well.
+
+ATTRIBUTION
+
+Suggested form:
+
+  GAIA review personas, GAIA HazLab, 2026. CC BY 4.0.
+  https://github.com/gaia-hazlab/gaia-hazlab.github.io
+
+This material is based upon work supported by the U.S. National Science
+Foundation under Grant Nos. OAC-2608509, OAC-2608510 and OAC-2608511.
