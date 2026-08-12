@@ -35,6 +35,9 @@ project:
             - file: book/chapters/hazard-postfire-debris-flows.md
             - file: book/chapters/hazard-liquefaction-ground-failure.md
             - file: book/chapters/hazard-floods.md
+    - title: Field sites
+      children:
+        - file: book/chapters/mt-rainier.md
     - title: Technology
       children:
         - file: book/chapters/datahub.md
