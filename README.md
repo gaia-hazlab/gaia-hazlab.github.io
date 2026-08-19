@@ -35,8 +35,10 @@ cd gaia-hazlab.github.io
 
 1. Build the Jupyter Book & preview locally
 ```bash
-pixi run serve
+pixi run serve-all
 ```
+
+NOTE: `pixi task list` shows all available tasks, including `build-book`, `build-all`, `serve-book`, `serve-all`, `linkcheck`, and `spellcheck`.
 
 ## Structure
 
