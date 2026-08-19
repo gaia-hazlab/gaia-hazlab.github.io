@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="GAIA HazLab team — geoscientists, engineers, and AI builders advancing predictive understanding of weather-compounded geohazards.">
     <meta name="author" content="GAIA HazLab">
-    <link rel="icon" type="image/png" href="book/img/img/gaia-hazalab-logo.png">
+    <link rel="icon" type="image/png" href="book/img/gaia-hazalab-logo.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,12 +99,17 @@
         }
         .team-member:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(75,46,131,0.13);
             border-color: rgba(109,91,208,0.5); }
-        .team-member img {
+        .team-member img, .team-member .avatar-fallback {
             width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 1.1rem;
             border: 3px solid #fff; box-shadow: 0 6px 18px rgba(42,26,79,0.16);
             transition: transform .25s, box-shadow .25s;
         }
-        .team-member:hover img { transform: scale(1.05); box-shadow: 0 10px 24px rgba(109,91,208,0.35); }
+        .team-member:hover img, .team-member:hover .avatar-fallback { transform: scale(1.05); box-shadow: 0 10px 24px rgba(109,91,208,0.35); }
+        .team-member .avatar-fallback {
+            display: flex; align-items: center; justify-content: center; margin-left: auto; margin-right: auto;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%); color: #fff;
+            font-family: Montserrat, sans-serif; font-weight: 700; font-size: 1.6rem;
+        }
         .team-member h3 { font-size: 1.18rem; margin-bottom: 0.3rem; color: var(--ink); }
         .team-member .role { font-size: 0.95rem; font-weight: 600; color: var(--peri); margin-bottom: 0.7rem; }
         .team-member .expertise { font-size: 0.9rem; font-weight: 600; color: var(--purple-deep); margin-bottom: 0.4rem; }
@@ -146,7 +151,7 @@
             .nav-links { display: none; }
             .team-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.2rem; }
             .team-member { padding: 1.4rem 1rem; }
-            .team-member img { width: 104px; height: 104px; }
+            .team-member img, .team-member .avatar-fallback { width: 104px; height: 104px; }
             .join { padding: 2rem 1.3rem; }
         }
     </style>

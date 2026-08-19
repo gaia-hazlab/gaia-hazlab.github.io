@@ -9,6 +9,28 @@ const githubIcon = `<svg width="20" height="20" viewBox="0 0 16 16" fill="curren
 </svg>`;
 
 /**
+ * Get up to two initials from a member's name, for use as an avatar fallback.
+ */
+function getInitials(name) {
+    return (name || '')
+        .split(' ')
+        .filter(Boolean)
+        .map(part => part[0])
+        .join('')
+        .toUpperCase()
+        .slice(0, 2);
+}
+
+/**
+ * Render an <img> for the member's photo, or an initials avatar if no photo is set.
+ */
+function avatarHtml(member) {
+    return member.photo
+        ? `<img src="${member.photo}" alt="${member.name}">`
+        : `<div class="avatar-fallback" aria-label="${member.name}">${getInitials(member.name)}</div>`;
+}
+
+/**
  * Create team member card for splash page
  */
 function createTeamPreviewCard(member) {
@@ -16,7 +38,7 @@ function createTeamPreviewCard(member) {
     return `
         <div class="team-member-preview">
             <a href="${link}" ${member.website ? 'target="_blank"' : ''}>
-                <img src="${member.photo}" alt="${member.name}">
+                ${avatarHtml(member)}
             </a>
             <h3>${member.name}</h3>
             <div class="role">${member.role}</div>
@@ -57,7 +79,7 @@ function createTeamMemberCard(member) {
 
     return `
         <div class="team-member">
-            <img src="${member.photo}" alt="${member.name}">
+            ${avatarHtml(member)}
             <h3>${member.name}</h3>
             <div class="expertise">${expertiseText}</div>
             <p>${description}</p>
