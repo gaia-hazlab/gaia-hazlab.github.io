@@ -12,8 +12,7 @@ We are developing two tracks for evaluating model performance:
 
 ## 🔴 Live prototype — FrugalMind EvalHub
 
-> **[▶ Open the live eval board](https://mdenolle.github.io/frugalmind)** ·
-> source: [`mdenolle/frugalmind`](https://github.com/mdenolle/frugalmind)
+> **[▶ Open the live eval board](https://mdenolle.github.io/frugalmind)**
 
 **FrugalMind EvalHub is the first working prototype of HazEvalHub.** It is a live
 evaluation board for scientific AI agents in geoscience, and it establishes the design

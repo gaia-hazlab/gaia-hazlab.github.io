@@ -9,6 +9,7 @@ title: GAIA HazLab
 
 ---
 
+(what-we-do)=
 ## What We Do
 
 - **Methodologies:** System-science approaches for linking atmosphere, hydrosphere, and solid Earth.
@@ -35,6 +36,7 @@ title: GAIA HazLab
 
 ---
 
+(calendar-of-events)=
 ## Calendar of Events
 
 <!-- Placeholder: Fill in with your event timetable -->
@@ -45,6 +47,7 @@ title: GAIA HazLab
 
 ---
 
+(visual-highlights)=
 ## Visual Highlights
 
 <!-- Placeholder for Google Slides embed -->

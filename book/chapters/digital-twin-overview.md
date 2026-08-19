@@ -16,7 +16,6 @@ weather/climate forcing into a single decision-relevant system.
 ## The three pillars
 
 ::::{grid} 1 1 3 3
-:gutter: 3
 
 :::{grid-item-card} Pillar 1 — Soil Reanalysis Product
 :link: pillar-1-soil-reanalysis

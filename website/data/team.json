@@ -134,14 +134,12 @@
     },
     {
       "name": "Hunter Jimenez",
-      "photo": "/images/team/XX",
       "role": "Graduate Student",
       "title": "Graduate Student",
       "affiliation": "Civil and Environmental Engineering, University of Washington",
       "geo_expertise": "Hydrology,  Geomorphology",
       "ai_expertise": "Data-Driven",
       "hazard_focus": "Debris Flows",
-      "website": "https://www.ce.washington.edu/facultyfinder/erkan-istanbulluoglu",
       "github": "https://github.com/HunterJimenez"
     },
     {
