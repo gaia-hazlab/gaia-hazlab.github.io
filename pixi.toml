@@ -6,18 +6,20 @@ platforms = ["osx-arm64", "linux-64"]
 version = "0.1.0"
 
 [tasks]
-build-book='jupyter book build --html'
-serve-book='jupyter book start'
-build-all='BASE_URL=/book jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/'
-serve-all='python -m http.server --directory website/ 3000'
+build-book = { cmd = "jupyter book build --html", description = "Build the Jupyter Book to _build/html" }
+serve-book = { cmd = "jupyter book start", description = "Live-preview the book only" }
+build-all = { cmd = "BASE_URL=/book jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/", description = "Build the book and assemble it into website/book (matches CI)" }
+serve-all = { cmd = "python -m http.server --directory website/ 3000", description = "Serve the full assembled website/ locally on port 3000" }
 # In GitHub Actions, BASE_URL is set for deployment to github pages
-build-ci='jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/'
-linkcheck='jupyter book build --check-links'
-clean='rm -rf _build website/book'
+build-ci = { cmd = "jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/", description = "CI build: same as build-all, using GitHub Actions' BASE_URL" }
+linkcheck = { cmd = "jupyter book build --check-links", description = "Check the book for broken links" }
+clean = { cmd = "rm -rf _build website/book", description = "Remove build outputs" }
 
-spellcheck='codespell --skip  ./_build,./website/book,references.bib,pixi.lock'
+spellcheck = { cmd = "codespell --skip  ./_build,./website/book,references.bib,pixi.lock", description = "Spellcheck the repo, skipping build outputs and references" }
+zizmor = { cmd = "zizmor .", description = "Audit GitHub Actions workflows for security issues" }
 
 [dependencies]
 python = ">=3.14.2,<3.15"
 jupyter-book = ">=2.1.1,<3"
 codespell = ">=2.4.1,<3"
+zizmor = ">=1.29.0,<2"

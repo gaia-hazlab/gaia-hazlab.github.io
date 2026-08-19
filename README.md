@@ -35,7 +35,7 @@ cd gaia-hazlab.github.io
 
 1. Build the Jupyter Book & preview locally
 ```bash
-pixi run serve
+pixi run serve-all
 ```
 
 ## Structure
