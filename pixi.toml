@@ -12,10 +12,18 @@ build-all = { cmd = "BASE_URL=/book jupyter book build --html ; mv _build/html w
 serve-all = { cmd = "python -m http.server --directory website/ 3000", description = "Serve the full assembled website/ locally on port 3000" }
 # In GitHub Actions, BASE_URL is set for deployment to github pages
 build-ci = { cmd = "jupyter book build --html ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/", description = "CI build: same as build-all, using GitHub Actions' BASE_URL" }
+# `linkcheck` will always report 404s for links to private repos/docs (expected, not a bug):
+#   - github.com/gaia-hazlab/landslide-digital-twin, fire-debrisflow-ml, gaia-nhsm-deagg (private repos)
+#   - docs.google.com/document/d/1kcy5L6VTg... in book/governance/decisions.md (private doc, 401)
+# Check any newly reported link against this list before treating it as a real break.
 linkcheck = { cmd = "jupyter book build --check-links", description = "Check the book for broken links" }
+# Checks the static website/*.html pages (index, people, dashboard, funding, presentations).
+# website/book is excluded here since `linkcheck` (above) already covers the book content.
+check-website = { cmd = "lychee website/*.html --exclude-path website/book", description = "Check links/images on the static website pages" }
 clean = { cmd = "rm -rf _build website/book", description = "Remove build outputs" }
 
-spellcheck = { cmd = "codespell --skip  ./_build,./website/book,references.bib,pixi.lock", description = "Spellcheck the repo, skipping build outputs and references" }
+spellcheck = { cmd = "codespell --skip ./_build,./website/book,./_attic,./review-logs,references.bib,pixi.lock --ignore-words-list GAGE,FitH,FRO", description = "Spellcheck the repo, skipping build outputs and references" }
+spellcheck-context = { cmd = "codespell --skip ./_build,./website/book,./_attic,./review-logs,references.bib,pixi.lock --ignore-words-list GAGE,FitH,FRO --context 2", description = "Spellcheck with 2 lines of surrounding context for each match" }
 zizmor = { cmd = "zizmor .", description = "Audit GitHub Actions workflows for security issues" }
 
 [dependencies]
@@ -23,3 +31,4 @@ python = ">=3.14.2,<3.15"
 jupyter-book = ">=2.1.1,<3"
 codespell = ">=2.4.1,<3"
 zizmor = ">=1.29.0,<2"
+lychee = ">=0.24.2,<0.25"

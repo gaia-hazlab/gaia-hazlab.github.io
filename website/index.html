@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="GAIA HazLab — predictive understanding of weather-compounded geohazards. We build digital twins of the Earth from open multimodal data, AI, and cloud systems, grounded in physical models, to monitor and forecast soil, landslides, liquefaction, and floods.">
     <meta name="author" content="GAIA HazLab">
-    <link rel="icon" type="image/png" href="book/img/img/gaia-hazalab-logo.png">
+    <link rel="icon" type="image/png" href="book/img/gaia-hazalab-logo.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -230,11 +230,14 @@
             max-width: 1000px; margin: 0 auto; }
         .team-member-preview { text-align: center; }
         .team-member-preview a { text-decoration: none; }
-        .team-member-preview img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+        .team-member-preview img, .team-member-preview .avatar-fallback { width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
             border: 3px solid #fff; box-shadow: 0 6px 16px rgba(42,26,79,0.14);
             transition: transform .25s, box-shadow .25s; }
-        .team-member-preview img:hover { transform: scale(1.06);
+        .team-member-preview img:hover, .team-member-preview .avatar-fallback:hover { transform: scale(1.06);
             box-shadow: 0 10px 24px rgba(109,91,208,0.40); }
+        .team-member-preview .avatar-fallback { display: flex; align-items: center; justify-content: center; margin: 0 auto;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%); color: #fff;
+            font-family: Montserrat, sans-serif; font-weight: 700; font-size: 1.2rem; }
         .team-member-preview h3 { font-size: 0.92rem; margin: 0.7rem 0 0.1rem; color: var(--ink);
             font-family: 'Inter'; font-weight: 600; }
         .team-member-preview .role { font-size: 0.78rem; color: var(--peri); font-weight: 500; }

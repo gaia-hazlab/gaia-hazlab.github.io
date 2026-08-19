@@ -6,18 +6,16 @@ This repository contains the source code for the GAIA HazLab (Geophysical AI-dri
 
 ## Overview
 
-GAIA HazLab is a comprehensive platform for hazard assessment using machine learning and geospatial analytics. The website consists of:
+GAIA HazLab is a platform for hazard assessment using machine learning and geospatial
+analytics. The deployed site is assembled from two pieces:
 
-- **Splashpage**: A modern landing page at the root (`index.html`)
-  - Features funders section with logos from eScience Institute, College of the Environment, and UW Innovation Fund
-  - Links to team page and documentation
-- **People Page**: Team members with circular portraits (`people.html`)
-- **Jupyter Book**: Comprehensive documentation organized into five main chapters:
-  1. **Problem Statement**: Research challenges and objectives
-  2. **DataHub**: Data repository and management tools
-  3. **ModelHub**: Machine learning models for hazard prediction
-  4. **HazEvalHub**: Evaluation frameworks and tools
-  5. **Resources**: Tutorials, references, and community resources
+- **Static site** (`website/`) — landing page (`index.html`), team page (`people.html`),
+  dashboard, presentations, and funding/acknowledgments pages. Team members are rendered
+  from `website/data/team.json`, sponsor and funder logos from `website/images/sponsors/`.
+- **Jupyter Book** (`book/`, built into `website/book/`) — the documentation, organized in
+  [myst.yml](myst.yml) into: Problem Statement, Science (digital-twin framework, Earth
+  system science, hazards), Field Sites, Technology (DataHub, ModelHub, HazEvalHub, GAIA
+  Agent), Demos, and How We Work (governance).
 
 ## Local Development
 
@@ -40,52 +38,116 @@ pixi run serve-all
 
 NOTE: `pixi task list` shows all available tasks, including `build-book`, `build-all`, `serve-book`, `serve-all`, `linkcheck`, and `spellcheck`.
 
-## Structure
-
-```
-.
-├── index.html             # Landing page
-├── people.html            # Team members page
-├── images/                # Images directory
-│   └── team/              # Team member portraits
-├── book/                  # Jupyter Book source
-│   ├── _config.yml        # Book configuration
-│   ├── _toc.yml           # Table of contents
-│   ├── intro.md           # Introduction page
-│   ├── img/               # Images
-│   └── chapters/          # Chapter content
-│       ├── problem_statement.md
-│       ├── datahub.md
-│       ├── modelhub.md
-│       ├── hazevalhub.md
-│       └── resources.md
-├── .github/
-│   └── workflows/
-│       └── deploy.yml     # GitHub Actions deployment
-└── pixi.toml              # Conda environment specification
-```
-
 ## Adding Team Members
 
-To add team members to the people page:
+Team members are data-driven — both `index.html` and `people.html` render from the same
+JSON file, so there is no HTML to edit.
 
-1. Add portrait photos to `images/team/` directory
+1. Add a portrait to `website/images/team/`
    - Format: JPG or PNG
-   - Size: At least 300x300px (square)
+   - Size: at least 300x300px (square)
    - Naming: `firstname-lastname.jpg`
 
-2. Edit `people.html` and add team member entries in the appropriate section (PI, Graduate Students, Undergrads)
-
-3. Update with name, role, description, and contact links
+2. Add an entry to the `team_members` array in `website/data/team.json` with the person's
+   name, photo path, role, title, affiliation, expertise, and contact links. See
+   [website/data/README.md](website/data/README.md) for the full field list.
 
 ## Deployment
 
 The website is automatically built and deployed to GitHub Pages using GitHub Actions when changes are pushed to the `main` branch.
 
+## Structure
+
+```
+.
+├── myst.yml               # MyST project config + table of contents
+├── pixi.toml              # Environment and build tasks
+├── gaia-book.css          # Custom book styling
+├── book/                  # MyST / Jupyter Book source
+│   ├── intro.md
+│   ├── references.bib
+│   ├── chapters/          # Content pages (science, hazards, hubs, field sites)
+│   ├── governance/        # How we work, organization, decisions, licensing, FAQ
+│   ├── graph/             # Knowledge graph data and generator
+│   └── img/
+├── website/               # Static site deployed to GitHub Pages
+│   ├── index.html         # Landing page
+│   ├── people.html        # Team members page
+│   ├── dashboard.html
+│   ├── funding.html
+│   ├── presentations.html
+│   ├── data/team.json     # Team roster, rendered by js/team-loader.js
+│   ├── js/
+│   ├── assets/
+│   ├── images/            # team/ and sponsors/ logos
+│   ├── presentations/
+│   └── book/              # Built book copied here by build-all (git-ignored)
+├── project_coordination/  # Public project-management docs (not part of the book)
+├── data/catalog/          # Data catalog outputs
+├── scripts/catalog/       # Catalog collection and build scripts
+├── tools/docx/            # Word export helpers
+├── review-logs/           # Dated output from persona review runs
+├── _attic/                # Retired content kept for reference; not current
+├── .claude/               # Claude Code agents, skills, and review personas
+├── .github/workflows/     # deploy.yml plus automation workflows
+├── AGENTS.md              # Instructions for AI coding agents
+├── CLAUDE.md              # Claude Code pointer to AGENTS.md and .claude/
+└── CONTRIBUTING.md        # Guidelines for human contributors
+```
+
+## AI Coding Agents
+
+[AGENTS.md](AGENTS.md) is the shared instruction file for AI coding agents (Claude Code,
+Copilot, Codex, Cursor). [CLAUDE.md](CLAUDE.md) points Claude Code at it and adds the
+Claude-specific extras under `.claude/`.
+
+### What is in `.claude/`
+
+- **`.claude/skills/`** — skills Claude Code loads automatically when you work in this repo.
+  Invoke by name (`/plain-voice`) or let them trigger on their own. See
+  [.claude/skills/README.md](.claude/skills/README.md).
+- **`.claude/agents/`** — ten persona-review subagents (`gaia-review-*`), auto-discovered by
+  Claude Code and used when you ask for a GAIA persona review. Each is a thin prompt that
+  reads its full specification from `.claude/gaia-review-personas/` at run time. Output goes
+  to `review-logs/<date>/`.
+- **`.claude/gaia-review-personas/`** — the persona specifications and the generator that
+  produces the subagents. Self-contained and separately licensed (CC BY 4.0) so it can be
+  reused outside this project.
+
+Everything else under `.claude/` (local settings, session state) is git-ignored; see the
+exception list at the bottom of [.gitignore](.gitignore).
+
+### Which tools read what
+
+| | `CLAUDE.md` | `AGENTS.md` | `.claude/skills/` | `.claude/agents/` |
+|---|---|---|---|---|
+| Claude Code (CLI) | auto | via pointer | auto | auto |
+| Claude Code (VS Code extension) | auto | via pointer | auto | auto |
+| GitHub Copilot | no | yes | no | no |
+| Codex, Cursor | no | yes | no | no |
+
+The CLI and the VS Code extension are the same engine and behave identically. `CLAUDE.md` is
+loaded into context automatically at the start of a session; `AGENTS.md` is read because
+`CLAUDE.md` links to it. Tools other than Claude Code ignore `.claude/` entirely, so anything
+every agent needs to know belongs in `AGENTS.md`.
+
+### Regenerating the personas
+
+The ten `personas/*/SKILL.md` files and the ten `agents/gaia-review-*.md` files are
+generated. Edit `spec.py` (what differs between personas) or `build.py` (what they share),
+then regenerate **from the `.claude/` directory**:
+
+```bash
+cd .claude && python3 gaia-review-personas/build.py
+```
+
+Editing a generated file directly works until the next regeneration silently reverts it. See
+[.claude/gaia-review-personas/BUILDING.md](.claude/gaia-review-personas/BUILDING.md).
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit issues or pull requests.
+Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, or open
+an issue or pull request.
 
 ## License
 

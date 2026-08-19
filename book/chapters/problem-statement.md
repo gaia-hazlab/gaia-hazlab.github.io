@@ -32,7 +32,6 @@ These feed three research goals:
 We work on four coupled disasters, chosen because each one breaks a different part of the method and forces the infrastructure to catch up:
 
 ::::{grid} 2
-:gutter: 3
 
 :::{grid-item-card} 2025 Western Washington Floods & Landslides
 :link: https://gaia-hazlab.github.io/seis-hydro-2-sed/
