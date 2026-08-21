@@ -200,36 +200,27 @@ the [Data Inventory](datahub-inventory) page.
 
 Earthquake shaking can turn saturated, loose granular soils into a fluid-like state —
 liquefaction — driving settlement, lateral spreading, and ground failure
-([hazard page](hazard-liquefaction-ground-failure)). Unlike landslides, the trigger is
-**seismic**, not meteorological; but the *susceptibility* is set by the same Pillar-1 state —
-saturation and water-table depth — coupled to the soil's stiffness. GAIA builds a **ground
-liquefaction model (GLM) digital twin** on the geospatial-modeling line of [@zhu2015; @zhu2017]
-as advanced by Sanger, Geyin & Maurer [@sanger2025jgge; @sanger2026geoai; @sanger2025vs].
+([hazard page](hazard-liquefaction-ground-failure)). The trigger is **seismic**, not
+meteorological, but susceptibility is set by the same Pillar-1 state the landslide models use:
+saturation and water-table depth.
 
-**Where hydrology and rigidity enter.** Liquefaction is governed by the cyclic stress ratio
-(demand) versus the cyclic resistance ratio (capacity),
-$\mathrm{FS}_{liq}=\mathrm{CRR}/\mathrm{CSR}$ [@seedidriss1971; @idrissboulanger2006]. The
-**water table** sets effective stress $\sigma'_{v0}$ (in both demand and capacity) and gates
-which soil is saturated enough to liquefy; **shear-wave velocity** $V_s$ raises capacity (CRR)
-and modulates demand through site amplification [@andrusstokoe2000]. Both are Pillar-1 state
-variables — the direct line by which the soil reanalysis, and **sea-level rise / seasonal
-water-table change**, modulate liquefaction.
+GAIA builds its **geospatial liquefaction model (GLM) digital twin** on the mechanics-informed
+surrogate of Sanger, Geyin & Maurer [@sanger2025jgge; @sanger2026geoai]. Rather than regress
+liquefaction observations on proxy variables — the approach of the models it is benchmarked
+against [@zhu2017; @rashidian2020] — it learns to reproduce a CPT-based geotechnical analysis at
+locations with no CPT, and defers to subsurface data where subsurface data exists. It is trained
+once and precomputed globally, so an event query is arithmetic over a stored raster.
 
-**Three framings.** The GLM digital twin serves three questions — **conditional**
-($P(\text{liq}\mid IM)$, the national surrogate), **unconditional** (integrated over the NSHM
-hazard curve for a return period), and **event-based** (a ShakeMap field for a specific rupture,
-e.g. Cascadia or Nisqually). An open question is
-whether a **time-varying attenuation / site term** ($\kappa_0(t)$, $V_s(t)$) — which the GAIA
-seismic networks can estimate and which varies seasonally [@haendel2025] — can be fed back into
-the fixed-site-term NSHM.
+**The dynamic opening.** Groundwater depth is by far the model's most influential input, and it
+is currently a *static* value fixed at training. Making the water table a live variable is the
+main line of future work and the direct interface to
+[Pillar 1](pillar-1-soil-reanalysis) — the step that turns a static hazard map into a twin that
+responds to season, drought, and sea-level rise.
 
-Even the **static** layers ($V_{s30}$, geology, water table) must be **high-resolution**:
-liquefaction is controlled by meter-scale contrasts, so coarse inputs smear hazard. On top of
-them GAIA adds the **dynamic** hydrological and mechanical effects. The full equations, the
-solved-vs-assumed breakdown, the framings in detail, attenuation, Earth2Studio integration, and
-evaluation are on the **[Liquefaction Model](modelhub-liquefaction)** page; the layer-by-layer
-data inventory (with cross-hazard icons) is on the
-**[Data Inventory](datahub-inventory)** page.
+Resolution constrains all of it: liquefaction is controlled by fine-scale contrasts, so coarse
+static layers ($V_{s30}$, geology, water table) smear hazard. Full treatment on the
+**[Liquefaction Model](modelhub-liquefaction)** page; layers and sources in the
+**[Data Inventory](datahub-inventory)**.
 
 ## 4. Evaluation & metrics
 
@@ -241,9 +232,9 @@ time.
 
 - Quantify how prior uncertainty in static soil layers propagates to $P_f$ (sensitivity study).
 - Close the Pillar 1 → Pillar 2 data loop by migrating `landlab-debrisflow` onto DataHub.
+- Liquefaction: retrain the surrogate with the **water table as a live input**, and couple it to
+  the Pillar 1 groundwater product (see [Liquefaction Model §6](modelhub-liquefaction)).
 - Liquefaction: integrate a **time-varying** site term ($\kappa_0(t)$, $V_s(t)$) into the NSHM
-  hazard input for the unconditional product (see [Liquefaction Model §5](modelhub-liquefaction)).
-- Liquefaction: stand up the proposed repositories and the groundwater coupling for
-  sea-level-rise/seasonal effects (see [Liquefaction Model §9](modelhub-liquefaction)).
+  hazard input for return-period products.
 
 ## References

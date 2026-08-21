@@ -1,190 +1,124 @@
-# Liquefaction Model — Geospatial GLM Surrogate
+# Liquefaction Model — Mechanics-Informed Geospatial Surrogate
 
 :::{note}
-**The model-side companion to the liquefaction digital twin.** This page is the ModelHub home
-for the **geospatial liquefaction model (GLM)**: the equations it solves, what is *solved*
-versus *assumed* inside a geospatial surrogate, the three hazard framings
-(conditional / unconditional / event-based), how attenuation and the National Seismic Hazard
-Model enter, how it couples to the other GAIA projects (soil reanalysis, the landslide model,
-earthquake wavefields), how to make it interoperable with **Earth2Studio**, and how predictions
-are evaluated.
+**The model-side companion to the liquefaction digital twin.** ModelHub home for the geospatial
+liquefaction model (GLM) of Sanger, Geyin & Maurer [@sanger2025jgge], with a Pacific Northwest
+demonstration in [@sanger2026geoai].
 
-It builds on the science in [Pillar 2 §3](pillar-2-nowcasting-susceptibility), draws on the
-state from [Pillar 1](pillar-1-soil-reanalysis), and reads the data cataloged in the
-[Data Inventory](datahub-inventory). Led by the **Sanger/Maurer**
-line of work [@sanger2025jgge; @sanger2026geoai]. Repository pointers in §9 are **placeholders**
-for the team (Morgan) to confirm.
+Science framing in [Pillar 2 §3](pillar-2-nowcasting-susceptibility); inputs and outputs in the
+[Data Inventory](datahub-inventory).
 :::
 
-## 1. What the model computes (and what it does not)
+## 1. The idea
 
-The product is the **probability and areal extent of liquefaction** and its surface
-**manifestation severity**, served in three framings (§4): conditional on a ground motion,
-unconditional over a return period, and for a specific event. A **geospatial** model trades
-per-site borehole data for spatially continuous proxies — predicting liquefaction from PGV/PGA,
-$V_{s30}$, water-table depth, precipitation, and distance to water [@zhu2015; @zhu2017] — so it
-covers regions where site investigations do not exist.
+Practice-standard liquefaction assessments need in-situ measurements. Geospatial models don't, but they buy
+that coverage by regressing liquefaction *observations* on proxy variables — and there are only a
+handful of well-mapped earthquakes per decade to learn from.
 
-What the model does **not** do: it does not replace site-specific CPT/SPT triggering analysis
-at an engineered site; it does not solve transient 3-D groundwater flow (it *consumes* a
-water-table field, §6); and it does not by itself produce ground motion — that comes from a
-ShakeMap (event) or the NSHM (probabilistic), §4–§5.
+This model changes the target. Instead of learning "did the ground liquefy here," it learns
+**what a CPT-based triggering analysis would have said here**. Training targets come from running
+the Idriss & Boulanger procedure [@idrissboulanger2008] on ~37,000 cone penetration tests across
+48 U.S. states and 19 countries; geospatial variables sampled at those same sites are the
+features. The mechanics live in the target, so the model inherits them rather than having to
+relearn them from sparse case histories — and the training set is orders of magnitude larger than
+any liquefaction inventory, because a CPT site doesn't need to have experienced an earthquake to
+be useful. The approach builds on [@geyin2022]; the critique motivating it is [@maurersanger2023].
 
-## 2. The physics — the equations we solve
+## 2. What it produces
 
-The simplified procedure [@seedidriss1971; @idrissboulanger2006] compares seismic **demand** to
-soil **capacity**. The cyclic stress ratio (demand) is
-
-$$
-\mathrm{CSR} = 0.65\,\frac{a_{max}}{g}\,\frac{\sigma_{v0}}{\sigma'_{v0}}\,r_d ,
-$$
-
-the cyclic resistance ratio $\mathrm{CRR}$ is the capacity, and triggering is expected when the
-factor of safety
+The published product is a set of precomputed ~90 m rasters of two
+parameters, $A$ and $B$, that describe a site's liquefaction response across *all* levels of
+shaking:
 
 $$
-\mathrm{FS}_{liq} = \frac{\mathrm{CRR}}{\mathrm{CSR}} \le 1 .
+MI(PGA_M) =
+\begin{cases}
+0, & PGA_M < 0.1\,g \\[6pt]
+A\,\tan^{-1}\!\left[\,B\left(PGA_M - \dfrac{A/100}{B}\right)^{2}\right], & PGA_M \ge 0.1\,g
+\end{cases}
 $$
 
-Surface severity is summarized by manifestation indices — the Liquefaction Potential Index
-[@iwasaki1978] and the Liquefaction Severity Number [@vanballegooy2014]. Two **Pillar-1 state
-variables** enter directly:
+where $MI$ is a manifestation index — $LPI$ [@iwasaki1978], $LPI_{ISH}$ [@maurer2015], or $LSN$
+[@vanballegooy2014] — and $PGA_M$ is magnitude-scaled PGA. Roughly, $A$ sets how severe the
+response gets and $B$ sets how quickly it gets there.
 
-- **Hydrology (water table).** Pore pressure sets the effective stress
-  $\sigma'_{v0}=\sigma_{v0}-u$, which appears in *both* demand (the $\sigma_{v0}/\sigma'_{v0}$
-  ratio in CSR) and capacity (overburden correction of $V_{s1}$). Only **saturated** soil below
-  the water table can liquefy — saturation is a binary gate. A shallower water table raises
-  demand and exposes more liquefiable column.
-- **Rigidity (shear-wave velocity).** $V_s$ is the small-strain stiffness proxy
-  ($G_{max}=\rho V_s^2$). It raises **capacity** — CRR increases with overburden-corrected
-  $V_{s1}$ [@andrusstokoe2000] — and modulates **demand**, because $V_{s30}$ controls site
-  amplification of $a_{max}$. Stiffer ground resists triggering, but soft sites amplify shaking.
+Because $A$ and $B$ are **event-independent**, the expensive work is already done: ~1.3 billion
+locations, >1 TB of geospatial input, HPC on DesignSafe and UW Hyak. At run time a user supplies
+a ShakeMap and evaluates the equation above — arithmetic, no ML inference, no HPC. Manifestation
+indices then convert to a probability of ground failure through fragility functions
+[@geyin2020fragility], kept separate so they can be swapped as they are revised.
 
-## 3. The geospatial surrogate — what is solved vs. assumed
+Two model domains ship: **global** (37 predictors) and **New Zealand** (43), each with $A$/$B$
+for all three indices. Coverage is continuous except where predictions were deliberately
+suppressed — slopes above 5°, water, ice, permafrost. Full package sizes are 33 GB global and
+85 MB for New Zealand; one index over one continent is ~1.5 GB.
 
-Classical triggering (§2) is evaluated per soil column. The **geospatial** model regresses the
-*outcome* (liquefaction occurrence / manifestation) on spatially available proxies, and GAIA's
-GLM uses the **mechanics-informed ML surrogate** of [@sanger2025jgge], which emulates
-physics-based triggering at national scale and in near-real time, demonstrated for the PNW in
-[@sanger2026geoai].
+## 3. Updating with subsurface data
 
-| Element | What it *solves* | What it *assumes* |
+Where the subsurface has actually been measured, the model should defer to it. $A$ and $B$ are
+updated by regression kriging [@hengl2007]: the ML prediction supplies the regression term, and
+the interpolated ML *residual* — known exactly at CPT sites, decaying to zero within ~1.2 km —
+supplies the correction. Predictions are scaled up or down toward what the geotechnical data
+says.
+
+Each product ships with a **variance classification map** grading how much of the local
+prediction variance the ML model still owns, from *no geotechnical influence* to *major*. A user
+can see, per pixel, whether they are looking at a geotechnical answer or a geospatial one.
+Anyone holding proprietary or municipal CPT data can re-krige against the published rasters
+without retraining.
+
+## 4. How well it works
+
+Skill is scored by Brier score against the operational benchmark, Rashidian & Baise
+[@rashidian2020], with significance from bootstrap confidence intervals, KS tests, and Cohen's
+$d$.
+
+| Test | RB20 | Best ML |
 |---|---|---|
-| Geospatial predictors → $P(\text{liq})$ | logistic / ML mapping from PGV, $V_{s30}$, water table, precip, distance-to-water [@zhu2017] | proxies stand in for unmeasured geotechnical state; training-region transferability [@rashidian2020] |
-| Mechanics-informed surrogate | fast emulation of the simplified-procedure FS over a region [@sanger2025jgge] | the surrogate is trained on / constrained by the mechanics; valid within its training envelope |
-| Manifestation model | fragility from FS / LPI to damage state [@geyin2020fragility; @geyin2020field; @maurer2015] | surface manifestation is a function of integrated triggering + site |
-| $V_s$ field | parametric CONUS $V_s$ profiles [@sanger2025vs] | functional form + geospatial ML capture the near-surface profile |
+| **Unseen events** — 2019 Ridgecrest, 2019 Puerto Rico, 2023 Türkiye; no CPTs in training there | 0.393 | **0.128** |
+| **332 global case histories** [@rateria2024], before → after updating | 0.299 | 0.228 → **0.209** |
+| **Canterbury**, 16,836 observations [@geyin2021canterbury] | 0.204 | **0.127** |
 
-The surrogate's value is **speed and coverage**: it runs the conditional model everywhere, fast
-enough for the unconditional integral (§4) and for Earth2Studio ensembles (§7).
+Two results worth stating plainly. **Updating helps** — measurably, and exactly where subsurface
+data exists. And **regionalization mostly didn't**: New Zealand has abundant CPTs and
+high-quality national geology, groundwater, and $V_{s30}$ layers, and its bespoke model still
+only matched the global one. If a region-specific model can't clearly win there, the case for
+building them elsewhere is weak.
 
-## 4. The three hazard framings
+## 5. Where GAIA takes it
 
-A GLM digital twin must serve three distinct questions, each with different ground-motion input
-and data/model need:
+**Groundwater depth is the model's single most influential predictor — and it is currently
+frozen at its training value.** Making it a run-time variable, supplied alongside shaking the way
+$PGA_M$ already is, is the main line of future work [@sanger2025jgge] and the direct interface to
+the rest of GAIA: the water table from [Pillar 1](pillar-1-soil-reanalysis) and the
+[groundwater modeling](groundwater-soil-moisture), and with it the route by which seasonal
+change, drought, and sea-level rise modulate liquefaction hazard. It requires retraining with
+groundwater held out, not a new input slot.
 
-| Framing | Question | Ground-motion input | Output | Data / model need |
-|---|---|---|---|---|
-| **Conditional (national)** | $P(\text{liq}\mid IM)$ — given shaking | a specified IM (PGA/PGV) | probability / extent given that IM | the national GLM surrogate [@sanger2025jgge]; high-res $V_{s30}$, water table, geology |
-| **Unconditional (return period)** | total liquefaction hazard in $T$ years | integrated over the **NSHM** hazard curve | return-period liquefaction hazard | $\lambda_{liq}=\int P(\text{liq}\mid IM)\,\lvert d\lambda(IM)\rvert$; NSHM curves [@petersen2024] via [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) |
-| **Event-based (scenario)** | liquefaction footprint of *this* quake | a ShakeMap IM field | deterministic spatial map | rupture → ShakeMap → GLM; the nowcasting mode |
+Then, the model can be used in a probabilistic hazard framework, where shaking is a random variable
+and the water table is a random variable, and the output is a probability distribution of
+manifestation severity and ground failure. That is the liquefaction digital twin, and it is
+what the [2001–2031 Nisqually earthquake](wa-2001-2031-nisqually-earthquake) use case is built to demonstrate.
 
-The **unconditional** product is the "total risk for a return period" baseline; the
-**event-based** product is the real-time nowcast for a specific rupture (e.g. a Cascadia or
-Nisqually scenario). All three call the *same* conditional
-surrogate — they differ only in how the ground motion is supplied and integrated.
+## 6. Products & repositories
 
-## 5. Attenuation, $\kappa_0$, and the NSHM
+Published on DesignSafe: global model maps [@sanger2024global], New Zealand model maps
+[@sanger2024nz], and an example implementation — a Jupyter notebook and Matlab script that take a
+USGS ShakeMap URL and return geotiffs of the selected index and the probability of ground failure
+[@sanger2024scripts]. Supporting CPT databases: North America [@sanger2024cptna] and Cascadia
+[@rasanen2024cpt].
 
-High-frequency ground motion — and therefore $a_{max}$ — is controlled by **attenuation**,
-parameterized by the site spectral-decay term $\kappa_0$ [@andersonhough1984]. Two questions
-the GAIA seismic networks help answer:
+Repositories: [`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure) ·
 
-- **Where is $\kappa_0$ measured?** From the high-frequency slope of recorded acceleration
-  spectra ($A(f)\propto e^{-\pi\kappa f}$); the zero-distance intercept is the site $\kappa_0$.
-  GAIA's dense seismic/DAS data make this estimable per site.
-- **Can $\kappa_0$ vary in time?** It is dominated by attenuation in the shallow,
-  moisture-sensitive subsurface, so it is **not** strictly static — seasonal variation has been
-  observed [@haendel2025; @ktenidou2015]. This couples to the Pillar-1 soil reanalysis (the same
-  near-surface saturation GAIA monitors via $dv/v$).
-
-**Open integration question.** The [NSHM](https://www.usgs.gov/programs/earthquake-hazards)
-embeds a *fixed* reference-rock $\kappa_0$ and $V_{s30}$ site term [@petersen2024]; how to feed a
-**time-varying** site term ($\kappa_0(t)$, $V_s(t)$) back into the hazard input for the
-unconditional product (§4) is unresolved and a GAIA research target.
-
-## 6. Coupling map — where the other GAIA projects plug in
-
-**(a) Soil reanalysis** ([Pillar 1](pillar-1-soil-reanalysis), [soil-memory](soil-memory)). The
-water-table depth $d_{wt}(x,t)$ and saturation $S_w$ are the **dynamic** liquefaction controls
-(§2); the seismic $dv/v$ inversion also delivers a **time-varying $V_s$** for both the capacity
-term and the site amplification. This is the direct line from the reanalysis to liquefaction
-susceptibility, and the route by which **sea-level rise and seasonal water-table change** modulate
-hazard (via the [groundwater modeling](groundwater-soil-moisture)).
-
-**(b) The landslide model** ([modelhub-landslide](modelhub-landslide)). Liquefaction and
-landslides share the **same antecedent hydromechanical state** — saturation and water table —
-but couple it to a *seismic* trigger (PGA/PGV) rather than rainfall recharge. The landslide
-engine's **Monte-Carlo-over-uncertain-strength** structure is the template the liquefaction
-surrogate mirrors: both are "soil state + trigger → probability of failure."
-
-**(c) Earthquake wavefields & the NSHM.** The ground-motion field comes from ShakeMap (event) or
-the NSHM (probabilistic, via [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg));
-GAIA's wavefield reconstruction/forecasting work is the natural source of refined, possibly
-time-varying, site ground motion.
-
-## 7. Interoperability with Earth2Studio
-
-The **dynamic** half of the GLM twin needs forecast forcing, routed through
-[Earth2Studio](https://github.com/NVIDIA/earth2studio) — the same AI weather/climate stack the
-[landslide model](modelhub-landslide) and [Pillar 3 forecasting](pillar-3-forecasting-susceptibility)
-use:
-
-- **Climate/weather → groundwater → water table.** Earth2Studio forecasts (precipitation, plus
-  sea-level-rise and seasonal scenarios) drive the groundwater model that sets $d_{wt}$ — the
-  dynamic liquefaction control.
-- **GLM surrogate as a diagnostic model.** The fast mechanics-informed surrogate
-  [@sanger2025jgge] can be wrapped with the Earth2Studio diagnostic signature for large scenario
-  / return-period ensembles on GPU.
-- **Time-varying site terms.** Seismic-derived $V_s(t)$ / $\kappa_0(t)$ feed the ground-motion
-  side (§5), closing the dynamic loop.
-
-## 8. Evaluation & metrics
-
-As for the landslide model, separate **calibration** of intermediate states from **validation**
-of the prediction; full metric definitions live in [HazEvalHub](hazevalhub).
-
-- **Calibration** — against the geotechnical case-history record (CPT/SPT triggering, manifestation
-  fragility [@geyin2020fragility; @maurer2015]) and the $V_s$ / water-table inputs.
-- **Validation** — against **observed liquefaction maps** from past earthquakes (the
-  Nisqually 2001 event is the regional target): probabilistic
-  skill (Brier, reliability), spatial agreement (IoU) of mapped manifestation, and — for the
-  unconditional product — consistency with return-period expectations.
-
-## 9. Repositories *(placeholders — for Morgan to confirm)*
-
-- [`da-seis-groundfailure`](https://github.com/gaia-hazlab/da-seis-groundfailure) — the
-  liquefaction / ground-failure modeling repo (hydrology + seismology + geotech).
-- [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) — USGS NSHM disaggregation
-  client feeding the unconditional integration.
-- `gaia-model-liquefaction` *(proposed)* — the GLM surrogate digital twin (conditional /
-  unconditional / event-based runners).
-- `gaia-vs-conus` *(proposed)* — the parametric $V_s$-profile product [@sanger2025vs].
-
-*Proposed repositories do not exist yet — the names are placeholders for the team to
-create/confirm.*
 
 ## Related
 
-- [Pillar 2 — Nowcasting Hazard Susceptibility](pillar-2-nowcasting-susceptibility) — the science
-  framing.
+- [Pillar 2 — Nowcasting Hazard Susceptibility](pillar-2-nowcasting-susceptibility) — science
+  framing · [Liquefaction & Ground Failure](hazard-liquefaction-ground-failure) — hazard page.
 - [Pillar 1 — Soil Reanalysis Product](pillar-1-soil-reanalysis) ·
-  [Groundwater & Soil Moisture](groundwater-soil-moisture) — the soil state and water-table this
-  model consumes.
-- [Liquefaction & Ground Failure](hazard-liquefaction-ground-failure) — the hazard page.
-- [Data Inventory](datahub-inventory) — every input/output with sources,
-  resolution, and the data-prep pipeline.
-- [Landslide Model](modelhub-landslide) — the sibling model this one mirrors.
-- [HazEvalHub](hazevalhub) — metric definitions.
+  [Groundwater & Soil Moisture](groundwater-soil-moisture) — the water table this model would
+  consume once §6 is built.
+- [Data Inventory](datahub-inventory) · [Landslide Model](modelhub-landslide) ·
+  [HazEvalHub](hazevalhub).
 
 ## References

@@ -47,8 +47,9 @@ value updates. **Limitations** captures the caveat a downstream modeler needs be
 layer — **including access keys, licenses, and withheld locations** (summarized in §7).
 
 The **primary targets** the pipelines exist to produce are
-`landslide__probability_of_failure` ($P_f$ ⛰️ 🔥) and the **probability / extent of
-liquefaction** $P(\text{liq})$ with its manifestation severity (LPI / LSN 🏚️).
+`landslide__probability_of_failure` ($P_f$ ⛰️ 🔥) and the GLM **response parameters** $A$, $B$,
+from which manifestation severity (LPI / LPI$_{ISH}$ / LSN) and the probability of ground failure
+$PGF$ follow for any given shaking (🏚️).
 
 ## 1. Raw / observed inputs (external products)
 
@@ -66,14 +67,15 @@ models and of calibration.
 | **Burn severity** → `burn__severity` | 🔥 | MTBS dNBR/RdNBR ([mtbs.gov](https://www.mtbs.gov/)) | 30 m | 30 m | Per-fire / annual since 1984 | severity index | Only large fires mapped; dNBR depends on image timing; **post-fire only** |
 | **Observed precipitation & temperature** → daily forcing | ⛰️ 🔥 🌊 🏚️ | PRISM Climate Group ([prism.oregonstate.edu](https://prism.oregonstate.edu/)); STAC [`prism-stac`](https://github.com/gaia-hazlab/prism-stac); staged via [`gaia-cli`](https://github.com/gaia-hazlab/gaia-cli) | Gauge-interpolated; effective coarser in complex terrain | 4 km (800 m licensed) | Daily | mm day⁻¹; °C | Coarse for steep terrain; gauge-sparse interpolation error; **800 m AN81 license-restricted** (4 km free) |
 | **Forecast precipitation** → `tp` / `APCP_surface` | ⛰️ 🔥 🌊 🏚️ | NVIDIA Earth2Studio ([github.com/NVIDIA/earth2studio](https://github.com/NVIDIA/earth2studio)) | Model grid 0.25° global; StormCast 3 km | 0.25° / 3 km | Forecast: init / lead | m or kg m⁻² (accum.) | Precip is the **least-skillful** field; accumulation conventions differ; needs downscaling; **model weight licenses vary** |
-| **Water-table depth** → $d_{wt}$ | 🏚️ ⛰️ 🌊 | [Pillar 1 Soil Reanalysis](pillar-1-soil-reanalysis); [groundwater modeling](groundwater-soil-moisture); modeled WTD (Zhu GLM) | Coarse priors | Tens of m target | **Dynamic** (seasonal, sea-level) | m | Saturation is a **binary gate** for liquefaction; coarse priors smear hazard |
+| **Water-table depth** → $d_{wt}$ | 🏚️ ⛰️ 🌊 | [Pillar 1 Soil Reanalysis](pillar-1-soil-reanalysis); [groundwater modeling](groundwater-soil-moisture); global modeled WTD [@fan2013] | Coarse priors | Tens of m target | **Dynamic** (seasonal, sea-level) | m | Saturation is a **binary gate** for liquefaction; the GLM's **most influential** predictor, currently static [@sanger2025jgge]; coarse priors smear hazard |
 | **Soil-moisture target** (calibration) | ⛰️ 🏚️ | NASA SMAP L4 `SPL4SMGP` via NSIDC ([nsidc.org/data/spl4smgp](https://nsidc.org/data/spl4smgp)) | L-band radiometer ~36 km, model-assimilated; senses ~top 5 cm | ~9 km · EASE-2 | 3-hourly | m³ m⁻³ | Coarse footprint; model-assimilated; senses only ~top 5 cm; **NASA Earthdata login** required |
 | **Snow-water-equivalent target** (calibration) | ⛰️ 🌊 | ECMWF ERA5 / ERA5-Land via CDS ([cds.climate.copernicus.eu](https://cds.climate.copernicus.eu/)) | Reanalysis ~31 km (ERA5) / ~9 km (ERA5-Land) | ERA5 ~31 km; ERA5-Land ~9 km | Hourly | m w.e. | Reanalysis SWE biased in complex terrain; **CDS account + license** required |
 | **In-situ met stations** | ⛰️ 🔥 🌊 🏚️ | Synoptic Data ([synopticdata.com](https://synopticdata.com/)) | Point | Point | Sub-hourly | varies | Heterogeneous networks; uneven density; gaps; **API token** (free academic) |
 | **Ground motion (event)** → PGA, PGV, MMI | 🏚️ ⛰️ | USGS ShakeMap ([earthquake.usgs.gov/data/shakemap](https://earthquake.usgs.gov/data/shakemap/)) | Event grid | Event grid | Per-event | g, cm s⁻¹ | ShakeMap & GMM epistemic uncertainty; the **demand** input (future seismic trigger for ⛰️) |
 | **Seismic hazard (probabilistic)** → hazard curves $\lambda(IM)$ | 🏚️ | USGS NSHM [@petersen2024] via [`gaia-nhsm-deagg`](https://github.com/gaia-hazlab/gaia-nhsm-deagg) | Site / gridded | Site / gridded | Static (model epoch) | rate vs IM | **Fixed** reference-rock site term (§7); model-epoch dependence |
 | **Attenuation** → $\kappa_0$ | 🏚️ | high-frequency spectral decay [@andersonhough1984]; GAIA seismic / DAS | Per site/station | Per site/station | Static (→ dynamic) | s | Band/method-dependent; seasonal variability [@haendel2025]; **not yet wired** |
-| **Geotechnical case histories** (calibration) | 🏚️ | CPT/SPT liquefaction databases [@vanballegooy2014] | Point | Point | Event-based | varies | Geographic bias; the surrogate's training/validation base |
+| **CPT profiles** (surrogate training targets) | 🏚️ | North America [@sanger2024cptna]; Cascadia [@rasanen2024cpt]; NZGD; Emilia-Romagna; USGS | Point (~37k tests, 48 states / 19 countries) | Point | Static (grows) | MPa, kPa vs depth | Geographic bias; **CPT siting bias** toward suspected-liquefiable ground; the surrogate's training base and its kriging anchors [@sanger2025jgge] |
+| **Liquefaction case histories** (validation) | 🏚️ | global CPT-based inventory [@rateria2024]; Canterbury [@geyin2021canterbury]; Nisqually [@rasanen2023] | Point | Point | Event-based | presence / severity | Used only to **score**, never as surrogate input |
 | **Hazard inventories / maps** → validation labels | ⛰️ 🏚️ | USGS / WA DNR landslide inventories ([usgs.gov](https://www.usgs.gov/programs/landslide-hazards), [dnr.wa.gov](https://www.dnr.wa.gov/)); post-EQ liquefaction reconnaissance (e.g. 2001 Nisqually) | Vector | Vector | Event / historical | presence / severity | Completeness & recency bias; used only to **score**, never as input; **some locations withheld** |
 
 ## 2. Derived variables (deterministic & statistical transformations)
@@ -105,7 +107,7 @@ calibration constant embedded in the rule.
 | Total / effective stress $\sigma_{v0}$, $\sigma'_{v0}$ | overburden + water table $d_{wt}$ | kPa | $\sigma'_{v0}=\sigma_{v0}-u$ | couples **hydrology** into CSR & CRR |
 | Stress-corrected velocity $V_{s1}$ | $V_s$, $\sigma'_{v0}$ | m s⁻¹ | $V_{s1}=V_s\,(P_a/\sigma'_{v0})^{0.25}$ | overburden-normalized **rigidity** for CRR [@andrusstokoe2000] |
 | Cyclic stress ratio $\mathrm{CSR}$, MSF, $K_\sigma$ | $a_{max}$, stresses, $r_d$, $M$ | – | see [Liquefaction Model §2](modelhub-liquefaction) | seismic **demand**, normalized to a reference |
-| CTI / distance-to-water | DEM; hydrography | – | GIS derivations | geospatial GLM saturation proxies [@zhu2015] |
+| CTI / distance to rivers (flow order 1–8) / HAND | DEM; hydrography | – | GIS derivations [@amatulli2020] | GLM saturation & depositional proxies [@sanger2025jgge] |
 
 ### 2.3 Statistical / ML-derived layers 📈
 
@@ -119,8 +121,8 @@ even though they are model *estimates*, not observations (§2.4 traces one back 
 | **POLARIS** soil properties | statistical downscaling of SSURGO [@chaney2019] | SSURGO polygons + environmental covariates | p5 / p50 / p95 quantiles |
 | **Proxy $V_{s30}$** | slope– and geology–$V_{s30}$ regression; parametric CONUS $V_s$ [@sanger2025vs] | measured $V_{s30}$ vs topographic slope / surface geology | large residual scatter — report σ |
 
-The **geospatial liquefaction surrogate** (§3, §5) and the **modeled water table** (Zhu GLM, §1)
-are likewise statistical; their uncertainty is documented on the model pages.
+The **geospatial liquefaction surrogate** (§3, §5) and the **modeled water table** it consumes
+[@fan2013] are likewise statistical; their uncertainty is documented on the model pages.
 
 ### 2.4 Worked example — tracing SOLUS back to raw
 
@@ -166,7 +168,8 @@ collision is resolved by the convention note below).
 |---|---|---|---|---|
 | `landslide__probability_of_failure` | LandslideProbability · $P_f$ | Landlab `LandslideProbability` component | 0–1 · `[n]` or `[y,x]` | $\Pr(FS\le1)$ — the field the component writes (distinct from the component name) |
 | `liquefaction__potential_index` † (+ `liquefaction__severity_number` † LSN) | LiquefactionPotentialIndex · LPI/LSN | manifestation model [@iwasaki1978; @vanballegooy2014] | index | surface-failure severity |
-| `liquefaction__probability` † (+ `liquefaction__areal_extent` †) | GroundFailure · $P(\text{liq})$ | GLM surrogate [@sanger2025jgge] | 0–1 / extent · `[y,x]` | probability & extent of liquefaction manifestation |
+| `liquefaction__response_A` †, `liquefaction__response_B` † | GLM response parameters · $A$, $B$ | GLM surrogate [@sanger2025jgge] | index-scaled · `[y,x]` | **event-independent**, precomputed at ~90 m; one pair per manifestation index; convolve with $PGA_M$ to get $MI$ |
+| `liquefaction__probability_ground_failure` † | GroundFailure · $PGF$ | fragility on $MI$ [@geyin2020fragility] | 0–1 · `[y,x]` | median probability of deformation/ejecta in a pixel — the headline event product |
 | `soil_moisture__saturation_fraction` | SoilMoisture | `SoilMoisture` + PET | m³ m⁻³ / fraction · `[time,n]` | also the SMAP calibration comparison |
 | `water_table__depth` † | GroundWaterLevel · $d_{wt}$ | Pillar 1 reanalysis / groundwater | m · `[time,…]` | ⚠️ **dual role** — an *output* of the reanalysis but an *input* to the hazard models |
 | `soil__shear_wave_velocity` † (+ `soil__shear_modulus` † $\mu$) | SoilRigidity · $V_s$, $V_{s1}$ | $V_s$ profiles → derived; seismic | m s⁻¹ or Pa | ⚠️ **dual role** — static $V_s$ is an *input*, but time-varying $V_s(t)$ / $\kappa_0(t)$ is a reanalysis *output* (§7) |
@@ -187,8 +190,9 @@ Detailed producing-model breakdown (intermediates and diagnostics included):
 | `soil_moisture__saturation_fraction`, `…root_zone_leakage`, `surface__runoff/ET` | ⛰️ 🔥 🌊 | `SoilMoisture` + PET | `[time, n_cells]` | hydrologic state; recharge source; **SMAP comparison** |
 | `soil__mean_relative_wetness`, `…probability_of_saturation` | ⛰️ 🔥 | `LandslideProbability` | 0–1 | wetness / saturation-risk diagnostics |
 | **`landslide__probability_of_failure`** | ⛰️ 🔥 | `LandslideProbability` | 0–1, `[n]` or rasterized `[y,x]` | $\Pr(FS\le1)$ — primary current landslide target; time/forecast cubes are future extension paths |
-| **$P(\text{liq})$ + areal extent** | 🏚️ | GLM surrogate [@sanger2025jgge] | 0–1, `[y,x]` | probability / extent of liquefaction — **primary liquefaction target** |
-| **LPI / LSN** | 🏚️ | manifestation model [@iwasaki1978; @vanballegooy2014] | index | surface severity / damage |
+| **$A$ / $B$ response parameters** | 🏚️ | GLM surrogate [@sanger2025jgge] | 16-bit, `[y,x]` @ ~90 m | event-independent site response — **the primary liquefaction product**; plus classified variance maps of geotechnical influence |
+| **LPI / LPI$_{ISH}$ / LSN** | 🏚️ | $A$, $B$ convolved with $PGA_M$ [@iwasaki1978; @maurer2015; @vanballegooy2014] | index, `[y,x]` | surface severity, per event or scenario |
+| **$PGF$** | 🏚️ | fragility on $MI$ [@geyin2020fragility] | 0–1, `[y,x]` | probability of deformation / ejecta — the decision-facing field |
 | Return-period liquefaction hazard | 🏚️ | unconditional integration over NSHM | rate / 50-yr prob. | $\lambda_{liq}$ planning baseline |
 
 ## 4. Data-prep pipelines
@@ -241,9 +245,11 @@ solved-vs-assumed breakdowns are on the model pages
   @montgomery1994]. Shallow vs deep-seated = a swapped hydrology closure, not a different model.
 - **Ecohydrology `SoilMoisture` + PET / snow / `FlowAccumulator`** ⛰️ 🔥 🌊 — root-zone water
   balance, snow partition, and flow routing that produce recharge and the hydrologic state.
-- **Geospatial liquefaction surrogate** 🏚️ — mechanics-informed ML emulating the
-  simplified-procedure FS at national scale [@sanger2025jgge; @zhu2017], with manifestation
-  fragility [@geyin2020fragility; @maurer2015]; consumes $V_s$, water table, ground motion.
+- **Geospatial liquefaction surrogate** 🏚️ — bagged tree ensembles trained to reproduce
+  CPT-based triggering and manifestation at ~37k test sites, emitting global and New Zealand
+  $A$/$B$ rasters plus regression-kriged updates near CPTs [@sanger2025jgge]; manifestation
+  fragility [@geyin2020fragility; @maurer2015]. Geospatial predictors ($V_s$, water table,
+  terrain) are consumed at **training** time; at run time it takes only $PGA$ and $M_w$.
 - **Forecast weather leg — NVIDIA Earth2Studio** ⛰️ 🔥 🌊 🏚️ — a weather-provider branch
   (GraphCast / AIFS / StormCast) supplying forecast precipitation (and groundwater forcing for
   liquefaction); not a hazard model itself.
