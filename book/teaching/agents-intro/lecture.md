@@ -71,10 +71,12 @@ to take two to three minutes, and take them from segment 6 to 14, which has slac
 **Slides**
 
 3. Figure: chat session, fixed script, agent loop side by side ([](#fig-agent-loop)).
-4. The four verbs: *gather context, act, verify, repeat*.
-5. What differs from chat: the model closes the loop. What differs from a script: the
+4. The whole thing, mechanically: the loop as ten lines of code, one tool call as JSON,
+   what the harness is, which words are vendor conventions.
+5. The four verbs: *gather context, act, verify, repeat*.
+6. What differs from chat: the model closes the loop. What differs from a script: the
    model chooses the next step.
-6. The division of labour we keep: goal, rules and stop condition are human; the
+7. The division of labour we keep: goal, rules and stop condition are human; the
    iterations are the agent's [@denolle2026three].
 
 ```{figure} ../../img/agent-loop.svg
@@ -106,7 +108,40 @@ command, edits a file, calls an API. It *verifies*: reads the test output, check
 diff, re-reads the file it just wrote. Then it *repeats* until it judges the goal met or
 hits a stop condition. The difference from panel A is that the model closes the loop. The
 difference from panel B is that the model chooses the next step from what it just
-observed, so an unexpected state is a decision rather than a crash.
+observed, so an unexpected state becomes a decision, which can be wrong or endless; a crash
+at least stops. The four verbs are our labels for what the tool calls turn out to be. The
+model has no stages, only one token stream, and the next slide shows the whole thing as
+code.
+
+*The whole thing, mechanically.* This is the slide a sceptic needs. The model is called
+once per turn with the whole message list and returns tokens. If the returned tokens end in
+a structured tool-call block, the program around the model, the *harness*, parses it,
+checks permissions, runs the function, appends the result as a new message, and calls the
+model again. Nothing else happens: no memory, no execution inside the model, no stages.
+
+```python
+messages = [system_prompt, context_file, tool_schemas, task]
+while True:
+    out = model(messages)                      # one API call: tokens in, tokens out
+    if out.stop_reason != "tool_use":
+        break                                  # plain text: the model says it is done
+    if not permitted(out.tool, out.args):      # the harness pauses here, not the model
+        result = "denied by user"
+    else:
+        result = run(out.tool, out.args)       # shell, file, web, GitHub ...
+    messages += [out, tool_result(result)]     # the result re-enters the window
+```
+
+A tool call is structured tokens, for example
+`{"name": "bash", "input": {"command": "pixi run spellcheck"}}`, and the model was
+post-trained to emit that format; the harness only parses it. Why a tool at all:
+next-token prediction cannot execute, count, or do arithmetic reliably, and a shell with
+Python in it is the workaround. A subagent is this same loop started again with a fresh
+message list, launched by a tool call, whose final text comes back as a tool result. A
+permission prompt is the harness pausing between parse and run; a denial is just a string
+the model reads next. Say once which words are one vendor's conventions (`CLAUDE.md`,
+skills, `claude -p`) and which are general (the loop, `AGENTS.md`, MCP), because someone
+will ask whether this is a Claude course.
 
 The loop is only as good as its *verify* step: an agent that cannot run the tests, or is
 not told to, will report success on the strength of having edited a file. And the loop has
@@ -127,17 +162,17 @@ verbs twice.
 
 **Slides**
 
-7. The stack, bottom to top: model, harness, context file, tools, skills, subagents, MCP.
-8. The context file, using this repository's own `CLAUDE.md` and `AGENTS.md`.
-9. Tools: shell, file read and write, web fetch, GitHub, a Python interpreter.
-10. Skills: a folder with a `SKILL.md`, using `.claude/skills/plain-voice` as the example.
-11. Subagents: `.claude/agents/gaia-review-*.md`, ten persona reviewers.
-12. MCP: one interface for many tool servers. Diagram: agent, MCP client, three servers.
-13. Anatomy of one agent: a persona reviewer, its references and rubric ([](#fig-agents-anatomy)).
-14. Orchestrator versus specialist: ten reviewers, one rubric, one synthesis
+8. The stack, bottom to top: model, harness, context file, tools, skills, subagents, MCP.
+9. The context file, using this repository's own `CLAUDE.md` and `AGENTS.md`.
+10. Tools: shell, file read and write, web fetch, GitHub, a Python interpreter.
+11. Skills: a folder with a `SKILL.md`, using `.claude/skills/plain-voice` as the example.
+12. Subagents: `.claude/agents/gaia-review-*.md`, ten persona reviewers.
+13. MCP: one interface for many tool servers. Diagram: agent, MCP client, three servers.
+14. Anatomy of one agent: a persona reviewer, its references and rubric ([](#fig-agents-anatomy)).
+15. Orchestrator versus specialist: ten reviewers, one rubric, one synthesis
     ([](#fig-agents-orchestrator)).
-15. Keep the standing files short. Why, and what "short" buys.
-16. The context window: what is actually in it, and what happens when it fills
+16. Keep the standing files short. Why, and what "short" buys.
+17. The context window: what is actually in it, and what happens when it fills
     ([](#fig-agents-context-window)).
 
 ```{figure} ../../img/agents-stack.svg
@@ -176,19 +211,35 @@ tool call can be allowed, denied, or gated on a prompt to the user.
 
 *Skills.* A skill is a folder with a `SKILL.md` and any reference files it needs. The
 front matter carries a name and a one-line description; the body carries the instructions.
-The harness reads the descriptions at startup and loads the full body only when a task
-matches, so a skill costs almost nothing until it is used. This repository ships one,
-`plain-voice`, which strips language-model vocabulary out of prose
-(`.claude/skills/README.md`). We will build a second one live in segment 24 to 33.
+The harness puts every description into the window at startup; the *model* decides to
+use a skill, and only then does the harness load the body. So a skill costs its
+description on every call, whether or not it fires, and its body only when loaded. That is
+why the description is the part to keep short, and why "fix the description" is the
+remedy when a skill does not trigger. This repository ships one, `plain-voice`, which
+strips language-model vocabulary out of prose (`.claude/skills/README.md`); its
+description is about 60 words after trimming on this branch, its body about 2300. We
+will build a second one live in segment 24 to 33.
 
 *Subagents.* A subagent is an agent launched by an agent, with its own fresh context
 window, its own tool set, and a single task. When it finishes, only its final report comes
 back to the parent. This repository defines ten of them under `.claude/agents/`: reviewer
 personas (a climate-risk CTO, a foundation program officer, a first-year PhD student, and
 so on) that each read the live site and file a structured review under `review-logs/`.
-Two things to notice. Each persona runs in isolation, so ten reviews cost ten context
-windows rather than one enormous one. And the output is a file with a date on it, which is
-the beginning of an audit trail.
+Three things to notice. Each persona runs in isolation, so each gets a fresh window and
+undivided attention; ten reviews do not cost fewer tokens than one, since each re-sends
+its own system prompt, context file and tool schemas. Isolation stops reviewers copying
+each other but does not remove the weights they share, so convergence between them is a
+lead to check, not a statistic. And the output is a file with a date on it, which is the
+beginning of an audit trail.
+
+```{figure} ../../img/agents-subagents.svg
+:name: fig-agents-subagents
+:width: 100%
+
+A subagent is the same loop started again with a fresh message list. Only its final
+report re-enters the parent, as a tool result, which is also where injected text would
+enter.
+```
 
 *Anatomy of one agent, and orchestrator versus specialist.* The persona reviewers are the
 best in-house example of a specialised agent, because everything that makes one is a file
@@ -244,11 +295,13 @@ transcript: your prompts, the model's replies, every tool call and every tool re
 Tool results are the part people forget. A single `cat` of a large log or a directory
 listing of a data lake can consume more of the window than the entire conversation so far.
 When the window fills, the harness compacts: it summarises the older transcript and
-continues from the summary. That summary is lossy. A rule you stated in the first prompt
-may not survive into the summary; a file the agent read at minute two may have to be read
-again. There is also evidence that models attend less reliably to material in the middle
-of a long context than at either end. TODO: cite the source for that claim from a fetched
-paper rather than from memory, or drop the sentence.
+continues from the summary. Compaction is itself a model call: the harness asks the model
+to summarise the older messages, then swaps them for the summary, so the loss is sampled
+text, not a deterministic truncation. A rule you stated in the first prompt may not
+survive into the summary; a file the agent read at minute two may have to be read again.
+And recall drops for material in the middle of a long context relative to either end
+[@liu2024lost]; an agent that "read" forty files sampled them. That citation was
+transcribed from the MLGEO lecture 3 references and its DOI is still to be verified.
 
 ```{figure} ../../img/agents-context-window.svg
 :name: fig-agents-context-window
@@ -265,20 +318,20 @@ continuing a long one. And when an agent that was behaving well starts to drift,
 the window before suspecting the model.
 
 **Timing.** Eight minutes for seven pieces and two diagrams is tight, and the slack has
-already been lent to segment 0 to 1. If it runs long, cut slide 12 (MCP) to one sentence and
-show only one of slides 13 and 14; tutorial 3 covers both.
+already been lent to segment 0 to 1. If it runs long, cut slide 13 (MCP) to one sentence and
+show only one of slides 14 and 15; tutorial 3 covers both.
 
 ## 14 to 24 min. A worked example from our own practice
 
 **Slides**
 
-17. Three ways to run the same agent: terminal, editor, headless ([](#fig-agents-three-modes)).
-18. Claude Code in the terminal, on this repository.
-19. The editor integration. TODO: screenshot.
-20. Headless: `claude -p` on cascadia, one GitHub issue at a time.
-21. The minimal-change rule. TODO: the exact wording.
-22. The run that looped, and how it was killed. TODO: the log excerpt.
-23. What the three modes are each for.
+18. Three ways to run the same agent: terminal, editor, headless ([](#fig-agents-three-modes)).
+19. Claude Code in the terminal, on this repository.
+20. The editor integration. TODO: screenshot.
+21. Headless: `claude -p` on cascadia, one GitHub issue at a time.
+22. The minimal-change rule. TODO: the exact wording.
+23. The run that looped, and how it was killed. TODO: the log excerpt.
+24. What the three modes are each for.
 
 ```{figure} ../../img/agents-three-modes.svg
 :name: fig-agents-three-modes
@@ -304,10 +357,14 @@ a real collaborator rather than a reviewer of record. The first of those carried
 Anthropic bill of about 200 dollars a month; the post gives that number and the
 reasoning behind it.
 
-Demo plan for slide 16: open Claude Code in this repository, ask it to list the pages
-under `book/chapters/` that have no front matter, and let the audience watch it read
-`AGENTS.md`, glob the directory, read the heads of a few files, and answer. Two minutes.
-The point is the sequence of tool calls, not the answer.
+Demo plan for slide 19. Before the talk, add a scratch page under `book/teaching/` with
+one misspelling; do not commit it, a committed misspelling fails CI. Open Claude Code in
+this repository and say: the spellcheck fails, fix it and show me it passes. The audience
+watches `pixi run spellcheck` run, the page get read, one word get edited, the check rerun
+and exit 0. Two minutes. The task was chosen because it has a real act and a real verify,
+and because the pass condition is the repository's own check rather than the model's
+opinion. If the agent edits more than one word, that is the minimal-change rule being
+broken in front of the room; say so. Delete the scratch page afterwards.
 
 *The editor integration.* The same agent inside VS Code, with the diff shown in the
 editor and the conversation in a side panel. Same context file, same tools, same
@@ -352,11 +409,11 @@ be thin, and the segment could shrink to seven minutes.
 
 **Slides**
 
-24. What we are building: a skill that inserts the agreed NSF acknowledgement
+25. What we are building: a skill that inserts the agreed NSF acknowledgement
     ([](#fig-agents-skill-flow)).
-25. The skill format, from `.claude/skills/README.md`.
-26. Live: write `SKILL.md`, invoke it, watch it trigger on its own.
-27. What a skill is good for and what it is not.
+26. The skill format, from `.claude/skills/README.md`.
+27. Live: write `SKILL.md`, invoke it, watch it trigger on its own.
+28. What a skill is good for and what it is not.
 
 ```{figure} ../../img/agents-skill-flow.svg
 :name: fig-agents-skill-flow
@@ -395,8 +452,12 @@ Live steps, in order:
 
 What to say while typing. The body reads the source page instead of embedding the
 wording: that is the difference between a skill and a snippet. A snippet goes stale. The
-description is short because the harness only sees descriptions at startup, and a long
-one is paid for on every session. The three instructions are imperative and specific;
+description is short because it sits in the window on every call, fired or not; a long
+one is paid for on every turn of every session. There is a tradeoff to name: a longer
+description with more trigger phrases fires more reliably, because the model is the
+matcher, and costs more per call. `plain-voice` chose reliability and was trimmed on this
+branch from about 150 words to about 60 by moving its provenance into the body. The three
+instructions are imperative and specific;
 a skill that says "be careful with acknowledgements" would load and do nothing.
 
 What a skill is not. It is not a tool: it cannot execute anything the agent could not
@@ -414,14 +475,14 @@ than the success.
 
 **Slides**
 
-28. The four hubs and the agent layer across them ([](#fig-agents-gaia-layer)).
-29. DataHub: the agentic downloader over `gaia-cli`, STAC, and `s3://cresst`.
-30. GaiaAgent: translator, downloader, research-software agent.
-31. GaiaPilot on LLMaven. TODO.
-32. What the CSSI proposal promised: the agent taxonomy and the delivery metrics.
-33. How we score an agent: HazEvalHub, the gaia-eval harness, the expert track
+29. The four hubs and the agent layer across them ([](#fig-agents-gaia-layer)).
+30. DataHub: the agentic downloader over `gaia-cli`, STAC, and `s3://cresst`.
+31. GaiaAgent: translator, downloader, research-software agent.
+32. GaiaPilot on LLMaven. TODO.
+33. What the CSSI proposal promised: the agent taxonomy and the delivery metrics.
+34. How we score an agent: HazEvalHub, the gaia-eval harness, the expert track
     ([](#fig-agents-evaluation)).
-34. What we will build first.
+35. What we will build first.
 
 ```{figure} ../../img/agents-gaia-layer.svg
 :name: fig-agents-gaia-layer
@@ -478,9 +539,11 @@ agent list and the year-one numbers against the funded proposal text, and note a
 agent promised there that the derived plan dropped.
 
 *How we score an agent.* Evaluation is a CSSI deliverable, so it gets its own slide here
-rather than a mention at the end. The pattern is already live for agent tasks in the
-HazEvalHub prototype and is written into the coordination plan
-(`project_coordination/03-ai-tools-and-evals.md`, sections 3 and 4). A task ships with a
+rather than a mention at the end. Be precise about what runs today: the board and its
+agent tasks are live in the HazEvalHub prototype; the `gaia-eval` harness, the CI gate and
+the hazard tasks are the coordination plan
+(`project_coordination/03-ai-tools-and-evals.md`, sections 3 and 4), years one to three,
+and the diagram draws them dashed. A task ships with a
 public train and validation split and a hidden test split. The agent under test runs in
 four conditions: local or cloud model, with or without domain skills. The `gaia-eval`
 harness runs it in its container against a declarative JSON scoring spec and emits a
@@ -513,16 +576,17 @@ supposed to be an instance of it and because it is the unit the D1 metric counts
 **Timing.** Seven minutes for seven slides is tight, and two of the slides are TODOs.
 The evaluation slide is the one to protect: it is a funded deliverable and it sets up the
 tutorial the group will spend the most time on. If GaiaPilot is still unresolved on
-lecture day, drop slide 31 and give the time to slides 32 and 33.
+lecture day, drop slide 32 and give the time to slides 33 and 34.
 
 ## 40 to 45 min. Guardrails, trajectory capture, cost, reproducibility
 
 **Slides**
 
-35. Guardrails we already have written down ([](#fig-agents-trajectory)).
-36. Trajectory capture: the options, and the open question.
-37. Cost: the one number we have, and the axis HazEvalHub already scores.
-38. Reproducibility: the statement we owe every paper.
+36. Guardrails we already have written down ([](#fig-agents-trajectory)).
+37. Trajectory capture: the options, and the open question.
+38. Why two runs differ: sampling, batching, model updates, moving tool results.
+39. Cost: the one number we have, and the axis HazEvalHub already scores.
+40. Reproducibility: the statement we owe every paper.
 
 ```{figure} ../../img/agents-trajectory.svg
 :name: fig-agents-trajectory
@@ -566,6 +630,15 @@ candidate mechanisms, none of them verified for our setup:
 The decision to make, and it belongs to the group: which of these we adopt as the
 default for GAIA agents, where the trajectories are stored, and who may read them.
 
+*Why two runs differ.* Tutorial 4 scores reproducibility as the fraction of identical
+outputs across N runs, so the audience should hear what makes that fraction less than one.
+The next token is sampled, not taken as the argmax, and vendor APIs expose no seed. Batched
+inference on shared accelerators is not bit-reproducible even at temperature zero. A model
+name can point at new weights without notice, so the version string must be pinned and
+recorded. And the world moves: the web page, the dataset, the repository the agent touched
+differ between runs, and only the trajectory records what it saw. Reproducibility of an
+agent run is therefore statistical: report N, pin versions, keep every tool result.
+
 *Cost.* Two facts and one design choice. The fact from practice: one of the three
 experiments in the June post ran at about 200 dollars a month in API charges
 [@denolle2026three]. The fact from evaluation: HazEvalHub's prototype scores every
@@ -573,10 +646,12 @@ submission on three questions, whether it is right, what it cost, and whether it
 reproducible, and plots cost against performance so that a cheap model that reaches the
 same score wins ([HazEvalHub](../../chapters/hazevalhub.md)). The design choice that
 follows: cost is a first-class axis for every agent we ship, recorded per run and
-reported next to accuracy. The early result on that board, that free local 7 billion
-parameter models match cloud models on configuration tasks once given domain skills but
-not on numerical code generation, is the reason to keep open-weight models in the
-comparison rather than assume the vendor model. TODO: per-participant and per-run costs
+reported next to accuracy. The early result on that board, as the HazEvalHub page states
+it: free local 7 to 8 billion parameter models reach perfect scores on configuration tasks
+once given domain skills, and fail numerical code generation, where only cloud models
+succeed, at about 0.56 without skills and 0.76 with. Task counts and the number of runs
+behind those figures are not on the page and are a TODO. That is the reason to keep
+open-weight models in the comparison rather than assume the vendor model. TODO: per-participant and per-run costs
 for the tutorials, in the [compute requirements](compute-requirements.md) document.
 
 *Reproducibility.* The June post argues that if an agent cannot reproduce your work,
@@ -641,6 +716,8 @@ Not found in any source and left as TODO on this page:
 - The order in which agents will be built.
 - The trajectory-capture mechanism: location and format of harness session logs, headless
   JSON output contents, which evaluation harness FrugalMind uses.
-- A citation for position effects in long contexts.
+- The DOI for the Liu et al. (2024) citation, transcribed from the MLGEO lecture 3
+  references rather than fetched from the journal.
+- Task counts and run counts behind the FrugalMind early result.
 - A link to the MCP specification.
 - eScience workshop instructors and materials.

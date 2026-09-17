@@ -207,8 +207,9 @@ def three_modes():
           size=19, bold_first=True)
     s.arrow(980, 320, 980, 370)
     s.box(860, 370, 240, 60, ["pull request"], fill="#fff", stroke=INK, size=20)
-    s.path("M 1100 275 Q 1170 275 1170 330 Q 1170 380 1100 400", color=RED, dash="6 4")
-    s.text(1120, 470, "looped → killed", size=19, color=RED, anchor="middle", bold=True)
+    s.path("M 1100 275 Q 1170 275 1170 330 Q 1170 380 1100 400", color=AMBER, dash="6 4")
+    s.text(1120, 462, "one run did not stop", size=17, color=AMBER, anchor="middle", bold=True)
+    s.text(1120, 484, "TODO: the log", size=15, color=AMBER, anchor="middle")
     s.text(980, 510, "limits: turns · cost · wall clock", size=18, color=AMBER,
            anchor="middle", bold=True)
     s.write("agents-three-modes.svg")
@@ -220,10 +221,10 @@ def skill_flow():
     s.box(40, y, 250, 90, ["request", '"add a funding', 'acknowledgement"'],
           fill=LAV, stroke=PURPLE, size=19, bold_first=True)
     s.arrow(290, 105, 340, 105)
-    s.box(340, y, 250, 90, ["harness matches the", "skill description"], fill="#fff",
+    s.box(340, y, 250, 90, ["the model picks the skill", "from its description"], fill="#fff",
           stroke=PURPLE, size=19)
     s.arrow(590, 105, 640, 105)
-    s.box(640, y, 250, 90, ["loads SKILL.md body", "three instructions"], fill="#fff",
+    s.box(640, y, 250, 90, ["harness loads the body", "three instructions"], fill="#fff",
           stroke=PURPLE, size=19)
     s.arrow(890, 105, 940, 105)
     s.box(940, y, 230, 90, ["reads the wording", "from how-we-work.md"], fill="#fff",
@@ -237,9 +238,9 @@ def skill_flow():
           stroke=PURPLE, size=17, bold_first=True)
     # no-match branch
     s.path("M 465 150 L 465 200 L 165 200 L 165 230", color=AMBER, dash="6 4")
-    s.box(40, 230, 250, 80, ["no match → paraphrase", "fix the description"],
+    s.box(40, 230, 250, 80, ["not picked → paraphrase", "fix the description"],
           fill=AMBER_BG, stroke=AMBER, size=19)
-    s.text(40, 360, "Invoked by name, the match step is skipped. Unprompted, the description is the whole test.",
+    s.text(40, 360, "Invoked by name, the choice is forced. Unprompted, the description is all the model has to go on.",
            size=19, color=STONE, italic=True)
     s.write("agents-skill-flow.svg")
 
@@ -415,11 +416,13 @@ def orchestrator_vs_specialist():
     s = Svg(1200, 660)
     s.box(400, 30, 400, 70, ["orchestrator", "goal: audit the site as ten outsiders"],
           fill=LAV, stroke=PURPLE, size=19, bold_first=True)
-    names = ["PhD", "RSE", "Nat. lab", "Faculty", "Prog. off.", "Sci. adv.", "Impact",
-             "Climate", "Energy", "Geo-AI"]
+    names = [["PhD", "student"], ["research", "software eng."], ["national", "lab scientist"],
+             ["faculty", "panel reviewer"], ["program", "officer"], ["science", "advisor"],
+             ["impact", "evaluator"], ["climate-risk", "CTO"], ["energy", "CEO"],
+             ["geospatial", "AI CTO"]]
     xs = [55 + i * 110 for i in range(10)]
     for x, n in zip(xs, names):
-        s.box(x, 190, 100, 56, [n], fill="#fff", stroke=PURPLE, size=16)
+        s.box(x, 190, 100, 56, n, fill="#fff", stroke=PURPLE, size=13)
         s.arrow(600, 100, x + 50, 190, color=PERI, sw=1.5)
         s.arrow(x + 50, 246, x + 50, 300, color=STONE, sw=1.5)
         s.path(f"M {x + 50} 344 Q {x + 50} 385 600 400", color=PURPLE, sw=1.5)
@@ -462,27 +465,27 @@ def evaluation():
     s.box(500, 136, 120, 44, ["with skills"], fill="#fff", stroke=PURPLE, size=16)
     s.arrow(640, 115, 690, 115)
     # harness
-    s.box(690, 40, 260, 150, ["gaia-eval harness", "predict(inputs) → outputs",
+    s.box(690, 40, 260, 150, ["gaia-eval harness  (plan)", "agent.predict(inputs) → outputs",
                               "runs in its container",
                               "declarative JSON scoring spec"],
-          fill="#fff", stroke=PURPLE, size=16, bold_first=True)
+          fill="#fff", stroke=PURPLE, size=16, bold_first=True, dash="7 4")
     s.arrow(950, 115, 1000, 115)
     s.box(1000, 40, 170, 150, ["scorecard", "right?", "cost?", "reproducible?",
                                "+ provenance"], fill=LAV, stroke=PURPLE, size=16,
           bold_first=True)
     # downstream uses
     s.arrow(1085, 190, 1085, 250)
-    s.box(880, 250, 290, 90, ["the board", "cost vs performance;",
+    s.box(880, 250, 290, 90, ["the board  (live: FrugalMind)", "cost vs performance;",
                               "hollow = no skills, filled = with;",
                               "the line is the skill lift"],
           fill="#fff", stroke=PURPLE, size=15, bold_first=True)
     s.arrow(1085, 340, 1085, 400)
-    s.box(880, 400, 290, 70, ["Metrics Observatory", "M1 · M2 · M4"], fill="#fff",
-          stroke=INK, size=16, bold_first=True)
+    s.box(880, 400, 290, 70, ["Metrics Observatory  (plan)", "usage metrics M1, M2, M4"], fill="#fff",
+          stroke=INK, size=16, bold_first=True, dash="7 4")
     s.path("M 1000 190 Q 760 230 760 250", color=PURPLE)
-    s.box(600, 250, 240, 90, ["CI regression gate", "a PR that lowers",
+    s.box(600, 250, 240, 90, ["CI regression gate  (plan)", "a PR that lowers",
                               "skill fails"], fill="#fff", stroke=PURPLE, size=16,
-          bold_first=True)
+          bold_first=True, dash="7 4")
     # second track: expert rubric
     s.box(40, 250, 480, 90, ["expert track  (Gaia Translator)",
                              "8-criterion rubric · 15 to 25 domain reviewers ·",
@@ -493,11 +496,13 @@ def evaluation():
     s.text(40, 400, "expert scoring says whether it is useful to a researcher.",
            size=17, color=STONE, italic=True)
     # result and phasing
-    s.box(40, 440, 480, 70, ["early result", "local 7B + skills = cloud on configuration tasks;",
-                             "not on numerical code generation"],
-          fill=LAV, stroke=PERI, size=15, bold_first=True)
-    s.text(40, 560, "v0 live: FrugalMind, agent tasks  →  v0.5 (Y1): first hazard task on the same board",
-           size=17, color=INK)
+    s.box(40, 440, 480, 80, ["early result (FrugalMind board)",
+                             "local 7B + skills: perfect on configuration tasks;",
+                             "numerical code: cloud only, ~0.56 → 0.76 with skills",
+                             "task counts and N: TODO"],
+          fill=LAV, stroke=PERI, size=14, bold_first=True)
+    s.text(40, 560, "dashed = in the CSSI plan, not running yet.  v0 live: FrugalMind, agent tasks  →  v0.5 (Y1): first hazard task",
+           size=16, color=INK)
     s.text(40, 590, "→  v1 (Y2): containerised submissions, auto-scoring  →  v2 (Y3): pillar × hazard grid",
            size=17, color=INK)
     s.text(1170, 530, "process, not only outcome: the research-workflow track scores trajectories",

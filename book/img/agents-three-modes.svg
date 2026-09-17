@@ -40,7 +40,8 @@
 <line x1="980" y1="320" x2="980" y2="370" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
 <rect x="860" y="370" width="240" height="60" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
 <text x="980.0" y="407.0" text-anchor="middle" font-size="20" fill="#2a1a4f">pull request</text>
-<path d="M 1100 275 Q 1170 275 1170 330 Q 1170 380 1100 400" fill="none" stroke="#b3402a" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#a-red)"/>
-<text x="1120" y="470" text-anchor="middle" font-size="19" fill="#b3402a" font-weight="700">looped → killed</text>
+<path d="M 1100 275 Q 1170 275 1170 330 Q 1170 380 1100 400" fill="none" stroke="#c77d00" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#a-amber)"/>
+<text x="1120" y="462" text-anchor="middle" font-size="17" fill="#c77d00" font-weight="700">one run did not stop</text>
+<text x="1120" y="484" text-anchor="middle" font-size="15" fill="#c77d00">TODO: the log</text>
 <text x="980" y="510" text-anchor="middle" font-size="18" fill="#c77d00" font-weight="700">limits: turns · cost · wall clock</text>
 </svg>

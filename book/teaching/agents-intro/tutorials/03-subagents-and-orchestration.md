@@ -36,6 +36,8 @@ After this tutorial a participant can:
   of their output under `review-logs/`.
 - A GitHub account with permission to open issues on a scratch repository. TODO: decide
   whether participants use their own forks or a course repository.
+- The harness's *permission mode*: the setting that decides which tool calls run without
+  asking, which pause for a yes, and which are refused. Step 6 depends on it.
 - TODO: which MCP server the exercise will use (a GitHub server is the natural choice
   for this repository; a web-search server is the alternative), how it is installed, and
   what credentials it needs. See [compute requirements](../compute-requirements.md).
@@ -79,8 +81,9 @@ orchestrating session.
 ```bash
 # Belongs here: the orchestrator invocation that launches both subagents on
 # book/chapters/gaia-agentic.md (a short, draft page with empty sections), waits, and
-# collects both reports. Capture each subagent's report to its own file with the
-# subagent's name in the filename.
+# collects both reports. Note: the persona files send reviewers to the live site; for
+# this exercise the invocation must override that with the single page. Capture each
+# subagent's report to its own file with the subagent's name in the filename.
 ```
 
 ### Step 4. Merge without losing provenance
@@ -89,6 +92,10 @@ orchestrating session.
 # Belongs here: code that reads the two report files and produces one merged list of
 # findings, each tagged with the subagent it came from, de-duplicated where both
 # reviewers flagged the same line. Print the merged list and the counts per source.
+# Also: keep only the fields the report format defines (claim, line, source); drop or
+# quarantine any free text, especially sentences addressed to "you" or to the
+# orchestrator. A subagent's report re-enters the parent as a tool result, which is
+# the injection path step 7 asks about.
 ```
 
 Look at the merged list. Did the orchestrator's own context window need either report in

@@ -33,9 +33,13 @@ After this tutorial a participant can:
   stated prerequisites [@escience2026codingagents]; no AI or machine-learning background
   is assumed.
 - Git, and a clone of this repository or of the exercise repository (TODO: decide which).
-- Access to a coding agent. TODO: which harness (Claude Code is the one used in the
-  lecture), which model, and how participants obtain a key or a session; see
-  [compute requirements](../compute-requirements.md).
+- Access to a coding agent. The *harness* is the program that calls the model in a loop,
+  parses its tool calls, checks permissions and runs them; Claude Code is the one used in
+  the lecture. TODO: which harness and model the course uses, and how participants obtain
+  a key or a session; see [compute requirements](../compute-requirements.md).
+- The harness's *permission mode*: the setting that says which tool calls run without
+  asking, which pause for a yes, and which are refused. Know where it is set before
+  step 3.
 - The [lecture](../lecture.md), or its first fourteen minutes.
 
 ## Estimated duration
@@ -65,10 +69,13 @@ actually used.
 
 ### Step 3. Run one bounded session
 
-The task: list every page under `book/chapters/` that has no YAML front matter, and
-report the list without editing anything. It is chosen because it needs several tool
-calls (a directory listing, several file reads), has a checkable answer, and has no
-side effects.
+The task: the repository's spellcheck fails on a scratch page; fix it and show that the
+check passes. Before the session, the instructor adds one page under `book/teaching/`
+with a single misspelling (not committed; a committed misspelling fails CI). The task is
+chosen because it needs a gather (run `pixi run spellcheck`, read the page), an act (edit
+one word) and a real verify (rerun the check, exit 0), and because the pass condition is
+the repository's own tool rather than the model's opinion. Watch whether the agent
+changes more than one word; that is the minimal-change rule from the lecture.
 
 ```bash
 # Belongs here: the headless invocation of the harness with the task above as the
@@ -99,19 +106,23 @@ side effects.
 ```
 
 Compare the sequence to the figure in the lecture. Where does the first *verify* appear?
-Is there one at all? An agent that was told only to report a list may never verify, and
-that is worth noticing.
+Did the agent rerun the spellcheck on its own, or only because the task said "show me it
+passes"? Try the task once more without that clause and compare the tag sequences.
 
 ### Step 6. Account for the window
 
 ```python
-# Belongs here: code that sums tokens (or characters as a proxy) by category: system
-# prompt, context file, tool and skill descriptions, participant prompts, model text,
-# tool results. Print a small table. Mark which single tool result was the largest.
+# Belongs here: code that sums tokens (or characters as a proxy) by the categories the
+# captured transcript exposes: participant prompts, model text, tool calls, tool results,
+# and per-turn token counts if the harness reports them. The system prompt and the
+# tool descriptions are usually not in the transcript; say so in the table rather than
+# estimating them. Mark which single tool result was the largest.
 ```
 
 Return to the sheet from step 2. Which lines of the context file appear to have mattered?
-Which tool result was the largest, and would a subagent have contained it?
+Which tool result was the largest, and would a subagent have contained it? Which
+categories could you not measure at all, and why does that matter for the cost column in
+tutorial 4?
 
 ### Step 7. End a run three ways
 
@@ -128,8 +139,8 @@ Which tool result was the largest, and would a subagent have contained it?
    sentence each.
 2. Point to the line in the transcript where the agent first *acted* rather than
    *gathered*. What tool was it?
-3. Which category took the most tokens in your session? Was it the one you expected
-   before running it?
+3. Of the categories you could measure, which took the most tokens? Which categories
+   could you not measure, and where do they sit in the loop on the lecture's code slide?
 4. Name one line in `AGENTS.md` that you would delete, and say what would go wrong
    without one line you would keep.
 5. Of the three ways the run ended, which would you rely on for a run nobody watches,

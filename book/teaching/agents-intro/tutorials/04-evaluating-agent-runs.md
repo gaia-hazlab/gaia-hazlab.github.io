@@ -41,6 +41,11 @@ After this tutorial a participant can:
 - TODO: access to one open-weight model served locally (the HazEvalHub prototype used
   7 to 8 billion parameter models) and one private model by API. Hardware and key
   handling are in [compute requirements](../compute-requirements.md).
+- A second harness for the local model. A skill is a Claude Code construct, and Claude
+  Code drives the vendor's models, so the open-weight condition runs on a different loop
+  (TODO: which; the HazEvalHub prototype has one). "Same task, same skill" then means the
+  skill body pasted into that harness's system prompt, and the comparison is across two
+  harnesses as well as two models. Record that in the scorecard.
 - TODO: the scoring specification format. The FrugalMind prototype uses declarative JSON
   specs; confirm whether the course adopts that format directly or a simplified one.
 
@@ -99,6 +104,12 @@ result twice.
 # fraction of runs with the identical inserted paragraph, and the number of distinct
 # outputs observed. Add both to the scorecard.
 ```
+
+Four things make that fraction less than one, and the trajectory records only the last:
+the next token is sampled and vendor APIs expose no seed; batched inference is not
+bit-reproducible even at temperature zero; a model name can point at new weights, so the
+version string must be pinned; and the page, the repository and the web the agent
+touched can differ between runs.
 
 ### Step 6. Plot the board
 

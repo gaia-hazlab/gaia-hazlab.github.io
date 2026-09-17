@@ -61,9 +61,13 @@ no tool definitions, no model settings.
 
 ### Step 2. Write the description first
 
-The description is the only part of the skill the harness sees before deciding to load
-it. Draft it in one or two sentences that name the task in the words a colleague would
-use: acknowledgement, funding statement, NSF award, grant numbers.
+The description is the only part of the skill that is in the model's window before the
+skill is used, and it is there on every call, fired or not. The harness does not match
+it; the model reads it and decides. Draft it in one or two sentences that name the task
+in the words a colleague would use: acknowledgement, funding statement, NSF award, grant
+numbers. Longer descriptions with more trigger phrases fire more reliably and cost more
+per call; `plain-voice` in this repository was trimmed from about 150 words to about 60
+for exactly that reason, and its body stayed at about 2300.
 
 ```markdown
 <!-- Belongs here: the SKILL.md front matter. name: nsf-acknowledgement.
@@ -95,16 +99,19 @@ Center contributed, append the second sentence from the same page.
 
 ```bash
 # Belongs here: a fresh session that asks, without naming the skill, to "add a
-# funding acknowledgement" to the same scratch page. Capture whether the skill loaded.
-# If it did not, edit the description and repeat. Keep each description you tried.
+# funding acknowledgement" to the same scratch page. Capture whether the skill loaded:
+# in the transcript it appears as a tool call that reads the SKILL.md body, and the
+# harness usually prints the skill name when it loads. If it did not, edit the
+# description and repeat. Keep each description you tried.
 ```
 
 ### Step 6. Break it on purpose
 
-Change the governance page's wording in your scratch copy (one award number) and run
-the skill again. Does the skill insert the changed wording or the original? It should
-insert whatever the page says, because the page is the source of truth. If it inserted
-the original, the wording leaked into the skill body; fix that.
+On your own branch, change one award number in `book/governance/how-we-work.md` itself
+(the skill reads that path, so a scratch copy would change nothing) and run the skill
+again. Does the skill insert the changed wording or the original? It should insert
+whatever the page says, because the page is the source of truth. If it inserted the
+original, the wording leaked into the skill body; fix that. Then revert the page.
 
 ### Step 7. Version it
 
@@ -136,3 +143,5 @@ the discussion.
 4. A skill and a subagent can both encapsulate a procedure. What is the difference in
    where each runs, and when would you choose the subagent?
 5. What would a test for this skill look like if it had to run in CI without a model?
+   (Hint: the skill's output is a paragraph and the source of truth is a page; a test
+   needs no model to compare two strings.)

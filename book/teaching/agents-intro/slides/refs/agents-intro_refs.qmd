@@ -1,7 +1,9 @@
 <!-- Sources for the agents-intro deck. Edit THIS file to update them; the deck
      includes it verbatim. Every entry here was fetched and read on
-     2026-09-17; nothing is cited from memory. Same format as the MLGEO 2026
-     decks: verdict + bold message on one line, citation on its own paragraph. -->
+     2026-09-17; nothing is cited from memory. The Liu et al. entry was
+     transcribed from the MLGEO 2026 lecture 3 refs file (geo-smart/mlgeo-book);
+     its DOI is still to be verified. Same format as the MLGEO 2026 decks:
+     verdict + bold message on one line, citation on its own paragraph. -->
 
 :::: {.ref-item}
 [✓]{.ref-verdict .good} [Three layers before the prompt: knowledge anchor, standing instructions, situated intent. The instructions are a living document.]{.ref-msg}
@@ -19,4 +21,10 @@
 [◦]{.ref-verdict .note} [The eScience half-day this lecture mirrors: ecosystem, mechanism, a live plan-implement cycle, and a hands-on build.]{.ref-msg}
 
 [UW eScience Institute (2026, 17 June). Coding with AI Agents: A Hands-On Workshop for Researchers. Event page, escience.washington.edu. Instructors and materials not listed on the page.]{.ref-cite}
+::::
+
+:::: {.ref-item}
+[✗]{.ref-verdict .bad} [Finite attention: recall drops for material in the middle of a long context. An agent that "read" forty files sampled them.]{.ref-msg}
+
+[Liu, N. F., Lin, K., Hewitt, J., et al. (2024). Lost in the middle: How language models use long contexts. *Transactions of the Association for Computational Linguistics*, 12, 157–173. Transcribed from the MLGEO 2026 lecture 3 references; DOI to verify.]{.ref-cite}
 ::::

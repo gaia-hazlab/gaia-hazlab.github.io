@@ -1,6 +1,6 @@
 ---
 name: plain-voice
-description: Strip LLM-tell vocabulary, phrase patterns, and structural tics out of any prose Claude writes — papers, grants, blog posts, talk scripts, slide text, emails, manuscripts, op-eds, abstracts, letters, any free-text deliverable. Use whenever Claude is about to generate prose for Marine OR whenever Marine asks Claude to edit, review, audit, humanize, or "check for AI sound" in a draft. Trigger on phrases like "write a draft", "edit this", "does this sound AI", "humanize this", "review my draft", "rewrite", or any prose-generation task — even when LLM detection isn't explicitly mentioned. Encodes Kobak et al. (2025, Science Advances) excess vocabulary, Juzek & Ward (2025, COLING) focal words, the Wikipedia "Signs of AI writing" registry, Marine's manual additions (paradigm-shift, cadence, tapestry, testament, navigate, etc.), and hyphen-discipline rules. Apply silently — do not narrate the filtering. Default to this skill whenever in doubt about whether a draft sounds machine-written.
+description: Strip LLM-tell vocabulary, phrase patterns, and structural tics out of any prose Claude writes for Marine: papers, grants, blog posts, talk scripts, slide text, emails, manuscripts, abstracts, letters. Use whenever Claude is about to generate prose, or whenever Marine asks to write, draft, edit, review, audit, humanize, rewrite, or check a draft for AI sound. Apply silently; default to it whenever in doubt.
 ---
 
 # plain-voice

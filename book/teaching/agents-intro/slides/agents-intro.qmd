@@ -57,7 +57,30 @@ Chat: you close every loop. Script: every branch pre-written. Agent: the model p
 :::
 
 ::: {.notes}
-Walk left to right. A: quality bounded by your patience for closing loops. B: deterministic; an unexpected input is a crash and a person reads the log. C: gather, act, verify, repeat; an unexpected state is a decision.
+Walk left to right. A: quality bounded by your patience for closing loops. B: deterministic; an unexpected input is a crash and a person reads the log. C: gather, act, verify, repeat. An unexpected state becomes a decision, which can be wrong or endless; a crash at least stops. The four verbs are our labels for what the tool calls turn out to be; the model has no stages, only one token stream. Next slide shows the whole thing as code.
+:::
+
+## The whole thing, mechanically
+
+```python
+messages = [system_prompt, context_file, tool_schemas, task]
+while True:
+    out = model(messages)                      # one API call: tokens in, tokens out
+    if out.stop_reason != "tool_use":
+        break                                  # plain text: the model says it is done
+    if not permitted(out.tool, out.args):      # the harness pauses here, not the model
+        result = "denied by user"
+    else:
+        result = run(out.tool, out.args)       # shell, file, web, GitHub ...
+    messages += [out, tool_result(result)]     # the result re-enters the window
+```
+
+::: {.dim}
+A tool call is structured tokens the harness parses: `{"name": "bash", "input": {"command": "pixi run spellcheck"}}`. The harness is this loop plus the permission check. The loop is generic; `CLAUDE.md`, skills and `claude -p` are one vendor's conventions, `AGENTS.md` and MCP are cross-vendor.
+:::
+
+::: {.notes}
+This is the debunk. The model is called once per turn with the whole message list and returns tokens. If the returned tokens end in a structured tool-call block, the harness parses it, checks permissions, runs the function, appends the result as a new message, and calls the model again. Nothing else is happening: no memory, no execution inside the model, no stages. Why a tool at all: next-token prediction cannot execute, count, or do arithmetic reliably; a shell with python in it is the workaround. A subagent is this same loop started again with a fresh message list, launched by a tool call, whose final text comes back as a tool result. A permission prompt is the harness pausing between parse and run; a denial is just a string the model reads next. Say once which words are vendor conventions and which are general, because someone will ask whether this is a Claude course.
 :::
 
 ## The pieces {background-color="#f5f3fb"}
@@ -90,12 +113,12 @@ Show what it omits: no MyST tutorial, no restated CONTRIBUTING. The March post: 
 
 | | What it is | Ours |
 |---|---|---|
-| **Skill** | `SKILL.md`: description matched at startup, body loaded on use | `plain-voice`; one more built live today |
+| **Skill** | `SKILL.md`: description in the window from startup; the model picks it, the harness loads the body | `plain-voice`; one more built live today |
 | **Subagent** | fresh window, own tools, one task; only the report returns | ten persona reviewers → `review-logs/` |
 | **MCP** | one interface to tool servers outside the harness | tutorial 3 |
 
 ::: {.takeaway}
-Each one adds text to the window. Every server you connect is a party whose output the model will act on.
+A skill costs its description on every call and its body only when loaded. Every MCP server you connect is a party whose output the model will act on.
 :::
 
 ::: {.todo}
@@ -103,7 +126,7 @@ MCP specification link: fetch, do not cite from memory.
 :::
 
 ::: {.notes}
-Skills cost nothing until used. Subagents buy isolation: ten reviews, ten windows, and a dated file per review. MCP: capability by configuration, risk by the same route. If running long, MCP is one sentence here; tutorial 3 covers it.
+The description is the part to keep short, because it is re-sent on every call whether or not the skill fires; the body can be long. Show the tradeoff on plain-voice: its description is about 150 words, roughly 250 tokens per call, chosen for reliable triggering; the body is 2300 words and loads only on use. Subagents buy a fresh window and attention per task, not fewer tokens: ten reviews re-send ten system prompts. MCP: capability by configuration, risk by the same route. If running long, MCP is one sentence here; tutorial 3 covers it.
 :::
 
 ## Anatomy of one agent
@@ -119,15 +142,15 @@ A real one: a persona reviewer from this repository. Left, the definition: front
 ![](../../../img/agents-orchestrator-vs-specialist.svg){.r-stretch}
 
 ::: {.notes}
-The orchestrator holds a broad goal and only the ten reports; it dispatches, merges, and gates anything outward-facing. Each specialist holds the whole site for thirty minutes, with fixed weights and its own vocabulary, and writes one file. Independence is deliberate: convergence between reviewers is only informative if none saw the others. Synthesis keeps divergence divergent and reports scores as a table, never an average. If time is short, this slide or the previous one can go; tutorial 3 covers both.
+The orchestrator holds a broad goal and only the ten reports; it dispatches, merges, and gates anything outward-facing. Each specialist holds the whole site for thirty minutes, with fixed weights and its own vocabulary, and writes one file. Isolation stops reviewers copying each other; it does not remove the weights they share, so treat convergence as a lead, not a statistic. Synthesis keeps divergence divergent and reports scores as a table, never an average. If time is short, this slide or the previous one can go; tutorial 3 covers both.
 :::
 
 ## The context window
 
 ![](../../../img/agents-context-window.svg){.r-stretch}
 
-::: {.todo}
-Position effects in long contexts: cite from a fetched paper or drop.
+::: {.dim}
+Recall drops for material in the middle of a long context (Liu et al., 2024, TACL; on the sources slide). Compaction is itself a model call: the harness asks the model to summarise, then swaps the messages.
 :::
 
 ::: {.notes}
@@ -141,7 +164,7 @@ Tool results are the part people forget. Compaction is a lossy summary; rules in
 ![](../../../img/agents-three-modes.svg){.r-stretch}
 
 ::: {.notes}
-Same context file, tools and permission model in all three; what changes is who is watching. Terminal for exploration, editor for line-by-line review, headless for bounded repeated work. The red loop is the cascadia run that had to be killed.
+Same context file, tools and permission model in all three; what changes is who is watching. Terminal for exploration, editor for line-by-line review, headless for bounded repeated work. The amber loop is the cascadia run that did not stop and was killed; it stays amber until the log is found.
 :::
 
 ## Terminal: what ran this way {.smaller}
@@ -162,16 +185,18 @@ Three experiments from the June post; the post has the reasoning behind the cost
 
 ## Terminal: live
 
-**Ask:** which pages under `book/chapters/` have no front matter? Do not edit.
+**Before the talk:** add a scratch page under `book/teaching/` with one misspelling. It is not committed.
 
-**Watch:** read `AGENTS.md` → list directory → read file heads → answer
+**Ask:** the spellcheck fails; fix it and show me it passes.
+
+**Watch:** `pixi run spellcheck` → read the page → edit one word → rerun → exit 0
 
 ::: {.takeaway}
-The sequence of tool calls is the point, not the answer.
+Gather, act, verify, on a real check. If it edits more than one word, that is the minimal-change rule being broken in front of you.
 :::
 
 ::: {.notes}
-Two minutes, rehearsed. Narrate each call: gather, gather, no act because edits are forbidden, the answer is the verify. If it reads more than it needs, say so: that is window being spent.
+Two minutes, rehearsed. codespell is the repo's own check, so the verify step is real and the pass condition is exit 0, not the model's opinion. Narrate each call as it appears. If the agent runs the spellcheck a second time on its own, point at it: that is the verify step nobody told it to do. Delete the scratch page afterwards; a committed misspelling fails CI.
 :::
 
 ## Editor
@@ -285,7 +310,7 @@ Proposal is git-ignored; the public derivative is the coordination plan. Templat
 ![](../../../img/agents-evaluation.svg){.r-stretch}
 
 ::: {.takeaway}
-Three questions per submission, a hidden test split, cost on the axis. Already live for agent tasks; the CSSI plan extends it to hazards.
+Three questions per submission, a hidden test split, cost on the axis. The board is live for agent tasks; dashed boxes are the CSSI plan, years one to three.
 :::
 
 ::: {.notes}
@@ -302,6 +327,21 @@ This is a CSSI deliverable, not an aside. The task ships with a hidden test spli
 Guardrails: three from the coordination plan, two from practice. The trajectory is the record we owe every reader; HazEvalHub already scores three questions per submission and calls process scoring "trajectory scoring". The amber box is the open question: four capture candidates, none verified for our setup. The decision is the group's: default mechanism, storage, who may read.
 :::
 
+## Why two runs differ
+
+- **Sampling**: the next token is drawn, not argmaxed; vendor APIs expose no seed
+- **Batched inference**: not bit-reproducible even at temperature zero
+- **Model updates**: the same name can point at new weights; pin the version string
+- **Tool results**: the web, the data, and the repo moved between runs
+
+::: {.takeaway}
+Reproducibility of an agent run is statistical. Report N, pin versions, keep every tool result.
+:::
+
+::: {.notes}
+Tutorial 4 scores reproducibility as the fraction of identical outputs across N runs. These four are what makes that fraction less than one. The first two are properties of the model service; the last two are properties of the world the agent touched, and only the trajectory records them.
+:::
+
 ## Cost
 
 ::: {.big-number}
@@ -309,7 +349,7 @@ Guardrails: three from the coordination plan, two from practice. The trajectory 
 :::
 
 ::: {.takeaway}
-Cost is a first-class axis: recorded per run, reported next to accuracy. Local 7B models matched cloud on configuration tasks with skills, not on numerical code.
+Cost is a first-class axis: recorded per run, reported next to accuracy. On the FrugalMind board, local 7B models with skills scored perfectly on configuration tasks and failed numerical code, where cloud models went from about 0.56 to 0.76 with skills. Task counts and N: TODO.
 :::
 
 ::: {.notes}
