@@ -108,9 +108,8 @@ hits a stop condition. The difference from panel A is that the model closes the 
 difference from panel B is that the model chooses the next step from what it just
 observed, so an unexpected state is a decision rather than a crash.
 
-Two consequences follow, and both matter for how we run these things in GAIA. First, the
-loop is only as good as the *verify* step. An agent that cannot run the tests, or is not
-told to, will report success on the strength of having edited a file. Second, the loop has
+The loop is only as good as its *verify* step: an agent that cannot run the tests, or is
+not told to, will report success on the strength of having edited a file. And the loop has
 no natural end. It stops when the model says it is done, when a budget runs out, or when a
 person kills it. We will see all three today.
 
@@ -259,7 +258,7 @@ What is in the window, which part is re-sent every turn, which part is compacted
 compaction loses.
 ```
 
-The consequences for practice are direct. Put invariant rules in the context file, not in
+In practice: put invariant rules in the context file, not in
 the prompt, because the context file is re-read and the prompt is compacted. Use subagents
 to isolate reads of large material. Start a new session for a new task rather than
 continuing a long one. And when an agent that was behaving well starts to drift, suspect

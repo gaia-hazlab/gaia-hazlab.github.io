@@ -60,24 +60,6 @@ Chat: you close every loop. Script: every branch pre-written. Agent: the model p
 Walk left to right. A: quality bounded by your patience for closing loops. B: deterministic; an unexpected input is a crash and a person reads the log. C: gather, act, verify, repeat; an unexpected state is a decision.
 :::
 
-## Two consequences
-
-::: {.big-number}
-verify [is where quality lives: no test run, and "done" means "I edited a file"]{.unit}
-:::
-
-::: {.big-number}
-no natural end [done · budget spent · killed]{.unit}
-:::
-
-::: {.dim}
-Human: direction, rigour, common sense. Agent: search, pipelines, implementation, first critique. Denolle (June 2026).
-:::
-
-::: {.notes}
-Verify is quality; termination is cost and safety. We see all three endings today: the demo ends on "done", the tutorials teach budgets, the cascadia story is the kill. The division of labour is from the June post: the scarce resource is the bandwidth to check the work.
-:::
-
 ## The pieces {background-color="#f5f3fb"}
 
 [6 to 14 min]{.minutes}
