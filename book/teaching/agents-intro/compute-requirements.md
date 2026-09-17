@@ -11,9 +11,9 @@ description: Working document for the conversation with UW eScience on what each
 eScience about backend compute for the four [agents tutorials](tutorials/01-anatomy-of-an-agent.md).
 No quantity on this page has been estimated; every one is a **TODO** to be filled from a
 vendor price page, a measured run, or an eScience answer. Once filled, the cost rows
-become budget figures. Decide before merging whether those rows stay on the public site
-or move to the private coordination assets, as `project_coordination/README.md` requires
-for budget material.
+become budget figures. Before filling in any budget figure, decide whether those rows stay
+on the public site or move to the private coordination assets, as
+`project_coordination/README.md` requires for budget material.
 :::
 
 ## What is being asked of eScience
