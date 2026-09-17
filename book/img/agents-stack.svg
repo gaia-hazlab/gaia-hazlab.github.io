@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
+<defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
+<rect x="360" y="120" width="480" height="380" rx="12" fill="#fff" stroke="#4b2e83" stroke-width="2.5"/>
+<text x="600" y="155" text-anchor="middle" font-size="24" fill="#4b2e83" font-weight="700">Harness: the loop and the permission checks</text>
+<rect x="390" y="180" width="420" height="110" rx="8" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
+<text x="600.0" y="216.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">context window</text>
+<text x="600.0" y="242.0" text-anchor="middle" font-size="20" fill="#2a1a4f">system prompt · context file · tool + skill descriptions</text>
+<text x="600.0" y="268.0" text-anchor="middle" font-size="20" fill="#2a1a4f">transcript · tool results</text>
+<rect x="400" y="330" width="120" height="56" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="460.0" y="365.7" text-anchor="middle" font-size="22" fill="#2a1a4f">gather</text>
+<rect x="540" y="330" width="120" height="56" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="600.0" y="365.7" text-anchor="middle" font-size="22" fill="#2a1a4f">act</text>
+<rect x="680" y="330" width="120" height="56" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="740.0" y="365.7" text-anchor="middle" font-size="22" fill="#2a1a4f">verify</text>
+<line x1="520" y1="358" x2="540" y2="358" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<line x1="660" y1="358" x2="680" y2="358" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<path d="M 740 386 Q 740 430 600 430 Q 460 430 460 386" fill="none" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<text x="600" y="470" text-anchor="middle" font-size="19" fill="#6f6890" font-style="italic">repeat until done, budget spent, or killed</text>
+<rect x="440" y="550" width="320" height="64" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="600.0" y="589.7" text-anchor="middle" font-size="22" fill="#2a1a4f">Model: predicts the next token</text>
+<line x1="600" y1="500" x2="600" y2="550" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+<text x="620" y="530" text-anchor="start" font-size="18" fill="#6f6890">tokens in · tool calls out</text>
+<text x="40" y="150" text-anchor="start" font-size="22" fill="#4b2e83" font-weight="700">Loaded every turn</text>
+<rect x="40" y="175" width="280" height="64" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="180.0" y="201.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">Context file</text>
+<text x="180.0" y="227.0" text-anchor="middle" font-size="20" fill="#2a1a4f">CLAUDE.md → AGENTS.md</text>
+<rect x="40" y="260" width="280" height="64" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="180.0" y="286.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">Tool schemas</text>
+<text x="180.0" y="312.0" text-anchor="middle" font-size="20" fill="#2a1a4f">name · description · arguments</text>
+<rect x="40" y="345" width="280" height="64" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="180.0" y="371.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">Skill descriptions</text>
+<text x="180.0" y="397.0" text-anchor="middle" font-size="20" fill="#2a1a4f">one or two sentences each</text>
+<path d="M 320 207 Q 350 207 360 235" fill="none" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)"/>
+<path d="M 320 292 Q 350 292 360 235" fill="none" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)"/>
+<path d="M 320 377 Q 350 377 360 235" fill="none" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)"/>
+<text x="40" y="445" text-anchor="start" font-size="19" fill="#6f6890" font-style="italic">Short files: paid for on every call.</text>
+<text x="880" y="150" text-anchor="start" font-size="22" fill="#4b2e83" font-weight="700">Called on demand</text>
+<rect x="880" y="175" width="280" height="64" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="1020.0" y="201.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">Tools</text>
+<text x="1020.0" y="227.0" text-anchor="middle" font-size="20" fill="#2a1a4f">shell · files · web · GitHub</text>
+<rect x="880" y="260" width="280" height="64" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="1020.0" y="286.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">Skill body</text>
+<text x="1020.0" y="312.0" text-anchor="middle" font-size="20" fill="#2a1a4f">SKILL.md, loaded on match</text>
+<rect x="880" y="345" width="280" height="64" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="1020.0" y="371.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">Subagent</text>
+<text x="1020.0" y="397.0" text-anchor="middle" font-size="20" fill="#2a1a4f">fresh window, one task</text>
+<rect x="880" y="430" width="280" height="64" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="1020.0" y="456.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">MCP server</text>
+<text x="1020.0" y="482.0" text-anchor="middle" font-size="20" fill="#2a1a4f">tools outside the harness</text>
+<line x1="840" y1="207" x2="880" y2="207" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)" marker-start="url(#a-stone)"/>
+<line x1="840" y1="292" x2="880" y2="292" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)" marker-start="url(#a-stone)"/>
+<line x1="840" y1="377" x2="880" y2="377" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)" marker-start="url(#a-stone)"/>
+<line x1="840" y1="462" x2="880" y2="462" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)" marker-start="url(#a-stone)"/>
+</svg>

@@ -1,0 +1,15 @@
+<!-- Re-run reveal.js layout once every embedded image has loaded, so .r-stretch
+     figures get their real height when the deck is opened directly at a deep slide. -->
+<script>
+  window.addEventListener("load", function () {
+    if (typeof Reveal === "undefined") return;
+    var relayout = function () { try { Reveal.layout(); } catch (e) {} };
+    document.querySelectorAll(".reveal img").forEach(function (img) {
+      if (img.complete) return;
+      img.addEventListener("load", relayout, { once: true });
+    });
+    Reveal.on("ready", relayout);
+    Reveal.on("slidechanged", relayout);
+    setTimeout(relayout, 300);
+  });
+</script>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
+<defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
+<rect x="60" y="430" width="320" height="80" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="220.0" y="464.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">DataHub</text>
+<text x="220.0" y="490.0" text-anchor="middle" font-size="20" fill="#2a1a4f">gaia-cli · STAC · s3://cresst</text>
+<rect x="440" y="430" width="320" height="80" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="600.0" y="464.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">ModelHub</text>
+<text x="600.0" y="490.0" text-anchor="middle" font-size="20" fill="#2a1a4f">models · model cards</text>
+<rect x="820" y="430" width="320" height="80" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="980.0" y="464.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">HazEvalHub</text>
+<text x="980.0" y="490.0" text-anchor="middle" font-size="20" fill="#2a1a4f">right · cost · reproducible</text>
+<rect x="30" y="200" width="1140" height="160" rx="14" fill="#fff" stroke="#6d5bd0" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="50" y="230" text-anchor="start" font-size="22" fill="#4b2e83" font-weight="700">GaiaAgent layer</text>
+<rect x="60" y="250" width="320" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="220.0" y="277.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">Agentic data downloader</text>
+<text x="220.0" y="301.3" text-anchor="middle" font-size="18" fill="#2a1a4f">request → staged, provenance-</text>
+<text x="220.0" y="324.7" text-anchor="middle" font-size="18" fill="#2a1a4f">tracked dataset</text>
+<rect x="440" y="250" width="320" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="600.0" y="277.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">Gaia Translator</text>
+<text x="600.0" y="301.3" text-anchor="middle" font-size="18" fill="#2a1a4f">~350-word summaries · ≤500-word</text>
+<text x="600.0" y="324.7" text-anchor="middle" font-size="18" fill="#2a1a4f">cards · refusal patterns</text>
+<rect x="820" y="250" width="320" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="980.0" y="277.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">Research-software agent</text>
+<text x="980.0" y="301.3" text-anchor="middle" font-size="18" fill="#2a1a4f">scaffold · tests · containers</text>
+<text x="980.0" y="324.7" text-anchor="middle" font-size="18" fill="#2a1a4f">FAIR-ify</text>
+<line x1="220" y1="340" x2="220" y2="430" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<text x="240" y="395" text-anchor="start" font-size="17" fill="#6f6890" font-style="italic">wraps, does not replace</text>
+<line x1="980" y1="340" x2="980" y2="430" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<path d="M 1140 470 Q 1180 470 1180 300 Q 1180 180 700 180" fill="none" stroke="#4b2e83" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#a-purple)"/>
+<text x="700" y="170" text-anchor="middle" font-size="18" fill="#4b2e83" font-weight="700">HazEvalHub scores every agent</text>
+<rect x="60" y="40" width="400" height="90" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="260.0" y="67.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">CSSI promise (derived plan)</text>
+<text x="260.0" y="91.3" text-anchor="middle" font-size="18" fill="#2a1a4f">5 agent classes ·</text>
+<text x="260.0" y="114.7" text-anchor="middle" font-size="18" fill="#2a1a4f">gaia-template-agent counts for D1</text>
+<rect x="740" y="40" width="400" height="90" rx="8" fill="#fff7e6" stroke="#c77d00" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="940.0" y="79.6" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">GaiaPilot on LLMaven</text>
+<text x="940.0" y="103.0" text-anchor="middle" font-size="18" fill="#2a1a4f">TODO: not in any repo document</text>
+<line x1="260" y1="130" x2="260" y2="200" stroke="#6f6890" stroke-width="2" marker-end="url(#a-stone)"/>
+</svg>

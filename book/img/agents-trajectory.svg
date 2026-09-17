@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
+<defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
+<rect x="40" y="60" width="200" height="90" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="140.0" y="112.7" text-anchor="middle" font-size="22" fill="#2a1a4f">agent run</text>
+<line x1="240" y1="105" x2="290" y2="105" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="290" y="60" width="270" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="425.0" y="87.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">trajectory</text>
+<text x="425.0" y="111.3" text-anchor="middle" font-size="18" fill="#2a1a4f">prompts · tool calls ·</text>
+<text x="425.0" y="134.7" text-anchor="middle" font-size="18" fill="#2a1a4f">results · tokens</text>
+<line x1="560" y1="105" x2="610" y2="105" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="610" y="60" width="250" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="735.0" y="87.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">scorecard</text>
+<text x="735.0" y="111.3" text-anchor="middle" font-size="18" fill="#2a1a4f">right? · cost? ·</text>
+<text x="735.0" y="134.7" text-anchor="middle" font-size="18" fill="#2a1a4f">reproducible?</text>
+<line x1="860" y1="105" x2="910" y2="105" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="910" y="60" width="250" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="1035.0" y="87.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">provenance record</text>
+<text x="1035.0" y="111.3" text-anchor="middle" font-size="18" fill="#2a1a4f">YAML + RO-Crate →</text>
+<text x="1035.0" y="134.7" text-anchor="middle" font-size="18" fill="#2a1a4f">Reproducibility Statement</text>
+<rect x="610" y="190" width="400" height="70" rx="8" fill="#fff7e6" stroke="#c77d00" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="810.0" y="219.9" text-anchor="middle" font-size="17" fill="#2a1a4f" font-weight="700">capture mechanism</text>
+<text x="810.0" y="242.0" text-anchor="middle" font-size="17" fill="#2a1a4f">TODO: four candidates, none verified</text>
+<path d="M 610 225 Q 540 225 500 152" fill="none" stroke="#c77d00" stroke-width="2.5" marker-end="url(#a-amber)"/>
+<text x="40" y="200" text-anchor="start" font-size="20" fill="#4b2e83" font-weight="700">Guardrails on the run</text>
+<text x="40" y="235" text-anchor="start" font-size="18" fill="#2a1a4f">• human approves anything outward-facing</text>
+<text x="40" y="265" text-anchor="start" font-size="18" fill="#2a1a4f">• no fabricated DOIs; provenance must be real</text>
+<text x="40" y="295" text-anchor="start" font-size="18" fill="#2a1a4f">• secrets never in the repository</text>
+<text x="40" y="325" text-anchor="start" font-size="18" fill="#2a1a4f">• bounded: turns · cost · wall clock</text>
+<text x="40" y="355" text-anchor="start" font-size="18" fill="#2a1a4f">• smallest change that resolves the issue</text>
+<text x="610" y="310" text-anchor="start" font-size="18" fill="#6f6890" font-style="italic">HazEvalHub already scores the three scorecard questions.</text>
+<text x="610" y="342" text-anchor="start" font-size="18" fill="#4b2e83" font-weight="700">The gap: the trajectory is not yet in the provenance record.</text>
+</svg>
