@@ -1,0 +1,24 @@
+# Shared defaults for every deck in this directory (same pattern as the
+# MLGEO 2026 decks in geo-smart/mlgeo-book/book/slides/2026/_metadata.yml).
+format:
+  revealjs:
+    theme: [default, gaia.scss]
+    width: 1600
+    height: 900
+    margin: 0.04
+    center: false
+    slide-number: c/t
+    hash: true
+    transition: none
+    background-transition: none
+    controls: false
+    progress: true
+    fig-align: center
+    embed-resources: true
+    include-after-body: layout-fix.html
+    footer: "GAIA HazLab · Introduction to AI agents · 2026"
+    logo: ../../../img/gaia-hazalab-logo.png
+author: ""
+lang: en-US
+execute:
+  echo: false

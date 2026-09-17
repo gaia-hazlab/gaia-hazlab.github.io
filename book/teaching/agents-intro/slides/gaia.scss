@@ -1,0 +1,190 @@
+/*-- scss:defaults --*/
+// GAIA teaching-deck theme. Structure adapted from the MLGEO 2026 theme
+// (geo-smart/mlgeo-book, book/slides/2026/mlgeo.scss); palette and type from
+// the GAIA site (website/index.html custom properties) and gaia-book.css:
+// Inter body, Montserrat headings, UW Husky purple, periwinkle accent.
+$gaia-purple: #4b2e83;
+$gaia-purple-deep: #341f63;
+$gaia-purple-night: #21163f;
+$gaia-peri: #6d5bd0;
+$gaia-peri-light: #c3b8f0;
+$gaia-ink: #2a1a4f;
+$gaia-stone: #6f6890;
+$gaia-lav: #f5f3fb;
+$gaia-paper: #ffffff;
+
+$font-family-sans-serif: "Inter", "Segoe UI", -apple-system, system-ui, sans-serif;
+$font-family-monospace: "SFMono-Regular", Menlo, Consolas, monospace;
+$presentation-font-size-root: 40px;
+$presentation-h1-font-size: 2.0em;
+$presentation-h2-font-size: 1.4em;
+$presentation-h3-font-size: 1.0em;
+$presentation-heading-font: "Montserrat", "Inter", sans-serif;
+$presentation-heading-font-weight: 700;
+$presentation-heading-letter-spacing: -0.015em;
+$presentation-heading-color: $gaia-ink;
+$body-bg: $gaia-paper;
+$body-color: $gaia-ink;
+$link-color: $gaia-peri;
+$link-color-hover: $gaia-purple;
+$selection-bg: $gaia-peri-light;
+$code-color: $gaia-purple-deep;
+$code-block-bg: $gaia-lav;
+$code-block-border-color: $gaia-peri-light;
+
+/*-- scss:rules --*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+// ---- Frame -------------------------------------------------------------
+.reveal .slides section {
+  text-align: left;
+  padding: 0 0.5em;
+}
+.reveal h2 {
+  margin-bottom: 0.35em;
+  color: $gaia-purple;
+}
+.reveal h3 { color: $gaia-ink; }
+.reveal .progress { color: $gaia-peri; }
+.reveal .footer { color: $gaia-stone; font-size: 0.5em; }
+.reveal .slide-number { color: $gaia-stone; }
+.reveal .slide-menu-button .fa-bars::before { color: $gaia-purple; }
+
+// ---- Title slide: the site's header gradient, white type ---------------
+.reveal #title-slide {
+  .title, .subtitle, .quarto-title-authors, p { color: $gaia-paper; }
+  .title {
+    font-size: 2.1em;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    color: $gaia-peri-light;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-top: 0.6em;
+  }
+}
+
+// ---- Segment openers and the "today's question" slide ------------------
+.lecture-icon {
+  font-size: 3.5em;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.2em;
+}
+.minutes {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.5em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: $gaia-paper;
+  background: linear-gradient(135deg, $gaia-purple 0%, $gaia-purple-deep 100%);
+  border-radius: 0.4em;
+  padding: 0.15em 0.6em;
+  margin-bottom: 0.4em;
+}
+
+// ---- Emphasis blocks ---------------------------------------------------
+.big-number {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.0em;
+  font-weight: 800;
+  color: $gaia-purple;
+  line-height: 1.05;
+  margin: 0.15em 0;
+  letter-spacing: -0.02em;
+}
+.big-number .unit {
+  font-family: "Inter", sans-serif;
+  font-size: 0.42em;
+  font-weight: 600;
+  color: $gaia-stone;
+  letter-spacing: 0;
+}
+// takeaway: the book's note admonition, at slide scale
+.takeaway {
+  border-left: 0.2em solid $gaia-purple;
+  background: $gaia-lav;
+  border-radius: 0 0.3em 0.3em 0;
+  padding: 0.35em 0.6em;
+  font-size: 0.8em;
+  font-weight: 600;
+  margin-top: 0.5em;
+}
+// a slot that cannot be filled until a fact is verified; deliberately off-brand
+.todo {
+  border-left: 0.2em solid #c77d00;
+  background: #fff7e6;
+  border-radius: 0 0.3em 0.3em 0;
+  padding: 0.3em 0.6em;
+  font-size: 0.72em;
+  margin-top: 0.5em;
+}
+.todo::before { content: "TODO  "; font-weight: 800; color: #c77d00; font-family: "Montserrat", sans-serif; }
+.dim { color: $gaia-stone; font-size: 0.7em; }
+
+// ---- Tables: lavender header row, purple rule --------------------------
+.reveal table {
+  font-size: 0.85em;
+  border-collapse: collapse;
+}
+.reveal table th {
+  background: $gaia-lav;
+  color: $gaia-purple;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.85em;
+  border-bottom: 0.12em solid $gaia-purple;
+  padding: 0.3em 0.6em;
+}
+.reveal table td {
+  border-bottom: 1px solid $gaia-peri-light;
+  padding: 0.3em 0.6em;
+  vertical-align: top;
+}
+.reveal table tr:last-child td { border-bottom: 0.12em solid $gaia-peri-light; }
+
+// ---- Code --------------------------------------------------------------
+.reveal pre {
+  box-shadow: none;
+  border-radius: 0.4em;
+}
+.reveal pre code {
+  font-size: 0.72em;
+  line-height: 1.35;
+  padding: 0.6em 0.8em;
+}
+.reveal code { color: $gaia-purple-deep; }
+
+// ---- Spacing -----------------------------------------------------------
+.reveal img { max-height: 82vh; object-fit: contain; margin: 0; }
+.reveal p { margin: 0.25em 0; }
+.reveal ul, .reveal ol { margin: 0.2em 0 0.2em 1.1em; }
+.reveal li { margin: 0.18em 0; }
+.reveal ul li::marker { color: $gaia-peri; }
+.reveal ol li::marker { color: $gaia-purple; font-weight: 700; }
+
+// ---- Literature slide --------------------------------------------------
+.ref-item { margin: 0.55em 0; }
+.ref-item p { margin: 0; }
+.ref-verdict {
+  display: inline-block;
+  width: 1.5em;
+  font-size: 1.05em;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.ref-verdict.good { color: $gaia-purple; }
+.ref-verdict.bad { color: #b3402a; }
+.ref-verdict.note { color: $gaia-stone; }
+.ref-msg { font-size: 0.85em; font-weight: 650; line-height: 1.25; }
+.ref-cite {
+  display: block;
+  padding-left: 1.85em;
+  margin-top: 0.06em;
+  font-size: 0.55em;
+  color: $gaia-stone;
+  line-height: 1.3;
+}

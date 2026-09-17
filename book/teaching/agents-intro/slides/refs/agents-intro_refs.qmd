@@ -1,0 +1,22 @@
+<!-- Sources for the agents-intro deck. Edit THIS file to update them; the deck
+     includes it verbatim. Every entry here was fetched and read on
+     2026-09-17; nothing is cited from memory. Same format as the MLGEO 2026
+     decks: verdict + bold message on one line, citation on its own paragraph. -->
+
+:::: {.ref-item}
+[✓]{.ref-verdict .good} [Three layers before the prompt: knowledge anchor, standing instructions, situated intent. The instructions are a living document.]{.ref-msg}
+
+[Denolle, M. A. (2026, 9 March). Before the Prompt: What Actually Makes Academic Agents Work. *Agents for Academic Practice*, denolle.ai/blog.]{.ref-cite}
+::::
+
+:::: {.ref-item}
+[✓]{.ref-verdict .good} [Three research experiments run with agents; the bottleneck moved from doing the work to checking it; a Reproducibility Statement for every paper.]{.ref-msg}
+
+[Denolle, M. A. (2026, 28 June). Three Experiments in Agentic Research. *Agents for Academic Practice*, denolle.ai/blog.]{.ref-cite}
+::::
+
+:::: {.ref-item}
+[◦]{.ref-verdict .note} [The eScience half-day this lecture mirrors: ecosystem, mechanism, a live plan-implement cycle, and a hands-on build.]{.ref-msg}
+
+[UW eScience Institute (2026, 17 June). Coding with AI Agents: A Hands-On Workshop for Researchers. Event page, escience.washington.edu. Instructors and materials not listed on the page.]{.ref-cite}
+::::

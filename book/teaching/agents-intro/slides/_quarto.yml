@@ -1,0 +1,10 @@
+# Quarto project for the teaching slide decks. `quarto render` here (or
+# `pixi run build-slides` from the repo root) writes self-contained HTML decks
+# to _build/, which is git-ignored; build-all / build-ci copy that folder into
+# website/book/slides/agents-intro/. Source of truth is the .qmd files.
+project:
+  type: default
+  output-dir: _build
+  render:
+    - "*.qmd"
+    - "!refs/"
