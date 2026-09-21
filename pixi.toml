@@ -14,6 +14,7 @@ build-all = { cmd = "BASE_URL=/book jupyter book build --html ; rm -rf website/b
 # git-ignored slides/_build/, and is copied into website/book/slides/ by build-all / build-ci.
 build-slides = { cmd = "quarto render book/teaching/agents-intro/slides", description = "Render the teaching slide decks (Quarto reveal.js) to book/teaching/agents-intro/slides/_build" }
 preview-slides = { cmd = "quarto preview book/teaching/agents-intro/slides/agents-intro.qmd", description = "Live-preview the agents-intro slide deck with hot reload" }
+build-pptx = { cmd = "python book/teaching/agents-intro/slides/figscripts/export_pptx.py book/teaching/agents-intro/slides/_build", description = "Export the agents-intro deck to PowerPoint (figures rasterised; needs rsvg-convert or pixi exec)" }
 serve-all = { cmd = "python -m http.server --directory website/ 3000", description = "Serve the full assembled website/ locally on port 3000" }
 # In GitHub Actions, BASE_URL is set for deployment to github pages
 build-ci = { cmd = "jupyter book build --html ; rm -rf website/book ; mv _build/html website/book ; mkdir -p website/book/img ; cp -R book/img/. website/book/img/ ; mkdir -p website/book/graph ; cp book/graph/*.html website/book/graph/ ; mkdir -p website/book/slides/agents-intro ; cp -R book/teaching/agents-intro/slides/_build/. website/book/slides/agents-intro/", depends-on = ["build-slides"], description = "CI build: same as build-all, using GitHub Actions' BASE_URL" }
