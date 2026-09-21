@@ -31,14 +31,30 @@ Audience: fluent in scientific computing, tired of the word "agent". Build from 
 Two blog posts from our own practice, the eScience half-day this mirrors, the vendor's own documentation for the surfaces, and one paper. Nothing on this deck is cited from memory; the amber blocks are what is still unverified.
 :::
 
-## How we got here {background-color="#f5f3fb"}
+## Three words {background-color="#f5f3fb"}
 
 [0 to 3 min]{.minutes}
+
+**Tool call**: the model writes, in a fixed format, "run this function with these arguments" instead of prose.
+
+**Harness**: the program around the model that reads that request, runs the function, and hands the result back.
+
+**Loop**: the harness doing that until the model stops asking.
+
+::: {.takeaway}
+That is all an agent is. The rest of the hour is detail.
+:::
+
+::: {.notes}
+Define these before the timeline uses them; each gets a proper treatment in the next segment. Post-trained, when it comes up: trained after the main training, on tool use.
+:::
+
+## How we got here
 
 ![](../../../img/agents-timeline.svg){.r-stretch}
 
 ::: {.notes}
-Start from what everyone has used: a chat box in front of a model, 30 November 2022, GPT-3.5, text in and text out, no hands. By March 2023 the same page records plugins: the model may ask for a function to be called. That is the conceptual step from chatbot to agent; the rest is engineering. Then three ordered stages, undated on purpose: models post-trained to plan, call tools, read results and debug; harnesses that run the loop against your repository from a terminal, editor, app or browser; and MCP, an open standard for plugging tools in. Do not narrate the dots twice.
+Everyone has used the first dot: a chat box, 30 November 2022, GPT-3.5, text in and text out, no hands. March 2023: plugins, the model may ask for a function to be called; that is the conceptual step, the rest is training and engineering. November 2024: a standard for plugging tools in. February 2025: the vendor's first agentic coding tool, a research preview that reads code, edits files, runs tests, commits. And the window: 2,048 tokens on GPT-3, one million on the current models, enough for a repository and a day's transcript. Why not two years ago: in September 2024 the standard, the harnesses and the windows were all still to come; that reading of the dates is mine, not a source's.
 :::
 
 ## Why it is useful now
@@ -98,7 +114,7 @@ while True:
 ```
 
 ::: {.dim}
-A tool call is structured tokens the harness parses: `{"name": "bash", "input": {"command": "pixi run spellcheck"}}`. The harness is this loop plus the permission check. The loop is generic; `CLAUDE.md`, skills and `claude -p` are one vendor's conventions, `AGENTS.md` and MCP are cross-vendor.
+Line 1: the harness's own standing text · the standing instructions in your repository · the functions the model may call, each with a name, description and argument schema · what you typed. A tool call is structured tokens the harness parses: `{"name": "bash", "input": {"command": "pixi run spellcheck"}}`. The harness is this loop plus the permission check. The loop is generic and the same under every vendor's product.
 :::
 
 ::: {.notes}
@@ -120,7 +136,7 @@ One diagram, seven pieces. Left column is loaded every turn and paid for every c
 ```
 CLAUDE.md  →  5 lines, points at AGENTS.md
 AGENTS.md  →  one screen: layout · build commands ·
-              five conventions · persona reviews
+              six conventions · persona reviews
 ```
 
 ::: {.takeaway}
@@ -141,6 +157,10 @@ Show what it omits: no MyST tutorial, no restated CONTRIBUTING. The vendor docs 
 
 ::: {.takeaway}
 A skill costs its description on every call and its body only when loaded. Every MCP server you connect is a party whose output the model will act on.
+:::
+
+::: {.dim}
+Vendor conventions: `CLAUDE.md`, skills, `claude -p`. General: the loop, `AGENTS.md` (the vendor's docs say it reads that too), subagents under some name in every harness, MCP as a published standard. Prompt injection: tool results and instructions are one token stream with no provenance bit; a sentence inside a fetched page reads like a sentence from you.
 :::
 
 ::: {.notes}
@@ -187,23 +207,23 @@ Surfaces from the vendor's documentation: terminal, VS Code and JetBrains, deskt
 
 ## What each one can touch {.smaller}
 
-| | Sees your repo | Runs your code | Who watches | Use it for |
+| | Touches your repo | Who watches | Needs | Runs on a cluster over ssh |
 |---|---|---|---|---|
-| **Browser chat** | no | no | you, every turn | questions, drafts, papers |
-| **App, Code tab** | yes | yes | you, per diff | changes you review before they land |
-| **Editor** | yes | yes | you, per line | changes you read as they happen |
-| **CLI** `claude` | yes | yes | you, per gated action | exploration |
-| **CLI** `claude -p` | yes | yes | nobody | scripts, CI, queues; bounded |
+| **Browser, Chat tab** | no | you, every turn | an account | n/a |
+| **Browser, Code tab** | yes, in the cloud | you, per session | subscription | n/a |
+| **App, Code tab** | yes | you, per diff; or nobody, if scheduled | subscription; download | no |
+| **Editor** | yes | you, per line | subscription or key; extension | no |
+| **CLI** `claude` / `-p` | yes | you, per gated action / nobody | subscription or key; one-line install | yes |
 
 ::: {.dim}
-Other vendors ship the same shapes. The names differ; the loop does not.
+"Gated": a tool call the permission settings say must be approved first. Needs and installs from the vendor's overview page; monthly prices: TODO. Other vendors ship the same shapes (the lecturer's comparison names OpenAI's Codex); the names differ, the loop does not.
 :::
 
 ::: {.notes}
-Read the table down the "who watches" column: that is the real difference between the rows. The last row is the one that needs limits on turns, cost and wall clock, because nobody is there to notice.
+Read the table down "who watches": that is the real difference between rows. Two rows have "nobody" in them: headless CLI and scheduled app tasks; both need limits on turns, cost and wall clock. The cluster column is the HPC question: only the CLI is a plain terminal program.
 :::
 
-## Headless on cascadia
+## Headless on cascadia, the group's machine
 
 ```
 for issue in open_issues:
@@ -234,12 +254,18 @@ The answer to "why an agent rather than a script". A script when you know every 
 
 ## 1. Write the spec first
 
-- What it takes, what it produces, which conventions, what a passing test looks like, what is out of scope
-- Draft it with the agent, then edit it yourself
-- Everything after is checked against it
+```
+# SPEC: <name>
+Purpose: one sentence.
+Inputs: files, formats, units, coordinate frames.
+Outputs: files, formats, units; what a plot of them should look like.
+Conventions: package layout, style, test runner, the CI that must stay green.
+Done when: tests/test_<name>.py passes; the figure in docs/ shows <what>.
+Out of scope: what not to touch.
+```
 
 ::: {.takeaway}
-The spec is the contract. The scarce resource is your bandwidth to check the work; the spec is what makes checking possible.
+Draft it with the agent, edit it yourself. The spec is the contract; everything after is checked against it.
 :::
 
 ::: {.notes}
@@ -249,17 +275,17 @@ Agent errors are specification and judgement errors. A good spec removes the fir
 ## 2 to 4. Intent, template, tests
 
 ```
+"Write the tests for module X from SPEC.md and run them. Do not change X
+ to make a test pass; if a test is right and X is wrong, fix X and say so."
+
 "Implement section 3 of SPEC.md; stop when tests/test_io.py passes."
 
-"Set up a Python repository for X using pixi and best current
- standards: pyproject, one passing test, CI that runs it, README."
-
-"Write the tests for module X, run them, fix what fails.
- Do not change X to make a test pass."
+"Set up a Python repository for X using pixi and best current standards:
+ pyproject, one passing test, CI that runs it, README, licence, .gitignore."
 ```
 
 ::: {.takeaway}
-State the goal and the stop condition; the agent picks the steps. The tests are the verify step for every later change.
+Tests from the spec first, then implement to them. State the goal and the stop condition; the agent picks the steps. Check the template against the list.
 :::
 
 ::: {.notes}
@@ -268,10 +294,14 @@ Three prompt shapes. The repository template is an afternoon of boilerplate the 
 
 ## 5. Show me the raw data
 
-**Ask for the raw waveforms, the intermediate arrays, the first and last rows, at every stage. Saved where you will look.**
+```
+"At every stage of the pipeline, save a figure of the raw waveforms and of
+ the intermediate arrays, and the first and last rows of every table, to
+ docs/figures/, and list them in the README."
+```
 
 ::: {.takeaway}
-How you check an agent's work without reading every line it wrote: if the raw data look wrong, the pipeline is wrong, whatever the tests say.
+Tests written by the same agent inherit its reading of the spec; the raw data do not. If they look wrong, the pipeline is wrong, whatever the tests say.
 :::
 
 ::: {.notes}
@@ -287,7 +317,7 @@ The one use on the list that is specific to science, and the one the room should
 **Watch:** `pixi run spellcheck` → read the page → edit one word → rerun → exit 0
 
 ::: {.takeaway}
-The pass condition is the repository's own check, not the model's opinion. More than one word edited is the minimal-change rule broken in front of you.
+The pass condition is the repository's own check, not the model's opinion. More than one word edited is the minimal-change rule in `AGENTS.md` broken in front of you.
 :::
 
 ::: {.notes}
@@ -298,28 +328,52 @@ Two minutes, rehearsed. Narrate each call as it appears. If the agent reruns the
 
 [27 to 33 min]{.minutes}
 
-| | You write | The harness supplies | Start from |
+| | You write | Choose it when | Start from |
 |---|---|---|---|
-| **A skill** | a `SKILL.md` | everything else | `.claude/skills/plain-voice` |
-| **An agent definition** | a Markdown file: role, tools, instructions | the loop, a fresh window | `.claude/agents/gaia-review-*.md` |
-| **A loop in Python** | tools as functions | the SDK runner drives the loop | twelve lines, next slides |
+| **A skill** | a `SKILL.md` | this session should follow a procedure, in its own window | `.claude/skills/plain-voice` |
+| **An agent definition** | a Markdown file: role, tools, instructions | the task needs a fresh window, fewer tools, or parallel copies | `.claude/agents/gaia-review-*.md` |
+| **A loop in Python** | tools as functions | the model or the harness is not the vendor's (tutorial 4's local model) | twelve lines, two slides on |
 
 ::: {.notes}
-Three ways, in increasing order of how much you own. The first two are files in this repository; copy one and change it. The third is for anything the harness does not do.
+Three ways, in increasing order of how much you own. The first two are files in this repository; copy one and change it. The third is for a model or a harness the vendor's product does not run.
 :::
 
 ## Live: the skill
 
+```
+.claude/skills/nsf-acknowledgement/SKILL.md
+---
+name: nsf-acknowledgement
+description: Insert the agreed GAIA acknowledgement wording for the NSF
+  awards, verbatim, when a page, talk, poster or paper needs a funding
+  statement.
+---
+1. Read the wording from book/governance/how-we-work.md. Never embed it here.
+2. Insert it verbatim, all three award numbers included.
+3. If the seed grant or the Paros Center contributed, append the page's
+   second sentence.
+```
+
+::: {.dim}
+An agent definition has the same front matter plus a `tools:` line, then instructions: `name: gaia-review-phd-student-prospective` · `tools: Read, Grep, Glob, Bash, Write, WebFetch, WebSearch`.
+:::
+
+::: {.notes}
+Type it live. Then the flow on the next slide: fresh session, ask for a funding acknowledgement on mt-rainier.md, watch whether it triggers; if not, fix the description in front of the room. Loading a skill is itself a tool call, but it adds no capability: it can only use the tools the agent already has.
+:::
+
+## How the skill runs
+
 ![](../../../img/agents-skill-flow.svg){.r-stretch}
 
 ::: {.notes}
-The problem: the governance page requires the NSF acknowledgement verbatim; an agent will paraphrase. Type the SKILL.md live: name, a two-sentence description, three instructions: read the wording from the page at use time, insert verbatim with all three award numbers, append the seed-grant sentence when it applies. Fresh session, ask for "a funding acknowledgement on mt-rainier.md", watch whether it triggers. If not, the description did not match: fix it in front of the room. Tradeoff to name: longer descriptions fire more reliably and cost more per call. Not a tool, not a subagent; a procedure written once by someone who knew the rule.
+The problem: the governance page requires the NSF acknowledgement verbatim; an agent will paraphrase. The model picks the skill from its description; the harness loads the body; the body reads the page at use time so there is one source of truth. Tradeoff to name: longer descriptions fire more reliably and cost more per call.
 :::
 
 ## The loop in twelve real lines
 
 ```python
-import anthropic
+import subprocess, anthropic
 from anthropic import beta_tool
 
 client = anthropic.Anthropic()
@@ -327,7 +381,8 @@ client = anthropic.Anthropic()
 @beta_tool
 def spellcheck(path: str) -> str:
     """Run the repository spellcheck on one file and return its output."""
-    ...  # subprocess.run(["codespell", path], ...)
+    r = subprocess.run(["codespell", path], capture_output=True, text=True)
+    return r.stdout or "clean"
 
 runner = client.beta.messages.tool_runner(
     model="claude-opus-5", max_tokens=16000, tools=[spellcheck],
@@ -405,8 +460,8 @@ Guardrails: three from the coordination plan, two from practice. The trajectory 
 
 ## Why two runs differ
 
-- **Sampling**: the next token is drawn, not argmaxed; vendor APIs expose no seed
-- **Batched inference**: not bit-reproducible even at temperature zero
+- **Sampling**: the next token is drawn, not argmaxed; the API used here exposes no seed and, on current models, no sampling parameters at all
+- **Batched inference**: generally not bit-reproducible on shared accelerators (TODO: cite)
 - **Model updates**: the same name can point at new weights; pin the version string
 - **Tool results**: the web, the data, and the repo moved between runs
 
@@ -421,7 +476,11 @@ Tutorial 4 scores reproducibility as the fraction of identical outputs across N 
 ## Cost
 
 ::: {.big-number}
-~$200 / month [API, one June experiment. Denolle (2026)]{.unit}
+~$200 / month [one person, one project, the coding agent; no model or run count given. Denolle (June 2026)]{.unit}
+:::
+
+::: {.dim}
+Scale: the vendor's current models cost 1 to 10 dollars per million input tokens and 5 to 50 per million output (models page, 21 Sep 2026).
 :::
 
 ::: {.takeaway}
@@ -430,6 +489,20 @@ Cost is a first-class axis: recorded per run, reported next to accuracy. On the 
 
 ::: {.notes}
 One fact from practice, one from the eval board. The skill-lift result is why open-weight models stay in the comparison. Tutorial costs are TODO in the compute-requirements document.
+:::
+
+## Reproducibility
+
+- If an agent cannot reproduce your work, neither can your collaborators (Denolle, June 2026)
+- A **Reproducibility Statement** in every paper, beside data availability
+- The coordination plan already requires a provenance YAML and an RO-Crate per agent and publication
+
+::: {.takeaway}
+The missing link is the trajectory inside the provenance record. Tutorial 4 builds toward it.
+:::
+
+::: {.notes}
+Close the arc where it started: the loop leaves a trace, and the trace is what we owe every reader.
 :::
 
 ## Tutorials

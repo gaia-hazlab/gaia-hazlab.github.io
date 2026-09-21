@@ -2,7 +2,7 @@
 <defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
 <rect x="30" y="40" width="270" height="560" rx="14" fill="#fff" stroke="#c3b8f0" stroke-width="1.5"/>
 <text x="165" y="80" text-anchor="middle" font-size="23" fill="#4b2e83" font-weight="700">Browser chat</text>
-<text x="165" y="108" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">claude.ai chat tab</text>
+<text x="165" y="108" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">the chat tab, not the Code tab</text>
 <text x="165" y="575" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">questions · drafts · reading papers</text>
 <text x="165" y="500" text-anchor="middle" font-size="14" fill="#2a1a4f">cannot see your files or run your code</text>
 <rect x="320" y="40" width="270" height="560" rx="14" fill="#fff" stroke="#c3b8f0" stroke-width="1.5"/>
@@ -19,7 +19,7 @@
 <text x="1035" y="80" text-anchor="middle" font-size="23" fill="#4b2e83" font-weight="700">CLI</text>
 <text x="1035" y="108" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">terminal: interactive, or claude -p</text>
 <text x="1035" y="575" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">exploration · scripts · CI · queues</text>
-<text x="1035" y="500" text-anchor="middle" font-size="14" fill="#2a1a4f">same engine, same CLAUDE.md, no window</text>
+<text x="1035" y="500" text-anchor="middle" font-size="14" fill="#2a1a4f">same engine, same CLAUDE.md, no GUI; runs over ssh</text>
 <rect x="80" y="150" width="170" height="56" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
 <text x="165.0" y="185.0" text-anchor="middle" font-size="20" fill="#2a1a4f">you</text>
 <line x1="165" y1="206" x2="165" y2="266" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
@@ -28,6 +28,8 @@
 <rect x="80" y="390" width="170" height="56" rx="8" fill="#fff" stroke="#6f6890" stroke-width="2" stroke-dasharray="5 4"/>
 <text x="165.0" y="423.9" text-anchor="middle" font-size="17" fill="#6f6890">your repository</text>
 <text x="165" y="372" text-anchor="middle" font-size="14" fill="#6f6890" font-style="italic">no path to it</text>
+<text x="165" y="465" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">the same site&#x27;s Code tab is</text>
+<text x="165" y="483" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">the agent, running in the cloud</text>
 <rect x="370" y="150" width="170" height="56" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
 <text x="455.0" y="185.0" text-anchor="middle" font-size="20" fill="#2a1a4f">you</text>
 <line x1="455" y1="206" x2="455" y2="266" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>

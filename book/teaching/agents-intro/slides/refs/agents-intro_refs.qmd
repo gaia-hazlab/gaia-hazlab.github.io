@@ -1,6 +1,6 @@
 <!-- Sources for the agents-intro deck. Edit THIS file to update them; the deck
-     includes it verbatim. Every entry here was fetched and read on
-     2026-09-17; nothing is cited from memory. The Liu et al. entry was
+     includes it verbatim. Every entry here was fetched and read on the
+     date it carries; nothing is cited from memory. The Liu et al. entry was
      transcribed from the MLGEO 2026 lecture 3 refs file (geo-smart/mlgeo-book);
      its DOI is still to be verified. Same format as the MLGEO 2026 decks:
      verdict + bold message on one line, citation on its own paragraph. -->
@@ -8,19 +8,19 @@
 :::: {.ref-item}
 [✓]{.ref-verdict .good} [Three layers before the prompt: knowledge anchor, standing instructions, situated intent. The instructions are a living document.]{.ref-msg}
 
-[Denolle, M. A. (2026, 9 March). Before the Prompt: What Actually Makes Academic Agents Work. *Agents for Academic Practice*, denolle.ai/blog.]{.ref-cite}
+[Denolle, M. A. (2026, 9 March). Before the Prompt: What Actually Makes Academic Agents Work. *Agents for Academic Practice*, denolle.ai/blog. Accessed 17 September 2026.]{.ref-cite}
 ::::
 
 :::: {.ref-item}
 [✓]{.ref-verdict .good} [Three research experiments run with agents; the bottleneck moved from doing the work to checking it; a Reproducibility Statement for every paper.]{.ref-msg}
 
-[Denolle, M. A. (2026, 28 June). Three Experiments in Agentic Research. *Agents for Academic Practice*, denolle.ai/blog.]{.ref-cite}
+[Denolle, M. A. (2026, 28 June). Three Experiments in Agentic Research. *Agents for Academic Practice*, denolle.ai/blog. Accessed 17 September 2026.]{.ref-cite}
 ::::
 
 :::: {.ref-item}
 [◦]{.ref-verdict .note} [The eScience half-day this lecture mirrors: ecosystem, mechanism, a live plan-implement cycle, and a hands-on build.]{.ref-msg}
 
-[UW eScience Institute (2026, 17 June). Coding with AI Agents: A Hands-On Workshop for Researchers. Event page, escience.washington.edu. Instructors and materials not listed on the page.]{.ref-cite}
+[UW eScience Institute (2026, 17 June). Coding with AI Agents: A Hands-On Workshop for Researchers. Event page, escience.washington.edu. Instructors and materials not listed on the page. Accessed 17 September 2026.]{.ref-cite}
 ::::
 
 :::: {.ref-item}
@@ -45,4 +45,10 @@
 [◦]{.ref-verdict .note} [The two dated anchors on the timeline: ChatGPT released 30 November 2022 on GPT-3.5; plugins and GPT-4 in March 2023.]{.ref-msg}
 
 [Wikipedia contributors (2026). ChatGPT. en.wikipedia.org/wiki/ChatGPT. Accessed 21 September 2026.]{.ref-cite}
+::::
+
+:::: {.ref-item}
+[◦]{.ref-verdict .note} [The other dated anchors: MCP announced 25 November 2024; the first agentic coding tool in research preview 24 February 2025; GPT-3's 2,048-token window against 1M tokens today.]{.ref-msg}
+
+[Anthropic (2024, 25 Nov). Introducing the Model Context Protocol. Anthropic (2025, 24 Feb). Claude 3.7 Sonnet and Claude Code. Wikipedia contributors (2026). GPT-3. Anthropic (2026). Models overview, platform.claude.com. All accessed 21 September 2026.]{.ref-cite}
 ::::

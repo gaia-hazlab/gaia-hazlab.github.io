@@ -57,6 +57,8 @@ does the same assembly steps.
   awards in [book/governance/how-we-work.md](book/governance/how-we-work.md) must be used
   verbatim when cited elsewhere.
 - Run `pixi run spellcheck` and `pixi run linkcheck` before considering doc changes done.
+- Make the smallest change that resolves the task. Do not reformat, rename, or tidy files
+  you were not asked to touch.
 - Don't hand-edit `_build/` or treat `_attic/` content as authoritative.
 
 ## Persona reviews

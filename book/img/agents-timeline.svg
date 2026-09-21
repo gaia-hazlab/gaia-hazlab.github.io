@@ -4,24 +4,24 @@
 <circle cx="110" cy="190" r="11" fill="#4b2e83"/>
 <text x="110" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">chat</text>
 <text x="110" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">a model behind a text box</text>
-<text x="110" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">ChatGPT, Nov 2022 (GPT-3.5)</text>
+<text x="110" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">ChatGPT, 30 Nov 2022 (GPT-3.5)</text>
 <circle cx="340" cy="190" r="11" fill="#4b2e83"/>
 <text x="340" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">tools</text>
 <text x="340" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">the model may call functions</text>
 <text x="340" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">plugins and GPT-4, Mar 2023</text>
-<circle cx="570" cy="190" r="11" fill="#6d5bd0"/>
-<text x="570" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">trained for tool use</text>
-<text x="570" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">plan, call tools, read results,</text>
-<text x="570" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">debug (date: TODO)</text>
-<circle cx="800" cy="190" r="11" fill="#6d5bd0"/>
-<text x="800" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">harnesses</text>
-<text x="800" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">terminal · editor · app · browser</text>
-<text x="800" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">one engine (date: TODO)</text>
-<circle cx="1030" cy="190" r="11" fill="#6d5bd0"/>
-<text x="1030" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">a standard for tools</text>
-<text x="1030" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">MCP: open standard connecting</text>
-<text x="1030" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">AI apps to external systems</text>
-<text x="600" y="260" text-anchor="middle" font-size="17" fill="#2a1a4f">What changed for research: tool results are grounded facts the model must read, retrieval finds real papers,</text>
-<text x="600" y="288" text-anchor="middle" font-size="17" fill="#2a1a4f">and a harness runs the loop against your own repository. Denolle (June 2026): literature review is close to solved.</text>
-<text x="600" y="340" text-anchor="middle" font-size="14" fill="#6f6890" font-style="italic">Filled dots: dates from a fetched source. Hollow-coloured dots: ordered stages, dates still to verify.</text>
+<circle cx="570" cy="190" r="11" fill="#4b2e83"/>
+<text x="570" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">a standard for tools</text>
+<text x="570" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">MCP: connect AI apps to</text>
+<text x="570" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">external systems, 25 Nov 2024</text>
+<circle cx="800" cy="190" r="11" fill="#4b2e83"/>
+<text x="800" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">coding agents</text>
+<text x="800" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">first agentic coding tool,</text>
+<text x="800" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">research preview, 24 Feb 2025</text>
+<circle cx="1030" cy="190" r="11" fill="#4b2e83"/>
+<text x="1030" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">the window</text>
+<text x="1030" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">2,048 tokens (GPT-3) to</text>
+<text x="1030" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">1M tokens on 2026 models</text>
+<text x="600" y="260" text-anchor="middle" font-size="17" fill="#2a1a4f">What changed for research: a window that holds a repository, tool results the model must read,</text>
+<text x="600" y="288" text-anchor="middle" font-size="17" fill="#2a1a4f">retrieval that finds real papers, and a harness that runs the loop against your own code.</text>
+<text x="600" y="340" text-anchor="middle" font-size="14" fill="#6f6890" font-style="italic">Every date from a fetched page (Wikipedia, Anthropic announcements, the vendor models page); see the sources slide.</text>
 </svg>

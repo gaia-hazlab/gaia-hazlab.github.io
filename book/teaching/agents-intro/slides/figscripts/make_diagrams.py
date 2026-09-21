@@ -177,13 +177,13 @@ def four_ways():
     """Four ways to use a coding agent today. Surfaces from the Claude Code
     overview page (code.claude.com/docs/en/overview, fetched 2026-09-21)."""
     s = Svg(1200, 640)
-    lanes = [(30, "Browser chat", "claude.ai chat tab", "cannot see your files or run your code",
+    lanes = [(30, "Browser chat", "the chat tab, not the Code tab", "cannot see your files or run your code",
               "questions · drafts · reading papers"),
              (320, "The app", "desktop app: Chat tab vs Code tab", "Code tab = the agent, diffs shown visually",
               "review each change before it lands"),
              (610, "Editor", "VS Code · JetBrains", "inline diffs, @-mentions, plan review",
               "changes you review line by line"),
-             (900, "CLI", "terminal: interactive, or claude -p", "same engine, same CLAUDE.md, no window",
+             (900, "CLI", "terminal: interactive, or claude -p", "same engine, same CLAUDE.md, no GUI; runs over ssh",
               "exploration · scripts · CI · queues")]
     for x, title, sub, cap, use in lanes:
         s.box(x, 40, 270, 560, [], fill="#fff", stroke=PERI_LIGHT, sw=1.5, rx=14)
@@ -198,6 +198,8 @@ def four_ways():
     s.box(80, 390, 170, 56, ["your repository"], fill="#fff", stroke=STONE, size=17, dash="5 4",
           color=STONE)
     s.text(165, 372, "no path to it", size=14, color=STONE, anchor="middle", italic=True)
+    s.text(165, 465, "the same site's Code tab is", size=13, color=STONE, anchor="middle", italic=True)
+    s.text(165, 483, "the agent, running in the cloud", size=13, color=STONE, anchor="middle", italic=True)
     # app: chat tab vs code tab
     s.box(370, 150, 170, 56, ["you"], fill=LAV, stroke=PURPLE, size=20)
     s.arrow(455, 206, 455, 266, both=True)
@@ -532,11 +534,11 @@ def timeline():
     y = 190
     s.arrow(40, y, 1170, y, color=PERI, sw=3)
     stages = [
-        (110, "chat", ["a model behind a text box", "ChatGPT, Nov 2022 (GPT-3.5)"], True),
+        (110, "chat", ["a model behind a text box", "ChatGPT, 30 Nov 2022 (GPT-3.5)"], True),
         (340, "tools", ["the model may call functions", "plugins and GPT-4, Mar 2023"], True),
-        (570, "trained for tool use", ["plan, call tools, read results,", "debug (date: TODO)"], False),
-        (800, "harnesses", ["terminal · editor · app · browser", "one engine (date: TODO)"], False),
-        (1030, "a standard for tools", ["MCP: open standard connecting", "AI apps to external systems"], False),
+        (570, "a standard for tools", ["MCP: connect AI apps to", "external systems, 25 Nov 2024"], True),
+        (800, "coding agents", ["first agentic coding tool,", "research preview, 24 Feb 2025"], True),
+        (1030, "the window", ["2,048 tokens (GPT-3) to", "1M tokens on 2026 models"], True),
     ]
     for x, title, lines, dated in stages:
         col = PURPLE if dated else PERI
@@ -544,11 +546,11 @@ def timeline():
         s.text(x, 118, title, size=19, color=PURPLE, anchor="middle", bold=True)
         s.text(x, 146, lines[0], size=14, color=INK, anchor="middle")
         s.text(x, 167, lines[1], size=13, color=STONE, anchor="middle", italic=True)
-    s.text(600, 260, "What changed for research: tool results are grounded facts the model must read, retrieval finds real papers,",
+    s.text(600, 260, "What changed for research: a window that holds a repository, tool results the model must read,",
            size=17, color=INK, anchor="middle")
-    s.text(600, 288, "and a harness runs the loop against your own repository. Denolle (June 2026): literature review is close to solved.",
+    s.text(600, 288, "retrieval that finds real papers, and a harness that runs the loop against your own code.",
            size=17, color=INK, anchor="middle")
-    s.text(600, 340, "Filled dots: dates from a fetched source. Hollow-coloured dots: ordered stages, dates still to verify.",
+    s.text(600, 340, "Every date from a fetched page (Wikipedia, Anthropic announcements, the vendor models page); see the sources slide.",
            size=14, color=STONE, anchor="middle", italic=True)
     s.write("agents-timeline.svg")
 
@@ -575,7 +577,7 @@ def payoff():
            size=17, color=INK, anchor="middle")
     s.text(600, 348, "reading every line it wrote: if the raw data look wrong, the pipeline is wrong.",
            size=17, color=INK, anchor="middle")
-    s.text(600, 405, "Agent errors are specification and judgement errors; a good spec removes the first kind.",
+    s.text(600, 405, "Agent errors are specification, judgement, and context-loss errors; a good spec removes the first kind.",
            size=15, color=STONE, anchor="middle", italic=True)
     s.write("agents-payoff.svg")
 
