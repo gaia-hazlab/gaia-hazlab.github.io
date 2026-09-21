@@ -43,7 +43,7 @@
 <text x="620.0" y="460.9" text-anchor="middle" font-size="17" fill="#2a1a4f" font-weight="700">write</text>
 <text x="620.0" y="483.0" text-anchor="middle" font-size="17" fill="#2a1a4f">finding · severity · quote · URL</text>
 <path d="M 740 480 Q 800 480 800 338 Q 800 196 740 196" fill="none" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
-<text x="620" y="530" text-anchor="middle" font-size="17" fill="#6f6890" font-style="italic">repeat until the persona&#x27;s timebox (10 to 45 min) is spent</text>
+<text x="620" y="545" text-anchor="middle" font-size="17" fill="#6f6890" font-style="italic">repeat until the reader&#x27;s timebox is spent</text>
 <path d="M 440 100 Q 470 100 500 196" fill="none" stroke="#6d5bd0" stroke-width="1.8" marker-end="url(#a-stone)"/>
 <path d="M 440 190 Q 470 190 500 196" fill="none" stroke="#6d5bd0" stroke-width="1.8" marker-end="url(#a-stone)"/>
 <path d="M 440 285 Q 470 285 500 196" fill="none" stroke="#6d5bd0" stroke-width="1.8" marker-end="url(#a-stone)"/>
@@ -61,6 +61,6 @@
 <line x1="1020" y1="420" x2="1020" y2="460" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
 <rect x="870" y="460" width="300" height="56" rx="8" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
 <text x="1020.0" y="493.9" text-anchor="middle" font-size="17" fill="#2a1a4f">synthesis merges ten of these</text>
-<text x="1020" y="560" text-anchor="middle" font-size="15" fill="#6f6890">tools: Read · Grep · Glob · Bash ·</text>
-<text x="1020" y="582" text-anchor="middle" font-size="15" fill="#6f6890">Write · WebFetch · WebSearch</text>
+<text x="1020" y="560" text-anchor="middle" font-size="16" fill="#6f6890">tools: Read · Grep · Glob · Bash ·</text>
+<text x="1020" y="582" text-anchor="middle" font-size="16" fill="#6f6890">Write · WebFetch · WebSearch</text>
 </svg>

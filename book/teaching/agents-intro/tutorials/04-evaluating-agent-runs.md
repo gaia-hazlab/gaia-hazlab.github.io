@@ -11,7 +11,7 @@ description: Score a set of agent runs on the three HazEvalHub questions, is it 
 code cells are empty and carry a comment saying what belongs in each. To be completed
 with UW eScience. Compute needs are tracked in
 [compute requirements](../compute-requirements.md). Companion to the
-[lecture](../agents-intro.md), segments 34 to 45, and to the
+[lecture](../agents-intro.md), its last two segments, and to the
 [HazEvalHub](../../../chapters/hazevalhub.md) chapter.
 :::
 

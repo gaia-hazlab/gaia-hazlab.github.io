@@ -31,5 +31,5 @@
 <text x="605.0" y="249" text-anchor="middle" font-size="19" fill="#6f6890" font-style="italic"></text>
 <text x="600" y="320" text-anchor="middle" font-size="17" fill="#2a1a4f">The spec is the contract and the test is the verify step. Step 5 is how you check the agent without</text>
 <text x="600" y="348" text-anchor="middle" font-size="17" fill="#2a1a4f">reading every line it wrote: if the raw data look wrong, the pipeline is wrong.</text>
-<text x="600" y="405" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">Agent errors are specification, judgement, and context-loss errors; a good spec removes the first kind.</text>
+<text x="600" y="405" text-anchor="middle" font-size="16" fill="#6f6890" font-style="italic">Agent errors are specification, judgement, and context-loss errors; a good spec removes the first kind.</text>
 </svg>

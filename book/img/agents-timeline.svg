@@ -1,27 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
 <defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
-<line x1="40" y1="190" x2="1170" y2="190" stroke="#6d5bd0" stroke-width="3" marker-end="url(#a-stone)"/>
-<circle cx="110" cy="190" r="11" fill="#4b2e83"/>
-<text x="110" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">chat</text>
-<text x="110" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">a model behind a text box</text>
-<text x="110" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">ChatGPT, 30 Nov 2022 (GPT-3.5)</text>
-<circle cx="340" cy="190" r="11" fill="#4b2e83"/>
-<text x="340" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">tools</text>
-<text x="340" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">the model may call functions</text>
-<text x="340" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">plugins and GPT-4, Mar 2023</text>
-<circle cx="570" cy="190" r="11" fill="#4b2e83"/>
-<text x="570" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">a standard for tools</text>
-<text x="570" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">MCP: connect AI apps to</text>
-<text x="570" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">external systems, 25 Nov 2024</text>
-<circle cx="800" cy="190" r="11" fill="#4b2e83"/>
-<text x="800" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">this vendor&#x27;s coding agent</text>
-<text x="800" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">its first, a research</text>
-<text x="800" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">preview, 24 Feb 2025</text>
-<circle cx="1030" cy="190" r="11" fill="#4b2e83"/>
-<text x="1030" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">the window</text>
-<text x="1030" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">2,048 tokens (GPT-3, 2020) to</text>
-<text x="1030" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">1M on the largest 2026 models</text>
-<text x="600" y="260" text-anchor="middle" font-size="17" fill="#2a1a4f">What changed for research: a window that holds a repository, tool results the model must read,</text>
-<text x="600" y="288" text-anchor="middle" font-size="17" fill="#2a1a4f">retrieval that finds real papers, and a harness that runs the loop against your own code.</text>
-<text x="600" y="340" text-anchor="middle" font-size="14" fill="#6f6890" font-style="italic">Every date from a fetched page (Wikipedia, Anthropic announcements, the vendor models page); see the sources slide.</text>
+<line x1="40" y1="230" x2="1170" y2="230" stroke="#6d5bd0" stroke-width="4" marker-end="url(#a-stone)"/>
+<circle cx="110" cy="230" r="14" fill="#4b2e83"/>
+<text x="110" y="120" text-anchor="middle" font-size="38" fill="#4b2e83" font-weight="700">Nov 2022</text>
+<text x="110" y="175" text-anchor="middle" font-size="26" fill="#2a1a4f" font-weight="700">chat</text>
+<text x="110" y="275" text-anchor="middle" font-size="19" fill="#6f6890">a text box</text>
+<circle cx="340" cy="230" r="14" fill="#4b2e83"/>
+<text x="340" y="120" text-anchor="middle" font-size="38" fill="#4b2e83" font-weight="700">Mar 2023</text>
+<text x="340" y="175" text-anchor="middle" font-size="26" fill="#2a1a4f" font-weight="700">tools</text>
+<text x="340" y="275" text-anchor="middle" font-size="19" fill="#6f6890">it may call functions</text>
+<circle cx="570" cy="230" r="14" fill="#4b2e83"/>
+<text x="570" y="120" text-anchor="middle" font-size="38" fill="#4b2e83" font-weight="700">Nov 2024</text>
+<text x="570" y="175" text-anchor="middle" font-size="26" fill="#2a1a4f" font-weight="700">a standard</text>
+<text x="570" y="275" text-anchor="middle" font-size="19" fill="#6f6890">MCP: plug tools in</text>
+<circle cx="800" cy="230" r="14" fill="#4b2e83"/>
+<text x="800" y="120" text-anchor="middle" font-size="38" fill="#4b2e83" font-weight="700">Feb 2025</text>
+<text x="800" y="175" text-anchor="middle" font-size="26" fill="#2a1a4f" font-weight="700">coding agent</text>
+<text x="800" y="275" text-anchor="middle" font-size="19" fill="#6f6890">this vendor&#x27;s first</text>
+<circle cx="1030" cy="230" r="14" fill="#4b2e83"/>
+<text x="1030" y="120" text-anchor="middle" font-size="38" fill="#4b2e83" font-weight="700">2026</text>
+<text x="1030" y="175" text-anchor="middle" font-size="26" fill="#2a1a4f" font-weight="700">the window</text>
+<text x="1030" y="275" text-anchor="middle" font-size="19" fill="#6f6890">2,048 tokens to 1M</text>
+<text x="600" y="345" text-anchor="middle" font-size="24" fill="#2a1a4f" font-weight="700">The window was a big step. What made it usable is the infrastructure around the model:</text>
+<text x="600" y="382" text-anchor="middle" font-size="23" fill="#2a1a4f">fewer hallucinations, because retrieval and tool results ground what it says,</text>
+<text x="600" y="416" text-anchor="middle" font-size="23" fill="#2a1a4f">and the files that tell it what you want and how to test it.</text>
+<text x="600" y="458" text-anchor="middle" font-size="24" fill="#4b2e83" font-weight="700">It moves fast, and geoscience is lagging.</text>
 </svg>

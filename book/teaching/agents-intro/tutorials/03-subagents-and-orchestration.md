@@ -11,7 +11,7 @@ description: Split one task across subagents with separate context windows, conn
 code cells are empty and carry a comment saying what belongs in each. To be completed
 with UW eScience. Compute needs are tracked in
 [compute requirements](../compute-requirements.md). Companion to the
-[lecture](../agents-intro.md), segments 13 to 20 and 27 to 34.
+[lecture](../agents-intro.md), the pieces and writing-your-own segments.
 :::
 
 ## Learning objectives

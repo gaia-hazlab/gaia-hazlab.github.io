@@ -1,6 +1,6 @@
 ---
 title: "An introduction to AI agents<br>for the GAIA team"
-subtitle: "45 minutes · GAIA CSSI team · date TODO"
+subtitle: "GAIA CSSI team · date TODO"
 title-slide-attributes:
   data-background-gradient: "linear-gradient(150deg, #4b2e83 0%, #341f63 55%, #21163f 100%)"
 ---
@@ -19,45 +19,45 @@ title-slide-attributes:
 
 What is it made of, and how do we run it without losing the audit trail?
 
-::: {.dim}
-Three words for the next three minutes. **Tool call**: the model writes, in a fixed format, "run this function with these arguments" instead of prose. **Harness**: the program around the model that reads that request, runs the function, hands the result back. **Loop**: the harness doing that until the model stops asking. That is all an agent is.
+::: {.notes}
+Audience: fluent in scientific computing, tired of the word "agent". Build from concept: what an agent is made of, how we got here, the mechanism, the four ways to use one, where it pays off, how to write your own, then GAIA. Say once, early, which words are one vendor's and which are general.
 :::
 
+## How we compose an agent
+
+![](../../../img/agents-compose.svg){.r-stretch}
+
 ::: {.notes}
-Audience: fluent in scientific computing, tired of the word "agent". Build from concept: context first, mechanism second, the four ways to use one, where it pays off, how to write your own, then GAIA. Say once, early, which words are one vendor's and which are general.
+Four words, and the whole lecture is detail on them. The LLM predicts the next token; it never executes anything. Tools are its hands: the shell, so scripts, Python, git, whatever software the environment has; files; the web. The harness is the program around the model that reads a tool call, checks whether it is allowed, runs it, and hands the result back. The loop is the harness doing that until the model stops asking. Each word gets its own treatment later; this slide stays up until the room can say the sentence at the bottom back to you.
 :::
 
 ## How we got here {background-color="#f5f3fb"}
 
-[0 to 3 min]{.minutes}
-
 ![](../../../img/agents-timeline.svg){.r-stretch}
 
-::: {.dim}
-Why not September 2024, as far as these dates carry it: no cross-vendor standard for tools yet, and this vendor's harness not yet shipped. Other vendors' agents and large windows before then: not settled here. This reading is the lecturer's, not a source's.
+::: {.notes}
+Everyone has used the first dot: a chat box, 30 November 2022, GPT-3.5, text in and text out, no hands. March 2023: plugins, the model may ask for a function to be called; that is the conceptual step, the rest is training and engineering. November 2024: a standard for plugging tools in. February 2025: this vendor's first coding agent, a research preview that reads code, edits files, runs tests, commits; other vendors had coding agents earlier, and dating them is a TODO. And the window: 2,048 tokens on GPT-3, one million on the largest current models. Then the point of the slide: the window was a big step, but what made this usable is the infrastructure around the model. Fewer hallucinations, because retrieval and tool results ground what it says. And the files: the instructions that say what you want, and the tests that say what done means. Say that it moves fast and that geoscience is lagging; the next slide gives the example. Every date is from a fetched page, on the sources slide; the last two lines on the slide are the lecturer's reading, not a source's.
+:::
+
+## Why it is usable now
+
+- **Fewer hallucinations**: retrieval grounds claims in real papers; a tool result, such as a failing test, is a fact in the window
+- **The files around the model**: standing instructions say what you want; tests say what done means. Infrastructure, not the model
+- **The window holds a repository**: the unit of work is a pull request, not a pasted snippet
+
+::: {.takeaway}
+It moves fast: new model types built for decisions, text in and a probability out. Geoscience is lagging.
+:::
+
+::: {.todo}
+The lecturer's example of a decision-oriented model type (given as "JEV"): name it and cite a fetched page before this line is said.
 :::
 
 ::: {.notes}
-Everyone has used the first dot: a chat box, 30 November 2022, GPT-3.5, text in and text out, no hands. March 2023: plugins, the model may ask for a function to be called; that is the conceptual step, the rest is training and engineering. November 2024: a standard for plugging tools in. February 2025: the vendor's first agentic coding tool, a research preview that reads code, edits files, runs tests, commits. And the window: 2,048 tokens on GPT-3, one million on the current models, enough for a repository and a day's transcript. The February 2025 dot is this vendor's first; other vendors had coding agents earlier, and dating them is a TODO. Why not September 2024: only as far as the dates carry it, on the slide, and marked as my reading.
-:::
-
-## Why it is useful now
-
-- **Retrieval got good**: literature review is close to solved for a working scientist; models ground claims in real papers
-- **Tool results are facts the model must read**: a failing test is in its window
-- **The harness runs against your repository**: the unit of work is a pull request, not a pasted snippet
-
-::: {.dim}
-Denolle, Three Experiments in Agentic Research (June 2026).
-:::
-
-::: {.notes}
-Three observations from practice, all from the June post. Hold the sceptic's "why an agent rather than a script" until the payoff segment: the answer is the spec.
+The first and third are from the June post; the second is the lecture's own claim and the reason the "writing your own" segment exists: the instruction file and the test are what turn a model into something you can hand a task to. On speed: name the example once it is sourced; the point is that model types are changing under the harness, and that this field is behind. Hold the sceptic's "why an agent rather than a script" until the payoff segment: the answer is the spec.
 :::
 
 ## Model, prompt, agent {background-color="#f5f3fb"}
-
-[3 to 8 min]{.minutes}
 
 | | |
 |---|---|
@@ -75,11 +75,11 @@ Three definitions and one distinction. HazEvalHub's prototype ran a 7B Qwen and 
 ![](../../../img/agent-loop.svg){.r-stretch}
 
 ::: {.takeaway}
-Chat: you close every loop. Script: every branch pre-written. Agent: the model picks the next step from what it just saw.
+Chat: you close every loop. Script: every branch pre-written. Agent: the model picks the next step; you enter at the start, and where else you enter is the hardest design question, and it keeps moving.
 :::
 
 ::: {.notes}
-Walk left to right. A: quality bounded by your patience for closing loops. B: deterministic; an unexpected input is a crash and a person reads the log. C: gather, act, verify, repeat. An unexpected state becomes a decision, which can be wrong or endless; a crash at least stops. The four verbs are our labels for what the tool calls turn out to be; the model has no stages, only one token stream. Next slide shows the whole thing as code.
+Walk left to right. A: quality bounded by your patience for closing loops. B: deterministic; an unexpected input is a crash and a person reads the log. C: gather, act, verify, repeat; an unexpected state becomes a decision, which can be wrong or endless. Now the human. You are always in the loop at the start: the goal, the rules, the stop condition. Where else you sit is the design question: on every action, as the permission prompt; on every diff, as the app shows them; only at the end, as a pull request review; or nowhere, as a headless run. Each of those is a real setting we use, and the trend is that the human enters less and less often. The four verbs are our labels for what the tool calls turn out to be; the model has no stages, only one token stream. Next slide shows the whole thing as code.
 :::
 
 ## The whole thing, mechanically
@@ -106,8 +106,6 @@ This is the debunk. The model is called once per turn with the whole message lis
 :::
 
 ## Four ways to use one today {background-color="#f5f3fb"}
-
-[8 to 13 min]{.minutes}
 
 ![](../../../img/agents-four-ways.svg){.r-stretch}
 
@@ -153,8 +151,6 @@ The shape is real; the specifics are not written down. Tell it from memory and s
 :::
 
 ## The pieces that let a model act {background-color="#f5f3fb"}
-
-[13 to 20 min]{.minutes}
 
 ![](../../../img/agents-overview.svg){.r-stretch}
 
@@ -217,9 +213,9 @@ Tool results are the part people forget. Compaction is a lossy summary; rules in
 
 | | What it is | Ours |
 |---|---|---|
-| **Skill** | `SKILL.md`: description in the window from startup; the model picks it, the harness loads the body | `plain-voice`; one more built live at minute 27 |
+| **Skill** | `SKILL.md`: description in the window from startup; the model picks it, the harness loads the body | `plain-voice`; one more built live later |
 | **MCP** | open standard for connecting AI applications to external systems; "a USB-C port for AI applications" | `.mcp.json`; tutorial 3 |
-| **Subagent** | an agent definition with its own window; minute 27 | ten reviewer files → `review-logs/` |
+| **Subagent** | an agent definition with its own window; writing your own | ten reviewer files → `review-logs/` |
 
 ::: {.takeaway}
 A skill costs its description on every call and its body only when loaded. Every MCP server you connect is a party whose output the model will act on.
@@ -234,8 +230,6 @@ The description is the part to keep short: re-sent on every call whether or not 
 :::
 
 ## Where it pays off for you {background-color="#f5f3fb"}
-
-[20 to 27 min]{.minutes}
 
 ![](../../../img/agents-payoff.svg){.r-stretch}
 
@@ -319,8 +313,6 @@ Two minutes, rehearsed. Scoped to one file because the repo-wide check would als
 
 ## Writing your own {background-color="#f5f3fb"}
 
-[27 to 34 min]{.minutes}
-
 | | You write | Choose it when | Start from |
 |---|---|---|---|
 | **A line in `AGENTS.md`** | one sentence | the rule is short and always applies | `AGENTS.md` |
@@ -366,7 +358,7 @@ Type it live. Fresh session, ask for a funding acknowledgement on mt-rainier.md,
 ![](../../../img/agents-anatomy.svg){.r-stretch}
 
 ::: {.notes}
-What a subagent is: the vendor's page says a specialised assistant for one kind of task, in its own context window with its own system prompt, tools and permissions; mechanically, the loop from minute 5 started again with a fresh message list, launched by a tool call, whose final text returns as a tool result. The definition is a Markdown file under .claude/agents with front matter: name, description, tools, model, permissionMode, maxTurns. Its rubric and references: the instructions are two lines because the method (what to open, a timebox) and the rubric (dimensions, severity, evidence rules, report format) are shared files it reads at run time; that is what makes ten readers comparable. The reader role in the figure is illustrative.
+What a subagent is: the vendor's page says a specialised assistant for one kind of task, in its own context window with its own system prompt, tools and permissions; mechanically, the loop from the code slide started again with a fresh message list, launched by a tool call, whose final text returns as a tool result. The definition is a Markdown file under .claude/agents with front matter: name, description, tools, model, permissionMode, maxTurns. Its rubric and references: the instructions are two lines because the method (what to open, a timebox) and the rubric (dimensions, severity, evidence rules, report format) are shared files it reads at run time; that is what makes ten readers comparable. The reader role in the figure is illustrative.
 :::
 
 ## Adversarial reviews: ten readers, one rubric
@@ -413,8 +405,6 @@ A tool is a decorated function with a docstring; the runner drives the loop and 
 
 ## Where agents sit in GAIA, and how we score them {background-color="#f5f3fb"}
 
-[34 to 39 min]{.minutes}
-
 ![](../../../img/agents-gaia-layer.svg){.r-stretch}
 
 ::: {.notes}
@@ -432,7 +422,7 @@ Three hubs, three named agents in the GaiaAgent layer, HazEvalHub scoring all of
 | Translator | natural language → workflow across hubs |
 
 ::: {.dim}
-Derived plan, project_coordination/03. First build, by the documents alone: `gaia-template-agent`, the unit the delivery metric D1 counts (a delivery metric, not a rubric dimension), and the repository-template use from minute 20 made reusable.
+Derived plan, project_coordination/03. First build, by the documents alone: `gaia-template-agent`, the unit the delivery metric D1 counts (a delivery metric, not a rubric dimension), and the repository-template use from the payoff segment made reusable.
 :::
 
 ::: {.todo}
@@ -456,8 +446,6 @@ A CSSI deliverable, not an aside. Task with a hidden test split; four conditions
 :::
 
 ## Guardrails, trajectory, cost, reproducibility {background-color="#f5f3fb"}
-
-[39 to 45 min]{.minutes}
 
 ![](../../../img/agents-trajectory.svg){.r-stretch}
 

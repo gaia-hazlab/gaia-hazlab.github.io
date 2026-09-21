@@ -11,7 +11,7 @@ description: Run one agent session end to end, capture its transcript, and label
 code cells are empty and carry a comment saying what belongs in each. To be completed
 with UW eScience. Compute needs are tracked in
 [compute requirements](../compute-requirements.md). Companion to the
-[lecture](../agents-intro.md), segments 0 to 20.
+[lecture](../agents-intro.md), the first four segments.
 :::
 
 ## Learning objectives

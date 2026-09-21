@@ -21,6 +21,7 @@ AMBER = "#c77d00"
 AMBER_BG = "#fff7e6"
 RED = "#b3402a"
 FONT = "Inter, Helvetica, Arial, sans-serif"
+MIN_SIZE = 16   # no label below this, in viewBox units (1200 wide): readable when reused
 
 OUT = Path(__file__).resolve().parents[4] / "img"
 
@@ -32,6 +33,7 @@ class Svg:
 
     def box(self, x, y, w, h, lines, fill="#fff", stroke=PURPLE, dash=None,
             size=22, color=INK, bold_first=False, rx=8, sw=2):
+        size = max(size, MIN_SIZE)
         d = f' stroke-dasharray="{dash}"' if dash else ""
         self.parts.append(
             f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" '
@@ -47,6 +49,7 @@ class Svg:
 
     def text(self, x, y, s, size=20, color=STONE, anchor="start", bold=False,
              italic=False):
+        size = max(size, MIN_SIZE)
         fw = ' font-weight="700"' if bold else ""
         fs = ' font-style="italic"' if italic else ""
         self.parts.append(
@@ -96,7 +99,7 @@ def stack():
     s = Svg(1200, 640)
     # harness
     s.box(360, 120, 480, 380, [], fill="#fff", stroke=PURPLE, sw=2.5, rx=12)
-    s.text(600, 155, "Harness: the loop and the permission checks", size=24,
+    s.text(600, 155, "Harness: the loop and the permission checks", size=22,
            color=PURPLE, anchor="middle", bold=True)
     s.box(390, 180, 420, 110,
           ["context window", "system prompt · context file · tool + skill descriptions",
@@ -119,8 +122,8 @@ def stack():
     s.text(40, 150, "Loaded every turn", size=22, color=PURPLE, bold=True)
     s.box(40, 175, 280, 64, ["Context file", "CLAUDE.md → AGENTS.md"], fill="#fff",
           stroke=PURPLE, size=20, bold_first=True)
-    s.box(40, 260, 280, 64, ["Tool schemas", "name · description · arguments"],
-          fill="#fff", stroke=PURPLE, size=20, bold_first=True)
+    s.box(40, 260, 280, 64, ["Tool schemas", "name · description · schema"],
+          fill="#fff", stroke=PURPLE, size=19, bold_first=True)
     s.box(40, 345, 280, 64, ["Skill descriptions", "one or two sentences each"],
           fill="#fff", stroke=PURPLE, size=20, bold_first=True)
     for y in (207, 292, 377):
@@ -176,21 +179,22 @@ def context_window():
 def four_ways():
     """Four ways to use a coding agent today. Surfaces from the Claude Code
     overview page (code.claude.com/docs/en/overview, fetched 2026-09-21)."""
-    s = Svg(1200, 640)
-    lanes = [(30, "Browser chat", "the chat tab, not the Code tab", "cannot see your files or run your code",
-              "questions · drafts · reading papers"),
-             (320, "The app", "desktop app: Chat tab vs Code tab", "Code tab is the agent; diffs shown first",
-              "review each change before it lands"),
-             (610, "Editor", "VS Code · JetBrains", "inline diffs; remote setups: TODO",
-              "changes you review line by line"),
-             (900, "CLI", "terminal: interactive, or claude -p", "same engine, no GUI; runs over ssh",
-              "exploration · scripts · CI · queues")]
+    s = Svg(1200, 680)
+    lanes = [(30, "Browser chat", "the chat tab", ["cannot see your files", "or run your code"],
+              "questions · drafts · papers"),
+             (320, "The app", "Chat tab vs Code tab", ["Code tab is the agent;", "diffs shown first"],
+              "review each change first"),
+             (610, "Editor", "VS Code · JetBrains", ["inline diffs;", "remote setups: TODO"],
+              "review line by line"),
+             (900, "CLI", "interactive, or claude -p", ["same engine, no GUI;", "runs over ssh"],
+              "exploration · scripts · CI")]
     for x, title, sub, cap, use in lanes:
-        s.box(x, 40, 270, 560, [], fill="#fff", stroke=PERI_LIGHT, sw=1.5, rx=14)
-        s.text(x + 135, 80, title, size=23, color=PURPLE, anchor="middle", bold=True)
-        s.text(x + 135, 108, sub, size=15, color=STONE, anchor="middle", italic=True)
-        s.text(x + 135, 575, use, size=15, color=STONE, anchor="middle", italic=True)
-        s.text(x + 135, 520, cap, size=14, color=INK, anchor="middle")
+        s.box(x, 40, 270, 620, [], fill="#fff", stroke=PERI_LIGHT, sw=1.5, rx=14)
+        s.text(x + 135, 80, title, size=24, color=PURPLE, anchor="middle", bold=True)
+        s.text(x + 135, 108, sub, size=16, color=STONE, anchor="middle", italic=True)
+        s.text(x + 135, 640, use, size=16, color=STONE, anchor="middle", italic=True)
+        s.text(x + 135, 545, cap[0], size=16, color=INK, anchor="middle")
+        s.text(x + 135, 568, cap[1], size=16, color=INK, anchor="middle")
     # browser chat: human <-> model only; repo greyed out
     s.box(80, 150, 170, 56, ["you"], fill=LAV, stroke=PURPLE, size=20)
     s.arrow(165, 206, 165, 266, both=True)
@@ -198,8 +202,8 @@ def four_ways():
     s.box(80, 390, 170, 56, ["your repository"], fill="#fff", stroke=STONE, size=17, dash="5 4",
           color=STONE)
     s.text(165, 372, "no path to it", size=14, color=STONE, anchor="middle", italic=True)
-    s.box(80, 452, 170, 44, ["Code tab: the agent,", "in the cloud"], fill="#fff", stroke=PERI,
-          size=13, dash="5 4")
+    s.box(70, 452, 190, 50, ["Code tab: the agent,", "in the cloud"], fill="#fff", stroke=PERI,
+          size=16, dash="5 4")
     # app: chat tab vs code tab
     s.box(370, 150, 170, 56, ["you"], fill=LAV, stroke=PURPLE, size=20)
     s.arrow(455, 206, 455, 266, both=True)
@@ -227,7 +231,7 @@ def four_ways():
     s.box(920, 372, 240, 50, ["shell · files · git · PR"], fill=LAV, stroke=PERI, size=16)
     s.arrow(1040, 422, 1040, 440)
     s.box(920, 440, 240, 44, ["your repository"], fill="#fff", stroke=INK, size=16)
-    s.text(1040, 545, "headless: limits on turns, cost, wall clock", size=13, color=AMBER,
+    s.text(1040, 605, "headless: limit turns, cost, time", size=16, color=AMBER,
            anchor="middle", bold=True)
     s.write("agents-four-ways.svg")
 
@@ -404,7 +408,7 @@ def anatomy():
         if i < 3:
             s.arrow(620, y + 62, 620, y + 90)
     s.path("M 740 480 Q 800 480 800 338 Q 800 196 740 196", color=PURPLE)
-    s.text(620, 530, "repeat until the persona's timebox (10 to 45 min) is spent", size=17, color=STONE,
+    s.text(620, 545, "repeat until the reader's timebox is spent", size=17, color=STONE,
            anchor="middle", italic=True)
     for y in (100, 190, 285, 387):
         s.path(f"M 440 {y} Q 470 {y} 500 196", color=PERI, sw=1.8)
@@ -434,15 +438,15 @@ def orchestrator_vs_specialist():
     s.box(400, 30, 400, 70, ["orchestrator", "goal: review one page as ten different readers"],
           fill=LAV, stroke=PURPLE, size=19, bold_first=True)
     names = [["a", "hydrologist"], ["a", "seismologist"], ["a", "geodesist"],
-             ["a research", "software eng."], ["a", "statistician"], ["a data", "curator"],
-             ["a field", "engineer"], ["a journal", "editor"], ["a graduate", "student"],
-             ["an emergency", "manager"]]
+             ["a research", "engineer"], ["a", "statistician"], ["a data", "curator"],
+             ["a field", "engineer"], ["a journal", "editor"], ["a grad", "student"],
+             ["emergency", "manager"]]
     xs = [55 + i * 110 for i in range(10)]
     for x, n in zip(xs, names):
-        s.box(x, 190, 100, 56, n, fill="#fff", stroke=PURPLE, size=13)
-        s.arrow(600, 100, x + 50, 190, color=PERI, sw=1.5)
-        s.arrow(x + 50, 246, x + 50, 300, color=STONE, sw=1.5)
-        s.path(f"M {x + 50} 344 Q {x + 50} 385 600 400", color=PURPLE, sw=1.5)
+        s.box(x, 190, 106, 60, n, fill="#fff", stroke=PURPLE, size=16)
+        s.arrow(600, 100, x + 53, 190, color=PERI, sw=1.5)
+        s.arrow(x + 53, 250, x + 53, 300, color=STONE, sw=1.5)
+        s.path(f"M {x + 53} 344 Q {x + 53} 385 600 400", color=PURPLE, sw=1.5)
     s.text(600, 165, "ten readers, chosen for the page; in parallel; none sees another's output", size=18,
            color=STONE, anchor="middle", italic=True)
     s.box(55, 300, 1090, 44, ["one shared rubric and method: eight dimensions · severity · evidence rules · report format"],
@@ -513,45 +517,46 @@ def evaluation():
     s.text(40, 400, "expert scoring says whether it is useful to a researcher.",
            size=17, color=STONE, italic=True)
     # result and phasing
-    s.box(40, 440, 480, 80, ["early result (FrugalMind board)",
+    s.box(40, 440, 480, 100, ["early result (FrugalMind board)",
                              "local 7B + skills: perfect on configuration tasks;",
                              "numerical code: cloud only, ~0.56 → 0.76 with skills",
                              "task counts and N: TODO"],
           fill=LAV, stroke=PERI, size=14, bold_first=True)
-    s.text(40, 560, "dashed = in the CSSI plan, not running yet.  v0 live: FrugalMind, agent tasks  →  v0.5 (Y1): first hazard task",
+    s.text(40, 575, "dashed = in the CSSI plan, not running yet.  v0 live: FrugalMind, agent tasks  →  v0.5 (Y1): first hazard task",
            size=16, color=INK)
-    s.text(40, 590, "→  v1 (Y2): containerised submissions, auto-scoring  →  v2 (Y3): pillar × hazard grid",
-           size=17, color=INK)
+    s.text(40, 605, "→  v1 (Y2): containerised submissions, auto-scoring  →  v2 (Y3): pillar × hazard grid",
+           size=16, color=INK)
     s.text(1170, 530, "process, not only outcome: the research-workflow track scores trajectories",
            size=16, color=PURPLE, bold=True, anchor="end")
     s.write("agents-evaluation.svg")
 
 
 def timeline():
-    """How we got here. Dated anchors only where fetched (Wikipedia, ChatGPT page,
-    2026-09-21); later stages are ordered, not dated."""
-    s = Svg(1200, 400)
-    y = 190
-    s.arrow(40, y, 1170, y, color=PERI, sw=3)
+    """How we got here. Every date from a fetched page (Wikipedia ChatGPT and GPT-3
+    pages, Anthropic announcements, the vendor models page, 2026-09-21)."""
+    s = Svg(1200, 470)
+    y = 230
+    s.arrow(40, y, 1170, y, color=PERI, sw=4)
     stages = [
-        (110, "chat", ["a model behind a text box", "ChatGPT, 30 Nov 2022 (GPT-3.5)"], True),
-        (340, "tools", ["the model may call functions", "plugins and GPT-4, Mar 2023"], True),
-        (570, "a standard for tools", ["MCP: connect AI apps to", "external systems, 25 Nov 2024"], True),
-        (800, "this vendor's coding agent", ["its first, a research", "preview, 24 Feb 2025"], True),
-        (1030, "the window", ["2,048 tokens (GPT-3, 2020) to", "1M on the largest 2026 models"], True),
+        (110, "Nov 2022", "chat", "a text box"),
+        (340, "Mar 2023", "tools", "it may call functions"),
+        (570, "Nov 2024", "a standard", "MCP: plug tools in"),
+        (800, "Feb 2025", "coding agent", "this vendor's first"),
+        (1030, "2026", "the window", "2,048 tokens to 1M"),
     ]
-    for x, title, lines, dated in stages:
-        col = PURPLE if dated else PERI
-        s.parts.append(f'<circle cx="{x}" cy="{y}" r="11" fill="{col}"/>')
-        s.text(x, 118, title, size=19, color=PURPLE, anchor="middle", bold=True)
-        s.text(x, 146, lines[0], size=14, color=INK, anchor="middle")
-        s.text(x, 167, lines[1], size=13, color=STONE, anchor="middle", italic=True)
-    s.text(600, 260, "What changed for research: a window that holds a repository, tool results the model must read,",
-           size=17, color=INK, anchor="middle")
-    s.text(600, 288, "retrieval that finds real papers, and a harness that runs the loop against your own code.",
-           size=17, color=INK, anchor="middle")
-    s.text(600, 340, "Every date from a fetched page (Wikipedia, Anthropic announcements, the vendor models page); see the sources slide.",
-           size=14, color=STONE, anchor="middle", italic=True)
+    for x, date, title, line in stages:
+        s.parts.append(f'<circle cx="{x}" cy="{y}" r="14" fill="{PURPLE}"/>')
+        s.text(x, 120, date, size=38, color=PURPLE, anchor="middle", bold=True)
+        s.text(x, 175, title, size=26, color=INK, anchor="middle", bold=True)
+        s.text(x, 275, line, size=19, color=STONE, anchor="middle")
+    s.text(600, 345, "The window was a big step. What made it usable is the infrastructure around the model:",
+           size=24, color=INK, anchor="middle", bold=True)
+    s.text(600, 382, "fewer hallucinations, because retrieval and tool results ground what it says,",
+           size=23, color=INK, anchor="middle")
+    s.text(600, 416, "and the files that tell it what you want and how to test it.",
+           size=23, color=INK, anchor="middle")
+    s.text(600, 458, "It moves fast, and geoscience is lagging.", size=24, color=PURPLE,
+           anchor="middle", bold=True)
     s.write("agents-timeline.svg")
 
 
@@ -606,8 +611,8 @@ def overview():
            color=STONE, anchor="middle", italic=True)
     s.text(620, 322, "shapes what it tries; only the settings change what is allowed", size=15,
            color=STONE, anchor="middle", italic=True)
-    s.box(360, 340, 520, 50, ["the loop: call the model · parse the tool call · check · run · append the result"],
-          fill=LAV, stroke=PERI, size=15)
+    s.box(360, 340, 520, 50, ["the loop: call · parse the tool call · check · run · append"],
+          fill=LAV, stroke=PERI, size=16)
     # MCP outside
     s.arrow(900, 175, 950, 175, both=True)
     s.box(950, 80, 220, 190, ["4. MCP", "servers outside the harness:", "data catalogues, GitHub,",
@@ -618,11 +623,33 @@ def overview():
           stroke=INK, size=17)
     s.arrow(485, 270, 485, 440, color=PERI, sw=2)
     s.arrow(760, 270, 760, 440, color=AMBER, sw=2)
-    s.text(500, 420, "acts on", size=14, color=STONE)
-    s.text(775, 420, "decides which act runs", size=14, color=STONE)
+    s.text(385, 420, "acts on", size=16, color=STONE)
+    s.text(860, 420, "decides which act runs", size=16, color=STONE, anchor="end")
     s.text(600, 560, "Tools give the model hands; permissions decide which hand moves; MCP plugs in what is outside the repository.",
            size=17, color=PURPLE, anchor="middle", bold=True)
     s.write("agents-overview.svg")
+
+
+def compose():
+    """How we compose an agent: an LLM, tools, a harness, a loop. Big type."""
+    s = Svg(1200, 560)
+    s.box(40, 180, 260, 200, ["LLM", "predicts the", "next token"], fill=LAV, stroke=INK,
+          size=26, bold_first=True)
+    s.text(330, 295, "+", size=60, color=PURPLE, anchor="middle", bold=True)
+    s.box(360, 180, 260, 200, ["tools", "shell · python · git", "files · web"], fill="#fff",
+          stroke=PURPLE, size=26, bold_first=True)
+    # harness around both
+    s.box(20, 120, 620, 320, [], fill="none", stroke=PURPLE, sw=3, rx=18, dash="12 8")
+    s.text(330, 100, "harness: runs the tool calls, checks permissions", size=24, color=PURPLE,
+           anchor="middle", bold=True)
+    # loop arrow
+    s.path("M 640 150 C 840 150 840 410 640 410", color=PURPLE, sw=4)
+    s.text(830, 270, "loop", size=34, color=PURPLE, bold=True)
+    s.text(830, 310, "call · run · append the result ·", size=20, color=INK)
+    s.text(830, 338, "call again, until done", size=20, color=INK)
+    s.text(600, 520, "an agent  =  a model, with tools, in a harness, in a loop", size=30,
+           color=PURPLE, anchor="middle", bold=True)
+    s.write("agents-compose.svg")
 
 
 if __name__ == "__main__":
@@ -640,3 +667,4 @@ if __name__ == "__main__":
     orchestrator_vs_specialist()
     evaluation()
     overview()
+    compose()

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="Inter, Helvetica, Arial, sans-serif" font-size="14">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
@@ -69,7 +69,17 @@
   <path d="M 600 242 Q 525 242 525 184" fill="none" stroke="#4b2e83" stroke-width="2" marker-end="url(#arrow-purple)"/>
   <path d="M 525 140 Q 525 82 600 82" fill="none" stroke="#4b2e83" stroke-width="2" marker-end="url(#arrow-purple)"/>
 
+  <!-- the human: always at the start; optionally at the gate before each act -->
+  <rect x="455" y="90" width="140" height="44" rx="6" fill="#fff7e6" stroke="#c77d00" stroke-width="2"/>
+  <text x="525" y="108" text-anchor="middle" font-size="13" fill="#c77d00" font-weight="700">you</text>
+  <text x="525" y="126" text-anchor="middle" font-size="12" fill="#c77d00">goal · rules · stop</text>
+  <path d="M 595 100 Q 598 90 600 86" fill="none" stroke="#c77d00" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="786" y="108" width="160" height="24" rx="4" fill="#fff7e6" stroke="#c77d00" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="866" y="125" text-anchor="middle" font-size="12" fill="#c77d00">gate: you, if you choose</text>
+
   <text x="560" y="300" font-size="12" fill="#555">The model decides the next step from what it just observed.</text>
   <text x="560" y="318" font-size="12" fill="#555">Every tool result re-enters the context window.</text>
-  <text x="560" y="336" font-size="12" fill="#555">The human sets the goal, the rules, and the stop condition.</text>
+  <text x="560" y="336" font-size="12" fill="#555">You always enter at the start. Where else you enter, on every</text>
+  <text x="560" y="354" font-size="12" fill="#555">action, on every diff, only at the end, or nowhere, is the hardest</text>
+  <text x="560" y="372" font-size="12" fill="#555">design question, and the answer keeps moving toward less.</text>
 </svg>
