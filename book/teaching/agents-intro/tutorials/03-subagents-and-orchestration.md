@@ -11,7 +11,7 @@ description: Split one task across subagents with separate context windows, conn
 code cells are empty and carry a comment saying what belongs in each. To be completed
 with UW eScience. Compute needs are tracked in
 [compute requirements](../compute-requirements.md). Companion to the
-[lecture](../agents-intro.md), segments 8 to 14 and 33 to 39.
+[lecture](../agents-intro.md), segments 13 to 20 and 27 to 34.
 :::
 
 ## Learning objectives
@@ -57,7 +57,7 @@ permission prompt.
 
 ### Step 1. Read a subagent definition
 
-Open one file under `.claude/agents/`, for example the PhD-student persona. Note the
+Open one of the reviewer definitions under `.claude/agents/`. Note the
 front matter (name, description, tools allowed), the instructions, and where the output
 is to be filed. Compare it to a skill from tutorial 2: the subagent has its own tool
 list and its own context; the skill has neither.

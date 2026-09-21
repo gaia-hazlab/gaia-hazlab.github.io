@@ -52,3 +52,9 @@
 
 [Anthropic (2024, 25 Nov). Introducing the Model Context Protocol. Anthropic (2025, 24 Feb). Claude 3.7 Sonnet and Claude Code. Wikipedia contributors (2026). GPT-3. Anthropic (2026). Models overview, platform.claude.com. All accessed 21 September 2026.]{.ref-cite}
 ::::
+
+:::: {.ref-item}
+[◦]{.ref-verdict .note} [Which tools ask by default, the rule syntax and modes, the settings paths; `.mcp.json` and its scopes; what a subagent is, where its file lives, its front matter, its own window.]{.ref-msg}
+
+[Anthropic (2026). Claude Code: configure permissions; connect to tools via MCP; subagents. code.claude.com/docs. All accessed 21 September 2026.]{.ref-cite}
+::::

@@ -268,7 +268,7 @@ def subagents():
           stroke=PURPLE, size=20, bold_first=True)
     s.arrow(520, 100, 300, 160)
     s.arrow(680, 100, 900, 160)
-    s.box(150, 160, 300, 90, ["subagent A", "persona: PhD student",
+    s.box(150, 160, 300, 90, ["subagent A", "reviewer: a hydrologist",
                               "fresh window · read-only tools"], fill="#fff",
           stroke=PURPLE, size=18, bold_first=True)
     s.box(750, 160, 300, 90, ["subagent B", "unsourced-claims check",
@@ -366,11 +366,11 @@ def anatomy():
     """One specialised agent, as this repo defines it: a persona reviewer."""
     s = Svg(1200, 640)
     # left: the definition file and what it pulls in
-    s.text(40, 45, "The definition: .claude/agents/gaia-review-<persona>.md", size=21,
+    s.text(40, 45, "The definition: .claude/agents/review-<reader>.md", size=21,
            color=PURPLE, bold=True)
     s.box(40, 65, 400, 70, ["front matter", "name · description · tools allow-list"],
           fill=LAV, stroke=PURPLE, size=18, bold_first=True)
-    s.box(40, 150, 400, 80, ["who you are  (persona SKILL.md)",
+    s.box(40, 150, 400, 80, ["who you are  (the reader's own file)",
                              "checks in order · weights · vocabulary limits ·",
                              "signature question"],
           fill="#fff", stroke=PURPLE, size=17, bold_first=True)
@@ -388,7 +388,7 @@ def anatomy():
           fill="#fff", stroke=INK, size=17, bold_first=True)
     s.text(40, 560, "References and rubric are shared files, read at run time,", size=18,
            color=STONE, italic=True)
-    s.text(40, 586, "so ten personas judge against one standard.", size=18, color=STONE,
+    s.text(40, 586, "so ten readers judge against one standard.", size=18, color=STONE,
            italic=True)
     # middle: the loop
     s.box(500, 65, 240, 60, ["inputs", "live site URLs · local checkout"], fill="#fff",
@@ -410,7 +410,7 @@ def anatomy():
         s.path(f"M 440 {y} Q 470 {y} 500 196", color=PERI, sw=1.8)
     # right: the output
     s.box(870, 120, 300, 300, ["output: one file",
-                              "review-logs/<date>/<persona>.md",
+                              "review-logs/<date>/<reader>.md",
                               "",
                               "one paragraph",
                               "weighted score / 100",
@@ -431,23 +431,23 @@ def anatomy():
 
 def orchestrator_vs_specialist():
     s = Svg(1200, 660)
-    s.box(400, 30, 400, 70, ["orchestrator", "goal: audit the site as ten outsiders"],
+    s.box(400, 30, 400, 70, ["orchestrator", "goal: review one page as ten different readers"],
           fill=LAV, stroke=PURPLE, size=19, bold_first=True)
-    names = [["PhD", "student"], ["research", "software eng."], ["national", "lab scientist"],
-             ["faculty", "panel reviewer"], ["program", "officer"], ["science", "advisor"],
-             ["impact", "evaluator"], ["climate-risk", "CTO"], ["energy", "CEO"],
-             ["geospatial", "AI CTO"]]
+    names = [["a", "hydrologist"], ["a", "seismologist"], ["a", "geodesist"],
+             ["a research", "software eng."], ["a", "statistician"], ["a data", "curator"],
+             ["a field", "engineer"], ["a journal", "editor"], ["a graduate", "student"],
+             ["an emergency", "manager"]]
     xs = [55 + i * 110 for i in range(10)]
     for x, n in zip(xs, names):
         s.box(x, 190, 100, 56, n, fill="#fff", stroke=PURPLE, size=13)
         s.arrow(600, 100, x + 50, 190, color=PERI, sw=1.5)
         s.arrow(x + 50, 246, x + 50, 300, color=STONE, sw=1.5)
         s.path(f"M {x + 50} 344 Q {x + 50} 385 600 400", color=PURPLE, sw=1.5)
-    s.text(600, 165, "ten specialists, in parallel, none sees another's output", size=18,
+    s.text(600, 165, "ten readers, chosen for the page; in parallel; none sees another's output", size=18,
            color=STONE, anchor="middle", italic=True)
     s.box(55, 300, 1090, 44, ["one shared rubric and method: eight dimensions · severity · evidence rules · report format"],
           fill=LAV, stroke=PERI, size=17, rx=6)
-    s.box(400, 400, 400, 96, ["synthesis", "convergent (3+ personas) · divergent, kept divergent ·",
+    s.box(400, 400, 400, 96, ["synthesis", "convergent (3+ readers) · divergent, kept divergent ·",
                               "blocker table · cheap wins · pages nobody visited",
                               "scores as a table, never an average"],
           fill="#fff", stroke=PURPLE, size=15, bold_first=True)
@@ -456,7 +456,7 @@ def orchestrator_vs_specialist():
     s.text(60, y0, "Orchestrator", size=20, color=PURPLE, bold=True)
     s.text(640, y0, "Specialist", size=20, color=PURPLE, bold=True)
     rows = [("broad goal; decides what to dispatch", "narrow role, fixed weights, own vocabulary"),
-            ("holds only the ten reports", "holds the whole site, for its timebox"),
+            ("holds only the ten reports", "holds the whole page, for its timebox"),
             ("dispatch · merge · gate outward actions", "fetch · read · write one file")]
     for i, (a, b) in enumerate(rows):
         s.text(60, y0 + 32 + i * 28, "• " + a, size=17, color=INK)
@@ -582,6 +582,49 @@ def payoff():
     s.write("agents-payoff.svg")
 
 
+def overview():
+    """What lets a language model act: the model, the tools, the permission gate, and
+    MCP for everything outside the harness. Permission facts from the vendor's
+    permissions page (code.claude.com/docs/en/permissions, fetched 2026-09-21)."""
+    s = Svg(1200, 620)
+    # the model
+    s.box(40, 60, 250, 120, ["1. the LLM", "predicts the next token;", "trained to emit tool calls",
+                             "as structured text"], fill=LAV, stroke=INK, size=17, bold_first=True)
+    s.arrow(290, 120, 340, 120)
+    # the harness box around tools + permissions
+    s.box(340, 30, 560, 380, [], fill="#fff", stroke=PURPLE, sw=2.5, rx=12)
+    s.text(620, 60, "the harness", size=20, color=PURPLE, anchor="middle", bold=True)
+    s.box(360, 80, 250, 190, ["2. the tools", "shell: scripts, python,", "scientific software, git",
+                              "files: read, edit", "web: fetch, search"], fill="#fff",
+          stroke=PURPLE, size=16, bold_first=True)
+    s.arrow(610, 175, 640, 175, both=True, color=PERI, sw=2)
+    s.box(640, 80, 240, 190, ["3. the permissions", "read-only: runs;",
+                              "edits, commands: ask", "allow / deny / ask rules",
+                              "modes: plan · manual ·", "accept edits · auto"],
+          fill=AMBER_BG, stroke=AMBER, size=15, bold_first=True)
+    s.text(620, 300, "enforced by the harness, not the model: a rule in the prompt", size=15,
+           color=STONE, anchor="middle", italic=True)
+    s.text(620, 322, "shapes what it tries; only the settings change what is allowed", size=15,
+           color=STONE, anchor="middle", italic=True)
+    s.box(360, 340, 520, 50, ["the loop: call the model · parse the tool call · check · run · append the result"],
+          fill=LAV, stroke=PERI, size=15)
+    # MCP outside
+    s.arrow(900, 175, 950, 175, both=True)
+    s.box(950, 80, 220, 190, ["4. MCP", "servers outside the harness:", "data catalogues, GitHub,",
+                              "databases, calendars;", "same name · description ·", "schema as a tool"],
+          fill="#fff", stroke=PURPLE, size=15, bold_first=True, dash="7 4")
+    # your repo underneath
+    s.box(360, 440, 520, 60, ["your repository: code · tests · data · git history"], fill="#fff",
+          stroke=INK, size=17)
+    s.arrow(485, 270, 485, 440, color=PERI, sw=2)
+    s.arrow(760, 270, 760, 440, color=AMBER, sw=2)
+    s.text(500, 420, "acts on", size=14, color=STONE)
+    s.text(775, 420, "decides which act runs", size=14, color=STONE)
+    s.text(600, 560, "Tools give the model hands; permissions decide which hand moves; MCP plugs in what is outside the repository.",
+           size=17, color=PURPLE, anchor="middle", bold=True)
+    s.write("agents-overview.svg")
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     stack()
@@ -596,3 +639,4 @@ if __name__ == "__main__":
     anatomy()
     orchestrator_vs_specialist()
     evaluation()
+    overview()

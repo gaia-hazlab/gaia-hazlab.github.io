@@ -105,83 +105,9 @@ Line 1: the harness's own standing text · the standing instructions in your rep
 This is the debunk. The model is called once per turn with the whole message list and returns tokens. If they end in a structured tool-call block, the harness parses it, checks permissions, runs the function, appends the result, and calls the model again. No memory, no execution inside the model, no stages. Why a tool at all: next-token prediction cannot execute, count, or do arithmetic reliably; a shell with python in it is the workaround. A subagent is this loop started again with a fresh message list, launched by a tool call, whose final text comes back as a tool result. A permission prompt is the harness pausing between parse and run. The loop is only as good as its verify step, and it has no natural end: done, budget, or killed.
 :::
 
-## The pieces {background-color="#f5f3fb"}
-
-[8 to 14 min]{.minutes}
-
-![](../../../img/agents-stack.svg){.r-stretch}
-
-::: {.notes}
-One diagram, seven pieces. Left column is loaded every turn and paid for every call. Centre is the harness: the window and the loop. Right column is called on demand. Bottom is the model, which only ever sees tokens. Point at each box once; the next slides zoom in.
-:::
-
-## Context file: ours
-
-```
-CLAUDE.md  →  5 lines, points at AGENTS.md
-AGENTS.md  →  one screen: layout · build commands ·
-              seven conventions · persona reviews
-```
-
-::: {.takeaway}
-What a good collaborator needs on day one and cannot find by reading the code. Nothing else.
-:::
-
-::: {.notes}
-Show what it omits: no MyST tutorial, no restated CONTRIBUTING. The vendor docs say this harness reads CLAUDE.md and can read an AGENTS.md written for other agents; other products keep their file elsewhere. The March post: knowledge anchor, standing instructions, situated prompt; the first two set output quality; the instructions are a living document.
-:::
-
-## The context window
-
-![](../../../img/agents-context-window.svg){.r-stretch}
-
-::: {.dim}
-Recall drops for material in the middle of a long context (Liu et al., 2024, TACL; on the sources slide). Compaction is itself a model call: the harness asks the model to summarise, then swaps the messages.
-:::
-
-::: {.notes}
-Tool results are the part people forget. Compaction is a lossy summary; rules in the prompt may not survive it. Consequences: invariants in the context file, big reads in a subagent, new task in a new session. When a good agent drifts, suspect the window first.
-:::
-
-## Skill · subagent · MCP {.smaller}
-
-| | What it is | Ours |
-|---|---|---|
-| **Skill** | `SKILL.md`: description in the window from startup; the model picks it, the harness loads the body | `plain-voice`; one more built live today |
-| **Subagent** | fresh window, own tools, one task; only the report returns | ten persona reviewers → `review-logs/` |
-| **MCP** | open standard for connecting AI applications to external systems; "a USB-C port for AI applications" | tutorial 3 |
-
-::: {.takeaway}
-A skill costs its description on every call and its body only when loaded. Every MCP server you connect is a party whose output the model will act on.
-:::
-
-::: {.dim}
-Vendor conventions: `CLAUDE.md`, skills, `claude -p`. General: the loop, `AGENTS.md` (this vendor's docs say it reads that too), MCP as a published standard; subagents: here, and in other harnesses under other names (TODO verify). Prompt injection: tool results and instructions are one token stream with no provenance bit; a sentence inside a fetched page reads like a sentence from you.
-:::
-
-::: {.notes}
-The description is the part to keep short: re-sent on every call whether or not the skill fires; the body can be long. plain-voice: about 60 words of description, 2300 of body. Subagents buy a fresh window and attention per task, not fewer tokens. MCP definition and analogy are the protocol site's own words; the spec lives at modelcontextprotocol.io. Capability by configuration, risk by the same route.
-:::
-
-## Subagents, and where injection enters
-
-![](../../../img/agents-subagents.svg){.r-stretch}
-
-::: {.notes}
-A subagent is the loop started again with a fresh message list, launched by a tool call; only its final report re-enters the parent, as a tool result. That is also where injected text enters: tool results and instructions are one token stream with no provenance bit, so a sentence in a fetched page or a subagent's report that says "ignore your instructions" reads like a sentence from you. The permission check is the harness's defence; the merge step in tutorial 3 is yours. Ten reviews cost ten windows' worth of tokens, not fewer; what they buy is a fresh window and attention per task.
-:::
-
-## Anatomy of one agent
-
-![](../../../img/agents-anatomy.svg){.r-stretch}
-
-::: {.notes}
-A real one: a persona reviewer from this repository. Left, the definition: front matter with a tools allow-list, then three files it reads at run time: who it is, how to run, how to judge. The rubric and method are shared, so ten personas score against one standard. Middle, the loop under the persona's timebox, 10 to 45 minutes. Right, one structured file in review-logs, which a synthesis step merges. References and rubric are files, not prompts: that is what makes the output comparable across runs. The synthesis that merges ten of these is on the lecture page, not a slide.
-:::
-
 ## Four ways to use one today {background-color="#f5f3fb"}
 
-[14 to 20 min]{.minutes}
+[8 to 13 min]{.minutes}
 
 ![](../../../img/agents-four-ways.svg){.r-stretch}
 
@@ -224,6 +150,87 @@ A run nobody watches needs a turn limit, a cost limit, and a wall-clock limit.
 
 ::: {.notes}
 The shape is real; the specifics are not written down. Tell it from memory and say that is what it is. The lesson does not depend on the numbers.
+:::
+
+## The pieces that let a model act {background-color="#f5f3fb"}
+
+[13 to 20 min]{.minutes}
+
+![](../../../img/agents-overview.svg){.r-stretch}
+
+::: {.notes}
+Four things. One, the LLM: predicts tokens, trained to emit a tool call as structured text, never executes. Two, the tools: the shell, so scripts, Python, whatever scientific software the environment has, git; file read and edit; web fetch and search. "Can it run ObsPy" has the same answer as "can you". Three, the permissions, the harness's gate between the parsed call and its execution; the defaults are the vendor's: reads and searches run, shell commands ask except a read-only set, edits ask, web asks. Rules per tool and pattern, modes that shift the whole gate. Read the vendor's sentence aloud: rules are enforced by the harness, not the model; a prompt shapes what it tries, only the settings change what is allowed. Four, MCP: tools outside the harness, advertised with the same name, description and schema, so a data catalogue looks like one more function. That is what lets model plus tools act beyond the repository, and what adds a party whose output the model will act on.
+:::
+
+## Context file: ours
+
+```
+CLAUDE.md  →  5 lines, points at AGENTS.md
+AGENTS.md  →  one screen: layout · build commands ·
+              seven conventions · persona reviews
+```
+
+::: {.takeaway}
+What a good collaborator needs on day one and cannot find by reading the code. Nothing else.
+:::
+
+::: {.notes}
+Show what it omits: no MyST tutorial, no restated CONTRIBUTING. The vendor docs say this harness reads CLAUDE.md and can read an AGENTS.md written for other agents; other products keep their file elsewhere. The March post: knowledge anchor, standing instructions, situated prompt; the first two set output quality; the instructions are a living document.
+:::
+
+## Where the files live
+
+```{.text .bigcode}
+your-repo/
+├── AGENTS.md, CLAUDE.md       instructions, read every session
+├── .claude/
+│   ├── settings.json          permissions: allow / deny / ask
+│   ├── settings.local.json    your approvals, git-ignored
+│   ├── skills/<name>/SKILL.md procedures, loaded on demand
+│   └── agents/<name>.md       subagents: role, tools, model, mode
+├── .mcp.json                  MCP servers, shared via git
+├── review-logs/<date>/        what the agents wrote, dated
+└── src/  tests/  docs/  SPEC.md
+```
+
+::: {.dim}
+Paths from the vendor's permissions, MCP and subagents pages. This repository ignores everything under `.claude/` except `skills/` and `agents/`, so local approvals never reach git.
+:::
+
+::: {.notes}
+Thirty seconds; leave it up. The answer to "what did you commit": the instructions, the shared rules, the skills, the agent definitions, the MCP list. Never the local approvals, never a key.
+:::
+
+## The context window
+
+![](../../../img/agents-context-window.svg){.r-stretch}
+
+::: {.dim}
+Recall drops for material in the middle of a long context (Liu et al., 2024, TACL; on the sources slide). Compaction is itself a model call: the harness asks the model to summarise, then swaps the messages.
+:::
+
+::: {.notes}
+Tool results are the part people forget. Compaction is a lossy summary; rules in the prompt may not survive it. Consequences: invariants in the context file, big reads in a subagent, new task in a new session. When a good agent drifts, suspect the window first.
+:::
+
+## Skills, and MCP again {.smaller}
+
+| | What it is | Ours |
+|---|---|---|
+| **Skill** | `SKILL.md`: description in the window from startup; the model picks it, the harness loads the body | `plain-voice`; one more built live at minute 27 |
+| **MCP** | open standard for connecting AI applications to external systems; "a USB-C port for AI applications" | `.mcp.json`; tutorial 3 |
+| **Subagent** | an agent definition with its own window; minute 27 | ten reviewer files → `review-logs/` |
+
+::: {.takeaway}
+A skill costs its description on every call and its body only when loaded. Every MCP server you connect is a party whose output the model will act on.
+:::
+
+::: {.dim}
+Vendor conventions: `CLAUDE.md`, skills, `claude -p`. General: the loop, `AGENTS.md` (this vendor's docs say it reads that too), MCP as a published standard. Prompt injection: tool results and instructions are one token stream with no provenance bit; a sentence inside a fetched page reads like a sentence from you.
+:::
+
+::: {.notes}
+The description is the part to keep short: re-sent on every call whether or not the skill fires; the body can be long. plain-voice: about 60 words of description, 2300 of body. Subagents buy a fresh window and attention per task, not fewer tokens. MCP definition and analogy are the protocol site's own words; the spec lives at modelcontextprotocol.io. Capability by configuration, risk by the same route.
 :::
 
 ## Where it pays off for you {background-color="#f5f3fb"}
@@ -312,13 +319,13 @@ Two minutes, rehearsed. Scoped to one file because the repo-wide check would als
 
 ## Writing your own {background-color="#f5f3fb"}
 
-[27 to 33 min]{.minutes}
+[27 to 34 min]{.minutes}
 
 | | You write | Choose it when | Start from |
 |---|---|---|---|
 | **A line in `AGENTS.md`** | one sentence | the rule is short and always applies | `AGENTS.md` |
 | **A skill** | a `SKILL.md` | this session should follow a longer procedure, in its own window | `.claude/skills/plain-voice` |
-| **An agent definition** | a Markdown file: role, tools, instructions | the task needs a fresh window, fewer tools, or parallel copies | `.claude/agents/gaia-review-*.md` |
+| **An agent definition** (a subagent) | a Markdown file: role, tools, model, permission mode, instructions | the task needs a fresh window, fewer tools, or parallel copies | `.claude/agents/`, next two slides |
 | **A loop in Python** | tools as functions | you need a tool the harness lacks, a run you control end to end, or a model it does not drive | fifteen lines, next slide |
 
 ::: {.notes}
@@ -347,11 +354,27 @@ File: `.claude/skills/nsf-acknowledgement/SKILL.md`; line 1 is the front-matter 
 :::
 
 ::: {.dim}
-An agent definition has the same front matter plus a `tools:` line, then instructions: `name: gaia-review-phd-student-prospective` · `tools: Read, Grep, Glob, Bash, Write, WebFetch, WebSearch`.
+An agent definition has the same shape plus `tools:`, `model:`, `permissionMode:` and `maxTurns:` lines; an illustrative one is on the lecture page.
 :::
 
 ::: {.notes}
 Type it live. Fresh session, ask for a funding acknowledgement on mt-rainier.md, watch whether it triggers; if not, the description did not match: fix it in front of the room. The model picks the skill from its description; the harness loads the body; the body reads the page at use time so there is one source of truth. Loading a skill is itself a tool call, but it adds no capability: it can only use the tools the agent already has. Longer descriptions fire more reliably and cost more per call.
+:::
+
+## A subagent, and its rubric and references
+
+![](../../../img/agents-anatomy.svg){.r-stretch}
+
+::: {.notes}
+What a subagent is: the vendor's page says a specialised assistant for one kind of task, in its own context window with its own system prompt, tools and permissions; mechanically, the loop from minute 5 started again with a fresh message list, launched by a tool call, whose final text returns as a tool result. The definition is a Markdown file under .claude/agents with front matter: name, description, tools, model, permissionMode, maxTurns. Its rubric and references: the instructions are two lines because the method (what to open, a timebox) and the rubric (dimensions, severity, evidence rules, report format) are shared files it reads at run time; that is what makes ten readers comparable. The reader role in the figure is illustrative.
+:::
+
+## Adversarial reviews: ten readers, one rubric
+
+![](../../../img/agents-orchestrator-vs-specialist.svg){.r-stretch}
+
+::: {.notes}
+Once a reviewer is a file, ten reviewers are ten files: an orchestrator runs them in parallel on the same page, none seeing another's output, then synthesises: keep what three or more raised, keep disagreements as disagreements, list blockers, scores as a table never an average. Isolation stops copying; it does not remove the shared weights, so convergence is a lead, not a statistic. Ten windows' worth of tokens, not fewer. Injection enters where the reports re-enter the parent as tool results; keep only the fields the report format defines. Roles are illustrative; choose them for the page. If running long, talk over this slide rather than show it.
 :::
 
 ## The loop in fifteen real lines
@@ -390,7 +413,7 @@ A tool is a decorated function with a docstring; the runner drives the loop and 
 
 ## Where agents sit in GAIA, and how we score them {background-color="#f5f3fb"}
 
-[33 to 39 min]{.minutes}
+[34 to 39 min]{.minutes}
 
 ![](../../../img/agents-gaia-layer.svg){.r-stretch}
 
@@ -409,7 +432,7 @@ Three hubs, three named agents in the GaiaAgent layer, HazEvalHub scoring all of
 | Translator | natural language → workflow across hubs |
 
 ::: {.dim}
-Derived plan, project_coordination/03. First build, by the documents alone: `gaia-template-agent`, the unit the delivery metric D1 counts (a delivery metric, not a rubric dimension), and the repository-template use from minute 24 made reusable.
+Derived plan, project_coordination/03. First build, by the documents alone: `gaia-template-agent`, the unit the delivery metric D1 counts (a delivery metric, not a rubric dimension), and the repository-template use from minute 20 made reusable.
 :::
 
 ::: {.todo}

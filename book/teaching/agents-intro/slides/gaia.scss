@@ -157,6 +157,7 @@ $code-block-border-color: $gaia-peri-light;
   padding: 0.6em 0.8em;
 }
 .reveal code { color: $gaia-purple-deep; }
+.reveal .bigcode code { font-size: 1.05em; line-height: 1.4; }
 
 // ---- Spacing -----------------------------------------------------------
 .reveal img { max-height: 82vh; object-fit: contain; margin: 0; }

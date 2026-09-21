@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
 <defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
-<text x="40" y="45" text-anchor="start" font-size="21" fill="#4b2e83" font-weight="700">The definition: .claude/agents/gaia-review-&lt;persona&gt;.md</text>
+<text x="40" y="45" text-anchor="start" font-size="21" fill="#4b2e83" font-weight="700">The definition: .claude/agents/review-&lt;reader&gt;.md</text>
 <rect x="40" y="65" width="400" height="70" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
 <text x="240.0" y="94.6" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">front matter</text>
 <text x="240.0" y="118.0" text-anchor="middle" font-size="18" fill="#2a1a4f">name · description · tools allow-list</text>
 <rect x="40" y="150" width="400" height="80" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
-<text x="240.0" y="173.8" text-anchor="middle" font-size="17" fill="#2a1a4f" font-weight="700">who you are  (persona SKILL.md)</text>
+<text x="240.0" y="173.8" text-anchor="middle" font-size="17" fill="#2a1a4f" font-weight="700">who you are  (the reader&#x27;s own file)</text>
 <text x="240.0" y="195.9" text-anchor="middle" font-size="17" fill="#2a1a4f">checks in order · weights · vocabulary limits ·</text>
 <text x="240.0" y="218.1" text-anchor="middle" font-size="17" fill="#2a1a4f">signature question</text>
 <rect x="40" y="245" width="400" height="80" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
@@ -22,7 +22,7 @@
 <text x="240.0" y="490.9" text-anchor="middle" font-size="17" fill="#2a1a4f">cite the live URL · a 404 is a finding ·</text>
 <text x="240.0" y="513.0" text-anchor="middle" font-size="17" fill="#2a1a4f">say you are a simulation</text>
 <text x="40" y="560" text-anchor="start" font-size="18" fill="#6f6890" font-style="italic">References and rubric are shared files, read at run time,</text>
-<text x="40" y="586" text-anchor="start" font-size="18" fill="#6f6890" font-style="italic">so ten personas judge against one standard.</text>
+<text x="40" y="586" text-anchor="start" font-size="18" fill="#6f6890" font-style="italic">so ten readers judge against one standard.</text>
 <rect x="500" y="65" width="240" height="60" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
 <text x="620.0" y="89.9" text-anchor="middle" font-size="17" fill="#2a1a4f" font-weight="700">inputs</text>
 <text x="620.0" y="112.0" text-anchor="middle" font-size="17" fill="#2a1a4f">live site URLs · local checkout</text>
@@ -50,7 +50,7 @@
 <path d="M 440 387 Q 470 387 500 196" fill="none" stroke="#6d5bd0" stroke-width="1.8" marker-end="url(#a-stone)"/>
 <rect x="870" y="120" width="300" height="300" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
 <text x="1020.0" y="198.6" text-anchor="middle" font-size="17" fill="#2a1a4f" font-weight="700">output: one file</text>
-<text x="1020.0" y="220.7" text-anchor="middle" font-size="17" fill="#2a1a4f">review-logs/&lt;date&gt;/&lt;persona&gt;.md</text>
+<text x="1020.0" y="220.7" text-anchor="middle" font-size="17" fill="#2a1a4f">review-logs/&lt;date&gt;/&lt;reader&gt;.md</text>
 <text x="1020.0" y="242.8" text-anchor="middle" font-size="17" fill="#2a1a4f"></text>
 <text x="1020.0" y="264.9" text-anchor="middle" font-size="17" fill="#2a1a4f">one paragraph</text>
 <text x="1020.0" y="287.0" text-anchor="middle" font-size="17" fill="#2a1a4f">weighted score / 100</text>
