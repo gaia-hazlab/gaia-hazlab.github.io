@@ -15,7 +15,7 @@ $gaia-paper: #ffffff;
 
 $font-family-sans-serif: "Inter", "Segoe UI", -apple-system, system-ui, sans-serif;
 $font-family-monospace: "SFMono-Regular", Menlo, Consolas, monospace;
-$presentation-font-size-root: 40px;
+$presentation-font-size-root: 42px;
 $presentation-h1-font-size: 2.0em;
 $presentation-h2-font-size: 1.4em;
 $presentation-h3-font-size: 1.0em;
@@ -150,14 +150,17 @@ $code-block-border-color: $gaia-peri-light;
 .reveal pre {
   box-shadow: none;
   border-radius: 0.4em;
+  font-size: 0.62em;          // reveal's default is 0.55em of the root size
 }
 .reveal pre code {
-  font-size: 0.72em;
-  line-height: 1.35;
-  padding: 0.6em 0.8em;
+  font-size: 1em;
+  line-height: 1.4;
+  padding: 0.7em 0.9em;
+  max-height: none !important; // never scroll a code block on a slide
 }
 .reveal code { color: $gaia-purple-deep; }
-.reveal .bigcode code { font-size: 1.05em; line-height: 1.4; }
+.reveal pre.bigcode { font-size: 0.8em; }
+.reveal pre.bigcode code { line-height: 1.45; }
 
 // ---- Spacing -----------------------------------------------------------
 .reveal img { max-height: 82vh; object-fit: contain; margin: 0; }
@@ -189,3 +192,4 @@ $code-block-border-color: $gaia-peri-light;
   color: $gaia-stone;
   line-height: 1.3;
 }
+.reveal div.sourceCode pre code, .reveal .sourceCode code { max-height: none !important; overflow: visible !important; }

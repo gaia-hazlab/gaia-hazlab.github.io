@@ -131,23 +131,29 @@ Surfaces from the vendor's documentation: terminal, VS Code and JetBrains, deskt
 Read the table down "who watches": that is the real difference between rows. Two rows have "nobody" in them: headless CLI and scheduled app tasks; both need limits on turns, cost and wall clock. The cluster column is the HPC question: only the CLI is a plain terminal program.
 :::
 
-## Headless on cascadia, the group's machine
+## Headless on a server: issues in, pull requests out
 
-```
-for issue in open_issues:
-    claude -p "smallest change that resolves #<issue>; open a PR"
-```
+```bash
+# 1. the queue: one issue per task, scoped, labelled
+gh issue create --title "Reader: skip empty traces in read_mseed" \
+  --body "SPEC.md section 3. Done when tests/test_io.py passes." --label agent
 
-::: {.todo}
-Repository · issue numbers · exact minimal-change wording and where it lived · scheduler · permission mode · the run that did not stop: what it repeated, how long, cost, how detected, who killed it, what it left behind.
-:::
+# 2. the loop, on any machine with a shell and the repository
+for n in $(gh issue list --label agent --json number --jq '.[].number'); do
+  claude -p "Make the smallest change that resolves issue #$n; run the tests; open a PR." \
+    --max-turns 40 --max-budget-usd 5 --output-format json \
+    --permission-mode acceptEdits --disallowedTools "Bash(git push --force *)" \
+    > "runs/issue-$n.json"
+done
+# 3. you: review the PRs, merge or close, one at a time
+```
 
 ::: {.takeaway}
-A run nobody watches needs a turn limit, a cost limit, and a wall-clock limit.
+Bounded by turns and dollars, scoped by one issue, reviewed by you at the end. Wrap it in a wall-clock limit with your scheduler; the CLI has none.
 :::
 
 ::: {.notes}
-The shape is real; the specifics are not written down. Tell it from memory and say that is what it is. The lesson does not depend on the numbers.
+Three parts. The issues are the specification: one task each, a done condition, a label the loop selects on. The loop is a shell for loop around print mode; the flags are the vendor's: max turns, max budget in dollars, JSON output for the trajectory, a permission mode and deny rules; there is no wall-clock flag, so the scheduler or a timeout command supplies it. And the human at the end: every run ends in a pull request you read. Say where this pattern can go wrong: a run that never satisfies its own done condition burns the budget and stops; a run with edit permissions and no deny rules can push. Then move on.
 :::
 
 ## The pieces that let a model act {background-color="#f5f3fb"}
@@ -160,7 +166,7 @@ Four things. One, the LLM: predicts tokens, trained to emit a tool call as struc
 
 ## Context file: ours
 
-```
+```{.text .bigcode}
 CLAUDE.md  →  5 lines, points at AGENTS.md
 AGENTS.md  →  one screen: layout · build commands ·
               seven conventions · persona reviews
@@ -239,14 +245,15 @@ The answer to "why an agent rather than a script". A script when you know every 
 
 ## 1. Write the spec first
 
-```
+```{.text .bigcode}
 # SPEC: <name>
 1. Purpose: one sentence.
 2. Inputs: files, formats, units, coordinate frames.
 3. Outputs: files, formats, units; what a plot of them should look like.
 4. Conventions: layout, style, test runner (pytest), CI (GitHub Actions),
    licence (MIT), the checks that must stay green.
-5. Done when: pytest tests/test_<name>.py passes; docs/figures/<name>.png shows <what>.
+5. Done when: pytest tests/test_<name>.py passes;
+   docs/figures/<name>.png shows <what>.
 6. Out of scope: what not to touch.
 ```
 
@@ -260,7 +267,7 @@ Agent errors are specification and judgement errors. A good spec removes the fir
 
 ## 2 to 4. Intent, template, tests
 
-```
+```{.text .bigcode}
 2. "Implement section 3 of SPEC.md; stop when pytest tests/test_io.py passes."
 
 3. "Set up a Python repository for X using pixi and section 4 of SPEC.md:
@@ -281,7 +288,7 @@ Three prompt shapes, numbered as in the figure. If the test in prompt 2's stop c
 
 ## 5. Show me the raw data
 
-```
+```{.text .bigcode}
 5. "After each function in pipeline.py that returns an array, save a figure
     of its output to docs/figures/<function>.png; for each table, its first
     and last five rows to docs/figures/<function>.txt; list them in README."
@@ -369,7 +376,7 @@ What a subagent is: the vendor's page says a specialised assistant for one kind 
 Once a reviewer is a file, ten reviewers are ten files: an orchestrator runs them in parallel on the same page, none seeing another's output, then synthesises: keep what three or more raised, keep disagreements as disagreements, list blockers, scores as a table never an average. Isolation stops copying; it does not remove the shared weights, so convergence is a lead, not a statistic. Ten windows' worth of tokens, not fewer. Injection enters where the reports re-enter the parent as tool results; keep only the fields the report format defines. Roles are illustrative; choose them for the page. If running long, talk over this slide rather than show it.
 :::
 
-## The loop in fifteen real lines
+## The loop in eighteen real lines
 
 ```python
 import subprocess, anthropic
@@ -383,24 +390,21 @@ def spellcheck(path: str) -> str:
     r = subprocess.run(["codespell", path], capture_output=True, text=True)
     return r.stdout or "clean"
 
+task = "Run the spellcheck on book/teaching/demo.md and report."
 runner = client.beta.messages.tool_runner(
     model="claude-opus-5", max_tokens=16000, tools=[spellcheck],
-    messages=[{"role": "user", "content": "Run the spellcheck on book/teaching/demo.md; report."}],
+    messages=[{"role": "user", "content": task}],
 )
-for message in runner:   # one iteration per model turn; stops when no tool is called
+for message in runner:   # one turn per iteration; stops when no tool is called
     print(message)
 ```
 
 ::: {.dim}
-Shape from the vendor SDK reference; `client.beta` says the runner is a beta helper. To run: `pip install anthropic` (not in this repo's pixi env), Python 3.10+, a key or the vendor login, `codespell` on the path (`pixi run python`). The tool only checks, so the task is to report; an edit tool is what you add next. For a local server that speaks the same API, the client takes a `base_url` (TODO: verify with eScience's server).
-:::
-
-::: {.todo}
-Verify against the installed SDK version before showing; add the Agent SDK link from a fetched page.
+Shape from the vendor SDK reference. Needs `pip install anthropic`, a key, and `codespell` on the path. The tool only checks; an edit tool is what you add next. TODO: verify against the installed SDK; Agent SDK link.
 :::
 
 ::: {.notes}
-A tool is a decorated function with a docstring; the runner drives the loop and stops when the model makes no tool call. This is the whole of "writing an agent" for anything the harness does not already do. Other vendors have equivalents.
+A tool is a decorated function with a docstring; the runner drives the loop and stops when the model makes no tool call. client.beta says the runner is a beta helper. To run it: pip install anthropic, which is not in this repository's pixi environment; Python 3.10 or later; a key or the vendor login; codespell on the path, which the pixi environment provides, so run it with pixi run python. For a local server that speaks the same API the client takes a base_url; verify with the server eScience chooses. This is the whole of "writing an agent" for anything the harness does not already do; other vendors have equivalents.
 :::
 
 ## Where agents sit in GAIA, and how we score them {background-color="#f5f3fb"}

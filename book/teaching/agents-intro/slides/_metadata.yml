@@ -6,7 +6,7 @@ format:
     width: 1600
     height: 900
     margin: 0.04
-    center: false
+    center: true
     slide-number: c/t
     hash: true
     transition: none

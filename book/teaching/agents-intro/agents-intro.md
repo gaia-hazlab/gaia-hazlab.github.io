@@ -219,8 +219,8 @@ person kills it. We will see all three today.
 
 9. Four ways ([](#fig-agents-four-ways)): browser chat, the app, the editor, the CLI.
 10. What each can touch, who is watching, and when to use it: one table.
-11. Headless on cascadia: the issue queue, the minimal-change rule, the run that did not
-    stop. TODO throughout.
+11. Headless on a server: a queue of GitHub issues in, pull requests out, bounded by
+    turns and dollars.
 
 ```{figure} ../../img/agents-four-ways.svg
 :name: fig-agents-four-ways
@@ -265,30 +265,29 @@ may also work; that is a TODO, not a no. Interactive
 a tool call the permission settings say must be approved, asking before it runs;
 `claude -p` for the non-interactive mode, which takes a prompt, runs the loop without a
 terminal, and exits, so it can be piped, scripted, and run in CI
-[@claudecode2026overview]. That is the mode the group's practice on its machine called
-cascadia used (TODO: confirm what cascadia is for the slide): a scheduler pulled open
-GitHub issues, handed each to a headless run under a standing instruction to
-make the smallest change that resolves the issue and open a pull request, and moved to the
-next. One issue per run, one run per issue.
+[@claudecode2026overview]. That is the mode for a queue of work, and it takes three parts. First the
+issues: one task each, scoped, with a done condition, and a label the loop can select on;
+the issue is the specification, so the discipline of the payoff segment applies to it.
+Second the loop, on any machine with a shell, the repository and a key:
 
-TODO, all from the actual logs and scripts, none from memory: which repository and issues;
-the exact wording of the minimal-change rule and where it lived; the scheduler; the
-permission mode and tool allow-list; and the run that did not stop: what it repeated, how
-long it ran, what it cost, how it was detected, who killed it and how, and what it left
-behind. Until those are filled in, tell it as a story from memory and say so. The lesson
-does not depend on the numbers: a run nobody watches needs a turn limit, a cost limit and a
-wall-clock limit, preferably all three.
+```bash
+for n in $(gh issue list --label agent --json number --jq '.[].number'); do
+  claude -p "Make the smallest change that resolves issue #$n; run the tests; open a PR." \
+    --max-turns 40 --max-budget-usd 5 --output-format json \
+    --permission-mode acceptEdits --disallowedTools "Bash(git push --force *)" \
+    > "runs/issue-$n.json"
+done
+```
 
-What each needs, from the same page: most surfaces require a subscription or an API
-console account; the terminal, VS Code and JetBrains also support third-party model
-providers; the CLI installs with a one-line script or a package manager, the editor as an
-extension, the app as a download, the web with no install [@claudecode2026overview].
-Prices per month: TODO, from the vendor's pricing page. Two more questions a first-time
-user asks and this page does not answer: which actions are gated by default in each
-surface, and whether an unpublished repository is used for model training under each plan.
-Both are TODO from fetched policy pages; do not answer them from memory in the room. The app can also schedule
-recurring tasks, which puts those runs in the "nobody watching" row of the table, with
-the same limits.
+The flags are the vendor's [@claudecode2026cli]: `--max-turns` and `--max-budget-usd`
+bound the run, `--output-format json` keeps a record of it, and the permission mode and
+deny rules decide what it may do unattended; the reference documents no wall-clock flag,
+so the scheduler or a `timeout` wrapper supplies that. Third, the human at the end: every
+run ends in a pull request that a person reads, merges or closes. Two ways it goes wrong,
+to say aloud: a run that never satisfies its own done condition spends its budget and
+stops, which is the point of the budget; and a run with edit permissions and no deny rules
+can push, which is the point of the deny rules. The group has run this pattern; the
+lecture keeps the pattern and not the machine, the issues or the logs, which are internal.
 
 Other vendors ship the same shapes. The lecturer's own comparison names one, OpenAI's
 Codex, as the app-and-CLI equivalent; a table of equivalents with fetched links is a
@@ -524,7 +523,7 @@ being broken in front of the room; say so. Delete the scratch page afterwards.
 24. A subagent, and its rubric and references ([](#fig-agents-anatomy)).
 25. Adversarial reviews: ten readers, one rubric, one synthesis
     ([](#fig-agents-orchestrator)).
-26. The loop in fifteen real lines.
+26. The loop in eighteen real lines.
 
 ```{figure} ../../img/agents-skill-flow.svg
 :name: fig-agents-skill-flow
@@ -649,7 +648,7 @@ the exercise in tutorial 3.
 ```
 
 *A loop in Python.* The vendor SDK exposes the loop directly. With the Python SDK, a tool
-is a decorated function and the runner drives the loop; fifteen lines is a working agent
+is a decorated function and the runner drives the loop; eighteen lines is a working agent
 with one tool, as documented in the SDK's own reference, from which the shape below is
 taken. To run it: `pip install anthropic` (it is not in this repository's pixi
 environment), Python 3.10 or later, a key in `ANTHROPIC_API_KEY` or the vendor's login,
@@ -672,9 +671,10 @@ def spellcheck(path: str) -> str:
     r = subprocess.run(["codespell", path], capture_output=True, text=True)
     return r.stdout or "clean"
 
+task = "Run the spellcheck on book/teaching/demo.md and report."
 runner = client.beta.messages.tool_runner(
     model="claude-opus-5", max_tokens=16000, tools=[spellcheck],
-    messages=[{"role": "user", "content": "Run the spellcheck on book/teaching/demo.md and report what it finds."}],
+    messages=[{"role": "user", "content": task}],
 )
 for message in runner:   # one iteration per model turn; stops when no tool is called
     print(message)
@@ -861,7 +861,7 @@ eScience contacts for the slides, the exercise, and the names to credit.
 | ChatGPT article, Wikipedia [@wikipedia2026chatgpt] | Release date and first model; plugins and GPT-4 in March 2023 |
 | Model Context Protocol site [@mcp2026site] | Definition, analogy, that it is an open standard with a public specification |
 | Claude Code overview page [@claudecode2026overview] | The four surfaces, `claude -p`, `AGENTS.md` support, subagents, skills, the Agent SDK |
-| Claude Code permissions, MCP and subagents pages [@claudecode2026permissions; @claudecode2026mcp; @claudecode2026subagents] | Which tools ask by default, rule syntax, modes, settings paths; `.mcp.json` and its scopes; subagent definition, front matter, own window |
+| Claude Code permissions, MCP, subagents and CLI pages [@claudecode2026permissions; @claudecode2026mcp; @claudecode2026subagents; @claudecode2026cli] | Which tools ask by default, rule syntax, modes, settings paths; `.mcp.json` and its scopes; subagent definition, front matter, own window; print-mode flags |
 | Liu et al. 2024 [@liu2024lost] | Position effects in long contexts; transcribed from the MLGEO lecture 3 references |
 | MCP announcement [@anthropic2024mcp], Claude Code announcement [@anthropic2025claudecode] | The two dated stages after 2023 on the timeline |
 | GPT-3 article, Wikipedia [@wikipedia2026gpt3]; vendor models page [@anthropic2026models] | Context-window growth, 2,048 tokens to 1M; per-token prices |
@@ -869,8 +869,6 @@ eScience contacts for the slides, the exercise, and the names to credit.
 
 Not found in any source and left as TODO on this page:
 
-- The cascadia headless runs: repository, issues, scheduler, minimal-change rule text,
-  permission mode, and the run that did not stop.
 - The editor integration: a screenshot from a real session.
 - Monthly prices for the four surfaces; a table of other vendors' equivalents.
 - A citation for batched-inference nondeterminism.
