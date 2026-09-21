@@ -1,6 +1,6 @@
 ---
-title: Introduction to AI agents for the GAIA team
-short_title: Agents lecture
+title: "Agents 101: an introduction to AI agents for the GAIA team"
+short_title: Agents 101
 description: A 45-minute seminar on what an AI agent is, what it is made of, how we already use one in GAIA, and what it will take to run agents reproducibly across the collaboration.
 ---
 

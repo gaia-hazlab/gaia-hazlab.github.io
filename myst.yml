@@ -80,7 +80,7 @@ project:
         - file: book/governance/faq.md
     - title: Teaching
       children:
-        - file: book/teaching/agents-intro/lecture.md
+        - file: book/teaching/agents-intro/agents-101.md
           children:
             - file: book/teaching/agents-intro/tutorials/01-anatomy-of-an-agent.md
             - file: book/teaching/agents-intro/tutorials/02-writing-your-first-skill.md
