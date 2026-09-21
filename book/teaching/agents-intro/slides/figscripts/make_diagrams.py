@@ -173,46 +173,61 @@ def context_window():
     s.write("agents-context-window.svg")
 
 
-def three_modes():
-    s = Svg(1200, 620)
-    lanes = [(40, "Terminal", "exploration; anything you want to watch"),
-             (420, "Editor", "changes you review line by line"),
-             (800, "Headless: claude -p", "well specified · repeated · bounded")]
-    for x, title, use in lanes:
-        s.box(x, 40, 360, 540, [], fill="#fff", stroke=PERI_LIGHT, sw=1.5, rx=14)
-        s.text(x + 180, 80, title, size=24, color=PURPLE, anchor="middle", bold=True)
-        s.text(x + 180, 555, use, size=18, color=STONE, anchor="middle", italic=True)
-    # terminal
-    s.box(120, 130, 200, 60, ["human, watching"], fill=LAV, stroke=PURPLE, size=20)
-    s.arrow(220, 190, 220, 250, both=True)
-    s.box(120, 250, 200, 60, ["agent"], fill="#fff", stroke=PURPLE, size=22)
-    s.arrow(220, 310, 220, 370, both=True)
-    s.box(120, 370, 200, 60, ["repository"], fill="#fff", stroke=INK, size=22)
-    s.text(220, 470, "every gated action asks first", size=18, color=STONE,
-           anchor="middle", italic=True)
+def four_ways():
+    """Four ways to use a coding agent today. Surfaces from the Claude Code
+    overview page (code.claude.com/docs/en/overview, fetched 2026-09-21)."""
+    s = Svg(1200, 640)
+    lanes = [(30, "Browser chat", "claude.ai chat tab", "cannot see your files or run your code",
+              "questions · drafts · reading papers"),
+             (320, "The app", "desktop app: Chat tab vs Code tab", "Code tab = the agent, diffs shown visually",
+              "review each change before it lands"),
+             (610, "Editor", "VS Code · JetBrains", "inline diffs, @-mentions, plan review",
+              "changes you review line by line"),
+             (900, "CLI", "terminal: interactive, or claude -p", "same engine, same CLAUDE.md, no window",
+              "exploration · scripts · CI · queues")]
+    for x, title, sub, cap, use in lanes:
+        s.box(x, 40, 270, 560, [], fill="#fff", stroke=PERI_LIGHT, sw=1.5, rx=14)
+        s.text(x + 135, 80, title, size=23, color=PURPLE, anchor="middle", bold=True)
+        s.text(x + 135, 108, sub, size=15, color=STONE, anchor="middle", italic=True)
+        s.text(x + 135, 575, use, size=15, color=STONE, anchor="middle", italic=True)
+        s.text(x + 135, 500, cap, size=14, color=INK, anchor="middle")
+    # browser chat: human <-> model only; repo greyed out
+    s.box(80, 150, 170, 56, ["you"], fill=LAV, stroke=PURPLE, size=20)
+    s.arrow(165, 206, 165, 266, both=True)
+    s.box(80, 266, 170, 56, ["model"], fill="#fff", stroke=PURPLE, size=20)
+    s.box(80, 390, 170, 56, ["your repository"], fill="#fff", stroke=STONE, size=17, dash="5 4",
+          color=STONE)
+    s.text(165, 372, "no path to it", size=14, color=STONE, anchor="middle", italic=True)
+    # app: chat tab vs code tab
+    s.box(370, 150, 170, 56, ["you"], fill=LAV, stroke=PURPLE, size=20)
+    s.arrow(455, 206, 455, 266, both=True)
+    s.box(340, 266, 110, 56, ["Chat tab"], fill="#fff", stroke=STONE, size=16, dash="5 4")
+    s.box(460, 266, 110, 56, ["Code tab"], fill="#fff", stroke=PURPLE, size=16)
+    s.arrow(515, 322, 515, 372)
+    s.box(430, 372, 170, 50, ["diff, shown first"], fill=LAV, stroke=PERI, size=16)
+    s.arrow(515, 422, 515, 440)
+    s.box(430, 440, 170, 44, ["your repository"], fill="#fff", stroke=INK, size=16)
     # editor
-    s.box(500, 130, 200, 60, ["human, in the editor"], fill=LAV, stroke=PURPLE, size=20)
-    s.arrow(600, 190, 600, 250, both=True)
-    s.box(500, 250, 200, 60, ["agent"], fill="#fff", stroke=PURPLE, size=22)
-    s.arrow(600, 310, 600, 370)
-    s.box(500, 370, 200, 60, ["diff, shown first"], fill=LAV, stroke=PERI, size=20)
-    s.arrow(600, 430, 600, 480)
-    s.box(500, 480, 200, 50, ["repository"], fill="#fff", stroke=INK, size=20)
-    # headless
-    s.box(860, 120, 240, 60, ["open GitHub issues"], fill="#fff", stroke=INK, size=20)
-    s.arrow(980, 180, 980, 230)
-    s.text(1000, 212, "one issue per run", size=17, color=STONE)
-    s.box(860, 230, 240, 90, ["claude -p", "smallest change that",
-                              "resolves the issue"], fill="#fff", stroke=PURPLE,
-          size=19, bold_first=True)
-    s.arrow(980, 320, 980, 370)
-    s.box(860, 370, 240, 60, ["pull request"], fill="#fff", stroke=INK, size=20)
-    s.path("M 1100 275 Q 1170 275 1170 330 Q 1170 380 1100 400", color=AMBER, dash="6 4")
-    s.text(1120, 462, "one run did not stop", size=17, color=AMBER, anchor="middle", bold=True)
-    s.text(1120, 484, "TODO: the log", size=15, color=AMBER, anchor="middle")
-    s.text(980, 510, "limits: turns · cost · wall clock", size=18, color=AMBER,
+    s.box(660, 150, 170, 56, ["you, in the editor"], fill=LAV, stroke=PURPLE, size=17)
+    s.arrow(745, 206, 745, 266, both=True)
+    s.box(660, 266, 170, 56, ["agent"], fill="#fff", stroke=PURPLE, size=20)
+    s.arrow(745, 322, 745, 372)
+    s.box(660, 372, 170, 50, ["inline diff"], fill=LAV, stroke=PERI, size=16)
+    s.arrow(745, 422, 745, 440)
+    s.box(660, 440, 170, 44, ["your repository"], fill="#fff", stroke=INK, size=16)
+    # CLI: interactive + headless
+    s.box(920, 150, 110, 56, ["you"], fill=LAV, stroke=PURPLE, size=18)
+    s.box(1040, 150, 120, 56, ["issue queue"], fill="#fff", stroke=INK, size=15)
+    s.arrow(975, 206, 975, 266, both=True)
+    s.arrow(1100, 206, 1100, 266, color=STONE, sw=2)
+    s.box(920, 266, 240, 56, ["claude   ·   claude -p"], fill="#fff", stroke=PURPLE, size=17)
+    s.arrow(1040, 322, 1040, 372)
+    s.box(920, 372, 240, 50, ["shell · files · git · PR"], fill=LAV, stroke=PERI, size=16)
+    s.arrow(1040, 422, 1040, 440)
+    s.box(920, 440, 240, 44, ["your repository"], fill="#fff", stroke=INK, size=16)
+    s.text(1040, 530, "headless: limits on turns, cost, wall clock", size=13, color=AMBER,
            anchor="middle", bold=True)
-    s.write("agents-three-modes.svg")
+    s.write("agents-four-ways.svg")
 
 
 def skill_flow():
@@ -510,11 +525,68 @@ def evaluation():
     s.write("agents-evaluation.svg")
 
 
+def timeline():
+    """How we got here. Dated anchors only where fetched (Wikipedia, ChatGPT page,
+    2026-09-21); later stages are ordered, not dated."""
+    s = Svg(1200, 400)
+    y = 190
+    s.arrow(40, y, 1170, y, color=PERI, sw=3)
+    stages = [
+        (110, "chat", ["a model behind a text box", "ChatGPT, Nov 2022 (GPT-3.5)"], True),
+        (340, "tools", ["the model may call functions", "plugins and GPT-4, Mar 2023"], True),
+        (570, "trained for tool use", ["plan, call tools, read results,", "debug (date: TODO)"], False),
+        (800, "harnesses", ["terminal · editor · app · browser", "one engine (date: TODO)"], False),
+        (1030, "a standard for tools", ["MCP: open standard connecting", "AI apps to external systems"], False),
+    ]
+    for x, title, lines, dated in stages:
+        col = PURPLE if dated else PERI
+        s.parts.append(f'<circle cx="{x}" cy="{y}" r="11" fill="{col}"/>')
+        s.text(x, 118, title, size=19, color=PURPLE, anchor="middle", bold=True)
+        s.text(x, 146, lines[0], size=14, color=INK, anchor="middle")
+        s.text(x, 167, lines[1], size=13, color=STONE, anchor="middle", italic=True)
+    s.text(600, 260, "What changed for research: tool results are grounded facts the model must read, retrieval finds real papers,",
+           size=17, color=INK, anchor="middle")
+    s.text(600, 288, "and a harness runs the loop against your own repository. Denolle (June 2026): literature review is close to solved.",
+           size=17, color=INK, anchor="middle")
+    s.text(600, 340, "Filled dots: dates from a fetched source. Hollow-coloured dots: ordered stages, dates still to verify.",
+           size=14, color=STONE, anchor="middle", italic=True)
+    s.write("agents-timeline.svg")
+
+
+def payoff():
+    """Where an agent pays off in a computational-science workflow."""
+    s = Svg(1200, 460)
+    steps = [("1. write the spec", ["what, inputs, outputs,", "what done looks like"], LAV, PURPLE),
+             ("2. intent, not syntax", ["\"implement the spec;", "stop at the first test\""], "#fff", PURPLE),
+             ("3. repo template", ["pyproject · tests · CI · docs", "using X or best standards"], "#fff", PURPLE),
+             ("4. CI tests for X", ["\"write every test", "for module X; run them\""], "#fff", PURPLE),
+             ("5. show me the raw data", ["plot the waveforms and", "the intermediate arrays"], LAV, PURPLE)]
+    x = 30
+    for i, (title, lines, fill, stroke) in enumerate(steps):
+        s.box(x, 80, 210, 120, [title] + lines, fill=fill, stroke=stroke, size=16, bold_first=True)
+        if i < 4:
+            s.arrow(x + 210, 140, x + 235, 140)
+        x += 235
+    s.text(135, 245, "you", size=18, color=PURPLE, anchor="middle", bold=True)
+    s.text(605, 245, "the agent, against your spec", size=18, color=PURPLE, anchor="middle", bold=True)
+    s.text(1075, 245, "you, by eye", size=18, color=PURPLE, anchor="middle", bold=True)
+    s.bracket(265, 945, 215, "")
+    s.text(600, 320, "The spec is the contract and the test is the verify step. Step 5 is how you check the agent without",
+           size=17, color=INK, anchor="middle")
+    s.text(600, 348, "reading every line it wrote: if the raw data look wrong, the pipeline is wrong.",
+           size=17, color=INK, anchor="middle")
+    s.text(600, 405, "Agent errors are specification and judgement errors; a good spec removes the first kind.",
+           size=15, color=STONE, anchor="middle", italic=True)
+    s.write("agents-payoff.svg")
+
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     stack()
     context_window()
-    three_modes()
+    four_ways()
+    timeline()
+    payoff()
     skill_flow()
     subagents()
     gaia_layer()

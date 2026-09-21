@@ -11,7 +11,7 @@ description: Run one agent session end to end, capture its transcript, and label
 code cells are empty and carry a comment saying what belongs in each. To be completed
 with UW eScience. Compute needs are tracked in
 [compute requirements](../compute-requirements.md). Companion to the
-[lecture](../agents-101.md), segments 0 to 14.
+[lecture](../agents-intro.md), segments 0 to 14.
 :::
 
 ## Learning objectives
@@ -40,7 +40,7 @@ After this tutorial a participant can:
 - The harness's *permission mode*: the setting that says which tool calls run without
   asking, which pause for a yes, and which are refused. Know where it is set before
   step 3.
-- The [lecture](../agents-101.md), or its first fourteen minutes.
+- The [lecture](../agents-intro.md), or its first fourteen minutes.
 
 ## Estimated duration
 

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
+<defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
+<rect x="30" y="40" width="270" height="560" rx="14" fill="#fff" stroke="#c3b8f0" stroke-width="1.5"/>
+<text x="165" y="80" text-anchor="middle" font-size="23" fill="#4b2e83" font-weight="700">Browser chat</text>
+<text x="165" y="108" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">claude.ai chat tab</text>
+<text x="165" y="575" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">questions · drafts · reading papers</text>
+<text x="165" y="500" text-anchor="middle" font-size="14" fill="#2a1a4f">cannot see your files or run your code</text>
+<rect x="320" y="40" width="270" height="560" rx="14" fill="#fff" stroke="#c3b8f0" stroke-width="1.5"/>
+<text x="455" y="80" text-anchor="middle" font-size="23" fill="#4b2e83" font-weight="700">The app</text>
+<text x="455" y="108" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">desktop app: Chat tab vs Code tab</text>
+<text x="455" y="575" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">review each change before it lands</text>
+<text x="455" y="500" text-anchor="middle" font-size="14" fill="#2a1a4f">Code tab = the agent, diffs shown visually</text>
+<rect x="610" y="40" width="270" height="560" rx="14" fill="#fff" stroke="#c3b8f0" stroke-width="1.5"/>
+<text x="745" y="80" text-anchor="middle" font-size="23" fill="#4b2e83" font-weight="700">Editor</text>
+<text x="745" y="108" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">VS Code · JetBrains</text>
+<text x="745" y="575" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">changes you review line by line</text>
+<text x="745" y="500" text-anchor="middle" font-size="14" fill="#2a1a4f">inline diffs, @-mentions, plan review</text>
+<rect x="900" y="40" width="270" height="560" rx="14" fill="#fff" stroke="#c3b8f0" stroke-width="1.5"/>
+<text x="1035" y="80" text-anchor="middle" font-size="23" fill="#4b2e83" font-weight="700">CLI</text>
+<text x="1035" y="108" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">terminal: interactive, or claude -p</text>
+<text x="1035" y="575" text-anchor="middle" font-size="15" fill="#6f6890" font-style="italic">exploration · scripts · CI · queues</text>
+<text x="1035" y="500" text-anchor="middle" font-size="14" fill="#2a1a4f">same engine, same CLAUDE.md, no window</text>
+<rect x="80" y="150" width="170" height="56" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="165.0" y="185.0" text-anchor="middle" font-size="20" fill="#2a1a4f">you</text>
+<line x1="165" y1="206" x2="165" y2="266" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+<rect x="80" y="266" width="170" height="56" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="165.0" y="301.0" text-anchor="middle" font-size="20" fill="#2a1a4f">model</text>
+<rect x="80" y="390" width="170" height="56" rx="8" fill="#fff" stroke="#6f6890" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="165.0" y="423.9" text-anchor="middle" font-size="17" fill="#6f6890">your repository</text>
+<text x="165" y="372" text-anchor="middle" font-size="14" fill="#6f6890" font-style="italic">no path to it</text>
+<rect x="370" y="150" width="170" height="56" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="455.0" y="185.0" text-anchor="middle" font-size="20" fill="#2a1a4f">you</text>
+<line x1="455" y1="206" x2="455" y2="266" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+<rect x="340" y="266" width="110" height="56" rx="8" fill="#fff" stroke="#6f6890" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="395.0" y="299.6" text-anchor="middle" font-size="16" fill="#2a1a4f">Chat tab</text>
+<rect x="460" y="266" width="110" height="56" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="515.0" y="299.6" text-anchor="middle" font-size="16" fill="#2a1a4f">Code tab</text>
+<line x1="515" y1="322" x2="515" y2="372" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="430" y="372" width="170" height="50" rx="8" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
+<text x="515.0" y="402.6" text-anchor="middle" font-size="16" fill="#2a1a4f">diff, shown first</text>
+<line x1="515" y1="422" x2="515" y2="440" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="430" y="440" width="170" height="44" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="515.0" y="467.6" text-anchor="middle" font-size="16" fill="#2a1a4f">your repository</text>
+<rect x="660" y="150" width="170" height="56" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="745.0" y="183.9" text-anchor="middle" font-size="17" fill="#2a1a4f">you, in the editor</text>
+<line x1="745" y1="206" x2="745" y2="266" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+<rect x="660" y="266" width="170" height="56" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="745.0" y="301.0" text-anchor="middle" font-size="20" fill="#2a1a4f">agent</text>
+<line x1="745" y1="322" x2="745" y2="372" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="660" y="372" width="170" height="50" rx="8" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
+<text x="745.0" y="402.6" text-anchor="middle" font-size="16" fill="#2a1a4f">inline diff</text>
+<line x1="745" y1="422" x2="745" y2="440" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="660" y="440" width="170" height="44" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="745.0" y="467.6" text-anchor="middle" font-size="16" fill="#2a1a4f">your repository</text>
+<rect x="920" y="150" width="110" height="56" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="975.0" y="184.3" text-anchor="middle" font-size="18" fill="#2a1a4f">you</text>
+<rect x="1040" y="150" width="120" height="56" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="1100.0" y="183.2" text-anchor="middle" font-size="15" fill="#2a1a4f">issue queue</text>
+<line x1="975" y1="206" x2="975" y2="266" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+<line x1="1100" y1="206" x2="1100" y2="266" stroke="#6f6890" stroke-width="2" marker-end="url(#a-stone)"/>
+<rect x="920" y="266" width="240" height="56" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="1040.0" y="299.9" text-anchor="middle" font-size="17" fill="#2a1a4f">claude   ·   claude -p</text>
+<line x1="1040" y1="322" x2="1040" y2="372" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="920" y="372" width="240" height="50" rx="8" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
+<text x="1040.0" y="402.6" text-anchor="middle" font-size="16" fill="#2a1a4f">shell · files · git · PR</text>
+<line x1="1040" y1="422" x2="1040" y2="440" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="920" y="440" width="240" height="44" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="1040.0" y="467.6" text-anchor="middle" font-size="16" fill="#2a1a4f">your repository</text>
+<text x="1040" y="530" text-anchor="middle" font-size="13" fill="#c77d00" font-weight="700">headless: limits on turns, cost, wall clock</text>
+</svg>

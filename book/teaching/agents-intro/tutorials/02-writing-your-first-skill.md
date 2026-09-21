@@ -11,7 +11,7 @@ description: Package one procedure the group repeats into a skill, make it trigg
 code cells are empty and carry a comment saying what belongs in each. To be completed
 with UW eScience. Compute needs are tracked in
 [compute requirements](../compute-requirements.md). Companion to the
-[lecture](../agents-101.md), segment 24 to 33.
+[lecture](../agents-intro.md), segment 27 to 33.
 :::
 
 ## Learning objectives

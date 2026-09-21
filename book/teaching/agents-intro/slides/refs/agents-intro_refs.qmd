@@ -28,3 +28,21 @@
 
 [Liu, N. F., Lin, K., Hewitt, J., et al. (2024). Lost in the middle: How language models use long contexts. *Transactions of the Association for Computational Linguistics*, 12, 157–173. Transcribed from the MLGEO 2026 lecture 3 references; DOI to verify.]{.ref-cite}
 ::::
+
+:::: {.ref-item}
+[◦]{.ref-verdict .note} [The four surfaces, print mode, CLAUDE.md and AGENTS.md, skills, subagents, MCP, the Agent SDK: the vendor's own list.]{.ref-msg}
+
+[Anthropic (2026). Claude Code overview. code.claude.com/docs/en/overview. Accessed 21 September 2026.]{.ref-cite}
+::::
+
+:::: {.ref-item}
+[◦]{.ref-verdict .note} [MCP: an open-source standard for connecting AI applications to external systems; "a USB-C port for AI applications".]{.ref-msg}
+
+[Model Context Protocol (2026). What is MCP? modelcontextprotocol.io. Accessed 21 September 2026.]{.ref-cite}
+::::
+
+:::: {.ref-item}
+[◦]{.ref-verdict .note} [The two dated anchors on the timeline: ChatGPT released 30 November 2022 on GPT-3.5; plugins and GPT-4 in March 2023.]{.ref-msg}
+
+[Wikipedia contributors (2026). ChatGPT. en.wikipedia.org/wiki/ChatGPT. Accessed 21 September 2026.]{.ref-cite}
+::::
