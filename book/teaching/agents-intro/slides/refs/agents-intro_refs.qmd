@@ -24,7 +24,7 @@
 ::::
 
 :::: {.ref-item}
-[✗]{.ref-verdict .bad} [Finite attention: recall drops for material in the middle of a long context. An agent that "read" forty files sampled them.]{.ref-msg}
+[◦]{.ref-verdict .note} [Finite attention, measured in retrieval tasks: recall drops for material in the middle of a long context. The analogous risk for an agent: forty files "read" into the window were sampled.]{.ref-msg}
 
 [Liu, N. F., Lin, K., Hewitt, J., et al. (2024). Lost in the middle: How language models use long contexts. *Transactions of the Association for Computational Linguistics*, 12, 157–173. Transcribed from the MLGEO 2026 lecture 3 references; DOI to verify.]{.ref-cite}
 ::::

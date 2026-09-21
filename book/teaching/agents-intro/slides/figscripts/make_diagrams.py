@@ -179,18 +179,18 @@ def four_ways():
     s = Svg(1200, 640)
     lanes = [(30, "Browser chat", "the chat tab, not the Code tab", "cannot see your files or run your code",
               "questions · drafts · reading papers"),
-             (320, "The app", "desktop app: Chat tab vs Code tab", "Code tab = the agent, diffs shown visually",
+             (320, "The app", "desktop app: Chat tab vs Code tab", "Code tab is the agent; diffs shown first",
               "review each change before it lands"),
-             (610, "Editor", "VS Code · JetBrains", "inline diffs, @-mentions, plan review",
+             (610, "Editor", "VS Code · JetBrains", "inline diffs; remote setups: TODO",
               "changes you review line by line"),
-             (900, "CLI", "terminal: interactive, or claude -p", "same engine, same CLAUDE.md, no GUI; runs over ssh",
+             (900, "CLI", "terminal: interactive, or claude -p", "same engine, no GUI; runs over ssh",
               "exploration · scripts · CI · queues")]
     for x, title, sub, cap, use in lanes:
         s.box(x, 40, 270, 560, [], fill="#fff", stroke=PERI_LIGHT, sw=1.5, rx=14)
         s.text(x + 135, 80, title, size=23, color=PURPLE, anchor="middle", bold=True)
         s.text(x + 135, 108, sub, size=15, color=STONE, anchor="middle", italic=True)
         s.text(x + 135, 575, use, size=15, color=STONE, anchor="middle", italic=True)
-        s.text(x + 135, 500, cap, size=14, color=INK, anchor="middle")
+        s.text(x + 135, 520, cap, size=14, color=INK, anchor="middle")
     # browser chat: human <-> model only; repo greyed out
     s.box(80, 150, 170, 56, ["you"], fill=LAV, stroke=PURPLE, size=20)
     s.arrow(165, 206, 165, 266, both=True)
@@ -198,8 +198,8 @@ def four_ways():
     s.box(80, 390, 170, 56, ["your repository"], fill="#fff", stroke=STONE, size=17, dash="5 4",
           color=STONE)
     s.text(165, 372, "no path to it", size=14, color=STONE, anchor="middle", italic=True)
-    s.text(165, 465, "the same site's Code tab is", size=13, color=STONE, anchor="middle", italic=True)
-    s.text(165, 483, "the agent, running in the cloud", size=13, color=STONE, anchor="middle", italic=True)
+    s.box(80, 452, 170, 44, ["Code tab: the agent,", "in the cloud"], fill="#fff", stroke=PERI,
+          size=13, dash="5 4")
     # app: chat tab vs code tab
     s.box(370, 150, 170, 56, ["you"], fill=LAV, stroke=PURPLE, size=20)
     s.arrow(455, 206, 455, 266, both=True)
@@ -227,7 +227,7 @@ def four_ways():
     s.box(920, 372, 240, 50, ["shell · files · git · PR"], fill=LAV, stroke=PERI, size=16)
     s.arrow(1040, 422, 1040, 440)
     s.box(920, 440, 240, 44, ["your repository"], fill="#fff", stroke=INK, size=16)
-    s.text(1040, 530, "headless: limits on turns, cost, wall clock", size=13, color=AMBER,
+    s.text(1040, 545, "headless: limits on turns, cost, wall clock", size=13, color=AMBER,
            anchor="middle", bold=True)
     s.write("agents-four-ways.svg")
 
@@ -375,11 +375,11 @@ def anatomy():
                              "signature question"],
           fill="#fff", stroke=PURPLE, size=17, bold_first=True)
     s.box(40, 245, 400, 80, ["how to run  (shared/method.md)",
-                             "what to open · 30-minute timebox ·",
+                             "what to open · a timebox per persona ·",
                              "read no other review"],
           fill="#fff", stroke=PURPLE, size=17, bold_first=True)
     s.box(40, 340, 400, 95, ["how to judge  (shared/rubric.md)",
-                             "eight dimensions D1 to D8 · severity:",
+                             "eight rubric dimensions · severity:",
                              "blocker / major / minor / polish ·",
                              "evidence rules · exact report format"],
           fill="#fff", stroke=PURPLE, size=17, bold_first=True)
@@ -404,7 +404,7 @@ def anatomy():
         if i < 3:
             s.arrow(620, y + 62, 620, y + 90)
     s.path("M 740 480 Q 800 480 800 338 Q 800 196 740 196", color=PURPLE)
-    s.text(620, 530, "repeat until the 30-minute timebox is spent", size=17, color=STONE,
+    s.text(620, 530, "repeat until the persona's timebox (10 to 45 min) is spent", size=17, color=STONE,
            anchor="middle", italic=True)
     for y in (100, 190, 285, 387):
         s.path(f"M 440 {y} Q 470 {y} 500 196", color=PERI, sw=1.8)
@@ -445,7 +445,7 @@ def orchestrator_vs_specialist():
         s.path(f"M {x + 50} 344 Q {x + 50} 385 600 400", color=PURPLE, sw=1.5)
     s.text(600, 165, "ten specialists, in parallel, none sees another's output", size=18,
            color=STONE, anchor="middle", italic=True)
-    s.box(55, 300, 1090, 44, ["one shared rubric and method: D1 to D8 · severity · evidence rules · report format"],
+    s.box(55, 300, 1090, 44, ["one shared rubric and method: eight dimensions · severity · evidence rules · report format"],
           fill=LAV, stroke=PERI, size=17, rx=6)
     s.box(400, 400, 400, 96, ["synthesis", "convergent (3+ personas) · divergent, kept divergent ·",
                               "blocker table · cheap wins · pages nobody visited",
@@ -456,7 +456,7 @@ def orchestrator_vs_specialist():
     s.text(60, y0, "Orchestrator", size=20, color=PURPLE, bold=True)
     s.text(640, y0, "Specialist", size=20, color=PURPLE, bold=True)
     rows = [("broad goal; decides what to dispatch", "narrow role, fixed weights, own vocabulary"),
-            ("holds only the ten reports", "holds the whole site, for 30 minutes"),
+            ("holds only the ten reports", "holds the whole site, for its timebox"),
             ("dispatch · merge · gate outward actions", "fetch · read · write one file")]
     for i, (a, b) in enumerate(rows):
         s.text(60, y0 + 32 + i * 28, "• " + a, size=17, color=INK)
@@ -537,8 +537,8 @@ def timeline():
         (110, "chat", ["a model behind a text box", "ChatGPT, 30 Nov 2022 (GPT-3.5)"], True),
         (340, "tools", ["the model may call functions", "plugins and GPT-4, Mar 2023"], True),
         (570, "a standard for tools", ["MCP: connect AI apps to", "external systems, 25 Nov 2024"], True),
-        (800, "coding agents", ["first agentic coding tool,", "research preview, 24 Feb 2025"], True),
-        (1030, "the window", ["2,048 tokens (GPT-3) to", "1M tokens on 2026 models"], True),
+        (800, "this vendor's coding agent", ["its first, a research", "preview, 24 Feb 2025"], True),
+        (1030, "the window", ["2,048 tokens (GPT-3, 2020) to", "1M on the largest 2026 models"], True),
     ]
     for x, title, lines, dated in stages:
         col = PURPLE if dated else PERI

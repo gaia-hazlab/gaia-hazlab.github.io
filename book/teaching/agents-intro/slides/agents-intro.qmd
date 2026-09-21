@@ -19,42 +19,26 @@ title-slide-attributes:
 
 What is it made of, and how do we run it without losing the audit trail?
 
+::: {.dim}
+Three words for the next three minutes. **Tool call**: the model writes, in a fixed format, "run this function with these arguments" instead of prose. **Harness**: the program around the model that reads that request, runs the function, hands the result back. **Loop**: the harness doing that until the model stops asking. That is all an agent is.
+:::
+
 ::: {.notes}
 Audience: fluent in scientific computing, tired of the word "agent". Build from concept: context first, mechanism second, the four ways to use one, where it pays off, how to write your own, then GAIA. Say once, early, which words are one vendor's and which are general.
 :::
 
-## Sources
-
-{{< include refs/agents-intro_refs.qmd >}}
-
-::: {.notes}
-Two blog posts from our own practice, the eScience half-day this mirrors, the vendor's own documentation for the surfaces, and one paper. Nothing on this deck is cited from memory; the amber blocks are what is still unverified.
-:::
-
-## Three words {background-color="#f5f3fb"}
+## How we got here {background-color="#f5f3fb"}
 
 [0 to 3 min]{.minutes}
 
-**Tool call**: the model writes, in a fixed format, "run this function with these arguments" instead of prose.
-
-**Harness**: the program around the model that reads that request, runs the function, and hands the result back.
-
-**Loop**: the harness doing that until the model stops asking.
-
-::: {.takeaway}
-That is all an agent is. The rest of the hour is detail.
-:::
-
-::: {.notes}
-Define these before the timeline uses them; each gets a proper treatment in the next segment. Post-trained, when it comes up: trained after the main training, on tool use.
-:::
-
-## How we got here
-
 ![](../../../img/agents-timeline.svg){.r-stretch}
 
+::: {.dim}
+Why not September 2024, as far as these dates carry it: no cross-vendor standard for tools yet, and this vendor's harness not yet shipped. Other vendors' agents and large windows before then: not settled here. This reading is the lecturer's, not a source's.
+:::
+
 ::: {.notes}
-Everyone has used the first dot: a chat box, 30 November 2022, GPT-3.5, text in and text out, no hands. March 2023: plugins, the model may ask for a function to be called; that is the conceptual step, the rest is training and engineering. November 2024: a standard for plugging tools in. February 2025: the vendor's first agentic coding tool, a research preview that reads code, edits files, runs tests, commits. And the window: 2,048 tokens on GPT-3, one million on the current models, enough for a repository and a day's transcript. Why not two years ago: in September 2024 the standard, the harnesses and the windows were all still to come; that reading of the dates is mine, not a source's.
+Everyone has used the first dot: a chat box, 30 November 2022, GPT-3.5, text in and text out, no hands. March 2023: plugins, the model may ask for a function to be called; that is the conceptual step, the rest is training and engineering. November 2024: a standard for plugging tools in. February 2025: the vendor's first agentic coding tool, a research preview that reads code, edits files, runs tests, commits. And the window: 2,048 tokens on GPT-3, one million on the current models, enough for a repository and a day's transcript. The February 2025 dot is this vendor's first; other vendors had coding agents earlier, and dating them is a TODO. Why not September 2024: only as far as the dates carry it, on the slide, and marked as my reading.
 :::
 
 ## Why it is useful now
@@ -114,7 +98,7 @@ while True:
 ```
 
 ::: {.dim}
-Line 1: the harness's own standing text · the standing instructions in your repository · the functions the model may call, each with a name, description and argument schema · what you typed. A tool call is structured tokens the harness parses: `{"name": "bash", "input": {"command": "pixi run spellcheck"}}`. The harness is this loop plus the permission check. The loop is generic and the same under every vendor's product.
+Line 1: the harness's own standing text · the standing instructions in your repository · the functions the model may call, each with a name, description and argument schema · what you typed. One turn can carry several tool calls; the sketch shows one. A tool call is structured tokens the harness parses: `{"name": "bash", "input": {"command": "pixi run spellcheck"}}`. The harness is this loop plus the permission check. The loop is generic and the same under every vendor's product.
 :::
 
 ::: {.notes}
@@ -136,7 +120,7 @@ One diagram, seven pieces. Left column is loaded every turn and paid for every c
 ```
 CLAUDE.md  →  5 lines, points at AGENTS.md
 AGENTS.md  →  one screen: layout · build commands ·
-              six conventions · persona reviews
+              seven conventions · persona reviews
 ```
 
 ::: {.takeaway}
@@ -144,7 +128,19 @@ What a good collaborator needs on day one and cannot find by reading the code. N
 :::
 
 ::: {.notes}
-Show what it omits: no MyST tutorial, no restated CONTRIBUTING. The vendor docs say the harness reads CLAUDE.md and can read an AGENTS.md written for other agents. The March post: knowledge anchor, standing instructions, situated prompt; the first two set output quality; the instructions are a living document.
+Show what it omits: no MyST tutorial, no restated CONTRIBUTING. The vendor docs say this harness reads CLAUDE.md and can read an AGENTS.md written for other agents; other products keep their file elsewhere. The March post: knowledge anchor, standing instructions, situated prompt; the first two set output quality; the instructions are a living document.
+:::
+
+## The context window
+
+![](../../../img/agents-context-window.svg){.r-stretch}
+
+::: {.dim}
+Recall drops for material in the middle of a long context (Liu et al., 2024, TACL; on the sources slide). Compaction is itself a model call: the harness asks the model to summarise, then swaps the messages.
+:::
+
+::: {.notes}
+Tool results are the part people forget. Compaction is a lossy summary; rules in the prompt may not survive it. Consequences: invariants in the context file, big reads in a subagent, new task in a new session. When a good agent drifts, suspect the window first.
 :::
 
 ## Skill · subagent · MCP {.smaller}
@@ -160,11 +156,19 @@ A skill costs its description on every call and its body only when loaded. Every
 :::
 
 ::: {.dim}
-Vendor conventions: `CLAUDE.md`, skills, `claude -p`. General: the loop, `AGENTS.md` (the vendor's docs say it reads that too), subagents under some name in every harness, MCP as a published standard. Prompt injection: tool results and instructions are one token stream with no provenance bit; a sentence inside a fetched page reads like a sentence from you.
+Vendor conventions: `CLAUDE.md`, skills, `claude -p`. General: the loop, `AGENTS.md` (this vendor's docs say it reads that too), MCP as a published standard; subagents: here, and in other harnesses under other names (TODO verify). Prompt injection: tool results and instructions are one token stream with no provenance bit; a sentence inside a fetched page reads like a sentence from you.
 :::
 
 ::: {.notes}
 The description is the part to keep short: re-sent on every call whether or not the skill fires; the body can be long. plain-voice: about 60 words of description, 2300 of body. Subagents buy a fresh window and attention per task, not fewer tokens. MCP definition and analogy are the protocol site's own words; the spec lives at modelcontextprotocol.io. Capability by configuration, risk by the same route.
+:::
+
+## Subagents, and where injection enters
+
+![](../../../img/agents-subagents.svg){.r-stretch}
+
+::: {.notes}
+A subagent is the loop started again with a fresh message list, launched by a tool call; only its final report re-enters the parent, as a tool result. That is also where injected text enters: tool results and instructions are one token stream with no provenance bit, so a sentence in a fetched page or a subagent's report that says "ignore your instructions" reads like a sentence from you. The permission check is the harness's defence; the merge step in tutorial 3 is yours. Ten reviews cost ten windows' worth of tokens, not fewer; what they buy is a fresh window and attention per task.
 :::
 
 ## Anatomy of one agent
@@ -172,27 +176,7 @@ The description is the part to keep short: re-sent on every call whether or not 
 ![](../../../img/agents-anatomy.svg){.r-stretch}
 
 ::: {.notes}
-A real one: a persona reviewer from this repository. Left, the definition: front matter with a tools allow-list, then three files it reads at run time: who it is, how to run, how to judge. The rubric and method are shared, so ten personas score against one standard. Middle, the loop under a 30-minute timebox. Right, one structured file in review-logs, which a synthesis step merges. References and rubric are files, not prompts: that is what makes the output comparable across runs.
-:::
-
-## Orchestrator versus specialist
-
-![](../../../img/agents-orchestrator-vs-specialist.svg){.r-stretch}
-
-::: {.notes}
-The orchestrator holds a broad goal and only the ten reports; it dispatches, merges, and gates anything outward-facing. Each specialist holds the whole site for thirty minutes, with fixed weights and its own vocabulary, and writes one file. Isolation stops reviewers copying each other; it does not remove the weights they share, so treat convergence as a lead, not a statistic. If time is short, this slide or the previous one can go; tutorial 3 covers both.
-:::
-
-## The context window
-
-![](../../../img/agents-context-window.svg){.r-stretch}
-
-::: {.dim}
-Recall drops for material in the middle of a long context (Liu et al., 2024, TACL; on the sources slide). Compaction is itself a model call: the harness asks the model to summarise, then swaps the messages.
-:::
-
-::: {.notes}
-Tool results are the part people forget. Compaction is a lossy summary; rules in the prompt may not survive it. Consequences: invariants in the context file, big reads in a subagent, new task in a new session. When a good agent drifts, suspect the window first.
+A real one: a persona reviewer from this repository. Left, the definition: front matter with a tools allow-list, then three files it reads at run time: who it is, how to run, how to judge. The rubric and method are shared, so ten personas score against one standard. Middle, the loop under the persona's timebox, 10 to 45 minutes. Right, one structured file in review-logs, which a synthesis step merges. References and rubric are files, not prompts: that is what makes the output comparable across runs. The synthesis that merges ten of these is on the lecture page, not a slide.
 :::
 
 ## Four ways to use one today {background-color="#f5f3fb"}
@@ -212,11 +196,11 @@ Surfaces from the vendor's documentation: terminal, VS Code and JetBrains, deskt
 | **Browser, Chat tab** | no | you, every turn | an account | n/a |
 | **Browser, Code tab** | yes, in the cloud | you, per session | subscription | n/a |
 | **App, Code tab** | yes | you, per diff; or nobody, if scheduled | subscription; download | no |
-| **Editor** | yes | you, per line | subscription or key; extension | no |
-| **CLI** `claude` / `-p` | yes | you, per gated action / nobody | subscription or key; one-line install | yes |
+| **Editor** | yes | you, per line | subscription or key; extension | remote-editor setups: TODO |
+| **CLI** `claude` / `-p` | yes | you, per gated action / nobody | subscription or key; one-line install | yes, if the node reaches the API |
 
 ::: {.dim}
-"Gated": a tool call the permission settings say must be approved first. Needs and installs from the vendor's overview page; monthly prices: TODO. Other vendors ship the same shapes (the lecturer's comparison names OpenAI's Codex); the names differ, the loop does not.
+"Gated": a tool call the permission settings say must be approved first. Needs and installs from the vendor's overview page. TODO from fetched pages: monthly prices, which actions are gated by default, whether an unpublished repo is used for training. Start with the app's Code tab; the tutorials use the CLI because its transcript can be captured. Other vendors ship the same shapes (the lecturer names OpenAI's Codex); the names differ, the loop does not.
 :::
 
 ::: {.notes}
@@ -256,16 +240,17 @@ The answer to "why an agent rather than a script". A script when you know every 
 
 ```
 # SPEC: <name>
-Purpose: one sentence.
-Inputs: files, formats, units, coordinate frames.
-Outputs: files, formats, units; what a plot of them should look like.
-Conventions: package layout, style, test runner, the CI that must stay green.
-Done when: tests/test_<name>.py passes; the figure in docs/ shows <what>.
-Out of scope: what not to touch.
+1. Purpose: one sentence.
+2. Inputs: files, formats, units, coordinate frames.
+3. Outputs: files, formats, units; what a plot of them should look like.
+4. Conventions: layout, style, test runner (pytest), CI (GitHub Actions),
+   licence (MIT), the checks that must stay green.
+5. Done when: pytest tests/test_<name>.py passes; docs/figures/<name>.png shows <what>.
+6. Out of scope: what not to touch.
 ```
 
 ::: {.takeaway}
-Draft it with the agent, edit it yourself. The spec is the contract; everything after is checked against it.
+Draft it with the agent, edit it yourself. Section 4 is what stops the agent choosing the runner, the CI and the licence for you.
 :::
 
 ::: {.notes}
@@ -275,29 +260,30 @@ Agent errors are specification and judgement errors. A good spec removes the fir
 ## 2 to 4. Intent, template, tests
 
 ```
-"Write the tests for module X from SPEC.md and run them. Do not change X
- to make a test pass; if a test is right and X is wrong, fix X and say so."
+2. "Implement section 3 of SPEC.md; stop when pytest tests/test_io.py passes."
 
-"Implement section 3 of SPEC.md; stop when tests/test_io.py passes."
+3. "Set up a Python repository for X using pixi and section 4 of SPEC.md:
+    pyproject, one passing test, CI that runs it, README, licence, .gitignore."
 
-"Set up a Python repository for X using pixi and best current standards:
- pyproject, one passing test, CI that runs it, README, licence, .gitignore."
+4. "Write the tests for module X from section 5 of SPEC.md and run them with
+    pytest. If a test fails, tell me whether the test or X is wrong before
+    changing either."
 ```
 
 ::: {.takeaway}
-Tests from the spec first, then implement to them. State the goal and the stop condition; the agent picks the steps. Check the template against the list.
+State the goal and the stop condition; the agent picks the steps. On a new module, 4 comes before 2. Check the template against the list in section 4.
 :::
 
 ::: {.notes}
-Three prompt shapes. The repository template is an afternoon of boilerplate the agent does in minutes, and the CSSI plan's gaia-template-agent is this use made reusable. The tests-first use is the one the vendor's own documentation puts first. The last line of the third prompt is the minimal-change rule in another form.
+Three prompt shapes, numbered as in the figure. If the test in prompt 2's stop condition does not exist, prompt 4 comes first. The last sentence of prompt 4 replaces "do not change X to make a test pass", which the agent resolves by declaring the test right whenever fixing X is easier; asking for the judgement first puts it in the transcript. The template is, in the lecturer's experience, an afternoon of boilerplate done in minutes; the CSSI plan's gaia-template-agent is this use made reusable.
 :::
 
 ## 5. Show me the raw data
 
 ```
-"At every stage of the pipeline, save a figure of the raw waveforms and of
- the intermediate arrays, and the first and last rows of every table, to
- docs/figures/, and list them in the README."
+5. "After each function in pipeline.py that returns an array, save a figure
+    of its output to docs/figures/<function>.png; for each table, its first
+    and last five rows to docs/figures/<function>.txt; list them in README."
 ```
 
 ::: {.takeaway}
@@ -310,18 +296,18 @@ The one use on the list that is specific to science, and the one the room should
 
 ## Live: a real act and a real verify
 
-**Before the talk:** a scratch page under `book/teaching/` with one misspelling. Not committed.
+**Before the talk:** `book/teaching/demo.md` with one misspelling codespell knows (receive with i and e swapped), confirmed with `pixi run codespell book/teaching/demo.md`. Not committed.
 
-**Ask:** the spellcheck fails; fix it and show me it passes.
+**Ask:** `codespell book/teaching/demo.md` reports an error; fix it and show me that command passes.
 
-**Watch:** `pixi run spellcheck` → read the page → edit one word → rerun → exit 0
+**Watch:** run the check → read the page → edit one word → rerun → exit 0
 
 ::: {.takeaway}
 The pass condition is the repository's own check, not the model's opinion. More than one word edited is the minimal-change rule in `AGENTS.md` broken in front of you.
 :::
 
 ::: {.notes}
-Two minutes, rehearsed. Narrate each call as it appears. If the agent reruns the check on its own, point at it: that is the verify step nobody told it to do. Delete the scratch page afterwards; a committed misspelling fails CI.
+Two minutes, rehearsed. Scoped to one file because the repo-wide check would also catch any other uncommitted typo and confound the one-word lesson. Narrate each call as it appears. If the agent reruns the check on its own, point at it: that is the verify step nobody told it to do. Delete the scratch page afterwards; a committed misspelling fails CI.
 :::
 
 ## Writing your own {background-color="#f5f3fb"}
@@ -330,9 +316,10 @@ Two minutes, rehearsed. Narrate each call as it appears. If the agent reruns the
 
 | | You write | Choose it when | Start from |
 |---|---|---|---|
-| **A skill** | a `SKILL.md` | this session should follow a procedure, in its own window | `.claude/skills/plain-voice` |
+| **A line in `AGENTS.md`** | one sentence | the rule is short and always applies | `AGENTS.md` |
+| **A skill** | a `SKILL.md` | this session should follow a longer procedure, in its own window | `.claude/skills/plain-voice` |
 | **An agent definition** | a Markdown file: role, tools, instructions | the task needs a fresh window, fewer tools, or parallel copies | `.claude/agents/gaia-review-*.md` |
-| **A loop in Python** | tools as functions | the model or the harness is not the vendor's (tutorial 4's local model) | twelve lines, two slides on |
+| **A loop in Python** | tools as functions | you need a tool the harness lacks, a run you control end to end, or a model it does not drive | fifteen lines, next slide |
 
 ::: {.notes}
 Three ways, in increasing order of how much you own. The first two are files in this repository; copy one and change it. The third is for a model or a harness the vendor's product does not run.
@@ -341,36 +328,33 @@ Three ways, in increasing order of how much you own. The first two are files in 
 ## Live: the skill
 
 ```
-.claude/skills/nsf-acknowledgement/SKILL.md
 ---
 name: nsf-acknowledgement
 description: Insert the agreed GAIA acknowledgement wording for the NSF
   awards, verbatim, when a page, talk, poster or paper needs a funding
   statement.
 ---
-1. Read the wording from book/governance/how-we-work.md. Never embed it here.
-2. Insert it verbatim, all three award numbers included.
-3. If the seed grant or the Paros Center contributed, append the page's
-   second sentence.
+1. Read the block-quoted wording from book/governance/how-we-work.md,
+   section "Acknowledgement". Never embed it here.
+2. Insert it verbatim, all three award numbers, under an "Acknowledgements"
+   heading at the end of the page unless told where.
+3. If the seed grant or the Paros Center contributed, append the clause the
+   page gives below the block quote, in place of the final full stop.
 ```
+
+::: {.dim}
+File: `.claude/skills/nsf-acknowledgement/SKILL.md`; line 1 is the front-matter fence.
+:::
 
 ::: {.dim}
 An agent definition has the same front matter plus a `tools:` line, then instructions: `name: gaia-review-phd-student-prospective` · `tools: Read, Grep, Glob, Bash, Write, WebFetch, WebSearch`.
 :::
 
 ::: {.notes}
-Type it live. Then the flow on the next slide: fresh session, ask for a funding acknowledgement on mt-rainier.md, watch whether it triggers; if not, fix the description in front of the room. Loading a skill is itself a tool call, but it adds no capability: it can only use the tools the agent already has.
+Type it live. Fresh session, ask for a funding acknowledgement on mt-rainier.md, watch whether it triggers; if not, the description did not match: fix it in front of the room. The model picks the skill from its description; the harness loads the body; the body reads the page at use time so there is one source of truth. Loading a skill is itself a tool call, but it adds no capability: it can only use the tools the agent already has. Longer descriptions fire more reliably and cost more per call.
 :::
 
-## How the skill runs
-
-![](../../../img/agents-skill-flow.svg){.r-stretch}
-
-::: {.notes}
-The problem: the governance page requires the NSF acknowledgement verbatim; an agent will paraphrase. The model picks the skill from its description; the harness loads the body; the body reads the page at use time so there is one source of truth. Tradeoff to name: longer descriptions fire more reliably and cost more per call.
-:::
-
-## The loop in twelve real lines
+## The loop in fifteen real lines
 
 ```python
 import subprocess, anthropic
@@ -386,14 +370,14 @@ def spellcheck(path: str) -> str:
 
 runner = client.beta.messages.tool_runner(
     model="claude-opus-5", max_tokens=16000, tools=[spellcheck],
-    messages=[{"role": "user", "content": "Fix the misspelling in docs/demo.md."}],
+    messages=[{"role": "user", "content": "Run the spellcheck on book/teaching/demo.md; report."}],
 )
 for message in runner:   # one iteration per model turn; stops when no tool is called
     print(message)
 ```
 
 ::: {.dim}
-Shape from the vendor SDK reference. Underneath: `messages.create`, check `stop_reason`, run each `tool_use`, append a `tool_result` with the block's id, repeat: the code slide from minute 5 with real names. Batteries-included harness as a library: the Agent SDK.
+Shape from the vendor SDK reference; `client.beta` says the runner is a beta helper. To run: `pip install anthropic` (not in this repo's pixi env), Python 3.10+, a key or the vendor login, `codespell` on the path (`pixi run python`). The tool only checks, so the task is to report; an edit tool is what you add next. For a local server that speaks the same API, the client takes a `base_url` (TODO: verify with eScience's server).
 :::
 
 ::: {.todo}
@@ -411,7 +395,7 @@ A tool is a decorated function with a docstring; the runner drives the loop and 
 ![](../../../img/agents-gaia-layer.svg){.r-stretch}
 
 ::: {.notes}
-Three hubs, three named agents in the GaiaAgent layer, HazEvalHub scoring all of them. The downloader wraps gaia-cli, STAC and s3://cresst; it does not replace them, and its book page is a draft. The translator is the most designed: 350-word summaries, 500-word cards, refusal patterns, an expert-eval plan. GaiaPilot on LLMaven is amber because no repo document mentions it; if still unresolved, drop it.
+Three hubs, three named agents in the GaiaAgent layer, HazEvalHub scoring all of them; the FrugalMind board on the diagrams is HazEvalHub's live prototype, one thing under two names. The downloader wraps gaia-cli, STAC and s3://cresst; it does not replace them, and its book page is a draft. The translator is the most designed: 350-word summaries, 500-word cards, refusal patterns, an expert-eval plan. GaiaPilot on LLMaven is amber because no repo document mentions it; if still unresolved, drop it.
 :::
 
 ## What the proposal promised {.smaller}
@@ -425,7 +409,7 @@ Three hubs, three named agents in the GaiaAgent layer, HazEvalHub scoring all of
 | Translator | natural language → workflow across hubs |
 
 ::: {.dim}
-Derived plan, project_coordination/03. First build, by the documents alone: `gaia-template-agent`, the unit D1 counts, and the repository-template use from minute 24 made reusable.
+Derived plan, project_coordination/03. First build, by the documents alone: `gaia-template-agent`, the unit the delivery metric D1 counts (a delivery metric, not a rubric dimension), and the repository-template use from minute 24 made reusable.
 :::
 
 ::: {.todo}
@@ -454,15 +438,19 @@ A CSSI deliverable, not an aside. Task with a hidden test split; four conditions
 
 ![](../../../img/agents-trajectory.svg){.r-stretch}
 
+::: {.takeaway}
+If an agent cannot reproduce your work, neither can your collaborators: a Reproducibility Statement in every paper, and the trajectory inside the provenance record. Tutorial 4 builds toward it.
+:::
+
 ::: {.notes}
 Guardrails: three from the coordination plan, two from practice. The trajectory is the record we owe every reader; HazEvalHub already scores three questions per submission and names trajectory scoring. The amber box is the open question: four capture candidates, none verified. The decision is the group's: default mechanism, storage, who may read.
 :::
 
 ## Why two runs differ
 
-- **Sampling**: the next token is drawn, not argmaxed; the API used here exposes no seed and, on current models, no sampling parameters at all
-- **Batched inference**: generally not bit-reproducible on shared accelerators (TODO: cite)
-- **Model updates**: the same name can point at new weights; pin the version string
+- **Sampling**: the next token is drawn, not argmaxed; the API used here exposes no seed and, on its newest models, no sampling parameters at all
+- **Batched inference**: generally not bit-reproducible on shared accelerators (TODO: cite before saying aloud)
+- **Model updates**: a name can point at new weights; the vendor's current IDs are pinned snapshots, so record the ID per run
 - **Tool results**: the web, the data, and the repo moved between runs
 
 ::: {.takeaway}
@@ -470,7 +458,7 @@ Reproducibility of an agent run is statistical. Report N, pin versions, keep eve
 :::
 
 ::: {.notes}
-Tutorial 4 scores reproducibility as the fraction of identical outputs across N runs. These four are what makes that fraction less than one. The first two are properties of the model service; the last two are properties of the world the agent touched, and only the trajectory records them.
+Tutorial 4 scores reproducibility as the fraction of identical outputs across N runs. These four are what makes that fraction less than one. The first two are properties of the model service; the third is recorded if you log the model ID with each run; only the trajectory records the fourth.
 :::
 
 ## Cost
@@ -491,20 +479,6 @@ Cost is a first-class axis: recorded per run, reported next to accuracy. On the 
 One fact from practice, one from the eval board. The skill-lift result is why open-weight models stay in the comparison. Tutorial costs are TODO in the compute-requirements document.
 :::
 
-## Reproducibility
-
-- If an agent cannot reproduce your work, neither can your collaborators (Denolle, June 2026)
-- A **Reproducibility Statement** in every paper, beside data availability
-- The coordination plan already requires a provenance YAML and an RO-Crate per agent and publication
-
-::: {.takeaway}
-The missing link is the trajectory inside the provenance record. Tutorial 4 builds toward it.
-:::
-
-::: {.notes}
-Close the arc where it started: the loop leaves a trace, and the trace is what we owe every reader.
-:::
-
 ## Tutorials
 
 :::: {.columns}
@@ -522,3 +496,12 @@ Close the arc where it started: the loop leaves a trace, and the trace is what w
 ::: {.notes}
 Stubs under Teaching in the book; code cells filled with eScience; compute needs in the companion document. The diagram is tutorial 3's exercise. Ask who joins the dry run.
 :::
+
+## Sources {visibility="uncounted"}
+
+{{< include refs/agents-intro_refs.qmd >}}
+
+::: {.notes}
+Two blog posts from our own practice, the eScience half-day this mirrors, the vendor's own documentation for the surfaces, and one paper. Nothing on this deck is cited from memory; the amber blocks are what is still unverified.
+:::
+

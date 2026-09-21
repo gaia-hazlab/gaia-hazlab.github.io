@@ -65,7 +65,7 @@
 <path d="M 1095 344 Q 1095 385 600 400" fill="none" stroke="#4b2e83" stroke-width="1.5" marker-end="url(#a-purple)"/>
 <text x="600" y="165" text-anchor="middle" font-size="18" fill="#6f6890" font-style="italic">ten specialists, in parallel, none sees another&#x27;s output</text>
 <rect x="55" y="300" width="1090" height="44" rx="6" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
-<text x="600.0" y="327.9" text-anchor="middle" font-size="17" fill="#2a1a4f">one shared rubric and method: D1 to D8 · severity · evidence rules · report format</text>
+<text x="600.0" y="327.9" text-anchor="middle" font-size="17" fill="#2a1a4f">one shared rubric and method: eight dimensions · severity · evidence rules · report format</text>
 <rect x="400" y="400" width="400" height="96" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
 <text x="600.0" y="424.0" text-anchor="middle" font-size="15" fill="#2a1a4f" font-weight="700">synthesis</text>
 <text x="600.0" y="443.5" text-anchor="middle" font-size="15" fill="#2a1a4f">convergent (3+ personas) · divergent, kept divergent ·</text>
@@ -76,7 +76,7 @@
 <text x="60" y="572" text-anchor="start" font-size="17" fill="#2a1a4f">• broad goal; decides what to dispatch</text>
 <text x="640" y="572" text-anchor="start" font-size="17" fill="#2a1a4f">• narrow role, fixed weights, own vocabulary</text>
 <text x="60" y="600" text-anchor="start" font-size="17" fill="#2a1a4f">• holds only the ten reports</text>
-<text x="640" y="600" text-anchor="start" font-size="17" fill="#2a1a4f">• holds the whole site, for 30 minutes</text>
+<text x="640" y="600" text-anchor="start" font-size="17" fill="#2a1a4f">• holds the whole site, for its timebox</text>
 <text x="60" y="628" text-anchor="start" font-size="17" fill="#2a1a4f">• dispatch · merge · gate outward actions</text>
 <text x="640" y="628" text-anchor="start" font-size="17" fill="#2a1a4f">• fetch · read · write one file</text>
 </svg>

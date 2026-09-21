@@ -14,13 +14,13 @@
 <text x="570" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">MCP: connect AI apps to</text>
 <text x="570" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">external systems, 25 Nov 2024</text>
 <circle cx="800" cy="190" r="11" fill="#4b2e83"/>
-<text x="800" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">coding agents</text>
-<text x="800" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">first agentic coding tool,</text>
-<text x="800" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">research preview, 24 Feb 2025</text>
+<text x="800" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">this vendor&#x27;s coding agent</text>
+<text x="800" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">its first, a research</text>
+<text x="800" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">preview, 24 Feb 2025</text>
 <circle cx="1030" cy="190" r="11" fill="#4b2e83"/>
 <text x="1030" y="118" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">the window</text>
-<text x="1030" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">2,048 tokens (GPT-3) to</text>
-<text x="1030" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">1M tokens on 2026 models</text>
+<text x="1030" y="146" text-anchor="middle" font-size="14" fill="#2a1a4f">2,048 tokens (GPT-3, 2020) to</text>
+<text x="1030" y="167" text-anchor="middle" font-size="13" fill="#6f6890" font-style="italic">1M on the largest 2026 models</text>
 <text x="600" y="260" text-anchor="middle" font-size="17" fill="#2a1a4f">What changed for research: a window that holds a repository, tool results the model must read,</text>
 <text x="600" y="288" text-anchor="middle" font-size="17" fill="#2a1a4f">retrieval that finds real papers, and a harness that runs the loop against your own code.</text>
 <text x="600" y="340" text-anchor="middle" font-size="14" fill="#6f6890" font-style="italic">Every date from a fetched page (Wikipedia, Anthropic announcements, the vendor models page); see the sources slide.</text>

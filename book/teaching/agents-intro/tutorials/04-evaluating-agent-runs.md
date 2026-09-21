@@ -105,11 +105,11 @@ result twice.
 # outputs observed. Add both to the scorecard.
 ```
 
-Four things make that fraction less than one, and the trajectory records only the last:
-the next token is sampled and vendor APIs expose no seed; batched inference is not
-bit-reproducible even at temperature zero; a model name can point at new weights, so the
-version string must be pinned; and the page, the repository and the web the agent
-touched can differ between runs.
+Four things make that fraction less than one: the next token is sampled and the API used
+here exposes no seed; batched inference on shared accelerators is generally not
+bit-reproducible (TODO: cite); a model name can point at new weights, so log the model ID
+with every run; and the page, the repository and the web the agent touched can differ
+between runs, which only the trajectory records.
 
 ### Step 6. Plot the board
 
