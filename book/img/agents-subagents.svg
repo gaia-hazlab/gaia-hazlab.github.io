@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
+<defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
+<rect x="450" y="30" width="300" height="70" rx="8" fill="#f5f3fb" stroke="#4b2e83" stroke-width="2"/>
+<text x="600.0" y="59.0" text-anchor="middle" font-size="20" fill="#2a1a4f" font-weight="700">orchestrator</text>
+<text x="600.0" y="85.0" text-anchor="middle" font-size="20" fill="#2a1a4f">its own window</text>
+<line x1="520" y1="100" x2="300" y2="160" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<line x1="680" y1="100" x2="900" y2="160" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="150" y="160" width="300" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="300.0" y="187.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">subagent A</text>
+<text x="300.0" y="211.3" text-anchor="middle" font-size="18" fill="#2a1a4f">reviewer: a hydrologist</text>
+<text x="300.0" y="234.7" text-anchor="middle" font-size="18" fill="#2a1a4f">fresh window · read-only tools</text>
+<rect x="750" y="160" width="300" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="900.0" y="187.9" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">subagent B</text>
+<text x="900.0" y="211.3" text-anchor="middle" font-size="18" fill="#2a1a4f">unsourced-claims check</text>
+<text x="900.0" y="234.7" text-anchor="middle" font-size="18" fill="#2a1a4f">fresh window · read-only tools</text>
+<rect x="500" y="180" width="200" height="50" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="600.0" y="211.7" text-anchor="middle" font-size="19" fill="#2a1a4f">one book page</text>
+<line x1="450" y1="205" x2="500" y2="205" stroke="#6f6890" stroke-width="2" marker-end="url(#a-stone)"/>
+<line x1="750" y1="205" x2="700" y2="205" stroke="#6f6890" stroke-width="2" marker-end="url(#a-stone)"/>
+<line x1="300" y1="250" x2="520" y2="320" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<line x1="900" y1="250" x2="680" y2="320" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<text x="150" y="300" text-anchor="start" font-size="17" fill="#6f6890" font-style="italic">only the report returns</text>
+<rect x="450" y="320" width="300" height="70" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="600.0" y="349.3" text-anchor="middle" font-size="19" fill="#2a1a4f" font-weight="700">merge</text>
+<text x="600.0" y="374.0" text-anchor="middle" font-size="19" fill="#2a1a4f">each finding tagged by source</text>
+<text x="770" y="345" text-anchor="start" font-size="18" fill="#c77d00" font-weight="700">injection enters here</text>
+<line x1="600" y1="390" x2="600" y2="430" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="450" y="430" width="300" height="60" rx="8" fill="#fff7e6" stroke="#c77d00" stroke-width="2"/>
+<text x="600.0" y="466.3" text-anchor="middle" font-size="18" fill="#2a1a4f">permission gate: ask before create</text>
+<line x1="750" y1="460" x2="830" y2="460" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="830" y="430" width="170" height="60" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="915.0" y="454.6" text-anchor="middle" font-size="18" fill="#2a1a4f" font-weight="700">MCP server</text>
+<text x="915.0" y="478.0" text-anchor="middle" font-size="18" fill="#2a1a4f">GitHub</text>
+<line x1="1000" y1="460" x2="1060" y2="460" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="1060" y="430" width="110" height="60" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="1115.0" y="466.6" text-anchor="middle" font-size="19" fill="#2a1a4f">issue</text>
+<text x="600" y="530" text-anchor="middle" font-size="19" fill="#4b2e83" font-weight="700">Two windows do the reading; the parent only ever holds two reports.</text>
+</svg>

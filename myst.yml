@@ -78,6 +78,9 @@ project:
         - file: book/governance/decisions.md
         - file: book/governance/licensing.md
         - file: book/governance/faq.md
+    - title: Teaching
+      children:
+        - file: book/teaching/agents-intro/agents-intro.md
 
   parts:
     banner: |

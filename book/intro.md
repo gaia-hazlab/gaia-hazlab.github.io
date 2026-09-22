@@ -33,6 +33,7 @@ title: GAIA HazLab
 
 - [How We Work](governance/how-we-work): Governance, decisions of record, and the metrics we publish.
 - [People](https://gaia-hazlab.github.io/people.html): Meet the team.
+- [AI agents](teaching/agents-intro/agents-intro): GAIA Agents Lecture 1, the slide deck.
 
 ---
 

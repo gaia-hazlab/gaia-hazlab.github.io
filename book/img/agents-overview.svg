@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22">
+<defs><marker id="a-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b2e83"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b3402a"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#c77d00"/></marker><marker id="a-stone" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6890"/></marker></defs>
+<rect x="40" y="60" width="250" height="120" rx="8" fill="#f5f3fb" stroke="#2a1a4f" stroke-width="2"/>
+<text x="165.0" y="92.8" text-anchor="middle" font-size="17" fill="#2a1a4f" font-weight="700">1. the LLM</text>
+<text x="165.0" y="114.9" text-anchor="middle" font-size="17" fill="#2a1a4f">predicts the next token;</text>
+<text x="165.0" y="137.0" text-anchor="middle" font-size="17" fill="#2a1a4f">trained to emit tool calls</text>
+<text x="165.0" y="159.1" text-anchor="middle" font-size="17" fill="#2a1a4f">as structured text</text>
+<line x1="290" y1="120" x2="340" y2="120" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<rect x="340" y="30" width="560" height="380" rx="12" fill="#fff" stroke="#4b2e83" stroke-width="2.5"/>
+<text x="620" y="60" text-anchor="middle" font-size="20" fill="#4b2e83" font-weight="700">the harness</text>
+<rect x="360" y="80" width="250" height="190" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
+<text x="485.0" y="139.0" text-anchor="middle" font-size="16" fill="#2a1a4f" font-weight="700">2. the tools</text>
+<text x="485.0" y="159.8" text-anchor="middle" font-size="16" fill="#2a1a4f">shell: scripts, python,</text>
+<text x="485.0" y="180.6" text-anchor="middle" font-size="16" fill="#2a1a4f">scientific software, git</text>
+<text x="485.0" y="201.4" text-anchor="middle" font-size="16" fill="#2a1a4f">files: read, edit</text>
+<text x="485.0" y="222.2" text-anchor="middle" font-size="16" fill="#2a1a4f">web: fetch, search</text>
+<line x1="610" y1="175" x2="640" y2="175" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)" marker-start="url(#a-stone)"/>
+<rect x="640" y="80" width="240" height="190" rx="8" fill="#fff7e6" stroke="#c77d00" stroke-width="2"/>
+<text x="760.0" y="128.6" text-anchor="middle" font-size="16" fill="#2a1a4f" font-weight="700">3. the permissions</text>
+<text x="760.0" y="149.4" text-anchor="middle" font-size="16" fill="#2a1a4f">read-only: runs;</text>
+<text x="760.0" y="170.2" text-anchor="middle" font-size="16" fill="#2a1a4f">edits, commands: ask</text>
+<text x="760.0" y="191.0" text-anchor="middle" font-size="16" fill="#2a1a4f">allow / deny / ask rules</text>
+<text x="760.0" y="211.8" text-anchor="middle" font-size="16" fill="#2a1a4f">modes: plan · manual ·</text>
+<text x="760.0" y="232.6" text-anchor="middle" font-size="16" fill="#2a1a4f">accept edits · auto</text>
+<text x="620" y="300" text-anchor="middle" font-size="16" fill="#6f6890" font-style="italic">enforced by the harness, not the model: a rule in the prompt</text>
+<text x="620" y="322" text-anchor="middle" font-size="16" fill="#6f6890" font-style="italic">shapes what it tries; only the settings change what is allowed</text>
+<rect x="360" y="340" width="520" height="50" rx="8" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
+<text x="620.0" y="370.6" text-anchor="middle" font-size="16" fill="#2a1a4f">the loop: call · parse the tool call · check · run · append</text>
+<line x1="900" y1="175" x2="950" y2="175" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)" marker-start="url(#a-purple)"/>
+<rect x="950" y="80" width="220" height="190" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2" stroke-dasharray="7 4"/>
+<text x="1060.0" y="128.6" text-anchor="middle" font-size="16" fill="#2a1a4f" font-weight="700">4. MCP</text>
+<text x="1060.0" y="149.4" text-anchor="middle" font-size="16" fill="#2a1a4f">servers outside the harness:</text>
+<text x="1060.0" y="170.2" text-anchor="middle" font-size="16" fill="#2a1a4f">data catalogues, GitHub,</text>
+<text x="1060.0" y="191.0" text-anchor="middle" font-size="16" fill="#2a1a4f">databases, calendars;</text>
+<text x="1060.0" y="211.8" text-anchor="middle" font-size="16" fill="#2a1a4f">same name · description ·</text>
+<text x="1060.0" y="232.6" text-anchor="middle" font-size="16" fill="#2a1a4f">schema as a tool</text>
+<rect x="360" y="440" width="520" height="60" rx="8" fill="#fff" stroke="#2a1a4f" stroke-width="2"/>
+<text x="620.0" y="475.9" text-anchor="middle" font-size="17" fill="#2a1a4f">your repository: code · tests · data · git history</text>
+<line x1="485" y1="270" x2="485" y2="440" stroke="#6d5bd0" stroke-width="2" marker-end="url(#a-stone)"/>
+<line x1="760" y1="270" x2="760" y2="440" stroke="#c77d00" stroke-width="2" marker-end="url(#a-amber)"/>
+<text x="385" y="420" text-anchor="start" font-size="16" fill="#6f6890">acts on</text>
+<text x="860" y="420" text-anchor="end" font-size="16" fill="#6f6890">decides which act runs</text>
+<text x="600" y="560" text-anchor="middle" font-size="17" fill="#4b2e83" font-weight="700">Tools give the model hands; permissions decide which hand moves; MCP plugs in what is outside the repository.</text>
+</svg>

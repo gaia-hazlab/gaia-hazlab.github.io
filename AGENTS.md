@@ -34,6 +34,8 @@ pixi run serve-book     # live-preview the book only
 pixi run build-book      # build book to _build/html
 pixi run build-all       # build book + assemble into website/book (matches CI)
 pixi run serve-all       # serve the full assembled website/ locally
+pixi run build-slides    # render the teaching slide decks (Quarto reveal.js)
+pixi run preview-slides  # live-preview the agents-intro deck
 pixi run linkcheck       # jupyter book build --check-links
 pixi run spellcheck      # codespell
 ```
@@ -45,12 +47,18 @@ does the same assembly steps.
 
 - Content pages are Markdown (MyST flavor) under `book/chapters/`; register new pages in
   the `toc:` in [myst.yml](myst.yml), not by adding files alone.
+- Teaching material lives under `book/teaching/<topic>/` (lecture page, `tutorials/`, and a
+  `slides/` Quarto project). Slide decks are `.qmd` files rendered by `build-slides`; the
+  rendered HTML in `slides/_build/` is git-ignored and is copied into `website/book/slides/`
+  by `build-all` / `build-ci`. Edit the `.qmd`, never the HTML.
 - Keep `project_coordination/` free of budget figures, personal contact info, and
   unreleased science — it's public. Reference people by role, not name/email.
 - Governance/process docs live in `book/governance/`; the acknowledgement wording for NSF
   awards in [book/governance/how-we-work.md](book/governance/how-we-work.md) must be used
   verbatim when cited elsewhere.
 - Run `pixi run spellcheck` and `pixi run linkcheck` before considering doc changes done.
+- Make the smallest change that resolves the task. Do not reformat, rename, or tidy files
+  you were not asked to touch.
 - Don't hand-edit `_build/` or treat `_attic/` content as authoritative.
 
 ## Persona reviews
