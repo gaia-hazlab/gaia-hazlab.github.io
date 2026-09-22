@@ -1,294 +1,118 @@
-# HazEvalHub
+---
+title: HazEvalHub — evaluations held to one standard
+short_title: HazEvalHub
+description: Where GAIA's hazard and agent evaluations are collected and held to a single benchmark-integrity standard. Two tracks run today, both hosted outside the organisation.
+---
 
-## Overview
+:::{note}
+**In progress.** Interim owner **Marine Denolle**; v0.5 target **2027-03-31**. Two tracks run
+today — [agent evaluations](hazevalhub-agents) and
+[seismic event catalog workflows](hazevalhub-catalogs) — and both are hosted outside the
+`gaia-hazlab` organisation. The standard below is written and in force; the shared
+infrastructure it describes is not built yet.
+:::
 
-The HazEvalHub is where hazard models get scored. It holds the metrics, the validation
-protocols, and the held-out data that decide whether a prediction is good enough to act on.
+## What HazEvalHub is
 
-We are developing two tracks for evaluating model performance:
-- **Extreme event monitoring**: classification, regression, segmentation (e.g., detection of landslides, floods, earthquakes)
-- **Surrogate of Physical Models** trained on physics-based simulations, a framework based on the AI Institute for Dynamical System Common Task Framework (collab with Nathan Kutz and Kaggle) with fair evaluation and hidden data set.
-- **Leaderboard**: a set of hazard-relevant evaluation metrics when using geospatial and terrestrial networks in collaboration with AI2.
+One place where the project's evaluations are collected, held to one standard, and findable by
+someone who wants to check a claim rather than read about it. An evaluation that a reader cannot
+inspect is worth less than no evaluation at all, because it spends credibility instead of
+building it. That principle is why this page exists before the infrastructure does.
 
-## 🔴 Live prototype — FrugalMind EvalHub
+What exists today is two evaluations running elsewhere and the standard on this page. There is
+no `gaia-hazlab/hazevalhub` repository, no shared scorer, and no hidden hazard test set. Each
+track below states its own limits, and the scorecard in
+[the nine rules](#the-nine-rules) marks which rules the project
+currently meets.
 
-> **[▶ Open the live eval board](https://mdenolle.github.io/frugalmind)**
+## Evaluation tracks
 
-**FrugalMind EvalHub is the first working prototype of HazEvalHub.** It is a live
-evaluation board for scientific AI agents in geoscience, and it establishes the design
-the full HazEvalHub generalizes to hazard tasks.
+Each track is a distinct kind of evaluation with its own data, metrics and community. Some run
+on surfaces we maintain, some on surfaces a partner maintains, and some are not yet running at
+all.
 
-Every submission is scored on three questions:
+::::{grid} 1 1 2 2
 
-| Question | What it measures |
+:::{grid-item-card} Agent evaluations
+:link: hazevalhub-agents
+Scoring AI agents that do geoscience work — reading literature, driving scientific software,
+orchestrating multi-step workflows — on accuracy, cost and reproducibility together.
+**Live, hosted externally.**
+:::
+
+:::{grid-item-card} Seismic event catalog workflows
+:link: hazevalhub-catalogs
+Benchmarking the pickers and workflows that turn continuous seismic data into event catalogs,
+against analyst arrivals across five study regions.
+**Live, hosted externally; being reworked.**
+:::
+
+:::{grid-item-card} Flood surrogates
+Surrogate models trained on physics-based flood simulations, scored under a Common Task
+Framework against a hidden test set.
+**In progress — no public surface yet.**
+:::
+
+:::{grid-item-card} Landslide deep-learning detection
+Detection and susceptibility models scored on POD, FAR and CSI, and on spatial agreement with
+mapped failures.
+**In progress — no public surface yet.**
+:::
+
+::::
+
+(the-nine-rules)=
+## The standard: nine rules for a citable benchmark
+
+Adapted from the NeurIPS and ICML *Datasets and Benchmarks* track, whose reviewers ask the
+questions an outside reader asks. We publish the standard before the benchmarks exist, because a
+standard is checkable and a promise is not. The right-hand column is our own scorecard, not an
+aspiration.
+
+| # | Rule | Where we stand |
+|---|---|---|
+| R1 | The task is fully specified before submissions open | Not met on either track |
+| R2 | The test set is hidden, and the board says so on every row | Partly — agent track has hidden splits, rows are not stamped |
+| R3 | The scorer is public, deterministic and versioned | Not met |
+| R4 | A trivial baseline is published first | Not met on either track |
+| R5 | A strong published baseline is published alongside it | Met on the catalog track only |
+| R6 | Contamination is addressed explicitly, in writing, per task | Not met; the sharpest risk for the planned seismic task |
+| R7 | Splits are DOI-archived with a datasheet | Not met |
+| R8 | The evaluation is separable from the group whose models it scores | Met on the catalog track, not on the agent track |
+| R9 | Every row carries model version, split, date and cost | Not met |
+
+Two of nine. The full argument, the mitigation ladder for R8, and the seed-task designs are in
+the [HazEvalHub CTF plan](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/project_coordination/09-hazevalhub-ctf-plan.md).
+
+## Metric families we intend to publish
+
+Chapters across this book forward-reference metric definitions to HazEvalHub. Those definitions
+will live here, scored per pillar and per hazard. **None is implemented yet** — the table below
+is the intended scope, not a description of running code.
+
+| Pillar | Metrics |
 |---|---|
-| **Is it right?** | Accuracy against ground truth |
-| **What did it cost?** | Token/dollar cost — cost is a *first-class* axis, not an afterthought |
-| **Is it reproducible?** | Deterministic scoring from declarative JSON specs, so results can't be gamed |
-
-**The board.** A cost-versus-performance scatter: each model appears twice — *without*
-domain skills (hollow marker) and *with* them (filled) — joined by a line showing the
-**skill lift**. Systems in the upper-left (high performance, low cost) win. Hover for
-model version, weights, and exact metrics; export to CSV/PNG.
-
-**Tasks.** Document-based (literature review, retrieval-augmented QA, multimodal
-interpretation), software-agent (writing a detector, executing a pipeline, producing
-data), and research-workflow (orchestration and trajectory scoring). Concrete benchmarks
-include *dv/v* parameter choice, STA/LTA code generation, and ObsPy function usage.
-Validation splits are public; **test splits are hidden** to prevent memorization.
-
-**An early result.** Free *local* 7B models (`qwen2.5:7b`, `llama3.1:8b`) reach perfect
-scores on configuration tasks once given domain skills — but fail at numerical code
-generation, where only cloud models succeed (~0.56 base, rising to 0.76 with skills).
-Domain skills lift small, cheap models to frontier parity on some task classes and not
-others; knowing *which* is the point of the board.
-
-**Where it goes next.** Adopt its JSON scoring spec as the shared `gaia-eval` scorecard
-schema, carry the cost/frugality axis into the hazard metrics below, and extend the task
-taxonomy from agent tasks to the full pillar × hazard grid — keeping the agent tasks as
-the "research-workflow" track.
-
-## Evaluation Framework (TBD)
-
-### Components
-
-1. **Performance Metrics**: Standardized metrics for model evaluation
-2. **Validation Protocols**: Rigorous testing procedures
-3. **Benchmarking**: Comparison against established baselines
-4. **Uncertainty Quantification**: Assessment of prediction confidence
-5. **Operational Testing**: Real-world performance evaluation
-
-## Evaluation Metrics
-<!--
-### Classification Metrics
-
-For hazard presence/absence classification:
-
-```python
-from gaia_hazlab.evaluation import ClassificationMetrics
-
-# Calculate metrics
-metrics = ClassificationMetrics(y_true, y_pred)
-print(f"Accuracy: {metrics.accuracy()}")
-print(f"F1 Score: {metrics.f1_score()}")
-print(f"ROC-AUC: {metrics.roc_auc()}")
-```
-
-### Regression Metrics
-
-For continuous hazard intensity prediction:
-
-```python
-from gaia_hazlab.evaluation import RegressionMetrics
-
-# Evaluate predictions
-metrics = RegressionMetrics(y_true, y_pred)
-print(f"RMSE: {metrics.rmse()}")
-print(f"MAE: {metrics.mae()}")
-print(f"R²: {metrics.r_squared()}")
-```
-
-### Spatial Metrics
-
-For spatially-explicit hazard mapping:
-
-```python
-from gaia_hazlab.evaluation import SpatialMetrics
-
-# Calculate spatial agreement
-metrics = SpatialMetrics(reference_map, predicted_map)
-print(f"IoU: {metrics.iou()}")
-print(f"Dice: {metrics.dice_coefficient()}")
-print(f"Spatial Correlation: {metrics.spatial_correlation()}")
-``` -->
-
-## Validation Protocols
-
-### Cross-Validation
-
-#### Temporal Cross-Validation
-
-For time-dependent hazard data:
-<!--
-```python
-from gaia_hazlab.evaluation import TemporalCV
-
-cv = TemporalCV(n_splits=5)
-for train_idx, test_idx in cv.split(data, time_variable='date'):
-    # Train and evaluate model
-    pass
-``` -->
-
-#### Spatial Cross-Validation
-
-For spatially-correlated data.
-
-<!-- ```python
-from gaia_hazlab.evaluation import SpatialCV
-
-cv = SpatialCV(n_splits=5, buffer_distance=1000)
-for train_idx, test_idx in cv.split(data, coordinates=coords):
-    # Train and evaluate model
-    pass
-``` -->
-
-### Hold-out Testing
-
-- Geographic hold-out: Testing on different regions
-- Temporal hold-out: Testing on future time periods
-- Event-based hold-out: Testing on specific hazard events
-
-## Benchmarking
-
-### Baseline Models
-
-We will provide standard baselines for comparison (e.g., statistical baselines, classic ML models).
-
-### Performance Comparison
-<!--
-```python
-from gaia_hazlab.evaluation import BenchmarkSuite
-
-# Run benchmarking
-benchmark = BenchmarkSuite()
-benchmark.add_model('your_model', your_model)
-benchmark.add_baseline('persistence', persistence_model)
-benchmark.add_baseline('historical_avg', avg_model)
-
-results = benchmark.evaluate(test_data)
-benchmark.plot_comparison()
-``` -->
-
-## Uncertainty Quantification
-
-<!-- ### Prediction Intervals
-
-Quantify prediction uncertainty:
-
-```python
-from gaia_hazlab.evaluation import UncertaintyQuantifier
-
-uq = UncertaintyQuantifier(model)
-predictions, lower_bound, upper_bound = uq.predict_with_intervals(X_test)
-``` -->
-
-### Probabilistic Evaluation
-
-<!-- Assess calibration of probabilistic predictions:
-
-```python
-from gaia_hazlab.evaluation import CalibrationAnalysis
-
-calibration = CalibrationAnalysis(y_true, y_prob)
-calibration.plot_reliability_diagram()
-print(f"Brier Score: {calibration.brier_score()}")
-``` -->
-
-## Case Studies
-
-<!-- ### Example: Flood Model Evaluation
-
-```python
-from gaia_hazlab.evaluation import FloodModelEvaluator
-
-# Load test data
-test_events = load_flood_events('historical_floods.csv')
-
-# Evaluate model
-evaluator = FloodModelEvaluator(model)
-results = evaluator.evaluate_events(test_events)
-
-# Generate report
-evaluator.generate_report('flood_model_evaluation.html')
-```
-
-## Evaluation Reports
-
-### Automated Reporting
-
-Generate comprehensive evaluation reports:
-
-```python
-from gaia_hazlab.evaluation import EvaluationReport
-
-report = EvaluationReport()
-report.add_metrics(metrics_dict)
-report.add_plots(figures)
-report.add_summary(description)
-report.export('evaluation_report.html')
-```
-
-### Report Contents
-
-Standard reports include:
-- Executive summary
-- Performance metrics tables
-- Visualization of predictions vs. observations
-- Error analysis and diagnostic plots
-- Uncertainty assessment
-- Recommendations for improvement -->
-
-## Quality Assurance
-
-### Model Validation Checklist
-
-Before deployment, models must pass:
-
-- [ ] Cross-validation on training data
-- [ ] Hold-out test performance meets thresholds
-- [ ] Spatial/temporal generalization verified
-- [ ] Uncertainty properly quantified
-- [ ] Edge cases and failure modes identified
-- [ ] Computational efficiency acceptable
-- [ ] Documentation complete
-
-## Operational Evaluation
-
-### Real-time Monitoring
-<!--
-Monitor deployed model performance:
-
-```python
-from gaia_hazlab.evaluation import PerformanceMonitor
-
-monitor = PerformanceMonitor(model)
-monitor.track_predictions(live_data)
-monitor.alert_if_drift(threshold=0.1)
-``` -->
-
-### Feedback Integration
-
-- Collect user feedback on predictions
-- Incorporate new observations for continuous evaluation
-- Update models based on operational experience
-
-## Evaluation Standards
-
-We follow established standards:
-
-- **WMO Guidelines**: For meteorological hazards
-- **USGS Standards**: For seismic hazards
-- **ISO Standards**: For risk assessment
-- **ML Best Practices**: For model evaluation
-
-## Contributing
-
-Help improve our evaluation framework:
-
-1. Suggest new metrics for specific hazard types
-2. Contribute validation datasets
-3. Share evaluation protocols from your research
-4. Report issues or limitations
-
-## Resources
-
-- [Metrics API Reference]({{ github_org_url }}/{{ book_repo }}/wiki/metrics-api)
-- Validation Datasets
-
-## Future Developments
-
-Planned enhancements:
-- Automated model selection based on evaluation metrics
-- Multi-model ensembling with performance-weighted aggregation
-- Continual learning with online evaluation
-- Explainable AI techniques for model interpretability
+| State (Pillar 1) | RMSE and bias against wells, soil-moisture sensors and ET; storm-response temporal correlation; physical consistency (mass balance, hydrostatic) |
+| Nowcast (Pillar 2) | POD, FAR, CSI; IoU and Dice for mapped failures; Brier score and reliability; lead time to alert |
+| Forecast (Pillar 3) | Skill against persistence and climatology; ROC and precision-recall at decision thresholds; cost–loss value; lead time against skill |
+| Actionability | Decision thresholds; false-alarm cost; warning lead time |
+| Frugality | Tokens and dollars per submission; skill per dollar; skill lift from domain skills |
+
+Frugality is a first-class axis rather than a footnote. A model that cannot be run cheaply
+cannot be run across a fifteen-year archive, and a benchmark that ignores cost will rank such a
+model first anyway.
+
+## Ownership and dates
+
+**Interim owner:** Marine Denolle. The permanent owner is a kickoff decision, and until it is
+taken this page names a person rather than a role.
+
+**v0.5 target: 2027-03-31.** v0.5 means one hazard task, one hidden test set, one published
+baseline, scored by a public scorer — the first point at which a result here would be worth
+citing in a paper.
+
+The critical path is not software. It is a labelling campaign: the planned seismic task needs a
+temporally disjoint test set, drawn from events after the training window of the models it will
+score, labelled by at least two independent annotators with a third adjudicating. Relabelling
+existing curated data would be cheaper and would produce a contaminated benchmark that measures
+memorisation. Nothing else on the path takes as long or needs as many people.
