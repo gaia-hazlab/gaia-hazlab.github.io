@@ -81,14 +81,6 @@ project:
     - title: Teaching
       children:
         - file: book/teaching/agents-intro/agents-intro.md
-          children:
-            - file: book/teaching/agents-intro/tutorials/01-anatomy-of-an-agent.md
-            - file: book/teaching/agents-intro/tutorials/02-writing-your-first-skill.md
-            - file: book/teaching/agents-intro/tutorials/03-subagents-and-orchestration.md
-            - file: book/teaching/agents-intro/tutorials/04-evaluating-agent-runs.md
-            - file: book/teaching/agents-intro/compute-requirements.md
-            - url: https://gaia-hazlab.github.io/book/slides/agents-intro/agents-intro.html
-              title: "Slides (HTML deck)"
 
   parts:
     banner: |
