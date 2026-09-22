@@ -1,7 +1,7 @@
-# Site & Book Remediation Plan
+# Site, Book & Organisation Remediation Plan
 
-> **What to fix on the website and book, in what order, based on evidence rather than taste.**
-> Derived from the ten-persona review round of 2026-08-12
+> **What to fix on the website, the book and the GitHub organisation, in what order, based on
+> evidence rather than taste.** Derived from the ten-persona review round of 2026-08-12
 > ([`review-logs/2026-08-12/`](../review-logs/2026-08-12/), synthesis
 > [here](../review-logs/2026-08-12/_synthesis.md)): 129 findings, 13 blockers, ten reviewers run
 > independently across academia, philanthropy and industry.
@@ -10,6 +10,43 @@
 > and SAR is [02-website-evolution.md](02-website-evolution.md) and is not affected by this
 > document, except that §2 below should be settled before new pages are written into the same
 > structure.
+>
+> **Last updated 2026-08-13.** Org and site figures in this document were re-verified that
+> morning against the live site and the GitHub API; §0 records what has moved.
+
+## 0. Progress since the review round
+
+One day in. Recorded so the next round can tell fixes from drift.
+
+**Landed**
+
+| What | Workstream | Commit |
+|---|---|---|
+| Mount Rainier chapter published, with 17 Crossref-verified citations | W1, W7 | `a3ca937` |
+| Wilcock/Kidiwela reference corrected — it described a paper other than the one it linked, and that paper is now published | W1 | `a3ca937` |
+| Ten review personas and their subagents made public and version-controlled, with a `LICENSE` behind the README's CC BY 4.0 claim | W-ORG | `d9563c3` |
+| Review logs, synthesis and this plan committed | — | `072be55` |
+| `SeisSCOPED/community-metrics` licensed MIT upstream | W5 | external |
+
+The Rainier chapter is worth naming as the **model for W1**, not just an item in it. It states
+what is known, cites who established it, and separates that from what GAIA is attempting. The
+faculty reviewer's blocker was that no page acknowledged adjacent work; this is what the answer
+looks like on one page, and it took a day.
+
+**Corrections to this plan's own figures**
+
+- The decisions register has **four** `2026-08-__` placeholders, not two.
+- **One** public repository now carries a release, so "no releases anywhere in the organisation"
+  is no longer literally true. One of 26 does not change the finding.
+
+**Unchanged as of 2026-08-13** — every blocker from the round still stands:
+`/metrics-observatory/` still 404s and is still linked from [`myst.yml:68`](../myst.yml);
+`people.html` still renders 1,005 characters and no personal name without JavaScript; 9 of 26
+public repositories still carry no licence; 2 of 26 carry a `CITATION.cff` while
+[`faq.md:42`](../book/governance/faq.md) still says all of them do; the "non-functional
+placeholders" banner is still in the ToC config; `from gaia_hazlab import …` still appears on
+ModelHub and HazEvalHub; `∞ Sensors` is still at
+[`website/index.html:393`](../website/index.html).
 
 ## 1. The finding that organises everything else
 
@@ -273,6 +310,54 @@ Until v0.5 lands, the HazEvalHub chapter says "in progress" with a date and an o
 
 Owner: CI / eval leads.
 
+### W-ORG — The GitHub organisation as a surface in its own right
+
+The technical reviewers barely read the website. The RSE said so outright — "the website is
+marketing until proven otherwise" — and went straight to the repositories; both CTOs did the
+same. For those readers **the organisation *is* the site**, and it is currently the weaker of
+the two. W2 (licences) and W6 (durability) are the org's blockers; this workstream is everything
+else the reviewers found there.
+
+State as of 2026-08-13: 33 repositories, 26 public and active, none archived.
+
+**Custody and namespace.** The two most advanced artefacts in the project live in personal
+namespaces — the Repère board under `mdenolle`, QuakeXNet under `Akashkharita`. The faculty
+reviewer and the geospatial CTO each hit this independently, and the national-lab scientist made
+the general version of it a blocker: data products namespaced to individuals do not survive the
+individual. Mirror or move both into `gaia-hazlab`, with the org copy canonical. The same
+applies to `s3://cresst/{user}/` under W6.
+
+**Maturity signalling.** Twenty of 33 repositories are tagged unstable, and the climate-risk CTO
+noted the tag is easy to miss. The tag is honest and worth keeping — the problem is that it is
+invisible until you go looking. Surface maturity in the repository description and the org
+profile, not only in a topic.
+
+**Discovery.** [03 §1](03-ai-tools-and-evals.md) assigns the org a "discovery hub" role — a
+tagged registry of community software. That role fails silently if repositories are not
+findable: 2 of 26 have no description, 1 has no topics. Cheap to fix and directly serves a
+stated function.
+
+**Issue hygiene.** 187 open issues, the oldest untouched since November, and an unmerged
+"Create LICENSE" pull request. The RSE read this as the bus-factor question answering itself.
+Triage to a state where open means open.
+
+**Bus factor, stated rather than discovered.** Seventeen of 24 repositories the RSE checked had
+a single committer. That is normal for research software and fatal to an adoption decision made
+in the dark. His signature question was what maintenance commitment exists, by a named person,
+for each thing he would depend on — and the answer was none, anywhere. A `MAINTAINERS` line in
+the README of the repositories we actually want adopted costs minutes and answers it.
+
+**Dormancy.** Four public repositories have had no push in more than 180 days:
+`gaia-landslides-detect` (241d), `usgs-gauge-utils` (240d),
+`gaia-stehekin-postfire-debrisflows` (240d), `shred-landlab-prototypes` (210d). Each is either
+finished, parked, or abandoned, and the reader cannot tell which. Archive, label, or commit —
+any of the three beats silence, and archiving is not an admission of failure.
+
+**Repository weight.** The data layer the RSE came for is 100 MB of notebooks with outputs
+committed. Strip outputs on commit and the repository becomes clonable.
+
+Owner: CI infra lead, with each repository owner for their own.
+
 ## 4. The "in progress" convention
 
 Applies across every workstream. Where a fix needs a human decision or a fact only a team member
@@ -288,32 +373,38 @@ follows them.
 
 ### Day one — about two hours, clears items from twenty-nine findings
 
-None of these requires a decision or a meeting.
+None of these requires a decision or a meeting. All still outstanding as of 2026-08-13; each
+line below was re-checked that morning and carries the file and line to change.
 
-| Fix | Workstream |
-|---|---|
-| Correct the `CITATION.cff` sentence in the FAQ | W2 |
-| Fill the two `2026-08-__` placeholder dates | W8 |
-| Replace or drop "∞ Sensors" | W1 |
-| Gloss "digital twin" in one sentence on the landing page | W1 |
-| Fix the 404 favicon and 404 team photo | W4 |
-| Link the DataHub Integration Guide from the DataHub page | W7 |
-| Remove `/metrics-observatory/` from the ToC until it exists | W5 |
-| Add the "nothing ratifies before kickoff" line to the decisions register | W8 |
+| Fix | Where | Workstream |
+|---|---|---|
+| Correct the `CITATION.cff` sentence — 2 of 26 repos have one, not all | [`faq.md:42`](../book/governance/faq.md) | W2 |
+| Fill the **four** `2026-08-__` placeholder dates | [`decisions.md`](../book/governance/decisions.md) lines 50, 86, 125, 153 | W8 |
+| Replace or drop `∞ Sensors` | [`website/index.html:393`](../website/index.html) | W1 |
+| Gloss "digital twin" in one sentence | landing page | W1 |
+| Fix the 404 favicon and the 404 team photo | `people.html` | W4 |
+| Remove `/metrics-observatory/` from the ToC until it exists | [`myst.yml:68`](../myst.yml) | W5 |
+| Add the "nothing ratifies before kickoff" line | [`decisions.md`](../book/governance/decisions.md) | W8 |
+| Add descriptions to the 2 repos without one; topics to the 1 without any | GitHub org | W-ORG |
+| Archive or label the 4 repositories dormant >180 days | GitHub org | W-ORG |
 
 ### Week one
 
 - W4 in full — server-render the roster alphabetically, add co-PI titles, name a non-PI contact.
-- W2 — open the `LICENSE` + `CITATION.cff` PRs and tag each repository owner.
+- W2 — open the `LICENSE` + `CITATION.cff` PRs against the nine unlicensed repos, tagging each
+  owner. Merge the stale "Create LICENSE" PR already sitting open.
 - W2b — write the open-access-only + licence-propagation position onto the DataHub page.
-- W1 begins its full-site sweep, starting with ModelHub, HazEvalHub and Research Software.
-- W5 — fork `community-metrics` into the org. Reuse is already cleared under MIT.
+- W1 begins its full-site sweep, starting with ModelHub and HazEvalHub — the two pages still
+  documenting a `gaia_hazlab` API that does not exist.
+- W5 — fork `community-metrics` into the org. Reuse is cleared under MIT; retain the notice.
+- W-ORG — mirror Repère and QuakeXNet into `gaia-hazlab`, org copy canonical.
 
 ### Month one
 
 - W3 — one published number against one baseline. **Gates the front page.**
 - W9 — HazEvalHub v0.5 seed tasks scoped ([09](09-hazevalhub-ctf-plan.md) §5).
 - W5 — Observatory MVP refactored from SeisSCOPED, baselines and dates from the first commit.
+- W-ORG — issue triage; `MAINTAINERS` in the repos we want adopted; strip notebook outputs.
 - Kickoff call: ratify the register, including `GAIA-D-005`. W7 unblocks.
 
 ### Quarter
@@ -323,6 +414,14 @@ None of these requires a decision or a meeting.
 - W1 sweep complete across all pages.
 - Re-run the ten personas and compare (§7).
 
+### A note on order
+
+The day-one list is not a warm-up. Twenty-nine findings across ten independent reviewers reduce
+to about two hours of editing, and until those two hours happen every deeper workstream is being
+built on a site that contradicts itself in ways a reader checks first. The climate-risk CTO
+verified exactly one claim — the `CITATION.cff` sentence — and it was false. That is the cost
+model for this list.
+
 ## 6. What not to do
 
 - **Do not redesign.** No blocker concerns design, typography, navigation quality or
@@ -331,18 +430,38 @@ None of these requires a decision or a meeting.
 - **Do not add four front pages.** See §2. The reviews specifically warn about this.
 - **Do not delete the draft admonitions.** Three reviewers noticed them favourably. The
   scaffolding is honestly labelled; it is the claims *around* the scaffolding that are not.
-- **Do not treat the FrugalMind board as a liability to hide.** It is simultaneously the most
+- **Do not treat the Repère board as a liability to hide.** It is simultaneously the most
   advanced artefact on the site and the least defensible as published. Publishing the scorer and
   stamping each row with the split that produced it converts it into the strongest evidence the
   project has.
+- **Do not delete the unstable tags or the draft labels to look more finished.** Honest labelling
+  was noticed favourably by three reviewers and is the cheapest credibility the project owns.
+  What has to change is the prose that contradicts the labels, not the labels.
+- **Do not archive a dormant repository to hide it.** Archive it because it is finished, and say
+  which. The reviewers punished ambiguity, not incompleteness.
 
 ## 7. How we will know it worked
 
 Re-run the same ten personas against the same rubric once W1–W5 have landed, and file the round
 in [`review-logs/`](../review-logs/) alongside this one. The comparison to watch is not the
-average — it is **the spread between the reading personas and the verifying personas**. Today
-that gap is 17 points (66 to 49). Closing it is the actual goal; raising the mean without
-closing it would mean the writing got better again.
+average — it is **the spread between the reading personas and the verifying personas**. On
+2026-08-12 that gap was 17 points (66 to 49). Closing it is the actual goal; raising the mean
+without closing it would mean the writing got better again.
+
+The personas now exist as subagents (`gaia-review-*`, generated by
+[`.claude/gaia-review-personas/build.py`](../.claude/gaia-review-personas/build.py)), so a round
+costs an afternoon rather than a planning exercise. Run them independently, merge with
+`shared/synthesis.md`, and file under a new date.
+
+Between rounds, the four checks below are the ones the reviewers actually performed, and they
+are worth running as a habit rather than waiting for a review:
+
+| Check | Command |
+|---|---|
+| Unlicensed public repos | `gh repo list gaia-hazlab --json name,visibility,licenseInfo` |
+| Claims on the site that are false | pick one and verify it, as the CTO did |
+| Links in the ToC that 404 | `curl -o /dev/null -w '%{http_code}'` over `myst.yml` URLs |
+| Pages readable without JavaScript | strip `<script>` and count what is left |
 
 Do not edit the 2026-08-12 logs to reflect fixes. File the next round.
 

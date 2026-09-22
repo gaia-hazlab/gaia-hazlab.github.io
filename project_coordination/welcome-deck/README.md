@@ -15,8 +15,8 @@
 > this spec stays an option if we ever want it version-controlled.)
 >
 > Brand matches **gaia-hazlab.github.io exactly** (tokens lifted from `people.html`), in
-> the same family as the FrugalMind EvalHub sibling site
-> (<https://mdenolle.github.io/frugalmind/>: "evidence over hype," clean data-forward
+> the same family as the Repère EvalHub sibling site
+> (<https://mdenolle.github.io/repere/>: "evidence over hype," clean data-forward
 > layout).
 >
 > ⚠ **Placeholders marked `‹confirm›`** are program-history items I won't invent — Marine
