@@ -469,7 +469,7 @@ def orchestrator_vs_specialist():
 
 
 def evaluation():
-    """How GAIA scores an agent: HazEvalHub / FrugalMind and the gaia-eval harness
+    """How GAIA scores an agent: HazEvalHub / Repère and the gaia-eval harness
     (book/chapters/hazevalhub.md, project_coordination/03-ai-tools-and-evals.md)."""
     s = Svg(1200, 640)
     # task with hidden test split
@@ -496,7 +496,7 @@ def evaluation():
           bold_first=True)
     # downstream uses
     s.arrow(1085, 190, 1085, 250)
-    s.box(880, 250, 290, 90, ["the board  (live: FrugalMind)", "cost vs performance;",
+    s.box(880, 250, 290, 90, ["the board  (live: Repère)", "cost vs performance;",
                               "hollow = no skills, filled = with;",
                               "the line is the skill lift"],
           fill="#fff", stroke=PURPLE, size=15, bold_first=True)
@@ -517,12 +517,12 @@ def evaluation():
     s.text(40, 400, "expert scoring says whether it is useful to a researcher.",
            size=17, color=STONE, italic=True)
     # result and phasing
-    s.box(40, 440, 480, 100, ["early result (FrugalMind board)",
+    s.box(40, 440, 480, 100, ["early result (Repère board)",
                              "local 7B + skills: perfect on configuration tasks;",
                              "numerical code: cloud only, ~0.56 → 0.76 with skills",
                              "task counts and N: TODO"],
           fill=LAV, stroke=PERI, size=14, bold_first=True)
-    s.text(40, 575, "dashed = in the CSSI plan, not running yet.  v0 live: FrugalMind, agent tasks  →  v0.5 (Y1): first hazard task",
+    s.text(40, 575, "dashed = in the CSSI plan, not running yet.  v0 live: Repère, agent tasks  →  v0.5 (Y1): first hazard task",
            size=16, color=INK)
     s.text(40, 605, "→  v1 (Y2): containerised submissions, auto-scoring  →  v2 (Y3): pillar × hazard grid",
            size=16, color=INK)

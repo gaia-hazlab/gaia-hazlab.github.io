@@ -1,0 +1,38 @@
+name: Weekly Linkcheck
+
+# Builds the book with link checking and reports broken links.
+# Runs on a schedule rather than on push: linkcheck is too slow for the deploy
+# path (see deploy.yml), which is how a 404 link to a retired eval board stayed
+# in the book's table of contents for weeks.
+#
+# Advisory only — continue-on-error means a broken link never blocks anything.
+# Known false positives (private repos, a 401 on a Google doc) are listed in
+# pixi.toml next to the linkcheck task.
+
+on:
+  schedule:
+    - cron: "0 15 * * 1"   # Mondays 15:00 UTC, an hour before the status nudge
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup pixi
+        uses: prefix-dev/setup-pixi@f00437f565399d418b0acc85936d12c1fb668347 # v0.10.1
+        with:
+          cache: true
+          frozen: true
+
+      - name: Check links
+        continue-on-error: true
+        timeout-minutes: 15
+        run: pixi run linkcheck

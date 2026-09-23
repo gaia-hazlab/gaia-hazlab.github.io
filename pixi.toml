@@ -22,6 +22,9 @@ build-ci = { cmd = "jupyter book build --html ; rm -rf website/book ; mv _build/
 # `linkcheck` will always report 404s for links to private repos/docs (expected, not a bug):
 #   - github.com/gaia-hazlab/landslide-digital-twin, fire-debrisflow-ml, gaia-nhsm-deagg (private repos)
 #   - docs.google.com/document/d/1kcy5L6VTg... in book/governance/decisions.md (private doc, 401)
+#   - orca.atmos.washington.edu/~bkerns/realtime/ar/ (slow host; resolves 200 to curl, times out here)
+# Known REAL break, not an exception: github.com/gaia-hazlab/metrics-observatory in
+# book/governance/organization.md does not exist at all. See 08-site-remediation-plan.md W5.
 # Check any newly reported link against this list before treating it as a real break.
 linkcheck = { cmd = "jupyter book build --check-links", description = "Check the book for broken links" }
 # Checks the static website/*.html pages (index, people, dashboard, funding, presentations).

@@ -17,7 +17,7 @@ The book states it "holds the metrics, the validation protocols, and the held-ou
 decide whether a prediction is good enough to act on". There is **no `hazevalhub` repository in
 the organisation**. The faculty panel reviewer named that exact sentence as the one that would be
 embarrassing in three years. Separately, the geospatial AI CTO — the persona best qualified to
-judge a benchmark — made the existing FrugalMind board his blocker, because its own data file
+judge a benchmark — made the existing Repère board his blocker, because its own data file
 cannot distinguish a hidden-set result from a smoke test, and its scorer sits in a repository
 that 404s.
 
@@ -135,7 +135,7 @@ scientist flagged as a durability risk in its own right. Mirror or move the code
 `gaia-hazlab` under W2's licence rule; the hidden labels live somewhere Akash does not hold if
 he intends to submit (R8, mitigation 2).
 
-## 4. Seed task B — FrugalMind agent evaluation
+## 4. Seed task B — Repère agent evaluation
 
 The existing board is the closest thing the project has to a citable result and the least
 defensible as published. [03 §3.0](03-ai-tools-and-evals.md) already sets the migration path; the
@@ -168,7 +168,7 @@ task with one hidden test set and one baseline". This is how that gets built.
 | 0 | Create `gaia-hazlab/hazevalhub`, licensed. The chapter stops describing a hub with no repository | — |
 | 1 | Write the task spec for Seed A and freeze it (R1) | Class list from the task owner |
 | 2 | Publish the three Seed A baselines on a public validation split (R4, R5) | Step 1 |
-| 3 | FrugalMind: publish scorer, stamp rows, move to org (R2, R3, R9) | — runs in parallel |
+| 3 | Repère: publish scorer, stamp rows, move to org (R2, R3, R9) | — runs in parallel |
 | 4 | Label the temporally-disjoint Seed A test set (§3.2 Route 2, §3.3 protocol) | Labelling campaign — the long pole |
 | 5 | Publish the datasheet and DOI-archive the splits (R7) | Step 4 |
 | 6 | Board live with both tasks, conflict-of-interest note, external entry invited (R8) | Steps 3, 5 |
@@ -183,7 +183,7 @@ match reality:
 
 - The present-tense claim about holding metrics, protocols and held-out data comes out.
 - The page says **in progress**, names the owner, and gives the v0.5 date.
-- The FrugalMind board stays and is described accurately: a working prototype for agent tasks,
+- The Repère board stays and is described accurately: a working prototype for agent tasks,
   with its current limits stated.
 - The nine rules in §2 go on the page as the standard the hub is being built to. Publishing the
   standard before the benchmark is itself evidence of seriousness, and costs nothing that is not

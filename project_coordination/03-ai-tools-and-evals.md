@@ -58,10 +58,10 @@ The flagged "next" priority (DOCS_ROADMAP §4.2). Build **hazard-relevant, actio
 metrics, not generic ML scores. Developed with **AI2, Nathan Kutz / AI Institute for
 Dynamical Systems, Kaggle-style** hosting.
 
-### 3.0 First prototype — FrugalMind EvalHub (live)
+### 3.0 First prototype — Repère EvalHub (live)
 
-**<https://mdenolle.github.io/frugalmind>** — repo
-[`mdenolle/frugalmind`](https://github.com/mdenolle/frugalmind). This is the **working v0
+**<https://mdenolle.github.io/repere/>** — repo
+[`mdenolle/repere`](https://github.com/mdenolle/repere). This is the **working v0
 of HazEvalHub**: a live eval board for scientific AI agents in geoscience. It already
 demonstrates the pattern the CTF generalizes, so it is the thing to point at, extend, and
 migrate — not to rebuild.
@@ -119,11 +119,11 @@ What it establishes (and HazEvalHub inherits):
 | Nowcast (P2) | POD / FAR / CSI; IoU/Dice for mapped failures; Brier + reliability; lead-time-to-alert |
 | Forecast (P3) | Skill vs persistence/climatology; ROC / PR at decision thresholds; cost–loss value; lead time vs skill |
 | Actionability | Decision thresholds; false-alarm cost; warning lead time |
-| **Frugality** (from §3.0) | **Tokens / $ per submission; skill-per-dollar; skill lift from domain skills (with − without)** — the FrugalMind cost axis, applied to every task |
+| **Frugality** (from §3.0) | **Tokens / $ per submission; skill-per-dollar; skill lift from domain skills (with − without)** — the Repère cost axis, applied to every task |
 
 ### 3.3 CTF phasing
 
-- **v0 (now, live):** **[FrugalMind EvalHub](https://mdenolle.github.io/frugalmind)** —
+- **v0 (now, live):** **[Repère EvalHub](https://mdenolle.github.io/repere/)** —
   agent tasks (dv/v config, STA/LTA codegen, ObsPy usage), hidden splits, cost-vs-skill
   board. Already running; see §3.0.
 - **v0.5 (Y1):** add the first *hazard* task (landslide nowcast POD/FAR/CSI) with one

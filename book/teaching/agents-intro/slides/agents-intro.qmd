@@ -412,7 +412,7 @@ A tool is a decorated function with a docstring; the runner drives the loop and 
 ![](../../../img/agents-gaia-layer.svg){.r-stretch}
 
 ::: {.notes}
-Three hubs, three named agents in the GaiaAgent layer, HazEvalHub scoring all of them; the FrugalMind board on the diagrams is HazEvalHub's live prototype, one thing under two names. The downloader wraps gaia-cli, STAC and s3://cresst; it does not replace them, and its book page is a draft. The translator is the most designed: 350-word summaries, 500-word cards, refusal patterns, an expert-eval plan. GaiaPilot on LLMaven is amber because no repo document mentions it; if still unresolved, drop it.
+Three hubs, three named agents in the GaiaAgent layer, HazEvalHub scoring all of them; the Repère board on the diagrams is HazEvalHub's live prototype, one thing under two names. The downloader wraps gaia-cli, STAC and s3://cresst; it does not replace them, and its book page is a draft. The translator is the most designed: 350-word summaries, 500-word cards, refusal patterns, an expert-eval plan. GaiaPilot on LLMaven is amber because no repo document mentions it; if still unresolved, drop it.
 :::
 
 ## What the proposal promised {.smaller}
@@ -487,7 +487,7 @@ Scale: the vendor's current models cost 1 to 10 dollars per million input tokens
 :::
 
 ::: {.takeaway}
-Cost is a first-class axis: recorded per run, reported next to accuracy. On the FrugalMind board, local 7B models with skills scored perfectly on configuration tasks and failed numerical code, where cloud models went from about 0.56 to 0.76 with skills. Task counts and N: TODO.
+Cost is a first-class axis: recorded per run, reported next to accuracy. On the Repère board, local 7B models with skills scored perfectly on configuration tasks and failed numerical code, where cloud models went from about 0.56 to 0.76 with skills. Task counts and N: TODO.
 :::
 
 ::: {.notes}
