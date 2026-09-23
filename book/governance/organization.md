@@ -35,21 +35,38 @@ This taxonomy is a proposal awaiting a numbered decision. Until it is ratified, 
 topics may not match what is described here.
 :::
 
-Every public repository carries four GitHub topics, so the taxonomy is machine-readable and
-the [Metrics Observatory](https://github.com/gaia-hazlab/metrics-observatory) can count
-against it without anyone maintaining a list by hand.
+Every public repository carries at least four GitHub topics, so the taxonomy is
+machine-readable and the
+[Metrics Observatory](https://github.com/gaia-hazlab/metrics-observatory) can count against
+it without anyone maintaining a list by hand.
 
 | Axis | Values | Rule |
 |---|---|---|
 | Umbrella | `gaia` | Every repository |
-| Category | `gaia-coordination` · `gaia-template` · `gaia-container` · `gaia-agent` · `gaia-eval` · `gaia-science` | Exactly one |
+| Category | `gaia-coordination` · `gaia-template` · `gaia-container` · `gaia-agent` · `gaia-eval` · `gaia-science` · `gaia-data` | Exactly one |
 | Relationship | `gaia-core`, or `gaia-level-1` … `gaia-level-4` | Exactly one |
 | Maturity | `gaia-stable` · `gaia-incubating` · `gaia-archived` | Exactly one |
+| Provisioning | `gaia-hpc` · `gaia-cloud` · `gaia-hybrid` · `gaia-agent-api` | At most one of `gaia-hpc`/`gaia-cloud`/`gaia-hybrid`; `gaia-agent-api` is independent |
 
 **Category** says what a repository *is*. **Relationship** says how it came to be here —
 `gaia-core` for work built by the project, or a level from the ladder below for software that
 joined from outside. **Maturity** exists because a list of repositories is not a
 recommendation: without it, a newcomer cannot tell established work from an experiment.
+`gaia-data` (data acquisition, staging, or cataloguing — e.g. the STAC catalogs,
+`gaia-cli`, `gaia-data-downloaders`) was already in use as a Category value on nine
+repositories before this table listed it; this adds it rather than inventing it.
+
+**Provisioning** is not Category: it says where a repository's workflow runs, not what the
+repository is. A STAC catalog runs nowhere in particular and gets no Provisioning topic.
+`gaia-hpc` marks a Slurm/HPC-only deployment; `gaia-cloud` marks a cloud-VM-only deployment
+(`earth2studio-test`, on Azure); `gaia-hybrid` marks a workflow that uses both in the same
+run rather than either as an alternative — `skypilot-hyak` (its SkyPilot spec targets Hyak
+Slurm or AWS from the same YAML) and `gwl-space-time-smooth` (GPU inference on Hyak Tillicum
+via SkyPilot, staged through Kopah cloud object storage in the same `sky launch` call — see
+[`gwl-space-time-smooth`'s `docs/twin/A-compute-and-deployment.qmd`](https://github.com/gaia-hazlab/gwl-space-time-smooth/blob/main/docs/twin/A-compute-and-deployment.qmd)).
+`gaia-agent-api` is independent of the other
+three: it marks a workflow deployed as a backend an agent calls over an API rather than run
+standalone — no repository needs it yet.
 
 Existing repositories are tagged, never renamed — renaming breaks clones, bookmarks and any
 URL already printed in a paper or proposal. New *software products* follow a naming
