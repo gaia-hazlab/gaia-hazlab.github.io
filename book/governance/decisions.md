@@ -37,6 +37,7 @@ one working day.
 | [002](#gaia-d-002) | System of record: Slack ephemeral, GitHub durable | proposed | — |
 | [003](#gaia-d-003) | Meeting schedule and the sunset rule | proposed | — |
 | [004](#gaia-d-004) | Project Google identity | proposed | — |
+| [005](#gaia-d-005) | Repo topic taxonomy: add `gaia-data`, add a Provisioning axis | proposed | — |
 
 Pending, not yet numbered — co-authorship policy and the openness/recording policy go to
 a comment window after the kickoff and are numbered when they ratify at the September
@@ -167,6 +168,55 @@ touched, so switching would orphan live artifacts and force a re-send.
 `gaia.hazlab@` · credential handoff recorded off git.
 
 **Discussion:** [kickoff briefs, Brief 4](https://docs.google.com/document/d/1kcy5L6VTg18lKTgfBw58_ofBKRu4YMuC6mEI7Q1Nq-8/edit)
+
+---
+
+(gaia-d-005)=
+## GAIA-D-005 — Repo topic taxonomy: `gaia-data` and a Provisioning axis
+
+**Date:** — · **Decided at:** — · **Status:** proposed
+
+Add `gaia-data` to the Category axis in [organization.md](./organization.md) — it was
+already applied to nine repositories (the STAC catalogs, `gaia-cli`,
+`gaia-data-downloaders`, `usgs-gauge-utils`, `geocroissant-hazards`) before the table
+listed it. Add a new axis, **Provisioning**, recording where a repository's workflow
+runs: `gaia-hpc`, `gaia-cloud`, `gaia-hybrid`, `gaia-agent-api`. A repository picks at
+most one of `gaia-hpc`/`gaia-cloud`/`gaia-hybrid`; `gaia-agent-api` is independent of
+those three.
+
+**Why:** a repository search on `gaia-data` should return every data-acquisition repo,
+and right now it does — the gap was that the axis wasn't documented, not that the topic
+was missing. Deployment target is a separate question from identity, so it can't be a
+Category value: `gwl-space-time-smooth` runs GPU inference on Hyak Tillicum via SkyPilot
+and stages through Kopah cloud object storage in the same `sky launch` call (see
+[`gwl-space-time-smooth`'s `docs/twin/A-compute-and-deployment.qmd`](https://github.com/gaia-hazlab/gwl-space-time-smooth/blob/main/docs/twin/A-compute-and-deployment.qmd))
+— neither "HPC" nor "cloud" alone describes
+it, which is why `gaia-hybrid` exists as its own value rather than stacking `gaia-hpc`
+and `gaia-cloud` as independent tags.
+
+**Rejected:** making deploy target a Category value — Category is exactly one, and a
+repo that runs on both HPC and cloud in the same pipeline, or on neither (any STAC
+catalog), can't be represented that way. Letting Provisioning values combine freely
+(`gaia-hpc` + `gaia-cloud` both present) was also rejected in favor of a single
+`gaia-hybrid` value — a repo search should distinguish "uses both together" from "two
+independent tags happen to co-occur," and free combination doesn't. Reusing `gaia-agent`
+for "runs behind an agent-callable API" was rejected too — that topic already means
+"this repo is agent source" (e.g. `gaia-agentic-ai`), a different claim from "this
+workflow is served for an agent to call."
+
+**Obligates:** GitHub topics `gaia-hybrid` added to `skypilot-hyak` (its SkyPilot spec
+targets Hyak Slurm or AWS from the same YAML) and to `gwl-space-time-smooth`; `gaia-cloud`
+added to `earth2studio-test` (Azure only, no HPC target found). `gaia-agent-api` is
+defined but applied to no repository yet.
+
+**Open:** whether `gaia-data` should split into separate aggregation vs. download
+values if the org keeps growing STAC catalogs and downloader repos at the current rate.
+Whether `skypilot-hyak`'s "same YAML, either target" portability is the same kind of
+"hybrid" as `gwl-space-time-smooth`'s "both at once in one pipeline" — both are tagged
+`gaia-hybrid` here, but they're not quite the same claim.
+
+**Discussion:** proposed in a Slack sync with Megan Frisella and Scott Henderson,
+2026-09-23; full reasoning recorded here and in [PR #50](https://github.com/gaia-hazlab/gaia-hazlab.github.io/pull/50).
 
 ---
 
