@@ -29,12 +29,14 @@ except ImportError:  # keep the script importable without deps for --help
 GITHUB_ORG = "gaia-hazlab"
 API = "https://api.github.com"
 
-# FrugalMind EvalHub — the live HazEvalHub prototype (public GitHub Pages data).
+# Repère EvalHub — the live HazEvalHub prototype (public GitHub Pages data).
 # Only the dv/v processing suite ("CodaMeter") is treated as a real GAIA eval right now;
 # every other suite on the board is a toy example until it is promoted here.
-FRUGALMIND_BASE = "https://mdenolle.github.io/frugalmind"
-FRUGALMIND_BOARD = FRUGALMIND_BASE
-CODAMETER_SUITE = "dvv_processing"          # dv/v from coda waves = "CodaMeter"
+REPERE_BASE = "https://mdenolle.github.io/repere"
+REPERE_BOARD = REPERE_BASE
+# The board renamed this suite from "dvv_processing" to "codameter" (checked 2026-09-23).
+# The old value silently matched nothing, producing an empty eval block rather than an error.
+CODAMETER_SUITE = "codameter"               # dv/v from coda waves = "CodaMeter"
 CODAMETER_LABEL = "CodaMeter (dv/v processing)"
 REAL_EVAL_SUITES = {CODAMETER_SUITE}
 
@@ -111,22 +113,22 @@ def _get_json(url: str) -> dict | list | None:
         r = requests.get(url, timeout=30)
         if r.status_code == 200:
             return r.json()
-        print(f"[warn] frugalmind {url}: HTTP {r.status_code}", file=sys.stderr)
+        print(f"[warn] repere {url}: HTTP {r.status_code}", file=sys.stderr)
     except Exception as e:
-        print(f"[warn] frugalmind {url}: {e}", file=sys.stderr)
+        print(f"[warn] repere {url}: {e}", file=sys.stderr)
     return None
 
 
-def collect_frugalmind() -> dict:
-    """CodaMeter (dv/v) eval scorecard from the live FrugalMind board.
+def collect_repere() -> dict:
+    """CodaMeter (dv/v) eval scorecard from the live Repère board.
 
-    Pulls the public Pages data, keeps ONLY the dvv_processing suite as the real GAIA
+    Pulls the public Pages data, keeps ONLY the codameter suite as the real GAIA
     eval, and records the frugality story (best score, the cheapest model reaching it,
     the biggest skill lift). Other suites are listed as excluded/toy, not scored.
     Degrades to {} (board omitted) if the board is unreachable.
     """
-    board = _get_json(f"{FRUGALMIND_BASE}/data/leaderboard.json")
-    lift = _get_json(f"{FRUGALMIND_BASE}/data/skill_lift.json")
+    board = _get_json(f"{REPERE_BASE}/data/leaderboard.json")
+    lift = _get_json(f"{REPERE_BASE}/data/skill_lift.json")
     if not isinstance(board, dict):
         return {}
 
@@ -156,8 +158,8 @@ def collect_frugalmind() -> dict:
         return {k: r.get(k) for k in ("model_id", "score", "quality_percent", "cost_usd", "openness")}
 
     scorecard = {
-        "source": "frugalmind",
-        "board_url": FRUGALMIND_BOARD,
+        "source": "repere",
+        "board_url": REPERE_BOARD,
         "suite": CODAMETER_SUITE,
         "suite_label": CODAMETER_LABEL,
         "board_generated_at": board.get("generated_at"),
@@ -169,7 +171,7 @@ def collect_frugalmind() -> dict:
             if max_lift else None
         ),
         "toy_suites_excluded": toy_suites,
-        "note": "Only the CodaMeter (dv/v) suite is a real GAIA eval; other FrugalMind "
+        "note": "Only the CodaMeter (dv/v) suite is a real GAIA eval; other Repère "
                 "suites are toy examples for now.",
     }
     return {"eval": scorecard}
@@ -221,13 +223,13 @@ def build_payload(generated_utc: str, project_year: int) -> dict:
         "delivery": delivery,
         "usage": usage,
         "composite": {"score": None, "under_engaged": []},
-        "note": "Kickoff scaffold — GitHub + FrugalMind CodaMeter. "
+        "note": "Kickoff scaffold — GitHub + Repère CodaMeter. "
                 "See project_coordination/04-metrics-observatory.md.",
     }
-    # HazEvalHub scorecard (M4): the CodaMeter (dv/v) suite from the live FrugalMind board.
-    fm = collect_frugalmind()
-    if fm.get("eval"):
-        payload["eval"] = fm["eval"]
+    # HazEvalHub scorecard (M4): the CodaMeter (dv/v) suite from the live Repère board.
+    rp = collect_repere()
+    if rp.get("eval"):
+        payload["eval"] = rp["eval"]
     return payload
 
 

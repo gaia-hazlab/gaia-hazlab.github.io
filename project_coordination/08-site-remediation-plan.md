@@ -238,9 +238,15 @@ workflow. It was archived out of this repo when the Observatory was meant to mov
 `gaia-hazlab/metrics-observatory` — **and that repository was never created**, which is the
 whole reason the link 404s. The work is not missing; it has nowhere to live.
 
-Two consequences. First, the archived collector hardcodes `FRUGALMIND_BASE` and
-`collect_frugalmind()`, so it needs the Repère rename before it runs again. Second, the
-decision below should be revisited rather than executed as written.
+Two consequences. First, the archived collector has been renamed for Repère (2026-09-23) and
+smoke-tested against the live board: it returns 5 models on the `codameter` suite. The board had
+also renamed that suite from `dvv_processing`, which the old code would have matched against
+nothing — returning an empty eval block rather than an error. Second, the decision below should
+be revisited rather than executed as written.
+
+The two JSON files under `metrics/` still say `frugalmind`. They are generated output:
+`history/2026-W29.json` is a dated snapshot and editing it would falsify a record, and
+`latest.json` is overwritten on the next run. Both are left alone deliberately.
 
 *Superseded, kept for the record:* build the MVP by refactoring
 [`SeisSCOPED/community-metrics`](https://github.com/SeisSCOPED/community-metrics)
