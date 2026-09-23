@@ -120,8 +120,11 @@ Pulled by `collect_repere()` from the live [Repère board](https://mdenolle.gith
 (public Pages JSON, no auth). **Only the `dvv_processing` suite — "CodaMeter" (dv/v from
 coda waves) — is treated as a real GAIA eval right now;** every other suite on the board
 (e.g. `synthetic_stalta`) is a toy example and is listed under `toy_suites_excluded`, not
-scored. As suites are promoted, add them to `REAL_EVAL_SUITES` in
-[`../scripts/metrics/collect.py`](../scripts/metrics/collect.py). This is the concrete
+scored. As suites are promoted, add them to `REAL_EVAL_SUITES` in the collector. The
+collector no longer lives in this repository — `scripts/metrics/` was archived to
+[`_attic/metrics-moved-to-own-repo/`](../_attic/metrics-moved-to-own-repo/) when the
+Observatory moved out, and the `collect_repere()` rename has to be applied wherever it lands
+(see [08 W5](08-site-remediation-plan.md), scheduled for end of Q4 2026). This is the concrete
 first slice of the Repère→HazEvalHub migration in
 [03 §3.0](03-ai-tools-and-evals.md); it carries the **frugality/cost axis** into the
 Observatory (best score, cheapest model reaching it, largest skill lift).
