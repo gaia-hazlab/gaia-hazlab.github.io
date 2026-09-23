@@ -221,6 +221,9 @@ Owner: Website lead.
 
 ### W5 — Metrics Observatory: MVP by refactoring SeisSCOPED *(5 personas · resolves blocker 6)*
 
+**Scheduled for end of Q4 2026** (decided 2026-09-23). The ToC link should come out before then
+so the book stops pointing at a 404; that is a one-line edit, independent of the MVP work.
+
 `https://gaia-hazlab.github.io/metrics-observatory/` returns 404 and is linked from the book's
 own table of contents at [`myst.yml:65`](../myst.yml). The governance pages rest on public
 accountability against thirteen metrics; no metric value is published anywhere.
@@ -396,19 +399,20 @@ line below was re-checked that morning and carries the file and line to change.
 - W2b — write the open-access-only + licence-propagation position onto the DataHub page.
 - W1 begins its full-site sweep, starting with ModelHub and HazEvalHub — the two pages still
   documenting a `gaia_hazlab` API that does not exist.
-- W5 — fork `community-metrics` into the org. Reuse is cleared under MIT; retain the notice.
+- W5 — remove the 404 from the ToC. The fork itself is deferred to Q4.
 - W-ORG — mirror Repère and QuakeXNet into `gaia-hazlab`, org copy canonical.
 
 ### Month one
 
 - W3 — one published number against one baseline. **Gates the front page.**
 - W9 — HazEvalHub v0.5 seed tasks scoped ([09](09-hazevalhub-ctf-plan.md) §5).
-- W5 — Observatory MVP refactored from SeisSCOPED, baselines and dates from the first commit.
 - W-ORG — issue triage; `MAINTAINERS` in the repos we want adopted; strip notebook outputs.
 - Kickoff call: ratify the register, including `GAIA-D-005`. W7 unblocks.
 
 ### Quarter
 
+- W5 — Observatory MVP refactored from SeisSCOPED, baselines and dates from the first
+  commit. **Target: end of Q4 2026.**
 - W6 durability: releases, DOIs, and the year-six holder question (see §8).
 - W9 — HazEvalHub v0.5 live with one hazard task and one agent task.
 - W1 sweep complete across all pages.
