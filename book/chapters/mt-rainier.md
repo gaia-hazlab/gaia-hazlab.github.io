@@ -175,6 +175,18 @@ network constrains the source, and the meteorological record constrains what set
 Code is developed in the open at
 [Denolle-Lab/surface_events](https://github.com/Denolle-Lab/surface_events).
 
+**A model of the mountain to locate against.** Locations and source properties are only as good
+as the velocity model beneath them, and the regional models do not resolve the edifice, its
+glaciers or its altered core. *rainier3d* is an open, Python-built model of P- and S-wave speed,
+density and attenuation from the ground surface to 20 km below sea level. It extends the mapped
+geology to depth with explicit rules and a rock-physics law, keeps the long wavelengths of the
+USGS Cascadia velocity model, and is checked against Pacific Northwest Seismic Network travel
+times, with its S-wave speeds calibrated on S−P times. The same grid carries the surface layers
+that matter for hazards: glacier ice thickness, soil thickness, water-table depth, streams,
+canopy height and land cover. How it was built, how
+well it fits, and how to extract it for ray tracing are set out in the
+[rainier3d technical report](https://gaia-hazlab.github.io/rainier3d/).
+
 ## What the Paros support has made possible
 
 The Paros gift paid for the year in which several instruments and several people came into one

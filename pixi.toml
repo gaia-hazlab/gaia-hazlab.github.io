@@ -32,7 +32,7 @@ linkcheck = { cmd = "jupyter book build --check-links", description = "Check the
 check-website = { cmd = "lychee website/*.html --exclude-path website/book", description = "Check links/images on the static website pages" }
 clean = { cmd = "rm -rf _build website/book", description = "Remove build outputs" }
 
-spellcheck = { cmd = "codespell --skip ./_build,./website/book,./_attic,./review-logs,references.bib,pixi.lock --ignore-words-list GAGE,FitH,FRO", description = "Spellcheck the repo, skipping build outputs and references" }
+spellcheck = { cmd = "codespell --skip ./_build,./website/book,./website/rainier3d,./_attic,./review-logs,references.bib,pixi.lock --ignore-words-list GAGE,FitH,FRO", description = "Spellcheck the repo, skipping build outputs and references" }
 spellcheck-context = { cmd = "codespell --skip ./_build,./website/book,./_attic,./review-logs,references.bib,pixi.lock --ignore-words-list GAGE,FitH,FRO --context 2", description = "Spellcheck with 2 lines of surrounding context for each match" }
 zizmor = { cmd = "zizmor .", description = "Audit GitHub Actions workflows for security issues" }
 
