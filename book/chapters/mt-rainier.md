@@ -185,7 +185,9 @@ times, with its S-wave speeds calibrated on S−P times. The same grid carries t
 that matter for hazards: glacier ice thickness, soil thickness, water-table depth, streams,
 canopy height and land cover. How it was built, how
 well it fits, and how to extract it for ray tracing are set out in the
-[rainier3d technical report](https://gaia-hazlab.github.io/rainier3d/).
+[rainier3d technical report](https://gaia-hazlab.github.io/rainier3d/). The model's surface layers
+can be explored with the seismic network and seismicity in the
+[3D viewer](https://denolle-lab.github.io/mt-rainier-digital-model/), built by Derek Yao.
 
 ## What the Paros support has made possible
 
