@@ -11,8 +11,9 @@
 > document, except that §2 below should be settled before new pages are written into the same
 > structure.
 >
-> **Last updated 2026-08-13.** Org and site figures in this document were re-verified that
-> morning against the live site and the GitHub API; §0 records what has moved.
+> **Last updated 2026-09-23** — W5 rescheduled to end of Q4 2026. The org and site **figures**
+> in this document were last re-verified on 2026-08-13 against the live site and the GitHub API,
+> and have not been re-checked since; §0 records what had moved as of that date.
 
 ## 0. Progress since the review round
 
@@ -219,7 +220,7 @@ without JS, to a crawler, and to anyone reading a cached copy.
 
 Owner: Website lead.
 
-### W5 — Metrics Observatory: MVP by refactoring SeisSCOPED *(5 personas · resolves blocker 6)*
+### W5 — Metrics Observatory: revive the scaffold *(5 personas · resolves blocker 6)*
 
 **Scheduled for end of Q4 2026** (decided 2026-09-23). The ToC link should come out before then
 so the book stops pointing at a 404; that is a one-line edit, independent of the MVP work.
@@ -228,8 +229,31 @@ so the book stops pointing at a 404; that is a one-line edit, independent of the
 own table of contents at [`myst.yml:65`](../myst.yml). The governance pages rest on public
 accountability against thirteen metrics; no metric value is published anywhere.
 
-**Decided: build the MVP by refactoring [`SeisSCOPED/community-metrics`](https://github.com/SeisSCOPED/community-metrics)**
-rather than designing from scratch. It already carries the shape we need — a `metrics/`
+**Correction (2026-09-23): a GAIA scaffold already exists and was overlooked when this
+workstream was written.** [`_attic/metrics-moved-to-own-repo/`](../_attic/metrics-moved-to-own-repo/)
+holds a 272-line `collect.py` with `collect_github()`, `collect_zenodo()`,
+`collect_huggingface()` and an eval collector, a populated `metrics/latest.json` with the
+delivery / usage / composite / eval blocks, a `history/` snapshot, and a weekly Actions
+workflow. It was archived out of this repo when the Observatory was meant to move to
+`gaia-hazlab/metrics-observatory` — **and that repository was never created**, which is the
+whole reason the link 404s. The work is not missing; it has nowhere to live.
+
+Two consequences. First, the archived collector has been renamed for Repère (2026-09-23) and
+smoke-tested against the live board: it returns 5 models on the `codameter` suite. The board had
+also renamed that suite from `dvv_processing`, which the old code would have matched against
+nothing — returning an empty eval block rather than an error. Second, the decision below should
+be revisited rather than executed as written.
+
+The two JSON files under `metrics/` still say `frugalmind`. They are generated output:
+`history/2026-W29.json` is a dated snapshot and editing it would falsify a record, and
+`latest.json` is overwritten on the next run. Both are left alone deliberately.
+
+*Superseded, kept for the record:* build the MVP by refactoring
+[`SeisSCOPED/community-metrics`](https://github.com/SeisSCOPED/community-metrics)
+rather than designing from scratch. That was decided without knowing the GAIA scaffold
+existed. Our own collector already targets the D1–D5 / M1–M4 definitions in
+[04](04-metrics-observatory.md); SeisSCOPED's targets a different metric set. Reviving ours
+is very likely cheaper than refactoring theirs, but this is a call to make at Q4, not here. It already carries the shape we need — a `metrics/`
 collection layer, a `dashboard/`, `scripts/`, and a static `index.html` that publishes to Pages,
 which fits the constraint in [02 §6](02-website-evolution.md) that the surface stay static and
 consume generated JSON.
@@ -399,7 +423,7 @@ line below was re-checked that morning and carries the file and line to change.
 - W2b — write the open-access-only + licence-propagation position onto the DataHub page.
 - W1 begins its full-site sweep, starting with ModelHub and HazEvalHub — the two pages still
   documenting a `gaia_hazlab` API that does not exist.
-- W5 — remove the 404 from the ToC. The fork itself is deferred to Q4.
+- W5 — remove the 404 from the ToC. Reviving the scaffold is deferred to Q4.
 - W-ORG — mirror Repère and QuakeXNet into `gaia-hazlab`, org copy canonical.
 
 ### Month one
@@ -411,8 +435,9 @@ line below was re-checked that morning and carries the file and line to change.
 
 ### Quarter
 
-- W5 — Observatory MVP refactored from SeisSCOPED, baselines and dates from the first
-  commit. **Target: end of Q4 2026.**
+- W5 — Observatory MVP: create `gaia-hazlab/metrics-observatory`, revive the archived
+  scaffold, apply the Repère rename, publish with baselines and dates.
+  **Target: end of Q4 2026.**
 - W6 durability: releases, DOIs, and the year-six holder question (see §8).
 - W9 — HazEvalHub v0.5 live with one hazard task and one agent task.
 - W1 sweep complete across all pages.
@@ -477,7 +502,7 @@ decisions register as `proposed` and ratify at kickoff with everything else.
 | # | Question | Decision |
 |---|---|---|
 | 1 | Front page audience | **Climate technology**, framed as extreme weather and natural disasters (§2) |
-| 2 | The Observatory | **MVP it**, by refactoring SeisSCOPED `community-metrics` (W5) |
+| 2 | The Observatory | **MVP it** (W5). Route revised 2026-09-23: revive the archived GAIA scaffold rather than refactor SeisSCOPED |
 | 3 | Commercial use | **Not pursued yet.** Everything ships open source — see the caveat below |
 | 4 | Year-six holder | **No institutional answer yet.** Working assumption: Marine, in a future research centre (an FRO or equivalent) |
 | 5 | Scope of the W1 sweep | **Every page** (W1) |
