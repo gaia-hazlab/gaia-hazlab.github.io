@@ -181,11 +181,13 @@ glaciers or its altered core. *rainier3d* is an open, Python-built model of P- a
 density and attenuation from the ground surface to 20 km below sea level. It extends the mapped
 geology to depth with explicit rules and a rock-physics law, keeps the long wavelengths of the
 USGS Cascadia velocity model, and is checked against Pacific Northwest Seismic Network travel
-times, with its S-wave speeds calibrated on S−P times. The same grid carries the surface layers
-that matter for hazards: glacier ice thickness, soil thickness, water-table depth, streams,
-canopy height and land cover. How it was built, how
-well it fits, and how to extract it for ray tracing are set out in the
-[rainier3d technical report](https://gaia-hazlab.github.io/rainier3d/). The model's surface layers
+times: its rock physics and a correction of the regional model are fitted to P and S−P times
+with every earthquake relocated in 3D. The same grid carries the surface layers that matter for
+hazards (glacier ice thickness, soil thickness, water-table depth, streams, vegetation and land
+cover), the hydrothermal alteration mapped from a helicopter electromagnetic survey, GNSS strain
+rates and the stress of the edifice load. How it was built, how well it fits, and how to download
+it are set out in the
+[rainier3d data paper](https://denolle-lab.github.io/mt-rainier-digital-model/paper/). The model's surface layers
 can be explored with the seismic network and seismicity in the
 [3D viewer](https://denolle-lab.github.io/mt-rainier-digital-model/), built by Derek Yao.
 
