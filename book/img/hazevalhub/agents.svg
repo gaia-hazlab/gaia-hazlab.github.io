@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#2f7f9a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img"><title>Agents</title>
+<circle cx="24" cy="10" r="5"/><circle cx="10" cy="36" r="5"/><circle cx="38" cy="36" r="5"/>
+<path d="M21.5 14.5l-9 17M26.5 14.5l9 17M15 36h18"/>
+<circle cx="24" cy="27" r="2.5"/>
+<path d="M24 15v9.5" stroke-width="1.5"/>
+</svg>

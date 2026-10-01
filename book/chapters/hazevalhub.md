@@ -1,15 +1,17 @@
 ---
 title: HazEvalHub — evaluations held to one standard
 short_title: HazEvalHub
-description: Where GAIA's hazard and agent evaluations are collected and held to a single benchmark-integrity standard. Two tracks run today, both hosted outside the organisation.
+description: Where GAIA's evaluations of AI models for earthquakes, landslides, floods, thunderstorms, atmospheric rivers and agents are collected and held to a single benchmark-integrity standard.
 ---
 
 :::{note}
-**In progress.** Interim owner **Marine Denolle**; v0.5 target **2027-03-31**. Two tracks run
-today — [agent evaluations](hazevalhub-agents) and
-[seismic event catalog workflows](hazevalhub-catalogs) — and both are hosted outside the
-`gaia-hazlab` organisation. The standard below is written and in force; the shared
-infrastructure it describes is not built yet.
+**In progress.** Interim owner **Marine Denolle**; v0.5 target **2027-03-31**. Six tracks, one
+per hazard plus agents. Two boards run today, both hosted outside the `gaia-hazlab`
+organisation, and their cards link straight to them: [Repère](https://mdenolle.github.io/repere/)
+for agents and [QuakeScope](https://seisscoped.org/QuakeScope/benchmark_summary.html) for
+earthquake phase pickers. Landslides, thunderstorms and atmospheric rivers have pages here and
+no published scores yet. Floods is planned. The standard below is written and in force; the
+shared infrastructure it describes is not built yet.
 :::
 
 ## What HazEvalHub is
@@ -27,61 +29,100 @@ currently meets.
 
 ## Evaluation tracks
 
-Each track is a distinct kind of evaluation with its own data, metrics and community. Some run
-on surfaces we maintain, some on surfaces a partner maintains, and some are not yet running at
-all.
+One card per track. Each opens the page or board where that track's evaluation lives. Some run on
+surfaces we maintain, some on surfaces a partner maintains, and one is not yet running at all.
 
-::::{grid} 1 1 2 2
+::::{grid} 1 2 3 3
 
-:::{grid-item-card} Agent evaluations
-:link: hazevalhub-agents
-Scoring AI agents that do geoscience work — reading literature, driving scientific software,
-orchestrating multi-step workflows — on accuracy, cost and reproducibility together.
-**Live, hosted externally.**
+:::{grid-item-card} Earthquakes
+:link: https://seisscoped.org/QuakeScope/benchmark_summary.html
+:footer: **Live**, hosted by SeisSCOPED
+```{image} ../img/hazevalhub/earthquakes.svg
+:alt: Earthquakes icon
+:width: 56px
+```
+Deep-learning phase pickers scored against analyst arrivals across five study regions, on the QuakeScope board.
 :::
 
-:::{grid-item-card} Seismic event catalog workflows
-:link: hazevalhub-catalogs
-Benchmarking the pickers and workflows that turn continuous seismic data into event catalogs,
-against analyst arrivals across five study regions.
-**Live, hosted externally; being reworked.**
+:::{grid-item-card} Landslides
+:link: hazevalhub-landslides
+:footer: **In progress**, no scores yet
+```{image} ../img/hazevalhub/landslides.svg
+:alt: Landslides icon
+:width: 56px
+```
+QuakeXNet detection and classification of surface events, and Landlab failure-probability modeling validated on the 2025 Stehekin debris flows.
 :::
 
-:::{grid-item-card} Flood surrogates
-Surrogate models trained on physics-based flood simulations, scored under a Common Task
-Framework against a hidden test set.
-**In progress — no public surface yet.**
+:::{grid-item-card} Floods
+:link: hazevalhub-floods
+:footer: **Planned**
+```{image} ../img/hazevalhub/floods.svg
+:alt: Floods icon
+:width: 56px
+```
+Surrogate models trained on physics-based flood simulations, scored under a Common Task Framework against a hidden test set.
 :::
 
-:::{grid-item-card} Landslide deep-learning detection
-Detection and susceptibility models scored on POD, FAR and CSI, and on spatial agreement with
-mapped failures.
-**In progress — no public surface yet.**
+:::{grid-item-card} Thunderstorms
+:link: hazevalhub-thunderstorms
+:footer: **In progress**, board not yet published
+```{image} ../img/hazevalhub/thunderstorms.svg
+:alt: Thunderstorms icon
+:width: 56px
+```
+Seismoacoustic thunderquake detectors scored on how many strikes they add to open lightning catalogs.
+:::
+
+:::{grid-item-card} Atmospheric rivers
+:link: hazevalhub-rainfall
+:footer: **In progress**, no scores yet
+```{image} ../img/hazevalhub/atmospheric-rivers.svg
+:alt: Atmospheric rivers icon
+:width: 56px
+```
+Extreme rainfall: gridded precipitation products compared against gauges, and ACE2 forecasts downscaled to Stage IV.
+:::
+
+:::{grid-item-card} Agents
+:link: https://mdenolle.github.io/repere/
+:footer: **Live**, hosted externally
+```{image} ../img/hazevalhub/agents.svg
+:alt: Agents icon
+:width: 56px
+```
+AI agents doing geoscience work, scored on accuracy, cost and reproducibility together on the Repère board.
 :::
 
 ::::
+
+The two live boards have companion pages that state what each one does and does not yet show:
+[agent evaluations](hazevalhub-agents) and
+[earthquake phase pickers](hazevalhub-catalogs).
 
 (the-nine-rules)=
 ## The standard: nine rules for a citable benchmark
 
 Adapted from the NeurIPS and ICML *Datasets and Benchmarks* track, whose reviewers ask the
 questions an outside reader asks. We publish the standard before the benchmarks exist, because a
-standard is checkable and a promise is not. The right-hand column is our own scorecard, not an
+standard is checkable and a promise is not. The track columns are our own scorecard, not an
 aspiration.
 
-| # | Rule | Where we stand |
-|---|---|---|
-| R1 | The task is fully specified before submissions open | Not met on either track |
-| R2 | The test set is hidden, and the board says so on every row | Partly — agent track has hidden splits, rows are not stamped |
-| R3 | The scorer is public, deterministic and versioned | Not met |
-| R4 | A trivial baseline is published first | Not met on either track |
-| R5 | A strong published baseline is published alongside it | Met on the catalog track only |
-| R6 | Contamination is addressed explicitly, in writing, per task | Not met; the sharpest risk for the planned seismic task |
-| R7 | Splits are DOI-archived with a datasheet | Not met |
-| R8 | The evaluation is separable from the group whose models it scores | Met on the catalog track, not on the agent track |
-| R9 | Every row carries model version, split, date and cost | Not met |
+| # | Rule | Earthquakes | Landslides | Floods | Thunderstorms | Atm. rivers | Agents |
+|---|---|---|---|---|---|---|---|
+| R1 | The task is fully specified before submissions open | No | No | — | No | No | No |
+| R2 | The test set is hidden, and the board says so on every row | No | No | — | No | No | Partly: hidden splits exist, rows are not stamped |
+| R3 | The scorer is public, deterministic and versioned | No | No | — | No | No | No |
+| R4 | A trivial baseline is published first | No | No | — | No | No | No |
+| R5 | A strong published baseline is published alongside it | **Yes** | No | — | No | No | No |
+| R6 | Contamination is addressed explicitly, in writing, per task | No | No | — | No | No | No |
+| R7 | Splits are DOI-archived with a datasheet | No | No | — | No | No | No |
+| R8 | The evaluation is separable from the group whose models it scores | **Yes** | No | — | No | No | No |
+| R9 | Every row carries model version, split, date and cost | No | No | — | No | No | No |
 
-Two of nine. The full argument, the mitigation ladder for R8, and the seed-task designs are in
+A dash means the track has no surface to score yet.
+
+Two of nine rules are met on any track, both of them on Earthquakes. The full argument, the mitigation ladder for R8, and the seed-task designs are in
 the [HazEvalHub CTF plan](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/project_coordination/09-hazevalhub-ctf-plan.md).
 
 ## Metric families we intend to publish

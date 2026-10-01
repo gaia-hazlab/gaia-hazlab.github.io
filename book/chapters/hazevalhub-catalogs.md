@@ -1,11 +1,11 @@
 ---
-title: Seismic event catalog workflows — the QuakeScope benchmarks
-short_title: Catalog workflows
+title: "Earthquakes: phase pickers and catalog workflows (QuakeScope)"
+short_title: Earthquakes
 description: Benchmarking the phase pickers and workflows that turn continuous seismic data into event catalogs, against analyst arrivals across five study regions.
 ---
 
 :::{note}
-**Live, hosted externally — and being reworked.** The catalog-workflow track of
+**Live, hosted externally, and being reworked.** The earthquake track of
 [HazEvalHub](hazevalhub); see also [agent evaluations](hazevalhub-agents). The benchmarks run at
 [seisscoped.org/QuakeScope](https://seisscoped.org/QuakeScope/) from
 [`SeisSCOPED/QuakeScope`](https://github.com/SeisSCOPED/QuakeScope) (MIT), maintained by
