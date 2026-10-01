@@ -50,7 +50,8 @@ project:
             - file: book/chapters/modelhub-liquefaction.md
         - file: book/chapters/hazevalhub.md
           children:
-            - file: book/chapters/hazevalhub-catalogs.md
+            - url: https://seisscoped.org/QuakeScope/benchmark_summary.html
+              title: "Earthquakes (QuakeScope)"
             - file: book/chapters/hazevalhub-landslides.md
             - file: book/chapters/hazevalhub-floods.md
             - file: book/chapters/hazevalhub-thunderstorms.md

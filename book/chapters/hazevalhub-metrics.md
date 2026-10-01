@@ -7,7 +7,7 @@ Metrics used across [HazEvalHub](hazevalhub). "(rank)" marks the metric a task i
 
 | Metric | Definition | Used in |
 |---|---|---|
-| Pick recall | Share of analyst picks matched by a model pick within 0.5 s, per phase | [Earthquakes](hazevalhub-catalogs) (rank) |
+| Pick recall | Share of analyst picks matched by a model pick within 0.5 s, per phase | [Earthquakes](https://seisscoped.org/QuakeScope/benchmark_summary.html) (rank) |
 | F1 | Harmonic mean of precision and recall | [Landslides L1](#landslides-l1) (rank) |
 | Accuracy | Share of test items given the correct class | [Landslides L1](#landslides-l1), [Agents](https://mdenolle.github.io/repere/) |
 | Event recall | Share of catalog events matched by a detection within 60 s | [Landslides L2](#landslides-l2) (rank) |

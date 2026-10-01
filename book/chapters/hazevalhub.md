@@ -87,8 +87,6 @@ AI agents doing geoscience work, scored on accuracy, cost and reproducibility to
 
 ::::
 
-Notes on the external QuakeScope board: [earthquakes](hazevalhub-catalogs).
-
 (the-nine-rules)=
 ## The standard: nine rules for a citable benchmark
 
