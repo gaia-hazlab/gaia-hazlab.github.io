@@ -9,7 +9,7 @@ Metrics used across [HazEvalHub](hazevalhub). "(rank)" marks the metric a task i
 |---|---|---|
 | Pick recall | Share of analyst picks matched by a model pick within 0.5 s, per phase | [Earthquakes](hazevalhub-catalogs) (rank) |
 | F1 | Harmonic mean of precision and recall | [Landslides L1](#landslides-l1) (rank) |
-| Accuracy | Share of test items given the correct class | [Landslides L1](#landslides-l1), [Agents](hazevalhub-agents) |
+| Accuracy | Share of test items given the correct class | [Landslides L1](#landslides-l1), [Agents](https://mdenolle.github.io/repere/) |
 | Event recall | Share of catalog events matched by a detection within 60 s | [Landslides L2](#landslides-l2) (rank) |
 | Class agreement | Share of matched events given the reference class | [Landslides L2](#landslides-l2) |
 | Brier score | Mean squared difference between predicted probability and outcome (0 or 1); lower is better | [Landslides L3](#landslides-l3) (rank) |
@@ -23,8 +23,8 @@ Metrics used across [HazEvalHub](hazevalhub). "(rank)" marks the metric a task i
 | CRPS | Continuous ranked probability score of a probabilistic forecast | [Atmospheric rivers R2](#rainfall-r2) |
 | FSS | Fractions skill score above a threshold, over a neighbourhood | [Atmospheric rivers R2](#rainfall-r2) |
 | Power spectrum | Spatial variance by wavelength, against Stage IV | [Atmospheric rivers R2](#rainfall-r2) |
-| Cost | Parameters, memory, runtime per station-day; tokens and dollars for agents | [Landslides L1](#landslides-l1), [Agents](hazevalhub-agents) |
-| Reproducibility | Whether a pinned submission scores the same twice | [Agents](hazevalhub-agents) |
+| Cost | Parameters, memory, runtime per station-day; tokens and dollars for agents | [Landslides L1](#landslides-l1), [Agents](https://mdenolle.github.io/repere/) |
+| Reproducibility | Whether a pinned submission scores the same twice | [Agents](https://mdenolle.github.io/repere/) |
 
 Floods has no metrics yet.
 
