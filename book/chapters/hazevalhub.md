@@ -9,8 +9,8 @@ description: Where GAIA's evaluations of AI models for earthquakes, landslides, 
 per hazard plus agents. Two boards run today, both hosted outside the `gaia-hazlab`
 organisation, and their cards link straight to them: [Repère](https://mdenolle.github.io/repere/)
 for agents and [QuakeScope](https://seisscoped.org/QuakeScope/benchmark_summary.html) for
-earthquake phase pickers. Landslides, thunderstorms and atmospheric rivers have pages here and
-no published scores yet. Floods is planned. The standard below is written and in force; the
+earthquake phase pickers. Landslides has QuakeXNet detection results on its page here;
+thunderstorms and atmospheric rivers have pages and no published scores yet. Floods is planned. The standard below is written and in force; the
 shared infrastructure it describes is not built yet.
 :::
 
@@ -46,7 +46,7 @@ Deep-learning phase pickers scored against analyst arrivals across five study re
 
 :::{grid-item-card} Landslides
 :link: hazevalhub-landslides
-:footer: **In progress**, no scores yet
+:footer: **Detection results live**, modeling in progress
 ```{image} ../img/hazevalhub/landslides.svg
 :alt: Landslides icon
 :width: 56px

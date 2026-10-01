@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" role="img"><title>Share of located events by calendar month</title>
+<rect width="900" height="330" fill="#fcfcfb"/>
+<line x1="70.0" y1="260.0" x2="800.0" y2="260.0" stroke="#6f6890" stroke-width="1"/>
+<text x="62.0" y="264.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="end" font-weight="400">0%</text>
+<line x1="70.0" y1="202.5" x2="800.0" y2="202.5" stroke="#e6e3ee" stroke-width="1"/>
+<text x="62.0" y="206.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="end" font-weight="400">5%</text>
+<line x1="70.0" y1="145.0" x2="800.0" y2="145.0" stroke="#e6e3ee" stroke-width="1"/>
+<text x="62.0" y="149.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="end" font-weight="400">10%</text>
+<line x1="70.0" y1="87.5" x2="800.0" y2="87.5" stroke="#e6e3ee" stroke-width="1"/>
+<text x="62.0" y="91.5" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="end" font-weight="400">15%</text>
+<line x1="70.0" y1="30.0" x2="800.0" y2="30.0" stroke="#e6e3ee" stroke-width="1"/>
+<text x="62.0" y="34.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="end" font-weight="400">20%</text>
+<text x="70.0" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Jan</text>
+<text x="136.4" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Feb</text>
+<text x="202.7" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Mar</text>
+<text x="269.1" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Apr</text>
+<text x="335.5" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">May</text>
+<text x="401.8" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Jun</text>
+<text x="468.2" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Jul</text>
+<text x="534.5" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Aug</text>
+<text x="600.9" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Sep</text>
+<text x="667.3" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Oct</text>
+<text x="733.6" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Nov</text>
+<text x="800.0" y="280.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Dec</text>
+<text x="435.0" y="304.0" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#6f6890" text-anchor="middle" font-weight="400">Month</text>
+<polyline points="70.0,166.5 136.4,171.3 202.7,152.5 269.1,164.0 335.5,166.8 401.8,175.4 468.2,171.1 534.5,171.4 600.9,151.4 667.3,142.3 733.6,168.1 800.0,169.2" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="70.0" cy="166.5" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Jan: 8.1%</title></circle>
+<circle cx="136.4" cy="171.3" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Feb: 7.7%</title></circle>
+<circle cx="202.7" cy="152.5" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Mar: 9.3%</title></circle>
+<circle cx="269.1" cy="164.0" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Apr: 8.3%</title></circle>
+<circle cx="335.5" cy="166.8" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, May: 8.1%</title></circle>
+<circle cx="401.8" cy="175.4" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Jun: 7.4%</title></circle>
+<circle cx="468.2" cy="171.1" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Jul: 7.7%</title></circle>
+<circle cx="534.5" cy="171.4" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Aug: 7.7%</title></circle>
+<circle cx="600.9" cy="151.4" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Sep: 9.4%</title></circle>
+<circle cx="667.3" cy="142.3" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Oct: 10.2%</title></circle>
+<circle cx="733.6" cy="168.1" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Nov: 8.0%</title></circle>
+<circle cx="800.0" cy="169.2" r="4" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>Surface events, Dec: 7.9%</title></circle>
+<polyline points="70.0,172.4 136.4,182.1 202.7,159.2 269.1,165.5 335.5,157.0 401.8,185.2 468.2,170.6 534.5,158.0 600.9,137.3 667.3,137.1 733.6,170.3 800.0,175.4" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="70.0" cy="172.4" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Jan: 7.6%</title></circle>
+<circle cx="136.4" cy="182.1" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Feb: 6.8%</title></circle>
+<circle cx="202.7" cy="159.2" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Mar: 8.8%</title></circle>
+<circle cx="269.1" cy="165.5" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Apr: 8.2%</title></circle>
+<circle cx="335.5" cy="157.0" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, May: 9.0%</title></circle>
+<circle cx="401.8" cy="185.2" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Jun: 6.5%</title></circle>
+<circle cx="468.2" cy="170.6" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Jul: 7.8%</title></circle>
+<circle cx="534.5" cy="158.0" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Aug: 8.9%</title></circle>
+<circle cx="600.9" cy="137.3" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Sep: 10.7%</title></circle>
+<circle cx="667.3" cy="137.1" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Oct: 10.7%</title></circle>
+<circle cx="733.6" cy="170.3" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Nov: 7.8%</title></circle>
+<circle cx="800.0" cy="175.4" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>Explosions, Dec: 7.4%</title></circle>
+<text x="810.0" y="168.3" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#2a1a4f" text-anchor="start" font-weight="400">Surface events</text>
+<text x="810.0" y="184.3" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#2a1a4f" text-anchor="start" font-weight="400">Explosions</text>
+</svg>
