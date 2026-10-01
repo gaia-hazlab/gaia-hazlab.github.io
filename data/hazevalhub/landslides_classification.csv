@@ -1,0 +1,8 @@
+model,family,input,accuracy_pct,f1_pct,parameters,memory_mb,seconds_per_station_day,source,source_url,code
+SeismicCNN (2D),deep learning,3C spectrogram,94,94,1986572,11.61,10.07,Kharita et al. 2026 Tables 1-2,https://doi.org/10.26443/seismica.v5i1.2068,https://github.com/Akashkharita/PNW_Seismic_Event_Classification
+QuakeXNet (2D),deep learning,3C spectrogram,92,92,70708,1.22,9.13,Kharita et al. 2026 Tables 1-2,https://doi.org/10.26443/seismica.v5i1.2068,https://github.com/Akashkharita/PNW_Seismic_Event_Classification
+QuakeXNet (1D),deep learning,3C waveform,92,92,657716,4.55,6.17,Kharita et al. 2026 Tables 1-2,https://doi.org/10.26443/seismica.v5i1.2068,https://github.com/Akashkharita/PNW_Seismic_Event_Classification
+"Random forest, Phy+Man (M6)",feature-based,"Z, 150 s",87,89,,,,Kharita et al. 2026 Table 1,https://doi.org/10.26443/seismica.v5i1.2068,https://github.com/Akashkharita/PNW_Seismic_Event_Classification
+"Random forest, Phy+Man (M4)",feature-based,"Z, 110 s",88,88,,,,Kharita et al. 2026 Table 1,https://doi.org/10.26443/seismica.v5i1.2068,https://github.com/Akashkharita/PNW_Seismic_Event_Classification
+"Random forest, Phy+Man (M2)",feature-based,"Z, 40 s",89,87,,,,Kharita et al. 2026 Table 1,https://doi.org/10.26443/seismica.v5i1.2068,https://github.com/Akashkharita/PNW_Seismic_Event_Classification
+SeismicCNN (1D),deep learning,3C waveform,84,84,10227340,46.39,6.22,Kharita et al. 2026 Tables 1-2,https://doi.org/10.26443/seismica.v5i1.2068,https://github.com/Akashkharita/PNW_Seismic_Event_Classification
