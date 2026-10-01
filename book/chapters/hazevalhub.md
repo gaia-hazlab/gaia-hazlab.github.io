@@ -113,21 +113,9 @@ A dash means the track has no surface to score yet.
 Two rules are met in full, both on Earthquakes. The reasoning behind each rule and the planned
 first tasks are in the [HazEvalHub CTF plan](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/project_coordination/09-hazevalhub-ctf-plan.md).
 
-## Metric families we intend to publish
+## Metrics
 
-Chapters across this book forward-reference metric definitions to HazEvalHub. Those definitions
-will live here, by pillar and hazard. **None is implemented yet**; the table lists what is
-planned.
-
-| Pillar | Metrics |
-|---|---|
-| State (Pillar 1) | RMSE and bias against wells, soil-moisture sensors and ET; storm-response temporal correlation; physical consistency (mass balance, hydrostatic) |
-| Nowcast (Pillar 2) | POD, FAR, CSI; IoU and Dice for mapped failures; Brier score and reliability; lead time to alert |
-| Forecast (Pillar 3) | Skill against persistence and climatology; ROC and precision-recall at decision thresholds; cost–loss value; lead time against skill |
-| Actionability | Decision thresholds; false-alarm cost; warning lead time |
-| Frugality | Tokens and dollars per submission; skill per dollar; skill lift from domain skills |
-
-Cost is scored because the models are meant to run over archives that span decades.
+All metric definitions, and the tasks that use them, are on [Metrics](hazevalhub-metrics).
 
 ## Ownership and dates
 

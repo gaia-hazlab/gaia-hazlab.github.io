@@ -19,6 +19,7 @@ rain, not through the storm total. A precipitation product or a forecast can hav
 error and still miss those hours. Every metric on this page is therefore reported above a set of
 extreme thresholds, as well as on average.
 
+(rainfall-r1)=
 ## Benchmark 1: rainfall datasets
 
 **What is compared.** Gridded precipitation products used as forcing elsewhere in GAIA, among
@@ -32,6 +33,7 @@ them PRISM, Stage IV, CONUS404 and HRRR. Each is staged through
 critical success index above the 95th and 99th percentile of gauge rainfall; and error in the
 upper quantiles of the distribution.
 
+(rainfall-r2)=
 ## Benchmark 2: ACE2 downscaled to Stage IV
 
 **What is compared.** ACE2 AI weather forecasts, downscaled to Stage IV resolution by a learned
