@@ -52,6 +52,10 @@ project:
           children:
             - file: book/chapters/hazevalhub-catalogs.md
             - file: book/chapters/hazevalhub-landslides.md
+              children:
+                - file: book/chapters/hazevalhub-landslides-classification.md
+                - file: book/chapters/hazevalhub-landslides-detection.md
+                - file: book/chapters/hazevalhub-landslides-susceptibility.md
             - file: book/chapters/hazevalhub-floods.md
             - file: book/chapters/hazevalhub-thunderstorms.md
             - file: book/chapters/hazevalhub-rainfall.md

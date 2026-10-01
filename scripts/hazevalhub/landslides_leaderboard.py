@@ -78,8 +78,7 @@ def write_l1():
             f"{r['accuracy_pct']} | {params} | {r['memory_mb'] or 'n/r'} | "
             f"{r['seconds_per_station_day'] or 'n/r'} | [paper]({r['source_url']}) · "
             f"[code]({r['code']}) |")
-    lines += ["", "Params: trainable parameters. MB: memory. s/day: seconds to process one day of "
-              "100 Hz data at one station. Z: vertical component. n/r: not reported in the source. "
+    lines += ["", "Z: vertical component only. n/r: not reported in the source. "
               "Sorted by F1, then accuracy; ties share a rank."]
     (INC / "landslides-classification.md").write_text("\n".join(lines) + "\n")
 
@@ -113,10 +112,8 @@ def write_l2():
              f"{100 * c['su']['su'] / c['su']['all']:.1f} | "
              f"{100 * c['px']['px'] / c['px']['all']:.1f} | {p['novel']:,} | not measured | {src} |",
              "",
-             f"su: surface event; px: explosion. Recall is over {nsu:,} PNSN surface events and "
-             f"{npx:,} PNSN explosions. Label %: share of matched PNSN events given the same class "
-             "by the model. Not in PNSN: model detections with no PNSN match. Values are read from "
-             "stored notebook outputs and were not rerun."]
+             f"Recall is over {nsu:,} PNSN surface events and {npx:,} PNSN explosions. Values are "
+             "read from stored notebook outputs and were not rerun."]
     (INC / "landslides-detection.md").write_text("\n".join(lines) + "\n")
 
 

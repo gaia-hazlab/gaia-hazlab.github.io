@@ -10,4 +10,4 @@
 | 6 | Random forest, Phy+Man (M2) | Z, 40 s | 87 | 89 | n/r | n/r | n/r | [paper](https://doi.org/10.26443/seismica.v5i1.2068) · [code](https://github.com/Akashkharita/PNW_Seismic_Event_Classification) |
 | 7 | SeismicCNN (1D) | 3C waveform | 84 | 84 | 10,227,340 | 46.39 | 6.22 | [paper](https://doi.org/10.26443/seismica.v5i1.2068) · [code](https://github.com/Akashkharita/PNW_Seismic_Event_Classification) |
 
-Params: trainable parameters. MB: memory. s/day: seconds to process one day of 100 Hz data at one station. Z: vertical component. n/r: not reported in the source. Sorted by F1, then accuracy; ties share a rank.
+Z: vertical component only. n/r: not reported in the source. Sorted by F1, then accuracy; ties share a rank.
