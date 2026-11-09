@@ -1,0 +1,320 @@
+---
+title: "Evaluating GAIA agents"
+subtitle: "Scientific tasks, golden datasets, and evidence of success<br>Discussion draft · SPECFEM pilot · 9 November 2026"
+author: "GAIA HazLab"
+title-slide-attributes:
+  data-background-gradient: "linear-gradient(150deg, #4b2e83 0%, #341f63 55%, #21163f 100%)"
+---
+
+<!-- Ported from the gaia-agent-evaluations package (Pandoc + vendored Reveal.js) to the
+     GAIA Quarto deck series. Slide text is unchanged; source lines and repository links
+     were added. Content: CC BY 4.0. Code (examples/): MIT. Provenance: SOURCES.md. -->
+
+## What should we agree on today?
+
+1. **One task** a SPECFEM agent should complete.
+2. **One reference case** we trust enough to evaluate it.
+3. **A set of metrics** that reflects scientific quality.
+4. **Owners** for the case, agent adapters, and review.
+
+::: {.notes}
+Purpose: agree on what we should test and how we would recognize success. This is a design discussion, not a benchmark-results presentation. Use the core deck for a 15–20 minute introduction, then discuss. Press N for notes; Escape for overview.
+
+Capture decisions in discussion.md. We do not need to standardize everyone’s agent architecture today. The proposed pilot is a small forward-simulation workflow; the group may select a different first task.
+:::
+
+## The evaluation loop
+
+<div class="flow" role="img" aria-label="Task goes to the agent, which produces evidence, which is scored using an independent reference">
+<div class="node"><b>Task</b><small>Prompt + inputs</small></div><span class="arrow">→</span>
+<div class="node"><b>Agent</b><small>Model + tools</small></div><span class="arrow">→</span>
+<div class="node"><b>Evidence</b><small>Files + trace</small></div><span class="arrow">→</span>
+<div class="node"><b>Scorer</b><small>Reference + rules</small></div>
+</div>
+
+**Did the result meet the scientific requirements?**
+
+Repeat across cases and runs; record failures, time, and cost.
+
+::: {.notes}
+Task = what we ask. Agent = the complete system under test. Scorer = how we judge the evidence, independently of the agent’s self-assessment. Inputs, tools and budgets are declared before the run. A fluent final message or a zero exit status does not establish scientific correctness.
+:::
+
+## A worked example · codameter
+
+<div class="example-label">PROMPT IN · ILLUSTRATIVE</div>
+<div class="prompt">“Using these synthetic correlations, recover dv/v. Return your processing configuration, estimates, and validity mask.”</div>
+
+<div class="example-label">OUTPUT ARTIFACTS</div>
+
+`config.json` → the processing choices  
+`dvv.csv` → the estimated series  
+`valid.csv` → which estimates are usable
+
+<p class="source">Task concepts: <a href="https://github.com/Denolle-Lab/codameter">codameter</a> param_recommendation and dvv_series suites · scoring pattern: <a href="https://github.com/mdenolle/repere">Repère</a></p>
+
+::: {.notes}
+Grounded in codameter’s documented param_recommendation and dvv_series suites. This combines those concepts into a teaching example; these filenames are a proposed contract, not a claim about the current API. Repère’s README describes numerical regression scoring for coding agents. See docs/SOURCES.md for exact source revisions.
+:::
+
+## Output compared with hidden truth
+
+<table class="metrics">
+<thead><tr><th>Time</th><th>Agent estimate</th><th>Hidden truth</th><th>Valid?</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>0.0018</td><td>0.0020</td><td>Yes</td></tr>
+<tr><td>1</td><td>0.0021</td><td>0.0020</td><td>Yes</td></tr>
+<tr><td>2</td><td>0.0019</td><td>0.0020</td><td>Yes</td></tr>
+</tbody></table>
+
+All values are **fractional dv/v**: 0.0020 means 0.2%.
+
+<p class="caption">Invented samples · the agent cannot access hidden truth.</p>
+
+::: {.notes}
+The agent’s dvv.csv and valid.csv provide the estimates and mask; the evaluator joins them to the hidden truth on the required time grid. These samples are mock artifacts, not actual measured codameter results. No statistical conclusion can be drawn from three values. The validity mask cannot silently remove difficult samples: coverage is a separate gate.
+:::
+
+## Turning those outputs into a score
+
+**Error:** mean of 0.0002, 0.0001, 0.0001 = **0.000133**.
+
+**Coverage:** 3 valid estimates / 3 required = **100%**.
+
+**Toy pass rule:** error ≤ 0.0002 **and** coverage ≥ 90%.
+
+This example **passes both checks**.
+
+<p class="caption">Teaching thresholds only · real thresholds need scientific justification.</p>
+
+<p class="source">Run it: <a href="https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/book/teaching/agent-evaluation/slides/examples/score_toy.py">examples/score_toy.py</a> (offline, invented data)</p>
+
+::: {.notes}
+The error metric is mean absolute error in fractional dv/v over valid required samples. Thresholds are invented, not codameter defaults. The real scorer verifies time alignment and mask shape, rejects non-finite values, and makes missing outputs explicit. For a parameter-recommendation task, execute the proposed config and score the recovered series. Run examples/score_toy.py for this exact calculation. A scientific golden dataset needs substantially more coverage than this arithmetic example.
+:::
+
+## Proposed SPECFEM prompt and outputs
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Run this approved fixture using its fixed setup. Return vertical receiver traces and a manifest that lets us reproduce the run.”</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Traces** → receiver IDs, units, sampling, waveform agreement  
+**Manifest** → input hashes, software version, commands  
+**Logs** → completion, failures, elapsed time
+
+::: {.notes}
+Proposal, not an implemented SPECFEM benchmark. Choose the variant, fixture, hardware and reference with the team. Define what “vertical” and the recorded quantity mean: displacement, velocity or acceleration, coordinate conventions and units. Freeze the intended output samples. Do not optimize waveform alignment after seeing the answer unless that is explicitly part of the task’s scoring rule.
+:::
+
+## A useful result can be a question
+
+<div class="example-label">PROMPT IN · NO OTHER CONTEXT PROVIDED</div>
+<div class="prompt">“Simulate this earthquake and show the waveform at our station.”</div>
+
+<div class="example-label">APPROPRIATE RESPONSE</div>
+
+“Which source, station, Earth model, and simulation setup should I use?”
+
+**Score:** asks for missing essentials; makes no unsupported claim of execution.
+
+::: {.notes}
+This is a different task category from running a complete fixture. Use a reviewed rubric of missing essentials, not exact string matching. If approved defaults are already available, asking again may be unnecessary. Report clarification-task results separately from simulation success. Have humans adjudicate ambiguous responses; use an LLM judge only with a rubric and validation against expert labels.
+:::
+
+## Different agents, shared evaluation
+
+<div class="node"><b>Same task, inputs, output contract, and budget</b></div>
+<div class="compare branching">
+<div class="node"><b>↓ Maleen’s system</b><small>Agent loop and tools: to discuss</small></div>
+<div class="node"><b>↓ Marine’s system</b><small>Repère / InspectAI approach</small></div>
+</div>
+<div class="node merge"><b>↓ Shared scorer and per-case evidence</b></div>
+
+<p class="source">Repère board: <a href="https://mdenolle.github.io/repere/">mdenolle.github.io/repere</a> · source: <a href="https://github.com/mdenolle/repere">mdenolle/repere</a></p>
+
+::: {.notes}
+Maleen’s architecture has not been verified; leave space for his explanation. Repère documents InspectAI tasks, solvers and scorers. The entire system is the object of comparison, so internal tools may differ if declared and allowed. For a causal claim about one change, hold the other components fixed: same model with/without a skill, or same agent with a different model. Distinguish that controlled experiment from a system-level comparison.
+:::
+
+## A golden dataset connects inputs to checks
+
+<div class="golden" role="img" aria-label="Visible task and inputs go to the agent and produce outputs. Outputs and an expert reference both feed the scorer, producing a result.">
+<div class="node"><b>Task + inputs</b><small>Visible to the agent</small></div><span class="arrow">→</span><div class="node"><b>Agent outputs</b></div>
+<div class="node hidden-ref"><b>Expert reference</b><small>Held by the evaluator</small></div><span class="arrow">↗</span><div class="node"><b>↓ Scorer → result</b><small>Checks + tolerances</small></div>
+</div>
+
+A reference needs provenance, versions, and independent review.
+
+::: {.notes}
+The top-right node feeds the scorer below it; the expert reference feeds that same scorer diagonally. The golden dataset is not just a set of correct final answers: it includes task context and the rules that settle correctness. Hidden answers must be outside agent-accessible storage; a folder named evaluator/ alone does not enforce isolation. Keep public development cases separate from held-out evaluation cases, preferably by case family.
+:::
+
+## Holistic evaluation · the HELM example
+
+HELM combines **scenario coverage**, **multiple metrics**, and **standardized comparisons**.
+
+Its original metric set:
+
+**Accuracy · Calibration · Robustness · Fairness**  
+**Bias · Toxicity · Efficiency**
+
+For GAIA: choose several dimensions of scientific usefulness and make missing coverage explicit.
+
+<p class="source">Source: <a href="https://crfm.stanford.edu/2022/11/17/helm.html">Stanford CRFM · HELM (2022)</a></p>
+
+::: {.notes}
+HELM = Holistic Evaluation of Language Models. The original work evaluates language models; our proposal evaluates complete scientific agent systems. HELM’s original seven metrics are not a ready-made SPECFEM rubric. The following slides are our proposed adaptation. Fairness, bias and toxicity retain their social meanings; coverage across physical regimes is a separate scientific concern, not a replacement definition of fairness. If GAIA includes public-facing communication, prioritize relevant social-risk evaluation as well. Source details in docs/SOURCES.md.
+:::
+
+## Which metrics should GAIA start with?
+
+<table class="metrics">
+<thead><tr><th>Dimension</th><th>Proposed measurement</th></tr></thead>
+<tbody>
+<tr><td>Scientific correctness</td><td>Pass rate + numerical error</td></tr>
+<tr><td>Robustness</td><td>Pass-rate change on paired variants</td></tr>
+<tr><td>Reproducibility</td><td>Independent rerun passes / reruns</td></tr>
+<tr><td>Efficiency</td><td>Time, API cost, CPU/GPU hours</td></tr>
+</tbody></table>
+
+**Discuss:** which are mandatory gates, and which describe trade-offs?
+
+::: {.notes}
+Proposed GAIA measures inspired by HELM’s multi-metric principle. For simulation tasks, define per-case numerical checks and mandatory gates; scientific pass rate is passing attempts / all scheduled attempts under a published failure policy. Robustness uses paired cases with equivalent scientific intent, such as prompt rewording, and reports baseline and variant rates plus their difference. A scientifically changed source is a generalization case, not an invariance test. Reproducibility means an independent rerun of the submitted procedure and artifacts, distinct from running the stochastic agent again. Record cost for failed runs too. Report API and compute separately, adding them only when the accounting basis is clear. Energy or carbon cannot be inferred from token count alone.
+:::
+
+## Knowing when the agent is uncertain
+
+**Clarification:** does it request missing information when needed?
+
+**False alarms:** does it wrongly reject a complete, valid case?
+
+**Calibration:** if it gives 80% confidence, do comparable claims succeed about 80% of the time?
+
+<p class="caption">Use expert labels for clarification; many labeled outcomes for calibration.</p>
+
+::: {.notes}
+Proposed measures: necessary-clarification detection = correctly flagged incomplete cases / all incomplete cases; false-alarm rate = valid cases incorrectly blocked / all valid cases. Keep both denominators visible. Calibration requires a predeclared confidence target (for example, probability the final artifact passes), recorded before scoring, and enough labeled attempts. Use reliability plots and a proper score such as Brier score only when probabilities are available. Scientific uncertainty intervals on waveforms or inferred parameters are a separate calibration target. “Asks a question” alone is not evidence of calibrated confidence.
+:::
+
+## A metric needs an agreed definition
+
+**Quantity** — waveform relative L2 error, with units and sampling fixed.
+
+**Rule** — compare each required receiver to the reviewed reference.
+
+**Threshold** — set before evaluation; justify it scientifically.
+
+**Failure policy** — missing traces, NaNs, or timeouts cannot silently disappear.
+
+::: {.notes}
+Example definition for a nonzero reference: e = ||agent − reference||₂ / ||reference||₂, using a fixed time grid, quantity and component; all required receivers must satisfy their individual tolerances. Specify a separate absolute-error rule for zero or near-zero reference energy, chosen before evaluation. Timing, amplitude, phase and frequency content may require separate checks; the group must decide what is scientifically meaningful. A tolerance is not universal across SPECFEM variants or hardware. Infrastructure incidents should be identified and handled under a predeclared rerun policy, with original attempts retained.
+:::
+
+## A leaderboard makes trade-offs visible
+
+<table class="leaderboard">
+<thead><tr><th>System</th><th>Pass</th><th>Median time</th><th>API $ / run</th></tr></thead>
+<tbody>
+<tr><td>Agent A</td><td>8 / 10</td><td>4 min</td><td>$0.40</td></tr>
+<tr><td>Agent B</td><td>9 / 10</td><td>7 min</td><td>$1.10</td></tr>
+<tr><td>Agent C</td><td>6 / 10</td><td>2 min</td><td>$0.15</td></tr>
+</tbody></table>
+
+<p class="caption">Fictional results · 10 simulation cases · 1 attempt per case · same limits</p>
+
+B passed more cases. A used less API spend. **What quality floor do we need?**
+
+<p class="source">GAIA boards: <a href="https://gaia-hazlab.github.io/book/hazevalhub">HazEvalHub</a></p>
+
+::: {.notes}
+All values are invented. Rank neither reliability nor statistical significance from this tiny example. API cost is only model API spend, excluding simulation compute. Median time and mean API spend include failed attempts. Real result records also need CPU/GPU hours and hardware, dataset and scorer versions, agent/model revisions, budgets, repetitions and uncertainty. Show simulation and clarification suites separately. Drill into per-case outputs and traces. The toy output-scoring example is separate from these invented table values.
+:::
+
+## What else belongs beside the ranking?
+
+**Per-case results** — which scientific setups fail?
+
+**Repeatability** — how often does the same task succeed?
+
+**Robustness** — does rephrasing the task change the outcome?
+
+**Missing coverage** — what have we not tested yet?
+
+::: {.notes}
+HELM motivates reporting coverage gaps and multiple dimensions, not a single universal score. Publish counts by task category and scientific regime. Repeated runs are correlated within case: keep per-case repeats visible and account for clustering in uncertainty estimates. Report a transparent-script or human-reviewed procedure as a baseline where feasible. It helps identify whether the agent adds value to running an existing workflow. Do not tune prompts against held-out answers.
+:::
+
+## A small first dataset
+
+**Reference reproduction** — a complete, approved fixture.
+
+**Invalid input** — a known defect with a decisive diagnostic.
+
+**New configuration** — a reviewed source or receiver change.
+
+**Missing information** — a task that requires clarification.
+
+::: {.notes}
+Proposed categories, not an existing validated SPECFEM suite. Include clean controls with no defects to measure false alarms. Reworded prompts form paired robustness checks; new physical configurations form generalization checks. Separate those analyses. For every case, an independent reviewer verifies the reference and expected behavior before evaluation. Start with affordable fixtures, then broaden coverage.
+:::
+
+## Group decisions · before we build
+
+1. Which **SPECFEM variant and first task**?
+2. Who supplies and independently reviews the **golden case**?
+3. Which **metrics, thresholds, and resource limits**?
+4. Who implements each **agent adapter and scorer**?
+5. Where do we collaborate, and when do we compare?
+
+::: {.notes}
+Record owners and dates in discussion.md. Agree on public versus held-out cases and storage. The deck source and notes can be reviewed in Git; the hidden reference store should remain separate. The remaining slides are optional implementation appendices.
+:::
+
+## Code and data behind this deck {background-color="#f5f3fb"}
+
+| Repository | What it holds |
+|---|---|
+| [mdenolle/repere](https://github.com/mdenolle/repere) | InspectAI tasks, solvers, scorers; the agent leaderboard |
+| [Denolle-Lab/codameter](https://github.com/Denolle-Lab/codameter) | dv/v processing and the seeded synthetic suites |
+| mdenolle/gaia-eval (private) | Task, artifact, ground-truth and rubric schema |
+| [This deck](https://github.com/gaia-hazlab/gaia-hazlab.github.io/tree/main/book/teaching/agent-evaluation/slides) | Slides, metrics proposal, toy scorer, meeting notes |
+
+::: {.notes}
+gaia-eval is private; ask for access. The deck source is CC BY 4.0, the example code MIT, per the GAIA licensing policy. Held-out references never go in any of these public repositories.
+:::
+
+## Appendix · a case package {background-color="#f5f3fb"}
+
+```text
+case-001/
+  task.md              # exact prompt
+  inputs/              # approved visible fixture
+  manifest.yaml        # provenance and versions
+  output-contract.yaml # required artifacts
+
+Private evaluator store:
+  case-001/reference/  # reviewed golden outputs
+  case-001/checks.yaml # metrics and tolerances
+  case-001/review.md   # expert sign-off
+```
+
+::: {.notes}
+Proposed package. It is not a replacement for the current gaia-eval schema: that schema already describes task, artifact, ground truth, provenance and rubric. Agree on a mapping rather than create incompatible definitions. Execution cases need additional environment and numerical-output contracts. Large artifacts can be referenced by immutable location and checksum. Enforce separation through access controls and agent sandbox configuration.
+:::
+
+## Appendix · how we collaborate {background-color="#f5f3fb"}
+
+**Slides and diagrams** — edit `slides.qmd` and `style.css`.
+
+**Scientific decisions** — record them in `discussion.md`.
+
+**Worked example** — run `examples/score_toy.py` offline.
+
+**Review** — propose changes together; rebuild the HTML.
+
+::: {.notes}
+The repository-ready package includes a build script, an offline scoring example, provenance notes and contribution guidance. No live agent or SPECFEM execution is bundled. Source: book/teaching/agent-evaluation/slides/ in gaia-hazlab/gaia-hazlab.github.io; render with `quarto render` in that folder.
+:::

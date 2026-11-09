@@ -81,6 +81,7 @@ project:
     - title: Teaching
       children:
         - file: book/teaching/agents-intro/agents-intro.md
+        - file: book/teaching/agent-evaluation/agent-evaluation.md
 
   parts:
     banner: |
