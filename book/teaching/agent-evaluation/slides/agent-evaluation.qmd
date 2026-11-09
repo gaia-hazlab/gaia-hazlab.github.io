@@ -366,7 +366,7 @@ Record owners and dates in discussion.md. Agree on public versus held-out cases 
 
 | Agent | Task | Reference | Evals |
 |---|---|---|---|
-| OOI · Ask Atlas | Answer questions about the Regional Cabled Array, with cited evidence | Reviewed question → evidence sets | Not posted |
+| OOI · Ask Atlas | Answer questions about the Regional Cabled Array, with cited evidence | Answer keys from papers, OOI records and tested scripts | 91 questions + 8 tasks drafted; not posted |
 | OOI · QA/QC | Report an instrument's QA/QC status from plots and analyst notes | Analyst human-in-the-loop notes | Not posted |
 | PyLith | Turn a scientist's prompt into a working finite-element model | Curated prompt → PyLith input pairs | Not started |
 
@@ -395,6 +395,75 @@ Golden set: reviewed question → expected instruments and sites. Owner and revi
 
 ::: {.notes}
 The prompt is one of the four demo questions in RCA-Atlas docs/superpowers/specs/2026-09-24-ask-atlas-evidence-design.md. Candidate metrics: evidence recall and precision against a reviewed instrument list; unsupported-claim rate, judged by humans or a validated rubric; latency and model cost per answer. The Worker already accepts several models, so the same golden set can compare base models with the retrieval held fixed. Keep live-data questions ("How many earthquakes at Axial today?") in a separate suite: their reference changes daily.
+:::
+
+## OOI · how Ask Atlas answers
+
+<div class="flow" role="img" aria-label="The browser sends a question to a Cloudflare Worker, which searches a Graph-RAG index and live data, then asks a model">
+<div class="node"><b>Browser</b><small>Ask Atlas page</small></div><span class="arrow">→</span>
+<div class="node"><b>Worker</b><small>1 finds evidence<br>2 asks a model</small></div><span class="arrow">→</span>
+<div class="node"><b>Graph-RAG search</b><small>22,194 passages: papers, pages, OOI records</small></div>
+</div>
+
+<div class="three">
+<div class="node"><b>Live data</b><small>Nereus, ERDDAP, EarthScope</small></div>
+<div class="node"><b>OOI LLM server</b><small>Gemma 4 26B, tried first</small></div>
+<div class="node"><b>Fallbacks</b><small>Gemini → Groq → GPT-5.4 mini</small></div>
+</div>
+
+<p class="source">RCA Evals deck, 9 Nov 2026 (UW internal) · <a href="https://github.com/coszo-hub/RCA-Atlas">coszo-hub/RCA-Atlas</a></p>
+
+::: {.notes}
+Redrawn from the architecture slide of the RCA Evals deck. The Worker runs on Cloudflare; search and the live-data gateway run on the Cascadia VM behind tunnels; the OOI model is reached through a relay on the OOI JupyterHub that holds the OOI key. For evaluation this matters in two ways: the answer depends on which model in the fallback chain answered, so each run must record it; and live-data answers change daily, so they need their own suite.
+:::
+
+## OOI · four eval sets, key written first
+
+| Set | N | Answer key | Script |
+|---|---|---|---|
+| Literature content | 33 | Facts from the paper, each a pattern | `literature_content_eval.py` |
+| Literature titles | 20 | The paper; logs search rank and citation | `literature_eval.py` |
+| Instrument metadata | 38 | Computed from OOI records at each run | `asset_eval.py` |
+| Task recipes | 8 | A tested script, rerun in a sandbox | `tasks.json` |
+: {.evalsets tbl-colwidths="[25,7,42,26]"}
+
+Each key comes from a source with a known answer and is written before the question is asked.
+
+::: {.notes}
+From the "How the evals are prepared" slide of the RCA Evals deck. Literature content: the question is written in a researcher's words, not the paper's; facts the paper has but the question does not ask for are reported, never scored; questions are grouped by where the answer lives (abstract, instrument page, full text). Literature titles: shorthand on purpose (VLFEs, ETS, G-FAST) so search must bridge it. Instrument metadata: serial numbers, deployments, swaps, calibrations, depths, orientation; expected facts are computed from OOI asset management and StationXML each run, so the key follows the data. Task recipes: only tasks.json is public (RCA-Atlas commit d041ba6, 8 tasks: earthquake waveform, noise PSD, STA/LTA detection, hydrophone spectrogram, Axial uplift, profiler CTD section, QC time series, ADCP currents); the three eval scripts are not yet in the public repo. Sizes as stated in the deck, not recounted.
+:::
+
+## OOI · a literature question
+
+<div class="cards">
+<div class="node"><b>Question</b><small>“How long did the January 1998 earthquake swarm at Axial last, and how many earthquakes were detected?”</small></div>
+<div class="node"><b>Evidence</b><small>Worker searches the corpus: abstracts, then full-text passages</small></div>
+<div class="node"><b>Answer</b><small>Model answers from that evidence, citing each claim</small></div>
+<div class="node key"><b>Check</b><small>Each fact is a pattern:<br><code>&#92;b11&#92;b&#124;eleven</code><br><code>8,?247</code></small></div>
+</div>
+
+A right answer in other words still passes.
+
+::: {.notes}
+From the RCA Evals deck. Pattern checks are cheap and deterministic but can pass an answer that states the number in the wrong context, and fail one that rounds. Pair them with a citation check: does the cited passage contain the fact? Report per-fact pass rates, not only per-question.
+:::
+
+## OOI · a task question
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Write a script to detect earthquakes at Axial with STA/LTA on 15 October 2025.”</div>
+
+<div class="cards">
+<div class="node"><b>1 · Recipe test</b><small>The recipe’s own script runs in a sealed container</small></div>
+<div class="node"><b>2 · Science check</b><small>Figure checked against a source: catalog, OSU rates, hand calculation</small></div>
+<div class="node"><b>3 · Live answer</b><small>Gemma answers; only its settings are taken</small></div>
+<div class="node key"><b>4 · Run the script</b><small>Same container; a failure is traced to the recipe or the Worker</small></div>
+</div>
+
+A pattern cannot check code, so the code is run.
+
+::: {.notes}
+From the RCA Evals deck. Each recipe has steps with reasons, a script that has been run, what to change, pitfalls and sources. The live question uses a real place and time and a different instrument or span from the recipe's example, so the agent cannot copy it. Steps 1 and 2 validate the reference; steps 3 and 4 score the agent. Step 3 keeps the recipe's code and takes only the model's settings (station, time, dataset): that scores parameter choice, not code writing.
 :::
 
 ## OOI · QA/QC agent

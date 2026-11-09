@@ -46,3 +46,7 @@ All files are in `figures/` unless noted. Each slide carries a credit line.
 | (slide 13, redrawn) | Based on `book/img/agents-evaluation.svg` from Lecture 1, redrawn as HTML at a readable size; expert track redefined as the case-building platform | Repository licence |
 
 No figures were taken from RCA-Atlas, whose licence reserves all rights.
+
+## OOI slides from the RCA Evals deck
+
+Slides "OOI · how Ask Atlas answers", "four eval sets", "a literature question" and "a task question" are redrawn as text and HTML boxes from the RCA Evals Google Slides deck (lab account, shared within UW, last modified 9 November 2026). No images were copied. Eval-set sizes (33, 20, 38 questions; 8 tasks) are as stated in that deck, not recounted. Of the scripts it names, only `src/task_recipes/tasks.json` is public in coszo-hub/RCA-Atlas at commit `d041ba6` (8 tasks); `eval/literature_content_eval.py`, `eval/literature_eval.py` and `eval/asset_eval.py` are not yet in the public repository.

@@ -35,3 +35,10 @@ $gaia-stone: #6f6890;
 .reveal table.rubric, .reveal table.terms { width: 100%; font-size: 0.8em; }
 .reveal table.terms td:first-child { white-space: nowrap; vertical-align: top; }
 .reveal table.terms thead { display: none; }
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5em; margin: 0.6em 0; }
+.cards .node { justify-content: flex-start; text-align: left; }
+.cards .node small { font-size: 0.85em; }
+.node.key { background: #fff4d6; }
+.node code { font-size: 0.85em; }
+.reveal table.evalsets { width: 100%; font-size: 0.75em; }
+.reveal table.evalsets code { font-size: 0.8em; }
