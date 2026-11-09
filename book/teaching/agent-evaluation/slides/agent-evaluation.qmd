@@ -273,6 +273,118 @@ Proposed categories, not an existing validated SPECFEM suite. Include clean cont
 Record owners and dates in discussion.md. Agree on public versus held-out cases and storage. The deck source and notes can be reviewed in Git; the hidden reference store should remain separate. The remaining slides are optional implementation appendices.
 :::
 
+## The same template for other GAIA agents {background-color="#f5f3fb"}
+
+| Agent | Task | Reference | Evals |
+|---|---|---|---|
+| OOI · Ask Atlas | Answer questions about the Regional Cabled Array, with cited evidence | Reviewed question → evidence sets | Not posted |
+| OOI · QA/QC | Report an instrument's QA/QC status from plots and analyst notes | Analyst human-in-the-loop notes | Not posted |
+| PyLith | Turn a scientist's prompt into a working finite-element model | Curated prompt → PyLith input pairs | Not started |
+
+<p class="caption">Template slides · tasks are proposals until each team fills them in.</p>
+
+::: {.notes}
+Each of the next slides uses the evaluation loop from the start of the deck: task, agent, evidence, scorer. The OOI agents live in RCA-Atlas (https://github.com/coszo-hub/RCA-Atlas, commit d041ba6); its software is proprietary, so these slides describe it and link to it but copy nothing. The PyLith agent suite is the proposal in the GAIA-Rainier-PyLith-Agent deck. No evaluations exist yet for any of the three.
+:::
+
+## OOI · Ask Atlas
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Which instruments measure dissolved oxygen?”</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Answer** → every claim backed by a cited source  
+**Citations** → each resolves to a real instrument, site or document  
+**Evidence set** → recall and precision against a reviewed list
+
+::: {.todo}
+Golden set: reviewed question → expected instruments and sites. Owner and reviewer to name.
+:::
+
+<p class="source">Agent: <a href="https://github.com/coszo-hub/RCA-Atlas">coszo-hub/RCA-Atlas</a> · Graph-RAG over the RCA/COSZO corpus</p>
+
+::: {.notes}
+The prompt is one of the four demo questions in RCA-Atlas docs/superpowers/specs/2026-09-24-ask-atlas-evidence-design.md. Candidate metrics: evidence recall and precision against a reviewed instrument list; unsupported-claim rate, judged by humans or a validated rubric; latency and model cost per answer. The Worker already accepts several models, so the same golden set can compare base models with the retrieval held fixed. Keep live-data questions ("How many earthquakes at Axial today?") in a separate suite: their reference changes daily.
+:::
+
+## OOI · QA/QC agent
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“What is the QA/QC status of RS01SLBS-MJ01A-12-VEL3DB101 this month?”</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Status** → agrees with the analyst's note for that month  
+**Evidence** → cites the plot URLs and the date of the note  
+**Restraint** → no pass inferred from a plot existing; no plot generation unless needed
+
+::: {.todo}
+Golden set: instrument-month → analyst status. Which notes are reviewed enough to serve as truth?
+:::
+
+<p class="source">Tools: <a href="https://github.com/coszo-hub/RCA-Atlas/tree/main/src/agentic_qaqc">src/agentic_qaqc</a> · 10 MCP tools, generation off by default</p>
+
+::: {.notes}
+The prompt is the README's own example. The README states two rules the scorer can test directly: plot existence does not prove a pass state, and plot generation runs only when existing products are insufficient (execute defaults to false). Candidate metrics: status agreement with analyst notes; false-pass rate, kept separate because a false pass is the costly error; unnecessary-generation rate; whether the note date is cited. Analyst notes are the reference, so the people who write them should review the golden set.
+:::
+
+## PyLith · prompt in, model out
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Model static stress under the summit for a 50 m mesh…”</div>
+
+<div class="example-label">AGENT SUITE → OUTPUTS</div>
+
+**Translate** → PyLith input files with correct syntax  
+**Self-check** → parameter choices; mesh fine enough  
+**Display** → stress and strain fields for inspection  
+**Resources** → job size, runtime, cost
+
+<p class="source">Code: <a href="https://github.com/geodynamics/pylith">geodynamics/pylith</a> · proposal: GAIA-Rainier-PyLith-Agent deck</p>
+
+::: {.notes}
+From the GAIA-Rainier-PyLith-Agent deck (Google Slides, 2 slides). The output feeds the Mt. Rainier digital twin: static and dynamic subsurface stress that primes slope failure. Ensembles of runs constrain uncertainty. The four sub-agents are scored separately so a failure can be traced to one of them.
+:::
+
+## PyLith · what to score
+
+<table class="metrics">
+<thead><tr><th>Benchmark</th><th>Proposed measurement</th></tr></thead>
+<tbody>
+<tr><td>FEM syntax</td><td>Input runs in PyLith; diff against the golden input</td></tr>
+<tr><td>Mesh self-check</td><td>Result within tolerance of a refined-mesh reference</td></tr>
+<tr><td>Display</td><td>Required fields and plots, with units</td></tr>
+<tr><td>Resources</td><td>Predicted vs actual runtime and cost; within budget</td></tr>
+</tbody></table>
+
+Same agent files and golden set → compare base models.
+
+::: {.todo}
+Seed the golden set: working PyLith inputs from FEM users. Needs agent-evaluation and FEM experience.
+:::
+
+::: {.notes}
+The four rows are the benchmark list in the PyLith deck; the measurements are proposals. "Correct syntax" is necessary but weak: an input can run and model the wrong physics, so the golden pairs need a reviewed physical result, not only a reference input file. Mesh convergence needs a reference solution at a finer mesh, which costs compute; budget it in the golden set. Run each case several times: FEM setup by an agent is stochastic even when PyLith is not.
+:::
+
+## Template · your agent {background-color="#f5f3fb"}
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">One real request a scientist would make.</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Artifact** → the check that settles whether it is right  
+**Evidence** → what the agent must cite or save  
+**Restraint** → what it must not do without approval
+
+**Golden set** · **reviewer** · **ranking metric** · **budget**
+
+::: {.notes}
+Copy this slide for the next agent. Fill the prompt with a real request, not a demo. Every output needs a check that does not rely on the agent's own account. Name the reviewer before collecting the golden set, and choose the ranking metric before the first run.
+:::
+
 ## Code and data behind this deck {background-color="#f5f3fb"}
 
 | Repository | What it holds |
@@ -280,6 +392,8 @@ Record owners and dates in discussion.md. Agree on public versus held-out cases 
 | [mdenolle/repere](https://github.com/mdenolle/repere) | InspectAI tasks, solvers, scorers; the agent leaderboard |
 | [Denolle-Lab/codameter](https://github.com/Denolle-Lab/codameter) | dv/v processing and the seeded synthetic suites |
 | mdenolle/gaia-eval (private) | Task, artifact, ground-truth and rubric schema |
+| [coszo-hub/RCA-Atlas](https://github.com/coszo-hub/RCA-Atlas) | OOI Ask Atlas and QA/QC agents (proprietary licence) |
+| [geodynamics/pylith](https://github.com/geodynamics/pylith) | The finite-element code the PyLith agents drive |
 | [This deck](https://github.com/gaia-hazlab/gaia-hazlab.github.io/tree/main/book/teaching/agent-evaluation/slides) | Slides, metrics proposal, toy scorer, meeting notes |
 
 ::: {.notes}

@@ -24,3 +24,9 @@ The three dv/v samples, illustrative gates and all leaderboard values are invent
 ## Third-party runtime
 
 Reveal.js 5.1.0 is vendored from the installed Quarto distribution. Copyright and MIT license are preserved in vendor/reveal. No external CDN, font service or runtime dependency is requested by the generated deck.
+
+## Template slides for other GAIA agents (added 9 November 2026)
+
+- RCA-Atlas, https://github.com/coszo-hub/RCA-Atlas , HEAD `d041ba676fc071f7160bb65111618b082ade6baa`: README, `src/agentic_qaqc/README.md` (QA/QC tools, example prompt, generation gate) and `docs/superpowers/specs/2026-09-24-ask-atlas-evidence-design.md` (demo questions). The repository's software and documentation are proprietary, all rights reserved; the slides describe and link to it and copy no code or text beyond the two example prompts.
+- GAIA-Rainier-PyLith-Agent, Google Slides `16LFuHOQEPE0y2ziHMoXBKuSQ1SdaZNS5qXieqKGSRjY`, read 9 November 2026: agent suite (translate, self-check, display, resources) and the four benchmark items. The proposed measurements on the PyLith slides are new and unreviewed.
+- PyLith, https://github.com/geodynamics/pylith .
