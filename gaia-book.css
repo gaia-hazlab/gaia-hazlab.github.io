@@ -88,3 +88,17 @@ nav a:hover { color: var(--gaia-peri) !important; }
 
 /* inline code + code blocks: subtle lavender tint */
 :not(pre) > code { color: var(--gaia-purple-deep); }
+
+/* ---- HazEvalHub icon row (style follows the Mt Rainier atlas dock) ---- */
+.hazard-icons p { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
+.hazard-icons a {
+  display: grid; place-items: center; width: 48px; height: 48px;
+  border: 1px solid #d9d5e3; border-radius: 10px; text-decoration: none !important;
+}
+.hazard-icons a:hover, .hazard-icons a:focus-visible { border-color: var(--gaia-peri); background: var(--gaia-lav); }
+.hazard-icons img { width: 24px; height: 24px; margin: 0 !important; }
+html.dark .hazard-icons a { border-color: #3a3546; }
+html.dark .hazard-icons a:hover, html.dark .hazard-icons a:focus-visible { background: #2a2438; }
+html.dark .hazard-icons img { filter: invert(1) brightness(0.85); }
+.hazard-icons a > svg { display: none; }
+.hazard-icons .link-text { display: contents; }
