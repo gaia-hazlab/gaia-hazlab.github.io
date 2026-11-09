@@ -322,6 +322,45 @@ All values are invented. Rank neither reliability nor statistical significance f
 Real runs, unlike the previous slide. Hollow markers are runs without a domain skill, filled markers with it; the line between them is the skill lift. Repère already lists slots for SPECFEM, RCA Atlas Q&A and RCA Atlas agent tasks, marked "soon". Screenshot of the live board on 9 November 2026; check the board for current values before quoting numbers.
 :::
 
+## HazEvalHub: one board per hazard
+
+<div class="tracks">
+<a class="track" href="https://seisscoped.org/QuakeScope/benchmark_summary.html"><img src="../../../img/hazevalhub/earthquakes.svg" alt=""><b>Earthquakes</b><small>Live</small></a>
+<a class="track" href="https://gaia-hazlab.github.io/book/hazevalhub-landslides"><img src="../../../img/hazevalhub/landslides.svg" alt=""><b>Landslides</b><small>Live</small></a>
+<a class="track" href="https://gaia-hazlab.github.io/book/hazevalhub-floods"><img src="../../../img/hazevalhub/floods.svg" alt=""><b>Floods</b><small>Planned</small></a>
+<a class="track" href="https://gaia-hazlab.github.io/book/hazevalhub-thunderstorms"><img src="../../../img/hazevalhub/thunderstorms.svg" alt=""><b>Thunderstorms</b><small>In progress</small></a>
+<a class="track" href="https://gaia-hazlab.github.io/book/hazevalhub-rainfall"><img src="../../../img/hazevalhub/atmospheric-rivers.svg" alt=""><b>Atmospheric rivers</b><small>In progress</small></a>
+<a class="track" href="https://mdenolle.github.io/repere/"><img src="../../../img/hazevalhub/agents.svg" alt=""><b>Agents</b><small>Live</small></a>
+</div>
+
+Each track: tasks, a short test-set description, one ranked table per task.
+
+<p class="source"><a href="https://gaia-hazlab.github.io/book/hazevalhub">gaia-hazlab.github.io/book/hazevalhub</a> · metrics: <a href="https://gaia-hazlab.github.io/book/hazevalhub-metrics">hazevalhub-metrics</a></p>
+
+::: {.notes}
+The hub as merged in PR #54. Earthquakes and Agents link straight to the external boards (QuakeScope, Repère). Landslides has three tasks: L1 event classification (7 models), L2 continuous detection at Mount Rainier (1 model), L3 susceptibility at Stehekin (no entries yet). Floods, thunderstorms and atmospheric rivers have pages but no ranked results. Agent evaluation from this lecture lands in the Agents track.
+:::
+
+## A real board: landslide event classification
+
+| Model | F1 % | Parameters | Memory MB |
+|---|--:|--:|--:|
+| SeismicCNN (2D) | 94 | 1,986,572 | 11.6 |
+| QuakeXNet (2D) | 92 | 70,708 | 1.2 |
+| QuakeXNet (1D) | 92 | 657,716 | 4.6 |
+| Random forest (M6) | 89 | n/a | n/a |
+: {.evalsets tbl-colwidths="[40,15,25,20]"}
+
+<p class="caption">8,000 test traces, 4 classes · Kharita et al. 2026, Seismica, Tables 1–2</p>
+
+QuakeXNet (2D): 2 F1 points lower, 28× fewer parameters. **Same question as the agent board: what floor do we need?**
+
+<p class="source">Board: <a href="https://gaia-hazlab.github.io/book/hazevalhub-landslides">HazEvalHub · Landslides</a> · paper: <a href="https://doi.org/10.26443/seismica.v5i1.2068">10.26443/seismica.v5i1.2068</a></p>
+
+::: {.notes}
+Top four of seven rows from data/hazevalhub/landslides_classification.csv, which copies the published tables; nothing was recomputed. Classes: earthquake, explosion, surface event, noise; 2,000 test traces per class. F1 as reported in the paper (macro or weighted not stated; to confirm with Akash). Parameters 1,986,572 / 70,708 = 28.1. Random-forest rows have no parameter or memory figures in the paper. The structure matches the fictional table earlier: a quality column and a cost column, and the choice depends on the floor.
+:::
+
 ## What else belongs beside the ranking?
 
 **Per-case results** — which scientific setups fail?
