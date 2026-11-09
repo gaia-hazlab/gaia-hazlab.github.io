@@ -181,7 +181,7 @@ Maleen’s architecture has not been verified; leave space for his explanation. 
 <p class="source">Dashed = planned, not running. Repère: <a href="https://mdenolle.github.io/repere/">mdenolle.github.io/repere</a></p>
 
 ::: {.notes}
-Redrawn from the Lecture 1 diagram (book/img/agents-evaluation.svg) at a readable size. Only the Repère board runs today. The harness, CI gate, Observatory and expert track are in the CSSI plan. The SPECFEM pilot would be the first case run through the harness. Lecture 1's diagram still describes the expert track as rubric scoring by 15 to 25 reviewers (Gaia Translator); here it is defined as the platform where experts build the golden cases.
+Redrawn from the Lecture 1 diagram (book/img/agents-evaluation.svg) at a readable size. Only the Repère board runs today. The harness, CI gate, Observatory and expert track are in the CSSI plan. The SPECFEM pilot would be the first case run through the harness. The expert track is the platform where experts build and review the golden cases; Lecture 1's diagram uses the same definition. It replaces the earlier description (Gaia Translator, rubric scoring by 15 to 25 reviewers).
 :::
 
 ## Three terms

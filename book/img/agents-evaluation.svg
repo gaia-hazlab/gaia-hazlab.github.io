@@ -41,14 +41,16 @@
 <path d="M 1000 190 Q 760 230 760 250" fill="none" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
 <rect x="600" y="250" width="240" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2" stroke-dasharray="7 4"/>
 <text x="720.0" y="279.8" text-anchor="middle" font-size="16" fill="#2a1a4f" font-weight="700">CI regression gate  (plan)</text>
-<text x="720.0" y="300.6" text-anchor="middle" font-size="16" fill="#2a1a4f">a PR that lowers</text>
-<text x="720.0" y="321.4" text-anchor="middle" font-size="16" fill="#2a1a4f">skill fails</text>
-<rect x="40" y="250" width="480" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2"/>
-<text x="280.0" y="279.8" text-anchor="middle" font-size="16" fill="#2a1a4f" font-weight="700">expert track  (Gaia Translator)</text>
-<text x="280.0" y="300.6" text-anchor="middle" font-size="16" fill="#2a1a4f">8-criterion rubric · 15 to 25 domain reviewers ·</text>
-<text x="280.0" y="321.4" text-anchor="middle" font-size="16" fill="#2a1a4f">inter-rater reliability</text>
-<text x="40" y="375" text-anchor="start" font-size="17" fill="#6f6890" font-style="italic">Automated metrics say how a model behaves on held-out data;</text>
-<text x="40" y="400" text-anchor="start" font-size="17" fill="#6f6890" font-style="italic">expert scoring says whether it is useful to a researcher.</text>
+<text x="720.0" y="300.6" text-anchor="middle" font-size="16" fill="#2a1a4f">a PR that lowers the</text>
+<text x="720.0" y="321.4" text-anchor="middle" font-size="16" fill="#2a1a4f">score cannot merge</text>
+<rect x="40" y="250" width="480" height="90" rx="8" fill="#fff" stroke="#4b2e83" stroke-width="2" stroke-dasharray="7 4"/>
+<text x="280.0" y="279.8" text-anchor="middle" font-size="16" fill="#2a1a4f" font-weight="700">expert track  (plan)</text>
+<text x="280.0" y="300.6" text-anchor="middle" font-size="16" fill="#2a1a4f">platform where experts build golden cases:</text>
+<text x="280.0" y="321.4" text-anchor="middle" font-size="16" fill="#2a1a4f">task · inputs · reference · tolerances; second-expert review</text>
+<line x1="165" y1="250" x2="165" y2="170" stroke="#4b2e83" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<text x="180" y="215" text-anchor="start" font-size="16" fill="#4b2e83">accepted cases join the hidden split</text>
+<text x="40" y="375" text-anchor="start" font-size="17" fill="#6f6890" font-style="italic">Experts write and review the cases;</text>
+<text x="40" y="400" text-anchor="start" font-size="17" fill="#6f6890" font-style="italic">the harness scores every agent against the same hidden set.</text>
 <rect x="40" y="440" width="480" height="100" rx="8" fill="#f5f3fb" stroke="#6d5bd0" stroke-width="2"/>
 <text x="280.0" y="464.4" text-anchor="middle" font-size="16" fill="#2a1a4f" font-weight="700">early result (Repère board)</text>
 <text x="280.0" y="485.2" text-anchor="middle" font-size="16" fill="#2a1a4f">local 7B + skills: perfect on configuration tasks;</text>
