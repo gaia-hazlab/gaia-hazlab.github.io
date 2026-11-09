@@ -1,0 +1,20 @@
+# Same frame and theme as the agents-intro deck (book/teaching/agents-intro/slides),
+# so the lecture series looks like one series. eval.scss adds this deck's diagrams.
+format:
+  revealjs:
+    theme: [default, ../../agents-intro/slides/gaia.scss, eval.scss]
+    width: 1600
+    height: 900
+    margin: 0.04
+    center: false
+    slide-number: c/t
+    hash: true
+    transition: none
+    background-transition: none
+    controls: true
+    progress: true
+    embed-resources: true
+    code-line-numbers: false
+    footer: "GAIA HazLab · Evaluating GAIA agents · 2026"
+    logo: ../../../img/gaia-hazalab-logo.png
+lang: en-US

@@ -504,17 +504,19 @@ def evaluation():
     s.box(880, 400, 290, 70, ["Metrics Observatory  (plan)", "usage metrics M1, M2, M4"], fill="#fff",
           stroke=INK, size=16, bold_first=True, dash="7 4")
     s.path("M 1000 190 Q 760 230 760 250", color=PURPLE)
-    s.box(600, 250, 240, 90, ["CI regression gate  (plan)", "a PR that lowers",
-                              "skill fails"], fill="#fff", stroke=PURPLE, size=16,
+    s.box(600, 250, 240, 90, ["CI regression gate  (plan)", "a PR that lowers the",
+                              "score cannot merge"], fill="#fff", stroke=PURPLE, size=16,
           bold_first=True, dash="7 4")
-    # second track: expert rubric
-    s.box(40, 250, 480, 90, ["expert track  (Gaia Translator)",
-                             "8-criterion rubric · 15 to 25 domain reviewers ·",
-                             "inter-rater reliability"],
-          fill="#fff", stroke=PURPLE, size=16, bold_first=True)
-    s.text(40, 375, "Automated metrics say how a model behaves on held-out data;",
+    # expert track: the platform where experts build the golden cases
+    s.box(40, 250, 480, 90, ["expert track  (plan)",
+                             "platform where experts build golden cases:",
+                             "task · inputs · reference · tolerances; second-expert review"],
+          fill="#fff", stroke=PURPLE, size=16, bold_first=True, dash="7 4")
+    s.arrow(165, 250, 165, 170)
+    s.text(180, 215, "accepted cases join the hidden split", size=15, color=PURPLE)
+    s.text(40, 375, "Experts write and review the cases;",
            size=17, color=STONE, italic=True)
-    s.text(40, 400, "expert scoring says whether it is useful to a researcher.",
+    s.text(40, 400, "the harness scores every agent against the same hidden set.",
            size=17, color=STONE, italic=True)
     # result and phasing
     s.box(40, 440, 480, 100, ["early result (Repère board)",
