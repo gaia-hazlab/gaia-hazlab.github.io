@@ -1,0 +1,602 @@
+---
+title: "Evaluating GAIA agents"
+subtitle: "Scientific tasks, golden datasets, and evidence of success<br>Discussion draft · SPECFEM pilot · 9 November 2026"
+author: "GAIA HazLab"
+title-slide-attributes:
+  data-background-gradient: "linear-gradient(150deg, #4b2e83 0%, #341f63 55%, #21163f 100%)"
+---
+
+<!-- Ported from the gaia-agent-evaluations package (Pandoc + vendored Reveal.js) to the
+     GAIA Quarto deck series. Slide text is unchanged; source lines and repository links
+     were added. Content: CC BY 4.0. Code (examples/): MIT. Provenance: SOURCES.md. -->
+
+## What should we agree on today?
+
+1. **One task** a SPECFEM agent should complete.
+2. **One reference case** we trust enough to evaluate it.
+3. **A set of metrics** that reflects scientific quality.
+4. **Owners** for the case, agent adapters, and review.
+
+::: {.notes}
+Purpose: agree on what we should test and how we would recognize success. This is a design discussion, not a benchmark-results presentation. Use the core deck for a 15–20 minute introduction, then discuss. Press N for notes; Escape for overview.
+
+Capture decisions in discussion.md. We do not need to standardize everyone’s agent architecture today. The proposed pilot is a small forward-simulation workflow; the group may select a different first task.
+:::
+
+## The evaluation loop
+
+<div class="flow" role="img" aria-label="Task goes to the agent, which produces evidence, which is scored using an independent reference">
+<div class="node"><b>Task</b><small>Prompt + inputs</small></div><span class="arrow">→</span>
+<div class="node"><b>Agent</b><small>Model + tools</small></div><span class="arrow">→</span>
+<div class="node"><b>Evidence</b><small>Files + trace</small></div><span class="arrow">→</span>
+<div class="node"><b>Scorer</b><small>Reference + rules</small></div>
+</div>
+
+**Did the result meet the scientific requirements?**
+
+Repeat across cases and runs; record failures, time, and cost.
+
+::: {.notes}
+Task = what we ask. Agent = the complete system under test. Scorer = how we judge the evidence, independently of the agent’s self-assessment. Inputs, tools and budgets are declared before the run. A fluent final message or a zero exit status does not establish scientific correctness.
+:::
+
+## A worked example · codameter
+
+<div class="example-label">PROMPT IN · ILLUSTRATIVE</div>
+<div class="prompt">“Using these synthetic correlations, recover dv/v. Return your processing configuration, estimates, and validity mask.”</div>
+
+<div class="example-label">OUTPUT ARTIFACTS</div>
+
+`config.json` → the processing choices  
+`dvv.csv` → the estimated series  
+`valid.csv` → which estimates are usable
+
+<p class="source">Task concepts: <a href="https://github.com/Denolle-Lab/codameter">codameter</a> param_recommendation and dvv_series suites · scoring pattern: <a href="https://github.com/mdenolle/repere">Repère</a></p>
+
+::: {.notes}
+Grounded in codameter’s documented param_recommendation and dvv_series suites. This combines those concepts into a teaching example; these filenames are a proposed contract, not a claim about the current API. Repère’s README describes numerical regression scoring for coding agents. See docs/SOURCES.md for exact source revisions.
+:::
+
+## Output compared with hidden truth
+
+<table class="metrics">
+<thead><tr><th>Time</th><th>Agent estimate</th><th>Hidden truth</th><th>Valid?</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>0.0018</td><td>0.0020</td><td>Yes</td></tr>
+<tr><td>1</td><td>0.0021</td><td>0.0020</td><td>Yes</td></tr>
+<tr><td>2</td><td>0.0019</td><td>0.0020</td><td>Yes</td></tr>
+</tbody></table>
+
+All values are **fractional dv/v**: 0.0020 means 0.2%.
+
+<p class="caption">Invented samples · the agent cannot access hidden truth.</p>
+
+::: {.notes}
+The agent’s dvv.csv and valid.csv provide the estimates and mask; the evaluator joins them to the hidden truth on the required time grid. These samples are mock artifacts, not actual measured codameter results. No statistical conclusion can be drawn from three values. The validity mask cannot silently remove difficult samples: coverage is a separate gate.
+:::
+
+## Why the reference stays hidden
+
+![](figures/codameter-multiverse.png){.r-stretch}
+
+<p class="source">27 processing pipelines on one synthetic dataset, against the known truth · <a href="https://github.com/Denolle-Lab/codameter">codameter</a> (MIT), literature/figs/demo_9_multiverse.png</p>
+
+::: {.notes}
+Every pipeline here is defensible, and they disagree by more than the signal at times. An agent choosing among them can only be scored against a truth it never saw. With real data there is no truth curve, which is why the golden cases start from synthetics with a known answer. Figure from Denolle-Lab/codameter, MIT licence.
+:::
+
+## Turning those outputs into a score
+
+**Error:** mean of 0.0002, 0.0001, 0.0001 = **0.000133**.
+
+**Coverage:** 3 valid estimates / 3 required = **100%**.
+
+**Toy pass rule:** error ≤ 0.0002 **and** coverage ≥ 90%.
+
+This example **passes both checks**.
+
+<p class="caption">Teaching thresholds only · real thresholds need scientific justification.</p>
+
+<p class="source">Run it: <a href="https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/book/teaching/agent-evaluation/slides/examples/score_toy.py">examples/score_toy.py</a> (offline, invented data)</p>
+
+::: {.notes}
+The error metric is mean absolute error in fractional dv/v over valid required samples. Thresholds are invented, not codameter defaults. The real scorer verifies time alignment and mask shape, rejects non-finite values, and makes missing outputs explicit. For a parameter-recommendation task, execute the proposed config and score the recovered series. Run examples/score_toy.py for this exact calculation. A scientific golden dataset needs substantially more coverage than this arithmetic example.
+:::
+
+## What a failed check looks like
+
+![](figures/codameter-methods.png){.r-stretch}
+
+<p class="source">Recovered against true dv/v for eight methods; (c) shows cycle-skipping at large dv/v · <a href="https://github.com/Denolle-Lab/codameter">codameter</a> (MIT), literature/figs/demo_1_methods.png</p>
+
+::: {.notes}
+Panel (a): every method agrees when dv/v is small. Panel (b): some methods break over a ±5% sweep. Panel (c): at large dv/v, MWCS cycle-skips and produces confident wrong values. A mean-error score averaged over easy cases would hide panel (c); a mandatory per-case gate does not. Figure from Denolle-Lab/codameter, MIT licence.
+:::
+
+## Proposed SPECFEM prompt and outputs
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Run this approved fixture using its fixed setup. Return vertical receiver traces and a manifest that lets us reproduce the run.”</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Traces** → receiver IDs, units, sampling, waveform agreement  
+**Manifest** → input hashes, software version, commands  
+**Logs** → completion, failures, elapsed time
+
+::: {.notes}
+Proposal, not an implemented SPECFEM benchmark. Choose the variant, fixture, hardware and reference with the team. Define what “vertical” and the recorded quantity mean: displacement, velocity or acceleration, coordinate conventions and units. Freeze the intended output samples. Do not optimize waveform alignment after seeing the answer unless that is explicitly part of the task’s scoring rule.
+:::
+
+## A useful result can be a question
+
+<div class="example-label">PROMPT IN · NO OTHER CONTEXT PROVIDED</div>
+<div class="prompt">“Simulate this earthquake and show the waveform at our station.”</div>
+
+<div class="example-label">APPROPRIATE RESPONSE</div>
+
+“Which source, station, Earth model, and simulation setup should I use?”
+
+| Check | Score |
+|---|---|
+| Asks for source, station, Earth model, setup | 1 each, out of 4 |
+| Asks for something it was already given | −1 |
+| Claims a run or shows a waveform it did not compute | case = 0 |
+: {.rubric tbl-colwidths="[72,28]"}
+
+::: {.notes}
+Score = essentials asked out of 4, minus redundant questions, set to 0 if the agent claims a run it did not do. Report the mean score and the rate of false execution claims side by side. Setup means mesh or frequency, duration, and the recorded quantity. This is a different task category from running a complete fixture. Use a reviewed rubric of missing essentials, not exact string matching. If approved defaults are already available, asking again may be unnecessary. Report clarification-task results separately from simulation success. Have humans adjudicate ambiguous responses; use an LLM judge only with a rubric and validation against expert labels.
+:::
+
+## Different agents, shared evaluation
+
+<div class="node"><b>Same task, inputs, output contract, and budget</b></div>
+<div class="compare branching">
+<div class="node"><b>↓ Maleen’s system</b><small>Agent loop and tools: to discuss</small></div>
+<div class="node"><b>↓ Marine’s system</b><small>Repère / InspectAI approach</small></div>
+</div>
+<div class="node merge"><b>↓ Shared scorer and per-case evidence</b></div>
+
+<p class="source">Repère board: <a href="https://mdenolle.github.io/repere/">mdenolle.github.io/repere</a> · source: <a href="https://github.com/mdenolle/repere">mdenolle/repere</a></p>
+
+::: {.notes}
+Maleen’s architecture has not been verified; leave space for his explanation. Repère documents InspectAI tasks, solvers and scorers. The entire system is the object of comparison, so internal tools may differ if declared and allowed. For a causal claim about one change, hold the other components fixed: same model with/without a skill, or same agent with a different model. Distinguish that controlled experiment from a system-level comparison.
+:::
+
+## Where this sits in GAIA’s evaluation plan
+
+<div class="flow" role="img" aria-label="Experts build golden cases, which the harness runs against agents, producing scorecards that feed the board, the CI gate and the observatory">
+<div class="node plan"><b>Expert track</b><small>Experts build cases</small></div><span class="arrow">→</span>
+<div class="node plan"><b>Golden cases</b><small>Hidden test set</small></div><span class="arrow">→</span>
+<div class="node plan"><b>gaia-eval harness</b><small>Runs each agent</small></div><span class="arrow">→</span>
+<div class="node plan"><b>Scorecard</b><small>One per run</small></div>
+</div>
+
+<div class="three">
+<div class="node"><b>↓ Repère board</b><small>Live</small></div>
+<div class="node plan"><b>↓ CI regression gate</b><small>Planned</small></div>
+<div class="node plan"><b>↓ Metrics Observatory</b><small>Planned</small></div>
+</div>
+
+<p class="source">Dashed = planned, not running. Repère: <a href="https://mdenolle.github.io/repere/">mdenolle.github.io/repere</a></p>
+
+::: {.notes}
+Redrawn from the Lecture 1 diagram (book/img/agents-evaluation.svg) at a readable size. Only the Repère board runs today. The harness, CI gate, Observatory and expert track are in the CSSI plan. The SPECFEM pilot would be the first case run through the harness. The expert track is the platform where experts build and review the golden cases; Lecture 1's diagram uses the same definition. It replaces the earlier description (Gaia Translator, rubric scoring by 15 to 25 reviewers).
+:::
+
+## Three terms
+
+| | |
+|---|---|
+| **Scorecard** | One record per agent, case and run: right? cost? reproducible? plus provenance (model, skill and container versions, input hashes) |
+| **CI regression gate** | A check on every pull request that changes an agent or skill: rerun the cases; if the score drops, the PR cannot merge |
+| **Expert track** | A platform where domain experts build golden cases (task, inputs, reference, tolerances); a second expert reviews each case before it joins the hidden set |
+: {.terms tbl-colwidths="[26,74]"}
+
+::: {.notes}
+Scorecard: "right" is the score against the hidden reference; "cost" is tokens, dollars and wall time; "reproducible" means the same result on rerun in the same container. The board plots scorecards. CI gate: a GitHub Actions job; the threshold is the last accepted score for that agent, with a tolerance for run-to-run noise. Expert track: record who wrote and who reviewed each case, and the agreement between reviewers; disagreements go back to the author before the case is accepted.
+:::
+
+## A golden dataset connects inputs to checks
+
+<div class="golden" role="img" aria-label="Visible task and inputs go to the agent and produce outputs. Outputs and an expert reference both feed the scorer, producing a result.">
+<div class="node"><b>Task + inputs</b><small>Visible to the agent</small></div><span class="arrow">→</span><div class="node"><b>Agent outputs</b></div>
+<div class="node hidden-ref"><b>Expert reference</b><small>Held by the evaluator</small></div><span class="arrow">↗</span><div class="node"><b>↓ Scorer → result</b><small>Checks + tolerances</small></div>
+</div>
+
+A reference needs provenance, versions, and independent review.
+
+::: {.notes}
+The top-right node feeds the scorer below it; the expert reference feeds that same scorer diagonally. The golden dataset is not just a set of correct final answers: it includes task context and the rules that settle correctness. Hidden answers must be outside agent-accessible storage; a folder named evaluator/ alone does not enforce isolation. Keep public development cases separate from held-out evaluation cases, preferably by case family.
+:::
+
+## Holistic evaluation · the HELM example
+
+HELM combines **scenario coverage**, **multiple metrics**, and **standardized comparisons**.
+
+Its original metric set:
+
+**Accuracy · Calibration · Robustness · Fairness**  
+**Bias · Toxicity · Efficiency**
+
+For GAIA: choose several dimensions of scientific usefulness and make missing coverage explicit.
+
+<p class="source">Source: <a href="https://crfm.stanford.edu/2022/11/17/helm.html">Stanford CRFM · HELM (2022)</a></p>
+
+::: {.notes}
+HELM = Holistic Evaluation of Language Models. The original work evaluates language models; our proposal evaluates complete scientific agent systems. HELM’s original seven metrics are not a ready-made SPECFEM rubric. The following slides are our proposed adaptation. Fairness, bias and toxicity retain their social meanings; coverage across physical regimes is a separate scientific concern, not a replacement definition of fairness. If GAIA includes public-facing communication, prioritize relevant social-risk evaluation as well. Source details in docs/SOURCES.md.
+:::
+
+## HELM: every scenario, every metric
+
+![](figures/helm-multi-metric.png){.r-stretch}
+
+<p class="source">Liang et al. (2022), Holistic Evaluation of Language Models, <a href="https://arxiv.org/abs/2211.09110">arXiv:2211.09110</a>, CC BY 4.0 · Figure: multi-metric evaluation</p>
+
+::: {.notes}
+Left: earlier benchmarks measured one metric per scenario. Right: HELM measures all seven metrics on every scenario where they make sense, and leaves blanks where they do not. GAIA should do the same and keep the blanks visible. Reproduced from arXiv:2211.09110 under CC BY 4.0.
+:::
+
+## Which metrics should GAIA start with?
+
+<table class="metrics">
+<thead><tr><th>Dimension</th><th>Proposed measurement</th></tr></thead>
+<tbody>
+<tr><td>Scientific correctness</td><td>Pass rate + numerical error</td></tr>
+<tr><td>Robustness</td><td>Pass-rate change on paired variants</td></tr>
+<tr><td>Reproducibility</td><td>Independent rerun passes / reruns</td></tr>
+<tr><td>Efficiency</td><td>Time, API cost, CPU/GPU hours</td></tr>
+</tbody></table>
+
+**Discuss:** which are mandatory gates, and which describe trade-offs?
+
+::: {.notes}
+Proposed GAIA measures inspired by HELM’s multi-metric principle. For simulation tasks, define per-case numerical checks and mandatory gates; scientific pass rate is passing attempts / all scheduled attempts under a published failure policy. Robustness uses paired cases with equivalent scientific intent, such as prompt rewording, and reports baseline and variant rates plus their difference. A scientifically changed source is a generalization case, not an invariance test. Reproducibility means an independent rerun of the submitted procedure and artifacts, distinct from running the stochastic agent again. Record cost for failed runs too. Report API and compute separately, adding them only when the accounting basis is clear. Energy or carbon cannot be inferred from token count alone.
+:::
+
+## Robustness: same question, reworded
+
+![](figures/helm-robustness.png){.r-stretch}
+
+<p class="source">Liang et al. (2022), <a href="https://arxiv.org/abs/2211.09110">arXiv:2211.09110</a>, CC BY 4.0 · Figure: robustness perturbations</p>
+
+::: {.notes}
+The paired-variant idea behind the robustness row of our metric table. For SPECFEM, the perturbation is a reworded prompt with the same scientific intent; a changed source or Earth model is a different case, not a perturbation. Reproduced from arXiv:2211.09110 under CC BY 4.0.
+:::
+
+## Knowing when the agent is uncertain
+
+**Clarification:** does it request missing information when needed?
+
+**False alarms:** does it wrongly reject a complete, valid case?
+
+**Calibration:** if it gives 80% confidence, do comparable claims succeed about 80% of the time?
+
+<p class="caption">Use expert labels for clarification; many labeled outcomes for calibration.</p>
+
+::: {.notes}
+Proposed measures: necessary-clarification detection = correctly flagged incomplete cases / all incomplete cases; false-alarm rate = valid cases incorrectly blocked / all valid cases. Keep both denominators visible. Calibration requires a predeclared confidence target (for example, probability the final artifact passes), recorded before scoring, and enough labeled attempts. Use reliability plots and a proper score such as Brier score only when probabilities are available. Scientific uncertainty intervals on waveforms or inferred parameters are a separate calibration target. “Asks a question” alone is not evidence of calibrated confidence.
+:::
+
+## A metric needs an agreed definition
+
+**Quantity** — waveform relative L2 error, with units and sampling fixed.
+
+**Rule** — compare each required receiver to the reviewed reference.
+
+**Threshold** — set before evaluation; justify it scientifically.
+
+**Failure policy** — missing traces, NaNs, or timeouts cannot silently disappear.
+
+::: {.notes}
+Example definition for a nonzero reference: e = ||agent − reference||₂ / ||reference||₂, using a fixed time grid, quantity and component; all required receivers must satisfy their individual tolerances. Specify a separate absolute-error rule for zero or near-zero reference energy, chosen before evaluation. Timing, amplitude, phase and frequency content may require separate checks; the group must decide what is scientifically meaningful. A tolerance is not universal across SPECFEM variants or hardware. Infrastructure incidents should be identified and handled under a predeclared rerun policy, with original attempts retained.
+:::
+
+## A leaderboard makes trade-offs visible
+
+<table class="leaderboard">
+<thead><tr><th>System</th><th>Pass</th><th>Median time</th><th>API $ / run</th></tr></thead>
+<tbody>
+<tr><td>Agent A</td><td>8 / 10</td><td>4 min</td><td>$0.40</td></tr>
+<tr><td>Agent B</td><td>9 / 10</td><td>7 min</td><td>$1.10</td></tr>
+<tr><td>Agent C</td><td>6 / 10</td><td>2 min</td><td>$0.15</td></tr>
+</tbody></table>
+
+<p class="caption">Fictional results · 10 simulation cases · 1 attempt per case · same limits</p>
+
+B passed more cases. A used less API spend. **What quality floor do we need?**
+
+<p class="source">GAIA boards: <a href="https://gaia-hazlab.github.io/book/hazevalhub">HazEvalHub</a></p>
+
+::: {.notes}
+All values are invented. Rank neither reliability nor statistical significance from this tiny example. API cost is only model API spend, excluding simulation compute. Median time and mean API spend include failed attempts. Real result records also need CPU/GPU hours and hardware, dataset and scorer versions, agent/model revisions, budgets, repetitions and uncertainty. Show simulation and clarification suites separately. Drill into per-case outputs and traces. The toy output-scoring example is separate from these invented table values.
+:::
+
+## A board that runs today: Repère
+
+![](figures/repere-board.png){.r-stretch}
+
+<p class="source">Cost against performance, with and without a domain skill · <a href="https://mdenolle.github.io/repere/">mdenolle.github.io/repere</a> (MIT), captured 9 November 2026</p>
+
+::: {.notes}
+Real runs, unlike the previous slide. Hollow markers are runs without a domain skill, filled markers with it; the line between them is the skill lift. Repère already lists slots for SPECFEM, RCA Atlas Q&A and RCA Atlas agent tasks, marked "soon". Screenshot of the live board on 9 November 2026; check the board for current values before quoting numbers.
+:::
+
+## What else belongs beside the ranking?
+
+**Per-case results** — which scientific setups fail?
+
+**Repeatability** — how often does the same task succeed?
+
+**Robustness** — does rephrasing the task change the outcome?
+
+**Missing coverage** — what have we not tested yet?
+
+::: {.notes}
+HELM motivates reporting coverage gaps and multiple dimensions, not a single universal score. Publish counts by task category and scientific regime. Repeated runs are correlated within case: keep per-case repeats visible and account for clustering in uncertainty estimates. Report a transparent-script or human-reviewed procedure as a baseline where feasible. It helps identify whether the agent adds value to running an existing workflow. Do not tune prompts against held-out answers.
+:::
+
+## A small first dataset
+
+**Reference reproduction** — a complete, approved fixture.
+
+**Invalid input** — a known defect with a decisive diagnostic.
+
+**New configuration** — a reviewed source or receiver change.
+
+**Missing information** — a task that requires clarification.
+
+::: {.notes}
+Proposed categories, not an existing validated SPECFEM suite. Include clean controls with no defects to measure false alarms. Reworded prompts form paired robustness checks; new physical configurations form generalization checks. Separate those analyses. For every case, an independent reviewer verifies the reference and expected behavior before evaluation. Start with affordable fixtures, then broaden coverage.
+:::
+
+## Group decisions · before we build
+
+1. Which **SPECFEM variant and first task**?
+2. Who supplies and independently reviews the **golden case**?
+3. Which **metrics, thresholds, and resource limits**?
+4. Who implements each **agent adapter and scorer**?
+5. Where do we collaborate, and when do we compare?
+
+::: {.notes}
+Record owners and dates in discussion.md. Agree on public versus held-out cases and storage. The deck source and notes can be reviewed in Git; the hidden reference store should remain separate. The remaining slides are optional implementation appendices.
+:::
+
+## The same template for other GAIA agents {background-color="#f5f3fb"}
+
+| Agent | Task | Reference | Evals |
+|---|---|---|---|
+| OOI · Ask Atlas | Answer questions about the Regional Cabled Array, with cited evidence | Answer keys from papers, OOI records and tested scripts | 91 questions + 8 tasks drafted; not posted |
+| OOI · QA/QC | Report an instrument's QA/QC status from plots and analyst notes | Analyst human-in-the-loop notes | Not posted |
+| PyLith | Turn a scientist's prompt into a working finite-element model | Curated prompt → PyLith input pairs | Not started |
+
+<p class="caption">Template slides · tasks are proposals until each team fills them in.</p>
+
+::: {.notes}
+Each of the next slides uses the evaluation loop from the start of the deck: task, agent, evidence, scorer. The OOI agents live in RCA-Atlas (https://github.com/coszo-hub/RCA-Atlas, commit d041ba6); its software is proprietary, so these slides describe it and link to it but copy nothing. The PyLith agent suite is the proposal in the GAIA-Rainier-PyLith-Agent deck. No evaluations exist yet for any of the three.
+:::
+
+## OOI · Ask Atlas
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Which instruments measure dissolved oxygen?”</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Answer** → every claim backed by a cited source  
+**Citations** → each resolves to a real instrument, site or document  
+**Evidence set** → recall and precision against a reviewed list
+
+::: {.todo}
+Golden set: reviewed question → expected instruments and sites. Owner and reviewer to name.
+:::
+
+<p class="source">Agent: <a href="https://github.com/coszo-hub/RCA-Atlas">coszo-hub/RCA-Atlas</a> · Graph-RAG over the RCA/COSZO corpus</p>
+
+::: {.notes}
+The prompt is one of the four demo questions in RCA-Atlas docs/superpowers/specs/2026-09-24-ask-atlas-evidence-design.md. Candidate metrics: evidence recall and precision against a reviewed instrument list; unsupported-claim rate, judged by humans or a validated rubric; latency and model cost per answer. The Worker already accepts several models, so the same golden set can compare base models with the retrieval held fixed. Keep live-data questions ("How many earthquakes at Axial today?") in a separate suite: their reference changes daily.
+:::
+
+## OOI · how Ask Atlas answers
+
+<div class="flow" role="img" aria-label="The browser sends a question to a Cloudflare Worker, which searches a Graph-RAG index and live data, then asks a model">
+<div class="node"><b>Browser</b><small>Ask Atlas page</small></div><span class="arrow">→</span>
+<div class="node"><b>Worker</b><small>1 finds evidence<br>2 asks a model</small></div><span class="arrow">→</span>
+<div class="node"><b>Graph-RAG search</b><small>22,194 passages: papers, pages, OOI records</small></div>
+</div>
+
+<div class="three">
+<div class="node"><b>Live data</b><small>Nereus, ERDDAP, EarthScope</small></div>
+<div class="node"><b>OOI LLM server</b><small>Gemma 4 26B, tried first</small></div>
+<div class="node"><b>Fallbacks</b><small>Gemini → Groq → GPT-5.4 mini</small></div>
+</div>
+
+<p class="source">RCA Evals deck, 9 Nov 2026 (UW internal) · <a href="https://github.com/coszo-hub/RCA-Atlas">coszo-hub/RCA-Atlas</a></p>
+
+::: {.notes}
+Redrawn from the architecture slide of the RCA Evals deck. The Worker runs on Cloudflare; search and the live-data gateway run on the Cascadia VM behind tunnels; the OOI model is reached through a relay on the OOI JupyterHub that holds the OOI key. For evaluation this matters in two ways: the answer depends on which model in the fallback chain answered, so each run must record it; and live-data answers change daily, so they need their own suite.
+:::
+
+## OOI · four eval sets, key written first
+
+| Set | N | Answer key | Script |
+|---|---|---|---|
+| Literature content | 33 | Facts from the paper, each a pattern | `literature_content_eval.py` |
+| Literature titles | 20 | The paper; logs search rank and citation | `literature_eval.py` |
+| Instrument metadata | 38 | Computed from OOI records at each run | `asset_eval.py` |
+| Task recipes | 8 | A tested script, rerun in a sandbox | `tasks.json` |
+: {.evalsets tbl-colwidths="[25,7,42,26]"}
+
+Each key comes from a source with a known answer and is written before the question is asked.
+
+::: {.notes}
+From the "How the evals are prepared" slide of the RCA Evals deck. Literature content: the question is written in a researcher's words, not the paper's; facts the paper has but the question does not ask for are reported, never scored; questions are grouped by where the answer lives (abstract, instrument page, full text). Literature titles: shorthand on purpose (VLFEs, ETS, G-FAST) so search must bridge it. Instrument metadata: serial numbers, deployments, swaps, calibrations, depths, orientation; expected facts are computed from OOI asset management and StationXML each run, so the key follows the data. Task recipes: only tasks.json is public (RCA-Atlas commit d041ba6, 8 tasks: earthquake waveform, noise PSD, STA/LTA detection, hydrophone spectrogram, Axial uplift, profiler CTD section, QC time series, ADCP currents); the three eval scripts are not yet in the public repo. Sizes as stated in the deck, not recounted.
+:::
+
+## OOI · a literature question
+
+<div class="cards">
+<div class="node"><b>Question</b><small>“How long did the January 1998 earthquake swarm at Axial last, and how many earthquakes were detected?”</small></div>
+<div class="node"><b>Evidence</b><small>Worker searches the corpus: abstracts, then full-text passages</small></div>
+<div class="node"><b>Answer</b><small>Model answers from that evidence, citing each claim</small></div>
+<div class="node key"><b>Check</b><small>Each fact is a pattern:<br><code>&#92;b11&#92;b&#124;eleven</code><br><code>8,?247</code></small></div>
+</div>
+
+A right answer in other words still passes.
+
+::: {.notes}
+From the RCA Evals deck. Pattern checks are cheap and deterministic but can pass an answer that states the number in the wrong context, and fail one that rounds. Pair them with a citation check: does the cited passage contain the fact? Report per-fact pass rates, not only per-question.
+:::
+
+## OOI · a task question
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Write a script to detect earthquakes at Axial with STA/LTA on 15 October 2025.”</div>
+
+<div class="cards">
+<div class="node"><b>1 · Recipe test</b><small>The recipe’s own script runs in a sealed container</small></div>
+<div class="node"><b>2 · Science check</b><small>Figure checked against a source: catalog, OSU rates, hand calculation</small></div>
+<div class="node"><b>3 · Live answer</b><small>Gemma answers; only its settings are taken</small></div>
+<div class="node key"><b>4 · Run the script</b><small>Same container; a failure is traced to the recipe or the Worker</small></div>
+</div>
+
+A pattern cannot check code, so the code is run.
+
+::: {.notes}
+From the RCA Evals deck. Each recipe has steps with reasons, a script that has been run, what to change, pitfalls and sources. The live question uses a real place and time and a different instrument or span from the recipe's example, so the agent cannot copy it. Steps 1 and 2 validate the reference; steps 3 and 4 score the agent. Step 3 keeps the recipe's code and takes only the model's settings (station, time, dataset): that scores parameter choice, not code writing.
+:::
+
+## OOI · QA/QC agent
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“What is the QA/QC status of RS01SLBS-MJ01A-12-VEL3DB101 this month?”</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Status** → agrees with the analyst's note for that month  
+**Evidence** → cites the plot URLs and the date of the note  
+**Restraint** → no pass inferred from a plot existing; no plot generation unless needed
+
+::: {.todo}
+Golden set: instrument-month → analyst status. Which notes are reviewed enough to serve as truth?
+:::
+
+<p class="source">Tools: <a href="https://github.com/coszo-hub/RCA-Atlas/tree/main/src/agentic_qaqc">src/agentic_qaqc</a> · 10 MCP tools, generation off by default</p>
+
+::: {.notes}
+The prompt is the README's own example. The README states two rules the scorer can test directly: plot existence does not prove a pass state, and plot generation runs only when existing products are insufficient (execute defaults to false). Candidate metrics: status agreement with analyst notes; false-pass rate, kept separate because a false pass is the costly error; unnecessary-generation rate; whether the note date is cited. Analyst notes are the reference, so the people who write them should review the golden set.
+:::
+
+## PyLith · the stress that primes a landslide
+
+![](figures/rainier-strain.png){.r-stretch}
+
+<p class="source">Modeled surface strain around Mt. Rainier over the PNSN network · Mt. Rainier digital model, <a href="https://github.com/Denolle-Lab/mt-rainier-digital-model">Denolle-Lab/mt-rainier-digital-model</a> (BSD-3-Clause), via the GAIA-Rainier-PyLith-Agent deck</p>
+
+::: {.notes}
+From slide 1 of the GAIA-Rainier-PyLith-Agent deck. The static strain field under the edifice sets the conditions for slope failure; dynamic stress from earthquakes adds to it. Finite-element codes such as PyLith resolve this at high resolution but are slow to set up and run, which is the case for an agent suite. Confirm with the model authors whether this field is a PyLith run or a simpler model before presenting it as PyLith output.
+:::
+
+## PyLith · prompt in, model out
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">“Model static stress under the summit for a 50 m mesh…”</div>
+
+<div class="example-label">AGENT SUITE → OUTPUTS</div>
+
+**Translate** → PyLith input files with correct syntax  
+**Self-check** → parameter choices; mesh fine enough  
+**Display** → stress and strain fields for inspection  
+**Resources** → job size, runtime, cost
+
+<p class="source">Code: <a href="https://github.com/geodynamics/pylith">geodynamics/pylith</a> · proposal: GAIA-Rainier-PyLith-Agent deck</p>
+
+::: {.notes}
+From the GAIA-Rainier-PyLith-Agent deck (Google Slides, 2 slides). The output feeds the Mt. Rainier digital twin: static and dynamic subsurface stress that primes slope failure. Ensembles of runs constrain uncertainty. The four sub-agents are scored separately so a failure can be traced to one of them.
+:::
+
+## PyLith · what to score
+
+<table class="metrics">
+<thead><tr><th>Benchmark</th><th>Proposed measurement</th></tr></thead>
+<tbody>
+<tr><td>FEM syntax</td><td>Input runs in PyLith; diff against the golden input</td></tr>
+<tr><td>Mesh self-check</td><td>Result within tolerance of a refined-mesh reference</td></tr>
+<tr><td>Display</td><td>Required fields and plots, with units</td></tr>
+<tr><td>Resources</td><td>Predicted vs actual runtime and cost; within budget</td></tr>
+</tbody></table>
+
+Same agent files and golden set → compare base models.
+
+::: {.todo}
+Seed the golden set: working PyLith inputs from FEM users. Needs agent-evaluation and FEM experience.
+:::
+
+::: {.notes}
+The four rows are the benchmark list in the PyLith deck; the measurements are proposals. "Correct syntax" is necessary but weak: an input can run and model the wrong physics, so the golden pairs need a reviewed physical result, not only a reference input file. Mesh convergence needs a reference solution at a finer mesh, which costs compute; budget it in the golden set. Run each case several times: FEM setup by an agent is stochastic even when PyLith is not.
+:::
+
+## Template · your agent {background-color="#f5f3fb"}
+
+<div class="example-label">PROMPT IN</div>
+<div class="prompt">One real request a scientist would make.</div>
+
+<div class="example-label">OUTPUTS → CHECKS</div>
+
+**Artifact** → the check that settles whether it is right  
+**Evidence** → what the agent must cite or save  
+**Restraint** → what it must not do without approval
+
+**Golden set** · **reviewer** · **ranking metric** · **budget**
+
+::: {.notes}
+Copy this slide for the next agent. Fill the prompt with a real request, not a demo. Every output needs a check that does not rely on the agent's own account. Name the reviewer before collecting the golden set, and choose the ranking metric before the first run.
+:::
+
+## Code and data behind this deck {background-color="#f5f3fb"}
+
+| Repository | What it holds |
+|---|---|
+| [mdenolle/repere](https://github.com/mdenolle/repere) | InspectAI tasks, solvers, scorers; the agent leaderboard |
+| [Denolle-Lab/codameter](https://github.com/Denolle-Lab/codameter) | dv/v processing and the seeded synthetic suites |
+| mdenolle/gaia-eval (private) | Task, artifact, ground-truth and rubric schema |
+| [coszo-hub/RCA-Atlas](https://github.com/coszo-hub/RCA-Atlas) | OOI Ask Atlas and QA/QC agents (proprietary licence) |
+| [geodynamics/pylith](https://github.com/geodynamics/pylith) | The finite-element code the PyLith agents drive |
+| [This deck](https://github.com/gaia-hazlab/gaia-hazlab.github.io/tree/main/book/teaching/agent-evaluation/slides) | Slides, metrics proposal, toy scorer, meeting notes |
+
+::: {.notes}
+gaia-eval is private; ask for access. The deck source is CC BY 4.0, the example code MIT, per the GAIA licensing policy. Held-out references never go in any of these public repositories.
+:::
+
+## Appendix · a case package {background-color="#f5f3fb"}
+
+```text
+case-001/
+  task.md              # exact prompt
+  inputs/              # approved visible fixture
+  manifest.yaml        # provenance and versions
+  output-contract.yaml # required artifacts
+
+Private evaluator store:
+  case-001/reference/  # reviewed golden outputs
+  case-001/checks.yaml # metrics and tolerances
+  case-001/review.md   # expert sign-off
+```
+
+::: {.notes}
+Proposed package. It is not a replacement for the current gaia-eval schema: that schema already describes task, artifact, ground truth, provenance and rubric. Agree on a mapping rather than create incompatible definitions. Execution cases need additional environment and numerical-output contracts. Large artifacts can be referenced by immutable location and checksum. Enforce separation through access controls and agent sandbox configuration.
+:::
+
+## Appendix · how we collaborate {background-color="#f5f3fb"}
+
+**Slides and diagrams** — edit `slides.qmd` and `style.css`.
+
+**Scientific decisions** — record them in `discussion.md`.
+
+**Worked example** — run `examples/score_toy.py` offline.
+
+**Review** — propose changes together; rebuild the HTML.
+
+::: {.notes}
+The repository-ready package includes a build script, an offline scoring example, provenance notes and contribution guidance. No live agent or SPECFEM execution is bundled. Source: book/teaching/agent-evaluation/slides/ in gaia-hazlab/gaia-hazlab.github.io; render with `quarto render` in that folder.
+:::

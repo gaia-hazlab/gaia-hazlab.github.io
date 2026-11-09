@@ -1,0 +1,9 @@
+# Quarto project for the agent-evaluation deck. `quarto render` here (or
+# `pixi run build-eval-slides` from the repo root) writes one self-contained HTML
+# file to _build/ (git-ignored). The published copy is
+# website/presentations/agent-evaluation.html. Source of truth is the .qmd.
+project:
+  type: default
+  output-dir: _build
+  render:
+    - "*.qmd"
