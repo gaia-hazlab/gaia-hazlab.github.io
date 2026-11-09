@@ -137,10 +137,15 @@ Proposal, not an implemented SPECFEM benchmark. Choose the variant, fixture, har
 
 “Which source, station, Earth model, and simulation setup should I use?”
 
-**Score:** asks for missing essentials; makes no unsupported claim of execution.
+| Check | Score |
+|---|---|
+| Asks for source, station, Earth model, setup | 1 each, out of 4 |
+| Asks for something it was already given | −1 |
+| Claims a run or shows a waveform it did not compute | case = 0 |
+: {.rubric tbl-colwidths="[72,28]"}
 
 ::: {.notes}
-This is a different task category from running a complete fixture. Use a reviewed rubric of missing essentials, not exact string matching. If approved defaults are already available, asking again may be unnecessary. Report clarification-task results separately from simulation success. Have humans adjudicate ambiguous responses; use an LLM judge only with a rubric and validation against expert labels.
+Score = essentials asked out of 4, minus redundant questions, set to 0 if the agent claims a run it did not do. Report the mean score and the rate of false execution claims side by side. Setup means mesh or frequency, duration, and the recorded quantity. This is a different task category from running a complete fixture. Use a reviewed rubric of missing essentials, not exact string matching. If approved defaults are already available, asking again may be unnecessary. Report clarification-task results separately from simulation success. Have humans adjudicate ambiguous responses; use an LLM judge only with a rubric and validation against expert labels.
 :::
 
 ## Different agents, shared evaluation
@@ -160,12 +165,36 @@ Maleen’s architecture has not been verified; leave space for his explanation. 
 
 ## Where this sits in GAIA’s evaluation plan
 
-![](../../../img/agents-evaluation.svg){.r-stretch}
+<div class="flow" role="img" aria-label="Experts build golden cases, which the harness runs against agents, producing scorecards that feed the board, the CI gate and the observatory">
+<div class="node plan"><b>Expert track</b><small>Experts build cases</small></div><span class="arrow">→</span>
+<div class="node plan"><b>Golden cases</b><small>Hidden test set</small></div><span class="arrow">→</span>
+<div class="node plan"><b>gaia-eval harness</b><small>Runs each agent</small></div><span class="arrow">→</span>
+<div class="node plan"><b>Scorecard</b><small>One per run</small></div>
+</div>
 
-<p class="source">GAIA evaluation plan, from the agents lecture (book/img/agents-evaluation.svg); dashed boxes are planned, not running</p>
+<div class="three">
+<div class="node"><b>↓ Repère board</b><small>Live</small></div>
+<div class="node plan"><b>↓ CI regression gate</b><small>Planned</small></div>
+<div class="node plan"><b>↓ Metrics Observatory</b><small>Planned</small></div>
+</div>
+
+<p class="source">Dashed = planned, not running. Repère: <a href="https://mdenolle.github.io/repere/">mdenolle.github.io/repere</a></p>
 
 ::: {.notes}
-This is the same diagram used in Lecture 1. The Repère board is live; the gaia-eval harness, the CI regression gate and the Metrics Observatory are planned. The SPECFEM pilot would be the first case run through the harness. The TODO boxes on the figure are real gaps, left visible on purpose.
+Redrawn from the Lecture 1 diagram (book/img/agents-evaluation.svg) at a readable size. Only the Repère board runs today. The harness, CI gate, Observatory and expert track are in the CSSI plan. The SPECFEM pilot would be the first case run through the harness. Lecture 1's diagram still describes the expert track as rubric scoring by 15 to 25 reviewers (Gaia Translator); here it is defined as the platform where experts build the golden cases.
+:::
+
+## Three terms
+
+| | |
+|---|---|
+| **Scorecard** | One record per agent, case and run: right? cost? reproducible? plus provenance (model, skill and container versions, input hashes) |
+| **CI regression gate** | A check on every pull request that changes an agent or skill: rerun the cases; if the score drops, the PR cannot merge |
+| **Expert track** | A platform where domain experts build golden cases (task, inputs, reference, tolerances); a second expert reviews each case before it joins the hidden set |
+: {.terms tbl-colwidths="[26,74]"}
+
+::: {.notes}
+Scorecard: "right" is the score against the hidden reference; "cost" is tokens, dollars and wall time; "reproducible" means the same result on rerun in the same container. The board plots scorecards. CI gate: a GitHub Actions job; the threshold is the last accepted score for that agent, with a tolerance for run-to-run noise. Expert track: record who wrote and who reviewed each case, and the agreement between reviewers; disagreements go back to the author before the case is accepted.
 :::
 
 ## A golden dataset connects inputs to checks

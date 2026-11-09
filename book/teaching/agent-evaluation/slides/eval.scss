@@ -30,3 +30,8 @@ $gaia-stone: #6f6890;
 .caption { font-size: 0.68em; color: $gaia-stone; }
 .source { font-size: 0.55em; color: $gaia-stone; margin-top: 0.7em; }
 .reveal .metrics, .reveal .leaderboard { width: 100%; }
+.plan { border-style: dashed; }
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7em; margin-top: 0.4em; }
+.reveal table.rubric, .reveal table.terms { width: 100%; font-size: 0.8em; }
+.reveal table.terms td:first-child { white-space: nowrap; vertical-align: top; }
+.reveal table.terms thead { display: none; }
