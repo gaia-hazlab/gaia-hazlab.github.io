@@ -75,6 +75,16 @@ All values are **fractional dv/v**: 0.0020 means 0.2%.
 The agent’s dvv.csv and valid.csv provide the estimates and mask; the evaluator joins them to the hidden truth on the required time grid. These samples are mock artifacts, not actual measured codameter results. No statistical conclusion can be drawn from three values. The validity mask cannot silently remove difficult samples: coverage is a separate gate.
 :::
 
+## Why the reference stays hidden
+
+![](figures/codameter-multiverse.png){.r-stretch}
+
+<p class="source">27 processing pipelines on one synthetic dataset, against the known truth · <a href="https://github.com/Denolle-Lab/codameter">codameter</a> (MIT), literature/figs/demo_9_multiverse.png</p>
+
+::: {.notes}
+Every pipeline here is defensible, and they disagree by more than the signal at times. An agent choosing among them can only be scored against a truth it never saw. With real data there is no truth curve, which is why the golden cases start from synthetics with a known answer. Figure from Denolle-Lab/codameter, MIT licence.
+:::
+
 ## Turning those outputs into a score
 
 **Error:** mean of 0.0002, 0.0001, 0.0001 = **0.000133**.
@@ -91,6 +101,16 @@ This example **passes both checks**.
 
 ::: {.notes}
 The error metric is mean absolute error in fractional dv/v over valid required samples. Thresholds are invented, not codameter defaults. The real scorer verifies time alignment and mask shape, rejects non-finite values, and makes missing outputs explicit. For a parameter-recommendation task, execute the proposed config and score the recovered series. Run examples/score_toy.py for this exact calculation. A scientific golden dataset needs substantially more coverage than this arithmetic example.
+:::
+
+## What a failed check looks like
+
+![](figures/codameter-methods.png){.r-stretch}
+
+<p class="source">Recovered against true dv/v for eight methods; (c) shows cycle-skipping at large dv/v · <a href="https://github.com/Denolle-Lab/codameter">codameter</a> (MIT), literature/figs/demo_1_methods.png</p>
+
+::: {.notes}
+Panel (a): every method agrees when dv/v is small. Panel (b): some methods break over a ±5% sweep. Panel (c): at large dv/v, MWCS cycle-skips and produces confident wrong values. A mean-error score averaged over easy cases would hide panel (c); a mandatory per-case gate does not. Figure from Denolle-Lab/codameter, MIT licence.
 :::
 
 ## Proposed SPECFEM prompt and outputs
@@ -138,6 +158,16 @@ This is a different task category from running a complete fixture. Use a reviewe
 Maleen’s architecture has not been verified; leave space for his explanation. Repère documents InspectAI tasks, solvers and scorers. The entire system is the object of comparison, so internal tools may differ if declared and allowed. For a causal claim about one change, hold the other components fixed: same model with/without a skill, or same agent with a different model. Distinguish that controlled experiment from a system-level comparison.
 :::
 
+## Where this sits in GAIA’s evaluation plan
+
+![](../../../img/agents-evaluation.svg){.r-stretch}
+
+<p class="source">GAIA evaluation plan, from the agents lecture (book/img/agents-evaluation.svg); dashed boxes are planned, not running</p>
+
+::: {.notes}
+This is the same diagram used in Lecture 1. The Repère board is live; the gaia-eval harness, the CI regression gate and the Metrics Observatory are planned. The SPECFEM pilot would be the first case run through the harness. The TODO boxes on the figure are real gaps, left visible on purpose.
+:::
+
 ## A golden dataset connects inputs to checks
 
 <div class="golden" role="img" aria-label="Visible task and inputs go to the agent and produce outputs. Outputs and an expert reference both feed the scorer, producing a result.">
@@ -168,6 +198,16 @@ For GAIA: choose several dimensions of scientific usefulness and make missing co
 HELM = Holistic Evaluation of Language Models. The original work evaluates language models; our proposal evaluates complete scientific agent systems. HELM’s original seven metrics are not a ready-made SPECFEM rubric. The following slides are our proposed adaptation. Fairness, bias and toxicity retain their social meanings; coverage across physical regimes is a separate scientific concern, not a replacement definition of fairness. If GAIA includes public-facing communication, prioritize relevant social-risk evaluation as well. Source details in docs/SOURCES.md.
 :::
 
+## HELM: every scenario, every metric
+
+![](figures/helm-multi-metric.png){.r-stretch}
+
+<p class="source">Liang et al. (2022), Holistic Evaluation of Language Models, <a href="https://arxiv.org/abs/2211.09110">arXiv:2211.09110</a>, CC BY 4.0 · Figure: multi-metric evaluation</p>
+
+::: {.notes}
+Left: earlier benchmarks measured one metric per scenario. Right: HELM measures all seven metrics on every scenario where they make sense, and leaves blanks where they do not. GAIA should do the same and keep the blanks visible. Reproduced from arXiv:2211.09110 under CC BY 4.0.
+:::
+
 ## Which metrics should GAIA start with?
 
 <table class="metrics">
@@ -183,6 +223,16 @@ HELM = Holistic Evaluation of Language Models. The original work evaluates langu
 
 ::: {.notes}
 Proposed GAIA measures inspired by HELM’s multi-metric principle. For simulation tasks, define per-case numerical checks and mandatory gates; scientific pass rate is passing attempts / all scheduled attempts under a published failure policy. Robustness uses paired cases with equivalent scientific intent, such as prompt rewording, and reports baseline and variant rates plus their difference. A scientifically changed source is a generalization case, not an invariance test. Reproducibility means an independent rerun of the submitted procedure and artifacts, distinct from running the stochastic agent again. Record cost for failed runs too. Report API and compute separately, adding them only when the accounting basis is clear. Energy or carbon cannot be inferred from token count alone.
+:::
+
+## Robustness: same question, reworded
+
+![](figures/helm-robustness.png){.r-stretch}
+
+<p class="source">Liang et al. (2022), <a href="https://arxiv.org/abs/2211.09110">arXiv:2211.09110</a>, CC BY 4.0 · Figure: robustness perturbations</p>
+
+::: {.notes}
+The paired-variant idea behind the robustness row of our metric table. For SPECFEM, the perturbation is a reworded prompt with the same scientific intent; a changed source or Earth model is a different case, not a perturbation. Reproduced from arXiv:2211.09110 under CC BY 4.0.
 :::
 
 ## Knowing when the agent is uncertain
@@ -231,6 +281,16 @@ B passed more cases. A used less API spend. **What quality floor do we need?**
 
 ::: {.notes}
 All values are invented. Rank neither reliability nor statistical significance from this tiny example. API cost is only model API spend, excluding simulation compute. Median time and mean API spend include failed attempts. Real result records also need CPU/GPU hours and hardware, dataset and scorer versions, agent/model revisions, budgets, repetitions and uncertainty. Show simulation and clarification suites separately. Drill into per-case outputs and traces. The toy output-scoring example is separate from these invented table values.
+:::
+
+## A board that runs today: Repère
+
+![](figures/repere-board.png){.r-stretch}
+
+<p class="source">Cost against performance, with and without a domain skill · <a href="https://mdenolle.github.io/repere/">mdenolle.github.io/repere</a> (MIT), captured 9 November 2026</p>
+
+::: {.notes}
+Real runs, unlike the previous slide. Hollow markers are runs without a domain skill, filled markers with it; the line between them is the skill lift. Repère already lists slots for SPECFEM, RCA Atlas Q&A and RCA Atlas agent tasks, marked "soon". Screenshot of the live board on 9 November 2026; check the board for current values before quoting numbers.
 :::
 
 ## What else belongs beside the ranking?
@@ -327,6 +387,16 @@ Golden set: instrument-month → analyst status. Which notes are reviewed enough
 
 ::: {.notes}
 The prompt is the README's own example. The README states two rules the scorer can test directly: plot existence does not prove a pass state, and plot generation runs only when existing products are insufficient (execute defaults to false). Candidate metrics: status agreement with analyst notes; false-pass rate, kept separate because a false pass is the costly error; unnecessary-generation rate; whether the note date is cited. Analyst notes are the reference, so the people who write them should review the golden set.
+:::
+
+## PyLith · the stress that primes a landslide
+
+![](figures/rainier-strain.png){.r-stretch}
+
+<p class="source">Modeled surface strain around Mt. Rainier over the PNSN network · Mt. Rainier digital model, <a href="https://github.com/Denolle-Lab/mt-rainier-digital-model">Denolle-Lab/mt-rainier-digital-model</a> (BSD-3-Clause), via the GAIA-Rainier-PyLith-Agent deck</p>
+
+::: {.notes}
+From slide 1 of the GAIA-Rainier-PyLith-Agent deck. The static strain field under the edifice sets the conditions for slope failure; dynamic stress from earthquakes adds to it. Finite-element codes such as PyLith resolve this at high resolution but are slow to set up and run, which is the case for an agent suite. Confirm with the model authors whether this field is a PyLith run or a simpler model before presenting it as PyLith output.
 :::
 
 ## PyLith · prompt in, model out
