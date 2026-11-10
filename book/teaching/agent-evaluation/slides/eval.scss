@@ -42,3 +42,9 @@ $gaia-stone: #6f6890;
 .node code { font-size: 0.85em; }
 .reveal table.evalsets { width: 100%; font-size: 0.75em; }
 .reveal table.evalsets code { font-size: 0.8em; }
+.tracks { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5em; margin: 0.8em 0; }
+.reveal .tracks a.track { display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid #c9c0ec; border-radius: 0.4em; padding: 0.5em 0.2em; text-decoration: none; color: $gaia-ink; line-height: 1.2; }
+.reveal .tracks img { width: 2.6em; height: 2.6em; margin: 0 0 0.3em; }
+.tracks b { font-size: 0.62em; color: $gaia-purple; }
+.tracks small { font-size: 0.5em; color: $gaia-stone; margin-top: 0.2em; }
+.tracks > p { display: contents; }
