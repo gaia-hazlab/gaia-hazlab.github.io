@@ -1,7 +1,7 @@
 ---
 title: Evaluating GAIA agents
 short_title: Agent evaluation
-description: GAIA Agents Lecture 2, November 2026. How to evaluate scientific agents, what a golden dataset contains, and which metrics to use for a first SPECFEM pilot.
+description: GAIA Agents Lecture 2, November 2026. How to evaluate scientific agents, what a benchmark case contains, and which metrics to use for a first SPECFEM pilot.
 ---
 
 (agent-evaluation)=
@@ -25,6 +25,6 @@ Press **S** for speaker notes, **Esc** for the slide overview.
 | Meeting decisions | [`discussion.md`](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/book/teaching/agent-evaluation/slides/discussion.md) |
 | Worked example | [`examples/score_toy.py`](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/book/teaching/agent-evaluation/slides/examples/score_toy.py) |
 | Agent board | [Repère](https://mdenolle.github.io/repere/) |
-| Provenance | [`SOURCES.md`](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/book/teaching/agent-evaluation/slides/SOURCES.md) |
+| Sources and licences | [`SOURCES.md`](https://github.com/gaia-hazlab/gaia-hazlab.github.io/blob/main/book/teaching/agent-evaluation/slides/SOURCES.md) |
 
 Slides and text: CC BY 4.0. Code: MIT. See [Licensing](#licensing).
