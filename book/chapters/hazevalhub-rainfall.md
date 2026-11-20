@@ -20,18 +20,56 @@ error and still miss those hours. Every metric on this page is therefore reporte
 extreme thresholds, as well as on average.
 
 (rainfall-r1)=
-## Benchmark 1: rainfall datasets
+## Benchmark 1: rainfall datasets, Skagit River basin
 
-**What is compared.** Gridded precipitation products used as forcing elsewhere in GAIA, among
-them PRISM, Stage IV, CONUS404 and HRRR. Each is staged through
-[`gaia-data-downloaders`](https://github.com/gaia-hazlab/gaia-data-downloaders) and
-[`precip-stac`](https://github.com/gaia-hazlab/precip-stac).
+There is no model to train here. Each row is a published gridded precipitation product, and
+the score is how well it reproduces observed storm totals. The comparison is led by Nicoleta
+Cristea and is from a manuscript in preparation; no scores are posted until its authors release
+them.
 
-**Reference.** Rain gauges, matched to the product grid cell.
+**What is compared.** Six products in three classes.
 
-**Metrics.** Bias and RMSE at daily and hourly accumulation; probability of detection and
-critical success index above the 95th and 99th percentile of gauge rainfall; and error in the
-upper quantiles of the distribution.
+| Product | Class | Grid | Time step | Built from the reference stations |
+|---|---|---|---|---|
+| PRISM | Station interpolation | 4 km | Daily | Yes |
+| Daymet V4 | Station interpolation | 1 km | Daily | Yes |
+| gridMET | PRISM climatology blended with NLDAS-2 reanalysis | 4 km | Daily | Through PRISM |
+| CONUS404 | WRF downscaling of ERA5 | 4 km | Hourly | No |
+| UCLA WUS-D3 | WRF downscaling of ERA5 | 9 km | Hourly | No |
+| PNNL-WRF | WRF downscaling of ERA-Interim | 6 km | Hourly | No |
+
+**Events.** Twelve storms in the Skagit River basin, Washington: the six atmospheric-river
+events (category 4 or 5 on the [CW3E AR scale](https://cw3e.ucsd.edu/)) and the six
+non-atmospheric-river events with the highest peak discharge at USGS gauge 12189500, Skagit
+River near Mount Vernon. Each is scored over seven days, from two days before the event date
+to five days after. The event dates will be listed here when the list is archived.
+
+**Two tables, one ranked.**
+
+*R1a, station validation (ranked).* Reference: SNOTEL and meteorological stations in the basin,
+matched to the product grid cell. Ranked by mean absolute error in the seven-day event total.
+
+| Rank | Product | Abs. error, 7-day total (mm) | Bias, AR events (mm) | Bias, non-AR events (mm) | Stations | Source |
+|---:|---|---:|---:|---:|---:|---|
+| | *No entries yet* | | | | | |
+
+*R1b, agreement with PRISM (not ranked).* Reference: PRISM. This table measures the spread
+between products. It is not a ranking, because PRISM is itself one of the products.
+
+| Product | Abs. difference, basin-mean 7-day total (mm) | Median bias, 3-day totals above 100 mm (mm) | Bias in 99th-percentile daily precipitation (mm/day) | Source |
+|---|---:|---:|---:|---|
+| | *No entries yet* | | | |
+
+**Limits.**
+
+- PRISM and Daymet are interpolated from stations that include the reference stations, and
+  gridMET takes its spatial pattern from PRISM. Their rows in R1a are not independent tests.
+  The last column of the product table marks this.
+- High-elevation windward slopes have few stations, and gauges under-catch snow and
+  wind-driven rain. Station error is not yet estimated.
+- Storm totals, not peak hours. Three of the six products are daily, so this benchmark does not
+  yet score the hourly intensities described above. Only the WRF products can be scored hourly.
+- One basin. A product's rank here does not carry to other terrain.
 
 (rainfall-r2)=
 ## Benchmark 2: ACE2 downscaled to Stage IV
@@ -50,10 +88,12 @@ structure or only a smoothed one.
 
 Against [the nine rules](#the-nine-rules) on the hub page:
 
-- **Publish the first numbers** for both benchmarks, with their baselines (R4, R5).
-- **Fix the event list before scoring.** The atmospheric-river events used for evaluation are
-  named before any product is scored, and none of them is in the training window of the
-  downscaling model (R2, R6).
-- **Archive the gauge matches and the event list** with a DOI (R7).
+- **Publish the first numbers** for both benchmarks, with their baselines (R4, R5). For
+  Benchmark 1 this needs the per-station event totals and the authors' release.
+- **Archive the event list and the station matches** with a DOI. Benchmark 1 has its twelve
+  events; none of them may fall in the training window of the downscaling model in Benchmark 2
+  (R2, R6, R7).
+- **Score stations that no product ingests.** Withheld or independent gauges would make the
+  PRISM, Daymet and gridMET rows of R1a a fair test (R6).
 - **Stamp each row** with product version, period and, for the downscaling model, compute cost
   (R9).

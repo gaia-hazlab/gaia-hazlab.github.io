@@ -17,8 +17,8 @@ Metrics used across [HazEvalHub](hazevalhub). "(rank)" marks the metric a task i
 | IoU | Intersection over union of predicted and mapped areas | [Landslides L3](#landslides-l3) |
 | Completeness gain | Confirmed detections absent from every reference catalog, per station-month | [Thunderstorms](hazevalhub-thunderstorms) (rank) |
 | Reliability | Observed frequency against predicted probability, by bin | [Thunderstorms](hazevalhub-thunderstorms), [Landslides L3](#landslides-l3) |
-| Bias, RMSE | Mean and root-mean-square difference from gauges | [Atmospheric rivers R1](#rainfall-r1) |
-| POD, CSI | Probability of detection and critical success index above a rainfall percentile | [Atmospheric rivers R1](#rainfall-r1) |
+| Event-total error | Mean absolute difference between product and station in seven-day storm precipitation | [Atmospheric rivers R1](#rainfall-r1) (rank) |
+| Bias | Mean of product minus reference, by event type or precipitation bin | [Atmospheric rivers R1](#rainfall-r1) |
 | Upper-quantile error | Error in the 95th and 99th percentiles of rainfall | [Atmospheric rivers R1](#rainfall-r1), [R2](#rainfall-r2) |
 | CRPS | Continuous ranked probability score of a probabilistic forecast | [Atmospheric rivers R2](#rainfall-r2) |
 | FSS | Fractions skill score above a threshold, over a neighbourhood | [Atmospheric rivers R2](#rainfall-r2) |
