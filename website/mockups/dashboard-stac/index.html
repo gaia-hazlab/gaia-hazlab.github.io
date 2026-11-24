@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard mockup (STAC) — GAIA HazLab</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Mockup: the GAIA dashboard driven by a static STAC catalog, one collection per project.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+        /* Same visual language as website/dashboard.html; additions are marked NEW. */
+        :root { --ink:#2a1a4f; --purple:#4b2e83; --plum:#21163f; --peri:#6d5bd0; --peri-light:#c3b8f0;
+            --line: rgba(255,255,255,0.10); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html, body { height:100%; }
+        body { font-family:'Inter',system-ui,sans-serif; color:#fff; background:var(--ink);
+            display:flex; flex-direction:column; -webkit-font-smoothing:antialiased; }
+        h1, .logo { font-family:'Montserrat',sans-serif; }
+        a { color:inherit; }
+        .nav { background:rgba(42,26,79,0.96); border-bottom:1px solid rgba(255,255,255,0.08); z-index:10; }
+        .nav-inner { max-width:1400px; margin:0 auto; padding:0.8rem 1.5rem; display:flex; align-items:center; justify-content:space-between; }
+        .logo { display:flex; align-items:center; gap:0.6rem; color:#fff; text-decoration:none; font-weight:800; font-size:1.1rem; }
+        .logo .glow { color:var(--peri-light); }
+        .nav-links { display:flex; gap:1.5rem; list-style:none; align-items:center; }
+        .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:0.9rem; font-weight:500; }
+        .nav-links a.active { color:var(--peri-light); }
+        /* NEW: mockup banner */
+        .mock { background:#e8a33d; color:#21163f; font-size:0.8rem; font-weight:600; text-align:center; padding:0.35rem 1rem; }
+        .mock a { text-decoration:underline; }
+        .dash-wrap { flex:1 1 auto; display:flex; min-height:0; }
+        .map-col { flex:1 1 auto; position:relative; min-width:0; }
+        #map { position:absolute; inset:0; background:#e9e6f2; }
+        .leaflet-popup-content { font-family:'Inter',sans-serif; font-size:0.85rem; margin:0.7rem 0.9rem; }
+        .pop-title { font-weight:700; color:var(--ink); margin-bottom:0.35rem; font-size:0.92rem; }
+        .pop-table-wrap { max-height:230px; overflow-y:auto; }
+        table.pop-table { border-collapse:collapse; width:100%; font-size:0.76rem; }
+        table.pop-table th, table.pop-table td { text-align:left; vertical-align:top; padding:3px 0; border-bottom:1px solid #eee; }
+        table.pop-table th { color:#6f6890; font-weight:600; white-space:nowrap; padding-right:12px; }
+        table.pop-table td { color:#2a1a4f; word-break:break-word; }
+        .side { flex:0 0 360px; background:linear-gradient(180deg,#4b2e83 0%,#341f63 100%); border-left:1px solid var(--line);
+            overflow-y:auto; padding:1.5rem 1.4rem 2.5rem; }
+        .side .kicker { color:var(--peri-light); font-size:0.74rem; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
+        .side h1 { font-size:1.4rem; margin:0.4rem 0 0.6rem; line-height:1.15; }
+        .side .intro { color:rgba(255,255,255,0.82); font-size:0.9rem; font-weight:300; margin-bottom:1rem; }
+        .side h2 { font-size:0.8rem; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.6);
+            margin:1.4rem 0 0.7rem; font-weight:600; }
+        /* NEW: project switcher */
+        .projects { display:flex; flex-direction:column; gap:0.35rem; }
+        .projects button { display:flex; justify-content:space-between; align-items:center; text-align:left; cursor:pointer;
+            background:rgba(255,255,255,0.05); border:1px solid var(--line); color:rgba(255,255,255,0.88);
+            border-radius:9px; padding:0.5rem 0.75rem; font:500 0.85rem 'Inter'; }
+        .projects button small { color:rgba(255,255,255,0.45); font-size:0.7rem; }
+        .projects button.on { background:var(--peri-light); color:var(--ink); border-color:var(--peri-light); font-weight:600; }
+        .projects button.on small { color:var(--purple); }
+        .actions { display:flex; gap:0.4rem; margin-top:0.8rem; }
+        .actions a { flex:1 1 50%; text-align:center; padding:0.5rem; border-radius:9px; font-size:0.8rem; font-weight:600;
+            text-decoration:none; border:1px solid rgba(195,184,240,0.5); color:var(--peri-light); }
+        .actions a.primary { background:#fff; color:var(--purple); border-color:#fff; }
+        .group { border:1px solid var(--line); border-radius:12px; margin-bottom:0.6rem; background:rgba(255,255,255,0.04); }
+        .ghead { display:flex; align-items:center; gap:0.6rem; width:100%; cursor:pointer; background:transparent; border:0;
+            color:#fff; padding:0.75rem 0.85rem; font:600 0.92rem 'Inter'; text-align:left; }
+        .ghead .gtitle { flex:1 1 auto; }
+        .ghead .chev { color:rgba(255,255,255,0.5); font-size:0.8rem; transition:transform .2s; }
+        .group.open .chev { transform:rotate(90deg); }
+        .gbody { display:none; padding:0.2rem 0.6rem 0.7rem; }
+        .group.open .gbody { display:block; }
+        .subhead { font-size:0.68rem; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.42); margin:0.6rem 0.3rem 0.35rem; font-weight:600; }
+        .item { display:flex; align-items:center; gap:0.6rem; width:100%; cursor:pointer; background:transparent; border:0;
+            border-radius:9px; padding:0.4rem 0.45rem; color:rgba(255,255,255,0.9); font:0.85rem 'Inter'; text-align:left; }
+        .item:hover { background:rgba(195,184,240,0.10); }
+        .item .dot { width:12px; height:12px; border-radius:50%; flex:0 0 auto; border:1px solid rgba(255,255,255,0.3); }
+        .item.ras .dot { border-radius:3px; }
+        .item .ilabel { flex:1 1 auto; line-height:1.15; }
+        .item .ilabel small { display:block; color:rgba(255,255,255,0.4); font-size:0.7rem; }
+        .item .chk { width:16px; height:16px; flex:0 0 auto; border-radius:4px; border:1.5px solid rgba(255,255,255,0.32); position:relative; }
+        .item.on .chk { background:var(--peri-light); border-color:var(--peri-light); }
+        .item.on .chk::after { content:""; position:absolute; left:4.5px; top:1px; width:4px; height:8px;
+            border:solid var(--ink); border-width:0 2px 2px 0; transform:rotate(45deg); }
+        .item.disabled { opacity:0.4; cursor:default; }
+        .item .src { color:var(--peri-light); font-size:0.7rem; text-decoration:none; opacity:0.8; }
+        .tip { background:rgba(255,255,255,0.07); border:1px solid var(--line); border-radius:12px; padding:0.85rem 1rem;
+            font-size:0.82rem; color:rgba(255,255,255,0.82); margin-top:1rem; }
+        .tip code { color:var(--peri-light); font-size:0.78rem; }
+        /* NEW: project footprints on the overview map */
+        .fp-label { background:rgba(42,26,79,0.9); color:#fff; border:0; border-radius:6px; font:600 0.78rem 'Inter'; padding:3px 7px; }
+        .fp-label::before { display:none; }
+        @media (max-width:900px) {
+            .dash-wrap { flex-direction:column; } .map-col { flex:1 1 60vh; min-height:60vh; }
+            .side { flex:0 0 auto; border-left:0; } .nav-links { display:none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="nav"><div class="nav-inner">
+        <a href="../../index.html" class="logo">GAIA<span class="glow">·</span>HazLab</a>
+        <ul class="nav-links">
+            <li><a href="../../dashboard.html">Live dashboard</a></li>
+            <li><a href="#" class="active">Mockup</a></li>
+            <li><a href="stac/catalog.json">STAC catalog</a></li>
+        </ul>
+    </div></header>
+    <div class="mock">Mockup for discussion. The live dashboard is unchanged:
+        <a href="../../dashboard.html">dashboard.html</a></div>
+    <div class="dash-wrap">
+        <div class="map-col"><div id="map"></div></div>
+        <aside class="side">
+            <div class="kicker" id="kicker">GAIA projects</div>
+            <h1 id="title">Where our data live</h1>
+            <p class="intro" id="intro">Each project publishes a STAC collection. Pick one to load its layers.</p>
+            <h2>Project</h2>
+            <div class="projects" id="projects"></div>
+            <div class="actions" id="actions"></div>
+            <div id="layers-wrap" hidden><h2>Layers</h2><div id="menu"></div></div>
+            <div class="tip">Every row on this page is read from <code>stac/catalog.json</code>. Adding a project
+                means adding a collection, not editing this HTML.</div>
+        </aside>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+    const ROOT = new URL("stac/catalog.json", location.href).href;
+    const TITILER = "https://titiler.xyz/cog/tiles/WebMercatorQuad/{z}/{x}/{y}";
+    const COG = "image/tiff; application=geotiff; profile=cloud-optimized";
+    const esc = v => String(v).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+    const getJSON = async url => { const r = await fetch(url); if (!r.ok) throw new Error(url); return r.json(); };
+    const abs = (href, base) => new URL(href, base).href;
+
+    const map = L.map("map", { zoomControl:true, minZoom:4 }).setView([46.5, -123], 6);
+    // Esri light gray: the live page's CARTO default now returns "API key required" tiles.
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        { maxZoom:16, attribution:"Esri" }).addTo(map);
+    let current = [];          // Leaflet layers of the open project
+    let footprints = null;     // overview rectangles
+
+    // ---- popups: same table as the live dashboard ----
+    const extractUrl = v => { if (typeof v !== "string") return null; const t = v.trim();
+        if (/^https?:\/\//i.test(t)) return t; const m = t.match(/href=["']([^"']+)["']/i); return m ? m[1] : null; };
+    function popupHtml(p) {
+        const name = p.station ? `${p.network||""}.${p.station}` : (p.name || p.event_id || p.point_id || p.stid || p.FIRENAME || "Feature");
+        let rows = "";
+        for (const [k, v] of Object.entries(p)) {
+            if (v == null || v === "" || k.startsWith("marker-")) continue;
+            const url = extractUrl(v);
+            rows += `<tr><th>${esc(k)}</th><td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">link ↗</a>`
+                : esc(String(v).replace(/<[^>]*>/g, ""))}</td></tr>`;
+        }
+        return `<div class="pop-title">${esc(name)}</div><div class="pop-table-wrap"><table class="pop-table">${rows}</table></div>`;
+    }
+
+    // ---- one STAC item → one Leaflet layer ----
+    function layerFor(item, row) {
+        const P = item.properties, st = P["gaia:style"] || {};
+        const links = item.links || [];
+        const xyz = links.find(l => l.rel === "xyz"), wms = links.find(l => l.rel === "wms");
+        if (xyz) return L.tileLayer(xyz.href, { opacity:0.7, maxZoom:19, attribution:xyz.title });
+        if (wms) return L.tileLayer.wms(wms.href, Object.assign({ layers:wms["wms:layers"].join(","), format:"image/png",
+                          transparent:true, opacity:0.8 }, wms["wms:dimensions"] || {}));
+        const a = item.assets.data;
+        if (a.type === COG) {
+            const r = (P.renders || {}).default || {};
+            const q = new URLSearchParams({ url:a.href });
+            (r.rescale || []).forEach(x => q.append("rescale", x.join(",")));
+            if (r.colormap_name) q.set("colormap_name", r.colormap_name);
+            if (r.nodata) q.set("nodata", r.nodata);
+            return L.tileLayer(`${TITILER}?${q}`, { opacity:0.7, maxNativeZoom:(r.minmax_zoom||[0,18])[1], maxZoom:19 });
+        }
+        const g = L.geoJSON(null, {
+            pointToLayer: (f, ll) => {
+                if (st.kind === "events") { const m = (f.properties[st.size_by] ?? 1) - (st.size_offset || 0);
+                    return L.circleMarker(ll, { radius:Math.max(3, Math.min(18, m*3)), color:"#333", weight:0.5, fillColor:st.color, fillOpacity:0.8 }); }
+                if (st.kind === "markers") return L.circleMarker(ll, { radius:5, color:"#222", weight:0.6, fillColor:st.color, fillOpacity:0.85 });
+                return L.circleMarker(ll, { radius:4, color:st.color, weight:1, fillColor:st.color, fillOpacity:0.7 });
+            },
+            style: f => f.geometry.type === "Point" ? {} :
+                ({ color:st.color, weight:st.weight ?? 1.5, fill:st.fill ?? true, fillOpacity:st.fillOpacity ?? 0.1 }),
+            onEachFeature: (f, l) => l.bindPopup(popupHtml(f.properties || {}), { maxWidth:340, minWidth:220 }),
+        });
+        getJSON(a.href).then(d => { g.addData(d); row.querySelector("small").textContent = `${(d.features||[]).length.toLocaleString()} features`; })
+            .catch(() => { row.querySelector("small").textContent = "failed to load"; });
+        return g;
+    }
+
+    // ---- overview: one footprint per collection ----
+    let collections = [];
+    function overview() {
+        clearProject();
+        document.getElementById("kicker").textContent = "GAIA projects";
+        document.getElementById("title").textContent = "Where our data live";
+        document.getElementById("intro").textContent = "Each project publishes a STAC collection. Pick one to load its layers.";
+        document.getElementById("actions").innerHTML = `<a href="stac/catalog.json" target="_blank">STAC catalog ↗</a>`;
+        footprints = L.featureGroup(collections.map(c => {
+            const [w, s, e, n] = c.extent.spatial.bbox[0];
+            const small = (e - w) < 1;   // a footprint of a few km vanishes at regional zoom: draw a marker
+            return (small ? L.circleMarker([(s + n) / 2, (w + e) / 2], { radius:8, color:"#4b2e83", weight:2, fillColor:"#6d5bd0", fillOpacity:0.9 })
+                          : L.rectangle([[s, w], [n, e]], { color:"#4b2e83", weight:2, fillColor:"#6d5bd0", fillOpacity:0.12 }))
+                .bindTooltip(c.title, { permanent:true, direction:small ? "right" : "center", offset:small ? [10, 0] : [0, 0], className:"fp-label" })
+                .on("click", () => openProject(c.id));
+        })).addTo(map);
+        map.setMaxBounds(null); map.fitBounds(footprints.getBounds(), { padding:[30, 30] });
+        markActive("all"); history.replaceState(null, "", location.pathname);
+    }
+    function clearProject() {
+        current.forEach(l => map.removeLayer(l)); current = [];
+        if (footprints) { map.removeLayer(footprints); footprints = null; }
+        document.getElementById("menu").innerHTML = ""; document.getElementById("layers-wrap").hidden = true;
+    }
+
+    // ---- one project: menu built from its items ----
+    async function openProject(id) {
+        const c = collections.find(x => x.id === id); if (!c) return overview();
+        clearProject(); markActive(id);
+        history.replaceState(null, "", `?project=${encodeURIComponent(id)}`);
+        document.getElementById("kicker").textContent = "Project";
+        document.getElementById("title").textContent = c.title;
+        document.getElementById("intro").textContent = c.description;
+        const alt = c.links.find(l => l.rel === "alternate"), via = c.links.find(l => l.rel === "via");
+        document.getElementById("actions").innerHTML =
+            (alt ? `<a class="primary" href="${esc(alt.href)}" target="_blank" rel="noopener">Open ${esc(alt.title)} ↗</a>` : "") +
+            `<a href="${esc(c._href)}" target="_blank">STAC collection ↗</a>` +
+            (via && !alt ? `<a href="${esc(via.href)}" target="_blank" rel="noopener">${esc(via.title)} ↗</a>` : "");
+        const [w, s, e, n] = c.extent.spatial.bbox[0];
+        map.setMaxBounds(null);
+        map.setView(c["gaia:view"].center, c["gaia:view"].zoom);
+        map.setMaxBounds([[s - 2, w - 2], [n + 2, e + 2]]);
+        const items = await Promise.all(c.links.filter(l => l.rel === "item").map(l => {
+            const u = abs(l.href, c._href); return getJSON(u).then(it => (rebase(it, u), it)); }));
+        // group → subgroup → items, in catalog order
+        const groups = new Map();
+        items.forEach(it => { const g = it.properties["gaia:group"], sg = it.properties["gaia:subgroup"];
+            if (!groups.has(g)) groups.set(g, new Map()); const m = groups.get(g);
+            if (!m.has(sg)) m.set(sg, []); m.get(sg).push(it); });
+        const menu = document.getElementById("menu"); let first = true;
+        for (const [g, subs] of groups) {
+            const box = document.createElement("div"); box.className = "group" + (first ? " open" : ""); first = false;
+            box.innerHTML = `<button class="ghead"><span class="gtitle">${esc(g)}</span><span class="chev">▶</span></button><div class="gbody"></div>`;
+            box.querySelector(".ghead").onclick = () => box.classList.toggle("open");
+            const body = box.querySelector(".gbody");
+            for (const [sg, its] of subs) {
+                body.insertAdjacentHTML("beforeend", `<div class="subhead">${esc(sg)}</div>`);
+                its.forEach(it => body.appendChild(row(it)));
+            }
+            menu.appendChild(box);
+        }
+        document.getElementById("layers-wrap").hidden = false;
+    }
+    function rebase(it, base) { Object.values(it.assets || {}).forEach(a => a.href = abs(a.href, base)); }
+    function row(it) {
+        const P = it.properties, st = P["gaia:style"] || {}, off = P["gaia:status"];
+        const ras = !(it.assets && it.assets.data && it.assets.data.type.includes("json"));
+        const b = document.createElement("button");
+        b.className = "item" + (ras ? " ras" : "") + (off ? " disabled" : "");
+        b.innerHTML = `<span class="dot" style="background:${st.color || 'rgba(195,184,240,0.5)'}"></span>
+            <span class="ilabel">${esc(P.title)}<small>${esc(off || (P.providers ? P.providers[0].name : ""))}</small></span><span class="chk"></span>`;
+        if (off) return b;
+        let layer = null;
+        const set = on => { b.classList.toggle("on", on);
+            if (on) { layer = layer || layerFor(it, b); layer.addTo(map); current.push(layer); }
+            else if (layer) map.removeLayer(layer); };
+        b.onclick = () => set(!b.classList.contains("on"));
+        if (P["gaia:on"]) set(true);
+        return b;
+    }
+    function markActive(id) {
+        document.querySelectorAll("#projects button").forEach(b => b.classList.toggle("on", b.dataset.id === id));
+    }
+
+    // ---- boot: read the root catalog, list its children ----
+    (async () => {
+        const root = await getJSON(ROOT);
+        collections = await Promise.all(root.links.filter(l => l.rel === "child").map(async l => {
+            const href = abs(l.href, ROOT); const c = await getJSON(href); c._href = href; return c; }));
+        const box = document.getElementById("projects");
+        box.innerHTML = `<button data-id="all">All projects <small>${collections.length} collections</small></button>` +
+            collections.map(c => `<button data-id="${esc(c.id)}">${esc(c.title)} <small>${c.links.filter(l => l.rel === "item").length} layers</small></button>`).join("");
+        box.onclick = e => { const b = e.target.closest("button"); if (!b) return; b.dataset.id === "all" ? overview() : openProject(b.dataset.id); };
+        const want = new URLSearchParams(location.search).get("project");
+        want ? openProject(want) : overview();
+    })();
+    </script>
+</body>
+</html>

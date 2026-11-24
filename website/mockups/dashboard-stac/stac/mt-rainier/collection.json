@@ -1,0 +1,90 @@
+{
+ "type": "Collection",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "mt-rainier",
+ "title": "Mount Rainier source simulations",
+ "description": "Synthetic seismograms at 114 stations around Mount Rainier from a 3D Green's-function database (SPECFEM3D, reciprocity).",
+ "license": "other",
+ "extent": {
+  "spatial": {
+   "bbox": [
+    [
+     -121.945,
+     46.718,
+     -121.578,
+     46.977
+    ]
+   ]
+  },
+  "temporal": {
+   "interval": [
+    [
+     "2026-11-05T00:40:06Z",
+     null
+    ]
+   ]
+  }
+ },
+ "gaia:view": {
+  "center": [
+   46.853,
+   -121.76
+  ],
+  "zoom": 11
+ },
+ "links": [
+  {
+   "rel": "root",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "alternate",
+   "href": "https://denolle-lab.github.io/mt-rainier-source-simulation/",
+   "type": "text/html",
+   "title": "3D simulator"
+  },
+  {
+   "rel": "via",
+   "href": "https://github.com/Denolle-Lab/mt-rainier-source-simulation",
+   "type": "text/html",
+   "title": "Source repository"
+  },
+  {
+   "rel": "item",
+   "href": "./receivers/receivers.json",
+   "type": "application/geo+json",
+   "title": "Receivers (114)"
+  },
+  {
+   "rel": "item",
+   "href": "./source-points/source-points.json",
+   "type": "application/geo+json",
+   "title": "Source points (308)"
+  },
+  {
+   "rel": "item",
+   "href": "./mesh/mesh.json",
+   "type": "application/geo+json",
+   "title": "Simulation mesh footprint"
+  },
+  {
+   "rel": "item",
+   "href": "./gf-database/gf-database.json",
+   "type": "application/geo+json",
+   "title": "Green's functions (RGF1 binary)"
+  }
+ ],
+ "gaia:derived_from": {
+  "source": "https://denolle-lab.github.io/mt-rainier-source-simulation/gfdb/recip_1km_v1/index.json",
+  "db_id": "recip_1km_v1",
+  "created": "2026-11-05T00:40:06+00:00",
+  "fetched": "2026-11-24"
+ }
+}

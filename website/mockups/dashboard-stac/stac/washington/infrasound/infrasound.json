@@ -1,0 +1,88 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "infrasound",
+ "collection": "washington",
+ "bbox": [
+  -126.5,
+  44.5,
+  -114.5,
+  50.5
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -126.5,
+     44.5
+    ],
+    [
+     -114.5,
+     44.5
+    ],
+    [
+     -114.5,
+     50.5
+    ],
+    [
+     -126.5,
+     50.5
+    ],
+    [
+     -126.5,
+     44.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Infrasound",
+  "datetime": null,
+  "start_datetime": "2025-01-01T00:00:00Z",
+  "end_datetime": "2025-12-31T23:59:59Z",
+  "gaia:group": "Ground-based sensors",
+  "gaia:subgroup": "Seismic",
+  "gaia:on": true,
+  "gaia:style": {
+   "kind": "points",
+   "color": "#1A982F"
+  },
+  "providers": [
+   {
+    "name": "IRIS / EarthScope",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://raw.githubusercontent.com/gaia-hazlab/catalog/refs/heads/main/infrasound-stations.geojson",
+   "type": "application/geo+json",
+   "title": "Infrasound",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

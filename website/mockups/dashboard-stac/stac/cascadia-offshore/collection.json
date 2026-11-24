@@ -1,0 +1,95 @@
+{
+ "type": "Collection",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "cascadia-offshore",
+ "title": "Cascadia offshore catalog",
+ "description": "Ensemble deep-learning earthquake catalog offshore Cascadia, 2010-2016, with its stations and published moment tensors.",
+ "license": "other",
+ "extent": {
+  "spatial": {
+   "bbox": [
+    [
+     -131.0,
+     39.0,
+     -119.5,
+     51.0
+    ]
+   ]
+  },
+  "temporal": {
+   "interval": [
+    [
+     "2010-01-01T00:00:00Z",
+     "2016-12-31T23:59:59Z"
+    ]
+   ]
+  }
+ },
+ "gaia:view": {
+  "center": [
+   45.0,
+   -125.25
+  ],
+  "zoom": 6
+ },
+ "links": [
+  {
+   "rel": "root",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "alternate",
+   "href": "https://denolle-lab.github.io/cascadia_obs_ensemble/",
+   "type": "text/html",
+   "title": "3D Atlas"
+  },
+  {
+   "rel": "via",
+   "href": "https://github.com/Denolle-Lab/cascadia_obs_ensemble",
+   "type": "text/html",
+   "title": "Source repository"
+  },
+  {
+   "rel": "item",
+   "href": "./stations/stations.json",
+   "type": "application/geo+json",
+   "title": "Stations (728)"
+  },
+  {
+   "rel": "item",
+   "href": "./events/events.json",
+   "type": "application/geo+json",
+   "title": "Events, catalog v4 (172,340)"
+  },
+  {
+   "rel": "item",
+   "href": "./moment-tensors/moment-tensors.json",
+   "type": "application/geo+json",
+   "title": "Moment tensors (253)"
+  },
+  {
+   "rel": "item",
+   "href": "./plate-boundaries/plate-boundaries.json",
+   "type": "application/geo+json",
+   "title": "Plate boundaries"
+  },
+  {
+   "rel": "item",
+   "href": "./slab-faults/slab-faults.json",
+   "type": "application/geo+json",
+   "title": "Slab2, CFM faults, bathymetry"
+  }
+ ],
+ "gaia:derived_from": {
+  "source": "https://denolle-lab.github.io/cascadia_obs_ensemble/",
+  "atlas_built": "2026-11-22",
+  "fetched": "2026-11-24"
+ }
+}

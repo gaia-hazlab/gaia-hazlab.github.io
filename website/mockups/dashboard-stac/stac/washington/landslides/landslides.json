@@ -1,0 +1,89 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "landslides",
+ "collection": "washington",
+ "bbox": [
+  -126.5,
+  44.5,
+  -114.5,
+  50.5
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -126.5,
+     44.5
+    ],
+    [
+     -114.5,
+     44.5
+    ],
+    [
+     -114.5,
+     50.5
+    ],
+    [
+     -126.5,
+     50.5
+    ],
+    [
+     -126.5,
+     44.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "WA DNR landslides WY2025",
+  "datetime": null,
+  "start_datetime": "2025-01-01T00:00:00Z",
+  "end_datetime": "2025-12-31T23:59:59Z",
+  "gaia:group": "Hazards & GIS",
+  "gaia:subgroup": "Events & boundaries",
+  "gaia:on": false,
+  "gaia:style": {
+   "color": "#c98a2b",
+   "kind": "markers",
+   "label": "DAMAGE_DESC"
+  },
+  "providers": [
+   {
+    "name": "WA DNR",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://services.arcgis.com/4x406oNViizbGo13/arcgis/rest/services/Recently_Reported_Landslides_in_Washington_State/FeatureServer/0/query?where=WATER_YEAR%20%3D%20'2025-2026'&outFields=*&f=geojson",
+   "type": "application/geo+json",
+   "title": "WA DNR landslides WY2025",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

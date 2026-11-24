@@ -1,0 +1,88 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "receivers",
+ "collection": "mt-rainier",
+ "bbox": [
+  -121.945,
+  46.718,
+  -121.578,
+  46.977
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -121.945,
+     46.718
+    ],
+    [
+     -121.578,
+     46.718
+    ],
+    [
+     -121.578,
+     46.977
+    ],
+    [
+     -121.945,
+     46.977
+    ],
+    [
+     -121.945,
+     46.718
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Receivers (114)",
+  "datetime": null,
+  "start_datetime": "2026-11-05T00:40:06Z",
+  "end_datetime": null,
+  "gaia:group": "Simulation",
+  "gaia:subgroup": "Stations",
+  "gaia:on": true,
+  "gaia:style": {
+   "kind": "points",
+   "color": "#FF00BB"
+  },
+  "providers": [
+   {
+    "name": "UW, CC, Z5 networks",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "../../../data/mt-rainier/receivers.geojson",
+   "type": "application/geo+json",
+   "title": "Receivers",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

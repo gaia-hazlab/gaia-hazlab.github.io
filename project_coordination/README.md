@@ -24,6 +24,7 @@
 | [07-programs-and-partners.md](07-programs-and-partners.md) | Program constellation: CSSI+CRESST core, SCOPED/GeoSMART/CAIG lineage, EarthScope/ASF/PNSN/AEC partners. | Lead PI |
 | [08-site-remediation-plan.md](08-site-remediation-plan.md) | What to fix on the existing site, book **and GitHub organisation**, ordered by evidence from the persona review rounds in [`review-logs/`](../review-logs/). | Website lead + CI infra lead |
 | [09-hazevalhub-ctf-plan.md](09-hazevalhub-ctf-plan.md) | Benchmark-integrity rules and the two seed tasks that get HazEvalHub from nothing to a citable v0.5. | CI / eval leads |
+| [10-dashboard-stac.md](10-dashboard-stac.md) | Proposal and mockup: the dashboard reads a static STAC catalog, one collection per project (Washington, Cascadia offshore, Mount Rainier). | Lead PI + DataHub lead |
 | [kickoff-agenda.md](kickoff-agenda.md) | Live queue of items needing a human decision, feeding the kickoff call. Anything marked "in progress" on the site lands here. | Coordinator |
 | [templates/](templates/) | Reusable Markdown: weekly status, monthly report, meeting notes, NSF entry, onboarding. | All |
 

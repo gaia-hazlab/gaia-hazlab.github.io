@@ -1,0 +1,90 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "moment-tensors",
+ "collection": "cascadia-offshore",
+ "bbox": [
+  -130.759,
+  39.118,
+  -119.544,
+  51.027
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -130.759,
+     39.118
+    ],
+    [
+     -119.544,
+     39.118
+    ],
+    [
+     -119.544,
+     51.027
+    ],
+    [
+     -130.759,
+     51.027
+    ],
+    [
+     -130.759,
+     39.118
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Moment tensors (253)",
+  "datetime": null,
+  "start_datetime": "2010-01-01T00:00:00Z",
+  "end_datetime": "2016-12-31T23:59:59Z",
+  "gaia:group": "Earthquakes",
+  "gaia:subgroup": "Published solutions",
+  "gaia:on": true,
+  "gaia:style": {
+   "kind": "events",
+   "color": "#e8a33d",
+   "size_by": "magnitude",
+   "size_offset": 2.5
+  },
+  "providers": [
+   {
+    "name": "ANSS / NRCan / SLU",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "../../../data/cascadia-offshore/moment-tensors.geojson",
+   "type": "application/geo+json",
+   "title": "Moment tensors",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

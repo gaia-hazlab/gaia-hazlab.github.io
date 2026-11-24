@@ -1,0 +1,39 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -121.946371,
+       46.728176
+      ],
+      [
+       -121.580027,
+       46.724216
+      ],
+      [
+       -121.573371,
+       46.97611
+      ],
+      [
+       -121.941431,
+       46.980104
+      ],
+      [
+       -121.946371,
+       46.728176
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "name": "SPECFEM3D mesh, 28 x 28 km, 10 Hz",
+    "bottom_km": -10.0
+   }
+  }
+ ]
+}

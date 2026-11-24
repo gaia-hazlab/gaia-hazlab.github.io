@@ -1,0 +1,4933 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2824,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -7845.0,
+    "burial_m": 11795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2825,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -6845.0,
+    "burial_m": 10795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2826,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -5845.0,
+    "burial_m": 9795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2827,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -4845.0,
+    "burial_m": 8795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2828,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -3845.0,
+    "burial_m": 7795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2829,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -2845.0,
+    "burial_m": 6795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2830,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -1845.0,
+    "burial_m": 5795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2831,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 4795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2832,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 3795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2833,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 2795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2834,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 2155.0,
+    "burial_m": 1795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 2835,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 3155.0,
+    "burial_m": 795.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3077,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -7845.0,
+    "burial_m": 11946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3078,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -6845.0,
+    "burial_m": 10946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3079,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -5845.0,
+    "burial_m": 9946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3080,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -4845.0,
+    "burial_m": 8946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3081,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -3845.0,
+    "burial_m": 7946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3082,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -2845.0,
+    "burial_m": 6946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3083,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -1845.0,
+    "burial_m": 5946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3084,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 4946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3085,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 3946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3086,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 2946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3087,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 2155.0,
+    "burial_m": 1946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 3088,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 3155.0,
+    "burial_m": 946.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3089,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -7845.0,
+    "burial_m": 12181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3090,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -6845.0,
+    "burial_m": 11181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3091,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -5845.0,
+    "burial_m": 10181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3092,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -4845.0,
+    "burial_m": 9181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3093,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -3845.0,
+    "burial_m": 8181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3094,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -2845.0,
+    "burial_m": 7181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3095,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -1845.0,
+    "burial_m": 6181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3096,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 5181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3097,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 4181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3098,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 3181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3099,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 2155.0,
+    "burial_m": 2181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3100,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 3155.0,
+    "burial_m": 1181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 3101,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 4155.0,
+    "burial_m": 181.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3102,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -7845.0,
+    "burial_m": 11691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3103,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -6845.0,
+    "burial_m": 10691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3104,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -5845.0,
+    "burial_m": 9691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3105,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -4845.0,
+    "burial_m": 8691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3106,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -3845.0,
+    "burial_m": 7691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3107,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -2845.0,
+    "burial_m": 6691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3108,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -1845.0,
+    "burial_m": 5691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3109,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 4691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3110,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 3691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3111,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 2691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3112,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 2155.0,
+    "burial_m": 1691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 3113,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 3155.0,
+    "burial_m": 691.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3358,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -7845.0,
+    "burial_m": 11803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3359,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -6845.0,
+    "burial_m": 10803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3360,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -5845.0,
+    "burial_m": 9803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3361,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -4845.0,
+    "burial_m": 8803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3362,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -3845.0,
+    "burial_m": 7803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3363,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -2845.0,
+    "burial_m": 6803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3364,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -1845.0,
+    "burial_m": 5803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3365,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 4803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3366,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 3803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3367,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 2803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3368,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 2155.0,
+    "burial_m": 1803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 3369,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 3155.0,
+    "burial_m": 803.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 6261,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4446.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.771018,
+     46.851632
+    ]
+   },
+   "properties": {
+    "point_id": 6262,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3446.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764564,
+     46.847063
+    ]
+   },
+   "properties": {
+    "point_id": 6275,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 5120.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764564,
+     46.847063
+    ]
+   },
+   "properties": {
+    "point_id": 6276,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4620.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764564,
+     46.847063
+    ]
+   },
+   "properties": {
+    "point_id": 6277,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 4120.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764564,
+     46.847063
+    ]
+   },
+   "properties": {
+    "point_id": 6278,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3620.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764564,
+     46.847063
+    ]
+   },
+   "properties": {
+    "point_id": 6279,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 3120.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764461,
+     46.851562
+    ]
+   },
+   "properties": {
+    "point_id": 6280,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 5177.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764461,
+     46.851562
+    ]
+   },
+   "properties": {
+    "point_id": 6281,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4677.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764461,
+     46.851562
+    ]
+   },
+   "properties": {
+    "point_id": 6282,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 4177.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764461,
+     46.851562
+    ]
+   },
+   "properties": {
+    "point_id": 6283,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3677.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764461,
+     46.851562
+    ]
+   },
+   "properties": {
+    "point_id": 6284,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 3177.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764358,
+     46.85606
+    ]
+   },
+   "properties": {
+    "point_id": 6285,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 5069.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764358,
+     46.85606
+    ]
+   },
+   "properties": {
+    "point_id": 6286,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4569.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764358,
+     46.85606
+    ]
+   },
+   "properties": {
+    "point_id": 6287,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 4069.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764358,
+     46.85606
+    ]
+   },
+   "properties": {
+    "point_id": 6288,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3569.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.764358,
+     46.85606
+    ]
+   },
+   "properties": {
+    "point_id": 6289,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 3069.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 6295,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4295.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758111,
+     46.842494
+    ]
+   },
+   "properties": {
+    "point_id": 6296,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3295.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758008,
+     46.846992
+    ]
+   },
+   "properties": {
+    "point_id": 6297,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 5012.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758008,
+     46.846992
+    ]
+   },
+   "properties": {
+    "point_id": 6298,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4512.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758008,
+     46.846992
+    ]
+   },
+   "properties": {
+    "point_id": 6299,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 4012.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758008,
+     46.846992
+    ]
+   },
+   "properties": {
+    "point_id": 6300,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3512.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.758008,
+     46.846992
+    ]
+   },
+   "properties": {
+    "point_id": 6301,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 3012.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 6302,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4681.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757904,
+     46.851491
+    ]
+   },
+   "properties": {
+    "point_id": 6303,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3681.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7578,
+     46.855989
+    ]
+   },
+   "properties": {
+    "point_id": 6304,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 5083.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7578,
+     46.855989
+    ]
+   },
+   "properties": {
+    "point_id": 6305,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4583.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7578,
+     46.855989
+    ]
+   },
+   "properties": {
+    "point_id": 6306,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 4083.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7578,
+     46.855989
+    ]
+   },
+   "properties": {
+    "point_id": 6307,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3583.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7578,
+     46.855989
+    ]
+   },
+   "properties": {
+    "point_id": 6308,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 3083.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 6309,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4303.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757696,
+     46.860487
+    ]
+   },
+   "properties": {
+    "point_id": 6310,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3303.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751451,
+     46.846921
+    ]
+   },
+   "properties": {
+    "point_id": 6316,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 4856.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751451,
+     46.846921
+    ]
+   },
+   "properties": {
+    "point_id": 6317,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4356.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751451,
+     46.846921
+    ]
+   },
+   "properties": {
+    "point_id": 6318,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 3856.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751451,
+     46.846921
+    ]
+   },
+   "properties": {
+    "point_id": 6319,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3356.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751451,
+     46.846921
+    ]
+   },
+   "properties": {
+    "point_id": 6320,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 2856.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751347,
+     46.851419
+    ]
+   },
+   "properties": {
+    "point_id": 6321,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 5013.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751347,
+     46.851419
+    ]
+   },
+   "properties": {
+    "point_id": 6322,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4513.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751347,
+     46.851419
+    ]
+   },
+   "properties": {
+    "point_id": 6323,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 4013.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751347,
+     46.851419
+    ]
+   },
+   "properties": {
+    "point_id": 6324,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3513.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751347,
+     46.851419
+    ]
+   },
+   "properties": {
+    "point_id": 6325,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 3013.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751243,
+     46.855918
+    ]
+   },
+   "properties": {
+    "point_id": 6326,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -845.0,
+    "burial_m": 4884.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751243,
+     46.855918
+    ]
+   },
+   "properties": {
+    "point_id": 6327,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4384.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751243,
+     46.855918
+    ]
+   },
+   "properties": {
+    "point_id": 6328,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 155.0,
+    "burial_m": 3884.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751243,
+     46.855918
+    ]
+   },
+   "properties": {
+    "point_id": 6329,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3384.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.751243,
+     46.855918
+    ]
+   },
+   "properties": {
+    "point_id": 6330,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 1155.0,
+    "burial_m": 2884.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 6343,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": -345.0,
+    "burial_m": 4191.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74479,
+     46.851348
+    ]
+   },
+   "properties": {
+    "point_id": 6344,
+    "kind": "moment tensor (below surface)",
+    "elevation_m": 655.0,
+    "burial_m": 3191.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760714,
+     46.834306
+    ]
+   },
+   "properties": {
+    "point_id": 10280,
+    "kind": "force (on surface)",
+    "elevation_m": 3400.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770495,
+     46.836661
+    ]
+   },
+   "properties": {
+    "point_id": 10374,
+    "kind": "force (on surface)",
+    "elevation_m": 3495.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.767217,
+     46.836626
+    ]
+   },
+   "properties": {
+    "point_id": 10375,
+    "kind": "force (on surface)",
+    "elevation_m": 3434.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.76394,
+     46.836591
+    ]
+   },
+   "properties": {
+    "point_id": 10376,
+    "kind": "force (on surface)",
+    "elevation_m": 3507.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760662,
+     46.836555
+    ]
+   },
+   "properties": {
+    "point_id": 10377,
+    "kind": "force (on surface)",
+    "elevation_m": 3570.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757385,
+     46.83652
+    ]
+   },
+   "properties": {
+    "point_id": 10378,
+    "kind": "force (on surface)",
+    "elevation_m": 3502.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.754107,
+     46.836484
+    ]
+   },
+   "properties": {
+    "point_id": 10379,
+    "kind": "force (on surface)",
+    "elevation_m": 3480.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750829,
+     46.836449
+    ]
+   },
+   "properties": {
+    "point_id": 10380,
+    "kind": "force (on surface)",
+    "elevation_m": 3364.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776999,
+     46.838981
+    ]
+   },
+   "properties": {
+    "point_id": 10469,
+    "kind": "force (on surface)",
+    "elevation_m": 3464.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773722,
+     46.838946
+    ]
+   },
+   "properties": {
+    "point_id": 10470,
+    "kind": "force (on surface)",
+    "elevation_m": 3642.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770444,
+     46.838911
+    ]
+   },
+   "properties": {
+    "point_id": 10471,
+    "kind": "force (on surface)",
+    "elevation_m": 3704.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.767166,
+     46.838875
+    ]
+   },
+   "properties": {
+    "point_id": 10472,
+    "kind": "force (on surface)",
+    "elevation_m": 3628.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763888,
+     46.83884
+    ]
+   },
+   "properties": {
+    "point_id": 10473,
+    "kind": "force (on surface)",
+    "elevation_m": 3695.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.76061,
+     46.838805
+    ]
+   },
+   "properties": {
+    "point_id": 10474,
+    "kind": "force (on surface)",
+    "elevation_m": 3744.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757333,
+     46.838769
+    ]
+   },
+   "properties": {
+    "point_id": 10475,
+    "kind": "force (on surface)",
+    "elevation_m": 3702.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.754055,
+     46.838733
+    ]
+   },
+   "properties": {
+    "point_id": 10476,
+    "kind": "force (on surface)",
+    "elevation_m": 3623.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750777,
+     46.838698
+    ]
+   },
+   "properties": {
+    "point_id": 10477,
+    "kind": "force (on surface)",
+    "elevation_m": 3515.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7475,
+     46.838662
+    ]
+   },
+   "properties": {
+    "point_id": 10478,
+    "kind": "force (on surface)",
+    "elevation_m": 3327.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.744222,
+     46.838626
+    ]
+   },
+   "properties": {
+    "point_id": 10479,
+    "kind": "force (on surface)",
+    "elevation_m": 3243.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.780226,
+     46.841265
+    ]
+   },
+   "properties": {
+    "point_id": 10565,
+    "kind": "force (on surface)",
+    "elevation_m": 3426.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776948,
+     46.84123
+    ]
+   },
+   "properties": {
+    "point_id": 10566,
+    "kind": "force (on surface)",
+    "elevation_m": 3551.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.77367,
+     46.841195
+    ]
+   },
+   "properties": {
+    "point_id": 10567,
+    "kind": "force (on surface)",
+    "elevation_m": 3752.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770392,
+     46.84116
+    ]
+   },
+   "properties": {
+    "point_id": 10568,
+    "kind": "force (on surface)",
+    "elevation_m": 3912.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.767115,
+     46.841125
+    ]
+   },
+   "properties": {
+    "point_id": 10569,
+    "kind": "force (on surface)",
+    "elevation_m": 3845.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763837,
+     46.841089
+    ]
+   },
+   "properties": {
+    "point_id": 10570,
+    "kind": "force (on surface)",
+    "elevation_m": 3867.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760559,
+     46.841054
+    ]
+   },
+   "properties": {
+    "point_id": 10571,
+    "kind": "force (on surface)",
+    "elevation_m": 3867.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757281,
+     46.841018
+    ]
+   },
+   "properties": {
+    "point_id": 10572,
+    "kind": "force (on surface)",
+    "elevation_m": 3869.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.754003,
+     46.840983
+    ]
+   },
+   "properties": {
+    "point_id": 10573,
+    "kind": "force (on surface)",
+    "elevation_m": 3751.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750725,
+     46.840947
+    ]
+   },
+   "properties": {
+    "point_id": 10574,
+    "kind": "force (on surface)",
+    "elevation_m": 3652.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747447,
+     46.840911
+    ]
+   },
+   "properties": {
+    "point_id": 10575,
+    "kind": "force (on surface)",
+    "elevation_m": 3435.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.744169,
+     46.840875
+    ]
+   },
+   "properties": {
+    "point_id": 10576,
+    "kind": "force (on surface)",
+    "elevation_m": 3371.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740892,
+     46.840839
+    ]
+   },
+   "properties": {
+    "point_id": 10577,
+    "kind": "force (on surface)",
+    "elevation_m": 3434.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.780175,
+     46.843514
+    ]
+   },
+   "properties": {
+    "point_id": 10662,
+    "kind": "force (on surface)",
+    "elevation_m": 3583.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776897,
+     46.843479
+    ]
+   },
+   "properties": {
+    "point_id": 10663,
+    "kind": "force (on surface)",
+    "elevation_m": 3735.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773619,
+     46.843444
+    ]
+   },
+   "properties": {
+    "point_id": 10664,
+    "kind": "force (on surface)",
+    "elevation_m": 3859.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770341,
+     46.843409
+    ]
+   },
+   "properties": {
+    "point_id": 10665,
+    "kind": "force (on surface)",
+    "elevation_m": 4065.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.767063,
+     46.843374
+    ]
+   },
+   "properties": {
+    "point_id": 10666,
+    "kind": "force (on surface)",
+    "elevation_m": 4085.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763785,
+     46.843339
+    ]
+   },
+   "properties": {
+    "point_id": 10667,
+    "kind": "force (on surface)",
+    "elevation_m": 4041.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760507,
+     46.843303
+    ]
+   },
+   "properties": {
+    "point_id": 10668,
+    "kind": "force (on surface)",
+    "elevation_m": 4003.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757229,
+     46.843268
+    ]
+   },
+   "properties": {
+    "point_id": 10669,
+    "kind": "force (on surface)",
+    "elevation_m": 3965.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753951,
+     46.843232
+    ]
+   },
+   "properties": {
+    "point_id": 10670,
+    "kind": "force (on surface)",
+    "elevation_m": 3887.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750673,
+     46.843196
+    ]
+   },
+   "properties": {
+    "point_id": 10671,
+    "kind": "force (on surface)",
+    "elevation_m": 3778.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747395,
+     46.84316
+    ]
+   },
+   "properties": {
+    "point_id": 10672,
+    "kind": "force (on surface)",
+    "elevation_m": 3619.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.744117,
+     46.843124
+    ]
+   },
+   "properties": {
+    "point_id": 10673,
+    "kind": "force (on surface)",
+    "elevation_m": 3597.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740839,
+     46.843088
+    ]
+   },
+   "properties": {
+    "point_id": 10674,
+    "kind": "force (on surface)",
+    "elevation_m": 3581.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.783403,
+     46.845799
+    ]
+   },
+   "properties": {
+    "point_id": 10758,
+    "kind": "force (on surface)",
+    "elevation_m": 3401.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.780124,
+     46.845764
+    ]
+   },
+   "properties": {
+    "point_id": 10759,
+    "kind": "force (on surface)",
+    "elevation_m": 3551.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776846,
+     46.845729
+    ]
+   },
+   "properties": {
+    "point_id": 10760,
+    "kind": "force (on surface)",
+    "elevation_m": 3785.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773568,
+     46.845694
+    ]
+   },
+   "properties": {
+    "point_id": 10761,
+    "kind": "force (on surface)",
+    "elevation_m": 4005.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.77029,
+     46.845658
+    ]
+   },
+   "properties": {
+    "point_id": 10762,
+    "kind": "force (on surface)",
+    "elevation_m": 4189.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.767012,
+     46.845623
+    ]
+   },
+   "properties": {
+    "point_id": 10763,
+    "kind": "force (on surface)",
+    "elevation_m": 4267.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763733,
+     46.845588
+    ]
+   },
+   "properties": {
+    "point_id": 10764,
+    "kind": "force (on surface)",
+    "elevation_m": 4227.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760455,
+     46.845552
+    ]
+   },
+   "properties": {
+    "point_id": 10765,
+    "kind": "force (on surface)",
+    "elevation_m": 4163.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757177,
+     46.845517
+    ]
+   },
+   "properties": {
+    "point_id": 10766,
+    "kind": "force (on surface)",
+    "elevation_m": 4079.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753899,
+     46.845481
+    ]
+   },
+   "properties": {
+    "point_id": 10767,
+    "kind": "force (on surface)",
+    "elevation_m": 4016.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750621,
+     46.845445
+    ]
+   },
+   "properties": {
+    "point_id": 10768,
+    "kind": "force (on surface)",
+    "elevation_m": 3895.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747343,
+     46.84541
+    ]
+   },
+   "properties": {
+    "point_id": 10769,
+    "kind": "force (on surface)",
+    "elevation_m": 3813.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.744065,
+     46.845374
+    ]
+   },
+   "properties": {
+    "point_id": 10770,
+    "kind": "force (on surface)",
+    "elevation_m": 3750.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740786,
+     46.845338
+    ]
+   },
+   "properties": {
+    "point_id": 10771,
+    "kind": "force (on surface)",
+    "elevation_m": 3599.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.737508,
+     46.845302
+    ]
+   },
+   "properties": {
+    "point_id": 10772,
+    "kind": "force (on surface)",
+    "elevation_m": 3452.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.783352,
+     46.848048
+    ]
+   },
+   "properties": {
+    "point_id": 10855,
+    "kind": "force (on surface)",
+    "elevation_m": 3412.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.780073,
+     46.848013
+    ]
+   },
+   "properties": {
+    "point_id": 10856,
+    "kind": "force (on surface)",
+    "elevation_m": 3540.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776795,
+     46.847978
+    ]
+   },
+   "properties": {
+    "point_id": 10857,
+    "kind": "force (on surface)",
+    "elevation_m": 3749.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773517,
+     46.847943
+    ]
+   },
+   "properties": {
+    "point_id": 10858,
+    "kind": "force (on surface)",
+    "elevation_m": 4027.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770238,
+     46.847908
+    ]
+   },
+   "properties": {
+    "point_id": 10859,
+    "kind": "force (on surface)",
+    "elevation_m": 4190.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.76696,
+     46.847872
+    ]
+   },
+   "properties": {
+    "point_id": 10860,
+    "kind": "force (on surface)",
+    "elevation_m": 4252.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763682,
+     46.847837
+    ]
+   },
+   "properties": {
+    "point_id": 10861,
+    "kind": "force (on surface)",
+    "elevation_m": 4278.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760404,
+     46.847802
+    ]
+   },
+   "properties": {
+    "point_id": 10862,
+    "kind": "force (on surface)",
+    "elevation_m": 4246.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757125,
+     46.847766
+    ]
+   },
+   "properties": {
+    "point_id": 10863,
+    "kind": "force (on surface)",
+    "elevation_m": 4188.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753847,
+     46.84773
+    ]
+   },
+   "properties": {
+    "point_id": 10864,
+    "kind": "force (on surface)",
+    "elevation_m": 4116.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750569,
+     46.847695
+    ]
+   },
+   "properties": {
+    "point_id": 10865,
+    "kind": "force (on surface)",
+    "elevation_m": 4028.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74729,
+     46.847659
+    ]
+   },
+   "properties": {
+    "point_id": 10866,
+    "kind": "force (on surface)",
+    "elevation_m": 3897.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.744012,
+     46.847623
+    ]
+   },
+   "properties": {
+    "point_id": 10867,
+    "kind": "force (on surface)",
+    "elevation_m": 3744.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740734,
+     46.847587
+    ]
+   },
+   "properties": {
+    "point_id": 10868,
+    "kind": "force (on surface)",
+    "elevation_m": 3632.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.737456,
+     46.847551
+    ]
+   },
+   "properties": {
+    "point_id": 10869,
+    "kind": "force (on surface)",
+    "elevation_m": 3478.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.783301,
+     46.850297
+    ]
+   },
+   "properties": {
+    "point_id": 10952,
+    "kind": "force (on surface)",
+    "elevation_m": 3425.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.780022,
+     46.850262
+    ]
+   },
+   "properties": {
+    "point_id": 10953,
+    "kind": "force (on surface)",
+    "elevation_m": 3591.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776744,
+     46.850227
+    ]
+   },
+   "properties": {
+    "point_id": 10954,
+    "kind": "force (on surface)",
+    "elevation_m": 3771.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773466,
+     46.850192
+    ]
+   },
+   "properties": {
+    "point_id": 10955,
+    "kind": "force (on surface)",
+    "elevation_m": 3970.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770187,
+     46.850157
+    ]
+   },
+   "properties": {
+    "point_id": 10956,
+    "kind": "force (on surface)",
+    "elevation_m": 4150.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766909,
+     46.850122
+    ]
+   },
+   "properties": {
+    "point_id": 10957,
+    "kind": "force (on surface)",
+    "elevation_m": 4247.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.76363,
+     46.850086
+    ]
+   },
+   "properties": {
+    "point_id": 10958,
+    "kind": "force (on surface)",
+    "elevation_m": 4313.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760352,
+     46.850051
+    ]
+   },
+   "properties": {
+    "point_id": 10959,
+    "kind": "force (on surface)",
+    "elevation_m": 4331.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757073,
+     46.850015
+    ]
+   },
+   "properties": {
+    "point_id": 10960,
+    "kind": "force (on surface)",
+    "elevation_m": 4301.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753795,
+     46.84998
+    ]
+   },
+   "properties": {
+    "point_id": 10961,
+    "kind": "force (on surface)",
+    "elevation_m": 4225.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750516,
+     46.849944
+    ]
+   },
+   "properties": {
+    "point_id": 10962,
+    "kind": "force (on surface)",
+    "elevation_m": 4111.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747238,
+     46.849908
+    ]
+   },
+   "properties": {
+    "point_id": 10963,
+    "kind": "force (on surface)",
+    "elevation_m": 3960.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74396,
+     46.849872
+    ]
+   },
+   "properties": {
+    "point_id": 10964,
+    "kind": "force (on surface)",
+    "elevation_m": 3798.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740681,
+     46.849836
+    ]
+   },
+   "properties": {
+    "point_id": 10965,
+    "kind": "force (on surface)",
+    "elevation_m": 3659.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.737403,
+     46.8498
+    ]
+   },
+   "properties": {
+    "point_id": 10966,
+    "kind": "force (on surface)",
+    "elevation_m": 3509.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.786529,
+     46.852581
+    ]
+   },
+   "properties": {
+    "point_id": 11048,
+    "kind": "force (on surface)",
+    "elevation_m": 3395.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.78325,
+     46.852546
+    ]
+   },
+   "properties": {
+    "point_id": 11049,
+    "kind": "force (on surface)",
+    "elevation_m": 3446.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.779972,
+     46.852511
+    ]
+   },
+   "properties": {
+    "point_id": 11050,
+    "kind": "force (on surface)",
+    "elevation_m": 3580.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776693,
+     46.852476
+    ]
+   },
+   "properties": {
+    "point_id": 11051,
+    "kind": "force (on surface)",
+    "elevation_m": 3781.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773414,
+     46.852441
+    ]
+   },
+   "properties": {
+    "point_id": 11052,
+    "kind": "force (on surface)",
+    "elevation_m": 3980.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770136,
+     46.852406
+    ]
+   },
+   "properties": {
+    "point_id": 11053,
+    "kind": "force (on surface)",
+    "elevation_m": 4132.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766857,
+     46.852371
+    ]
+   },
+   "properties": {
+    "point_id": 11054,
+    "kind": "force (on surface)",
+    "elevation_m": 4262.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763579,
+     46.852335
+    ]
+   },
+   "properties": {
+    "point_id": 11055,
+    "kind": "force (on surface)",
+    "elevation_m": 4361.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7603,
+     46.8523
+    ]
+   },
+   "properties": {
+    "point_id": 11056,
+    "kind": "force (on surface)",
+    "elevation_m": 4377.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.757021,
+     46.852264
+    ]
+   },
+   "properties": {
+    "point_id": 11057,
+    "kind": "force (on surface)",
+    "elevation_m": 4326.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753743,
+     46.852229
+    ]
+   },
+   "properties": {
+    "point_id": 11058,
+    "kind": "force (on surface)",
+    "elevation_m": 4266.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750464,
+     46.852193
+    ]
+   },
+   "properties": {
+    "point_id": 11059,
+    "kind": "force (on surface)",
+    "elevation_m": 4135.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747186,
+     46.852157
+    ]
+   },
+   "properties": {
+    "point_id": 11060,
+    "kind": "force (on surface)",
+    "elevation_m": 3974.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.743907,
+     46.852121
+    ]
+   },
+   "properties": {
+    "point_id": 11061,
+    "kind": "force (on surface)",
+    "elevation_m": 3796.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740629,
+     46.852085
+    ]
+   },
+   "properties": {
+    "point_id": 11062,
+    "kind": "force (on surface)",
+    "elevation_m": 3648.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.73735,
+     46.852049
+    ]
+   },
+   "properties": {
+    "point_id": 11063,
+    "kind": "force (on surface)",
+    "elevation_m": 3492.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.734072,
+     46.852013
+    ]
+   },
+   "properties": {
+    "point_id": 11064,
+    "kind": "force (on surface)",
+    "elevation_m": 3361.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.783199,
+     46.854796
+    ]
+   },
+   "properties": {
+    "point_id": 11146,
+    "kind": "force (on surface)",
+    "elevation_m": 3518.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.779921,
+     46.854761
+    ]
+   },
+   "properties": {
+    "point_id": 11147,
+    "kind": "force (on surface)",
+    "elevation_m": 3601.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776642,
+     46.854726
+    ]
+   },
+   "properties": {
+    "point_id": 11148,
+    "kind": "force (on surface)",
+    "elevation_m": 3847.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773363,
+     46.854691
+    ]
+   },
+   "properties": {
+    "point_id": 11149,
+    "kind": "force (on surface)",
+    "elevation_m": 3988.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770084,
+     46.854655
+    ]
+   },
+   "properties": {
+    "point_id": 11150,
+    "kind": "force (on surface)",
+    "elevation_m": 4108.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766806,
+     46.85462
+    ]
+   },
+   "properties": {
+    "point_id": 11151,
+    "kind": "force (on surface)",
+    "elevation_m": 4225.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763527,
+     46.854585
+    ]
+   },
+   "properties": {
+    "point_id": 11152,
+    "kind": "force (on surface)",
+    "elevation_m": 4302.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760248,
+     46.854549
+    ]
+   },
+   "properties": {
+    "point_id": 11153,
+    "kind": "force (on surface)",
+    "elevation_m": 4328.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.75697,
+     46.854514
+    ]
+   },
+   "properties": {
+    "point_id": 11154,
+    "kind": "force (on surface)",
+    "elevation_m": 4296.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753691,
+     46.854478
+    ]
+   },
+   "properties": {
+    "point_id": 11155,
+    "kind": "force (on surface)",
+    "elevation_m": 4202.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750412,
+     46.854442
+    ]
+   },
+   "properties": {
+    "point_id": 11156,
+    "kind": "force (on surface)",
+    "elevation_m": 4060.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747133,
+     46.854406
+    ]
+   },
+   "properties": {
+    "point_id": 11157,
+    "kind": "force (on surface)",
+    "elevation_m": 3935.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.743855,
+     46.85437
+    ]
+   },
+   "properties": {
+    "point_id": 11158,
+    "kind": "force (on surface)",
+    "elevation_m": 3808.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740576,
+     46.854334
+    ]
+   },
+   "properties": {
+    "point_id": 11159,
+    "kind": "force (on surface)",
+    "elevation_m": 3660.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.737297,
+     46.854298
+    ]
+   },
+   "properties": {
+    "point_id": 11160,
+    "kind": "force (on surface)",
+    "elevation_m": 3476.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.783149,
+     46.857045
+    ]
+   },
+   "properties": {
+    "point_id": 11243,
+    "kind": "force (on surface)",
+    "elevation_m": 3566.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.77987,
+     46.85701
+    ]
+   },
+   "properties": {
+    "point_id": 11244,
+    "kind": "force (on surface)",
+    "elevation_m": 3657.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776591,
+     46.856975
+    ]
+   },
+   "properties": {
+    "point_id": 11245,
+    "kind": "force (on surface)",
+    "elevation_m": 3879.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773312,
+     46.85694
+    ]
+   },
+   "properties": {
+    "point_id": 11246,
+    "kind": "force (on surface)",
+    "elevation_m": 3995.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.770033,
+     46.856905
+    ]
+   },
+   "properties": {
+    "point_id": 11247,
+    "kind": "force (on surface)",
+    "elevation_m": 4062.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766754,
+     46.856869
+    ]
+   },
+   "properties": {
+    "point_id": 11248,
+    "kind": "force (on surface)",
+    "elevation_m": 4148.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763475,
+     46.856834
+    ]
+   },
+   "properties": {
+    "point_id": 11249,
+    "kind": "force (on surface)",
+    "elevation_m": 4201.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760196,
+     46.856798
+    ]
+   },
+   "properties": {
+    "point_id": 11250,
+    "kind": "force (on surface)",
+    "elevation_m": 4212.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.756918,
+     46.856763
+    ]
+   },
+   "properties": {
+    "point_id": 11251,
+    "kind": "force (on surface)",
+    "elevation_m": 4172.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753639,
+     46.856727
+    ]
+   },
+   "properties": {
+    "point_id": 11252,
+    "kind": "force (on surface)",
+    "elevation_m": 4100.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.75036,
+     46.856691
+    ]
+   },
+   "properties": {
+    "point_id": 11253,
+    "kind": "force (on surface)",
+    "elevation_m": 3976.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747081,
+     46.856656
+    ]
+   },
+   "properties": {
+    "point_id": 11254,
+    "kind": "force (on surface)",
+    "elevation_m": 3823.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.743802,
+     46.85662
+    ]
+   },
+   "properties": {
+    "point_id": 11255,
+    "kind": "force (on surface)",
+    "elevation_m": 3696.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740523,
+     46.856584
+    ]
+   },
+   "properties": {
+    "point_id": 11256,
+    "kind": "force (on surface)",
+    "elevation_m": 3578.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.737245,
+     46.856548
+    ]
+   },
+   "properties": {
+    "point_id": 11257,
+    "kind": "force (on surface)",
+    "elevation_m": 3451.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.783098,
+     46.859294
+    ]
+   },
+   "properties": {
+    "point_id": 11340,
+    "kind": "force (on surface)",
+    "elevation_m": 3614.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.779819,
+     46.859259
+    ]
+   },
+   "properties": {
+    "point_id": 11341,
+    "kind": "force (on surface)",
+    "elevation_m": 3737.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.77654,
+     46.859224
+    ]
+   },
+   "properties": {
+    "point_id": 11342,
+    "kind": "force (on surface)",
+    "elevation_m": 3957.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773261,
+     46.859189
+    ]
+   },
+   "properties": {
+    "point_id": 11343,
+    "kind": "force (on surface)",
+    "elevation_m": 4056.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.769982,
+     46.859154
+    ]
+   },
+   "properties": {
+    "point_id": 11344,
+    "kind": "force (on surface)",
+    "elevation_m": 4089.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766703,
+     46.859119
+    ]
+   },
+   "properties": {
+    "point_id": 11345,
+    "kind": "force (on surface)",
+    "elevation_m": 4130.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763424,
+     46.859083
+    ]
+   },
+   "properties": {
+    "point_id": 11346,
+    "kind": "force (on surface)",
+    "elevation_m": 4156.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760145,
+     46.859048
+    ]
+   },
+   "properties": {
+    "point_id": 11347,
+    "kind": "force (on surface)",
+    "elevation_m": 4118.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.756866,
+     46.859012
+    ]
+   },
+   "properties": {
+    "point_id": 11348,
+    "kind": "force (on surface)",
+    "elevation_m": 4025.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753587,
+     46.858976
+    ]
+   },
+   "properties": {
+    "point_id": 11349,
+    "kind": "force (on surface)",
+    "elevation_m": 3958.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750308,
+     46.858941
+    ]
+   },
+   "properties": {
+    "point_id": 11350,
+    "kind": "force (on surface)",
+    "elevation_m": 3880.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.747029,
+     46.858905
+    ]
+   },
+   "properties": {
+    "point_id": 11351,
+    "kind": "force (on surface)",
+    "elevation_m": 3756.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.74375,
+     46.858869
+    ]
+   },
+   "properties": {
+    "point_id": 11352,
+    "kind": "force (on surface)",
+    "elevation_m": 3614.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740471,
+     46.858833
+    ]
+   },
+   "properties": {
+    "point_id": 11353,
+    "kind": "force (on surface)",
+    "elevation_m": 3479.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.737192,
+     46.858797
+    ]
+   },
+   "properties": {
+    "point_id": 11354,
+    "kind": "force (on surface)",
+    "elevation_m": 3347.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.779768,
+     46.861508
+    ]
+   },
+   "properties": {
+    "point_id": 11438,
+    "kind": "force (on surface)",
+    "elevation_m": 3932.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776489,
+     46.861473
+    ]
+   },
+   "properties": {
+    "point_id": 11439,
+    "kind": "force (on surface)",
+    "elevation_m": 4120.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773209,
+     46.861438
+    ]
+   },
+   "properties": {
+    "point_id": 11440,
+    "kind": "force (on surface)",
+    "elevation_m": 4188.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.76993,
+     46.861403
+    ]
+   },
+   "properties": {
+    "point_id": 11441,
+    "kind": "force (on surface)",
+    "elevation_m": 4152.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766651,
+     46.861368
+    ]
+   },
+   "properties": {
+    "point_id": 11442,
+    "kind": "force (on surface)",
+    "elevation_m": 4159.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763372,
+     46.861332
+    ]
+   },
+   "properties": {
+    "point_id": 11443,
+    "kind": "force (on surface)",
+    "elevation_m": 4168.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760093,
+     46.861297
+    ]
+   },
+   "properties": {
+    "point_id": 11444,
+    "kind": "force (on surface)",
+    "elevation_m": 4065.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.756814,
+     46.861261
+    ]
+   },
+   "properties": {
+    "point_id": 11445,
+    "kind": "force (on surface)",
+    "elevation_m": 3882.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753535,
+     46.861226
+    ]
+   },
+   "properties": {
+    "point_id": 11446,
+    "kind": "force (on surface)",
+    "elevation_m": 3786.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750256,
+     46.86119
+    ]
+   },
+   "properties": {
+    "point_id": 11447,
+    "kind": "force (on surface)",
+    "elevation_m": 3752.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.746976,
+     46.861154
+    ]
+   },
+   "properties": {
+    "point_id": 11448,
+    "kind": "force (on surface)",
+    "elevation_m": 3654.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.743697,
+     46.861118
+    ]
+   },
+   "properties": {
+    "point_id": 11449,
+    "kind": "force (on surface)",
+    "elevation_m": 3530.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740418,
+     46.861082
+    ]
+   },
+   "properties": {
+    "point_id": 11450,
+    "kind": "force (on surface)",
+    "elevation_m": 3417.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.779717,
+     46.863758
+    ]
+   },
+   "properties": {
+    "point_id": 11535,
+    "kind": "force (on surface)",
+    "elevation_m": 4134.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776437,
+     46.863723
+    ]
+   },
+   "properties": {
+    "point_id": 11536,
+    "kind": "force (on surface)",
+    "elevation_m": 4237.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773158,
+     46.863687
+    ]
+   },
+   "properties": {
+    "point_id": 11537,
+    "kind": "force (on surface)",
+    "elevation_m": 4209.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.769879,
+     46.863652
+    ]
+   },
+   "properties": {
+    "point_id": 11538,
+    "kind": "force (on surface)",
+    "elevation_m": 4135.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.7666,
+     46.863617
+    ]
+   },
+   "properties": {
+    "point_id": 11539,
+    "kind": "force (on surface)",
+    "elevation_m": 4110.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.76332,
+     46.863582
+    ]
+   },
+   "properties": {
+    "point_id": 11540,
+    "kind": "force (on surface)",
+    "elevation_m": 4118.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.760041,
+     46.863546
+    ]
+   },
+   "properties": {
+    "point_id": 11541,
+    "kind": "force (on surface)",
+    "elevation_m": 4030.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.756762,
+     46.863511
+    ]
+   },
+   "properties": {
+    "point_id": 11542,
+    "kind": "force (on surface)",
+    "elevation_m": 3802.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753483,
+     46.863475
+    ]
+   },
+   "properties": {
+    "point_id": 11543,
+    "kind": "force (on surface)",
+    "elevation_m": 3636.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750203,
+     46.863439
+    ]
+   },
+   "properties": {
+    "point_id": 11544,
+    "kind": "force (on surface)",
+    "elevation_m": 3586.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.746924,
+     46.863403
+    ]
+   },
+   "properties": {
+    "point_id": 11545,
+    "kind": "force (on surface)",
+    "elevation_m": 3533.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.743645,
+     46.863367
+    ]
+   },
+   "properties": {
+    "point_id": 11546,
+    "kind": "force (on surface)",
+    "elevation_m": 3388.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.740366,
+     46.863331
+    ]
+   },
+   "properties": {
+    "point_id": 11547,
+    "kind": "force (on surface)",
+    "elevation_m": 3306.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.776386,
+     46.865972
+    ]
+   },
+   "properties": {
+    "point_id": 11633,
+    "kind": "force (on surface)",
+    "elevation_m": 4059.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.773107,
+     46.865937
+    ]
+   },
+   "properties": {
+    "point_id": 11634,
+    "kind": "force (on surface)",
+    "elevation_m": 3970.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.769828,
+     46.865901
+    ]
+   },
+   "properties": {
+    "point_id": 11635,
+    "kind": "force (on surface)",
+    "elevation_m": 3875.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766548,
+     46.865866
+    ]
+   },
+   "properties": {
+    "point_id": 11636,
+    "kind": "force (on surface)",
+    "elevation_m": 3814.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763269,
+     46.865831
+    ]
+   },
+   "properties": {
+    "point_id": 11637,
+    "kind": "force (on surface)",
+    "elevation_m": 3824.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.759989,
+     46.865795
+    ]
+   },
+   "properties": {
+    "point_id": 11638,
+    "kind": "force (on surface)",
+    "elevation_m": 3903.0,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.75671,
+     46.86576
+    ]
+   },
+   "properties": {
+    "point_id": 11639,
+    "kind": "force (on surface)",
+    "elevation_m": 3729.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753431,
+     46.865724
+    ]
+   },
+   "properties": {
+    "point_id": 11640,
+    "kind": "force (on surface)",
+    "elevation_m": 3519.1,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750151,
+     46.865688
+    ]
+   },
+   "properties": {
+    "point_id": 11641,
+    "kind": "force (on surface)",
+    "elevation_m": 3438.9,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.746872,
+     46.865652
+    ]
+   },
+   "properties": {
+    "point_id": 11642,
+    "kind": "force (on surface)",
+    "elevation_m": 3400.3,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.743592,
+     46.865616
+    ]
+   },
+   "properties": {
+    "point_id": 11643,
+    "kind": "force (on surface)",
+    "elevation_m": 3258.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.769776,
+     46.868151
+    ]
+   },
+   "properties": {
+    "point_id": 11732,
+    "kind": "force (on surface)",
+    "elevation_m": 3624.8,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.766497,
+     46.868115
+    ]
+   },
+   "properties": {
+    "point_id": 11733,
+    "kind": "force (on surface)",
+    "elevation_m": 3548.2,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.763217,
+     46.86808
+    ]
+   },
+   "properties": {
+    "point_id": 11734,
+    "kind": "force (on surface)",
+    "elevation_m": 3564.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.759937,
+     46.868045
+    ]
+   },
+   "properties": {
+    "point_id": 11735,
+    "kind": "force (on surface)",
+    "elevation_m": 3670.4,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.756658,
+     46.868009
+    ]
+   },
+   "properties": {
+    "point_id": 11736,
+    "kind": "force (on surface)",
+    "elevation_m": 3606.5,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.753378,
+     46.867973
+    ]
+   },
+   "properties": {
+    "point_id": 11737,
+    "kind": "force (on surface)",
+    "elevation_m": 3363.6,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.750099,
+     46.867938
+    ]
+   },
+   "properties": {
+    "point_id": 11738,
+    "kind": "force (on surface)",
+    "elevation_m": 3282.7,
+    "burial_m": 0.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.759886,
+     46.870294
+    ]
+   },
+   "properties": {
+    "point_id": 11832,
+    "kind": "force (on surface)",
+    "elevation_m": 3374.5,
+    "burial_m": 0.0
+   }
+  }
+ ]
+}
