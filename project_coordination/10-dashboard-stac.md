@@ -8,84 +8,86 @@
 
 The dashboard (`website/dashboard.html`) lists its layers in a JavaScript array written into the
 page: 17 layers, a Washington-only map extent, and the data-provider links. Showing another
-project's data means editing that HTML. Two lab projects already publish map-shaped data, and each
-does it its own way:
+project means editing that HTML. Meanwhile the lab's projects each publish their own 3D viewer,
+and nothing points from one to the next.
 
-| Project | Site | Layer list | Data |
-|---|---|---|---|
-| Washington DataHub | `gaia-hazlab.github.io/dashboard.html` | array in the HTML (17 layers) | GeoJSON in `gaia-hazlab/catalog`, COG and WMS by URL |
-| Cascadia offshore catalog | `denolle-lab.github.io/cascadia_obs_ensemble/` | array in the HTML (10 layers) | all inlined in one 10.8 MB page |
-| Mount Rainier source simulations | `denolle-lab.github.io/mt-rainier-source-simulation/` | `config.json` (3 databases) | release asset in its own binary format (RGF1) |
-
-The DataHub already uses static STAC for its rasters
-([datahub-integration-guide](../book/chapters/datahub-integration-guide.md)). The proposal applies
-the same choice to the dashboard.
+| Project | 3D viewer | Data behind it |
+|---|---|---|
+| Washington DataHub | none | GeoJSON in `gaia-hazlab/catalog`, COG and WMS by URL |
+| Cascadia offshore catalog | `denolle-lab.github.io/cascadia_obs_ensemble/` | inlined in one 10.8 MB page |
+| Cascadia Offshore Sensor Atlas | `coszo.org/atlas/` | JSON bundle (`atlas/sensors.json`, 219 sensors) |
+| Mount Rainier | `…/mt-rainier-source-simulation/`, `…/mt-rainier-digital-model/` | release asset (RGF1), data bundle |
+| Peters Dome avalanche (Denali) | `gaia-hazlab.github.io/gaia-peters-dome/atlas/` (prototype, gaia-peters-dome#6) | one Zarr container staged with gaia-cli |
 
 ## The proposal
 
-Each project publishes a static STAC collection, and the dashboard reads a root catalog that
-links to them. Each collection holds one item per map layer. The page builds its menu, map extent
-and links from the catalog, so adding a project means adding a collection, not editing the HTML.
+**One 2D map that leads to every 3D viewer.** Each project publishes a static STAC collection; the
+dashboard reads a root catalog that links them. The 2D map shows footprints and the light layers
+(stations, events, outlines). Clicking a footprint, or any feature inside a project, opens a card
+with that project's 3D viewers (the collection's `rel: alternate` links). 3D rendering stays in the
+project repositories.
 
-The dashboard stays a 2D discovery map. 3D views (the Cascadia Atlas, the Rainier simulator) stay
-in their own repositories, and the dashboard links to them through each collection's
-`rel: alternate` link.
+**Exposure and impact stay 2D and shared.** A context collection overlays who and what is exposed
+on every view, read live from public services (Washington only for now):
 
-How a layer is drawn:
+| Layer | Source | Washington count |
+|---|---|---|
+| Population density 2020 | NASA SEDAC GPW v4, via GIBS WMS | raster |
+| Social vulnerability, building value, agricultural value | FEMA National Risk Index, census tracts | 1,772 tracts |
+| Expected annual loss: all hazards, earthquake, landslide, volcanic, wildfire | FEMA National Risk Index | 1,772 tracts |
+| Power plants | US EIA | 142 |
+| Transmission lines ≥ 230 kV | HIFLD / EIA | 568 |
+| Bridges carrying ≥ 10,000 vehicles/day, by condition | FHWA National Bridge Inventory | 1,946 |
+| Rail mainlines | FRA North American Rail Network | 1,906 segments |
+
+How a layer is encoded:
 
 | Layer type | STAC encoding |
 |---|---|
-| GeoJSON (stations, events, polygons) | asset with `type: application/geo+json` |
-| Cloud-optimized GeoTIFF (COG) | asset plus the [render extension](https://github.com/stac-extensions/render) (rescale, colormap), tiled by titiler |
+| GeoJSON (stations, events, polygons, ArcGIS feature queries) | asset, `type: application/geo+json` |
+| Cloud-optimized GeoTIFF | asset plus the [render extension](https://github.com/stac-extensions/render) |
 | WMS, XYZ tiles | item link from the [web-map-links extension](https://github.com/stac-extensions/web-map-links) |
-| Menu group, color, marker style, default on/off | `gaia:` properties (no schema yet) |
+| 3D viewers, reports | collection link, `rel: alternate`, `type: text/html` |
+| Menu group, colors, choropleth breaks, shared context | `gaia:` fields (no schema yet) |
 
 ## The mockup
 
-![Today's live dashboard](img/dashboard-stac/0-live-dashboard.png)
-*Today, deployed site, 2026-11-24. The CARTO basemap now returns "API key required" tiles. That
-bug is separate from this proposal.*
+![Overview: five projects, expected annual loss](img/dashboard-stac/1-mockup-overview.png)
+![Peters Dome card: links to its 3D Atlas and report](img/dashboard-stac/8-card-peters-dome.png)
+![Washington: earthquake expected annual loss, power plants, bridges by condition, seismometers](img/dashboard-stac/7-exposure-washington.png)
+![Cascadia Offshore Sensor Atlas: 203 located sensors by family](img/dashboard-stac/10-coszo.png)
+![Peters Dome: event, outlines, 48 seismic and 31 infrasound sensors](img/dashboard-stac/9-peters-dome.png)
 
-![Overview: one footprint per collection](img/dashboard-stac/1-mockup-overview.png)
-![Washington: same layers, read from STAC](img/dashboard-stac/2-mockup-washington.png)
-![Cascadia: stations, moment tensors, plate boundaries; link to the 3D Atlas](img/dashboard-stac/3-mockup-cascadia.png)
-![Rainier: receivers, source points, mesh footprint; link to the simulator](img/dashboard-stac/4-mockup-rainier.png)
+Today's live dashboard, for comparison (its CARTO basemap was fixed in #67 after this screenshot):
+![Live dashboard, 2026-11-24](img/dashboard-stac/0-live-dashboard.png)
 
-What the mockup contains (built by `scripts/mockup/build_dashboard_stac.py`):
+The catalog is built by `scripts/mockup/build_dashboard_stac.py`: 6 collections, 46 items. Project
+layers are small GeoJSON snapshots (563 KB in all), each collection naming its source and date in
+`gaia:derived_from`. The Cascadia events (172,340, catalog v4) are not copied: the catalog paper is
+not out, and the events exist only inside the Atlas page.
 
-| Collection | Items | Data |
-|---|---|---|
-| `washington` | 16 (today's 17 minus the basemap-label overlay) | the same URLs as the live page, not copied |
-| `cascadia-offshore` | 5 (3 drawable) | 728 stations, 253 moment tensors, 4 plate boundaries, taken from the Atlas page built 2026-11-22 |
-| `mt-rainier` | 4 (3 drawable) | 114 receivers, 308 source points, mesh outline, taken from `gfdb/recip_1km_v1/index.json` (built 2026-11-05) |
-
-The Cascadia events (172,340, catalog v4) are not copied here. They exist only inside the Atlas
-page, and the catalog paper is not out yet. The mockup lists them as a disabled layer.
+URL parameters make any view shareable: `?project=<id>`, `?on=<layer ids>`, `?card=<id>`.
 
 ## Steps, each its own PR
 
 1. **This PR.** Mockup, catalog generator, this page. No change to the live site.
-2. Live dashboard reads the `washington` collection: same layers, same look. Also fixes the
-   basemap.
-3. Cascadia: split the Atlas data out of the page into files, and publish a collection from its
-   own repository.
-4. Rainier: publish a collection from its own repository (receivers, source points, mesh, database
-   index).
-5. Later, a separate decision: one shared 3D viewer for the projects that need one.
+2. Peters Dome 3D Atlas prototype (gaia-peters-dome#6), the first viewer built for this pattern.
+3. Live dashboard reads the catalog: same Washington layers and look, plus exposure and project
+   footprints.
+4. Each project publishes its own collection from its own repository (Cascadia first: move the Atlas
+   data out of the page into files). The dashboard then links to them instead of copying snapshots.
+5. Exposure layers beyond Washington (Oregon, Alaska), paging past the 2,000-record service limit.
 
 ## Questions for the reviewer
 
-1. One item per layer, or collection-level assets? Items give each layer a footprint and make it
-   searchable. Collection assets are flatter.
-2. Styling and menu hints: should we publish a small `gaia:` extension schema, or is there an
-   existing convention for vector styling in STAC?
-3. Live third-party endpoints (ArcGIS feature queries, NASA GIBS WMS) as assets: acceptable, or
-   should we snapshot them to object storage?
-4. Where collections live: in each project repository with a GAIA root catalog linking them, or in
-   one catalog repository?
+1. One item per layer, or collection-level assets?
+2. Styling, menu and context hints: publish a small `gaia:` extension schema, or use an existing convention?
+3. Live third-party endpoints (ArcGIS feature queries, NASA GIBS WMS) as assets: acceptable, or snapshot them to object storage?
+4. Where collections live: in each project repository with a GAIA root catalog, or in one catalog repository?
 5. For 172,340 events on a 2D web map: GeoParquet, FlatGeobuf or PMTiles?
 
 ## Not checked yet
 
 - The catalog has not been run through `stac-validator`.
 - The mockup has no basemap switcher or measure tool. The live page has both.
+- Transmission lines that cross Washington are returned whole, so some run south into Oregon and California.

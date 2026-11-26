@@ -1,0 +1,127 @@
+{
+ "type": "Collection",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "exposure",
+ "title": "Exposure & impact",
+ "description": "Who and what is exposed: people, building and agricultural value, expected annual loss by hazard, energy and transport infrastructure. Washington, read live from public services.",
+ "license": "other",
+ "extent": {
+  "spatial": {
+   "bbox": [
+    [
+     -124.9,
+     45.5,
+     -116.9,
+     49.1
+    ]
+   ]
+  },
+  "temporal": {
+   "interval": [
+    [
+     "2020-01-01T00:00:00Z",
+     null
+    ]
+   ]
+  }
+ },
+ "gaia:view": {
+  "center": [
+   47.4,
+   -120.5
+  ],
+  "zoom": 7
+ },
+ "links": [
+  {
+   "rel": "root",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "item",
+   "href": "./population-density/population-density.json",
+   "type": "application/geo+json",
+   "title": "Population density 2020"
+  },
+  {
+   "rel": "item",
+   "href": "./social-vulnerability/social-vulnerability.json",
+   "type": "application/geo+json",
+   "title": "Social vulnerability (tract)"
+  },
+  {
+   "rel": "item",
+   "href": "./building-value/building-value.json",
+   "type": "application/geo+json",
+   "title": "Building value (tract)"
+  },
+  {
+   "rel": "item",
+   "href": "./agriculture-value/agriculture-value.json",
+   "type": "application/geo+json",
+   "title": "Agricultural value (tract)"
+  },
+  {
+   "rel": "item",
+   "href": "./eal-all/eal-all.json",
+   "type": "application/geo+json",
+   "title": "All hazards"
+  },
+  {
+   "rel": "item",
+   "href": "./eal-earthquake/eal-earthquake.json",
+   "type": "application/geo+json",
+   "title": "Earthquake"
+  },
+  {
+   "rel": "item",
+   "href": "./eal-landslide/eal-landslide.json",
+   "type": "application/geo+json",
+   "title": "Landslide"
+  },
+  {
+   "rel": "item",
+   "href": "./eal-volcanic/eal-volcanic.json",
+   "type": "application/geo+json",
+   "title": "Volcanic"
+  },
+  {
+   "rel": "item",
+   "href": "./eal-wildfire/eal-wildfire.json",
+   "type": "application/geo+json",
+   "title": "Wildfire"
+  },
+  {
+   "rel": "item",
+   "href": "./power-plants/power-plants.json",
+   "type": "application/geo+json",
+   "title": "Power plants (142)"
+  },
+  {
+   "rel": "item",
+   "href": "./transmission/transmission.json",
+   "type": "application/geo+json",
+   "title": "Transmission lines \u2265 230 kV (568)"
+  },
+  {
+   "rel": "item",
+   "href": "./bridges/bridges.json",
+   "type": "application/geo+json",
+   "title": "Bridges, \u2265 10,000 vehicles/day (1,946)"
+  },
+  {
+   "rel": "item",
+   "href": "./rail/rail.json",
+   "type": "application/geo+json",
+   "title": "Rail mainlines (1,906 segments)"
+  }
+ ],
+ "gaia:role": "context"
+}

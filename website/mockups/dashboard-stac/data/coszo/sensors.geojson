@@ -1,0 +1,3659 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.4056,
+     44.5099
+    ]
+   },
+   "properties": {
+    "name": "Bottom pressure recorder O1",
+    "family": "pressure",
+    "type": "bottom_pressure_recorder",
+    "site": "O1",
+    "status": "UNKNOWN",
+    "source": "https://doi.org/10.6075/J0F18ZXJ"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.2636,
+     44.467
+    ]
+   },
+   "properties": {
+    "name": "Bottom pressure recorder O2",
+    "family": "pressure",
+    "type": "bottom_pressure_recorder",
+    "site": "O2",
+    "status": "UNKNOWN",
+    "source": "https://doi.org/10.6075/J0F18ZXJ"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.2637,
+     44.4661
+    ]
+   },
+   "properties": {
+    "name": "Bottom pressure recorder O2B",
+    "family": "pressure",
+    "type": "bottom_pressure_recorder",
+    "site": "O2B",
+    "status": "UNKNOWN",
+    "source": "https://doi.org/10.6075/J0F18ZXJ"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1418,
+     44.445
+    ]
+   },
+   "properties": {
+    "name": "Bottom pressure recorder O3",
+    "family": "pressure",
+    "type": "bottom_pressure_recorder",
+    "site": "O3",
+    "status": "UNKNOWN",
+    "source": "https://doi.org/10.6075/J0F18ZXJ"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.967,
+     44.3666
+    ]
+   },
+   "properties": {
+    "name": "Bottom pressure recorder O4",
+    "family": "pressure",
+    "type": "bottom_pressure_recorder",
+    "site": "O4",
+    "status": "UNKNOWN",
+    "source": "https://doi.org/10.6075/J0F18ZXJ"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6838,
+     44.2889
+    ]
+   },
+   "properties": {
+    "name": "Bottom pressure recorder O5",
+    "family": "pressure",
+    "type": "bottom_pressure_recorder",
+    "site": "O5",
+    "status": "UNKNOWN",
+    "source": "https://doi.org/10.6075/J0F18ZXJ"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.3616,
+     44.4512
+    ]
+   },
+   "properties": {
+    "name": "Bottom pressure recorder O6",
+    "family": "pressure",
+    "type": "bottom_pressure_recorder",
+    "site": "O6",
+    "status": "UNKNOWN",
+    "source": "https://doi.org/10.6075/J0F18ZXJ"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.847735,
+     45.28294
+    ]
+   },
+   "properties": {
+    "name": "East-west seafloor optical fiber strainmeter",
+    "family": "pressure",
+    "type": "fiber_optic_strainmeter",
+    "site": "Oregon margin strainmeter site",
+    "status": "UNKNOWN",
+    "source": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.847985,
+     45.28467
+    ]
+   },
+   "properties": {
+    "name": "North-south seafloor optical fiber strainmeter",
+    "family": "pressure",
+    "type": "fiber_optic_strainmeter",
+    "site": "Oregon margin strainmeter site",
+    "status": "UNKNOWN",
+    "source": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package ADCP (75 kHz)",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package 3D Current Meter",
+    "family": "currents",
+    "type": "three_dimensional_current_meter",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package Spectrophotometer",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package pCO2 Sensor",
+    "family": "chemistry",
+    "type": "pco2",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package pH Sensor",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package Broadband Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Benthic Package Digital Still Camera",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "Oregon Offshore Cabled Benthic Experiment Package",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce04osbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.952862,
+     44.368235
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Deep Profiler Mooring CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Offshore Cabled Deep Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.952862,
+     44.368235
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Deep Profiler Mooring 3D Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Oregon Offshore Cabled Deep Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.952862,
+     44.368235
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Deep Profiler Mooring CDOM Fluorometer",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Offshore Cabled Deep Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.952862,
+     44.368235
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Deep Profiler Mooring 2-Wavelength Fluorometer",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Offshore Cabled Deep Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.952862,
+     44.368235
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Deep Profiler Mooring Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Offshore Cabled Deep Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring Bio-acoustic Sonar",
+    "family": "acoustic",
+    "type": "sonar",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring pH Sensor (SAMI-pH)",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring pH Sensor (Deep SeapHOx (2000 m))",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring pCO2 Sensor",
+    "family": "chemistry",
+    "type": "pco2",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring pH Sensor",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring 3-Wavelength Fluorometer",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring Spectrophotometer",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring PAR Sensor",
+    "family": "currents",
+    "type": "par",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring Spectral Irradiance",
+    "family": "currents",
+    "type": "irradiance",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring Nitrate Sensor",
+    "family": "chemistry",
+    "type": "nitrate",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring pCO2 Sensor",
+    "family": "chemistry",
+    "type": "pco2",
+    "site": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package ADCP (300 kHz)",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package 3D Current Meter",
+    "family": "currents",
+    "type": "three_dimensional_current_meter",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package Spectrophotometer",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package pCO2 Sensor",
+    "family": "chemistry",
+    "type": "pco2",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package pH Sensor (SAMI-pH)",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package pH Sensor (Deep SeapHOx (2000 m))",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package Broadband Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package Bio-acoustic Sonar",
+    "family": "acoustic",
+    "type": "sonar",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305648,
+     44.637184
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf Benthic Package Digital Still Camera",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "Oregon Shelf",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/ce02shbp/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.999235,
+     45.933555
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field, Axial Seamount Seismic Station AXAS1",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXAS1/?starttime=2014-08-01T00:00:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.014094,
+     45.933782
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field, Axial Seamount Seismic Station AXAS2",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXAS2/?starttime=2014-08-01T00:00:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0135,
+     45.9337
+    ]
+   },
+   "properties": {
+    "name": "ASHES Cabled Observatory Vent Imaging Sonar (COVIS)",
+    "family": "acoustic",
+    "type": "sonar",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "UNKNOWN",
+    "source": "http://piweb.ooirsn.uw.edu/covis/data/COVIS/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0135,
+     45.9336
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field Osmotic Fluid Sampler",
+    "family": "chemistry",
+    "type": "osmotic_sampler",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "UNCABLED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/OSMOI"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0135,
+     45.9336
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field Thermistor Array",
+    "family": "chemistry",
+    "type": "thermistor_array",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03ashs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0135,
+     45.9336
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field Seafloor Pressure",
+    "family": "pressure",
+    "type": "pressure",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03ashs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0135,
+     45.9336
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0135,
+     45.9336
+    ]
+   },
+   "properties": {
+    "name": "ASHES Vent Field HD Video Camera",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "ASHES Hydrothermal Field, Axial Seamount",
+    "status": "PARTIALLY_FUNCTIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/camhd/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.736393,
+     45.820222
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seismic Station AXBA1",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Axial Seamount Base",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXBA1/?starttime=2014-08-08T16:39:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor HPIES",
+    "family": "pressure",
+    "type": "hpies",
+    "site": "Axial Seamount Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs03axbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor Broadband Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Spectrophotometer (AC-S)",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/optaa/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor Low-Frequency Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor Pressure Sensor (Tidal Pressure Gauge)",
+    "family": "pressure",
+    "type": "absolute_pressure_gauge",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/prest/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base Seafloor 3D Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Axial Seamount Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.009333,
+     45.954833
+    ]
+   },
+   "properties": {
+    "name": "Axial Central Caldera A-0-A self-calibrating pressure instrument",
+    "family": "pressure",
+    "type": "self_calibrating_pressure_sensor",
+    "site": "Axial Seamount Central Caldera",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/pi-instrument/a-0-a-calibrated-pressure-instrument/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.008979,
+     45.954683
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Central Caldera Seismic Station AXCC1",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Axial Seamount Central Caldera",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXCC1/?starttime=2014-07-25T21:05:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.008745,
+     45.955001
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Central Caldera Tiltmeter/Accelerometer Station AXCC2",
+    "family": "seismic",
+    "type": "tiltmeter",
+    "site": "Axial Seamount Central Caldera",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXCC2/?starttime=2018-07-06T07:00:00&endtime=2021-08-27T18:49:00"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0089,
+     45.9549
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Central Caldera Seafloor Pressure",
+    "family": "pressure",
+    "type": "pressure",
+    "site": "Axial Seamount Central Caldera",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03ccal/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0089,
+     45.9549
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Central Caldera Low-Frequency Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Axial Seamount Central Caldera",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03ccal/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0089,
+     45.9549
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Central Caldera CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Axial Seamount Central Caldera",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.009333,
+     45.954833
+    ]
+   },
+   "properties": {
+    "name": "Axial Central Caldera Self-Calibrating Pressure Recorder",
+    "family": "pressure",
+    "type": "self_calibrating_pressure_recorder",
+    "site": "Axial Seamount Central Caldera",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/pi-instrument/self-calibrating-pressure-recorder/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Deep Profiler CTD Profiler",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Axial Seamount Deep Profiler",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Deep Profiler 3D Current Meter (WFP)",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Axial Seamount Deep Profiler",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs03axpd/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Deep Profiler Fluorometer (WFP)",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Axial Seamount Deep Profiler",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Deep Profiler Fluorometer/Turbidity (WFP)",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Axial Seamount Deep Profiler",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Deep Profiler Spectrophotometer (AC-S)",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Axial Seamount Deep Profiler",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/instrument-class/optaa/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Deep Profiler Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Axial Seamount Deep Profiler",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs03axpd/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9797,
+     45.949577
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera Seismic Station AXEC1",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Axial Seamount Eastern Caldera",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXEC1/?starttime=2014-08-01T00:00:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.973776,
+     45.939671
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera Seismic Station AXEC2",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Axial Seamount Eastern Caldera",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXEC2/?starttime=2014-07-23T22:50:02&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978545,
+     45.93607
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera Seismic Station AXEC3",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Axial Seamount Eastern Caldera",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXEC3/?starttime=2014-08-01T00:00:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9739,
+     45.9397
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera Seafloor Pressure",
+    "family": "pressure",
+    "type": "pressure",
+    "site": "Axial Seamount Eastern Caldera",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03ecal/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9739,
+     45.9397
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera Low-Frequency Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Axial Seamount Eastern Caldera",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03ecal/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9739,
+     45.9397
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Axial Seamount Eastern Caldera",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978031,
+     45.92572
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount International District Seismic Station AXID1",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Axial Seamount International District",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/AXID1/?starttime=2014-07-21T06:36:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Benthic Digital Still Camera",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/camds/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Hydrothermal Field Mass Spectrometer",
+    "family": "chemistry",
+    "type": "mass_spectrometer",
+    "site": "Axial Seamount International District",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/MASSP"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Fluid Sampler Temperature Probe",
+    "family": "chemistry",
+    "type": "thermistor",
+    "site": "Axial Seamount International District",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/instrument-class/rasfl/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Particle and eDNA Sampler",
+    "family": "chemistry",
+    "type": "dna_sampler",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/ppsdn/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Remote Access Fluid Sampler",
+    "family": "chemistry",
+    "type": "fluid_sampler",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/rasfl/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Hydrothermal Field 1 Vent Fluid Thermistor/pH",
+    "family": "chemistry",
+    "type": "thermistor",
+    "site": "Axial Seamount International District",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs03int1/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Hydrothermal Field 1 Vent Fluid Thermistor/pH",
+    "family": "chemistry",
+    "type": "thermistor",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03int1/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978,
+     45.9257
+    ]
+   },
+   "properties": {
+    "name": "International District Hydrothermal Field 1 Vent Fluid Thermistor/pH",
+    "family": "chemistry",
+    "type": "thermistor",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03int1/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9778,
+     45.9258
+    ]
+   },
+   "properties": {
+    "name": "International District Hydrothermal Field 2 Seafloor Pressure",
+    "family": "pressure",
+    "type": "pressure",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03int2/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9778,
+     45.9258
+    ]
+   },
+   "properties": {
+    "name": "International District Hydrothermal Field 2 CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9778,
+     45.9258
+    ]
+   },
+   "properties": {
+    "name": "International District Hydrothermal Field 2 3D Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Axial Seamount International District",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03int2/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Vertical ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Axial Seamount Profiler",
+    "status": "SUPERSEDED",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Vertical ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Axial Seamount Profiler",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Digital Still Camera",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/camds/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Broadband Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler CTD Profiler",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler pH Sensor",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Fluorometer/Backscatter",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler CTD Profiler",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler pH Sensor",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Fluorometer",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSAXIAL/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Spectrophotometer (AC-S)",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/optaa/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler PAR Sensor",
+    "family": "currents",
+    "type": "par",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/parad/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Spectral Irradiance",
+    "family": "currents",
+    "type": "irradiance",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/spkir/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Nitrate Sensor",
+    "family": "chemistry",
+    "type": "nitrate",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Shallow Profiler pCO2 Sensor",
+    "family": "chemistry",
+    "type": "pco2",
+    "site": "Axial Seamount Profiler",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs03axps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.01178,
+     45.93438
+    ]
+   },
+   "properties": {
+    "name": "Axial Self-Calibrating Pressure Recorder unit 001 (2013-2015 short mooring)",
+    "family": "pressure",
+    "type": "self_calibrating_pressure_recorder",
+    "site": "Axial Seamount summit caldera, NE of ASHES",
+    "status": "RECOVERED",
+    "source": "https://doi.org/10.1002/2016EA000190"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.00914,
+     45.954927
+    ]
+   },
+   "properties": {
+    "name": "Central Caldera Acoustic Transponders",
+    "family": "acoustic",
+    "type": "acoustic_ranging_station",
+    "site": "Central Caldera",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.008908,
+     45.954896
+    ]
+   },
+   "properties": {
+    "name": "Central Caldera ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Central Caldera",
+    "status": "UNKNOWN",
+    "source": "https://github.com/oceanobservatories/asset-management/tree/master/deployment"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler CTD Profiler",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler 3D Current Meter (WFP)",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs01sbpd/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler Fluorometer (WFP)",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler CDOM Fluorometer (2nd deployment)",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Slope Base",
+    "status": "UNKNOWN",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler Fluorometer/Turbidity (WFP)",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler Fluorometer/Turbidity (2nd deployment)",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Slope Base",
+    "status": "UNKNOWN",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler Spectrophotometer (AC-S)",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Oregon Slope Base",
+    "status": "RETIRED",
+    "source": "https://oceanobservatories.org/instrument-class/optaa/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Deep Profiler Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs01sbpd/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Vertical ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Oregon Slope Base",
+    "status": "SUPERSEDED",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Vertical ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Digital Still Camera",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/camds/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Broadband Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler CTD Profiler",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler pH Sensor",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Fluorometer/Backscatter",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Slope Base",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler CTD Profiler",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler pH Sensor",
+    "family": "chemistry",
+    "type": "ph",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Fluorometer",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Spectrophotometer (AC-S)",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/instrument-class/optaa/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler PAR Sensor",
+    "family": "currents",
+    "type": "par",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/instrument-class/parad/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Spectral Irradiance",
+    "family": "currents",
+    "type": "irradiance",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/instrument-class/spkir/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Nitrate Sensor",
+    "family": "chemistry",
+    "type": "nitrate",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Shallow Profiler pCO2 Sensor",
+    "family": "chemistry",
+    "type": "pco2",
+    "site": "Oregon Slope Base",
+    "status": "NOT_DEPLOYED",
+    "source": "https://oceanobservatories.org/site/rs01sbps/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor HPIES",
+    "family": "pressure",
+    "type": "hpies",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01slbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor Broadband Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01slbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01slbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor Spectrophotometer (AC-S)",
+    "family": "chemistry",
+    "type": "spectrophotometer",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/optaa/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor CTD",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/CTD/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor Dissolved Oxygen",
+    "family": "chemistry",
+    "type": "dissolved_oxygen",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01slbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "MARUM CTD-DO instrument",
+    "family": "chemistry",
+    "type": "ctd",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "https://oceanobservatories.org/pi-instrument/marum-ctd-do-instrument-ctdpfa110/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Hydrate Ridge MARUM Camera (CAMPIA101)",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "http://piweb.ooirsn.uw.edu/marum/data/CAMPIA101/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Hydrate Ridge MARUM Overview Sonar (OVRSRA101)",
+    "family": "acoustic",
+    "type": "sonar",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "http://piweb.ooirsn.uw.edu/marum/data/OVRSRA101/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Hydrate Ridge Rotary Sonar (QNTSRA101)",
+    "family": "acoustic",
+    "type": "sonar",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "http://piweb.ooirsn.uw.edu/marum/data/QNTSRA101/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Benthic CDOM Fluorometer",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNCABLED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Benthic Fluorometer (Multi-parameter)",
+    "family": "chemistry",
+    "type": "fluorometer",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNCABLED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/FLUOR/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit Osmotic Fluid Sampler",
+    "family": "chemistry",
+    "type": "osmotic_sampler",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNCABLED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/OSMOI/data"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Benthic Digital Still Camera",
+    "family": "acoustic",
+    "type": "camera",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/camds/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit Mass Spectrometer",
+    "family": "chemistry",
+    "type": "mass_spectrometer",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "NOT_DEPLOYED",
+    "source": "https://dataexplorer.oceanobservatories.org/#ooi/array/RSMARGIN/instrument_type/MASSP"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1479,
+     44.5691
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit ADCP",
+    "family": "currents",
+    "type": "adcp",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sum2/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.15125874244153,
+     44.478310381560306
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope absolute pressure gauge",
+    "family": "pressure",
+    "type": "absolute_pressure_gauge",
+    "site": "Oregon Mid Slope",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.15125874244153,
+     44.478310381560306
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope COBSO broadband seismometer and strong-motion package",
+    "family": "seismic",
+    "type": "ocean_bottom_seismic_package",
+    "site": "Oregon Mid Slope",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.15125874244153,
+     44.478310381560306
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope deep-sea differential pressure gauge",
+    "family": "pressure",
+    "type": "differential_pressure_gauge",
+    "site": "Oregon Mid Slope",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.15125874244153,
+     44.478310381560306
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope Geodetic and Seismic Sensor Module (GSSM)",
+    "family": "seismic",
+    "type": "geodetic_and_seismic_sensor_module",
+    "site": "Oregon Mid Slope",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.15125874244153,
+     44.478310381560306
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope low-frequency hydrophone",
+    "family": "acoustic",
+    "type": "low_frequency_hydrophone",
+    "site": "Oregon Mid Slope",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.15125874244153,
+     44.478310381560306
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope cabled Self-Calibrating Pressure Recorder (SCPR)",
+    "family": "pressure",
+    "type": "self_calibrating_pressure_recorder",
+    "site": "Oregon Mid Slope",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.15125874244153,
+     44.478310381560306
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope three-dimensional current meter",
+    "family": "currents",
+    "type": "three_dimensional_current_meter",
+    "site": "Oregon Mid Slope",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.96198333333334,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore absolute pressure gauge",
+    "family": "pressure",
+    "type": "absolute_pressure_gauge",
+    "site": "Oregon Offshore",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.96198333333334,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore COBSO broadband seismometer and strong-motion package",
+    "family": "seismic",
+    "type": "ocean_bottom_seismic_package",
+    "site": "Oregon Offshore",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.96198333333334,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore deep-sea differential pressure gauge",
+    "family": "pressure",
+    "type": "differential_pressure_gauge",
+    "site": "Oregon Offshore",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.96198333333334,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Geodetic and Seismic Sensor Module (GSSM)",
+    "family": "seismic",
+    "type": "geodetic_and_seismic_sensor_module",
+    "site": "Oregon Offshore",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.96198333333334,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore low-frequency hydrophone",
+    "family": "acoustic",
+    "type": "low_frequency_hydrophone",
+    "site": "Oregon Offshore",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.96198333333334,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore cabled Self-Calibrating Pressure Recorder (SCPR)",
+    "family": "pressure",
+    "type": "self_calibrating_pressure_recorder",
+    "site": "Oregon Offshore",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.96198333333334,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore three-dimensional current meter",
+    "family": "currents",
+    "type": "three_dimensional_current_meter",
+    "site": "Oregon Offshore",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.45701166666667,
+     44.691385
+    ]
+   },
+   "properties": {
+    "name": "Oregon Outer Shelf absolute pressure gauge",
+    "family": "pressure",
+    "type": "absolute_pressure_gauge",
+    "site": "Oregon Outer Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.45701166666667,
+     44.691385
+    ]
+   },
+   "properties": {
+    "name": "Oregon Outer Shelf COBSO broadband seismometer and strong-motion package",
+    "family": "seismic",
+    "type": "ocean_bottom_seismic_package",
+    "site": "Oregon Outer Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.45701166666667,
+     44.691385
+    ]
+   },
+   "properties": {
+    "name": "Oregon Outer Shelf deep-sea differential pressure gauge",
+    "family": "pressure",
+    "type": "differential_pressure_gauge",
+    "site": "Oregon Outer Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.45701166666667,
+     44.691385
+    ]
+   },
+   "properties": {
+    "name": "Oregon Outer Shelf Geodetic and Seismic Sensor Module (GSSM)",
+    "family": "seismic",
+    "type": "geodetic_and_seismic_sensor_module",
+    "site": "Oregon Outer Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.45701166666667,
+     44.691385
+    ]
+   },
+   "properties": {
+    "name": "Oregon Outer Shelf low-frequency hydrophone",
+    "family": "acoustic",
+    "type": "low_frequency_hydrophone",
+    "site": "Oregon Outer Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.45701166666667,
+     44.691385
+    ]
+   },
+   "properties": {
+    "name": "Oregon Outer Shelf three-dimensional current meter",
+    "family": "currents",
+    "type": "three_dimensional_current_meter",
+    "site": "Oregon Outer Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.30556600047981,
+     44.63731026030462
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf absolute pressure gauge",
+    "family": "pressure",
+    "type": "absolute_pressure_gauge",
+    "site": "Oregon Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.30556600047981,
+     44.63731026030462
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf COBSO broadband seismometer and strong-motion package",
+    "family": "seismic",
+    "type": "ocean_bottom_seismic_package",
+    "site": "Oregon Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.30556600047981,
+     44.63731026030462
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf deep-sea differential pressure gauge",
+    "family": "pressure",
+    "type": "differential_pressure_gauge",
+    "site": "Oregon Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.30556600047981,
+     44.63731026030462
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf low-frequency hydrophone",
+    "family": "acoustic",
+    "type": "low_frequency_hydrophone",
+    "site": "Oregon Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.30556600047981,
+     44.63731026030462
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf three-dimensional current meter",
+    "family": "currents",
+    "type": "three_dimensional_current_meter",
+    "site": "Oregon Shelf",
+    "status": "PLANNED",
+    "source": "https://coszo.org/coszo-instruments.html"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.405299,
+     44.509772
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seismic Station HYSB1",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Oregon Slope Base",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/HYSB1/?starttime=2014-09-13T00:00:01&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor Low-Frequency Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01slbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor Pressure Sensor (Tidal Pressure Gauge)",
+    "family": "pressure",
+    "type": "absolute_pressure_gauge",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/prest/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor 3D Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Oregon Slope Base Seafloor",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01slbs/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1467,
+     44.5664
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Flank Low-Frequency Hydrophone",
+    "family": "acoustic",
+    "type": "hydrophone",
+    "site": "Southern Hydrate Ridge",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sum1/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1467,
+     44.5664
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Flank Seafloor Pressure (Tidal Pressure Gauge)",
+    "family": "pressure",
+    "type": "absolute_pressure_gauge",
+    "site": "Southern Hydrate Ridge",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/instrument-class/prest/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1467,
+     44.5664
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Flank 3D Current Meter",
+    "family": "currents",
+    "type": "velocimeter",
+    "site": "Southern Hydrate Ridge",
+    "status": "OPERATIONAL",
+    "source": "https://oceanobservatories.org/site/rs01sum1/"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.152499,
+     44.573029
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit Seismic Station HYS11",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/HYS11/?starttime=2014-09-01T12:03:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.143917,
+     44.573195
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit Seismic Station HYS12",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/HYS12/?starttime=2014-09-01T15:17:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.144196,
+     44.567411
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit Seismic Station HYS13",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/HYS13/?starttime=2014-08-01T00:00:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.148115,
+     44.569218
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit Seismic Station HYS14",
+    "family": "seismic",
+    "type": "seismometer",
+    "site": "Southern Hydrate Ridge Summit",
+    "status": "UNKNOWN",
+    "source": "https://ds.iris.edu/mda/OO/HYS14/?starttime=2014-09-07T10:22:00&endtime=2599-12-31T23:59:59"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0114997,
+     45.95882833
+    ]
+   },
+   "properties": {
+    "name": "FETCH Northern acoustic ranging station (2504)",
+    "family": "acoustic",
+    "type": "acoustic_ranging_station",
+    "site": "Axial Seamount summit caldera",
+    "status": "UNKNOWN",
+    "source": "https://github.com/MaleenKidiwela/AxialFetch"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0265777,
+     45.94700845
+    ]
+   },
+   "properties": {
+    "name": "FETCH Western acoustic ranging station (2503)",
+    "family": "acoustic",
+    "type": "acoustic_ranging_station",
+    "site": "Axial Seamount summit caldera",
+    "status": "UNKNOWN",
+    "source": "https://github.com/MaleenKidiwela/AxialFetch"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9910622,
+     45.96257971
+    ]
+   },
+   "properties": {
+    "name": "FETCH Eastern acoustic ranging station (2502)",
+    "family": "acoustic",
+    "type": "acoustic_ranging_station",
+    "site": "Axial Seamount summit caldera",
+    "status": "UNKNOWN",
+    "source": "https://github.com/MaleenKidiwela/AxialFetch"
+   }
+  }
+ ]
+}

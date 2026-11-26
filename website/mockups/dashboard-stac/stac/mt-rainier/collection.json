@@ -51,6 +51,12 @@
    "title": "3D simulator"
   },
   {
+   "rel": "alternate",
+   "href": "https://denolle-lab.github.io/mt-rainier-digital-model/",
+   "type": "text/html",
+   "title": "3D Seismic Atlas"
+  },
+  {
    "rel": "via",
    "href": "https://github.com/Denolle-Lab/mt-rainier-source-simulation",
    "type": "text/html",
@@ -85,6 +91,6 @@
   "source": "https://denolle-lab.github.io/mt-rainier-source-simulation/gfdb/recip_1km_v1/index.json",
   "db_id": "recip_1km_v1",
   "created": "2026-11-05T00:40:06+00:00",
-  "fetched": "2026-11-24"
+  "fetched": "2026-11-26"
  }
 }

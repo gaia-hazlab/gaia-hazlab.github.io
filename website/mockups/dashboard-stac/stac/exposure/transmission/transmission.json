@@ -1,0 +1,89 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "transmission",
+ "collection": "exposure",
+ "bbox": [
+  -124.9,
+  45.5,
+  -116.9,
+  49.1
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -124.9,
+     45.5
+    ],
+    [
+     -116.9,
+     45.5
+    ],
+    [
+     -116.9,
+     49.1
+    ],
+    [
+     -124.9,
+     49.1
+    ],
+    [
+     -124.9,
+     45.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Transmission lines \u2265 230 kV (568)",
+  "datetime": null,
+  "start_datetime": "2020-01-01T00:00:00Z",
+  "end_datetime": null,
+  "gaia:group": "Exposure & impact",
+  "gaia:subgroup": "Infrastructure",
+  "gaia:on": false,
+  "gaia:style": {
+   "kind": "lines",
+   "color": "#c47f00",
+   "weight": 1.6
+  },
+  "providers": [
+   {
+    "name": "HIFLD / EIA",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/US_Electric_Power_Transmission_Lines/FeatureServer/0/query?where=VOLTAGE%3E%3D230&outFields=OWNER,VOLTAGE,VOLT_CLASS,SUB_1,SUB_2&outSR=4326&geometryPrecision=4&geometry=-124.9%2C45.5%2C-116.9%2C49.1&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&f=geojson",
+   "type": "application/geo+json",
+   "title": "Transmission lines",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

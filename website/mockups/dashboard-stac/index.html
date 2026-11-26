@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <meta name="description" content="Mockup: the GAIA dashboard driven by a static STAC catalog, one collection per project.">
+    <meta name="description" content="Mockup: the GAIA dashboard driven by a static STAC catalog, one collection per project, with exposure layers and links to each project's 3D viewer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -41,6 +41,13 @@
         table.pop-table th, table.pop-table td { text-align:left; vertical-align:top; padding:3px 0; border-bottom:1px solid #eee; }
         table.pop-table th { color:#6f6890; font-weight:600; white-space:nowrap; padding-right:12px; }
         table.pop-table td { color:#2a1a4f; word-break:break-word; }
+        /* NEW: 3D links in popups and project cards */
+        .pop-3d { margin-top:0.55rem; padding-top:0.5rem; border-top:1px solid #eee; display:flex; flex-wrap:wrap; gap:0.35rem; }
+        .pop-3d a, .pop-3d button { font:600 0.76rem 'Inter'; border-radius:7px; padding:0.32rem 0.6rem; text-decoration:none; cursor:pointer; }
+        .pop-3d a { background:var(--purple); color:#fff; border:1px solid var(--purple); }
+        .pop-3d button { background:#fff; color:var(--purple); border:1px solid var(--peri-light); }
+        .card p { color:#4a3f66; font-size:0.8rem; line-height:1.35; margin:0.1rem 0 0.2rem; }
+        .card .meta { color:#6f6890; font-size:0.72rem; }
         .side { flex:0 0 360px; background:linear-gradient(180deg,#4b2e83 0%,#341f63 100%); border-left:1px solid var(--line);
             overflow-y:auto; padding:1.5rem 1.4rem 2.5rem; }
         .side .kicker { color:var(--peri-light); font-size:0.74rem; letter-spacing:2px; text-transform:uppercase; font-weight:600; }
@@ -56,8 +63,8 @@
         .projects button small { color:rgba(255,255,255,0.45); font-size:0.7rem; }
         .projects button.on { background:var(--peri-light); color:var(--ink); border-color:var(--peri-light); font-weight:600; }
         .projects button.on small { color:var(--purple); }
-        .actions { display:flex; gap:0.4rem; margin-top:0.8rem; }
-        .actions a { flex:1 1 50%; text-align:center; padding:0.5rem; border-radius:9px; font-size:0.8rem; font-weight:600;
+        .actions { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.8rem; }
+        .actions a { flex:1 1 40%; text-align:center; padding:0.5rem; border-radius:9px; font-size:0.8rem; font-weight:600;
             text-decoration:none; border:1px solid rgba(195,184,240,0.5); color:var(--peri-light); }
         .actions a.primary { background:#fff; color:var(--purple); border-color:#fff; }
         .group { border:1px solid var(--line); border-radius:12px; margin-bottom:0.6rem; background:rgba(255,255,255,0.04); }
@@ -81,13 +88,19 @@
         .item.on .chk::after { content:""; position:absolute; left:4.5px; top:1px; width:4px; height:8px;
             border:solid var(--ink); border-width:0 2px 2px 0; transform:rotate(45deg); }
         .item.disabled { opacity:0.4; cursor:default; }
-        .item .src { color:var(--peri-light); font-size:0.7rem; text-decoration:none; opacity:0.8; }
         .tip { background:rgba(255,255,255,0.07); border:1px solid var(--line); border-radius:12px; padding:0.85rem 1rem;
             font-size:0.82rem; color:rgba(255,255,255,0.82); margin-top:1rem; }
         .tip code { color:var(--peri-light); font-size:0.78rem; }
-        /* NEW: project footprints on the overview map */
-        .fp-label { background:rgba(42,26,79,0.9); color:#fff; border:0; border-radius:6px; font:600 0.78rem 'Inter'; padding:3px 7px; }
+        /* NEW: project footprints and legend */
+        .fp-label { background:rgba(42,26,79,0.9); color:#fff; border:0; border-radius:6px; font:600 0.78rem 'Inter'; padding:3px 7px; cursor:pointer; }
+        .fp-label:hover { background:var(--peri); }
         .fp-label::before { display:none; }
+        .legend { background:rgba(255,255,255,0.94); color:var(--ink); border-radius:8px; padding:0.5rem 0.65rem;
+            font:0.72rem 'Inter'; box-shadow:0 1px 4px rgba(0,0,0,0.2); max-width:240px; }
+        .legend:empty { display:none; }
+        .legend b { display:block; font-weight:600; margin:0.15rem 0 0.25rem; }
+        .legend .row { display:flex; align-items:center; gap:0.4rem; line-height:1.5; }
+        .legend .sw { width:14px; height:10px; border-radius:2px; flex:0 0 auto; border:1px solid rgba(0,0,0,0.12); }
         @media (max-width:900px) {
             .dash-wrap { flex-direction:column; } .map-col { flex:1 1 60vh; min-height:60vh; }
             .side { flex:0 0 auto; border-left:0; } .nav-links { display:none; }
@@ -110,13 +123,14 @@
         <aside class="side">
             <div class="kicker" id="kicker">GAIA projects</div>
             <h1 id="title">Where our data live</h1>
-            <p class="intro" id="intro">Each project publishes a STAC collection. Pick one to load its layers.</p>
+            <p class="intro" id="intro"></p>
             <h2>Project</h2>
             <div class="projects" id="projects"></div>
             <div class="actions" id="actions"></div>
-            <div id="layers-wrap" hidden><h2>Layers</h2><div id="menu"></div></div>
+            <h2>Layers</h2>
+            <div id="menu"></div>
             <div class="tip">Every row on this page is read from <code>stac/catalog.json</code>. Adding a project
-                means adding a collection, not editing this HTML.</div>
+                means adding a collection, not editing this HTML. 3D views stay on each project's own site.</div>
         </aside>
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -125,40 +139,79 @@
     const ROOT = new URL("stac/catalog.json", location.href).href;
     const TITILER = "https://titiler.xyz/cog/tiles/WebMercatorQuad/{z}/{x}/{y}";
     const COG = "image/tiff; application=geotiff; profile=cloud-optimized";
+    const OVERVIEW_INTRO = "Each project publishes a STAC collection. Click a footprint for its 3D viewer, "
+        + "or overlay who and what is exposed.";
     const esc = v => String(v).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
-    const getJSON = async url => { const r = await fetch(url); if (!r.ok) throw new Error(url); return r.json(); };
+    const cache = new Map();   // url → Promise<json>: several NRI layers share one request
+    const getJSON = url => { if (!cache.has(url)) cache.set(url, fetch(url).then(r => { if (!r.ok) throw new Error(url); return r.json(); }));
+        return cache.get(url); };
     const abs = (href, base) => new URL(href, base).href;
+    const money = v => v >= 1e9 ? `${+(v/1e9).toPrecision(2)} B` : v >= 1e6 ? `${+(v/1e6).toPrecision(2)} M`
+        : v >= 1e3 ? `${+(v/1e3).toPrecision(2)} k` : `${+v.toPrecision(2)}`;
 
-    const map = L.map("map", { zoomControl:true, minZoom:4 }).setView([46.5, -123], 6);
-    // Esri light gray: the live page's CARTO default now returns "API key required" tiles.
+    const map = L.map("map", { zoomControl:true, minZoom:4, preferCanvas:true }).setView([46.5, -123], 6);
+    // Esri light gray: the CARTO default of the live page needs an API key since 2026.
     L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-        { maxZoom:16, attribution:"Esri" }).addTo(map);
-    let current = [];          // Leaflet layers of the open project
-    let footprints = null;     // overview rectangles
+        { maxNativeZoom:16, maxZoom:19, attribution:"Esri" }).addTo(map);
+    const legend = L.control({ position:"bottomleft" });
+    legend.onAdd = () => { const d = L.DomUtil.create("div", "legend"); d.id = "legend"; return d; };
+    legend.addTo(map);
 
-    // ---- popups: same table as the live dashboard ----
+    let projects = [], context = null;   // collections: projects get footprints; context layers show everywhere
+    let active = [];                      // { item, layer } currently on the map
+    let footprints = null, currentProject = null;
+
+    // ---- popups: same table as the live dashboard, plus links to the project's 3D viewers ----
     const extractUrl = v => { if (typeof v !== "string") return null; const t = v.trim();
         if (/^https?:\/\//i.test(t)) return t; const m = t.match(/href=["']([^"']+)["']/i); return m ? m[1] : null; };
-    function popupHtml(p) {
-        const name = p.station ? `${p.network||""}.${p.station}` : (p.name || p.event_id || p.point_id || p.stid || p.FIRENAME || "Feature");
+    const alternates = c => (c ? c.links.filter(l => l.rel === "alternate") : []);
+    const links3d = c => alternates(c).map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener">Open ${esc(l.title)} ↗</a>`).join("");
+    function popupHtml(p, project) {
+        const name = p.station ? `${p.network||""}.${p.station}` : (p.name || p.Plant_Name || p.event_id || p.point_id
+            || p.FACILITY_CARRIED_007 || (p.TRACTFIPS ? `Tract ${p.TRACTFIPS}, ${p.COUNTY}` : "") || p.stid || p.FIRENAME || "Feature");
         let rows = "";
         for (const [k, v] of Object.entries(p)) {
             if (v == null || v === "" || k.startsWith("marker-")) continue;
             const url = extractUrl(v);
-            rows += `<tr><th>${esc(k)}</th><td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">link ↗</a>`
-                : esc(String(v).replace(/<[^>]*>/g, ""))}</td></tr>`;
+            const val = typeof v === "number" && /VALUE|EAL/.test(k) ? `$${money(v)}` : String(v).replace(/<[^>]*>/g, "");
+            rows += `<tr><th>${esc(k)}</th><td>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">link ↗</a>` : esc(val)}</td></tr>`;
         }
-        return `<div class="pop-title">${esc(name)}</div><div class="pop-table-wrap"><table class="pop-table">${rows}</table></div>`;
+        const foot = project && alternates(project).length ? `<div class="pop-3d">${links3d(project)}</div>` : "";
+        return `<div class="pop-title">${esc(name)}</div><div class="pop-table-wrap"><table class="pop-table">${rows}</table></div>${foot}`;
+    }
+
+    // ---- styles: points, sized events, lines, choropleth, categorical ----
+    function fillFor(st, p) {
+        if (st.kind === "choropleth") { const v = p[st.property]; if (v == null) return null;
+            let i = 0; while (i < st.breaks.length && v >= st.breaks[i]) i++; return st.colors[i]; }
+        if (st.kind === "categorical") return st.values[p[st.property]] || null;
+        return st.color;
+    }
+    function legendFor(item) {
+        const st = item.properties["gaia:style"] || {}, t = item.properties.title;
+        if (st.kind === "choropleth") {
+            const b = st.breaks, u = st.unit || "", f = x => (u.startsWith("$") ? "$" : "") + money(x) + (u === "$/yr" ? "/yr" : "");
+            const lab = st.colors.map((c, i) => i === 0 ? `< ${f(b[0])}` : i === b.length ? `≥ ${f(b[i-1])}` : `${f(b[i-1])} to ${f(b[i])}`);
+            return `<b>${esc(t)}</b>` + st.colors.map((c, i) => `<div class="row"><span class="sw" style="background:${c}"></span>${lab[i]}</div>`).join("");
+        }
+        if (st.kind === "categorical")
+            return `<b>${esc(t)}</b>` + Object.entries(st.values).map(([k, c]) =>
+                `<div class="row"><span class="sw" style="background:${c}"></span>${esc((st.labels||{})[k] || k)}</div>`).join("");
+        return "";
+    }
+    function refreshLegend() {
+        const html = active.map(a => legendFor(a.item)).filter(Boolean);
+        document.getElementById("legend").innerHTML = html.slice(-2).join("<div style='height:6px'></div>");
     }
 
     // ---- one STAC item → one Leaflet layer ----
-    function layerFor(item, row) {
+    function layerFor(item, row, project) {
         const P = item.properties, st = P["gaia:style"] || {};
         const links = item.links || [];
         const xyz = links.find(l => l.rel === "xyz"), wms = links.find(l => l.rel === "wms");
         if (xyz) return L.tileLayer(xyz.href, { opacity:0.7, maxZoom:19, attribution:xyz.title });
         if (wms) return L.tileLayer.wms(wms.href, Object.assign({ layers:wms["wms:layers"].join(","), format:"image/png",
-                          transparent:true, opacity:0.8 }, wms["wms:dimensions"] || {}));
+                          transparent:true, opacity:0.75 }, wms["wms:dimensions"] || {}));
         const a = item.assets.data;
         if (a.type === COG) {
             const r = (P.renders || {}).default || {};
@@ -168,72 +221,40 @@
             if (r.nodata) q.set("nodata", r.nodata);
             return L.tileLayer(`${TITILER}?${q}`, { opacity:0.7, maxNativeZoom:(r.minmax_zoom||[0,18])[1], maxZoom:19 });
         }
+        const radius = p => { if (st.kind !== "events") return st.radius || 4;
+            const v = p[st.size_by] ?? 1;
+            const r = st.size_scale === "sqrt" ? Math.sqrt(Math.max(v, 0)) * (st.size_k || 1) : (v - (st.size_offset || 0)) * 3;
+            return Math.max(3, Math.min(18, r)); };
         const g = L.geoJSON(null, {
             pointToLayer: (f, ll) => {
-                if (st.kind === "events") { const m = (f.properties[st.size_by] ?? 1) - (st.size_offset || 0);
-                    return L.circleMarker(ll, { radius:Math.max(3, Math.min(18, m*3)), color:"#333", weight:0.5, fillColor:st.color, fillOpacity:0.8 }); }
-                if (st.kind === "markers") return L.circleMarker(ll, { radius:5, color:"#222", weight:0.6, fillColor:st.color, fillOpacity:0.85 });
-                return L.circleMarker(ll, { radius:4, color:st.color, weight:1, fillColor:st.color, fillOpacity:0.7 });
+                const c = fillFor(st, f.properties) || st.color || "#888";
+                if (st.kind === "events") return L.circleMarker(ll, { radius:radius(f.properties), color:"#333", weight:0.5, fillColor:c, fillOpacity:0.8 });
+                if (st.kind === "markers" || st.kind === "categorical") return L.circleMarker(ll, { radius:radius(f.properties), color:"#222", weight:0.5, fillColor:c, fillOpacity:0.9 });
+                return L.circleMarker(ll, { radius:4, color:c, weight:1, fillColor:c, fillOpacity:0.7 });
             },
-            style: f => f.geometry.type === "Point" ? {} :
-                ({ color:st.color, weight:st.weight ?? 1.5, fill:st.fill ?? true, fillOpacity:st.fillOpacity ?? 0.1 }),
-            onEachFeature: (f, l) => l.bindPopup(popupHtml(f.properties || {}), { maxWidth:340, minWidth:220 }),
+            style: f => {
+                if (f.geometry.type === "Point") return {};
+                const fill = fillFor(st, f.properties);
+                if (st.kind === "choropleth" || st.kind === "categorical")
+                    return { color:"#fff", weight:0.3, fillColor:fill || "transparent", fillOpacity:fill ? (st.fillOpacity ?? 0.6) : 0 };
+                return { color:st.color, weight:st.weight ?? 1.5, dashArray:st.dash, fill:st.fill ?? (st.kind !== "lines"), fillOpacity:st.fillOpacity ?? 0.1 };
+            },
+            onEachFeature: (f, l) => l.bindPopup(() => popupHtml(f.properties || {}, project), { maxWidth:340, minWidth:220 }),
         });
-        getJSON(a.href).then(d => { g.addData(d); row.querySelector("small").textContent = `${(d.features||[]).length.toLocaleString()} features`; })
-            .catch(() => { row.querySelector("small").textContent = "failed to load"; });
+        const small = row.querySelector("small"), base = small.textContent;
+        small.textContent = "loading…";
+        getJSON(a.href).then(d => { g.addData(d); small.textContent = `${(d.features||[]).length.toLocaleString()} features · ${base}`; })
+            .catch(() => { small.textContent = "failed to load"; });
         return g;
     }
 
-    // ---- overview: one footprint per collection ----
-    let collections = [];
-    function overview() {
-        clearProject();
-        document.getElementById("kicker").textContent = "GAIA projects";
-        document.getElementById("title").textContent = "Where our data live";
-        document.getElementById("intro").textContent = "Each project publishes a STAC collection. Pick one to load its layers.";
-        document.getElementById("actions").innerHTML = `<a href="stac/catalog.json" target="_blank">STAC catalog ↗</a>`;
-        footprints = L.featureGroup(collections.map(c => {
-            const [w, s, e, n] = c.extent.spatial.bbox[0];
-            const small = (e - w) < 1;   // a footprint of a few km vanishes at regional zoom: draw a marker
-            return (small ? L.circleMarker([(s + n) / 2, (w + e) / 2], { radius:8, color:"#4b2e83", weight:2, fillColor:"#6d5bd0", fillOpacity:0.9 })
-                          : L.rectangle([[s, w], [n, e]], { color:"#4b2e83", weight:2, fillColor:"#6d5bd0", fillOpacity:0.12 }))
-                .bindTooltip(c.title, { permanent:true, direction:small ? "right" : "center", offset:small ? [10, 0] : [0, 0], className:"fp-label" })
-                .on("click", () => openProject(c.id));
-        })).addTo(map);
-        map.setMaxBounds(null); map.fitBounds(footprints.getBounds(), { padding:[30, 30] });
-        markActive("all"); history.replaceState(null, "", location.pathname);
-    }
-    function clearProject() {
-        current.forEach(l => map.removeLayer(l)); current = [];
-        if (footprints) { map.removeLayer(footprints); footprints = null; }
-        document.getElementById("menu").innerHTML = ""; document.getElementById("layers-wrap").hidden = true;
-    }
-
-    // ---- one project: menu built from its items ----
-    async function openProject(id) {
-        const c = collections.find(x => x.id === id); if (!c) return overview();
-        clearProject(); markActive(id);
-        history.replaceState(null, "", `?project=${encodeURIComponent(id)}`);
-        document.getElementById("kicker").textContent = "Project";
-        document.getElementById("title").textContent = c.title;
-        document.getElementById("intro").textContent = c.description;
-        const alt = c.links.find(l => l.rel === "alternate"), via = c.links.find(l => l.rel === "via");
-        document.getElementById("actions").innerHTML =
-            (alt ? `<a class="primary" href="${esc(alt.href)}" target="_blank" rel="noopener">Open ${esc(alt.title)} ↗</a>` : "") +
-            `<a href="${esc(c._href)}" target="_blank">STAC collection ↗</a>` +
-            (via && !alt ? `<a href="${esc(via.href)}" target="_blank" rel="noopener">${esc(via.title)} ↗</a>` : "");
-        const [w, s, e, n] = c.extent.spatial.bbox[0];
-        map.setMaxBounds(null);
-        map.setView(c["gaia:view"].center, c["gaia:view"].zoom);
-        map.setMaxBounds([[s - 2, w - 2], [n + 2, e + 2]]);
-        const items = await Promise.all(c.links.filter(l => l.rel === "item").map(l => {
-            const u = abs(l.href, c._href); return getJSON(u).then(it => (rebase(it, u), it)); }));
-        // group → subgroup → items, in catalog order
+    // ---- sidebar menu: group → subgroup → items ----
+    function renderMenu(items, { project = null, honorDefaults = true, openFirst = true } = {}) {
         const groups = new Map();
         items.forEach(it => { const g = it.properties["gaia:group"], sg = it.properties["gaia:subgroup"];
             if (!groups.has(g)) groups.set(g, new Map()); const m = groups.get(g);
             if (!m.has(sg)) m.set(sg, []); m.get(sg).push(it); });
-        const menu = document.getElementById("menu"); let first = true;
+        const menu = document.getElementById("menu"); let first = openFirst;
         for (const [g, subs] of groups) {
             const box = document.createElement("div"); box.className = "group" + (first ? " open" : ""); first = false;
             box.innerHTML = `<button class="ghead"><span class="gtitle">${esc(g)}</span><span class="chev">▶</span></button><div class="gbody"></div>`;
@@ -241,28 +262,102 @@
             const body = box.querySelector(".gbody");
             for (const [sg, its] of subs) {
                 body.insertAdjacentHTML("beforeend", `<div class="subhead">${esc(sg)}</div>`);
-                its.forEach(it => body.appendChild(row(it)));
+                its.forEach(it => body.appendChild(row(it, project, honorDefaults)));
             }
             menu.appendChild(box);
         }
-        document.getElementById("layers-wrap").hidden = false;
     }
-    function rebase(it, base) { Object.values(it.assets || {}).forEach(a => a.href = abs(a.href, base)); }
-    function row(it) {
+    const wantOn = new Set((new URLSearchParams(location.search).get("on") || "").split(",").filter(Boolean));
+    function row(it, project, honorDefaults) {
         const P = it.properties, st = P["gaia:style"] || {}, off = P["gaia:status"];
-        const ras = !(it.assets && it.assets.data && it.assets.data.type.includes("json"));
+        const ras = !(it.assets && it.assets.data && it.assets.data.type.includes("json")) || st.kind === "choropleth";
+        const swatch = st.colors ? st.colors[3] : st.values ? Object.values(st.values)[2] : st.color;
         const b = document.createElement("button");
         b.className = "item" + (ras ? " ras" : "") + (off ? " disabled" : "");
-        b.innerHTML = `<span class="dot" style="background:${st.color || 'rgba(195,184,240,0.5)'}"></span>
+        b.innerHTML = `<span class="dot" style="background:${swatch || 'rgba(195,184,240,0.5)'}"></span>
             <span class="ilabel">${esc(P.title)}<small>${esc(off || (P.providers ? P.providers[0].name : ""))}</small></span><span class="chk"></span>`;
         if (off) return b;
         let layer = null;
         const set = on => { b.classList.toggle("on", on);
-            if (on) { layer = layer || layerFor(it, b); layer.addTo(map); current.push(layer); }
-            else if (layer) map.removeLayer(layer); };
+            if (on) { layer = layer || layerFor(it, b, project); layer.addTo(map); active.push({ item:it, layer }); }
+            else if (layer) { map.removeLayer(layer); active = active.filter(a => a.layer !== layer); }
+            refreshLegend(); };
         b.onclick = () => set(!b.classList.contains("on"));
-        if (P["gaia:on"]) set(true);
+        if (wantOn.size ? wantOn.has(it.id) : (honorDefaults && P["gaia:on"])) set(true);
         return b;
+    }
+    async function loadItems(c) {
+        if (!c._items) c._items = await Promise.all(c.links.filter(l => l.rel === "item").map(l => {
+            const u = abs(l.href, c._href);
+            return getJSON(u).then(it => { it = structuredClone(it);
+                Object.values(it.assets || {}).forEach(a => a.href = abs(a.href, u)); return it; }); }));
+        return c._items;
+    }
+    function clearAll() {
+        active.forEach(a => map.removeLayer(a.layer)); active = []; refreshLegend();
+        if (footprints) { map.removeLayer(footprints); footprints = null; }
+        map.closePopup(); document.getElementById("menu").innerHTML = "";
+    }
+
+    // ---- overview: project footprints (click → card with 3D links) + exposure layers ----
+    function cardHtml(c) {
+        const n = c.links.filter(l => l.rel === "item").length;
+        return `<div class="card"><div class="pop-title">${esc(c.title)}</div><p>${esc(c.description)}</p>
+            <div class="meta">${n} layers in its STAC collection</div>
+            <div class="pop-3d">${links3d(c)}<button data-open="${esc(c.id)}">Show its 2D layers here</button></div></div>`;
+    }
+    async function overview() {
+        clearAll(); currentProject = null; markActive("all");
+        document.getElementById("kicker").textContent = "GAIA projects";
+        document.getElementById("title").textContent = "Where our data live";
+        document.getElementById("intro").textContent = OVERVIEW_INTRO;
+        document.getElementById("actions").innerHTML = `<a href="stac/catalog.json" target="_blank">STAC catalog ↗</a>`;
+        // Rectangles are outline-only (not clickable) so the exposure layers under them stay clickable;
+        // the project's label (and Rainier's small marker) opens the card.
+        // Each label hangs off its footprint's north-west corner, so overlapping footprints keep separate labels.
+        const byId = {}, parts = [];
+        projects.forEach(c => {
+            const [w, s, e, n] = c.extent.spatial.bbox[0];
+            const small = (e - w) < 1;   // a footprint of a few km vanishes at regional zoom: draw a marker
+            if (!small) parts.push(L.rectangle([[s, w], [n, e]], { color:"#4b2e83", weight:2, dashArray:"6 4", fill:false, interactive:false }));
+            const ne = (c["gaia:view"] || {}).label === "ne";   // optional per-collection hint when corners collide
+            const anchor = small ? L.circleMarker([(s + n) / 2, (w + e) / 2], { radius:8, color:"#4b2e83", weight:2, fillColor:"#6d5bd0", fillOpacity:0.9 })
+                                 : L.circleMarker([n, ne ? e : w], { radius:1, opacity:0, fillOpacity:0, interactive:false });
+            anchor.bindTooltip(`${esc(c.title)} ▸`, { permanent:true, interactive:true, direction:"right",
+                                                     offset:small ? [10, 0] : [2, 12], className:"fp-label" })
+                  .bindPopup(cardHtml(c), { maxWidth:300, minWidth:240, autoPanPadding:[20, 20] });
+            parts.push(anchor); byId[c.id] = anchor;
+        });
+        footprints = L.featureGroup(parts).addTo(map);
+        Object.values(byId).forEach(l => L.DomEvent.on(l.getTooltip().getElement(), "click", ev => { L.DomEvent.stop(ev); l.openPopup(); }));
+        map.setMaxBounds(null); map.fitBounds(footprints.getBounds(), { padding:[30, 30], animate:false });
+        const card = new URLSearchParams(location.search).get("card");
+        if (byId[card]) setTimeout(() => byId[card].openPopup(), 300);
+        history.replaceState(null, "", location.pathname + (wantOn.size ? `?on=${[...wantOn].join(",")}` : ""));
+        if (context) renderMenu(await loadItems(context), { honorDefaults:true });
+    }
+    map.on("popupopen", e => {
+        const btn = e.popup.getElement().querySelector("button[data-open]");
+        if (btn) btn.onclick = () => openProject(btn.dataset.open);
+    });
+
+    // ---- one project: its layers, then the shared exposure layers (off by default) ----
+    async function openProject(id) {
+        const c = projects.find(x => x.id === id); if (!c) return overview();
+        clearAll(); currentProject = c; markActive(id);
+        history.replaceState(null, "", `?project=${encodeURIComponent(id)}` + (wantOn.size ? `&on=${[...wantOn].join(",")}` : ""));
+        document.getElementById("kicker").textContent = "Project";
+        document.getElementById("title").textContent = c.title;
+        document.getElementById("intro").textContent = c.description;
+        document.getElementById("actions").innerHTML =
+            alternates(c).map(l => `<a class="primary" href="${esc(l.href)}" target="_blank" rel="noopener">Open ${esc(l.title)} ↗</a>`).join("") +
+            `<a href="${esc(c._href)}" target="_blank">STAC collection ↗</a>`;
+        const [w, s, e, n] = c.extent.spatial.bbox[0];
+        map.setMaxBounds(null);
+        map.setView(c["gaia:view"].center, c["gaia:view"].zoom);
+        map.setMaxBounds([[s - 2, w - 2], [n + 2, e + 2]]);
+        renderMenu(await loadItems(c), { project:c });
+        if (context) renderMenu(await loadItems(context), { honorDefaults:false, openFirst:false });
     }
     function markActive(id) {
         document.querySelectorAll("#projects button").forEach(b => b.classList.toggle("on", b.dataset.id === id));
@@ -271,11 +366,13 @@
     // ---- boot: read the root catalog, list its children ----
     (async () => {
         const root = await getJSON(ROOT);
-        collections = await Promise.all(root.links.filter(l => l.rel === "child").map(async l => {
-            const href = abs(l.href, ROOT); const c = await getJSON(href); c._href = href; return c; }));
+        const cols = await Promise.all(root.links.filter(l => l.rel === "child").map(async l => {
+            const href = abs(l.href, ROOT); const c = structuredClone(await getJSON(href)); c._href = href; return c; }));
+        projects = cols.filter(c => c["gaia:role"] !== "context");
+        context = cols.find(c => c["gaia:role"] === "context") || null;
         const box = document.getElementById("projects");
-        box.innerHTML = `<button data-id="all">All projects <small>${collections.length} collections</small></button>` +
-            collections.map(c => `<button data-id="${esc(c.id)}">${esc(c.title)} <small>${c.links.filter(l => l.rel === "item").length} layers</small></button>`).join("");
+        box.innerHTML = `<button data-id="all">All projects <small>${projects.length} collections</small></button>` +
+            projects.map(c => `<button data-id="${esc(c.id)}">${esc(c.title)} <small>${alternates(c).length ? "2D + 3D" : "2D"}</small></button>`).join("");
         box.onclick = e => { const b = e.target.closest("button"); if (!b) return; b.dataset.id === "all" ? overview() : openProject(b.dataset.id); };
         const want = new URLSearchParams(location.search).get("project");
         want ? openProject(want) : overview();

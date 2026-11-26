@@ -24,9 +24,27 @@
   },
   {
    "rel": "child",
+   "href": "./coszo/collection.json",
+   "type": "application/json",
+   "title": "Cascadia Offshore Sensor Atlas"
+  },
+  {
+   "rel": "child",
    "href": "./mt-rainier/collection.json",
    "type": "application/json",
    "title": "Mount Rainier source simulations"
+  },
+  {
+   "rel": "child",
+   "href": "./peters-dome/collection.json",
+   "type": "application/json",
+   "title": "Peters Dome avalanche (Denali)"
+  },
+  {
+   "rel": "child",
+   "href": "./exposure/collection.json",
+   "type": "application/json",
+   "title": "Exposure & impact"
   }
  ]
 }

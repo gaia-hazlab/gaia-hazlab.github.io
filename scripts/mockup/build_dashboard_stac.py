@@ -8,13 +8,16 @@ website/mockups/dashboard-stac/:
   stac/<project>/<layer>/<layer>.json   one item per map layer
   data/<project>/*.geojson              layers derived here (Cascadia, Rainier only)
 
-Inputs are local copies of two public pages, passed as arguments:
+Inputs are local copies of public pages and one sibling repository, passed as arguments:
 
-  cascadia_html   https://denolle-lab.github.io/cascadia_obs_ensemble/  (Atlas built 2026-11-22)
-  rainier_index   https://denolle-lab.github.io/mt-rainier-source-simulation/gfdb/recip_1km_v1/index.json
+  cascadia_html       https://denolle-lab.github.io/cascadia_obs_ensemble/  (Atlas built 2026-11-22)
+  rainier_index       https://denolle-lab.github.io/mt-rainier-source-simulation/gfdb/recip_1km_v1/index.json
+  coszo_dir           folder with https://coszo.org/atlas/atlas/{sensors,sites}.json (bundle built 2026-11-16)
+  peters_dome_atlas   gaia-peters-dome docs/atlas/data/ (written by its scripts/build_atlas.py)
 
 Usage:
-  python scripts/mockup/build_dashboard_stac.py <cascadia_html> <rainier_index> <fetched YYYY-MM-DD>
+  python scripts/mockup/build_dashboard_stac.py <cascadia_html> <rainier_index> <coszo_dir> \
+      <peters_dome_atlas> <fetched YYYY-MM-DD>
 
 Standard library only. Rendering hints use two published STAC extensions (render, web-map-links);
 menu grouping and vector styling use `gaia:` fields, which would need their own schema if adopted.
@@ -172,7 +175,7 @@ def washington():
     ]
     col = collection(pid, "Washington DataHub", "Colocated seismic, meteorological, hydrological and remote-sensing "
                      "layers across Washington State (today's dashboard, unchanged).", B,
-                     ["2025-01-01T00:00:00Z", None], {"center": [47.4, -120.5], "zoom": 7}, items,
+                     ["2025-01-01T00:00:00Z", None], {"center": [47.4, -120.5], "zoom": 7, "label": "ne"}, items,
                      links=[{"rel": "via", "href": "https://github.com/gaia-hazlab/catalog", "type": "text/html",
                              "title": "Catalog source code"}])
     return pid, col, items, {}
@@ -266,17 +269,200 @@ def rainier(index_path, fetched):
                      [t["start"], None], {"center": [46.853, -121.76], "zoom": 11}, items,
                      links=[{"rel": "alternate", "href": "https://denolle-lab.github.io/mt-rainier-source-simulation/",
                              "type": "text/html", "title": "3D simulator"},
+                            {"rel": "alternate", "href": "https://denolle-lab.github.io/mt-rainier-digital-model/",
+                             "type": "text/html", "title": "3D Seismic Atlas"},
                             {"rel": "via", "href": "https://github.com/Denolle-Lab/mt-rainier-source-simulation",
                              "type": "text/html", "title": "Source repository"}])
     col["gaia:derived_from"] = src
     return pid, col, items, data
 
 
+# ---------------------------------------------------------------- Cascadia Offshore Sensor Atlas (COSZO)
+def coszo(sensors_path, sites_path, fetched):
+    """Snapshot of https://coszo.org/atlas/atlas/sensors.json and sites.json (bundle built 2026-11-16)."""
+    pid = "coszo"
+    S = json.loads(Path(sensors_path).read_text())["sensors"]
+    T = json.loads(Path(sites_path).read_text())["sites"]
+    located = [s for s in S if s.get("lat") is not None and s.get("lon") is not None]
+    se = feature_collection([pt(s["lon"], s["lat"], {
+        "name": s["name"], "family": s.get("family"), "type": s.get("type"), "site": s.get("location") or "",
+        "status": s.get("status") or "", "source": (s.get("sources") or [""])[0]}) for s in located])
+    si = feature_collection([pt(s["lon"], s["lat"], {
+        "name": s["name"], "region": s.get("region"), "seafloor_m": s.get("seafloor"),
+        "sensors": len(s.get("sensorIds") or [])}) for s in T if s.get("lat") is not None])
+    data = {"sensors.geojson": se, "sites.geojson": si}
+    B = bbox_of(se, pad=0.3)
+    t = dict(start=None, end=None)
+    t["start"] = "2010-01-01T00:00:00Z"
+    rel = lambda f: f"../../../data/{pid}/{f}"  # noqa: E731
+    fam = {"chemistry": "#1baf7a", "currents": "#2a78d6", "acoustic": "#b48cf2", "pressure": "#e8a33d",
+           "seismic": "#FF00BB", "fiber": "#4a4a4a"}
+    items = [
+        item(pid, "sensors", f"Sensors ({len(located)} located of {len(S)})", B, "Ocean observatory",
+             "Instruments by family", **t, assets=geojson_asset(rel("sensors.geojson"), "Sensors"), on=True,
+             style={"kind": "categorical", "property": "family", "values": fam, "radius": 4.5},
+             provider="OOI, ONC, COSZO deployments"),
+        item(pid, "sites", f"Sites ({len(si['features'])})", B, "Ocean observatory", "Instruments by family", **t,
+             assets=geojson_asset(rel("sites.geojson"), "Sites"),
+             style={"kind": "markers", "color": "#ecebe6"}),
+        item(pid, "subsurface", "Cable, DAS, faults, terrain", B, "Ocean observatory", "3D", **t,
+             disabled="3D only: open the Sensor Atlas"),
+    ]
+    col = collection(pid, "Cascadia Offshore Sensor Atlas", "Every instrument on and around the Cascadia "
+                     "offshore observatories (pressure, seismic, acoustic, currents, chemistry, fiber), "
+                     "placed on the seafloor.", B, [t["start"], None], {"center": [45.0, -126.5], "zoom": 7}, items,
+                     links=[{"rel": "alternate", "href": "https://coszo.org/atlas/", "type": "text/html",
+                             "title": "3D Sensor Atlas"}])
+    col["gaia:derived_from"] = {"source": "https://coszo.org/atlas/atlas/sensors.json", "fetched": fetched}
+    return pid, col, items, data
+
+
+# ---------------------------------------------------------------- Peters Dome (Alaska)
+def peters_dome(atlas_data_dir, fetched):
+    """Layers exported by gaia-peters-dome scripts/build_atlas.py (docs/atlas/data/, branch atlas/prototype)."""
+    pid = "peters-dome"
+    d = Path(atlas_data_dir)
+    meta = json.loads((d / "meta.json").read_text())
+    ev = meta["event"]
+    st = json.loads((d / "stations.geojson").read_text())
+    ol = json.loads((d / "outlines.geojson").read_text())
+    seis = feature_collection([f for f in st["features"] if f["properties"]["kind"] == "seismic"])
+    infra = feature_collection([f for f in st["features"] if f["properties"]["kind"] == "infrasound"])
+    src = feature_collection([pt(ev["longitude"], ev["latitude"], {
+        "name": ev["name"], "origin_time_utc": ev["origin_time_utc"], "volume_m3": float(ev["volume_m3"]),
+        "peak_speed_m_s": ev["peak_speed_m_s"], "paper_doi": "10.1029/2025JF008577"})])
+    data = {"seismic.geojson": seis, "infrasound.geojson": infra, "outlines.geojson": ol, "event.geojson": src}
+    B = [-152.2, 62.75, -150.2, 63.55]                  # aoi/peters_dome_regional.geojson
+    t = dict(start="2023-09-14T01:50:00Z", end="2023-09-14T03:00:00Z")
+    rel = lambda f: f"../../../data/{pid}/{f}"  # noqa: E731
+    items = [
+        item(pid, "event", "Ice-rock avalanche, 2023-09-14", bbox_of(src, pad=0.02), "Event", "Source", **t,
+             assets=geojson_asset(rel("event.geojson"), "Event"), on=True,
+             style={"kind": "markers", "color": "#d6304d", "radius": 7}, provider="USGS ComCat"),
+        item(pid, "outlines", "Source and total footprint", bbox_of(ol, pad=0.01), "Event", "Source", **t,
+             assets=geojson_asset(rel("outlines.geojson"), "Outlines"), on=True,
+             style={"color": "#d6304d", "weight": 2, "fillOpacity": 0.2}, provider="USGS release 10.5066/P13WIS6X"),
+        item(pid, "seismic", f"Seismic stations ({len(seis['features'])})", bbox_of(seis), "Ground-based sensors",
+             "Within 250 km", **t, assets=geojson_asset(rel("seismic.geojson"), "Seismic"), on=True,
+             style={"kind": "points", "color": "#FF00BB"}, provider="EarthScope DMC"),
+        item(pid, "infrasound", f"Infrasound sensors ({len(infra['features'])})", bbox_of(infra),
+             "Ground-based sensors", "Within 400 km", **t, assets=geojson_asset(rel("infrasound.geojson"), "Infrasound"),
+             on=True, style={"kind": "points", "color": "#1A982F"}, provider="AK, AV arrays, IMS I53US"),
+        item(pid, "container", "SAR, optical, DEMs, glacier, geology, soil, met", B, "Container", "Zarr store", **t,
+             disabled="in data/peters_dome.zarr: open the report or the 3D Atlas"),
+    ]
+    col = collection(pid, "Peters Dome avalanche (Denali)", "The 2023 Peters Dome ice-rock avalanche: 6.1 million m³, "
+                     "over 60 m/s, recorded by 48 seismic and 31 infrasound sensors. One Zarr container staged "
+                     "with gaia-cli.", B, [t["start"], t["end"]], {"center": [63.14, -151.19], "zoom": 6}, items,
+                     links=[{"rel": "alternate", "href": "https://gaia-hazlab.github.io/gaia-peters-dome/atlas/",
+                             "type": "text/html", "title": "3D Atlas (prototype)"},
+                            {"rel": "alternate", "href": "https://gaia-hazlab.github.io/gaia-peters-dome/",
+                             "type": "text/html", "title": "event report"},
+                            {"rel": "via", "href": "https://github.com/gaia-hazlab/gaia-peters-dome",
+                             "type": "text/html", "title": "Source repository"}])
+    col["gaia:derived_from"] = {"source": "gaia-hazlab/gaia-peters-dome docs/atlas/data/ (scripts/build_atlas.py)",
+                                "store_commit": meta["provenance"]["repo_commit"], "fetched": fetched}
+    return pid, col, items, data
+
+
+# ---------------------------------------------------------------- Exposure & impact (shared 2D context)
+def arcgis_query(service, where, fields, extra=""):
+    from urllib.parse import quote
+    return (f"{service}/query?where={quote(where)}&outFields={','.join(fields)}"
+            f"&outSR=4326&geometryPrecision=4{extra}&f=geojson")
+
+
+def exposure():
+    """Who and what is exposed, in Washington. Live public services, nothing copied.
+
+    Counts checked 2026-11-26 (all under the services' 2,000-record limit, so one request each):
+    NRI 1,772 tracts; power plants 142; transmission >= 230 kV 568; bridges ADT >= 10,000 1,946;
+    rail mainline 1,906.
+    """
+    pid, B = "exposure", [-124.9, 45.5, -116.9, 49.1]
+    t = dict(start="2020-01-01T00:00:00Z", end=None)
+    nri = arcgis_query(
+        "https://services.arcgis.com/XG15cJAlne2vxtgt/arcgis/rest/services/National_Risk_Index_Census_Tracts/FeatureServer/0",
+        "STATEABBRV='WA'", ["TRACTFIPS", "COUNTY", "POPULATION", "BUILDVALUE", "AGRIVALUE", "SOVI_RATNG",
+                            "EAL_VALT", "ERQK_EALT", "LNDS_EALT", "VLCN_EALT", "WFIR_EALT", "RISK_RATNG"],
+        "&maxAllowableOffset=0.005")
+    env = "&geometry=-124.9%2C45.5%2C-116.9%2C49.1&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects"
+    heat = ["#fff1d6", "#fdc98a", "#f78f4e", "#d9502f", "#9c1f2e"]
+    plum = ["#efeaf8", "#c3b8f0", "#8f7ee0", "#5b43b5", "#2a1a4f"]
+    fema = "FEMA National Risk Index"
+
+    def tracts(lid, title, sub, prop, breaks, colors, unit, on=False):
+        return item(pid, lid, title, B, "Exposure & impact", sub, **t, assets=geojson_asset(nri, title), on=on,
+                    provider=fema, style={"kind": "choropleth", "property": prop, "breaks": breaks,
+                                          "colors": colors, "unit": unit, "fillOpacity": 0.6})
+
+    items = [
+        item(pid, "population-density", "Population density 2020", B, "Exposure & impact", "People", **t,
+             provider="NASA SEDAC GPW v4 via GIBS",
+             links=[{"rel": "wms", "href": GIBS, "type": "image/png", "title": "Population density 2020",
+                     "wms:layers": ["GPW_Population_Density_2020"], "wms:transparent": True}]),
+        item(pid, "social-vulnerability", "Social vulnerability (tract)", B, "Exposure & impact", "People", **t,
+             assets=geojson_asset(nri, "Social vulnerability"), provider=fema,
+             style={"kind": "categorical", "property": "SOVI_RATNG", "fillOpacity": 0.6,
+                    "values": {"Very Low": plum[0], "Relatively Low": plum[1], "Relatively Moderate": plum[2],
+                               "Relatively High": plum[3], "Very High": plum[4]}}),
+        tracts("building-value", "Building value (tract)", "Economy", "BUILDVALUE",
+               [6e8, 7.5e8, 9.5e8, 1.2e9], plum, "$"),
+        tracts("agriculture-value", "Agricultural value (tract)", "Economy", "AGRIVALUE",
+               [1, 5e4, 1.5e6, 2.5e7], plum, "$"),
+        tracts("eal-all", "All hazards", "Expected annual loss", "EAL_VALT",
+               [1.1e6, 1.7e6, 2.4e6, 3.6e6], heat, "$/yr", on=True),
+        tracts("eal-earthquake", "Earthquake", "Expected annual loss", "ERQK_EALT",
+               [2e5, 7e5, 1.2e6, 2.1e6], heat, "$/yr"),
+        tracts("eal-landslide", "Landslide", "Expected annual loss", "LNDS_EALT",
+               [10, 100, 1.5e3, 3e4], heat, "$/yr"),
+        tracts("eal-volcanic", "Volcanic", "Expected annual loss", "VLCN_EALT",
+               [10, 100, 1e3, 2.5e4], heat, "$/yr"),
+        tracts("eal-wildfire", "Wildfire", "Expected annual loss", "WFIR_EALT",
+               [100, 600, 2.5e3, 3.5e5], heat, "$/yr"),
+        item(pid, "power-plants", "Power plants (142)", B, "Exposure & impact", "Infrastructure", **t,
+             assets=geojson_asset(arcgis_query(
+                 "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Power_Plants_in_the_US/FeatureServer/0",
+                 "State='Washington'", ["Plant_Name", "Utility_Na", "PrimSource", "Total_MW", "County"]), "Power plants"),
+             provider="US EIA", style={"kind": "events", "color": "#f2a900",
+                                       "size_by": "Total_MW", "size_scale": "sqrt", "size_k": 0.35}),
+        item(pid, "transmission", "Transmission lines ≥ 230 kV (568)", B, "Exposure & impact", "Infrastructure", **t,
+             assets=geojson_asset(arcgis_query(
+                 "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/US_Electric_Power_Transmission_Lines/FeatureServer/0",
+                 "VOLTAGE>=230", ["OWNER", "VOLTAGE", "VOLT_CLASS", "SUB_1", "SUB_2"], env), "Transmission lines"),
+             provider="HIFLD / EIA", style={"kind": "lines", "color": "#c47f00", "weight": 1.6}),
+        item(pid, "bridges", "Bridges, ≥ 10,000 vehicles/day (1,946)", B, "Exposure & impact", "Infrastructure", **t,
+             assets=geojson_asset(arcgis_query(
+                 "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_National_Bridge_Inventory/FeatureServer/0",
+                 "STATE_CODE_001='53' AND ADT_029>=10000",
+                 ["STRUCTURE_NUMBER_008", "FACILITY_CARRIED_007", "FEATURES_DESC_006A", "YEAR_BUILT_027", "ADT_029",
+                  "BRIDGE_CONDITION"]), "Bridges"),
+             provider="FHWA National Bridge Inventory (BTS NTAD)",
+             style={"kind": "categorical", "property": "BRIDGE_CONDITION", "radius": 3.5,
+                    "values": {"G": "#3a9e5c", "F": "#e8a33d", "P": "#d6304d"},
+                    "labels": {"G": "Good", "F": "Fair", "P": "Poor"}}),
+        item(pid, "rail", "Rail mainlines (1,906 segments)", B, "Exposure & impact", "Infrastructure", **t,
+             assets=geojson_asset(arcgis_query(
+                 "https://services.arcgis.com/xOi1kZaI0eWDREZv/arcgis/rest/services/NTAD_North_American_Rail_Network_Lines/FeatureServer/0",
+                 "STATEAB='WA' AND NET='M'", ["RROWNER1", "SUBDIV", "TRACKS", "PASSNGR"]), "Rail mainlines"),
+             provider="FRA North American Rail Network (BTS NTAD)",
+             style={"kind": "lines", "color": "#4a4a4a", "weight": 1.2, "dash": "4 3"}),
+    ]
+    col = collection(pid, "Exposure & impact", "Who and what is exposed: people, building and agricultural "
+                     "value, expected annual loss by hazard, energy and transport infrastructure. Washington, "
+                     "read live from public services.", B, [t["start"], None], {"center": [47.4, -120.5], "zoom": 7},
+                     items)
+    col["gaia:role"] = "context"
+    return pid, col, items, {}
+
+
 def main():
-    cascadia_html, rainier_index, fetched = sys.argv[1:4]
+    cascadia_html, rainier_index, coszo_dir, peters_dome_atlas, fetched = sys.argv[1:6]
     for sub in ("stac", "data"):
         shutil.rmtree(ROOT / sub, ignore_errors=True)
-    projects = [washington(), cascadia(cascadia_html, fetched), rainier(rainier_index, fetched)]
+    projects = [washington(), cascadia(cascadia_html, fetched),
+                coszo(Path(coszo_dir) / "sensors.json", Path(coszo_dir) / "sites.json", fetched),
+                rainier(rainier_index, fetched), peters_dome(peters_dome_atlas, fetched), exposure()]
     root = {"type": "Catalog", "stac_version": STAC_VERSION, "id": "gaia-dashboard-mockup",
             "title": "GAIA dashboard (mockup)", "description": "One collection per project; one item per map layer.",
             "links": [{"rel": "root", "href": "./catalog.json", "type": "application/json"}]}
