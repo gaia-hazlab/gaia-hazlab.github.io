@@ -116,7 +116,7 @@
         .item.disabled:hover { background: transparent; }
 
         .basemaps { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-        .basemaps button { flex: 1 1 30%; background: rgba(255,255,255,0.05); border: 1px solid var(--line);
+        .basemaps button { flex: 1 1 20%; background: rgba(255,255,255,0.05); border: 1px solid var(--line);
             color: rgba(255,255,255,0.8); border-radius: 8px; padding: 0.4rem 0.4rem; font-size: 0.74rem;
             cursor: pointer; font-family: 'Inter'; transition: all .15s; }
         .basemaps button:hover { background: rgba(195,184,240,0.12); }
@@ -190,11 +190,10 @@
 
             <h2>Basemap</h2>
             <div class="basemaps" id="basemaps">
-                <button data-base="light" class="on">CartoDB</button>
+                <button data-base="gray" class="on">Gray</button>
                 <button data-base="imagery">Imagery</button>
                 <button data-base="topo">Topo</button>
                 <button data-base="relief">Relief</button>
-                <button data-base="gray">Gray</button>
             </div>
 
             <div class="tip"><strong>Tip:</strong> click any station or event on the map to jump to its
@@ -289,15 +288,15 @@
     // ---- Map + basemaps ----
     const map = L.map("map", { zoomControl: true, minZoom: 6 }).setView([47.4, -120.5], 7);
     map.setMaxBounds([[44.5, -126.5],[50.5, -114.5]]);
+    // CARTO basemaps stopped serving keyless tiles (every style returns an "API key required"
+    // placeholder, checked 2026-11-24), so the default is Esri's light gray canvas.
     const bases = {
-      light: L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-        { subdomains:"abcd", maxZoom:19, attribution:"© OpenStreetMap, © CARTO" }),
       imagery: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom:19, attribution:"Esri" }),
       topo: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", { maxZoom:19, attribution:"Esri" }),
       relief: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", { maxZoom:13, attribution:"Esri" }),
-      gray: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom:16, attribution:"Esri" }),
+      gray: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom:16, maxZoom:19, attribution:"Esri" }),
     };
-    let activeBase = bases.light.addTo(map);
+    let activeBase = bases.gray.addTo(map);
 
     // Measure tool — distances/areas between stations (like the catalog)
     L.control.measure({ position: "topleft", primaryLengthUnit: "kilometers", secondaryLengthUnit: "miles",
@@ -414,7 +413,7 @@
       activeBase.bringToBack();
     });
 
-    bases.light.on("load", () => document.getElementById("loading").classList.add("hidden"));
+    bases.gray.on("load", () => document.getElementById("loading").classList.add("hidden"));
     setTimeout(() => document.getElementById("loading").classList.add("hidden"), 2500);
     </script>
 </body>
