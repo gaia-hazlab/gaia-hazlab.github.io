@@ -1,0 +1,76 @@
+{
+ "type": "Collection",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "coszo",
+ "title": "Cascadia Offshore Sensor Atlas",
+ "description": "Every instrument on and around the Cascadia offshore observatories (pressure, seismic, acoustic, currents, chemistry, fiber), placed on the seafloor.",
+ "license": "other",
+ "extent": {
+  "spatial": {
+   "bbox": [
+    [
+     -130.327,
+     43.989,
+     -124.006,
+     46.263
+    ]
+   ]
+  },
+  "temporal": {
+   "interval": [
+    [
+     "2010-01-01T00:00:00Z",
+     null
+    ]
+   ]
+  }
+ },
+ "gaia:view": {
+  "center": [
+   45.0,
+   -126.5
+  ],
+  "zoom": 7
+ },
+ "links": [
+  {
+   "rel": "root",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "alternate",
+   "href": "https://coszo.org/atlas/",
+   "type": "text/html",
+   "title": "3D Sensor Atlas"
+  },
+  {
+   "rel": "item",
+   "href": "./sensors/sensors.json",
+   "type": "application/geo+json",
+   "title": "Sensors (203 located of 219)"
+  },
+  {
+   "rel": "item",
+   "href": "./sites/sites.json",
+   "type": "application/geo+json",
+   "title": "Sites (35)"
+  },
+  {
+   "rel": "item",
+   "href": "./subsurface/subsurface.json",
+   "type": "application/geo+json",
+   "title": "Cable, DAS, faults, terrain"
+  }
+ ],
+ "gaia:derived_from": {
+  "source": "https://coszo.org/atlas/atlas/sensors.json",
+  "fetched": "2026-11-26"
+ }
+}

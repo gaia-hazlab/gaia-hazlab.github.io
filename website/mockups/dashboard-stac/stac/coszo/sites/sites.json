@@ -1,0 +1,80 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "sites",
+ "collection": "coszo",
+ "bbox": [
+  -130.327,
+  43.989,
+  -124.006,
+  46.263
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -130.327,
+     43.989
+    ],
+    [
+     -124.006,
+     43.989
+    ],
+    [
+     -124.006,
+     46.263
+    ],
+    [
+     -130.327,
+     46.263
+    ],
+    [
+     -130.327,
+     43.989
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Sites (35)",
+  "datetime": null,
+  "start_datetime": "2010-01-01T00:00:00Z",
+  "end_datetime": null,
+  "gaia:group": "Ocean observatory",
+  "gaia:subgroup": "Instruments by family",
+  "gaia:on": false,
+  "gaia:style": {
+   "kind": "markers",
+   "color": "#ecebe6"
+  }
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "../../../data/coszo/sites.geojson",
+   "type": "application/geo+json",
+   "title": "Sites",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

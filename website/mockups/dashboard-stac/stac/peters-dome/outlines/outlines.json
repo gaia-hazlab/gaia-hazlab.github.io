@@ -1,0 +1,89 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "outlines",
+ "collection": "peters-dome",
+ "bbox": [
+  -151.218,
+  63.13,
+  -151.173,
+  63.179
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -151.218,
+     63.13
+    ],
+    [
+     -151.173,
+     63.13
+    ],
+    [
+     -151.173,
+     63.179
+    ],
+    [
+     -151.218,
+     63.179
+    ],
+    [
+     -151.218,
+     63.13
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Source and total footprint",
+  "datetime": null,
+  "start_datetime": "2023-09-14T01:50:00Z",
+  "end_datetime": "2023-09-14T03:00:00Z",
+  "gaia:group": "Event",
+  "gaia:subgroup": "Source",
+  "gaia:on": true,
+  "gaia:style": {
+   "color": "#d6304d",
+   "weight": 2,
+   "fillOpacity": 0.2
+  },
+  "providers": [
+   {
+    "name": "USGS release 10.5066/P13WIS6X",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "../../../data/peters-dome/outlines.geojson",
+   "type": "application/geo+json",
+   "title": "Outlines",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

@@ -1,0 +1,565 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6838,
+     44.2889
+    ]
+   },
+   "properties": {
+    "name": "O5",
+    "region": "shelf",
+    "seafloor_m": 80,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.961983,
+     44.36365
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore",
+    "region": "hydrate",
+    "seafloor_m": 619,
+    "sensors": 7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.967,
+     44.3666
+    ]
+   },
+   "properties": {
+    "name": "O4",
+    "region": "hydrate",
+    "seafloor_m": 625,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.952862,
+     44.368235
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Deep Profiler Mooring",
+    "region": "hydrate",
+    "seafloor_m": 585,
+    "sensors": 5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.953627,
+     44.369304
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Benthic Experiment Package",
+    "region": "hydrate",
+    "seafloor_m": 583,
+    "sensors": 9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.956461,
+     44.374227
+    ]
+   },
+   "properties": {
+    "name": "Oregon Offshore Cabled Shallow Profiler Mooring",
+    "region": "hydrate",
+    "seafloor_m": 574,
+    "sensors": 16
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1418,
+     44.445
+    ]
+   },
+   "properties": {
+    "name": "O3",
+    "region": "hydrate",
+    "seafloor_m": 1319,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.3616,
+     44.4512
+    ]
+   },
+   "properties": {
+    "name": "O6",
+    "region": "shelf",
+    "seafloor_m": 74,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.26365,
+     44.46655
+    ]
+   },
+   "properties": {
+    "name": "O2B",
+    "region": "hydrate",
+    "seafloor_m": 1916,
+    "sensors": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.151259,
+     44.47831
+    ]
+   },
+   "properties": {
+    "name": "Oregon Mid Slope",
+    "region": "hydrate",
+    "seafloor_m": 1256,
+    "sensors": 7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.40545,
+     44.509836
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base",
+    "region": "slope",
+    "seafloor_m": 2915,
+    "sensors": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3899,
+     44.5101
+    ]
+   },
+   "properties": {
+    "name": "Oregon Slope Base Seafloor",
+    "region": "slope",
+    "seafloor_m": 2913,
+    "sensors": 36
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1467,
+     44.5664
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge",
+    "region": "hydrate",
+    "seafloor_m": 784,
+    "sensors": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.144196,
+     44.567411
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit",
+    "region": "hydrate",
+    "seafloor_m": 790,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.14792,
+     44.569111
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit",
+    "region": "hydrate",
+    "seafloor_m": 783,
+    "sensors": 11
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.152499,
+     44.573029
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit",
+    "region": "hydrate",
+    "seafloor_m": 822,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.143917,
+     44.573195
+    ]
+   },
+   "properties": {
+    "name": "Southern Hydrate Ridge Summit",
+    "region": "hydrate",
+    "seafloor_m": 791,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.305622,
+     44.637223
+    ]
+   },
+   "properties": {
+    "name": "Oregon Shelf",
+    "region": "shelf",
+    "seafloor_m": 81,
+    "sensors": 16
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.457012,
+     44.691385
+    ]
+   },
+   "properties": {
+    "name": "Oregon Outer Shelf",
+    "region": "shelf",
+    "seafloor_m": 113,
+    "sensors": 6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.847735,
+     45.28294
+    ]
+   },
+   "properties": {
+    "name": "Oregon margin strainmeter site",
+    "region": "shelf",
+    "seafloor_m": 818,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.847985,
+     45.28467
+    ]
+   },
+   "properties": {
+    "name": "Oregon margin strainmeter site",
+    "region": "shelf",
+    "seafloor_m": 818,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.754,
+     45.8168
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base",
+    "region": "axial",
+    "seafloor_m": 2614,
+    "sensors": 34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.736393,
+     45.820222
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Base",
+    "region": "axial",
+    "seafloor_m": 2614,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978003,
+     45.925702
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount International District",
+    "region": "axial",
+    "seafloor_m": 1522,
+    "sensors": 9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9778,
+     45.9258
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount International District",
+    "region": "axial",
+    "seafloor_m": 1523,
+    "sensors": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.999235,
+     45.933555
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field, Axial Seamount",
+    "region": "axial",
+    "seafloor_m": 1532,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.013585,
+     45.93364
+    ]
+   },
+   "properties": {
+    "name": "ASHES Hydrothermal Field, Axial Seamount",
+    "region": "axial",
+    "seafloor_m": 1540,
+    "sensors": 7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.01178,
+     45.93438
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount summit caldera, NE of ASHES",
+    "region": "axial",
+    "seafloor_m": 1540,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.978545,
+     45.93607
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera",
+    "region": "axial",
+    "seafloor_m": 1517,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.973869,
+     45.939693
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera",
+    "region": "axial",
+    "seafloor_m": 1518,
+    "sensors": 4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.026578,
+     45.947008
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount summit caldera",
+    "region": "axial",
+    "seafloor_m": 1401,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9797,
+     45.949577
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Eastern Caldera",
+    "region": "axial",
+    "seafloor_m": 1513,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.009015,
+     45.954875
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount Central Caldera",
+    "region": "axial",
+    "seafloor_m": 1528,
+    "sensors": 9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0115,
+     45.958828
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount summit caldera",
+    "region": "axial",
+    "seafloor_m": 1531,
+    "sensors": 1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.991062,
+     45.96258
+    ]
+   },
+   "properties": {
+    "name": "Axial Seamount summit caldera",
+    "region": "axial",
+    "seafloor_m": 1505,
+    "sensors": 1
+   }
+  }
+ ]
+}

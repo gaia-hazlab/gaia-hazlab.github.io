@@ -1,0 +1,91 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "power-plants",
+ "collection": "exposure",
+ "bbox": [
+  -124.9,
+  45.5,
+  -116.9,
+  49.1
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -124.9,
+     45.5
+    ],
+    [
+     -116.9,
+     45.5
+    ],
+    [
+     -116.9,
+     49.1
+    ],
+    [
+     -124.9,
+     49.1
+    ],
+    [
+     -124.9,
+     45.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Power plants (142)",
+  "datetime": null,
+  "start_datetime": "2020-01-01T00:00:00Z",
+  "end_datetime": null,
+  "gaia:group": "Exposure & impact",
+  "gaia:subgroup": "Infrastructure",
+  "gaia:on": false,
+  "gaia:style": {
+   "kind": "events",
+   "color": "#f2a900",
+   "size_by": "Total_MW",
+   "size_scale": "sqrt",
+   "size_k": 0.35
+  },
+  "providers": [
+   {
+    "name": "US EIA",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Power_Plants_in_the_US/FeatureServer/0/query?where=State%3D%27Washington%27&outFields=Plant_Name,Utility_Na,PrimSource,Total_MW,County&outSR=4326&geometryPrecision=4&f=geojson",
+   "type": "application/geo+json",
+   "title": "Power plants",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

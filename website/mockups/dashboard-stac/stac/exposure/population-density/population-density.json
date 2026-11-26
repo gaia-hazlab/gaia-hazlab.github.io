@@ -1,0 +1,87 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [
+  "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+ ],
+ "id": "population-density",
+ "collection": "exposure",
+ "bbox": [
+  -124.9,
+  45.5,
+  -116.9,
+  49.1
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -124.9,
+     45.5
+    ],
+    [
+     -116.9,
+     45.5
+    ],
+    [
+     -116.9,
+     49.1
+    ],
+    [
+     -124.9,
+     49.1
+    ],
+    [
+     -124.9,
+     45.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Population density 2020",
+  "datetime": null,
+  "start_datetime": "2020-01-01T00:00:00Z",
+  "end_datetime": null,
+  "gaia:group": "Exposure & impact",
+  "gaia:subgroup": "People",
+  "gaia:on": false,
+  "providers": [
+   {
+    "name": "NASA SEDAC GPW v4 via GIBS",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "wms",
+   "href": "https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi",
+   "type": "image/png",
+   "title": "Population density 2020",
+   "wms:layers": [
+    "GPW_Population_Density_2020"
+   ],
+   "wms:transparent": true
+  }
+ ],
+ "assets": {}
+}

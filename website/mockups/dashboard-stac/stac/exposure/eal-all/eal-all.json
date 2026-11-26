@@ -1,0 +1,103 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "eal-all",
+ "collection": "exposure",
+ "bbox": [
+  -124.9,
+  45.5,
+  -116.9,
+  49.1
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -124.9,
+     45.5
+    ],
+    [
+     -116.9,
+     45.5
+    ],
+    [
+     -116.9,
+     49.1
+    ],
+    [
+     -124.9,
+     49.1
+    ],
+    [
+     -124.9,
+     45.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "All hazards",
+  "datetime": null,
+  "start_datetime": "2020-01-01T00:00:00Z",
+  "end_datetime": null,
+  "gaia:group": "Exposure & impact",
+  "gaia:subgroup": "Expected annual loss",
+  "gaia:on": true,
+  "gaia:style": {
+   "kind": "choropleth",
+   "property": "EAL_VALT",
+   "breaks": [
+    1100000.0,
+    1700000.0,
+    2400000.0,
+    3600000.0
+   ],
+   "colors": [
+    "#fff1d6",
+    "#fdc98a",
+    "#f78f4e",
+    "#d9502f",
+    "#9c1f2e"
+   ],
+   "unit": "$/yr",
+   "fillOpacity": 0.6
+  },
+  "providers": [
+   {
+    "name": "FEMA National Risk Index",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://services.arcgis.com/XG15cJAlne2vxtgt/arcgis/rest/services/National_Risk_Index_Census_Tracts/FeatureServer/0/query?where=STATEABBRV%3D%27WA%27&outFields=TRACTFIPS,COUNTY,POPULATION,BUILDVALUE,AGRIVALUE,SOVI_RATNG,EAL_VALT,ERQK_EALT,LNDS_EALT,VLCN_EALT,WFIR_EALT,RISK_RATNG&outSR=4326&geometryPrecision=4&maxAllowableOffset=0.005&f=geojson",
+   "type": "application/geo+json",
+   "title": "All hazards",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

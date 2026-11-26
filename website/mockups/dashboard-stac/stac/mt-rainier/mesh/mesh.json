@@ -1,0 +1,82 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "mesh",
+ "collection": "mt-rainier",
+ "bbox": [
+  -121.996,
+  46.674,
+  -121.523,
+  47.03
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -121.996,
+     46.674
+    ],
+    [
+     -121.523,
+     46.674
+    ],
+    [
+     -121.523,
+     47.03
+    ],
+    [
+     -121.996,
+     47.03
+    ],
+    [
+     -121.996,
+     46.674
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Simulation mesh footprint",
+  "datetime": null,
+  "start_datetime": "2026-11-05T00:40:06Z",
+  "end_datetime": null,
+  "gaia:group": "Simulation",
+  "gaia:subgroup": "Green's-function database recip_1km_v1",
+  "gaia:on": true,
+  "gaia:style": {
+   "color": "#2a1a4f",
+   "weight": 2,
+   "fillOpacity": 0.05,
+   "label": "name"
+  }
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "../../../data/mt-rainier/mesh.geojson",
+   "type": "application/geo+json",
+   "title": "Mesh",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

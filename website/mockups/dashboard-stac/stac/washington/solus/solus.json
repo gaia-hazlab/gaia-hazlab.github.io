@@ -1,0 +1,105 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [
+  "https://stac-extensions.github.io/render/v2.0.0/schema.json"
+ ],
+ "id": "solus",
+ "collection": "washington",
+ "bbox": [
+  -126.5,
+  44.5,
+  -114.5,
+  50.5
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -126.5,
+     44.5
+    ],
+    [
+     -114.5,
+     44.5
+    ],
+    [
+     -114.5,
+     50.5
+    ],
+    [
+     -126.5,
+     50.5
+    ],
+    [
+     -126.5,
+     44.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "SOLUS100 soil depth",
+  "datetime": null,
+  "start_datetime": "2025-01-01T00:00:00Z",
+  "end_datetime": "2025-12-31T23:59:59Z",
+  "gaia:group": "Spatial imagery",
+  "gaia:subgroup": "Geological",
+  "gaia:on": false,
+  "renders": {
+   "default": {
+    "title": "SOLUS100 soil depth",
+    "assets": [
+     "data"
+    ],
+    "rescale": [
+     [
+      0,
+      200
+     ]
+    ],
+    "colormap_name": "gist_earth",
+    "minmax_zoom": [
+     0,
+     11
+    ]
+   }
+  },
+  "providers": [
+   {
+    "name": "USDA SOLUS100",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://storage.googleapis.com/solus100pub/anylithicdpt_cm_p.tif",
+   "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+   "title": "SOLUS100 soil depth",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

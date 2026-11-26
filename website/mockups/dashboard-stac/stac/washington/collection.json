@@ -1,0 +1,151 @@
+{
+ "type": "Collection",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "washington",
+ "title": "Washington DataHub",
+ "description": "Colocated seismic, meteorological, hydrological and remote-sensing layers across Washington State (today's dashboard, unchanged).",
+ "license": "other",
+ "extent": {
+  "spatial": {
+   "bbox": [
+    [
+     -126.5,
+     44.5,
+     -114.5,
+     50.5
+    ]
+   ]
+  },
+  "temporal": {
+   "interval": [
+    [
+     "2025-01-01T00:00:00Z",
+     null
+    ]
+   ]
+  }
+ },
+ "gaia:view": {
+  "center": [
+   47.4,
+   -120.5
+  ],
+  "zoom": 7,
+  "label": "ne"
+ },
+ "links": [
+  {
+   "rel": "root",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "via",
+   "href": "https://github.com/gaia-hazlab/catalog",
+   "type": "text/html",
+   "title": "Catalog source code"
+  },
+  {
+   "rel": "item",
+   "href": "./seismometers/seismometers.json",
+   "type": "application/geo+json",
+   "title": "Seismometers"
+  },
+  {
+   "rel": "item",
+   "href": "./infrasound/infrasound.json",
+   "type": "application/geo+json",
+   "title": "Infrasound"
+  },
+  {
+   "rel": "item",
+   "href": "./gnss/gnss.json",
+   "type": "application/geo+json",
+   "title": "GNSS / GPS"
+  },
+  {
+   "rel": "item",
+   "href": "./precip/precip.json",
+   "type": "application/geo+json",
+   "title": "Precipitation"
+  },
+  {
+   "rel": "item",
+   "href": "./snotel/snotel.json",
+   "type": "application/geo+json",
+   "title": "SNOTEL (snow)"
+  },
+  {
+   "rel": "item",
+   "href": "./streamflow/streamflow.json",
+   "type": "application/geo+json",
+   "title": "Streamflow gauges"
+  },
+  {
+   "rel": "item",
+   "href": "./stageiv/stageiv.json",
+   "type": "application/geo+json",
+   "title": "Stage IV Precip (Dec 2025)"
+  },
+  {
+   "rel": "item",
+   "href": "./erm/erm.json",
+   "type": "application/geo+json",
+   "title": "Max ERM (Dec 2025)"
+  },
+  {
+   "rel": "item",
+   "href": "./solus/solus.json",
+   "type": "application/geo+json",
+   "title": "SOLUS100 soil depth"
+  },
+  {
+   "rel": "item",
+   "href": "./vs30/vs30.json",
+   "type": "application/geo+json",
+   "title": "USGS Vs30 mosaic"
+  },
+  {
+   "rel": "item",
+   "href": "./aster/aster.json",
+   "type": "application/geo+json",
+   "title": "ASTER GDEM color index"
+  },
+  {
+   "rel": "item",
+   "href": "./opera/opera.json",
+   "type": "application/geo+json",
+   "title": "OPERA disturbance 2025"
+  },
+  {
+   "rel": "item",
+   "href": "./eq/eq.json",
+   "type": "application/geo+json",
+   "title": "2025 earthquake catalog"
+  },
+  {
+   "rel": "item",
+   "href": "./wildfire/wildfire.json",
+   "type": "application/geo+json",
+   "title": "WA DNR wildfires (\u22652023)"
+  },
+  {
+   "rel": "item",
+   "href": "./landslides/landslides.json",
+   "type": "application/geo+json",
+   "title": "WA DNR landslides WY2025"
+  },
+  {
+   "rel": "item",
+   "href": "./huc8/huc8.json",
+   "type": "application/geo+json",
+   "title": "Watershed sub-basins (HUC8)"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "container",
+ "collection": "peters-dome",
+ "bbox": [
+  -152.2,
+  62.75,
+  -150.2,
+  63.55
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -152.2,
+     62.75
+    ],
+    [
+     -150.2,
+     62.75
+    ],
+    [
+     -150.2,
+     63.55
+    ],
+    [
+     -152.2,
+     63.55
+    ],
+    [
+     -152.2,
+     62.75
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "SAR, optical, DEMs, glacier, geology, soil, met",
+  "datetime": null,
+  "start_datetime": "2023-09-14T01:50:00Z",
+  "end_datetime": "2023-09-14T03:00:00Z",
+  "gaia:group": "Container",
+  "gaia:subgroup": "Zarr store",
+  "gaia:on": false,
+  "gaia:status": "in data/peters_dome.zarr: open the report or the 3D Atlas"
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {}
+}

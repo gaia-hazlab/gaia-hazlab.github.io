@@ -1,0 +1,50 @@
+{
+ "type": "Catalog",
+ "stac_version": "1.1.0",
+ "id": "gaia-dashboard-mockup",
+ "title": "GAIA dashboard (mockup)",
+ "description": "One collection per project; one item per map layer.",
+ "links": [
+  {
+   "rel": "root",
+   "href": "./catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "child",
+   "href": "./washington/collection.json",
+   "type": "application/json",
+   "title": "Washington DataHub"
+  },
+  {
+   "rel": "child",
+   "href": "./cascadia-offshore/collection.json",
+   "type": "application/json",
+   "title": "Cascadia offshore catalog"
+  },
+  {
+   "rel": "child",
+   "href": "./coszo/collection.json",
+   "type": "application/json",
+   "title": "Cascadia Offshore Sensor Atlas"
+  },
+  {
+   "rel": "child",
+   "href": "./mt-rainier/collection.json",
+   "type": "application/json",
+   "title": "Mount Rainier source simulations"
+  },
+  {
+   "rel": "child",
+   "href": "./peters-dome/collection.json",
+   "type": "application/json",
+   "title": "Peters Dome avalanche (Denali)"
+  },
+  {
+   "rel": "child",
+   "href": "./exposure/collection.json",
+   "type": "application/json",
+   "title": "Exposure & impact"
+  }
+ ]
+}

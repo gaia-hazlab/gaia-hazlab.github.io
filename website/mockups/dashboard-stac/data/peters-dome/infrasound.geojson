@@ -1,0 +1,501 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -150.2625,
+     62.4058
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.CUT.EP",
+    "kind": "infrasound",
+    "distance_km": 95.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -152.3152,
+     63.8827
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.CHUM.EP",
+    "kind": "infrasound",
+    "distance_km": 99.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -151.5317,
+     61.98
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.SKN.EP",
+    "kind": "infrasound",
+    "distance_km": 131.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -149.0694,
+     64.5928
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.NEA2.EP",
+    "kind": "infrasound",
+    "distance_km": 192.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -150.7442,
+     65.0304
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.MLY.EP",
+    "kind": "infrasound",
+    "distance_km": 211.2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -152.1555,
+     61.2655
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.SPCP",
+    "kind": "infrasound",
+    "distance_km": 215.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -152.559,
+     61.2735
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.SPWE",
+    "kind": "infrasound",
+    "distance_km": 220.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -152.0566,
+     61.1811
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.SPU",
+    "kind": "infrasound",
+    "distance_km": 223.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.7262,
+     61.7929
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.M23K.EP",
+    "kind": "infrasound",
+    "distance_km": 233.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -149.739,
+     61.0889
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.RC01.EP",
+    "kind": "infrasound",
+    "distance_km": 241.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8662,
+     64.8591
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H4",
+    "kind": "infrasound",
+    "distance_km": 250.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8786,
+     64.868
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H5",
+    "kind": "infrasound",
+    "distance_km": 251.2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8599,
+     64.8654
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H8",
+    "kind": "infrasound",
+    "distance_km": 251.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8612,
+     64.8672
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H6",
+    "kind": "infrasound",
+    "distance_km": 251.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8567,
+     64.8662
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H7",
+    "kind": "infrasound",
+    "distance_km": 251.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8428,
+     64.8621
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H3",
+    "kind": "infrasound",
+    "distance_km": 251.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -146.9482,
+     64.4091
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.HDA.EP",
+    "kind": "infrasound",
+    "distance_km": 252.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8611,
+     64.875
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H1",
+    "kind": "infrasound",
+    "distance_km": 252.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.8383,
+     64.8724
+    ]
+   },
+   "properties": {
+    "network": "IM",
+    "station": "IM.I53H2",
+    "kind": "infrasound",
+    "distance_km": 252.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -151.1539,
+     60.7683
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.CAPN.EP",
+    "kind": "infrasound",
+    "distance_km": 264.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -148.1749,
+     61.1417
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.BATI",
+    "kind": "infrasound",
+    "distance_km": 273.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -148.1222,
+     61.1321
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.BAEI.01",
+    "kind": "infrasound",
+    "distance_km": 275.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -148.1577,
+     61.1197
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.BAIS.01",
+    "kind": "infrasound",
+    "distance_km": 275.6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -151.0711,
+     60.6409
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.KENI.01",
+    "kind": "infrasound",
+    "distance_km": 279.2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -147.4335,
+     65.1171
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.POKR.EP",
+    "kind": "infrasound",
+    "distance_km": 285.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -148.727,
+     60.7797
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.WHTR.01",
+    "kind": "infrasound",
+    "distance_km": 293.6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -152.4079,
+     60.5726
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.RDT",
+    "kind": "infrasound",
+    "distance_km": 293.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -152.6883,
+     60.5912
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.RDDF",
+    "kind": "infrasound",
+    "distance_km": 295.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -152.7453,
+     60.4536
+    ]
+   },
+   "properties": {
+    "network": "AV",
+    "station": "AV.RDSO",
+    "kind": "infrasound",
+    "distance_km": 311.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -145.1568,
+     62.3987
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.HARP.EP",
+    "kind": "infrasound",
+    "distance_km": 319.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -151.6515,
+     59.6572
+    ]
+   },
+   "properties": {
+    "network": "AK",
+    "station": "AK.HOM.EP",
+    "kind": "infrasound",
+    "distance_km": 389.5
+   }
+  }
+ ]
+}

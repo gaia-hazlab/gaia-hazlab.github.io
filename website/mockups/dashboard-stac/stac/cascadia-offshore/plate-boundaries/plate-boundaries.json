@@ -1,0 +1,82 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "plate-boundaries",
+ "collection": "cascadia-offshore",
+ "bbox": [
+  -131.227,
+  38.491,
+  -123.255,
+  51.936
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -131.227,
+     38.491
+    ],
+    [
+     -123.255,
+     38.491
+    ],
+    [
+     -123.255,
+     51.936
+    ],
+    [
+     -131.227,
+     51.936
+    ],
+    [
+     -131.227,
+     38.491
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Plate boundaries",
+  "datetime": null,
+  "start_datetime": "2010-01-01T00:00:00Z",
+  "end_datetime": "2016-12-31T23:59:59Z",
+  "gaia:group": "Structure",
+  "gaia:subgroup": "Tectonics",
+  "gaia:on": true,
+  "gaia:style": {
+   "color": "#2a1a4f",
+   "weight": 2,
+   "fill": false,
+   "label": "name"
+  }
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "../../../data/cascadia-offshore/plate-boundaries.geojson",
+   "type": "application/geo+json",
+   "title": "Plate boundaries",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

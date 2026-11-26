@@ -1,0 +1,90 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [
+  "https://stac-extensions.github.io/web-map-links/v1.2.0/schema.json"
+ ],
+ "id": "opera",
+ "collection": "washington",
+ "bbox": [
+  -126.5,
+  44.5,
+  -114.5,
+  50.5
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -126.5,
+     44.5
+    ],
+    [
+     -114.5,
+     44.5
+    ],
+    [
+     -114.5,
+     50.5
+    ],
+    [
+     -126.5,
+     50.5
+    ],
+    [
+     -126.5,
+     44.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "OPERA disturbance 2025",
+  "datetime": null,
+  "start_datetime": "2025-01-01T00:00:00Z",
+  "end_datetime": "2025-12-31T23:59:59Z",
+  "gaia:group": "Spatial imagery",
+  "gaia:subgroup": "Geological",
+  "gaia:on": false,
+  "providers": [
+   {
+    "name": "NASA GIBS / OPERA",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "wms",
+   "href": "https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi",
+   "type": "image/png",
+   "title": "OPERA disturbance 2025",
+   "wms:layers": [
+    "OPERA_L3_DIST-ANN-HLS_Color_Index"
+   ],
+   "wms:transparent": true,
+   "wms:dimensions": {
+    "TIME": "2025-01-01"
+   }
+  }
+ ],
+ "assets": {}
+}

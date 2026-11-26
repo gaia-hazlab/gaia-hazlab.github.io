@@ -1,0 +1,4559 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.8685,
+     40.2773333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71330090",
+    "time": "2010-01-04T14:24:54",
+    "depth_km": 30.0,
+    "magnitude": 4.12,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "1 km N of Myers Flat, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6925,
+     40.652
+    ]
+   },
+   "properties": {
+    "event_id": "nc71338066",
+    "time": "2010-01-10T00:27:39",
+    "depth_km": 24.0,
+    "magnitude": 6.5,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "The 2010 Eureka, California Earthquake"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.7828333,
+     40.6086667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71338171",
+    "time": "2010-01-10T02:21:39",
+    "depth_km": 11.0,
+    "magnitude": 4.41,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "44 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.632,
+     40.3086667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71338301",
+    "time": "2010-01-10T06:32:17",
+    "depth_km": 21.0,
+    "magnitude": 4.12,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "43 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.8486667,
+     40.4626667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71338851",
+    "time": "2010-01-11T06:44:37",
+    "depth_km": 11.0,
+    "magnitude": 4.05,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "51 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.889,
+     48.67
+    ]
+   },
+   "properties": {
+    "event_id": "usp000h60g",
+    "time": "2010-01-12T21:51:45",
+    "depth_km": 10.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "225 km WSW of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.9613333,
+     40.4123333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71348851",
+    "time": "2010-02-04T20:20:21",
+    "depth_km": 24.0,
+    "magnitude": 5.88,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "61 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.7333333,
+     40.3198333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71359410",
+    "time": "2010-03-06T08:46:23",
+    "depth_km": 18.0,
+    "magnitude": 4.53,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "48 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.355,
+     44.218
+    ]
+   },
+   "properties": {
+    "event_id": "usp000h99x",
+    "time": "2010-03-13T04:53:39",
+    "depth_km": 12.0,
+    "magnitude": 5.0,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.7648333,
+     40.2703333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71382461",
+    "time": "2010-04-15T08:36:06",
+    "depth_km": 24.0,
+    "magnitude": 4.52,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "131 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.467,
+     44.362
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hcf0",
+    "time": "2010-05-07T17:46:13",
+    "depth_km": 14.9,
+    "magnitude": 5.5,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.523,
+     44.403
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hcf5",
+    "time": "2010-05-07T18:41:54",
+    "depth_km": 12.6,
+    "magnitude": 5.1,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.481,
+     44.416
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hcff",
+    "time": "2010-05-07T20:02:18",
+    "depth_km": 12.6,
+    "magnitude": 5.0,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.499,
+     42.263
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hcpr",
+    "time": "2010-05-13T05:35:12",
+    "depth_km": 14.7,
+    "magnitude": 5.3,
+    "source": "us Mwc",
+    "place": "171 km W of Gold Beach, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.4646667,
+     40.3953333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71409946",
+    "time": "2010-06-05T09:05:26",
+    "depth_km": 11.0,
+    "magnitude": 4.25,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "103 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -120.743,
+     46.1088333
+    ]
+   },
+   "properties": {
+    "event_id": "uw10803078",
+    "time": "2010-06-17T14:23:24",
+    "depth_km": 8.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "30 km S of White Swan, Washington"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.36,
+     50.42
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hev5",
+    "time": "2010-07-03T13:14:44",
+    "depth_km": 22.0,
+    "magnitude": 4.9,
+    "source": "us Mwc",
+    "place": "232 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.047,
+     49.46
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hfz8",
+    "time": "2010-07-19T17:15:04",
+    "depth_km": 15.1,
+    "magnitude": 5.4,
+    "source": "us Mwc",
+    "place": "246 km WSW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.932,
+     50.178
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hgut",
+    "time": "2010-07-26T08:43:25",
+    "depth_km": 8.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "207 km WSW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.815,
+     43.756
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hh0t",
+    "time": "2010-07-28T16:12:05",
+    "depth_km": 12.0,
+    "magnitude": 5.2,
+    "source": "us Mwc",
+    "place": "129 km WNW of Barview, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1471667,
+     40.7711667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71442000",
+    "time": "2010-08-16T12:05:17",
+    "depth_km": 14.0,
+    "magnitude": 4.37,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "77 km WNW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.948,
+     50.839
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hjb7",
+    "time": "2010-08-17T11:37:57",
+    "depth_km": 14.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "203 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.104,
+     44.665
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hkz4",
+    "time": "2010-09-20T04:05:06",
+    "depth_km": 17.6,
+    "magnitude": 4.8,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.827,
+     44.614
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hmfz",
+    "time": "2010-10-02T07:51:52",
+    "depth_km": 28.0,
+    "magnitude": 4.8,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.966,
+     49.483
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hmj6",
+    "time": "2010-10-03T15:25:57",
+    "depth_km": 9.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "182 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.086,
+     49.447
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hmk3",
+    "time": "2010-10-04T05:56:16",
+    "depth_km": 19.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "191 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.315,
+     49.357
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hmkr",
+    "time": "2010-10-04T14:51:54",
+    "depth_km": 16.1,
+    "magnitude": 5.3,
+    "source": "us Mwc",
+    "place": "210 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.8036667,
+     40.9511667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71464510",
+    "time": "2010-10-05T15:15:27",
+    "depth_km": 24.0,
+    "magnitude": 4.39,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "54 km WNW of Samoa, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.303,
+     50.519
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hmxx",
+    "time": "2010-10-10T08:35:35",
+    "depth_km": 9.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "228 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.444,
+     50.712
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hmys",
+    "time": "2010-10-11T01:21:05",
+    "depth_km": 12.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "237 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.038,
+     41.936
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hn20",
+    "time": "2010-10-13T10:50:23",
+    "depth_km": 20.9,
+    "magnitude": 4.8,
+    "source": "us Mwc",
+    "place": "221 km W of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.146,
+     47.89
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hppt",
+    "time": "2010-11-15T12:19:17",
+    "depth_km": 10.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "277 km WSW of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.432,
+     46.556
+    ]
+   },
+   "properties": {
+    "event_id": "uw10807528",
+    "time": "2010-11-16T15:51:08",
+    "depth_km": 15.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "5 km NE of Mossyrock, Washington"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.23,
+     43.571
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hpyc",
+    "time": "2010-11-21T23:46:35",
+    "depth_km": 21.0,
+    "magnitude": 5.0,
+    "source": "us Mwc",
+    "place": "234 km WNW of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.255,
+     50.399
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hsk7",
+    "time": "2011-01-04T20:20:01",
+    "depth_km": 9.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "225 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.424,
+     50.624
+    ]
+   },
+   "properties": {
+    "event_id": "usp000htt5",
+    "time": "2011-01-29T07:58:28",
+    "depth_km": 7.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "236 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.298,
+     50.748
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hu0k",
+    "time": "2011-02-03T07:52:17",
+    "depth_km": 16.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "227 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.731,
+     43.719
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hu7s",
+    "time": "2011-02-08T07:44:36",
+    "depth_km": 15.6,
+    "magnitude": 4.8,
+    "source": "us Mwc",
+    "place": "277 km WNW of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.313,
+     43.541
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hu8d",
+    "time": "2011-02-08T22:02:01",
+    "depth_km": 18.3,
+    "magnitude": 5.4,
+    "source": "us Mwc",
+    "place": "240 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.2136667,
+     46.2816667
+    ]
+   },
+   "properties": {
+    "event_id": "uw10816153",
+    "time": "2011-02-14T18:35:25",
+    "depth_km": 7.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "31 km S of Morton, Washington"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.9488333,
+     39.4993333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71527390",
+    "time": "2011-02-23T04:49:41",
+    "depth_km": 14.0,
+    "magnitude": 4.29,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "24 km NE of Potter Valley, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.9565,
+     39.4938333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71048354",
+    "time": "2011-02-23T04:50:14",
+    "depth_km": 14.0,
+    "magnitude": 4.21,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "23 km NE of Potter Valley, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.23,
+     50.243
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hv9a",
+    "time": "2011-03-03T03:54:59",
+    "depth_km": 5.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "226 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.363,
+     40.4038333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71538646",
+    "time": "2011-03-06T13:46:37",
+    "depth_km": 24.0,
+    "magnitude": 4.54,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "95 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.376,
+     44.373
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hvf1",
+    "time": "2011-03-06T21:35:47",
+    "depth_km": 12.0,
+    "magnitude": 5.0,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.432,
+     44.289
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hvf2",
+    "time": "2011-03-06T22:23:15",
+    "depth_km": 12.9,
+    "magnitude": 5.0,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.446,
+     44.318
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hvg9",
+    "time": "2011-03-08T01:26:58",
+    "depth_km": 12.0,
+    "magnitude": 5.1,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.621,
+     49.665
+    ]
+   },
+   "properties": {
+    "event_id": "usp000hy0e",
+    "time": "2011-03-20T04:20:35",
+    "depth_km": 7.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "150 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.034,
+     43.525
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j20v",
+    "time": "2011-05-22T07:21:38",
+    "depth_km": 19.9,
+    "magnitude": 4.9,
+    "source": "us Mwc",
+    "place": "217 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.997,
+     41.88
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j3cc",
+    "time": "2011-06-18T10:49:11",
+    "depth_km": 12.0,
+    "magnitude": 5.2,
+    "source": "us Mwc",
+    "place": "219 km WSW of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.909,
+     44.13
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j60r",
+    "time": "2011-08-05T15:10:03",
+    "depth_km": 17.4,
+    "magnitude": 4.8,
+    "source": "us Mwc",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1661667,
+     41.027
+    ]
+   },
+   "properties": {
+    "event_id": "nc71619485",
+    "time": "2011-08-14T19:27:06",
+    "depth_km": 18.0,
+    "magnitude": 4.1,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "85 km WNW of Samoa, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.27,
+     43.558
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j7bq",
+    "time": "2011-09-01T02:06:23",
+    "depth_km": 23.9,
+    "magnitude": 4.8,
+    "source": "us Mwc",
+    "place": "237 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.893,
+     49.535
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j7ur",
+    "time": "2011-09-09T19:41:34",
+    "depth_km": 19.0,
+    "magnitude": 6.4,
+    "source": "us Mww",
+    "place": "66 km SW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.345,
+     50.58
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j7ye",
+    "time": "2011-09-12T09:37:25",
+    "depth_km": 12.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "230 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.194,
+     49.421
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j82x",
+    "time": "2011-09-15T11:02:09",
+    "depth_km": 14.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "90 km SW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.355,
+     48.928
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j8bm",
+    "time": "2011-09-21T04:36:58",
+    "depth_km": 18.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "246 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.36,
+     50.49
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j95r",
+    "time": "2011-10-10T05:39:23",
+    "depth_km": 8.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "232 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.135,
+     43.462
+    ]
+   },
+   "properties": {
+    "event_id": "usp000j99k",
+    "time": "2011-10-13T04:14:00",
+    "depth_km": 13.7,
+    "magnitude": 5.6,
+    "source": "us Mwc",
+    "place": "224 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -120.4715,
+     39.6055
+    ]
+   },
+   "properties": {
+    "event_id": "nc71671056",
+    "time": "2011-10-27T06:37:09",
+    "depth_km": 14.0,
+    "magnitude": 4.73,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "3 km WSW of Sattley, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6075,
+     48.4693333
+    ]
+   },
+   "properties": {
+    "event_id": "uw10831488",
+    "time": "2011-11-18T13:09:00",
+    "depth_km": 13.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "8 km WSW of Riverside, Washington"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.13,
+     50.45
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jban",
+    "time": "2011-11-23T23:02:41",
+    "depth_km": 21.4,
+    "magnitude": 5.0,
+    "source": "us Mwc",
+    "place": "216 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.5871667,
+     40.4148333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71693701",
+    "time": "2011-12-08T05:19:12",
+    "depth_km": 14.0,
+    "magnitude": 4.02,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "113 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.7825,
+     40.528
+    ]
+   },
+   "properties": {
+    "event_id": "nc71718846",
+    "time": "2012-01-17T09:55:00",
+    "depth_km": 24.0,
+    "magnitude": 4.28,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "44 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.906,
+     48.887
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jege",
+    "time": "2012-02-04T20:05:31",
+    "depth_km": 15.0,
+    "magnitude": 5.6,
+    "source": "us Mww",
+    "place": "149 km WSW of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.64,
+     48.939
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jegf",
+    "time": "2012-02-04T20:08:57",
+    "depth_km": 4.0,
+    "magnitude": 4.8,
+    "source": "us Mwr",
+    "place": "128 km WSW of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.7903333,
+     41.1431667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71734741",
+    "time": "2012-02-13T21:07:02",
+    "depth_km": 33.0,
+    "magnitude": 5.6,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "26 km NNW of Willow Creek, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.518,
+     43.625
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jeyq",
+    "time": "2012-02-15T03:31:20",
+    "depth_km": 11.0,
+    "magnitude": 5.8,
+    "source": "us Mww",
+    "place": "258 km WNW of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.617,
+     49.089
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jf07",
+    "time": "2012-02-16T06:37:33",
+    "depth_km": 6.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "124 km W of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.3138333,
+     40.2795
+    ]
+   },
+   "properties": {
+    "event_id": "nc71741671",
+    "time": "2012-02-25T05:17:15",
+    "depth_km": 30.0,
+    "magnitude": 4.28,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "28 km SW of Scotia, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.201,
+     50.462
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jfmu",
+    "time": "2012-03-01T05:01:02",
+    "depth_km": 11.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "221 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.638,
+     43.584
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jhpg",
+    "time": "2012-04-11T22:41:46",
+    "depth_km": 23.9,
+    "magnitude": 6.0,
+    "source": "us Mwc",
+    "place": "266 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.4221667,
+     40.9736667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71766345",
+    "time": "2012-04-17T20:31:35",
+    "depth_km": 21.0,
+    "magnitude": 4.15,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "25 km WSW of Trinidad, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.084,
+     50.465
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jjp5",
+    "time": "2012-04-27T12:51:12",
+    "depth_km": 7.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "212 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.064,
+     50.494
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jjp6",
+    "time": "2012-04-27T12:52:42",
+    "depth_km": 13.0,
+    "magnitude": 4.9,
+    "source": "us Mwr",
+    "place": "211 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.19,
+     50.42
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jjpe",
+    "time": "2012-04-27T16:14:47",
+    "depth_km": 7.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "220 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.19,
+     50.46
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jjpf",
+    "time": "2012-04-27T16:20:13",
+    "depth_km": 5.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "220 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.108,
+     50.486
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jjpg",
+    "time": "2012-04-27T16:22:30",
+    "depth_km": 7.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "214 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.339,
+     50.566
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jjw0",
+    "time": "2012-05-01T22:53:42",
+    "depth_km": 13.0,
+    "magnitude": 4.8,
+    "source": "us Mwr",
+    "place": "230 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.214,
+     50.458
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jjx1",
+    "time": "2012-05-02T12:33:26",
+    "depth_km": 9.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "222 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.4233333,
+     40.3913333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71785981",
+    "time": "2012-05-15T10:19:33",
+    "depth_km": 24.0,
+    "magnitude": 4.08,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "100 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.256,
+     50.041
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jkwu",
+    "time": "2012-05-25T07:26:18",
+    "depth_km": 8.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "233 km WSW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.9904,
+     39.3178
+    ]
+   },
+   "properties": {
+    "event_id": "nn00380267",
+    "time": "2012-06-23T03:51:57",
+    "depth_km": 10.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "7 km NNW of Incline Village, Nevada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.949,
+     49.48
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jn9p",
+    "time": "2012-06-27T04:22:34",
+    "depth_km": 6.0,
+    "magnitude": 4.8,
+    "source": "us Mwr",
+    "place": "181 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.663,
+     50.632
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jnky",
+    "time": "2012-07-04T13:35:46",
+    "depth_km": 10.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "182 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.8041667,
+     39.4795
+    ]
+   },
+   "properties": {
+    "event_id": "nc71812891",
+    "time": "2012-07-08T12:05:48",
+    "depth_km": 8.0,
+    "magnitude": 4.42,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "1 km SW of Cleone, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.528,
+     40.3853333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71819391",
+    "time": "2012-07-21T01:52:01",
+    "depth_km": 18.0,
+    "magnitude": 5.1,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "109 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3308333,
+     40.4116667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71819471",
+    "time": "2012-07-21T06:04:21",
+    "depth_km": 5.0,
+    "magnitude": 5.19,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "92 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1966667,
+     40.7633333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71828881",
+    "time": "2012-08-09T15:24:26",
+    "depth_km": 27.0,
+    "magnitude": 4.38,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "81 km WNW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.619,
+     47.789
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jqge",
+    "time": "2012-08-19T08:07:35",
+    "depth_km": 11.0,
+    "magnitude": 5.6,
+    "source": "us Mww",
+    "place": "251 km SW of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.1856667,
+     40.4426667
+    ]
+   },
+   "properties": {
+    "event_id": "nc71842075",
+    "time": "2012-09-14T11:53:17",
+    "depth_km": 24.0,
+    "magnitude": 4.43,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "8 km WSW of Scotia, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.1658333,
+     39.1678333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71847715",
+    "time": "2012-09-25T15:15:09",
+    "depth_km": 8.0,
+    "magnitude": 4.51,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "3 km N of Talmage, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.2721667,
+     40.645
+    ]
+   },
+   "properties": {
+    "event_id": "nc71859625",
+    "time": "2012-10-14T16:53:07",
+    "depth_km": 5.0,
+    "magnitude": 4.0,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "85 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.777,
+     50.795
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jun7",
+    "time": "2012-10-28T14:46:03",
+    "depth_km": 15.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "191 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.477,
+     49.231
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jv6k",
+    "time": "2012-11-08T02:01:50",
+    "depth_km": 19.0,
+    "magnitude": 6.1,
+    "source": "us Mww",
+    "place": "176 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.137,
+     49.38
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jv80",
+    "time": "2012-11-08T21:07:41",
+    "depth_km": 8.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "146 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.79,
+     50.743
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jxaz",
+    "time": "2012-12-23T19:08:38",
+    "depth_km": 11.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "191 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.74,
+     49.113
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jy0e",
+    "time": "2013-01-07T03:33:23",
+    "depth_km": 4.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "199 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.03,
+     49.719
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jy4m",
+    "time": "2013-01-09T14:07:38",
+    "depth_km": 6.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "231 km WSW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.316,
+     40.3875
+    ]
+   },
+   "properties": {
+    "event_id": "nc71920936",
+    "time": "2013-01-13T10:28:17",
+    "depth_km": 18.0,
+    "magnitude": 4.02,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "91 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.709,
+     50.861
+    ]
+   },
+   "properties": {
+    "event_id": "usp000jyhk",
+    "time": "2013-01-18T01:42:07",
+    "depth_km": 12.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "257 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.636,
+     40.4415
+    ]
+   },
+   "properties": {
+    "event_id": "nc71927951",
+    "time": "2013-01-24T11:22:57",
+    "depth_km": 14.0,
+    "magnitude": 4.02,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "117 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.62,
+     43.638
+    ]
+   },
+   "properties": {
+    "event_id": "usc000ey2g",
+    "time": "2013-01-30T03:14:28",
+    "depth_km": 11.0,
+    "magnitude": 5.4,
+    "source": "us Mww",
+    "place": "266 km WNW of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.564,
+     43.22
+    ]
+   },
+   "properties": {
+    "event_id": "usc000fe5b",
+    "time": "2013-02-27T22:25:43",
+    "depth_km": 11.0,
+    "magnitude": 5.2,
+    "source": "us Mww",
+    "place": "175 km W of Langlois, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6685,
+     40.3123333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71947725",
+    "time": "2013-03-03T17:46:51",
+    "depth_km": 18.0,
+    "magnitude": 4.18,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "45 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.9688333,
+     40.6138333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71959700",
+    "time": "2013-03-24T17:25:40",
+    "depth_km": 14.0,
+    "magnitude": 4.29,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "59 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.232,
+     40.453
+    ]
+   },
+   "properties": {
+    "event_id": "usb000fwth",
+    "time": "2013-03-30T21:43:28",
+    "depth_km": 11.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "83 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.4603333,
+     40.2858333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71993641",
+    "time": "2013-05-18T13:46:08",
+    "depth_km": 18.0,
+    "magnitude": 4.28,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "36 km SSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.0595,
+     40.1918333
+    ]
+   },
+   "properties": {
+    "event_id": "nc71996906",
+    "time": "2013-05-24T03:47:08",
+    "depth_km": 8.0,
+    "magnitude": 5.69,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "2 km NNE of Canyondam, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.518,
+     50.758
+    ]
+   },
+   "properties": {
+    "event_id": "usc000hqrn",
+    "time": "2013-06-14T15:56:04",
+    "depth_km": 9.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "243 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -120.6891667,
+     47.8241667
+    ]
+   },
+   "properties": {
+    "event_id": "uw60546146",
+    "time": "2013-06-27T02:45:35",
+    "depth_km": 14.0,
+    "magnitude": 4.27,
+    "source": "us Mwr",
+    "place": "25 km N of Leavenworth, Washington"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.431,
+     43.294
+    ]
+   },
+   "properties": {
+    "event_id": "usb000iiju",
+    "time": "2013-07-20T17:20:57",
+    "depth_km": 20.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "165 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.092,
+     40.424
+    ]
+   },
+   "properties": {
+    "event_id": "usc000ipkd",
+    "time": "2013-07-26T08:32:12",
+    "depth_km": 18.0,
+    "magnitude": 4.0,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "240 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.968,
+     50.392
+    ]
+   },
+   "properties": {
+    "event_id": "usc000ipmt",
+    "time": "2013-07-26T12:57:24",
+    "depth_km": 9.0,
+    "magnitude": 5.1,
+    "source": "us Mwr",
+    "place": "205 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.99,
+     50.325
+    ]
+   },
+   "properties": {
+    "event_id": "usc000iqr5",
+    "time": "2013-07-27T19:11:01",
+    "depth_km": 5.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "208 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.4018333,
+     40.8081667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72042291",
+    "time": "2013-08-03T02:25:49",
+    "depth_km": 18.0,
+    "magnitude": 4.47,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "18 km W of Samoa, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.4286,
+     49.6614
+    ]
+   },
+   "properties": {
+    "event_id": "usb000iv7t",
+    "time": "2013-08-04T13:22:27",
+    "depth_km": 3.0,
+    "magnitude": 5.5,
+    "source": "us Mwb",
+    "place": "86 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.7927,
+     41.802
+    ]
+   },
+   "properties": {
+    "event_id": "usb000j66m",
+    "time": "2013-08-19T00:27:41",
+    "depth_km": 3.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "205 km WSW of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6841,
+     39.6696
+    ]
+   },
+   "properties": {
+    "event_id": "nn00421303",
+    "time": "2013-08-27T00:51:43",
+    "depth_km": 11.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "3 km NE of Spanish Springs, Nevada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.433,
+     40.8051667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72066911",
+    "time": "2013-09-09T22:37:17",
+    "depth_km": 18.0,
+    "magnitude": 4.02,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "102 km WNW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.7498333,
+     40.9835
+    ]
+   },
+   "properties": {
+    "event_id": "nc72086051",
+    "time": "2013-10-11T23:05:37",
+    "depth_km": 24.0,
+    "magnitude": 4.94,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "50 km WNW of Samoa, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.2915,
+     41.3256667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72103326",
+    "time": "2013-11-08T10:46:56",
+    "depth_km": 3.5,
+    "magnitude": 4.65,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "98 km W of Big Lagoon, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.1887,
+     50.039
+    ]
+   },
+   "properties": {
+    "event_id": "usb000kumz",
+    "time": "2013-11-08T11:44:56",
+    "depth_km": 10.0,
+    "magnitude": 5.0,
+    "source": "us Mwr",
+    "place": "229 km WSW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.8781,
+     41.6832
+    ]
+   },
+   "properties": {
+    "event_id": "usb000l8n7",
+    "time": "2013-12-01T03:19:38",
+    "depth_km": 11.5,
+    "magnitude": 5.5,
+    "source": "us Mww",
+    "place": "216 km WSW of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.811,
+     49.2634
+    ]
+   },
+   "properties": {
+    "event_id": "usc000ll77",
+    "time": "2013-12-15T18:11:47",
+    "depth_km": 5.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "134 km SW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.5063333,
+     40.6915
+    ]
+   },
+   "properties": {
+    "event_id": "nc72125816",
+    "time": "2013-12-17T13:28:01",
+    "depth_km": 21.0,
+    "magnitude": 4.11,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "23 km W of Indianola, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.8226667,
+     40.5145
+    ]
+   },
+   "properties": {
+    "event_id": "nc72129596",
+    "time": "2013-12-24T10:28:49",
+    "depth_km": 11.0,
+    "magnitude": 4.3,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "47 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.4526667,
+     40.29
+    ]
+   },
+   "properties": {
+    "event_id": "nc72134626",
+    "time": "2014-01-02T06:23:09",
+    "depth_km": 24.0,
+    "magnitude": 4.02,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "35 km SSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3411667,
+     40.411
+    ]
+   },
+   "properties": {
+    "event_id": "nc72145230",
+    "time": "2014-01-23T04:10:41",
+    "depth_km": 8.0,
+    "magnitude": 4.63,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "93 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1338333,
+     40.8286667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72182046",
+    "time": "2014-03-10T05:18:13",
+    "depth_km": 18.0,
+    "magnitude": 6.8,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "77 km WNW of Indianola, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.1915,
+     40.7778333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72182306",
+    "time": "2014-03-10T10:28:18",
+    "depth_km": 14.0,
+    "magnitude": 4.47,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "81 km WNW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.8982,
+     41.9039
+    ]
+   },
+   "properties": {
+    "event_id": "usc000nah5",
+    "time": "2014-03-13T19:11:34",
+    "depth_km": 11.5,
+    "magnitude": 5.5,
+    "source": "us Mww",
+    "place": "211 km WSW of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6103333,
+     40.3481667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72185141",
+    "time": "2014-03-14T16:32:35",
+    "depth_km": 21.0,
+    "magnitude": 4.0,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "38 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.0218333,
+     40.8585
+    ]
+   },
+   "properties": {
+    "event_id": "nc72186031",
+    "time": "2014-03-16T03:46:09",
+    "depth_km": 5.0,
+    "magnitude": 4.01,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "69 km WNW of Indianola, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3328333,
+     40.6863333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72187346",
+    "time": "2014-03-18T10:33:59",
+    "depth_km": 21.0,
+    "magnitude": 4.41,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "91 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.2085,
+     49.2167
+    ]
+   },
+   "properties": {
+    "event_id": "usc000nycn",
+    "time": "2014-04-01T05:05:57",
+    "depth_km": 3.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "215 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.7316,
+     49.6388
+    ]
+   },
+   "properties": {
+    "event_id": "usb000px6r",
+    "time": "2014-04-24T03:10:10",
+    "depth_km": 11.5,
+    "magnitude": 6.5,
+    "source": "us Mww",
+    "place": "107 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.6726,
+     49.4739
+    ]
+   },
+   "properties": {
+    "event_id": "usb000qqtk",
+    "time": "2014-04-24T03:23:33",
+    "depth_km": 10.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "112 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.7877,
+     49.5441
+    ]
+   },
+   "properties": {
+    "event_id": "usb000px7e",
+    "time": "2014-04-24T03:40:56",
+    "depth_km": 10.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "115 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.826,
+     49.61
+    ]
+   },
+   "properties": {
+    "event_id": "usb000px7j",
+    "time": "2014-04-24T03:44:17",
+    "depth_km": 10.0,
+    "magnitude": 4.8,
+    "source": "us Mwr",
+    "place": "115 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.7845,
+     49.6074
+    ]
+   },
+   "properties": {
+    "event_id": "usb000px8m",
+    "time": "2014-04-24T05:16:17",
+    "depth_km": 10.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "112 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.782,
+     49.55
+    ]
+   },
+   "properties": {
+    "event_id": "usb000pxb6",
+    "time": "2014-04-24T08:09:55",
+    "depth_km": 10.0,
+    "magnitude": 4.0,
+    "source": "us Mwr",
+    "place": "115 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.841,
+     49.632
+    ]
+   },
+   "properties": {
+    "event_id": "usb000pxic",
+    "time": "2014-04-24T12:06:56",
+    "depth_km": 10.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "115 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.4201667,
+     40.3455
+    ]
+   },
+   "properties": {
+    "event_id": "nc72231201",
+    "time": "2014-06-02T23:54:19",
+    "depth_km": 18.0,
+    "magnitude": 4.14,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "28 km SSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.905,
+     43.407
+    ]
+   },
+   "properties": {
+    "event_id": "usb000rtdy",
+    "time": "2014-07-16T15:30:11",
+    "depth_km": 27.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "205 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.445,
+     50.546
+    ]
+   },
+   "properties": {
+    "event_id": "usb000s22x",
+    "time": "2014-08-12T07:00:22",
+    "depth_km": 10.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "237 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.215,
+     50.498
+    ]
+   },
+   "properties": {
+    "event_id": "usb000s3q3",
+    "time": "2014-08-18T08:17:44",
+    "depth_km": 10.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "221 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.8483,
+     50.677
+    ]
+   },
+   "properties": {
+    "event_id": "usb000sb4f",
+    "time": "2014-09-10T16:36:43",
+    "depth_km": 9.0,
+    "magnitude": 4.9,
+    "source": "us Mwr",
+    "place": "195 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.1825,
+     41.9018
+    ]
+   },
+   "properties": {
+    "event_id": "usb000sifq",
+    "time": "2014-10-03T08:58:39",
+    "depth_km": 24.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "153 km WSW of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.3726667,
+     40.2673333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72330211",
+    "time": "2014-10-19T14:24:04",
+    "depth_km": 24.0,
+    "magnitude": 4.24,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "33 km SW of Scotia, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6185,
+     41.9104
+    ]
+   },
+   "properties": {
+    "event_id": "nn00465678",
+    "time": "2014-10-30T15:16:33",
+    "depth_km": 9.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.613,
+     41.8817
+    ]
+   },
+   "properties": {
+    "event_id": "nn00466104",
+    "time": "2014-11-04T10:47:58",
+    "depth_km": 9.0,
+    "magnitude": 4.0,
+    "source": "us Mwr",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6202,
+     41.9078
+    ]
+   },
+   "properties": {
+    "event_id": "nn00466248",
+    "time": "2014-11-05T07:23:04",
+    "depth_km": 11.5,
+    "magnitude": 4.6,
+    "source": "us Mww",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6155,
+     41.886
+    ]
+   },
+   "properties": {
+    "event_id": "nn00466315",
+    "time": "2014-11-05T15:18:26",
+    "depth_km": 10.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6573,
+     41.9061
+    ]
+   },
+   "properties": {
+    "event_id": "nn00466441",
+    "time": "2014-11-06T08:34:46",
+    "depth_km": 11.5,
+    "magnitude": 4.7,
+    "source": "us Mww",
+    "place": "41 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.625,
+     41.9055
+    ]
+   },
+   "properties": {
+    "event_id": "nn00466488",
+    "time": "2014-11-06T15:58:01",
+    "depth_km": 8.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6021,
+     41.9137
+    ]
+   },
+   "properties": {
+    "event_id": "nn00466637",
+    "time": "2014-11-07T06:58:40",
+    "depth_km": 9.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "45 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6299,
+     41.8805
+    ]
+   },
+   "properties": {
+    "event_id": "nn00466648",
+    "time": "2014-11-07T08:05:54",
+    "depth_km": 11.5,
+    "magnitude": 4.7,
+    "source": "us Mww",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6545,
+     41.8812
+    ]
+   },
+   "properties": {
+    "event_id": "nn00467446",
+    "time": "2014-11-12T14:42:55",
+    "depth_km": 8.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "41 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6224,
+     41.9009
+    ]
+   },
+   "properties": {
+    "event_id": "nn00467620",
+    "time": "2014-11-13T06:36:07",
+    "depth_km": 11.5,
+    "magnitude": 4.6,
+    "source": "us Mww",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6276,
+     41.9278
+    ]
+   },
+   "properties": {
+    "event_id": "nn00468207",
+    "time": "2014-11-17T08:16:13",
+    "depth_km": 10.0,
+    "magnitude": 4.0,
+    "source": "us Mwr",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6229,
+     41.8518
+    ]
+   },
+   "properties": {
+    "event_id": "nn00468854",
+    "time": "2014-11-21T17:20:27",
+    "depth_km": 12.0,
+    "magnitude": 4.0,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.5466,
+     43.8195
+    ]
+   },
+   "properties": {
+    "event_id": "usb000sz9m",
+    "time": "2014-11-23T11:01:25",
+    "depth_km": 11.5,
+    "magnitude": 5.2,
+    "source": "us Mww",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6445,
+     41.8812
+    ]
+   },
+   "properties": {
+    "event_id": "nn00486460",
+    "time": "2014-12-04T05:24:52",
+    "depth_km": 9.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "42 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3838333,
+     40.388
+    ]
+   },
+   "properties": {
+    "event_id": "nc72359931",
+    "time": "2014-12-04T13:09:06",
+    "depth_km": 21.0,
+    "magnitude": 4.29,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "97 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6316,
+     41.8773
+    ]
+   },
+   "properties": {
+    "event_id": "nn00471401",
+    "time": "2014-12-10T13:50:58",
+    "depth_km": 8.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.2989,
+     48.8697
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t5vm",
+    "time": "2014-12-12T06:08:09",
+    "depth_km": 3.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "248 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.3106,
+     41.0051
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t84b",
+    "time": "2014-12-19T01:42:30",
+    "depth_km": 18.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "261 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.4937,
+     50.722
+    ]
+   },
+   "properties": {
+    "event_id": "usc000tcrs",
+    "time": "2014-12-20T21:36:32",
+    "depth_km": 8.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "241 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.4872,
+     50.7361
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t8s0",
+    "time": "2014-12-20T22:54:28",
+    "depth_km": 6.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "240 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.194,
+     50.959
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t8tf",
+    "time": "2014-12-21T02:57:38",
+    "depth_km": 4.0,
+    "magnitude": 5.2,
+    "source": "us Mwr",
+    "place": "222 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.52,
+     50.79
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t8vb",
+    "time": "2014-12-21T09:40:47",
+    "depth_km": 6.0,
+    "magnitude": 5.2,
+    "source": "us Mwr",
+    "place": "243 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.4995,
+     50.7373
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t8ve",
+    "time": "2014-12-21T10:19:45",
+    "depth_km": 9.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "241 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.525,
+     50.746
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t91d",
+    "time": "2014-12-22T06:51:37",
+    "depth_km": 3.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "243 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.1266,
+     50.9022
+    ]
+   },
+   "properties": {
+    "event_id": "usc000t97l",
+    "time": "2014-12-22T21:01:06",
+    "depth_km": 9.0,
+    "magnitude": 4.6,
+    "source": "us Mwr",
+    "place": "217 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.7746667,
+     40.442
+    ]
+   },
+   "properties": {
+    "event_id": "nc72373456",
+    "time": "2015-01-01T12:16:14",
+    "depth_km": 24.0,
+    "magnitude": 5.36,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "128 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.3654,
+     50.8632
+    ]
+   },
+   "properties": {
+    "event_id": "usc000tb91",
+    "time": "2015-01-02T10:15:34",
+    "depth_km": 14.3,
+    "magnitude": 5.4,
+    "source": "us Mwc",
+    "place": "233 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.454,
+     50.579
+    ]
+   },
+   "properties": {
+    "event_id": "usc000tbip",
+    "time": "2015-01-04T01:49:55",
+    "depth_km": 3.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "238 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6294,
+     41.8841
+    ]
+   },
+   "properties": {
+    "event_id": "nn00481243",
+    "time": "2015-01-04T09:56:43",
+    "depth_km": 10.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.647,
+     49.1709
+    ]
+   },
+   "properties": {
+    "event_id": "usc000td14",
+    "time": "2015-01-08T02:02:53",
+    "depth_km": 35.5,
+    "magnitude": 4.8,
+    "source": "us Mww",
+    "place": "19 km E of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6121667,
+     40.3195
+    ]
+   },
+   "properties": {
+    "event_id": "nc72381011",
+    "time": "2015-01-14T10:44:35",
+    "depth_km": 24.0,
+    "magnitude": 4.28,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "41 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6332,
+     41.8833
+    ]
+   },
+   "properties": {
+    "event_id": "nn00478560",
+    "time": "2015-01-22T09:09:16",
+    "depth_km": 9.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6066667,
+     40.3178333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72387946",
+    "time": "2015-01-28T21:08:53",
+    "depth_km": 33.0,
+    "magnitude": 5.72,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "40 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6241,
+     41.8797
+    ]
+   },
+   "properties": {
+    "event_id": "nn00479760",
+    "time": "2015-01-29T11:03:19",
+    "depth_km": 9.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.5891667,
+     40.3113333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72388626",
+    "time": "2015-01-29T19:13:55",
+    "depth_km": 24.0,
+    "magnitude": 4.25,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "40 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -120.7526667,
+     47.2491667
+    ]
+   },
+   "properties": {
+    "event_id": "uw60971201",
+    "time": "2015-02-18T09:04:11",
+    "depth_km": 8.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "15 km ENE of Cle Elum, Washington"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.92,
+     50.2697
+    ]
+   },
+   "properties": {
+    "event_id": "usc000tuv5",
+    "time": "2015-03-04T08:35:07",
+    "depth_km": 6.0,
+    "magnitude": 5.1,
+    "source": "us Mwr",
+    "place": "204 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.4747,
+     50.538
+    ]
+   },
+   "properties": {
+    "event_id": "us200026hw",
+    "time": "2015-03-06T16:56:38",
+    "depth_km": 8.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "240 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.8594,
+     49.0507
+    ]
+   },
+   "properties": {
+    "event_id": "usc000twl9",
+    "time": "2015-03-08T20:42:15",
+    "depth_km": 28.0,
+    "magnitude": 4.9,
+    "source": "us Mwr",
+    "place": "210 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.1719,
+     49.4154
+    ]
+   },
+   "properties": {
+    "event_id": "us10001qpf",
+    "time": "2015-03-25T19:22:44",
+    "depth_km": 17.5,
+    "magnitude": 5.1,
+    "source": "us Mww",
+    "place": "147 km WSW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.1568,
+     40.418
+    ]
+   },
+   "properties": {
+    "event_id": "us200025qi",
+    "time": "2015-04-10T18:59:38",
+    "depth_km": 25.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "161 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.0443,
+     43.3904
+    ]
+   },
+   "properties": {
+    "event_id": "us200025te",
+    "time": "2015-04-11T05:44:48",
+    "depth_km": 22.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "216 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.1509,
+     40.4556
+    ]
+   },
+   "properties": {
+    "event_id": "us200028pe",
+    "time": "2015-04-24T01:34:55",
+    "depth_km": 19.5,
+    "magnitude": 5.4,
+    "source": "us Mww",
+    "place": "245 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.712,
+     40.6508333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72455721",
+    "time": "2015-05-26T10:17:35",
+    "depth_km": 14.0,
+    "magnitude": 4.34,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "38 km WNW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.8114,
+     44.4584
+    ]
+   },
+   "properties": {
+    "event_id": "us20002kxa",
+    "time": "2015-06-01T06:52:41",
+    "depth_km": 13.5,
+    "magnitude": 5.8,
+    "source": "us Mww",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.6521,
+     44.5389
+    ]
+   },
+   "properties": {
+    "event_id": "us20002l01",
+    "time": "2015-06-01T10:46:27",
+    "depth_km": 19.5,
+    "magnitude": 5.4,
+    "source": "us Mww",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9582,
+     44.4971
+    ]
+   },
+   "properties": {
+    "event_id": "us20002l3n",
+    "time": "2015-06-01T20:11:30",
+    "depth_km": 15.5,
+    "magnitude": 5.9,
+    "source": "us Mww",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.831,
+     44.0895
+    ]
+   },
+   "properties": {
+    "event_id": "uw61037147",
+    "time": "2015-07-04T15:42:18",
+    "depth_km": 4.0,
+    "magnitude": 4.14,
+    "source": "us Mwr",
+    "place": "16 km ENE of Springfield, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6367,
+     41.8986
+    ]
+   },
+   "properties": {
+    "event_id": "nn00501944",
+    "time": "2015-07-16T01:52:11",
+    "depth_km": 11.5,
+    "magnitude": 4.6,
+    "source": "us Mww",
+    "place": "42 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6373,
+     41.9006
+    ]
+   },
+   "properties": {
+    "event_id": "nn00501947",
+    "time": "2015-07-16T01:57:26",
+    "depth_km": 8.0,
+    "magnitude": 4.0,
+    "source": "us Mwr",
+    "place": "42 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6288,
+     41.8878
+    ]
+   },
+   "properties": {
+    "event_id": "nn00503084",
+    "time": "2015-07-22T22:07:07",
+    "depth_km": 9.0,
+    "magnitude": 4.0,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6226,
+     41.8875
+    ]
+   },
+   "properties": {
+    "event_id": "nn00503760",
+    "time": "2015-07-27T01:05:33",
+    "depth_km": 8.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0918,
+     50.5581
+    ]
+   },
+   "properties": {
+    "event_id": "us10002w8x",
+    "time": "2015-07-30T00:31:03",
+    "depth_km": 5.0,
+    "magnitude": 5.0,
+    "source": "us Mwr",
+    "place": "212 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.0618,
+     50.6463
+    ]
+   },
+   "properties": {
+    "event_id": "us10002wy3",
+    "time": "2015-07-31T17:45:09",
+    "depth_km": 12.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "210 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.622,
+     41.8856
+    ]
+   },
+   "properties": {
+    "event_id": "nn00506331",
+    "time": "2015-08-13T11:31:07",
+    "depth_km": 12.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.6959,
+     49.0289
+    ]
+   },
+   "properties": {
+    "event_id": "us100032sm",
+    "time": "2015-08-17T07:58:32",
+    "depth_km": 3.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "202 km SW of Vernon, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.1086,
+     50.7444
+    ]
+   },
+   "properties": {
+    "event_id": "us20003h7l",
+    "time": "2015-09-08T09:38:04",
+    "depth_km": 7.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "214 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6271,
+     41.8594
+    ]
+   },
+   "properties": {
+    "event_id": "nn00510518",
+    "time": "2015-09-14T13:55:48",
+    "depth_km": 9.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.6481,
+     49.4227
+    ]
+   },
+   "properties": {
+    "event_id": "us20003m0m",
+    "time": "2015-09-19T21:50:31",
+    "depth_km": 11.0,
+    "magnitude": 4.8,
+    "source": "us Mwr",
+    "place": "224 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.2273,
+     50.3258
+    ]
+   },
+   "properties": {
+    "event_id": "us20003mvq",
+    "time": "2015-09-22T13:24:50",
+    "depth_km": 9.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "224 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.2084,
+     50.7832
+    ]
+   },
+   "properties": {
+    "event_id": "us20003nmz",
+    "time": "2015-09-24T13:48:58",
+    "depth_km": 11.5,
+    "magnitude": 5.7,
+    "source": "us Mww",
+    "place": "221 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6123,
+     41.8709
+    ]
+   },
+   "properties": {
+    "event_id": "nn00512427",
+    "time": "2015-09-27T02:44:00",
+    "depth_km": 5.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6368,
+     41.8542
+    ]
+   },
+   "properties": {
+    "event_id": "nn00512709",
+    "time": "2015-09-29T00:03:30",
+    "depth_km": 10.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "42 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.9621,
+     50.8008
+    ]
+   },
+   "properties": {
+    "event_id": "us10003qur",
+    "time": "2015-10-22T23:07:38",
+    "depth_km": 11.5,
+    "magnitude": 5.1,
+    "source": "us Mww",
+    "place": "204 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3966667,
+     40.3646667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72547610",
+    "time": "2015-11-02T02:34:01",
+    "depth_km": 14.0,
+    "magnitude": 4.33,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "98 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.619,
+     41.8696
+    ]
+   },
+   "properties": {
+    "event_id": "nn00519379",
+    "time": "2015-11-19T01:40:02",
+    "depth_km": 10.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "44 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6231,
+     41.8731
+    ]
+   },
+   "properties": {
+    "event_id": "nn00519381",
+    "time": "2015-11-19T01:50:17",
+    "depth_km": 10.0,
+    "magnitude": 4.0,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6317,
+     41.8575
+    ]
+   },
+   "properties": {
+    "event_id": "nn00521538",
+    "time": "2015-12-06T11:13:27",
+    "depth_km": 14.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "43 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.3506,
+     50.5434
+    ]
+   },
+   "properties": {
+    "event_id": "us20004hil",
+    "time": "2015-12-16T08:22:30",
+    "depth_km": 14.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "Vancouver Island, Canada region"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.7845,
+     39.4309
+    ]
+   },
+   "properties": {
+    "event_id": "nn00523696",
+    "time": "2015-12-23T06:46:07",
+    "depth_km": 10.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "11 km SSE of Reno, Nevada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.5937,
+     41.8807
+    ]
+   },
+   "properties": {
+    "event_id": "nn00523848",
+    "time": "2015-12-24T20:30:38",
+    "depth_km": 6.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "46 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.191,
+     50.479
+    ]
+   },
+   "properties": {
+    "event_id": "us100049ky",
+    "time": "2015-12-26T03:57:03",
+    "depth_km": 11.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "220 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.286,
+     41.0703333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72571010",
+    "time": "2015-12-29T03:35:28",
+    "depth_km": 8.0,
+    "magnitude": 4.87,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "96 km W of Trinidad, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.3003333,
+     48.5865
+    ]
+   },
+   "properties": {
+    "event_id": "uw61114971",
+    "time": "2015-12-30T07:39:29",
+    "depth_km": 45.5,
+    "magnitude": 4.79,
+    "source": "us Mww",
+    "place": "12 km SE of North Saanich, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.6871667,
+     40.3083333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72572665",
+    "time": "2016-01-02T05:11:46",
+    "depth_km": 21.0,
+    "magnitude": 4.44,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "46 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -119.6,
+     41.8685
+    ]
+   },
+   "properties": {
+    "event_id": "nn00525194",
+    "time": "2016-01-03T15:35:23",
+    "depth_km": 10.0,
+    "magnitude": 4.1,
+    "source": "us Mwr",
+    "place": "45 km E of Fort Bidwell, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.3395,
+     40.2731667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72574495",
+    "time": "2016-01-07T05:49:52",
+    "depth_km": 18.0,
+    "magnitude": 4.31,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "30 km SW of Scotia, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.6422,
+     48.8975
+    ]
+   },
+   "properties": {
+    "event_id": "us10004fp1",
+    "time": "2016-01-19T19:54:41",
+    "depth_km": 5.0,
+    "magnitude": 4.4,
+    "source": "us Mwr",
+    "place": "202 km W of Tofino, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.3146,
+     43.1417
+    ]
+   },
+   "properties": {
+    "event_id": "us10004gmw",
+    "time": "2016-01-23T18:05:39",
+    "depth_km": 17.5,
+    "magnitude": 4.9,
+    "source": "us Mww",
+    "place": "153 km W of Langlois, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.2074,
+     40.9167
+    ]
+   },
+   "properties": {
+    "event_id": "us20004vq3",
+    "time": "2016-01-30T00:28:41",
+    "depth_km": 11.5,
+    "magnitude": 5.1,
+    "source": "us Mww",
+    "place": "251 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.3842,
+     41.0363
+    ]
+   },
+   "properties": {
+    "event_id": "us20004vq9",
+    "time": "2016-01-30T00:30:52",
+    "depth_km": 11.5,
+    "magnitude": 5.0,
+    "source": "us Mww",
+    "place": "268 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.8485,
+     49.673
+    ]
+   },
+   "properties": {
+    "event_id": "us20005awl",
+    "time": "2016-03-18T22:46:56",
+    "depth_km": 11.5,
+    "magnitude": 5.5,
+    "source": "us Mww",
+    "place": "222 km WSW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.4588,
+     43.7904
+    ]
+   },
+   "properties": {
+    "event_id": "us10005ir2",
+    "time": "2016-05-20T07:01:05",
+    "depth_km": 11.5,
+    "magnitude": 5.0,
+    "source": "us Mww",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.3781667,
+     40.3955
+    ]
+   },
+   "properties": {
+    "event_id": "nc72642536",
+    "time": "2016-05-27T22:00:28",
+    "depth_km": 5.0,
+    "magnitude": 4.5,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "96 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.8918333,
+     40.7243333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72664436",
+    "time": "2016-07-21T23:09:05",
+    "depth_km": 27.0,
+    "magnitude": 4.81,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "19km SSE of Blue Lake, CA"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -120.2131667,
+     40.1538333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72670060",
+    "time": "2016-08-04T04:55:35",
+    "depth_km": 14.0,
+    "magnitude": 4.48,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "5 km WNW of Patton Village, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.8461,
+     50.4018
+    ]
+   },
+   "properties": {
+    "event_id": "us10006ccx",
+    "time": "2016-08-09T14:39:11",
+    "depth_km": 6.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "196 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -122.8018333,
+     39.3293333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72672610",
+    "time": "2016-08-10T02:57:17",
+    "depth_km": 18.0,
+    "magnitude": 5.09,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "20 km NNE of Upper Lake, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.4078333,
+     40.4365
+    ]
+   },
+   "properties": {
+    "event_id": "nc72686711",
+    "time": "2016-08-28T21:20:52",
+    "depth_km": 36.0,
+    "magnitude": 4.49,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "8 km ESE of Mad River, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -125.6876667,
+     40.3208333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72689331",
+    "time": "2016-09-03T03:27:57",
+    "depth_km": 27.0,
+    "magnitude": 5.64,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "124 km WSW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -128.9674,
+     49.0783
+    ]
+   },
+   "properties": {
+    "event_id": "us10006qix",
+    "time": "2016-09-17T22:45:58",
+    "depth_km": 4.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "215 km SW of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.1354,
+     41.8428
+    ]
+   },
+   "properties": {
+    "event_id": "us10006shx",
+    "time": "2016-09-25T05:01:50",
+    "depth_km": 13.5,
+    "magnitude": 4.9,
+    "source": "us Mww",
+    "place": "151 km WSW of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.0759,
+     41.8519
+    ]
+   },
+   "properties": {
+    "event_id": "us10006sj1",
+    "time": "2016-09-25T09:50:51",
+    "depth_km": 11.0,
+    "magnitude": 4.6,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "146 km WSW of Pistol River, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -129.3622,
+     44.2778
+    ]
+   },
+   "properties": {
+    "event_id": "us20007cz9",
+    "time": "2016-10-09T19:08:47",
+    "depth_km": 11.5,
+    "magnitude": 5.0,
+    "source": "us Mww",
+    "place": "off the coast of Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.5465,
+     40.3461667
+    ]
+   },
+   "properties": {
+    "event_id": "nc72716540",
+    "time": "2016-10-27T06:37:23",
+    "depth_km": 33.0,
+    "magnitude": 4.11,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "35 km SW of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.6373333,
+     39.6598333
+    ]
+   },
+   "properties": {
+    "event_id": "nc72721105",
+    "time": "2016-11-06T13:00:46",
+    "depth_km": 3.5,
+    "magnitude": 4.06,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "13 km WSW of Laytonville, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -130.3771,
+     50.9767
+    ]
+   },
+   "properties": {
+    "event_id": "us10007c7n",
+    "time": "2016-11-25T04:02:23",
+    "depth_km": 6.0,
+    "magnitude": 4.5,
+    "source": "us Mwr",
+    "place": "236 km W of Port McNeill, Canada"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -127.0223,
+     43.3669
+    ]
+   },
+   "properties": {
+    "event_id": "us10007cvf",
+    "time": "2016-11-28T04:34:44",
+    "depth_km": 21.5,
+    "magnitude": 5.5,
+    "source": "us Mww",
+    "place": "214 km W of Bandon, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.6675,
+     43.2208
+    ]
+   },
+   "properties": {
+    "event_id": "us10007cww",
+    "time": "2016-11-28T11:07:51",
+    "depth_km": 29.0,
+    "magnitude": 4.2,
+    "source": "us Mwr",
+    "place": "183 km W of Langlois, Oregon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -124.386,
+     40.2785
+    ]
+   },
+   "properties": {
+    "event_id": "nc72733405",
+    "time": "2016-12-05T18:33:15",
+    "depth_km": 27.0,
+    "magnitude": 4.35,
+    "source": "nc smi:nc.anss.org/momentTensor/TMTS",
+    "place": "33 km SW of Scotia, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.3567,
+     41.4364
+    ]
+   },
+   "properties": {
+    "event_id": "us10007f7c",
+    "time": "2016-12-06T17:07:28",
+    "depth_km": 28.0,
+    "magnitude": 4.3,
+    "source": "us Mwr",
+    "place": "183 km WSW of Crescent City, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.1936,
+     40.4535
+    ]
+   },
+   "properties": {
+    "event_id": "us20007z6r",
+    "time": "2016-12-08T14:49:45",
+    "depth_km": 11.5,
+    "magnitude": 6.6,
+    "source": "us Mww",
+    "place": "164 km W of Ferndale, California"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -126.3674,
+     40.4292
+    ]
+   },
+   "properties": {
+    "event_id": "us20007z7b",
+    "time": "2016-12-08T16:32:46",
+    "depth_km": 6.0,
+    "magnitude": 4.7,
+    "source": "us Mwr",
+    "place": "179 km W of Ferndale, California"
+   }
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [],
+ "id": "wildfire",
+ "collection": "washington",
+ "bbox": [
+  -126.5,
+  44.5,
+  -114.5,
+  50.5
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -126.5,
+     44.5
+    ],
+    [
+     -114.5,
+     44.5
+    ],
+    [
+     -114.5,
+     50.5
+    ],
+    [
+     -126.5,
+     50.5
+    ],
+    [
+     -126.5,
+     44.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "WA DNR wildfires (\u22652023)",
+  "datetime": null,
+  "start_datetime": "2025-01-01T00:00:00Z",
+  "end_datetime": "2025-12-31T23:59:59Z",
+  "gaia:group": "Hazards & GIS",
+  "gaia:subgroup": "Events & boundaries",
+  "gaia:on": false,
+  "gaia:style": {
+   "color": "#e2562a",
+   "weight": 2,
+   "fill": false,
+   "label": "FIRENAME"
+  },
+  "providers": [
+   {
+    "name": "WA DNR",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://gis.dnr.wa.gov/site3/rest/services/Public_Wildfire/WADNR_PUBLIC_WD_WildFire_Data/MapServer/0/query?where=YEAR%20%3E%3D%202023%20AND%20ACRES%20%3E%20247&outFields=*&f=geojson",
+   "type": "application/geo+json",
+   "title": "WA DNR wildfires (\u22652023)",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}

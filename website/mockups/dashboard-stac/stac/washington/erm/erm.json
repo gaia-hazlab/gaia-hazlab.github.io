@@ -1,0 +1,102 @@
+{
+ "type": "Feature",
+ "stac_version": "1.1.0",
+ "stac_extensions": [
+  "https://stac-extensions.github.io/render/v2.0.0/schema.json"
+ ],
+ "id": "erm",
+ "collection": "washington",
+ "bbox": [
+  -126.5,
+  44.5,
+  -114.5,
+  50.5
+ ],
+ "geometry": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -126.5,
+     44.5
+    ],
+    [
+     -114.5,
+     44.5
+    ],
+    [
+     -114.5,
+     50.5
+    ],
+    [
+     -126.5,
+     50.5
+    ],
+    [
+     -126.5,
+     44.5
+    ]
+   ]
+  ]
+ },
+ "properties": {
+  "title": "Max ERM (Dec 2025)",
+  "datetime": null,
+  "start_datetime": "2025-01-01T00:00:00Z",
+  "end_datetime": "2025-12-31T23:59:59Z",
+  "gaia:group": "Spatial imagery",
+  "gaia:subgroup": "Atmospheric",
+  "gaia:on": false,
+  "renders": {
+   "default": {
+    "title": "Max ERM (Dec 2025)",
+    "assets": [
+     "data"
+    ],
+    "rescale": [
+     [
+      0,
+      3
+     ]
+    ],
+    "colormap_name": "plasma",
+    "nodata": "nan"
+   }
+  },
+  "providers": [
+   {
+    "name": "UW Atmos. Sci.",
+    "roles": [
+     "producer"
+    ]
+   }
+  ]
+ },
+ "links": [
+  {
+   "rel": "collection",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "parent",
+   "href": "../collection.json",
+   "type": "application/json"
+  },
+  {
+   "rel": "root",
+   "href": "../../catalog.json",
+   "type": "application/json"
+  }
+ ],
+ "assets": {
+  "data": {
+   "href": "https://gaia-hazlab-map-data.s3.us-west-2.amazonaws.com/max_erm_4km.tif",
+   "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+   "title": "Max ERM (Dec 2025)",
+   "roles": [
+    "data"
+   ]
+  }
+ }
+}
