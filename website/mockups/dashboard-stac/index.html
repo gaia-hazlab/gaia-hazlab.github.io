@@ -95,6 +95,7 @@
         .fp-label { background:rgba(42,26,79,0.9); color:#fff; border:0; border-radius:6px; font:600 0.78rem 'Inter'; padding:3px 7px; cursor:pointer; }
         .fp-label:hover { background:var(--peri); }
         .fp-label::before { display:none; }
+        .gm { background:none; border:0; }   /* SVG sensor markers (divIcon) */
         .legend { background:rgba(255,255,255,0.94); color:var(--ink); border-radius:8px; padding:0.5rem 0.65rem;
             font:0.72rem 'Inter'; box-shadow:0 1px 4px rgba(0,0,0,0.2); max-width:240px; }
         .legend:empty { display:none; }
@@ -180,6 +181,16 @@
         return `<div class="pop-title">${esc(name)}</div><div class="pop-table-wrap"><table class="pop-table">${rows}</table></div>${foot}`;
     }
 
+    // ---- GAIA atlas markers (same in every atlas, 2D and 3D; see project_coordination/10-dashboard-stac.md):
+    //      seismometer = upright triangle, infrasound = inverted triangle, other point sensors = circle;
+    //      black 1 px edge; triangles 12 px, circles 8 px, fixed on screen.
+    const MARKER_PATHS = { "triangle-up": "M6 0.8 L11.3 10.4 L0.7 10.4 Z", "triangle-down": "M0.7 1.6 L11.3 1.6 L6 11.2 Z" };
+    const markerSvg = (symbol, fill, px = 12) => MARKER_PATHS[symbol]
+        ? `<svg width="${px}" height="${px}" viewBox="0 0 12 12" style="overflow:visible;display:block"><path d="${MARKER_PATHS[symbol]}" fill="${fill}" stroke="#000" stroke-width="1" stroke-linejoin="round"/></svg>`
+        : `<svg width="${px}" height="${px}" viewBox="0 0 12 12" style="display:block"><circle cx="6" cy="6" r="4" fill="${fill}" stroke="#000" stroke-width="1"/></svg>`;
+    const markerIcon = (symbol, fill) => L.divIcon({ className:"gm", html:markerSvg(symbol, fill), iconSize:[12, 12], iconAnchor:[6, 6] });
+    const symbolFor = (st, p) => st.symbol || (st.symbols && p && st.symbols[p[st.property]]) || null;
+
     // ---- styles: points, sized events, lines, choropleth, categorical ----
     function fillFor(st, p) {
         if (st.kind === "choropleth") { const v = p[st.property]; if (v == null) return null;
@@ -195,8 +206,9 @@
             return `<b>${esc(t)}</b>` + st.colors.map((c, i) => `<div class="row"><span class="sw" style="background:${c}"></span>${lab[i]}</div>`).join("");
         }
         if (st.kind === "categorical")
-            return `<b>${esc(t)}</b>` + Object.entries(st.values).map(([k, c]) =>
-                `<div class="row"><span class="sw" style="background:${c}"></span>${esc((st.labels||{})[k] || k)}</div>`).join("");
+            return `<b>${esc(t)}</b>` + Object.entries(st.values).map(([k, c]) => {
+                const sym = st.symbols && st.symbols[k];
+                return `<div class="row">${sym ? `<span style="margin-right:2px">${markerSvg(sym, c)}</span>` : `<span class="sw" style="background:${c}"></span>`}${esc((st.labels||{})[k] || k)}</div>`; }).join("");
         return "";
     }
     function refreshLegend() {
@@ -228,9 +240,11 @@
         const g = L.geoJSON(null, {
             pointToLayer: (f, ll) => {
                 const c = fillFor(st, f.properties) || st.color || "#888";
+                const sym = symbolFor(st, f.properties);
+                if (sym) return L.marker(ll, { icon:markerIcon(sym, c), riseOnHover:true });
                 if (st.kind === "events") return L.circleMarker(ll, { radius:radius(f.properties), color:"#333", weight:0.5, fillColor:c, fillOpacity:0.8 });
-                if (st.kind === "markers" || st.kind === "categorical") return L.circleMarker(ll, { radius:radius(f.properties), color:"#222", weight:0.5, fillColor:c, fillOpacity:0.9 });
-                return L.circleMarker(ll, { radius:4, color:c, weight:1, fillColor:c, fillOpacity:0.7 });
+                if (st.kind === "markers" || st.kind === "categorical") return L.circleMarker(ll, { radius:radius(f.properties), color:"#000", weight:1, fillColor:c, fillOpacity:0.9 });
+                return L.circleMarker(ll, { radius:4, color:"#000", weight:1, fillColor:c, fillOpacity:0.9 });   // other point sensors: 8 px circle
             },
             style: f => {
                 if (f.geometry.type === "Point") return {};
@@ -274,7 +288,7 @@
         const swatch = st.colors ? st.colors[3] : st.values ? Object.values(st.values)[2] : st.color;
         const b = document.createElement("button");
         b.className = "item" + (ras ? " ras" : "") + (off ? " disabled" : "");
-        b.innerHTML = `<span class="dot" style="background:${swatch || 'rgba(195,184,240,0.5)'}"></span>
+        b.innerHTML = `${st.symbol ? `<span style="flex:0 0 auto">${markerSvg(st.symbol, swatch)}</span>` : `<span class="dot" style="background:${swatch || 'rgba(195,184,240,0.5)'}"></span>`}
             <span class="ilabel">${esc(P.title)}<small>${esc(off || (P.providers ? P.providers[0].name : ""))}</small></span><span class="chk"></span>`;
         if (off) return b;
         let layer = null;

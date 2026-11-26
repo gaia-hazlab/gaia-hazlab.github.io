@@ -50,6 +50,23 @@ How a layer is encoded:
 | 3D viewers, reports | collection link, `rel: alternate`, `type: text/html` |
 | Menu group, colors, choropleth breaks, shared context | `gaia:` fields (no schema yet) |
 
+## Marker convention for every GAIA atlas
+
+The same sensor gets the same marker in the 2D dashboard and in every 3D atlas, at the same size on
+screen whatever the zoom. In STAC it is `gaia:style.symbol` (or `symbols` by category).
+
+| Sensor | Marker | Size | Edge |
+|---|---|---|---|
+| Seismometer | ▲ upright triangle (`triangle-up`) | 12 px | black, 1 px |
+| Infrasound | ▼ inverted triangle (`triangle-down`) | 12 px | black, 1 px |
+| Other point sensors (met, hydro, snow) | ● circle | 8 px | black, 1 px |
+
+Seismometers as upright triangles is the common convention. Infrasound has none: the IMS network is
+drawn with inverted triangles in seismo-acoustic papers, the Alaska Earthquake Center uses circles for
+infrasound-only sites, and an AVO map uses diamonds. We use the inverted triangle so ground and air
+sensors read as a pair. Applied so far in this mockup and in the Peters Dome atlas
+(gaia-peters-dome#6); the Cascadia, COSZO and Rainier atlases would adopt it in their own repositories.
+
 ## The mockup
 
 ![Overview: five projects, expected annual loss](img/dashboard-stac/1-mockup-overview.png)

@@ -95,7 +95,7 @@
  ],
  "gaia:derived_from": {
   "source": "gaia-hazlab/gaia-peters-dome docs/atlas/data/ (scripts/build_atlas.py)",
-  "store_commit": "5dc004e",
+  "store_commit": "242d6e1",
   "fetched": "2026-11-26"
  }
 }

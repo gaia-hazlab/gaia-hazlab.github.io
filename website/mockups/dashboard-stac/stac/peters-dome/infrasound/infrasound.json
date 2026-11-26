@@ -47,7 +47,8 @@
   "gaia:on": true,
   "gaia:style": {
    "kind": "points",
-   "color": "#1A982F"
+   "color": "#1A982F",
+   "symbol": "triangle-down"
   },
   "providers": [
    {

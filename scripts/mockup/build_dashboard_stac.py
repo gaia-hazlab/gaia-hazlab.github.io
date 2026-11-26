@@ -456,6 +456,27 @@ def exposure():
     return pid, col, items, {}
 
 
+# GAIA atlas marker convention (project_coordination/10-dashboard-stac.md): seismometer = upright triangle,
+# infrasound = inverted triangle, black edge, 12 px. Other point sensors stay 8 px circles with a black edge.
+SENSOR_SYMBOLS = {
+    ("washington", "seismometers"): "triangle-up", ("washington", "infrasound"): "triangle-down",
+    ("cascadia-offshore", "stations"): "triangle-up", ("mt-rainier", "receivers"): "triangle-up",
+    ("peters-dome", "seismic"): "triangle-up", ("peters-dome", "infrasound"): "triangle-down",
+}
+CATEGORY_SYMBOLS = {("coszo", "sensors"): {"seismic": "triangle-up"}}   # by the item's categorical property
+
+
+def apply_symbols(pid, items):
+    for it in items:
+        st = it["properties"].get("gaia:style")
+        if st is None:
+            continue
+        if (pid, it["id"]) in SENSOR_SYMBOLS:
+            st["symbol"] = SENSOR_SYMBOLS[(pid, it["id"])]
+        if (pid, it["id"]) in CATEGORY_SYMBOLS:
+            st["symbols"] = CATEGORY_SYMBOLS[(pid, it["id"])]
+
+
 def main():
     cascadia_html, rainier_index, coszo_dir, peters_dome_atlas, fetched = sys.argv[1:6]
     for sub in ("stac", "data"):
@@ -467,6 +488,7 @@ def main():
             "title": "GAIA dashboard (mockup)", "description": "One collection per project; one item per map layer.",
             "links": [{"rel": "root", "href": "./catalog.json", "type": "application/json"}]}
     for pid, col, items, data in projects:
+        apply_symbols(pid, items)
         root["links"].append({"rel": "child", "href": f"./{pid}/collection.json", "type": "application/json",
                               "title": col["title"]})
         write(ROOT / "stac" / pid / "collection.json", col)
